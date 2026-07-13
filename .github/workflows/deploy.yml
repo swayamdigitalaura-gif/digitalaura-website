@@ -1,0 +1,189 @@
+name: Deploy to Live (Contabo)
+
+# Runs ONLY when code lands on `main` (i.e. after the admin merges a Pull Request),
+# or when manually triggered from the GitHub "Actions" tab.
+# Employees pushing to their own branches or opening PRs will NOT trigger a deploy.
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "Force-deploy a specific project (used only for manual runs)"
+        type: choice
+        default: none
+        options: [ none, all, main-site, admin-panel, backend, seo-landing, google-ads ]
+
+# Never run two deploys at the same time.
+concurrency:
+  group: contabo-live-deploy
+  cancel-in-progress: false
+
+env:
+  SSH_OPTS: "-i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no"
+
+jobs:
+  # ── 1. Figure out which project(s) changed ────────────────────────────────
+  detect:
+    runs-on: ubuntu-latest
+    outputs:
+      main_site:   ${{ steps.f.outputs.main_site }}
+      admin_panel: ${{ steps.f.outputs.admin_panel }}
+      backend:     ${{ steps.f.outputs.backend }}
+      seo:         ${{ steps.f.outputs.seo }}
+      gads:        ${{ steps.f.outputs.gads }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: f
+        with:
+          filters: |
+            main_site:
+              - 'digital-aura-project/**'
+            admin_panel:
+              - 'admin-panel/**'
+            backend:
+              - 'admin-backend/**'
+            seo:
+              - 'landing-pages/**'
+            gads:
+              - 'google-ads-page/**'
+
+  # ── 2. Main website  →  /home/digitalaura.temp/public_html/ ───────────────
+  main-site:
+    needs: detect
+    if: ${{ needs.detect.outputs.main_site == 'true' || github.event.inputs.target == 'main-site' || github.event.inputs.target == 'all' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Build
+        working-directory: digital-aura-project
+        env:
+          NODE_ENV: production
+          VITE_API_BASE: https://thedigitalaura.com
+        run: |
+          npm install
+          npm run build:live
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.CONTABO_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "${{ secrets.CONTABO_SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || true
+      - name: Deploy (overlay onto web root, no delete — preserves admin-panel/, team/, landing assets)
+        env:
+          H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
+        run: |
+          rsync -az -e "ssh $SSH_OPTS" digital-aura-project/dist/ "$H:/home/digitalaura.temp/public_html/"
+
+  # ── 3. Admin panel  →  /home/digitalaura.temp/public_html/admin-panel/ ────
+  admin-panel:
+    needs: detect
+    if: ${{ needs.detect.outputs.admin_panel == 'true' || github.event.inputs.target == 'admin-panel' || github.event.inputs.target == 'all' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Build
+        working-directory: admin-panel
+        env:
+          NODE_ENV: production
+          VITE_BASE_PATH: /admin-panel
+          VITE_API_BASE: https://thedigitalaura.com
+          VITE_SITE_BASE: https://thedigitalaura.com
+        run: |
+          npm install
+          npm run build
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.CONTABO_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "${{ secrets.CONTABO_SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || true
+      - name: Deploy
+        env:
+          H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
+        run: |
+          rsync -az --delete -e "ssh $SSH_OPTS" admin-panel/dist/ "$H:/home/digitalaura.temp/public_html/admin-panel/"
+
+  # ── 4. Backend API  →  /home/digitalaura-backend/  (pm2: digitalaura-api) ─
+  backend:
+    needs: detect
+    if: ${{ needs.detect.outputs.backend == 'true' || github.event.inputs.target == 'backend' || github.event.inputs.target == 'all' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.CONTABO_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "${{ secrets.CONTABO_SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || true
+      - name: Deploy source (never touches .env, uploads, node_modules) & restart
+        env:
+          H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
+        run: |
+          rsync -az --delete \
+            --exclude='.env' --exclude='node_modules' --exclude='uploads' \
+            -e "ssh $SSH_OPTS" \
+            admin-backend/ "$H:/home/digitalaura-backend/"
+          ssh $SSH_OPTS "$H" "cd /home/digitalaura-backend && npm install --omit=dev && pm2 restart digitalaura-api"
+
+  # ── 5. SEO landing page  →  /home/landing-seo/  (pm2: seo-landing) ────────
+  seo-landing:
+    needs: detect
+    if: ${{ needs.detect.outputs.seo == 'true' || github.event.inputs.target == 'seo-landing' || github.event.inputs.target == 'all' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Build (node preset → .output)
+        working-directory: landing-pages
+        run: |
+          npm install
+          npx vite build --config vite.node.config.ts
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.CONTABO_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "${{ secrets.CONTABO_SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || true
+      - name: Deploy + restart + copy assets to web root
+        env:
+          H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
+        run: |
+          ssh $SSH_OPTS "$H" "rm -rf /home/landing-seo/server /home/landing-seo/public"
+          rsync -az -e "ssh $SSH_OPTS" landing-pages/.output/ "$H:/home/landing-seo/"
+          ssh $SSH_OPTS "$H" "pm2 restart seo-landing && cp -r /home/landing-seo/public/* /home/digitalaura.temp/public_html/"
+
+  # ── 6. Google Ads landing page → /home/landing-google-ads/ (pm2: google-ads-landing)
+  google-ads:
+    needs: detect
+    if: ${{ needs.detect.outputs.gads == 'true' || github.event.inputs.target == 'google-ads' || github.event.inputs.target == 'all' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Build (node preset → .output)
+        working-directory: google-ads-page
+        run: |
+          npm install
+          npx vite build --config vite.node.config.ts
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.CONTABO_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "${{ secrets.CONTABO_SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || true
+      - name: Deploy + restart + copy assets to web root
+        env:
+          H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
+        run: |
+          ssh $SSH_OPTS "$H" "rm -rf /home/landing-google-ads/server /home/landing-google-ads/public"
+          rsync -az -e "ssh $SSH_OPTS" google-ads-page/.output/ "$H:/home/landing-google-ads/"
+          ssh $SSH_OPTS "$H" "pm2 restart google-ads-landing && cp -r /home/landing-google-ads/public/* /home/digitalaura.temp/public_html/"

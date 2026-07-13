@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Bash(npx tsc:*)",
+      "WebFetch(domain:thedigitalaura.com)",
+      "WebFetch(domain:www.google.com)",
+      "Bash(copy \"d:\\\\claudeproject\\\\digitalaura\\\\digital-aura-project\\\\logo main.png\" \"d:\\\\claudeproject\\\\digitalaura\\\\digital-aura-project\\\\src\\\\assets\\\\logo.png\" /Y)"
+    ]
+  }
+}

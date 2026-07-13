@@ -1,0 +1,74 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+.output
+.vinxi
+.tanstack/**
+.nitro
+*.local
+
+# Wrangler / Cloudflare
+.wrangler/
+.dev.vars
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+.vercel
+
+# ─────────────────────────────────────────────────────────────
+# SECURITY — never commit secrets or live credentials
+# ─────────────────────────────────────────────────────────────
+.env
+.env.*
+**/.env
+**/.env.*
+
+# Backups & archives (data backups belong outside the code repo)
+*.tar.gz
+*.tgz
+*.zip
+
+# Database dumps / exports (data + possible password hashes / PII)
+*.sql
+
+# Legacy manual deploy / SSH scripts (contain hardcoded live passwords,
+# replaced by the GitHub Actions CI/CD pipeline — do NOT commit)
+/deploy*.mjs
+/deploy*.py
+/ssh-*.mjs
+/ssh*.mjs
+/check_htaccess.py
+/find_path.py
+/upload.py
+/add-careers.mjs
+/admin-backend/fix-schema.js
+/fix-*.mjs
+/update-*.mjs
+/ADMIN_SETUP.md
+
+# Misc local data exports
+*.xlsx
+*.docx
+
+# Nested/leftover tooling repos & workspaces
+.workspace/
+**/.workspace/
+.lovable/

@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', system-ui, sans-serif; background: #F1F5F9; color: #1E293B; }
+#root { width: 100%; min-height: 100vh; }
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #F1F5F9; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+
+/* GrapesJS — layout */
+.gjs-editor { border: none !important; width: 100% !important; height: 100% !important; position: relative !important; }
+.gjs-editor-cont { width: 100% !important; height: 100% !important; }
+.gjs-cv-canvas { top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; }
+.gjs-pn-panels { display: none !important; }
+
+/* Blocks */
+.gjs-block-categories { padding: 4px !important; }
+.gjs-block-category { margin-bottom: 2px !important; }
+.gjs-block-category .gjs-title { background: #0a1628 !important; color: #475569 !important; font-size: 9px !important; font-weight: 700 !important; letter-spacing: 0.1em !important; text-transform: uppercase !important; padding: 6px 10px !important; }
+.gjs-blocks-c { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 4px !important; padding: 4px !important; }
+.gjs-block { background: #1E293B !important; border: 1px solid #334155 !important; border-radius: 6px !important; color: #CBD5E1 !important; padding: 8px 4px !important; min-height: 52px !important; width: auto !important; }
+.gjs-block:hover { border-color: #FF6B2B !important; background: #253347 !important; }
+.gjs-block__media { font-size: 18px !important; margin-bottom: 2px !important; }
+.gjs-block-label { color: #94A3B8 !important; font-size: 10px !important; line-height: 1.2 !important; }
+
+/* Style manager */
+.gjs-sm-sectors { padding: 0 !important; }
+.gjs-sm-sector { border-bottom: 1px solid #1E293B !important; }
+.gjs-sm-sector .gjs-sm-title { background: #0F172A !important; color: #64748B !important; font-size: 10px !important; font-weight: 700 !important; letter-spacing: 0.08em !important; text-transform: uppercase !important; padding: 8px 12px !important; }
+.gjs-sm-properties { padding: 8px !important; }
+.gjs-sm-property { color: #94A3B8 !important; font-size: 11px !important; margin-bottom: 8px !important; }
+.gjs-sm-label { color: #64748B !important; font-size: 10px !important; margin-bottom: 3px !important; }
+.gjs-field { background: #1E293B !important; border: 1px solid #334155 !important; border-radius: 4px !important; color: #E2E8F0 !important; }
+.gjs-field input, .gjs-field select, .gjs-field textarea { color: #E2E8F0 !important; background: transparent !important; font-size: 12px !important; }
+.gjs-input-unit { background: #0F172A !important; color: #64748B !important; border-left: 1px solid #334155 !important; }
+.gjs-field-colorp { border: 1px solid #334155 !important; }
+
+/* Layers */
+.gjs-layer { color: #94A3B8 !important; font-size: 12px !important; border-bottom: 1px solid #1E293B !important; }
+.gjs-layer.gjs-selected { background: rgba(255,107,43,0.12) !important; color: #E2E8F0 !important; }
+.gjs-layer-title { padding: 6px 8px !important; }
+.gjs-layer__icon { color: #475569 !important; }
+
+/* Canvas selection */
+.gjs-selected { outline: 2px solid #FF6B2B !important; outline-offset: -2px !important; }
+.gjs-hovered { outline: 1px dashed #94A3B8 !important; outline-offset: -1px !important; }

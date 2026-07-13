@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Testimonial Preview — Nikhil / Parasher Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #F0F4FF;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      padding: 40px 20px;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #64748B; }
+    .card { background: #fff; border-radius: 20px; width: 340px; box-shadow: 0 4px 32px rgba(0,0,0,0.10); overflow: hidden; }
+    .video-thumb { position: relative; width: 100%; height: 190px; cursor: pointer; background: #000; overflow: hidden; }
+    .video-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; transition: opacity 0.2s; }
+    .video-thumb:hover img { opacity: 0.7; }
+    .video-badge { position: absolute; top: 10px; left: 10px; background: #7C3AED; color: #fff; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; padding: 3px 8px; border-radius: 20px; text-transform: uppercase; }
+    .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 56px; height: 56px; background: rgba(255,255,255,0.95); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.3); transition: transform 0.2s, background 0.2s; }
+    .video-thumb:hover .play-btn { transform: translate(-50%, -50%) scale(1.1); background: #FF6B2B; }
+    .play-btn svg { width: 22px; height: 22px; margin-left: 3px; fill: #FF6B2B; transition: fill 0.2s; }
+    .video-thumb:hover .play-btn svg { fill: #fff; }
+    .card-body { padding: 18px 20px 20px; }
+    .stars { display: flex; gap: 3px; margin-bottom: 10px; }
+    .star { color: #FF6B2B; font-size: 16px; }
+    .quote-text { font-size: 13.5px; line-height: 1.65; color: #1E293B; font-style: italic; margin-bottom: 16px; }
+    .divider { height: 1px; background: #F1F5F9; margin-bottom: 14px; }
+    .person-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .avatar { width: 40px; height: 40px; border-radius: 50%; background: #22C55E; color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .person-info { flex: 1; }
+    .person-name { font-weight: 700; font-size: 13.5px; color: #0A1628; margin-bottom: 2px; }
+    .person-role { font-size: 11.5px; color: #64748B; }
+    .platform { display: flex; align-items: center; gap: 4px; font-size: 11px; color: #64748B; font-weight: 600; }
+    .platform svg { width: 15px; height: 15px; }
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 100; align-items: center; justify-content: center; }
+    .modal-overlay.active { display: flex; }
+    .modal-inner { position: relative; width: 90%; max-width: 780px; aspect-ratio: 16/9; }
+    .modal-inner iframe { width: 100%; height: 100%; border-radius: 12px; border: none; }
+    .modal-close { position: absolute; top: -40px; right: 0; color: #fff; font-size: 28px; cursor: pointer; background: none; border: none; font-weight: 700; line-height: 1; }
+    .note { font-size: 12px; color: #94A3B8; text-align: center; max-width: 340px; }
+  </style>
+</head>
+<body>
+
+  <p class="label">👇 Nikhil — Parasher Academy Preview · Click to play</p>
+
+  <div class="card">
+    <div class="video-thumb" onclick="openModal()">
+      <img src="https://img.youtube.com/vi/oniJ5OOaXHY/maxresdefault.jpg" alt="Parasher Academy Testimonial" />
+      <span class="video-badge">VIDEO</span>
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="stars">
+        <span class="star">★</span><span class="star">★</span>
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+
+      <p class="quote-text">
+        "Every agency gave me a standard pitch. Only Digital Aura actually listened. 6 months later — 200+ leads, and my only problem now is I can't make calls fast enough. 🎬"
+      </p>
+
+      <div class="divider"></div>
+
+      <div class="person-row">
+        <div class="avatar">NP</div>
+        <div class="person-info">
+          <div class="person-name">Nikhil Parasher</div>
+          <div class="person-role">Founder · Parasher Academy</div>
+        </div>
+        <div class="platform">
+          <svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.6 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.8 15.5V8.5l6.2 3.5-6.2 3.5z"/></svg>
+          YouTube
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="note">Approve or adjust — then I'll add it live.</p>
+
+  <div class="modal-overlay" id="modal" onclick="closeModal(event)">
+    <div class="modal-inner">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <iframe id="yt-iframe" src="" allowfullscreen allow="autoplay"></iframe>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById('modal').classList.add('active');
+      document.getElementById('yt-iframe').src = 'https://www.youtube.com/embed/oniJ5OOaXHY?autoplay=1&rel=0';
+    }
+    function closeModal(e) {
+      if (!e || e.target === document.getElementById('modal') || e.target.classList.contains('modal-close')) {
+        document.getElementById('modal').classList.remove('active');
+        document.getElementById('yt-iframe').src = '';
+      }
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  </script>
+
+</body>
+</html>

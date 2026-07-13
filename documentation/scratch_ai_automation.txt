@@ -1,0 +1,197 @@
+DIGITAL AURA
+   |   AI Automation Service Page — Content Brief
+AI Automation — Service Page
+Website Content Brief for Developer
+URL Slug: /services/ai-automation
+SECTION 01  
+— HERO SECTION
+LABEL TEXT (small tag above headline):
+AI Automation
+HEADLINE (H1):
+Your Business Is Generating Signals. Your Team Isn't Fast Enough to Act on All of Them.
+SUBHEADLINE:
+We build real-time AI automation systems — not zaps, not templates, not basic triggers. Custom-engineered pipelines that process data, make decisions, and take action the moment something happens in your business.
+CTA BUTTON:
+Book a Free Automation Architecture Call
+TRUST LINE (below CTA):
+Used by businesses processing 10,000+ events per day across Australia, UK, Ireland, Canada & USA
+SECTION 02  
+— POSITIONING STATEMENT
+SECTION LABEL:
+Not Your Typical Automation Agency
+HEADLINE:
+There's a Difference Between Connecting Two Apps and Building Intelligence Into Your Business.
+BODY COPY:
+Most automation agencies connect tools together using drag-and-drop platforms. That's useful. But it's not what moves the needle.
+We build AI-powered systems that think — that read documents, understand language, analyse images, score risk, detect patterns, and act on them in real time. Systems trained on your business data. Systems with memory. Systems that get smarter as your business grows.
+If you've been told 'just use Zapier' — you haven't seen what's actually possible yet.
+3 DIFFERENTIATOR CALLOUT CARDS:
+⚡  Real-Time, Event-Driven
+Our systems respond to events as they happen — new lead, new transaction, new document, new signal. Latency measured in seconds, not hours.
+🧠  AI That Reasons, Not Just Routes
+We use large language models, computer vision, and custom ML to build automation that can read, classify, summarise, flag, and decide — not just move data.
+🏗️  Built For Your Stack
+We engineer to your existing infrastructure — your CRM, ERP, database, APIs. Nothing ripped out. Everything made smarter.
+SECTION 03  
+— SERVICES GRID — WHAT WE BUILD
+HEADLINE:
+What We Build
+SUBHEADLINE:
+If your business generates data, makes decisions, or runs on repetitive human judgment — there's an AI automation system for it.
+SERVICE CARDS (6 total — display as grid on page):
+🤖  AI Agent Systems
+Autonomous agents that monitor, analyse, and act on events across your business — reading inputs, making decisions, triggering actions, and escalating only when human judgment is genuinely required.
+👁️  Vision & Document Intelligence
+Systems that see and understand — extracting structured data from documents, images, forms, and physical environments. Turning unstructured inputs into clean, actionable outputs at scale.
+📡  Real-Time Event Processing
+Event-driven pipelines that respond to what's happening in your business the moment it happens — not in batches, not on schedules. Live triggers, live decisions, live outputs.
+🧠  Predictive & Proactive Automation
+Systems that act before you ask. Forecasting what comes next based on your historical data and triggering the right action before the problem surfaces or the opportunity passes.
+📋  Intelligent Workflow Orchestration
+Multi-step, multi-system workflows with conditional logic, exception handling, and human-in-the-loop escalation built in. Complex operations run end-to-end without manual coordination.
+🔗  Systems Integration & AI Enrichment
+Connect every tool, database, and platform in your stack into a unified intelligence layer — with AI enriching data at every touchpoint rather than just passing it through.
+SECTION 04  
+— HOW WE WORK — PROCESS
+HEADLINE:
+How We Engineer Your Automation
+PROCESS STEPS (numbered, left-to-right or top-to-bottom):
+1
+Architecture Audit — Week 1
+We spend time with your team mapping every data flow, decision point, and handoff in your highest-value workflows. We identify where AI can make a real-time decision instead of a human. Output: a full system architecture diagram, prioritised by ROI.
+2
+Proof of Concept — Week 2
+Before we build anything production-grade, we run a live PoC on your actual data. You see the system work — reading your documents, processing your leads, flagging your anomalies — in your environment.
+3
+Engineering & Integration — Weeks 3–6
+We build, test, and integrate. Every component is version-controlled, documented, and engineered for reliability. We build error handling, fallback logic, and human-in-the-loop escalation paths from day one.
+4
+Deploy, Monitor & Optimise
+We deploy to production with full observability — error logs, performance dashboards, alert thresholds. First 60 days include proactive monitoring and weekly optimisation sprints. Your system gets faster and smarter over time.
+SECTION 05  
+— CASE STUDIES
+HEADLINE:
+What Advanced Automation Actually Looks Like in Production
+Case Study 01
+Residential Property Investment Platform  |  Sydney, Australia
+THE PROBLEM
+A PropTech firm had a team of two analysts manually monitoring 11 property listing portals daily, filtering by 23 investment criteria, and emailing shortlisted properties to a WhatsApp investor group. Average response time from listing live to investor notification: 6–8 hours. They were consistently losing deals to faster-moving buyers.
+WHAT WE BUILT
+A real-time AI monitoring pipeline that continuously watches 11 portals via structured data feeds. Every new listing passes through a GPT-4 vision-powered classification layer that scores it against the firm's 23 investment criteria, cross-references against historical sale data, and generates a formatted investment brief with risk flag, yield estimate, and suburb trend analysis. Qualifying listings trigger an instant WhatsApp broadcast with the AI-generated brief attached — within 90 seconds of the listing going live.
+TECH STACK
+Custom Python pipeline  ·  GPT-4 Vision  ·  WhatsApp Business API  ·  PostgreSQL  ·  AWS Lambda
+RESULTS
+Notification time reduced from 6–8 hours to under 90 seconds
+2 full-time analyst roles reallocated to high-value deal structuring
+Investor response rate on shortlisted properties increased 67%
+4 additional acquisitions in the first quarter attributed to speed advantage
+"We had analysts doing what this system does, but slower and only during business hours. This thing works at 2am on a Sunday and it doesn't miss a listing."
+— Head of Acquisitions, Sydney PropTech Firm
+Case Study 02
+Precision Manufacturing Group  |  Birmingham, UK
+THE PROBLEM
+A mid-sized manufacturer was catching product defects at end-of-line QC, after hours of production had already run. Defect rates were averaging 3.8% — resulting in significant material waste, client complaints, and rework costs exceeding £180,000 annually.
+WHAT WE BUILT
+A real-time computer vision quality control system integrated directly into the production line. Industrial cameras capture images at 12 frames per second. A custom-trained vision model — fine-tuned on 40,000+ labelled images of their specific product defects — analyses each frame in real time. Defect detected → line paused → image annotated with defect classification and location → production supervisor alerted on mobile with full context → root cause analysis automatically surfaced from historical defect patterns.
+TECH STACK
+Custom CNN model (PyTorch)  ·  Edge inference hardware  ·  Real-time alert API  ·  Defect analytics dashboard  ·  MQTT event bus
+RESULTS
+Defect detection rate improved from 3.8% to 0.3%
+Annual rework costs reduced by £162,000 in Year 1
+Detection moved from end-of-line to within 80ms of defect occurrence
+Root cause data surfaced patterns that led to upstream process changes
+"We've been doing manual QC for 22 years. What Digital Aura built in 6 weeks has fundamentally changed how we think about production intelligence."
+— Operations Director, Birmingham Manufacturing Group
+Case Study 03
+Commercial Law Firm  |  Dublin, Ireland
+THE PROBLEM
+Senior associates at a 40-partner commercial law firm were spending 5–7 hours per contract reviewing new agreements — extracting key dates, obligations, liability clauses, and non-standard terms, then producing an internal risk summary memo before partner review. A firm bottleneck that was limiting throughput and billing capacity.
+WHAT WE BUILT
+An intelligent contract review pipeline custom-trained on 8 years of the firm's own contract library and internal risk taxonomy. New contract uploaded via a secure web portal → NLP pipeline extracts 40+ defined clause types → each clause scored against the firm's risk matrix → non-standard terms flagged and compared against precedent → a structured 2-page risk summary memo auto-generated in the firm's own formatting → delivered to the assigned partner in under 6 minutes.
+TECH STACK
+Custom fine-tuned LLM  ·  Secure document ingestion API  ·  Clause extraction pipeline  ·  RAG over firm's contract precedent library  ·  Auto-generated DOCX output
+RESULTS
+Initial review time reduced from 5–7 hours to under 6 minutes
+340+ contracts processed in the first 5 months
+Associates freed to focus on negotiation, advice, and client-facing work
+Zero material clauses missed across all processed documents
+"We were skeptical that AI could handle the nuance our work requires. The system doesn't just extract text — it understands context within our specific legal framework. It's become indispensable."
+— Managing Partner, Dublin Commercial Law Firm
+Case Study 04
+Mortgage Brokerage Network  |  Ontario, Canada
+THE PROBLEM
+A brokerage network processing 200+ applications per month had a 3-person team manually reviewing applications, verifying document completeness, cross-referencing lender criteria across 18 products, and producing recommendation memos. Average processing time per application: 4 hours. The bottleneck was creating a 6-day average queue for applicants.
+WHAT WE BUILT
+An end-to-end AI application intelligence system. Applicant submits → AI extracts and structures all data from uploaded documents (pay stubs, T4s, NOAs, bank statements) using computer vision + NLP → application scored against 18 lender criteria matrices simultaneously → top 3 matches ranked with rationale → complete broker recommendation memo generated → assigned broker notified with full brief on mobile. Edge cases and complex files routed to human review with AI pre-analysis already attached.
+TECH STACK
+Multimodal document processing  ·  Custom lender scoring engine  ·  LLM memo generation  ·  React Native broker app  ·  Supabase real-time backend
+RESULTS
+Processing time reduced from 4 hours to 22 minutes average
+Application queue reduced from 6 days to same-day processing
+Broker capacity increased 3.4x without additional hires
+Lender match accuracy rated higher than manual process by brokers
+"Our brokers now spend their time advising clients, not reading bank statements. The quality of recommendations has actually gone up because the AI doesn't get tired at the end of the day."
+— CEO, Ontario Mortgage Brokerage Network
+SECTION 06  
+— TESTIMONIALS
+HEADLINE:
+From the Teams Running These Systems
+★★★★★
+"I've worked with automation consultants before who showed me fancy diagrams and delivered Zapier flows. Digital Aura built us a real system — it handles exceptions, it has memory, it escalates intelligently. It's the difference between automation and intelligence."
+— CTO, B2B SaaS Platform, London
+★★★★★
+"We gave them access to our most complex operational workflow — one we genuinely thought no external team would understand. They mapped it better than we had internally, and the system they built handles edge cases our own team used to argue about for hours."
+— VP Operations, Healthcare Network, Melbourne
+★★★★★
+"The ROI conversation was over by week 3. The system paid for itself before we even finished the onboarding sprint. What genuinely impressed me was the observability they built in — I can see exactly what the AI decided and why, for every single event."
+— CFO, Logistics Technology Company, Toronto
+★★★★★
+"What separates Digital Aura is that they engineer for failure. Every automation they build has fallback logic, error handling, and escalation paths. We've had zero critical failures in 8 months of production."
+— Head of Technology, Insurance Brokerage, Dublin
+SECTION 07  
+— WHY DIGITAL AURA
+HEADLINE:
+Why Serious Businesses Choose Digital Aura for AI Automation
+DIFFERENTIATOR CARDS (6 — display as 2-col grid):
+🔬  We Work From Your Data, Not Generic Templates
+Every system we build is trained and configured on your actual business data — your documents, your CRM history, your decision logic. Not a generic workflow copied from a library.
+⚡  Real-Time Architecture as a Default
+We don't build batch processes unless batch is genuinely right for you. Our default is event-driven, real-time systems. Something happens in your business → the system responds within seconds.
+🧩  We Think in Systems, Not Features
+We design the full intelligence layer — inputs, processing, decisions, outputs, escalations, monitoring. Not just one piece of it. You get a complete system that holds together under production pressure.
+🔍  Full Observability Built In
+Every automation we deliver includes a monitoring dashboard. You can see what the AI processed, what it decided, what it flagged, and why — in plain language. No black boxes.
+🌍  Production-Proven Across Industries
+Real estate, manufacturing, legal, financial services, healthcare, e-commerce. Our automation architecture patterns are battle-tested across industries and across markets.
+🤝  We Stay In It With You
+60-day post-launch monitoring, weekly performance reviews, and ongoing optimisation. AI systems need to be tuned as your data evolves — we build that into every engagement.
+SECTION 08  
+— FAQ
+HEADLINE:
+Common Questions
+Q: How is this different from what we can build ourselves using Make or Zapier?
+Platforms like Make and Zapier are excellent for connecting apps using pre-built triggers and actions. What we build is different — custom AI layers that reason, classify, generate content, and make conditional decisions based on your data. When your workflow involves language, documents, images, or complex business logic, no-code tools hit their ceiling quickly.
+Q: Do we need to replace our existing systems?
+Almost never. We engineer integrations into your existing CRM, ERP, databases, and tools. The AI automation layer sits on top of what you already have and makes it smarter.
+Q: How do you handle sensitive data — legal documents, financial records, patient data?
+We architect with data privacy as a non-negotiable. Sensitive workloads are processed on private infrastructure, never through shared cloud AI APIs. We are GDPR-aligned and can work within your existing compliance framework.
+Q: What does the AI do when it encounters something it's not confident about?
+Every system we build includes a human-in-the-loop escalation path. Low-confidence events are flagged to the right person with full context — the AI tells you what it found, why it's uncertain, and what it recommends. Nothing falls through the cracks.
+Q: How long does it take to build?
+PoC in 2 weeks. Production deployment in 4–6 weeks for most systems. Measurable ROI typically visible within the first 30 days of live operation.
+Q: How do we get started?
+Book a free Architecture Call. We spend 60 minutes mapping your highest-value workflow, identifying where AI can make real-time decisions, and showing you exactly what a production system would look like for your business — before any commitment is made.
+SECTION 09  
+— FINAL CTA SECTION
+Let's Find Your First Automation in 60 Minutes.
+Book a free Automation Architecture Call. We'll map your top workflows, identify what's automatable, and show you the projected impact — before any commitment is made.
+[ Book My Architecture Call → ]
+No templates. No generic playbooks. Architecture designed for your business, on your first call.
+Developer Notes
+Page structure matches /services/seo-content-marketing as reference
+Brand colours: Navy #0A1628  |  Blue #1B6FF0  |  Orange #F47B20
+CTA button links to the same 'Book Free Strategy Call' booking flow as other service pages
+Services grid (Section 3): display as 2-column card grid, same component as SEO page service cards
+Case studies (Section 5): accordion or card expand pattern recommended for mobile
+Meta title: AI Automation Services | Digital Aura
+Meta description: Digital Aura builds real-time AI automation systems — custom-engineered pipelines for enterprise and fast-growing businesses across Australia, UK, Ireland, Canada & USA.

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sed -i 's/title: \"AIO: AI Overviews\"/title: \"AIO — AI Overviews\"/g' d:/claudeproject/digitalaura/digital-aura-project/src/pages/services/SEOPage.tsx)",
+      "Bash(sed -i 's/title: \"GEO: Generative Engine Optimisation\"/title: \"GEO — Generative Engine Optimisation\"/g' d:/claudeproject/digitalaura/digital-aura-project/src/pages/services/SEOPage.tsx)",
+      "Bash(python3 -)",
+      "WebFetch(domain:hotpink-tarsier-546528.hostingersite.com)",
+      "Bash(node -e ':*)"
+    ]
+  }
+}

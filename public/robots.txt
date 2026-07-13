@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aura-lead-engine-main.vercel.app/sitemap.xml

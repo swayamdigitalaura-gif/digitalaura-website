@@ -36,6 +36,7 @@ import CustomMLModelsPage from "./pages/services/CustomMLModelsPage.tsx";
 import AISolutionsPage from "./pages/AISolutionsPage.tsx";
 import CaseStudiesPage from "./pages/CaseStudiesPage.tsx";
 import BlogPage from "./pages/BlogPage.tsx";
+import BlogPost from "./pages/BlogPost.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import EngagementModelsPage from "./pages/EngagementModelsPage.tsx";
@@ -72,6 +73,7 @@ const App = () => (
           <Route path="/engagement-models" element={<EngagementModelsPage />} />
           <Route path="/case-studies" element={<CaseStudiesPage />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/contact" element={<ContactPage />} />
 
           {/* Services hub */}

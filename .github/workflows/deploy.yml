@@ -61,6 +61,9 @@ jobs:
       - name: Install dependencies
         working-directory: digital-aura-project
         run: npm install --include=dev
+      - name: Install Playwright browser (needed by the prerender script)
+        working-directory: digital-aura-project
+        run: npx playwright install --with-deps chromium
       - name: Build
         working-directory: digital-aura-project
         env:

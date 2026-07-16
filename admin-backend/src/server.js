@@ -29,6 +29,7 @@ app.use('/api/client-logos', require('./routes/clientLogos'));
 app.use('/api/contact', require('./routes/contact'));
 app.use('/api/site', require('./routes/site'));
 app.use('/api/redirects', require('./routes/redirects'));
+app.use('/api/seo-agent', require('./routes/seoAgent'));
 
 // Handle active redirects before serving anything
 const { handleRedirects } = require('./controllers/redirectController');

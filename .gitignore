@@ -72,3 +72,7 @@ dist-ssr
 .workspace/
 **/.workspace/
 .lovable/
+
+# Local-only: contains SEO connector secrets — never commit
+/seo/
+/extra2/

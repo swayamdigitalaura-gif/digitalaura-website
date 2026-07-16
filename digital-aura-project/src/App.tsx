@@ -50,6 +50,7 @@ import PrivacyPolicyPage from "./pages/PrivacyPolicyPage.tsx";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage.tsx";
 import CancellationRefundPage from "./pages/CancellationRefundPage.tsx";
 import TestimonialsPage from "./pages/TestimonialsPage.tsx";
+import AIFilmmakingPage from "./pages/services/AIFilmmakingPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -114,6 +115,8 @@ const App = () => (
 
           {/* Testimonials */}
           <Route path="/testimonials" element={<TestimonialsPage />} />
+
+          <Route path="/services/ai-filmmaking" element={<AIFilmmakingPage />} />
 
           {/* Legal */}
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

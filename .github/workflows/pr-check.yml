@@ -1,0 +1,120 @@
+name: Check Build (Pull Requests)
+
+# Runs on every Pull Request BEFORE it's merged, so a broken build shows up
+# as a red X right on the PR — never a surprise after merging.
+# Does NOT deploy anything; it only proves each changed project builds cleanly.
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    outputs:
+      main_site:   ${{ steps.f.outputs.main_site }}
+      admin_panel: ${{ steps.f.outputs.admin_panel }}
+      backend:     ${{ steps.f.outputs.backend }}
+      seo:         ${{ steps.f.outputs.seo }}
+      gads:        ${{ steps.f.outputs.gads }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: f
+        with:
+          filters: |
+            main_site:
+              - 'digital-aura-project/**'
+            admin_panel:
+              - 'admin-panel/**'
+            backend:
+              - 'admin-backend/**'
+            seo:
+              - 'landing-pages/**'
+            gads:
+              - 'google-ads-page/**'
+
+  main-site:
+    needs: detect
+    if: ${{ needs.detect.outputs.main_site == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Install dependencies
+        working-directory: digital-aura-project
+        run: npm install --include=dev
+      - name: Install Playwright browser (needed by the prerender script)
+        working-directory: digital-aura-project
+        run: npx playwright install --with-deps chromium
+      - name: Build (same command the real deploy uses)
+        working-directory: digital-aura-project
+        env:
+          NODE_ENV: production
+          VITE_API_BASE: https://thedigitalaura.com
+        run: npm run build:live
+
+  admin-panel:
+    needs: detect
+    if: ${{ needs.detect.outputs.admin_panel == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Install dependencies
+        working-directory: admin-panel
+        run: npm install --include=dev
+      - name: Build
+        working-directory: admin-panel
+        env:
+          NODE_ENV: production
+          VITE_BASE_PATH: /admin-panel
+          VITE_API_BASE: https://thedigitalaura.com
+          VITE_SITE_BASE: https://thedigitalaura.com
+        run: npm run build
+
+  backend:
+    needs: detect
+    if: ${{ needs.detect.outputs.backend == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Install dependencies
+        working-directory: admin-backend
+        run: npm install
+      - name: Syntax-check every JS file (no server/DB needed)
+        working-directory: admin-backend
+        run: find src -name "*.js" -print0 | xargs -0 -n1 node --check
+
+  seo-landing:
+    needs: detect
+    if: ${{ needs.detect.outputs.seo == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Install dependencies
+        working-directory: landing-pages
+        run: npm install
+      - name: Build
+        working-directory: landing-pages
+        run: npx vite build --config vite.node.config.ts
+
+  google-ads:
+    needs: detect
+    if: ${{ needs.detect.outputs.gads == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Install dependencies
+        working-directory: google-ads-page
+        run: npm install
+      - name: Build
+        working-directory: google-ads-page
+        run: npx vite build --config vite.node.config.ts

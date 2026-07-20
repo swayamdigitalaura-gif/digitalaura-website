@@ -7,7 +7,7 @@ const SITE = import.meta.env.VITE_SITE_BASE || 'http://localhost:8083';
 
 const PRESETS = {
   default: `User-agent: *\nAllow: /\nSitemap: ${SITE}/sitemap.xml`,
-  block_admin: `User-agent: *\nAllow: /\nDisallow: /admin-panel/\nDisallow: /api/\nSitemap: ${SITE}/sitemap.xml`,
+  block_admin: `User-agent: *\nAllow: /\nDisallow: /aura-desk/\nDisallow: /api/\nSitemap: ${SITE}/sitemap.xml`,
   noindex: `User-agent: *\nDisallow: /\n\n# Sitemap\nSitemap: ${SITE}/sitemap.xml`,
   googlebot_only: `User-agent: *\nDisallow: /\n\nUser-agent: Googlebot\nAllow: /\nSitemap: ${SITE}/sitemap.xml`,
 };

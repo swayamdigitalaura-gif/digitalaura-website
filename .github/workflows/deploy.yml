@@ -82,7 +82,7 @@ jobs:
         run: |
           rsync -az -e "ssh $SSH_OPTS" digital-aura-project/dist/ "$H:/home/digitalaura.temp/public_html/"
 
-  # ── 3. Admin panel  →  /home/digitalaura.temp/public_html/admin-panel/ ────
+  # ── 3. Admin panel  →  /home/digitalaura.temp/public_html/aura-desk/ ───────
   admin-panel:
     needs: detect
     if: ${{ needs.detect.outputs.admin_panel == 'true' || github.event.inputs.target == 'admin-panel' || github.event.inputs.target == 'all' }}
@@ -98,7 +98,7 @@ jobs:
         working-directory: admin-panel
         env:
           NODE_ENV: production
-          VITE_BASE_PATH: /admin-panel
+          VITE_BASE_PATH: /aura-desk
           VITE_API_BASE: https://thedigitalaura.com
           VITE_SITE_BASE: https://thedigitalaura.com
         run: npm run build
@@ -112,7 +112,8 @@ jobs:
         env:
           H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
         run: |
-          rsync -az --delete -e "ssh $SSH_OPTS" admin-panel/dist/ "$H:/home/digitalaura.temp/public_html/admin-panel/"
+          rsync -az --delete -e "ssh $SSH_OPTS" admin-panel/dist/ "$H:/home/digitalaura.temp/public_html/aura-desk/"
+          ssh $SSH_OPTS "$H" "rm -rf /home/digitalaura.temp/public_html/admin-panel"
 
   # ── 4. Backend API  →  /home/digitalaura-backend/  (pm2: digitalaura-api) ─
   backend:

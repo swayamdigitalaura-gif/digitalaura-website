@@ -50,6 +50,12 @@ import PrivacyPolicyPage from "./pages/PrivacyPolicyPage.tsx";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage.tsx";
 import CancellationRefundPage from "./pages/CancellationRefundPage.tsx";
 import TestimonialsPage from "./pages/TestimonialsPage.tsx";
+import SEOAuditStrategyPage from "./pages/services/seo/SEOAuditStrategyPage.tsx";
+import OnPageSEOPage from "./pages/services/seo/OnPageSEOPage.tsx";
+import TechnicalSEOPage from "./pages/services/seo/TechnicalSEOPage.tsx";
+import LocalSEOPage from "./pages/services/seo/LocalSEOPage.tsx";
+import OffPageSEOPage from "./pages/services/seo/OffPageSEOPage.tsx";
+import EcommerceSEOPage from "./pages/services/seo/EcommerceSEOPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -90,6 +96,14 @@ const App = () => (
           <Route path="/services/full-stack-development" element={<FullStackDevelopmentPage />} />
           <Route path="/services/wordpress-development" element={<WordPressPage />} />
           <Route path="/services/seo-content-marketing" element={<SEOPage />} />
+
+          {/* SEO sub-service detail pages */}
+          <Route path="/services/seo-content-marketing/seo-audit-strategy" element={<SEOAuditStrategyPage />} />
+          <Route path="/services/seo-content-marketing/on-page-seo" element={<OnPageSEOPage />} />
+          <Route path="/services/seo-content-marketing/technical-seo" element={<TechnicalSEOPage />} />
+          <Route path="/services/seo-content-marketing/local-seo" element={<LocalSEOPage />} />
+          <Route path="/services/seo-content-marketing/off-page-seo" element={<OffPageSEOPage />} />
+          <Route path="/services/seo-content-marketing/ecommerce-seo" element={<EcommerceSEOPage />} />
           <Route path="/services/google-ads" element={<GoogleAdsPage />} />
           <Route path="/services/meta-ads" element={<MetaAdsPage />} />
           <Route path="/services/email-whatsapp-marketing" element={<EmailWhatsAppPage />} />

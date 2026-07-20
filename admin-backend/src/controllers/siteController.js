@@ -140,7 +140,7 @@ exports.updateRobots = async (req, res) => {
 function injectGlobalCode(headCode, bodyCode) {
   try {
     const out = execSync(
-      `find ${WEB_ROOT} -name "index.html" -not -path "*/admin-panel/*"`,
+      `find ${WEB_ROOT} -name "index.html" -not -path "*/aura-desk/*"`,
       { encoding: 'utf8' }
     ).trim();
     const files = out.split('\n').filter(Boolean);

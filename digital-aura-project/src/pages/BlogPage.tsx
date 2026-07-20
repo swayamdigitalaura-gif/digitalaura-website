@@ -1,9 +1,21 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import PageLayout from "@/components/PageLayout";
 import { Calendar, ArrowRight, TrendingUp, Target, DollarSign, Bot, Code2, Palette } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { useSettings } from "@/hooks/useSettings";
+
+const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
+
+type RealBlog = {
+  id: number;
+  title: string;
+  slug: string;
+  excerpt?: string;
+  category?: string;
+  createdAt: string;
+};
 
 const POST_ICONS: LucideIcon[] = [TrendingUp, Target, DollarSign, Bot, Code2, Palette];
 const POST_COLORS = ["#1A6FE8", "#FF6B2B", "#22C55E", "#7C3AED", "#1A6FE8", "#F59E0B"];
@@ -33,7 +45,16 @@ const BlogPage = () => {
     'blog_cta_text', 'blog_cta_button',
   ]);
 
-  const posts = POST_DEFAULTS.map((def, i) => ({
+  const [realBlogs, setRealBlogs] = useState<RealBlog[] | null>(null);
+
+  useEffect(() => {
+    fetch(`${API_BASE}/api/blogs?status=published`)
+      .then((r) => r.json())
+      .then((d) => setRealBlogs(d?.data?.length ? d.data : null))
+      .catch(() => setRealBlogs(null));
+  }, []);
+
+  const fallbackPosts = POST_DEFAULTS.map((def, i) => ({
     n: i + 1,
     Icon: POST_ICONS[i],
     catColor: POST_COLORS[i],
@@ -43,7 +64,27 @@ const BlogPage = () => {
     excerpt: s[`blog_post${i+1}_excerpt`] || def.excerpt,
     date: s[`blog_post${i+1}_date`] || def.date,
     readTime: s[`blog_post${i+1}_readtime`] || def.readTime,
+    href: "#",
+    slug: null as string | null,
   }));
+
+  // Use real published blogs from the CMS/API when available; otherwise
+  // fall back to the CMS-settings-driven placeholder posts.
+  const posts = realBlogs
+    ? realBlogs.map((b, i) => ({
+        n: i + 1,
+        Icon: POST_ICONS[i % POST_ICONS.length],
+        catColor: POST_COLORS[i % POST_COLORS.length],
+        catBg: POST_BG[i % POST_BG.length],
+        category: b.category || "Blog",
+        title: b.title,
+        excerpt: b.excerpt || "",
+        date: new Date(b.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }),
+        readTime: "",
+        href: `/blog/${b.slug}`,
+        slug: b.slug,
+      }))
+    : fallbackPosts;
 
   return (
   <PageLayout>
@@ -76,7 +117,7 @@ const BlogPage = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {posts.map((p, i) => (
-            <motion.a key={i} href="#"
+            <motion.a key={p.slug || i} href={p.href}
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.09 }}
               className="card-hover group rounded-2xl overflow-hidden border bg-white block"
               style={{ borderColor: "#E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
@@ -88,25 +129,29 @@ const BlogPage = () => {
                 </div>
                 <span className="absolute top-4 left-4 text-xs font-bold px-3 py-1.5 rounded-full"
                   style={{ color: p.catColor, background: p.catBg }}
-                  data-cms-key={`blog_post${p.n}_cat`} data-cms-label={`Blog Post ${p.n} Category`} data-cms-attr="text">
+                  {...(!p.slug && { 'data-cms-key': `blog_post${p.n}_cat`, 'data-cms-label': `Blog Post ${p.n} Category`, 'data-cms-attr': 'text' })}>
                   {p.category}
                 </span>
               </div>
               <div className="p-6">
                 <h2 className="text-base font-bold text-[#0A1628] mb-2 leading-snug group-hover:text-[#FF6B2B] transition-colors"
-                  data-cms-key={`blog_post${p.n}_title`} data-cms-label={`Blog Post ${p.n} Title`} data-cms-attr="text">
+                  {...(!p.slug && { 'data-cms-key': `blog_post${p.n}_title`, 'data-cms-label': `Blog Post ${p.n} Title`, 'data-cms-attr': 'text' })}>
                   {p.title}
                 </h2>
                 <p className="text-sm text-[#6B7280] leading-relaxed mb-4"
-                  data-cms-key={`blog_post${p.n}_excerpt`} data-cms-label={`Blog Post ${p.n} Excerpt`} data-cms-attr="text">
+                  {...(!p.slug && { 'data-cms-key': `blog_post${p.n}_excerpt`, 'data-cms-label': `Blog Post ${p.n} Excerpt`, 'data-cms-attr': 'text' })}>
                   {p.excerpt}
                 </p>
                 <div className="flex items-center justify-between">
                   <span className="flex items-center gap-1.5 text-xs text-[#9CA3AF]">
                     <Calendar size={11} />
-                    <span data-cms-key={`blog_post${p.n}_date`} data-cms-label={`Blog Post ${p.n} Date`} data-cms-attr="text">{p.date}</span>
-                    {" · "}
-                    <span data-cms-key={`blog_post${p.n}_readtime`} data-cms-label={`Blog Post ${p.n} Read Time`} data-cms-attr="text">{p.readTime}</span>
+                    <span {...(!p.slug && { 'data-cms-key': `blog_post${p.n}_date`, 'data-cms-label': `Blog Post ${p.n} Date`, 'data-cms-attr': 'text' })}>{p.date}</span>
+                    {p.readTime && (
+                      <>
+                        {" · "}
+                        <span {...(!p.slug && { 'data-cms-key': `blog_post${p.n}_readtime`, 'data-cms-label': `Blog Post ${p.n} Read Time`, 'data-cms-attr': 'text' })}>{p.readTime}</span>
+                      </>
+                    )}
                   </span>
                   <span className="text-xs font-semibold inline-flex items-center gap-1 group-hover:gap-2 transition-all" style={{ color: "#FF6B2B" }}>
                     Read <ArrowRight size={11} />

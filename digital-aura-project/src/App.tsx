@@ -36,6 +36,7 @@ import CustomMLModelsPage from "./pages/services/CustomMLModelsPage.tsx";
 import AISolutionsPage from "./pages/AISolutionsPage.tsx";
 import CaseStudiesPage from "./pages/CaseStudiesPage.tsx";
 import BlogPage from "./pages/BlogPage.tsx";
+import BlogPost from "./pages/BlogPost.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import EngagementModelsPage from "./pages/EngagementModelsPage.tsx";
@@ -56,6 +57,7 @@ import TechnicalSEOPage from "./pages/services/seo/TechnicalSEOPage.tsx";
 import LocalSEOPage from "./pages/services/seo/LocalSEOPage.tsx";
 import OffPageSEOPage from "./pages/services/seo/OffPageSEOPage.tsx";
 import EcommerceSEOPage from "./pages/services/seo/EcommerceSEOPage.tsx";
+import AIFilmmakingPage from "./pages/services/AIFilmmakingPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -78,6 +80,7 @@ const App = () => (
           <Route path="/engagement-models" element={<EngagementModelsPage />} />
           <Route path="/case-studies" element={<CaseStudiesPage />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/contact" element={<ContactPage />} />
 
           {/* Services hub */}
@@ -128,6 +131,8 @@ const App = () => (
 
           {/* Testimonials */}
           <Route path="/testimonials" element={<TestimonialsPage />} />
+
+          <Route path="/services/ai-filmmaking" element={<AIFilmmakingPage />} />
 
           {/* Legal */}
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

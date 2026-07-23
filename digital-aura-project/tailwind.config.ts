@@ -4,6 +4,17 @@ export default {
   darkMode: ["class"],
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
   prefix: "",
+  // These class names are inserted at runtime into blog post HTML (Blog.content,
+  // written by the AI content-writer) — they never appear literally in any .tsx
+  // source file, so Tailwind's content-scanning purge would otherwise strip their
+  // styles out of the build entirely. Safelisted so they always ship.
+  safelist: [
+    "da-stat-callout",
+    "da-key-takeaway",
+    "da-pullquote",
+    "da-cta-box",
+    "da-content-image-figure",
+  ],
   theme: {
     container: {
       center: true,

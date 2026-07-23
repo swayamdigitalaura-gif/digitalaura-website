@@ -246,3 +246,84 @@
     }
   }
 }
+
+/* ── AI blog-writer content classes ──────────────────────────────────────
+   These class names are inserted directly into blog post HTML (Blog.content)
+   by the AI content-writing agent. They must render correctly wherever a
+   blog post's content is shown, regardless of the exact inner markup the
+   agent produces (kept as plain, robust block styling, no assumed nested
+   elements beyond normal text/inline tags). */
+@layer components {
+  .da-stat-callout {
+    display: block;
+    margin: 2rem 0;
+    padding: 1.25rem 1.5rem;
+    border-radius: 1rem;
+    background: rgba(26, 111, 232, 0.06);
+    border: 1px solid rgba(26, 111, 232, 0.2);
+    border-left: 4px solid #1A6FE8;
+    color: #0A1628;
+    font-weight: 600;
+  }
+
+  .da-key-takeaway {
+    display: block;
+    margin: 2rem 0;
+    padding: 1.25rem 1.5rem;
+    border-radius: 1rem;
+    background: rgba(34, 197, 94, 0.06);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-left: 4px solid #22C55E;
+    color: #0A1628;
+  }
+  .da-key-takeaway::before {
+    content: "Key Takeaway";
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #22C55E;
+    margin-bottom: 0.4rem;
+  }
+
+  .da-pullquote {
+    display: block;
+    margin: 2.5rem 0;
+    padding: 0 0 0 1.5rem;
+    border-left: 4px solid #FF6B2B;
+    font-size: 1.35rem;
+    line-height: 1.6;
+    font-weight: 600;
+    font-style: italic;
+    color: #0A1628;
+  }
+
+  .da-cta-box {
+    display: block;
+    margin: 2.5rem 0;
+    padding: 1.75rem 2rem;
+    border-radius: 1.25rem;
+    background: linear-gradient(135deg, rgba(255,107,43,0.08), rgba(124,58,237,0.06));
+    border: 1px solid rgba(255,107,43,0.25);
+    color: #0A1628;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .da-content-image-figure {
+    display: block;
+    margin: 2rem 0;
+  }
+  .da-content-image-figure img {
+    width: 100%;
+    border-radius: 1rem;
+    display: block;
+  }
+  .da-content-image-figure figcaption {
+    margin-top: 0.6rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #9CA3AF;
+  }
+}

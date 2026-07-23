@@ -76,3 +76,4 @@ dist-ssr
 # Local-only: contains SEO connector secrets — never commit
 /seo/
 /extra2/
+/seo2/

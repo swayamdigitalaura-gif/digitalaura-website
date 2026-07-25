@@ -99,36 +99,47 @@ async function main() {
     });
 
     let ok = 0, fail = 0;
+    const MAX_ATTEMPTS = 3;
 
     for (const route of allRoutes) {
-      try {
+      let lastErr;
+      let succeeded = false;
+
+      for (let attempt = 1; attempt <= MAX_ATTEMPTS && !succeeded; attempt++) {
         const page = await ctx.newPage();
+        try {
+          // suppress console noise from the page
+          page.on('console', () => {});
+          page.on('pageerror', () => {});
 
-        // suppress console noise from the page
-        page.on('console', () => {});
-        page.on('pageerror', () => {});
+          await page.goto(`${BASE}${route}`, {
+            waitUntil: 'networkidle',
+            timeout: 30000,
+          });
 
-        await page.goto(`${BASE}${route}`, {
-          waitUntil: 'networkidle',
-          timeout: 20000,
-        });
+          // extra wait so React fully settles
+          await page.waitForTimeout(600);
 
-        // extra wait so React fully settles
-        await page.waitForTimeout(600);
+          const html = await page.content();
 
-        const html = await page.content();
+          // build the output file path
+          const parts  = route === '/' ? [] : route.slice(1).split('/');
+          const file   = join(DIST, ...parts, 'index.html');
+          mkdirSync(dirname(file), { recursive: true });
+          writeFileSync(file, html, 'utf-8');
 
-        // build the output file path
-        const parts  = route === '/' ? [] : route.slice(1).split('/');
-        const file   = join(DIST, ...parts, 'index.html');
-        mkdirSync(dirname(file), { recursive: true });
-        writeFileSync(file, html, 'utf-8');
+          console.log(`  ✓  ${route}${attempt > 1 ? ` (attempt ${attempt})` : ''}`);
+          ok++;
+          succeeded = true;
+        } catch (err) {
+          lastErr = err;
+        } finally {
+          await page.close();
+        }
+      }
 
-        console.log(`  ✓  ${route}`);
-        ok++;
-        await page.close();
-      } catch (err) {
-        console.log(`  ✗  ${route}  —  ${err.message.split('\n')[0]}`);
+      if (!succeeded) {
+        console.log(`  ✗  ${route}  —  ${lastErr.message.split('\n')[0]} (failed after ${MAX_ATTEMPTS} attempts)`);
         fail++;
       }
     }

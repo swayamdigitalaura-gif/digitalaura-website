@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import {
   ArrowLeft, ArrowRight, ArrowUp, Bookmark, Calendar, Clock, Eye,
-  Facebook, Linkedin, Twitter, Link as LinkIcon, RefreshCw, Tag,
+  Linkedin, Twitter, Link as LinkIcon, RefreshCw, Tag,
 } from "lucide-react";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
@@ -62,6 +62,7 @@ const BlogPost = () => {
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const [related, setRelated] = useState<Blog[]>([]);
+  const [latest, setLatest] = useState<Blog[]>([]);
   const [prev, setPrev] = useState<Blog | null>(null);
   const [next, setNext] = useState<Blog | null>(null);
   const [toc, setToc] = useState<TocItem[]>([]);
@@ -93,7 +94,10 @@ const BlogPost = () => {
           setPrev(sorted[idx + 1] || null);
           setNext(idx > 0 ? sorted[idx - 1] : null);
         }
-        setRelated(sorted.filter((b) => b.slug !== slug).slice(0, 3));
+        const others = sorted.filter((b) => b.slug !== slug);
+        setRelated(others.slice(0, 3));
+        // Show a different set than "Related" when there are enough posts
+        setLatest(others.length > 3 ? others.slice(3, 6) : others.slice(0, 3));
       })
       .catch(() => {});
   }, [slug]);
@@ -221,7 +225,7 @@ const BlogPost = () => {
 
         {related.length > 0 && <RelatedArticles items={related} />}
         <AuthorProfile authorName={blog.author?.name} />
-        <Newsletter />
+        {latest.length > 0 && <LatestPosts items={latest} />}
         <FinalCTA />
       </div>
 
@@ -288,10 +292,6 @@ function Hero({ blog, dateStr, updatedStr, minutes, canonicalUrl }: {
             <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`} target="_blank" rel="noreferrer" aria-label="Share on LinkedIn"
               className="grid h-10 w-10 place-items-center rounded-full border border-[#E5E7EB] bg-white text-[#6B7280] transition-all hover:-translate-y-0.5 hover:border-[#FF6B2B] hover:text-[#FF6B2B]">
               <Linkedin size={16} />
-            </a>
-            <a href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`} target="_blank" rel="noreferrer" aria-label="Share on Facebook"
-              className="grid h-10 w-10 place-items-center rounded-full border border-[#E5E7EB] bg-white text-[#6B7280] transition-all hover:-translate-y-0.5 hover:border-[#FF6B2B] hover:text-[#FF6B2B]">
-              <Facebook size={16} />
             </a>
             <button onClick={copyLink} aria-label="Copy link"
               className="ml-1 inline-flex items-center gap-2 rounded-full border border-[#E5E7EB] bg-white px-4 py-2.5 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:border-[#FF6B2B]"
@@ -361,10 +361,6 @@ function FloatingSidebar({ toc, activeId, progress, minutes, canonicalUrl, title
             <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`} target="_blank" rel="noreferrer" aria-label="Share"
               className="grid h-8 w-8 place-items-center rounded-lg border border-[#E5E7EB] text-[#6B7280] transition-colors hover:border-[#FF6B2B] hover:text-[#FF6B2B]">
               <Linkedin size={14} />
-            </a>
-            <a href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`} target="_blank" rel="noreferrer" aria-label="Share"
-              className="grid h-8 w-8 place-items-center rounded-lg border border-[#E5E7EB] text-[#6B7280] transition-colors hover:border-[#FF6B2B] hover:text-[#FF6B2B]">
-              <Facebook size={14} />
             </a>
           </div>
 
@@ -454,55 +450,33 @@ function AuthorProfile({ authorName }: { authorName?: string }) {
   );
 }
 
-function Newsletter() {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
-
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("loading");
-    try {
-      const res = await fetch(`${API_BASE}/api/contact`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: "Newsletter Subscriber",
-          email,
-          message: "Newsletter signup from blog",
-          project: "Newsletter",
-          source: "blog-newsletter",
-        }),
-      });
-      if (!res.ok) throw new Error();
-      setStatus("done");
-      setEmail("");
-    } catch {
-      setStatus("error");
-    }
-  };
-
+function LatestPosts({ items }: { items: Blog[] }) {
   return (
-    <section className="px-5 py-16 lg:px-8">
-      <div className="relative mx-auto max-w-[1000px] overflow-hidden rounded-3xl p-10 text-white sm:p-12" style={{ background: `linear-gradient(135deg, ${ACCENT}, #7C3AED)` }}>
-        <h2 className="text-[28px] font-black leading-tight sm:text-[36px]">The one growth email your team actually reads.</h2>
-        <p className="mt-3 max-w-lg text-[15px] leading-relaxed text-white/85">Practical strategies on AI, marketing, and growth — straight to your inbox.</p>
+    <section className="px-5 py-16 lg:px-8" style={{ background: "#F8FAFF" }}>
+      <div className="mx-auto max-w-[1240px]">
+        <div className="text-[12px] font-bold uppercase tracking-wider" style={{ color: ACCENT }}>Fresh off the press</div>
+        <h2 className="mt-2 text-2xl font-black tracking-tight sm:text-3xl" style={{ color: HEADING }}>Latest posts</h2>
 
-        {status === "done" ? (
-          <p className="mt-6 font-semibold">You're subscribed! Thanks for joining.</p>
-        ) : (
-          <form onSubmit={submit} className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@company.com"
-              className="w-full rounded-full border-0 bg-white/95 px-5 py-3.5 text-[15px] text-[#0A1628] placeholder:text-[#9CA3AF] outline-none focus:ring-4 focus:ring-white/30" />
-            <button type="submit" disabled={status === "loading"}
-              className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-[15px] font-bold text-white transition-transform hover:-translate-y-0.5 disabled:opacity-60"
-              style={{ background: "#0A1628" }}>
-              {status === "loading" ? "Submitting…" : "Subscribe"} <ArrowRight size={16} />
-            </button>
-          </form>
-        )}
-        {status === "error" && <p className="mt-3 text-sm text-white/90">Something went wrong. Please try again.</p>}
-        <p className="mt-3 text-[12px] text-white/70">No spam. Unsubscribe anytime.</p>
+        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+          {items.map((b) => (
+            <Link key={b.id} to={`/blog/${b.slug}`} className="group rounded-2xl overflow-hidden border border-[#E5E7EB] bg-white transition-all hover:-translate-y-1" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
+              {b.cover_image ? (
+                <img src={b.cover_image} alt="" loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              ) : (
+                <div className="aspect-[4/3] w-full flex items-center justify-center" style={{ background: "linear-gradient(135deg, rgba(255,107,43,0.1), rgba(26,111,232,0.08))" }}>
+                  <Tag size={28} style={{ color: ACCENT }} strokeWidth={1.5} />
+                </div>
+              )}
+              <div className="p-5">
+                {b.category && (
+                  <span className="rounded-full px-2.5 py-0.5 text-[12px] font-semibold" style={{ background: "rgba(255,107,43,0.1)", color: ACCENT }}>{b.category}</span>
+                )}
+                <h3 className="mt-3 text-[16px] font-bold leading-snug transition-colors group-hover:text-[#FF6B2B]" style={{ color: HEADING }}>{b.title}</h3>
+                {b.excerpt && <p className="mt-2 text-[13.5px] leading-relaxed text-[#6B7280] line-clamp-2">{b.excerpt}</p>}
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );

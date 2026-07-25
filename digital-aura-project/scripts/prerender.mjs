@@ -55,6 +55,23 @@ const ROUTES = [
   '/services/ai/custom-ml-models',
 ];
 
+const API_BASE = 'https://thedigitalaura.com';
+
+// Fetch every published blog slug so each post gets its own prerendered
+// page — otherwise crawlers/social previews only ever see the empty
+// client-rendered shell for dynamic /blog/:slug routes.
+async function fetchBlogRoutes() {
+  try {
+    const res = await fetch(`${API_BASE}/api/blogs?status=published`);
+    const data = await res.json();
+    const slugs = (data?.data || []).map((b) => b.slug).filter(Boolean);
+    return slugs.map((slug) => `/blog/${slug}`);
+  } catch (err) {
+    console.log(`  ⚠  Could not fetch blog slugs for prerendering: ${err.message}`);
+    return [];
+  }
+}
+
 function startServer() {
   return new Promise((resolve) => {
     const proc = spawn('npx', ['vite', 'preview', '--port', String(PORT)], {
@@ -68,7 +85,9 @@ function startServer() {
 }
 
 async function main() {
-  console.log(`\n🚀  Prerendering ${ROUTES.length} routes (API → https://thedigitalaura.com/api/)...\n`);
+  const blogRoutes = await fetchBlogRoutes();
+  const allRoutes = [...ROUTES, ...blogRoutes];
+  console.log(`\n🚀  Prerendering ${allRoutes.length} routes (${ROUTES.length} static + ${blogRoutes.length} blog posts) (API → https://thedigitalaura.com/api/)...\n`);
 
   const server = await startServer();
 
@@ -81,7 +100,7 @@ async function main() {
 
     let ok = 0, fail = 0;
 
-    for (const route of ROUTES) {
+    for (const route of allRoutes) {
       try {
         const page = await ctx.newPage();
 

@@ -72,7 +72,8 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-const SITE_URL = "https://aura-lead-engine-main.vercel.app";
+const ASSET_BASE = "https://thedigitalaura.com";
+const SITE_URL = `${ASSET_BASE}/seo-services-ahmedabad`;
 const SITE_TITLE = "Digital Aura | Best SEO Company in Ahmedabad";
 const SITE_DESCRIPTION =
   "Digital Aura helps Ahmedabad businesses grow qualified organic traffic and generate more leads with technical SEO, local SEO and AI/generative search optimization.";
@@ -91,11 +92,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:url", content: SITE_URL },
       { property: "og:site_name", content: "Digital Aura" },
-      { property: "og:image", content: `${SITE_URL}/og-image.png` },
+      { property: "og:image", content: `${ASSET_BASE}/og-image.png` },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: SITE_TITLE },
       { name: "twitter:description", content: SITE_DESCRIPTION },
-      { name: "twitter:image", content: `${SITE_URL}/og-image.png` },
+      { name: "twitter:image", content: `${ASSET_BASE}/og-image.png` },
     ],
     links: [
       {

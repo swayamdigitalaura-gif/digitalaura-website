@@ -127,6 +127,12 @@ export const Route = createFileRoute("/seo-services-ahmedabad")({
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "en_IN" },
       { name: "robots", content: "index,follow" },
+      { name: "twitter:title", content: "Best SEO Company in Ahmedabad | Digital Aura — Google + AI Search SEO Agency" },
+      {
+        name: "twitter:description",
+        content:
+          "Technical SEO, On-Page SEO, AI SEO (AIO) & Generative Engine Optimization (GEO) for Ahmedabad businesses. Get cited on Google and AI search — book your free audit.",
+      },
     ],
   }),
   component: Index,

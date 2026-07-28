@@ -72,21 +72,33 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+const ASSET_BASE = "https://thedigitalaura.com";
+const SITE_URL = `${ASSET_BASE}/google-ads-agency-ahmedabad`;
+const SITE_TITLE = "Digital Aura | Premium Performance Marketing Agency in Ahmedabad";
+const SITE_DESCRIPTION = "Premium performance marketing agency in Ahmedabad. Generate revenue with Google Ads, Meta Ads, SEO, AI Search, Web Development, CRO, and Marketing Automation. Get a free audit.";
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Digital Aura | Premium Performance Marketing Agency in Ahmedabad" },
-      { name: "description", content: "Premium performance marketing agency in Ahmedabad. Generate revenue with Google Ads, Meta Ads, SEO, AI Search, Web Development, CRO, and Marketing Automation. Get a free audit." },
+      { title: SITE_TITLE },
+      { name: "description", content: SITE_DESCRIPTION },
       { name: "author", content: "Digital Aura" },
-      { property: "og:title", content: "Digital Aura | Premium Performance Marketing Agency in Ahmedabad" },
-      { property: "og:description", content: "Scale qualified leads and revenue. 3-7x ROAS, 40%+ lower CPL. Driven by SEO, Google/Meta Ads, Web Development, and CRO. Book your free audit today." },
+      { property: "og:title", content: SITE_TITLE },
+      { property: "og:description", content: SITE_DESCRIPTION },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:site_name", content: "Digital Aura" },
+      { property: "og:image", content: `${ASSET_BASE}/hero-section-image.png` },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: SITE_TITLE },
+      { name: "twitter:description", content: SITE_DESCRIPTION },
+      { name: "twitter:image", content: `${ASSET_BASE}/hero-section-image.png` },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "canonical", href: SITE_URL },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {

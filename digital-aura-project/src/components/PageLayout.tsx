@@ -6,8 +6,18 @@ import FloatingElements from "@/components/FloatingElements";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
 
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
-  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    if (hash) {
+      const id = hash.slice(1);
+      // Wait a tick for the target page's content to mount before scrolling
+      const timer = setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+    window.scrollTo(0, 0);
+  }, [pathname, hash]);
   return null;
 };
 

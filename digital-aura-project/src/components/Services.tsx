@@ -272,7 +272,7 @@ const Services = () => {
               transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
             />
             <Link
-              to="/contact"
+              to="/contact#contact-form"
               className="relative inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all animate-gradient-shift"
               style={{
                 background: "linear-gradient(135deg, #7C3AED, #FF6B2B, #1A6FE8, #7C3AED)",

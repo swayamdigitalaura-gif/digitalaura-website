@@ -235,7 +235,7 @@ const SEOAuditStrategyPage = () => {
             <span style={{ color: accentColor }}>That Turn Data Into a Roadmap</span>
           </span></h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-4 leading-relaxed">
-            <span data-cms-key="seoaudit_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">An SEO audit is a full review of your site's technical health, on-page optimisation, content, and backlinks, benchmarked against real competitors, so every recommendation is prioritised by actual impact, not guesswork</span>, the same benchmarks we break down regularly on our <Link to="/blog" className="underline" style={{ color: accentColor }}>blog</Link>.
+            <span data-cms-key="seoaudit_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">An SEO audit is a full review of your site's technical health, on-page optimisation, content, and backlinks, benchmarked against real competitors, so every recommendation is prioritised by actual impact, not guesswork.</span>
           </p>
           <div className="flex flex-wrap gap-2 justify-center mb-8">
             {["Full Site Crawl", "Keyword Gap Analysis", "Competitor Benchmarking", "Prioritised Roadmap"].map(tag => (
@@ -243,9 +243,9 @@ const SEOAuditStrategyPage = () => {
             ))}
           </div>
           <div className="flex flex-wrap gap-3 justify-center">
-            <a href="#free-audit" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3" style={{ background: "linear-gradient(135deg, #22C55E, #16a34a)", boxShadow: `0 8px 24px ${accentColor}40` }}>
+            <Link to="/contact#lead-form" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3" style={{ background: "linear-gradient(135deg, #22C55E, #16a34a)", boxShadow: `0 8px 24px ${accentColor}40` }}>
               Get My Free SEO Audit <Search size={15} />
-            </a>
+            </Link>
             <a href="#included" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold border-2 text-[#0A1628] hover:bg-[#0A1628] hover:text-white transition-all" style={{ borderColor: "#0A1628" }}>See What's Included</a>
           </div>
         </motion.div>

@@ -230,7 +230,7 @@ const LocalSEOPage = () => {
             Local SEO Services<br /><span style={{ color: accentColor }}>That Win the Map Pack</span>
           </h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-4 leading-relaxed">
-            Local SEO gets your business found in Google Maps, the local pack, and "near me" searches, through Google Business Profile optimisation, consistent citations, review growth, and geo-targeted landing pages, strategies we detail further on our <Link to="/blog" className="underline" style={{ color: accentColor }}>blog</Link>.
+            Local SEO gets your business found in Google Maps, the local pack, and "near me" searches, through Google Business Profile optimisation, consistent citations, review growth, and geo-targeted landing pages.
           </p>
           <div className="flex flex-wrap gap-2 justify-center mb-8">
             {["Google Business Profile", "Local Citations", "Geo-Targeted Pages", "Review Growth"].map(tag => (
@@ -238,9 +238,9 @@ const LocalSEOPage = () => {
             ))}
           </div>
           <div className="flex flex-wrap gap-3 justify-center">
-            <a href="#free-audit" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3" style={{ background: "linear-gradient(135deg, #22C55E, #16a34a)", boxShadow: `0 8px 24px ${accentColor}40` }}>
+            <Link to="/contact#lead-form" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3" style={{ background: "linear-gradient(135deg, #22C55E, #16a34a)", boxShadow: `0 8px 24px ${accentColor}40` }}>
               Get a Free Local SEO Review <MapPin size={15} />
-            </a>
+            </Link>
             <a href="#included" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold border-2 text-[#0A1628] hover:bg-[#0A1628] hover:text-white transition-all" style={{ borderColor: "#0A1628" }}>See What's Included</a>
           </div>
         </motion.div>

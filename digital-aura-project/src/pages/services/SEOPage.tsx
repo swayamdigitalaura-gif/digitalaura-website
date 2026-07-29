@@ -415,7 +415,15 @@ const SeoCardTabs = () => {
                   </div>
                   <span className="text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full" style={{ background: tab.bg, color: tab.color }}>{card.category}</span>
                 </div>
-                <h3 className="text-[15px] font-bold text-[#0A1628] mb-2"><span data-cms-key={`seo_card_${i}_t`} data-cms-label="card title" data-cms-attr="text">{card.title}</span></h3>
+                <h3 className="text-[15px] font-bold text-[#0A1628] mb-2">
+                  {card.href ? (
+                    <Link to={card.href} className="hover:underline" style={{ color: "inherit" }}>
+                      <span data-cms-key={`seo_card_${i}_t`} data-cms-label="card title" data-cms-attr="text">{card.title}</span>
+                    </Link>
+                  ) : (
+                    <span data-cms-key={`seo_card_${i}_t`} data-cms-label="card title" data-cms-attr="text">{card.title}</span>
+                  )}
+                </h3>
                 <p className="text-[13px] text-[#6B7280] leading-relaxed mb-4"><span data-cms-key={`seo_card_${i}_d`} data-cms-label="card desc" data-cms-attr="text">{card.desc}</span></p>
                 <div className="flex flex-wrap gap-1.5 mb-4">
                   {card.tags.map(tag => (

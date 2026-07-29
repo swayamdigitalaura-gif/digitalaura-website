@@ -57,6 +57,8 @@ import TechnicalSEOPage from "./pages/services/seo/TechnicalSEOPage.tsx";
 import LocalSEOPage from "./pages/services/seo/LocalSEOPage.tsx";
 import OffPageSEOPage from "./pages/services/seo/OffPageSEOPage.tsx";
 import EcommerceSEOPage from "./pages/services/seo/EcommerceSEOPage.tsx";
+import LocalServicePage from "./components/LocalServicePage.tsx";
+import { localPages } from "./data/localPagesData.ts";
 import AIFilmmakingPage from "./pages/services/AIFilmmakingPage.tsx";
 
 const queryClient = new QueryClient();
@@ -133,6 +135,29 @@ const App = () => (
           <Route path="/testimonials" element={<TestimonialsPage />} />
 
           <Route path="/services/ai-filmmaking" element={<AIFilmmakingPage />} />
+
+          {/* Local / regional service landing pages */}
+          <Route path="/website-design-development-ahmedabad" element={<LocalServicePage config={localPages.websiteDevAhmedabad} />} />
+          <Route path="/website-design-development-gujarat" element={<LocalServicePage config={localPages.websiteDevGujarat} />} />
+          <Route path="/shopify-website-design-ahmedabad" element={<LocalServicePage config={localPages.shopifyAhmedabad} />} />
+          <Route path="/shopify-development-international" element={<LocalServicePage config={localPages.shopifyInternational} />} />
+          <Route path="/full-stack-development-ahmedabad" element={<LocalServicePage config={localPages.fullStackAhmedabad} />} />
+          <Route path="/full-stack-development-gujarat" element={<LocalServicePage config={localPages.fullStackGujarat} />} />
+          <Route path="/ai-automation-ahmedabad" element={<LocalServicePage config={localPages.aiAutomationAhmedabad} />} />
+          <Route path="/ai-automation-gujarat" element={<LocalServicePage config={localPages.aiAutomationGujarat} />} />
+          <Route path="/seo-agency-ahmedabad" element={<LocalServicePage config={localPages.seoAhmedabad} />} />
+          <Route path="/seo-company-gujarat" element={<LocalServicePage config={localPages.seoGujarat} />} />
+          <Route path="/seo-agency-international" element={<LocalServicePage config={localPages.seoInternational} />} />
+          <Route path="/ai-filmmaking-ahmedabad" element={<LocalServicePage config={localPages.aiFilmmakingAhmedabad} />} />
+          <Route path="/ai-filmmaking-gujarat" element={<LocalServicePage config={localPages.aiFilmmakingGujarat} />} />
+          <Route path="/woocommerce-website-design-ahmedabad" element={<LocalServicePage config={localPages.woocommerceAhmedabad} />} />
+          <Route path="/woocommerce-development-gujarat" element={<LocalServicePage config={localPages.woocommerceGujarat} />} />
+          <Route path="/mobile-app-development-ahmedabad" element={<LocalServicePage config={localPages.mobileAppAhmedabad} />} />
+          <Route path="/mobile-app-development-gujarat" element={<LocalServicePage config={localPages.mobileAppGujarat} />} />
+          <Route path="/google-ads-agency-ahmedabad" element={<LocalServicePage config={localPages.googleAdsAhmedabad} />} />
+          <Route path="/meta-ads-agency-ahmedabad" element={<LocalServicePage config={localPages.metaAdsAhmedabad} />} />
+          <Route path="/digital-marketing-agency-ahmedabad" element={<LocalServicePage config={localPages.digitalMarketingAhmedabad} />} />
+          <Route path="/digital-marketing-agency-gujarat" element={<LocalServicePage config={localPages.digitalMarketingGujarat} />} />
 
           {/* Legal */}
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

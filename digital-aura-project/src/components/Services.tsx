@@ -15,6 +15,15 @@ import CMSIcon from "@/components/CMSIcon";
 
 type TabKey = "ai" | "web" | "ecommerce" | "marketing" | "mobile";
 
+// Known sub-service pages — bullet points matching one of these get linked directly
+const POINT_LINKS: Record<string, string> = {
+  "Technical SEO": "/services/seo-content-marketing/technical-seo",
+  "On Page SEO": "/services/seo-content-marketing/on-page-seo",
+  "Local SEO": "/services/seo-content-marketing/local-seo",
+  "Link building": "/services/seo-content-marketing/off-page-seo",
+  "Content strategy": "/services/seo-content-marketing",
+};
+
 const tabs: { key: TabKey; label: string; color: string; gradient: string }[] = [
   { key: "ai",        label: "AI & Development",   color: "#7C3AED", gradient: "linear-gradient(135deg,#7C3AED,#6d28d9)" },
   { key: "web",       label: "Web Solutions",       color: "#1A6FE8", gradient: "linear-gradient(135deg,#1A6FE8,#1558c0)" },
@@ -230,7 +239,9 @@ const Services = () => {
                   {s.points.map(p => (
                     <li key={p} className="flex items-center gap-2 text-sm font-medium text-[#374151]">
                       <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: activeTab.color }} />
-                      {p}
+                      {POINT_LINKS[p] ? (
+                        <Link to={POINT_LINKS[p]} onClick={e => e.stopPropagation()} className="hover:underline">{p}</Link>
+                      ) : p}
                     </li>
                   ))}
                 </ul>

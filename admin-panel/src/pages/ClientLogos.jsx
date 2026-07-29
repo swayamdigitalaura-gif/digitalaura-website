@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import api from '../api';
 import toast from 'react-hot-toast';
-import { Plus, Edit2, Trash2, Image } from 'lucide-react';
+import { Plus, Edit2, Trash2, Image, Upload } from 'lucide-react';
 
 const SERVICE_PAGES = [
   { value: 'home', label: 'Home Page' },
@@ -29,6 +29,8 @@ export default function ClientLogos() {
   const [editing, setEditing] = useState(null);
   const [form, setForm] = useState(empty);
   const [filterPage, setFilterPage] = useState('');
+  const [uploading, setUploading] = useState(false);
+  const fileInputRef = useRef(null);
 
   const load = () => api.get('/client-logos/all').then(r => setList(r.data.data));
   useEffect(() => { load(); }, []);
@@ -44,6 +46,26 @@ export default function ClientLogos() {
       toast.success('Saved');
       load(); close();
     } catch { toast.error('Failed to save'); }
+  };
+
+  const handleLogoUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    try {
+      const fd = new FormData();
+      fd.append('file', file);
+      fd.append('alt_text', form.name || file.name.replace(/\.[^.]+$/, ''));
+      const r = await api.post('/media', fd, { headers: { 'Content-Type': 'multipart/form-data' } });
+      const fullUrl = `${import.meta.env.VITE_API_BASE || 'http://localhost:5000'}${r.data.data.url}`;
+      setForm(f => ({ ...f, logo_url: fullUrl }));
+      toast.success('Logo uploaded');
+    } catch {
+      toast.error('Upload failed');
+    } finally {
+      setUploading(false);
+      if (fileInputRef.current) fileInputRef.current.value = '';
+    }
   };
 
   const del = async (id) => {
@@ -151,8 +173,16 @@ export default function ClientLogos() {
                 </div>
                 <div>
                   <label style={{ fontSize: 12, fontWeight: 600, color: '#374151', display: 'block', marginBottom: 5 }}>Logo URL</label>
-                  <input value={form.logo_url} onChange={e => setForm(f => ({ ...f, logo_url: e.target.value }))} required placeholder="https://..."
-                    style={{ width: '100%', padding: '8px 10px', borderRadius: 8, border: '1.5px solid #E2E8F0', fontSize: 13, boxSizing: 'border-box' }} />
+                  <div style={{ display: 'flex', gap: 8 }}>
+                    <input value={form.logo_url} onChange={e => setForm(f => ({ ...f, logo_url: e.target.value }))} required placeholder="https://... or upload a file"
+                      style={{ flex: 1, padding: '8px 10px', borderRadius: 8, border: '1.5px solid #E2E8F0', fontSize: 13, boxSizing: 'border-box' }} />
+                    <input ref={fileInputRef} type="file" accept="image/*" style={{ display: 'none' }} onChange={handleLogoUpload} />
+                    <button type="button" onClick={() => fileInputRef.current?.click()} disabled={uploading}
+                      style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 14px', borderRadius: 8, border: '1.5px solid #E2E8F0', background: '#F8FAFC', color: '#374151', fontSize: 13, fontWeight: 600, cursor: uploading ? 'default' : 'pointer', whiteSpace: 'nowrap' }}>
+                      <Upload size={13} /> {uploading ? 'Uploading...' : 'Upload'}
+                    </button>
+                  </div>
+                  <div style={{ fontSize: 11, color: '#94A3B8', marginTop: 4 }}>Paste a URL or upload a logo file (image, max 10MB).</div>
                   {form.logo_url && (
                     <div style={{ marginTop: 8, padding: 8, borderRadius: 8, background: form.logo_bg, display: 'flex', justifyContent: 'center' }}>
                       <img src={form.logo_url} alt="preview" style={{ maxHeight: 44, maxWidth: 130, objectFit: 'contain' }}

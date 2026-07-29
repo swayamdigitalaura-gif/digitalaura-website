@@ -230,7 +230,7 @@ const LocalSEOPage = () => {
             Local SEO Services<br /><span style={{ color: accentColor }}>That Win the Map Pack</span>
           </h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-4 leading-relaxed">
-            Local SEO gets your business found in Google Maps, the local pack, and "near me" searches, through Google Business Profile optimisation, consistent citations, review growth, and geo-targeted landing pages.
+            Local SEO gets your business found in Google Maps, the local pack, and "near me" searches, through Google Business Profile optimisation, consistent citations, review growth, and geo-targeted landing pages, strategies we detail further on our <Link to="/blog" className="underline" style={{ color: accentColor }}>blog</Link>.
           </p>
           <div className="flex flex-wrap gap-2 justify-center mb-8">
             {["Google Business Profile", "Local Citations", "Geo-Targeted Pages", "Review Growth"].map(tag => (
@@ -238,9 +238,9 @@ const LocalSEOPage = () => {
             ))}
           </div>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3" style={{ background: "linear-gradient(135deg, #22C55E, #16a34a)", boxShadow: `0 8px 24px ${accentColor}40` }}>
+            <a href="#free-audit" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3" style={{ background: "linear-gradient(135deg, #22C55E, #16a34a)", boxShadow: `0 8px 24px ${accentColor}40` }}>
               Get a Free Local SEO Review <MapPin size={15} />
-            </Link>
+            </a>
             <a href="#included" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold border-2 text-[#0A1628] hover:bg-[#0A1628] hover:text-white transition-all" style={{ borderColor: "#0A1628" }}>See What's Included</a>
           </div>
         </motion.div>
@@ -411,7 +411,7 @@ const LocalSEOPage = () => {
 
 
     {/* Free Audit Form */}
-    <section className="py-20 px-4 md:px-8 relative overflow-hidden">
+    <section id="free-audit" className="py-20 px-4 md:px-8 relative overflow-hidden">
       <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #22C55E 0%, #16a34a 40%, #0A1628 100%)" }} />
       <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
       <div className="max-w-7xl mx-auto relative z-10">

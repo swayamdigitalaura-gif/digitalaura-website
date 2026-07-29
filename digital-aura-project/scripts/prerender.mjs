@@ -128,15 +128,22 @@ async function main() {
           page.on('console', () => {});
           page.on('pageerror', () => {});
 
+          // 'networkidle' was too fragile: pages with client-logo images
+          // hotlinked to dozens of external client sites never go idle if
+          // any single one of those third-party domains is slow to respond,
+          // so the whole page timed out waiting on someone else's server.
+          // 'domcontentloaded' only waits for our own HTML/JS, not external
+          // image/XHR traffic — React has already mounted by then, and the
+          // explicit wait below covers its own data fetches finishing.
           await page.goto(`${BASE}${route}`, {
-            waitUntil: 'networkidle',
+            waitUntil: 'domcontentloaded',
             timeout: 30000,
           });
 
           // extra wait so React fully settles; blog posts get longer since
           // their SEO tags land in a *second* effect that only fires after
           // the fetch resolves, not on first paint.
-          await page.waitForTimeout(route.startsWith('/blog/') ? 1200 : 600);
+          await page.waitForTimeout(route.startsWith('/blog/') ? 1500 : 1000);
 
           let html = await page.content();
 

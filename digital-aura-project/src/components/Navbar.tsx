@@ -293,7 +293,7 @@ const Navbar = () => {
             <a href="tel:+918141200284" className="flex items-center gap-1.5 text-[15px] font-medium text-[#374151] hover:text-[#FF6B2B] transition-colors">
               <Phone size={14} className="text-[#FF6B2B]" /> +91 81412 00284
             </a>
-            <Link to="/contact" className="btn-orange px-5 py-2.5 text-[15px]">Get Growth Plan</Link>
+            <Link to="/contact#contact-form" className="btn-orange px-5 py-2.5 text-[15px]">Get Growth Plan</Link>
           </div>
 
           {/* Mobile hamburger */}
@@ -431,7 +431,7 @@ const Navbar = () => {
               <a href="tel:+918141200284" className="flex items-center gap-2 text-sm text-[#6B7280]">
                 <Phone size={14} className="text-[#FF6B2B]" /> +91 81412 00284
               </a>
-              <Link to="/contact" className="btn-orange px-6 py-4 text-base w-full block text-center">
+              <Link to="/contact#contact-form" className="btn-orange px-6 py-4 text-base w-full block text-center">
                 Get Growth Plan →
               </Link>
             </div>

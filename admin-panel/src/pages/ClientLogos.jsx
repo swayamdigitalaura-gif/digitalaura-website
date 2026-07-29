@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { Plus, Edit2, Trash2, Image } from 'lucide-react';
 
 const SERVICE_PAGES = [
+  { value: 'home', label: 'Home Page' },
   { value: 'ai-automation', label: 'AI Automation' },
   { value: 'ai-chatbot-assistant', label: 'AI Chatbot Assistant' },
   { value: 'ai-web-apps', label: 'AI Web Apps' },

@@ -10,12 +10,11 @@ const ScrollToTop = () => {
   useEffect(() => {
     if (hash) {
       const id = hash.slice(1);
-      const t = setTimeout(() => {
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-        else window.scrollTo(0, 0);
-      }, 50);
-      return () => clearTimeout(t);
+      // Wait a tick for the target page's content to mount before scrolling
+      const timer = setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+      return () => clearTimeout(timer);
     }
     window.scrollTo(0, 0);
   }, [pathname, hash]);

@@ -84,6 +84,22 @@ function startServer() {
   });
 }
 
+// The generic fallback shell that ships in index.html before any route's
+// real data loads. If a blog post's prerendered HTML still contains this,
+// its data fetch silently failed (API hiccup, slow backend, etc) during the
+// prerender run — page.goto() succeeds either way, so that alone can't
+// catch it. Without this check a blog post can ship to production with the
+// HOMEPAGE's title/description/canonical baked into its raw HTML, which is
+// exactly the SSR bug this script exists to prevent (it happened for real,
+// silently, on 2026-07-28).
+const DEFAULT_TITLE = 'Digital Aura — Data-Driven Digital Marketing Agency';
+
+function looksUnrendered(route, html) {
+  const isBlogPost = route.startsWith('/blog/');
+  if (!isBlogPost) return false;
+  return html.includes(`<title>${DEFAULT_TITLE}</title>`) || html.includes('Blog post not found');
+}
+
 async function main() {
   const blogRoutes = await fetchBlogRoutes();
   const allRoutes = [...ROUTES, ...blogRoutes];
@@ -99,7 +115,7 @@ async function main() {
     });
 
     let ok = 0, fail = 0;
-    const MAX_ATTEMPTS = 3;
+    const MAX_ATTEMPTS = 4;
 
     for (const route of allRoutes) {
       let lastErr;
@@ -117,10 +133,16 @@ async function main() {
             timeout: 30000,
           });
 
-          // extra wait so React fully settles
-          await page.waitForTimeout(600);
+          // extra wait so React fully settles; blog posts get longer since
+          // their SEO tags land in a *second* effect that only fires after
+          // the fetch resolves, not on first paint.
+          await page.waitForTimeout(route.startsWith('/blog/') ? 1200 : 600);
 
-          const html = await page.content();
+          let html = await page.content();
+
+          if (looksUnrendered(route, html)) {
+            throw new Error('page loaded but blog data never rendered (still showing the default shell) — likely a slow/failed API fetch inside the page');
+          }
 
           // build the output file path
           const parts  = route === '/' ? [] : route.slice(1).split('/');
@@ -145,6 +167,11 @@ async function main() {
     }
 
     console.log(`\n✅  Prerender complete — ${ok} succeeded, ${fail} failed\n`);
+    // A blog post that fails validation on every attempt is never written to
+    // disk, so any file already in dist/ for that slug from a *previous*
+    // successful deploy is left untouched by this run — the rsync step in
+    // deploy.yml has no --delete, so the last known-good page keeps serving
+    // instead of being silently replaced by a broken one.
     process.exit(fail > 0 ? 1 : 0);
   } finally {
     if (browser) await browser.close();

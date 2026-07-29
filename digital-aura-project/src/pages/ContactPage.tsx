@@ -245,7 +245,7 @@ const ContactPage = () => {
       </section>
 
       {/* ── MAIN CONTENT ── */}
-      <section id="lead-form" className="py-16 px-4 md:px-8" style={{ background: "#F8FAFF" }}>
+      <section id="contact-form" className="py-16 px-4 md:px-8 scroll-mt-24" style={{ background: "#F8FAFF" }}>
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-5 gap-10">
 

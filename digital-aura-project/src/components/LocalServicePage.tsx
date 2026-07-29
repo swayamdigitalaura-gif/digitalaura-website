@@ -110,7 +110,7 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
                 <span key={tag} className="text-[11px] font-bold px-3 py-1 rounded-full" style={{ background: `${c.accentColor}10`, color: c.accentColor, border: `1px solid ${c.accentColor}25` }}>{tag}</span>
               ))}
             </div>
-            <Link to="/contact#lead-form" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
+            <Link to="/contact#contact-form" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
               style={{ background: c.accentColor, boxShadow: `0 8px 24px ${c.accentColor}40` }}>
               Book a Free Consultation <ArrowRight size={15} />
             </Link>
@@ -285,7 +285,7 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4">{c.ctaHeading}</h2>
             <p className="text-[#E2E8F0] mb-8 leading-relaxed">{c.ctaText}</p>
-            <Link to="/contact#lead-form" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
+            <Link to="/contact#contact-form" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
               style={{ background: `linear-gradient(135deg, ${c.accentColor}, #0A1628)`, boxShadow: `0 4px 20px ${c.accentColor}40` }}>
               {c.ctaButton} <ArrowRight size={16} />
             </Link>

@@ -17,9 +17,20 @@ interface Props {
 const ClientLogoGrid = ({ clients, accentColor = "#22C55E" }: Props) => {
   const [page, setPage] = useState(0);
   const [failedLogos, setFailedLogos] = useState<Set<string>>(new Set());
-  const perPage = 4;
+  // 1 card per page on mobile so the row stays a single horizontal slide instead of wrapping into a stack
+  const [perPage, setPerPage] = useState(() => (typeof window !== "undefined" && window.innerWidth < 640 ? 1 : 4));
   const totalPages = Math.ceil(clients.length / perPage);
   const current = clients.slice(page * perPage, (page + 1) * perPage);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 639px)");
+    const update = () => setPerPage(mq.matches ? 1 : 4);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => { setPage(0); }, [perPage]);
 
   const prev = () => setPage(p => (p - 1 + totalPages) % totalPages);
   const next = () => setPage(p => (p + 1) % totalPages);

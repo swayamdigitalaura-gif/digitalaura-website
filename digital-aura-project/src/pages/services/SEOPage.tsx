@@ -79,6 +79,7 @@ const aiSeoCards = [
     color: "#22C55E",
     bg: "rgba(34,197,94,0.08)",
     title: "SEO Audit & Strategy",
+    href: "/services/seo-content-marketing/seo-audit-strategy",
     desc: "We start with a full site audit covering rankings, keyword gaps, content quality, backlinks, and competitor positioning. Every finding is prioritised and mapped into a clear, actionable SEO roadmap tailored to your business goals.",
     tags: ["Full site audit", "Competitor analysis", "SEO roadmap"],
   },
@@ -89,6 +90,7 @@ const aiSeoCards = [
     color: "#22C55E",
     bg: "rgba(34,197,94,0.08)",
     title: "On Page SEO",
+    href: "/services/seo-content-marketing/on-page-seo",
     desc: "We optimise every page with targeted keywords, title tags, meta descriptions, H1 to H6 headings, image alt text, and internal linking. All content is aligned to search intent so Google ranks your pages and users stay engaged.",
     tags: ["Keyword research", "Meta optimisation", "Content structure"],
   },
@@ -99,6 +101,7 @@ const aiSeoCards = [
     color: "#22C55E",
     bg: "rgba(34,197,94,0.08)",
     title: "Technical SEO",
+    href: "/services/seo-content-marketing/technical-seo",
     desc: "We fix crawlability, indexation errors, page speed, Core Web Vitals, mobile usability, canonical tags, and XML sitemaps. A clean technical foundation ensures search engines can access and rank every important page on your site.",
     tags: ["Core Web Vitals", "Site speed", "Crawl & index fixes"],
   },
@@ -109,6 +112,7 @@ const aiSeoCards = [
     color: "#22C55E",
     bg: "rgba(34,197,94,0.08)",
     title: "Local SEO",
+    href: "/services/seo-content-marketing/local-seo",
     desc: "We optimise your Google Business Profile, build consistent local citations, and create geo targeted landing pages. Our local SEO strategies put your business at the top of Google Maps and the local pack for high intent searches.",
     tags: ["Google Business Profile", "Local citations", "Geo targeting"],
   },
@@ -119,6 +123,7 @@ const aiSeoCards = [
     color: "#22C55E",
     bg: "rgba(34,197,94,0.08)",
     title: "Off Page SEO",
+    href: "/services/seo-content-marketing/off-page-seo",
     desc: "We earn high quality backlinks from authoritative, niche relevant websites through guest posting, digital PR, and brand mention outreach. Every link is manually vetted to grow your domain authority and protect against algorithm updates.",
     tags: ["Link building", "Digital PR", "Domain authority"],
   },
@@ -129,6 +134,7 @@ const aiSeoCards = [
     color: "#22C55E",
     bg: "rgba(34,197,94,0.08)",
     title: "eCommerce SEO",
+    href: "/services/seo-content-marketing/ecommerce-seo",
     desc: "We optimise product pages, category structures, and product schema so your listings rank in Google Shopping and organic results. Crawl budget is managed efficiently so every product page gets indexed and drives targeted buyer traffic.",
     tags: ["Product page SEO", "Category structure", "eCommerce schema"],
   },
@@ -409,14 +415,22 @@ const SeoCardTabs = () => {
                   </div>
                   <span className="text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full" style={{ background: tab.bg, color: tab.color }}>{card.category}</span>
                 </div>
-                <h3 className="text-[15px] font-bold text-[#0A1628] mb-2"><span data-cms-key={`seo_card_${i}_t`} data-cms-label="card title" data-cms-attr="text">{card.title}</span></h3>
+                <h3 className="text-[15px] font-bold text-[#0A1628] mb-2">
+                  {card.href ? (
+                    <Link to={card.href} className="hover:underline" style={{ color: "inherit" }}>
+                      <span data-cms-key={`seo_card_${i}_t`} data-cms-label="card title" data-cms-attr="text">{card.title}</span>
+                    </Link>
+                  ) : (
+                    <span data-cms-key={`seo_card_${i}_t`} data-cms-label="card title" data-cms-attr="text">{card.title}</span>
+                  )}
+                </h3>
                 <p className="text-[13px] text-[#6B7280] leading-relaxed mb-4"><span data-cms-key={`seo_card_${i}_d`} data-cms-label="card desc" data-cms-attr="text">{card.desc}</span></p>
                 <div className="flex flex-wrap gap-1.5 mb-4">
                   {card.tags.map(tag => (
                     <span key={tag} className="text-[11px] font-semibold px-2.5 py-1 rounded-full" style={{ background: tab.bg, color: tab.color }}>{tag}</span>
                   ))}
                 </div>
-                <Link to="/contact" className="inline-flex items-center gap-1.5 text-[12.5px] font-semibold transition-all hover:gap-2.5" style={{ color: tab.color }}>
+                <Link to={card.href || "/contact"} className="inline-flex items-center gap-1.5 text-[12.5px] font-semibold transition-all hover:gap-2.5" style={{ color: tab.color }}>
               <span data-cms-key="seo_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">Learn More</span> <ArrowRight size={13} />
                 </Link>
               </motion.div>

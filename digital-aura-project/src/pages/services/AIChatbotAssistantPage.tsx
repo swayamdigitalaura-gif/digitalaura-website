@@ -426,7 +426,7 @@ const AIChatbotAssistantPage = () => {
           { name: "Digital Aura",       tag: "Digital Marketing", logo: "https://thedigitalaura.com/logos/digital-aura-logo.png",                                                                       logoBg: "#fff8f0" },
           { name: "Game Zone Events",   tag: "Events",            logo: "https://gamezoneevents.ca/wp-content/uploads/2025/07/Game-Zone-Events-02-1024x717.png",                                               logoBg: "#f5fff5" },
           { name: "Krisha Eye Hospital",tag: "Eye Care",          logo: "https://www.krishaeyehospital.com/wp-content/uploads/2024/09/Untitled-design-6-e1726468212929.png",                                   logoBg: "#f0faff" },
-          { name: "Parasher Academy",   tag: "Education",         logo: "https://parasher.academy/wp-content/uploads/2025/02/Logo-02_1700647906259.png",                                                      logoBg: "#f5f0ff" },
+          { name: "Parasher Academy",   tag: "Education",         logo: "/logos/parasher-academy.png",                                                      logoBg: "#f5f0ff" },
           { name: "Gleekey",            tag: "EdTech",            logo: "https://www.gleekey.in/public/front/images/logos/1765275447_logo.png",                                                               logoBg: "#f5f0ff" },
           { name: "Dr Parth Shah",      tag: "Healthcare",        logo: "https://www.drparthshah.com.au/wp-content/uploads/2020/02/site_logo.png",                                                            logoBg: "#f0f7ff" },
         ]} />

@@ -30,7 +30,7 @@ const HOME_LOGOS_FALLBACK: ClientLogoItem[] = [
   { name: "Clarity Eye Surgeons", tag: "Healthcare", logo: "https://www.clarityeyesurgeons.com.au/wp-content/uploads/2022/12/cropped-Clarity-Eye-Surgeons-Logo-300x212.png", logoBg: "#f0f8ff" },
   { name: "Grand Bavarchi", tag: "Restaurant", logo: "https://grandbavarchi.com.au/wp-content/uploads/2024/03/GB-logo.png", logoBg: "#fff8f0" },
   { name: "Mainstream Real Estate", tag: "Real Estate", logo: "https://mainstreamrealestate.com.au/wp-content/uploads/2023/02/logo-320x184-1.png", logoBg: "#f0fff8" },
-  { name: "Parasher Academy", tag: "Education", logo: "https://parasher.academy/wp-content/uploads/2025/02/Logo-02_1700647906259.png", logoBg: "#f5f0ff" },
+  { name: "Parasher Academy", tag: "Education", logo: "/logos/parasher-academy.png", logoBg: "#f5f0ff" },
   { name: "Silverstone Financial", tag: "Financial Services", logo: "https://silverstonefinancial.co.nz/wp-content/uploads/2025/03/Transparent-BG-e1747031572364.png", logoBg: "#f0faff" },
   { name: "Upmatrix", tag: "SaaS Platform", logo: "https://upmatrix.in/wp-content/uploads/2025/09/UpMatrix-Logo-1.svg", logoBg: "#f0f4ff" },
   { name: "Karm Digital", tag: "Digital Agency", logo: "https://karm.digital/wp-content/uploads/2025/05/karm-logo.png", logoBg: "#f5f0ff" },

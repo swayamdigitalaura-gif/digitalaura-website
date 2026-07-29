@@ -3,8 +3,8 @@ import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import {
-  ArrowLeft, ArrowRight, ArrowUp, Bookmark, Calendar, Clock, Eye,
-  Linkedin, Twitter, Link as LinkIcon, RefreshCw, Tag,
+  ArrowLeft, ArrowRight, ArrowUp, Calendar, Clock, Eye,
+  Linkedin, Link as LinkIcon, RefreshCw, Tag, ImageOff,
 } from "lucide-react";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
@@ -55,6 +55,18 @@ const fmtDate = (iso: string) =>
 
 const slugifyHeading = (text: string, i: number) =>
   text.toLowerCase().trim().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-").slice(0, 50) || `section-${i}`;
+
+function CardImage({ src, alt, className }: { src?: string; alt: string; className?: string }) {
+  const [failed, setFailed] = useState(false);
+  if (!src || failed) {
+    return (
+      <div className={`flex items-center justify-center ${className || ""}`} style={{ background: "linear-gradient(135deg, rgba(255,107,43,0.1), rgba(26,111,232,0.08))" }}>
+        <ImageOff size={24} style={{ color: ACCENT }} strokeWidth={1.5} />
+      </div>
+    );
+  }
+  return <img src={src} alt={alt} loading="lazy" onError={() => setFailed(true)} className={className} />;
+}
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -213,7 +225,7 @@ const BlogPost = () => {
           <article className="min-w-0 pt-10">
             <div
               ref={articleRef}
-              className="text-[#374151] leading-relaxed text-[15.5px] [&_h2]:font-black [&_h2]:text-[#0A1628] [&_h2]:text-2xl [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:font-bold [&_h3]:text-[#0A1628] [&_h3]:text-lg [&_h3]:mt-7 [&_h3]:mb-2 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1.5 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:space-y-1.5 [&_li]:leading-relaxed [&_p]:mb-4 [&_a]:text-[#1A6FE8] [&_a]:underline [&_strong]:font-semibold [&_strong]:text-[#0A1628] [&_img]:rounded-xl [&_img]:my-4 [&_table]:w-full [&_table]:border-collapse [&_table]:my-6 [&_th]:text-left [&_th]:bg-[#F8FAFF] [&_th]:p-3 [&_th]:border [&_th]:border-[#E5E7EB] [&_td]:p-3 [&_td]:border [&_td]:border-[#E5E7EB] [&_blockquote]:border-l-4 [&_blockquote]:border-[#FF6B2B] [&_blockquote]:pl-5 [&_blockquote]:italic [&_blockquote]:text-[#0A1628] [&_blockquote]:font-medium [&_blockquote]:my-6 [&_pre]:bg-[#0A1628] [&_pre]:text-white [&_pre]:rounded-xl [&_pre]:p-4 [&_pre]:overflow-x-auto [&_pre]:my-6 [&_pre]:text-sm"
+              className="text-[#374151] leading-relaxed text-[15.5px] [&_h2]:font-black [&_h2]:text-[#0A1628] [&_h2]:text-2xl [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:font-bold [&_h3]:text-[#0A1628] [&_h3]:text-lg [&_h3]:mt-7 [&_h3]:mb-2 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1.5 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:space-y-1.5 [&_li]:leading-relaxed [&_p]:mb-4 [&_a]:text-[#1A6FE8] [&_a]:underline [&_strong]:font-semibold [&_strong]:text-[#0A1628] [&_img]:rounded-xl [&_img]:my-5 [&_img]:mx-auto [&_img]:max-h-[340px] [&_img]:w-auto [&_img]:max-w-full [&_img]:object-cover [&_img]:border [&_img]:border-[#E5E7EB] [&_img]:shadow-sm [&_table]:w-full [&_table]:border-collapse [&_table]:my-6 [&_th]:text-left [&_th]:bg-[#F8FAFF] [&_th]:p-3 [&_th]:border [&_th]:border-[#E5E7EB] [&_td]:p-3 [&_td]:border [&_td]:border-[#E5E7EB] [&_blockquote]:border-l-4 [&_blockquote]:border-[#FF6B2B] [&_blockquote]:pl-5 [&_blockquote]:italic [&_blockquote]:text-[#0A1628] [&_blockquote]:font-medium [&_blockquote]:my-6 [&_pre]:bg-[#0A1628] [&_pre]:text-white [&_pre]:rounded-xl [&_pre]:p-4 [&_pre]:overflow-x-auto [&_pre]:my-6 [&_pre]:text-sm"
               dangerouslySetInnerHTML={{ __html: blog.content || "" }}
             />
 
@@ -238,8 +250,8 @@ function Hero({ blog, dateStr, updatedStr, minutes, canonicalUrl }: {
   blog: Blog; dateStr: string; updatedStr: string | null; minutes: number; canonicalUrl: string;
 }) {
   const [copied, setCopied] = useState(false);
-  const shareText = encodeURIComponent(blog.title);
   const shareUrl = encodeURIComponent(canonicalUrl);
+  const authorName = blog.author?.name || "Digital Aura Team";
 
   const copyLink = async () => {
     try {
@@ -250,10 +262,13 @@ function Hero({ blog, dateStr, updatedStr, minutes, canonicalUrl }: {
   };
 
   return (
-    <section className="relative overflow-hidden pb-14 pt-10 lg:pb-16" style={{ background: "#F8FAFF" }}>
-      <div className="absolute inset-0 dot-pattern opacity-30 pointer-events-none" />
-      <div className="relative mx-auto max-w-[1000px] px-5 text-center lg:px-8">
-        <nav aria-label="Breadcrumb" className="mb-6 flex items-center justify-center gap-2 text-[13px] text-[#9CA3AF]">
+    <section className="relative overflow-hidden pb-12 pt-12 lg:pb-14 lg:pt-16" style={{ background: "linear-gradient(180deg, #F8FAFF 0%, #FFFFFF 100%)" }}>
+      <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full opacity-[0.12] blur-3xl" style={{ background: ACCENT }} />
+      <div className="pointer-events-none absolute -right-24 top-10 h-72 w-72 rounded-full opacity-[0.10] blur-3xl" style={{ background: BLUE }} />
+      <div className="absolute inset-0 dot-pattern opacity-20 pointer-events-none" />
+
+      <div className="relative mx-auto max-w-[820px] px-5 text-center lg:px-8">
+        <nav aria-label="Breadcrumb" className="mb-5 flex items-center justify-center gap-2 text-[12.5px] text-[#9CA3AF]">
           <Link to="/" className="hover:text-[#FF6B2B]">Home</Link>
           <span>/</span>
           <Link to="/blog" className="hover:text-[#FF6B2B]">Blog</Link>
@@ -261,51 +276,52 @@ function Hero({ blog, dateStr, updatedStr, minutes, canonicalUrl }: {
         </nav>
 
         {blog.category && (
-          <span className="inline-flex items-center gap-1.5 rounded-full mb-6 px-3 py-1 text-[12px] font-bold uppercase tracking-wider" style={{ color: ACCENT, background: "rgba(255,107,43,0.1)" }}>
+          <span className="inline-flex items-center gap-1.5 rounded-full mb-5 px-3 py-1 text-[11.5px] font-bold uppercase tracking-wider" style={{ color: ACCENT, background: "rgba(255,107,43,0.1)" }}>
             <Tag size={12} /> {blog.category}
           </span>
         )}
 
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-          <h1 className="mx-auto max-w-4xl text-[32px] font-black leading-[1.1] tracking-tight sm:text-[44px] lg:text-[52px]" style={{ color: HEADING }}>
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+          <h1 className="mx-auto max-w-3xl text-[28px] font-black leading-[1.15] tracking-tight sm:text-[36px] lg:text-[42px]" style={{ color: HEADING }}>
             {blog.title}
           </h1>
           {blog.excerpt && (
-            <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-[#6B7280] lg:text-[18px]">
+            <p className="mx-auto mt-5 max-w-xl text-[15.5px] leading-relaxed text-[#6B7280] lg:text-[16.5px]">
               {blog.excerpt}
             </p>
           )}
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5 text-[14px] text-[#6B7280]">
-            <span className="font-semibold" style={{ color: HEADING }}>{blog.author?.name || "Digital Aura Team"}</span>
-            <span className="inline-flex items-center gap-1.5"><Calendar size={14} style={{ color: ACCENT }} /> {dateStr}</span>
-            {updatedStr && <span className="inline-flex items-center gap-1.5"><RefreshCw size={14} style={{ color: ACCENT }} /> Updated {updatedStr}</span>}
-            <span className="inline-flex items-center gap-1.5"><Clock size={14} style={{ color: ACCENT }} /> {minutes} min read</span>
-            {!!blog.views && <span className="inline-flex items-center gap-1.5"><Eye size={14} style={{ color: ACCENT }} /> {blog.views.toLocaleString()} views</span>}
+          <div className="mt-7 inline-flex flex-wrap items-center justify-center gap-x-5 gap-y-2 rounded-full border border-[#E5E7EB] bg-white px-5 py-2.5 text-[13px] text-[#6B7280]" style={{ boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
+            <span className="inline-flex items-center gap-1.5">
+              <span className="grid h-5 w-5 place-items-center rounded-full text-[10px] font-black text-white" style={{ background: `linear-gradient(135deg, ${ACCENT}, #7C3AED)` }}>
+                {authorName.charAt(0).toUpperCase()}
+              </span>
+              <span className="font-semibold" style={{ color: HEADING }}>{authorName}</span>
+            </span>
+            <span className="inline-flex items-center gap-1.5"><Calendar size={13} style={{ color: ACCENT }} /> {dateStr}</span>
+            {updatedStr && <span className="inline-flex items-center gap-1.5"><RefreshCw size={13} style={{ color: ACCENT }} /> Updated {updatedStr}</span>}
+            <span className="inline-flex items-center gap-1.5"><Clock size={13} style={{ color: ACCENT }} /> {minutes} min read</span>
+            {!!blog.views && <span className="inline-flex items-center gap-1.5"><Eye size={13} style={{ color: ACCENT }} /> {blog.views.toLocaleString()}</span>}
           </div>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
-            <a href={`https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`} target="_blank" rel="noreferrer" aria-label="Share on Twitter"
-              className="grid h-10 w-10 place-items-center rounded-full border border-[#E5E7EB] bg-white text-[#6B7280] transition-all hover:-translate-y-0.5 hover:border-[#FF6B2B] hover:text-[#FF6B2B]">
-              <Twitter size={16} />
-            </a>
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
             <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`} target="_blank" rel="noreferrer" aria-label="Share on LinkedIn"
-              className="grid h-10 w-10 place-items-center rounded-full border border-[#E5E7EB] bg-white text-[#6B7280] transition-all hover:-translate-y-0.5 hover:border-[#FF6B2B] hover:text-[#FF6B2B]">
-              <Linkedin size={16} />
+              className="grid h-9 w-9 place-items-center rounded-full border border-[#E5E7EB] bg-white text-[#6B7280] transition-all hover:-translate-y-0.5 hover:border-[#FF6B2B] hover:text-[#FF6B2B]">
+              <Linkedin size={15} />
             </a>
             <button onClick={copyLink} aria-label="Copy link"
-              className="ml-1 inline-flex items-center gap-2 rounded-full border border-[#E5E7EB] bg-white px-4 py-2.5 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:border-[#FF6B2B]"
+              className="inline-flex items-center gap-2 rounded-full border border-[#E5E7EB] bg-white px-4 py-2 text-[13px] font-semibold transition-all hover:-translate-y-0.5 hover:border-[#FF6B2B]"
               style={{ color: copied ? "#22C55E" : HEADING }}>
-              <LinkIcon size={14} /> {copied ? "Copied!" : "Copy link"}
+              <LinkIcon size={13} /> {copied ? "Copied!" : "Copy link"}
             </button>
           </div>
         </motion.div>
       </div>
 
       {blog.cover_image ? (
-        <div className="relative mx-auto mt-12 max-w-[1000px] px-5 lg:px-8">
-          <div className="overflow-hidden rounded-3xl border border-[#E5E7EB] shadow-lg">
-            <img src={blog.cover_image} alt={blog.title} width={1600} height={900} fetchPriority="high" className="aspect-[16/9] w-full object-cover" />
+        <div className="relative mx-auto mt-10 max-w-[880px] px-5 lg:px-8">
+          <div className="mx-auto max-h-[420px] overflow-hidden rounded-2xl border border-[#E5E7EB] shadow-lg">
+            <img src={blog.cover_image} alt={blog.title} width={1600} height={900} fetchPriority="high" className="aspect-[16/9] max-h-[420px] w-full object-cover" />
           </div>
         </div>
       ) : null}
@@ -313,10 +329,9 @@ function Hero({ blog, dateStr, updatedStr, minutes, canonicalUrl }: {
   );
 }
 
-function FloatingSidebar({ toc, activeId, progress, minutes, canonicalUrl, title }: {
+function FloatingSidebar({ toc, activeId, progress, minutes, canonicalUrl }: {
   toc: TocItem[]; activeId: string; progress: number; minutes: number; canonicalUrl: string; title: string;
 }) {
-  const shareText = encodeURIComponent(title);
   const shareUrl = encodeURIComponent(canonicalUrl);
   return (
     <aside className="hidden lg:block">
@@ -354,10 +369,6 @@ function FloatingSidebar({ toc, activeId, progress, minutes, canonicalUrl, title
           </div>
 
           <div className="mt-5 flex items-center gap-1.5">
-            <a href={`https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`} target="_blank" rel="noreferrer" aria-label="Share"
-              className="grid h-8 w-8 place-items-center rounded-lg border border-[#E5E7EB] text-[#6B7280] transition-colors hover:border-[#FF6B2B] hover:text-[#FF6B2B]">
-              <Twitter size={14} />
-            </a>
             <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`} target="_blank" rel="noreferrer" aria-label="Share"
               className="grid h-8 w-8 place-items-center rounded-lg border border-[#E5E7EB] text-[#6B7280] transition-colors hover:border-[#FF6B2B] hover:text-[#FF6B2B]">
               <Linkedin size={14} />
@@ -399,27 +410,28 @@ function ArticleNav({ prev, next }: { prev: Blog | null; next: Blog | null }) {
 
 function RelatedArticles({ items }: { items: Blog[] }) {
   return (
-    <section className="border-t border-[#E5E7EB] py-20" style={{ background: "#F8FAFF" }}>
+    <section className="border-t border-[#E5E7EB] py-16 lg:py-20" style={{ background: "#F8FAFF" }}>
       <div className="mx-auto max-w-[1240px] px-5 lg:px-8">
         <div className="text-[12px] font-bold uppercase tracking-wider" style={{ color: ACCENT }}>Keep reading</div>
         <h2 className="mt-2 text-2xl font-black tracking-tight sm:text-3xl" style={{ color: HEADING }}>Related articles</h2>
 
         <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
           {items.map((b) => (
-            <Link key={b.id} to={`/blog/${b.slug}`} className="group rounded-2xl overflow-hidden border border-[#E5E7EB] bg-white transition-all hover:-translate-y-1" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
-              {b.cover_image ? (
-                <img src={b.cover_image} alt="" loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-              ) : (
-                <div className="aspect-[4/3] w-full flex items-center justify-center" style={{ background: "linear-gradient(135deg, rgba(255,107,43,0.1), rgba(26,111,232,0.08))" }}>
-                  <Tag size={28} style={{ color: ACCENT }} strokeWidth={1.5} />
-                </div>
-              )}
+            <Link key={b.id} to={`/blog/${b.slug}`} className="group overflow-hidden rounded-2xl border border-[#E5E7EB] bg-white transition-all hover:-translate-y-1 hover:shadow-lg" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
+              <div className="relative">
+                <CardImage src={b.cover_image} alt="" className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                {b.category && (
+                  <span className="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-[11px] font-bold" style={{ color: ACCENT }}>{b.category}</span>
+                )}
+              </div>
               <div className="p-5">
-                <div className="flex items-center gap-2 text-[12px] font-semibold text-[#9CA3AF]">
-                  {b.category && <span className="rounded-full px-2.5 py-0.5" style={{ background: "rgba(255,107,43,0.1)", color: ACCENT }}>{b.category}</span>}
-                  <span>{readTime(b.content)} min read</span>
+                <div className="flex items-center gap-1.5 text-[12px] font-medium text-[#9CA3AF]">
+                  <Clock size={12} /> {readTime(b.content)} min read
                 </div>
-                <h3 className="mt-3 text-[16px] font-bold leading-snug transition-colors group-hover:text-[#FF6B2B]" style={{ color: HEADING }}>{b.title}</h3>
+                <h3 className="mt-2.5 text-[16px] font-bold leading-snug transition-colors group-hover:text-[#FF6B2B]" style={{ color: HEADING }}>{b.title}</h3>
+                <span className="mt-3 inline-flex items-center gap-1 text-[13px] font-semibold" style={{ color: ACCENT }}>
+                  Read more <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
+                </span>
               </div>
             </Link>
           ))}
@@ -433,16 +445,16 @@ function AuthorProfile({ authorName }: { authorName?: string }) {
   const name = authorName || "Digital Aura Team";
   const initial = name.charAt(0).toUpperCase();
   return (
-    <section className="border-t border-[#E5E7EB] bg-white py-16">
+    <section className="border-t border-[#E5E7EB] bg-white py-14">
       <div className="mx-auto max-w-[800px] px-5 lg:px-8">
         <div className="flex items-center gap-5 rounded-2xl border border-[#E5E7EB] p-6" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
-          <div className="grid h-16 w-16 shrink-0 place-items-center rounded-full text-xl font-black text-white" style={{ background: `linear-gradient(135deg, ${ACCENT}, #7C3AED)` }}>
+          <div className="grid h-14 w-14 shrink-0 place-items-center rounded-full text-lg font-black text-white" style={{ background: `linear-gradient(135deg, ${ACCENT}, #7C3AED)` }}>
             {initial}
           </div>
           <div>
             <div className="text-[11px] font-bold uppercase tracking-wider" style={{ color: ACCENT }}>Written by</div>
             <h3 className="text-lg font-black" style={{ color: HEADING }}>{name}</h3>
-            <p className="text-sm text-[#6B7280]">Digital Aura Team</p>
+            <p className="text-sm text-[#6B7280]">Performance marketing team, Digital Aura</p>
           </div>
         </div>
       </div>
@@ -452,21 +464,15 @@ function AuthorProfile({ authorName }: { authorName?: string }) {
 
 function LatestPosts({ items }: { items: Blog[] }) {
   return (
-    <section className="px-5 py-16 lg:px-8" style={{ background: "#F8FAFF" }}>
+    <section className="border-t border-[#E5E7EB] px-5 py-16 lg:px-8" style={{ background: "#FFFFFF" }}>
       <div className="mx-auto max-w-[1240px]">
         <div className="text-[12px] font-bold uppercase tracking-wider" style={{ color: ACCENT }}>Fresh off the press</div>
         <h2 className="mt-2 text-2xl font-black tracking-tight sm:text-3xl" style={{ color: HEADING }}>Latest posts</h2>
 
         <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
           {items.map((b) => (
-            <Link key={b.id} to={`/blog/${b.slug}`} className="group rounded-2xl overflow-hidden border border-[#E5E7EB] bg-white transition-all hover:-translate-y-1" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
-              {b.cover_image ? (
-                <img src={b.cover_image} alt="" loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-              ) : (
-                <div className="aspect-[4/3] w-full flex items-center justify-center" style={{ background: "linear-gradient(135deg, rgba(255,107,43,0.1), rgba(26,111,232,0.08))" }}>
-                  <Tag size={28} style={{ color: ACCENT }} strokeWidth={1.5} />
-                </div>
-              )}
+            <Link key={b.id} to={`/blog/${b.slug}`} className="group overflow-hidden rounded-2xl border border-[#E5E7EB] bg-white transition-all hover:-translate-y-1 hover:shadow-lg" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
+              <CardImage src={b.cover_image} alt="" className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div className="p-5">
                 {b.category && (
                   <span className="rounded-full px-2.5 py-0.5 text-[12px] font-semibold" style={{ background: "rgba(255,107,43,0.1)", color: ACCENT }}>{b.category}</span>
@@ -485,15 +491,23 @@ function LatestPosts({ items }: { items: Blog[] }) {
 function FinalCTA() {
   return (
     <section className="border-t border-[#E5E7EB] px-5 py-16 lg:px-8" style={{ background: "#F8FAFF" }}>
-      <div className="mx-auto max-w-[800px] text-center">
-        <h2 className="text-[30px] font-black leading-tight sm:text-[40px]" style={{ color: HEADING }}>Ready to grow faster?</h2>
-        <p className="mx-auto mt-4 max-w-xl text-[16px] leading-relaxed text-[#6B7280]">
-          Book a free strategy session with our senior team — we'll audit your funnel and hand you a 30-day action plan.
-        </p>
-        <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-          <Link to="/contact" className="btn-orange px-7 py-3.5 text-[15px] gap-2 inline-flex items-center">
-            Book a free strategy session <ArrowRight size={16} />
-          </Link>
+      <div className="relative mx-auto max-w-[900px] overflow-hidden rounded-3xl px-6 py-14 text-center sm:px-14" style={{ background: `linear-gradient(135deg, ${HEADING} 0%, #16233D 100%)` }}>
+        <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-20 blur-3xl" style={{ background: ACCENT }} />
+        <div className="pointer-events-none absolute -bottom-20 -left-16 h-56 w-56 rounded-full opacity-20 blur-3xl" style={{ background: BLUE }} />
+
+        <div className="relative">
+          <h2 className="text-[26px] font-black leading-tight text-white sm:text-[34px]">Ready to grow faster?</h2>
+          <p className="mx-auto mt-4 max-w-lg text-[15.5px] leading-relaxed text-white/70">
+            Book a free strategy session with our senior team — we'll audit your funnel and hand you a 30-day action plan.
+          </p>
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+            <Link to="/contact" className="btn-orange px-7 py-3.5 text-[15px] gap-2 inline-flex items-center">
+              Book a free strategy session <ArrowRight size={16} />
+            </Link>
+            <Link to="/case-studies" className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-white/10">
+              View our work
+            </Link>
+          </div>
         </div>
       </div>
     </section>

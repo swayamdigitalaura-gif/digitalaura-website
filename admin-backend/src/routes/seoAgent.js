@@ -73,6 +73,39 @@ router.post('/publish', async (req, res) => {
   }
 });
 
+// ---- PAGE SEO — update a static page's SEO metadata by slug ----
+// Called ONLY after a human approved the change in the SEO Autopilot panel.
+// Metadata only: a page's visible body content lives in the React source, not
+// here, so this route can never alter what a visitor reads on the page.
+router.post('/page/seo', async (req, res) => {
+  if (req.body.approvedByHuman !== true) {
+    return res.status(403).json({ error: 'missing approvedByHuman flag — refusing to update' });
+  }
+  try {
+    const { slug, metaTitle, metaDescription, keywords, canonical, ogImage } = req.body;
+    if (!slug) return res.status(400).json({ error: 'slug is required' });
+
+    const page = await Page.findOne({ where: { slug } });
+    if (!page) return res.status(404).json({ error: `no page with slug "${slug}"` });
+
+    const fields = pruneUndefined({
+      meta_title: metaTitle,
+      meta_desc: metaDescription,
+      keywords,
+      canonical,
+      og_image: ogImage,
+    });
+    if (Object.keys(fields).length === 0) {
+      return res.status(400).json({ error: 'no updatable fields supplied' });
+    }
+
+    await page.update(fields);
+    res.json({ status: 'ok', id: page.id, updated: Object.keys(fields) });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // ---- SCHEMA UPDATE — set JSON-LD (schema_code) on a page or blog by slug ----
 router.post('/schema/update', async (req, res) => {
   try {

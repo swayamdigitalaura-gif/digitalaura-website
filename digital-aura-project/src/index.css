@@ -534,4 +534,115 @@
     margin-bottom: 0.6rem;
   }
   .da-step strong { display: block; color: #0A1628; margin-bottom: 0.25rem; }
+
+  /* Feature cards — <div class="da-feature-cards"><div class="da-feature-item">
+     <h4>Title</h4><p>Body</p></div>...</div> */
+  .da-feature-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .da-feature-item {
+    padding: 1.4rem 1.5rem;
+    border-radius: 1rem;
+    background: #fff;
+    border: 1px solid #E5E7EB;
+    border-top: 3px solid #FF6B2B;
+  }
+  .da-feature-item h4 { margin: 0 0 0.4rem; font-size: 1rem; color: #0A1628; }
+  .da-feature-item p { margin: 0; font-size: 0.9rem; color: #6B7280; }
+
+  /* Information card — <div class="da-info-card"><h4>Title</h4>
+     <p>Optional description</p><ul><li>...</li></ul></div> */
+  .da-info-card {
+    margin: 2rem 0;
+    padding: 1.5rem 1.75rem;
+    border-radius: 1.25rem;
+    background: rgba(26,111,232,0.05);
+    border: 1px solid rgba(26,111,232,0.18);
+  }
+  .da-info-card h4 { margin: 0 0 0.5rem; font-size: 1.1rem; color: #0A1628; }
+  .da-info-card p { margin: 0 0 0.75rem; font-size: 0.92rem; color: #4B5563; }
+  .da-info-card ul { margin: 0; padding: 0; list-style: none; }
+  .da-info-card li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.92rem;
+    color: #0A1628;
+  }
+  .da-info-card li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #1A6FE8;
+    font-weight: 800;
+  }
+
+  /* Number cards — <div class="da-number-cards"><div class="da-number-item">
+     <span class="da-number-n">1</span><h4>Title</h4><p>Body</p></div>...</div> */
+  .da-number-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .da-number-item {
+    position: relative;
+    padding: 1.4rem 1.5rem;
+    border-radius: 1rem;
+    background: #fff;
+    border: 1px solid #E5E7EB;
+    overflow: hidden;
+  }
+  .da-number-n {
+    position: absolute;
+    top: -0.6rem;
+    right: 0.4rem;
+    font-size: 3.4rem;
+    font-weight: 800;
+    line-height: 1;
+    color: rgba(255,107,43,0.12);
+  }
+  .da-number-item h4 { position: relative; margin: 0 0 0.35rem; font-size: 1rem; color: #0A1628; }
+  .da-number-item p { position: relative; margin: 0; font-size: 0.9rem; color: #6B7280; }
+
+  /* Callout section — full-width feature box —
+     <div class="da-callout-section"><h4>Title</h4><p>Body</p></div> */
+  .da-callout-section {
+    margin: 2.5rem 0;
+    padding: 1.75rem 2rem;
+    border-radius: 1.5rem;
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+  }
+  .da-callout-section h4 { margin: 0 0 0.6rem; font-size: 1.3rem; color: #0A1628; }
+  .da-callout-section p { margin: 0; font-size: 0.95rem; color: #6B7280; }
+
+  /* FAQ accordion — <div class="da-faq"><details class="da-faq-item"><summary>Question?</summary>
+     <p>Answer</p></details>...</div> — native <details>, works with no JS */
+  .da-faq { margin: 2rem 0; }
+  .da-faq-item {
+    border: 1px solid #E5E7EB;
+    border-radius: 1rem;
+    margin-bottom: 0.75rem;
+    padding: 1.1rem 1.4rem;
+  }
+  .da-faq-item summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #0A1628;
+    list-style: none;
+  }
+  .da-faq-item summary::-webkit-details-marker { display: none; }
+  .da-faq-item summary::after {
+    content: "+";
+    float: right;
+    font-weight: 800;
+    color: #FF6B2B;
+  }
+  .da-faq-item[open] summary::after { content: "\2212"; }
+  .da-faq-item p { margin: 0.75rem 0 0; font-size: 0.92rem; color: #4B5563; }
 }

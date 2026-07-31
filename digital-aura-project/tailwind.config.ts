@@ -35,6 +35,15 @@ export default {
     "da-callout-warning",
     "da-callout-note",
     "da-checklist",
+    "da-feature-cards",
+    "da-feature-item",
+    "da-info-card",
+    "da-number-cards",
+    "da-number-item",
+    "da-number-n",
+    "da-callout-section",
+    "da-faq",
+    "da-faq-item",
   ],
   theme: {
     container: {

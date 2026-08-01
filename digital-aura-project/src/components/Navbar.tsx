@@ -1,5 +1,5 @@
 ﻿import { useState, useEffect, useRef } from "react";
-import { Menu, X, Phone, ChevronDown,
+import { Menu, X, Phone, ChevronDown, Trophy,
   Bot, Brain, Workflow,
   Globe2, Code2, PenTool,
   ShoppingCart, Store, CreditCard,
@@ -290,6 +290,13 @@ const Navbar = () => {
 
           {/* Right side */}
           <div className="hidden lg:flex items-center gap-3 shrink-0">
+            <Link
+              to="/awards"
+              className="flex items-center gap-1.5 px-3.5 py-2 rounded-full text-[13px] font-bold transition-all hover:-translate-y-0.5"
+              style={{ background: "linear-gradient(135deg, #FBE7B8, #E8C77E 55%, #C79A4B)", color: "#5A430F", boxShadow: "0 2px 10px rgba(199,154,75,0.35)" }}
+            >
+              <Trophy size={13} /> Awards
+            </Link>
             <a href="tel:+918141200284" className="flex items-center gap-1.5 text-[15px] font-medium text-[#374151] hover:text-[#FF6B2B] transition-colors">
               <Phone size={14} className="text-[#FF6B2B]" /> +91 81412 00284
             </a>
@@ -428,6 +435,14 @@ const Navbar = () => {
             </div>
 
             <div className="px-6 pb-8 mt-4 space-y-3">
+              <Link
+                to="/awards"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center justify-center gap-2 w-full py-3 rounded-full text-sm font-bold"
+                style={{ background: "linear-gradient(135deg, #FBE7B8, #E8C77E 55%, #C79A4B)", color: "#5A430F" }}
+              >
+                <Trophy size={14} /> Awards & Recognition
+              </Link>
               <a href="tel:+918141200284" className="flex items-center gap-2 text-sm text-[#6B7280]">
                 <Phone size={14} className="text-[#FF6B2B]" /> +91 81412 00284
               </a>

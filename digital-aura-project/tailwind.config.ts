@@ -63,10 +63,15 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        navy: "hsl(var(--navy))",
+        navy: "#0A1628",
+        "navy-soft": "#152238",
+        "navy-foreground": "#F7F5F2",
+        cream: "#FBF9F6",
+        "cream-deep": "#F5F0E8",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          soft: "#FFEDE0",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",

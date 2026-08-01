@@ -125,6 +125,7 @@ export const Route = createFileRoute("/seo-services-ahmedabad")({
           "Technical SEO, On-Page SEO, AI SEO (AIO) & Generative Engine Optimization (GEO) for Ahmedabad businesses. Get cited on Google and AI search — book your free audit.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://thedigitalaura.com/seo-services-ahmedabad" },
       { property: "og:locale", content: "en_IN" },
       { name: "robots", content: "index,follow" },
       { name: "twitter:title", content: "Best SEO Company in Ahmedabad | Digital Aura — Google + AI Search SEO Agency" },
@@ -134,6 +135,7 @@ export const Route = createFileRoute("/seo-services-ahmedabad")({
           "Technical SEO, On-Page SEO, AI SEO (AIO) & Generative Engine Optimization (GEO) for Ahmedabad businesses. Get cited on Google and AI search — book your free audit.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://thedigitalaura.com/seo-services-ahmedabad" }],
   }),
   component: Index,
 });

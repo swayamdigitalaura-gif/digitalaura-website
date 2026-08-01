@@ -6,14 +6,12 @@ import {
   Gauge,
   Search,
   Sparkles,
-  Bot,
-  Network,
   ShieldCheck,
   Zap,
   Target,
   Layers,
-  Database,
-  FileCode2,
+  Code2,
+  Smartphone,
   Quote,
   Phone,
   Mail,
@@ -36,44 +34,27 @@ import {
   Dumbbell,
   Plane,
   Loader2,
-  TrendingDown,
   Users,
-  Crosshair,
-  Settings2,
   RefreshCw,
-  MapPinned,
-  Link2,
-  BarChart3,
-  FileBarChart,
   MousePointerClick,
-  Lightbulb,
   Briefcase,
   ArrowDown,
+  Palette,
+  Server,
+  Lock,
+  Rocket,
+  LayoutGrid,
 } from "lucide-react";
 import digitalAuraLogo from "@/assets/brand/digital-aura-logo.png";
 import googlePlatformLogo from "@/assets/platform-logos/google-logo.png";
 import clutchBadge from "@/assets/platform-logos/clutch-badge.png";
 import goodfirmsBadge from "@/assets/platform-logos/goodfirms-badge.png";
 import designrushBadge from "@/assets/platform-logos/designrush-badge.webp";
-import semrushLogo from "@/assets/tool-logos/semrush.png";
-import ahrefsLogo from "@/assets/tool-logos/ahrefs.png";
-import screamingFrogLogo from "@/assets/tool-logos/screaming-frog.png";
-import surferSeoLogo from "@/assets/tool-logos/surfer-seo.png";
-import localFalconLogo from "@/assets/tool-logos/local-falcon.jpg";
-import dataForSeoLogo from "@/assets/tool-logos/dataforseo.png";
-import googleSearchConsoleToolLogo from "@/assets/tool-logos/google-search-console.png";
-import googleAnalyticsToolLogo from "@/assets/tool-logos/google-analytics.png";
-import chatgptLogo from "@/assets/tool-logos/chatgpt.jpg";
-import claudeLogo from "@/assets/tool-logos/claude.png";
-import geminiLogo from "@/assets/tool-logos/gemini.png";
 import googlePartnerLogo from "@/assets/certified-logos/google-partner.png";
 import bingPartnerLogo from "@/assets/certified-logos/bing-partner.png";
 import googleAnalyticsCertLogo from "@/assets/certified-logos/google-analytics.png";
 import googleSearchConsoleCertLogo from "@/assets/certified-logos/google-search-console.png";
 import googleBusinessProfileLogo from "@/assets/certified-logos/google-business-profile.jpg";
-import gscSlideBfi from "@/assets/gsc-slider/bfi.jpg";
-import gscSlideKrisha from "@/assets/gsc-slider/krisha.png";
-import gscSlideTgp from "@/assets/gsc-slider/tgp.png";
 import clientLogoGameZone from "@/assets/client-logos/game-zone-events.webp";
 import clientLogoAmvi from "@/assets/client-logos/amvi-hospital.png";
 import clientLogoAOneAutoCare from "@/assets/client-logos/a-one-auto-care.png";
@@ -93,43 +74,42 @@ import { MainSiteNavbar } from "@/components/MainSiteNavbar";
 import { MainSiteFooter } from "@/components/MainSiteFooter";
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  type CarouselApi,
-} from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/")({
+const PAGE_TITLE = "Website Development Services | Custom Business Websites | Digital Aura";
+const PAGE_DESCRIPTION =
+  "Get custom website development services in Ahmedabad with fast, mobile-friendly, SEO-ready websites built to generate more leads, sales, and business growth. Contact Digital Aura today.";
+const PAGE_URL = "https://thedigitalaura.com/website-development-services-ahmedabad";
+
+export const Route = createFileRoute("/website-development-services-ahmedabad")({
   head: () => ({
     meta: [
-      { title: "Best SEO Company in Ahmedabad | Digital Aura — Google + AI Search SEO Agency" },
-      {
-        name: "description",
-        content:
-          "Digital Aura is the best SEO company in Ahmedabad — a full-service SEO services agency ranking businesses on Google and getting them cited on ChatGPT, Gemini & Perplexity. Technical SEO, Local SEO, AIO & GEO. Get your free SEO + AI Search audit.",
-      },
+      { title: PAGE_TITLE },
+      { name: "description", content: PAGE_DESCRIPTION },
       {
         name: "keywords",
         content:
-          "Best SEO Company in Ahmedabad, SEO Expert in Ahmedabad, SEO Services Agency in Ahmedabad, SEO Companies in Ahmedabad, Leading SEO Company in Ahmedabad, AI Powered SEO Services in Ahmedabad, AEO SEO Services in Ahmedabad, Search Engine Optimization Company Ahmedabad, Technical SEO Company Ahmedabad, Local SEO Company Ahmedabad, Enterprise SEO Services Ahmedabad",
+          "Website Development Services Ahmedabad, Custom Website Development, Business Website Design Ahmedabad, Ecommerce Website Development, WordPress Development Ahmedabad, Website Redesign Company, Landing Page Development, Mobile Friendly Website Design",
       },
-      { property: "og:title", content: "Best SEO Company in Ahmedabad | Digital Aura — Google + AI Search SEO Agency" },
+      { property: "og:title", content: PAGE_TITLE },
       {
         property: "og:description",
         content:
-          "Technical SEO, On-Page SEO, AI SEO (AIO) & Generative Engine Optimization (GEO) for Ahmedabad businesses. Get cited on Google and AI search — book your free audit.",
+          "Custom, fast, mobile-friendly and SEO-ready business websites built to generate more leads and sales. Get your free website consultation.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://thedigitalaura.com/" },
+      { property: "og:url", content: PAGE_URL },
       { property: "og:locale", content: "en_IN" },
       { name: "robots", content: "index,follow" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: PAGE_TITLE },
+      {
+        name: "twitter:description",
+        content:
+          "Custom, fast, mobile-friendly and SEO-ready business websites built to generate more leads and sales. Get your free website consultation.",
+      },
     ],
-    links: [{ rel: "canonical", href: "https://thedigitalaura.com/" }],
+    links: [{ rel: "canonical", href: PAGE_URL }],
   }),
   component: Index,
 });
@@ -141,11 +121,11 @@ function LocalBusinessSchema() {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     name: "Digital Aura",
-    description:
-      "Search engine optimization company in Ahmedabad specializing in Technical SEO, Local SEO, On-Page SEO, AI SEO (AIO) and Generative Engine Optimization (GEO).",
+    description: PAGE_DESCRIPTION,
     image: digitalAuraLogo,
     telephone: "+91-81412-00284",
     email: "info@thedigitalaura.com",
+    url: PAGE_URL,
     address: {
       "@type": "PostalAddress",
       streetAddress: "713, Shilp Arcade, Sardar Patel Ring Rd, Hanspura",
@@ -156,6 +136,16 @@ function LocalBusinessSchema() {
     },
     areaServed: "Ahmedabad, Gujarat, India",
     priceRange: "$$",
+    serviceType: [
+      "Website Development",
+      "Website Design",
+      "Custom Web Development",
+      "Ecommerce Website Development",
+      "WordPress Development",
+      "Landing Page Development",
+      "Website Redesign",
+      "Website Maintenance",
+    ],
     sameAs: [],
   };
   return (
@@ -219,7 +209,7 @@ function Logo({
 
 function PrimaryCTA({
   children,
-  href = "#audit",
+  href = "#quote",
   className = "",
 }: {
   children: React.ReactNode;
@@ -239,7 +229,7 @@ function PrimaryCTA({
 
 function SecondaryCTA({
   children,
-  href = "#contact",
+  href = "#results",
   className = "",
 }: {
   children: React.ReactNode;
@@ -288,7 +278,7 @@ function SectionHeading({
 /* ---------------- Header ---------------- */
 
 const NAV_LINKS = [
-  { href: "#framework", label: "Framework" },
+  { href: "#framework", label: "What We Build" },
   { href: "#results", label: "Results" },
   { href: "#industries", label: "Industries" },
   { href: "#compare", label: "Why Us" },
@@ -334,9 +324,9 @@ function Header() {
           >
             <Phone className="h-4 w-4" /> +91 81412 00284
           </a>
-          <PrimaryCTA href="#audit" className="!px-4 !py-2.5 !text-sm">
-            <span className="hidden sm:inline">Get My Free SEO Audit</span>
-            <span className="sm:hidden">Free Audit</span>
+          <PrimaryCTA href="#quote" className="!px-4 !py-2.5 !text-sm">
+            <span className="hidden sm:inline">Request My Website Proposal</span>
+            <span className="sm:hidden">Get Started</span>
           </PrimaryCTA>
 
           <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
@@ -371,8 +361,8 @@ function Header() {
                   <Phone className="h-4 w-4 text-brand-orange" /> +91 81412 00284
                 </a>
                 <SheetClose asChild>
-                  <PrimaryCTA href="#audit" className="w-full">
-                    Get My Free SEO Audit
+                  <PrimaryCTA href="#quote" className="w-full">
+                    Request My Website Proposal
                   </PrimaryCTA>
                 </SheetClose>
               </div>
@@ -385,6 +375,8 @@ function Header() {
 }
 
 /* ---------------- Hero + Form ---------------- */
+
+const projectTypes = ["New Website", "Website Redesign", "Ecommerce Website", "Landing Page", "Not Sure Yet"];
 
 function LeadForm() {
   const [loading, setLoading] = useState(false);
@@ -402,15 +394,15 @@ function LeadForm() {
           email: fd.get("email"),
           phone: fd.get("phone"),
           company: fd.get("business"),
-          message: fd.get("website") || "",
-          project: "SEO Services",
-          source: "seo-services-ahmedabad",
+          message: [fd.get("website"), fd.get("project")].filter(Boolean).join(" — "),
+          project: "Website Development",
+          source: "website-development-services-ahmedabad",
         }),
       });
       if (!res.ok) throw new Error("Server error");
       (e.target as HTMLFormElement).reset();
-      toast.success("Audit request received!", {
-        description: "Our senior SEO consultant will reach out within 1 business hour.",
+      toast.success("Request received!", {
+        description: "Our website strategist will reach out within 1 business day.",
       });
     } catch {
       toast.error("Something went wrong. Please try again.");
@@ -424,54 +416,42 @@ function LeadForm() {
 
   const labelCls = "mb-1.5 block text-xs font-bold uppercase tracking-wide text-ink-muted";
 
-  const auditIncludes = [
-    "SEO Audit",
-    "Technical SEO Review",
-    "Keyword Gap Analysis",
-    "Competitor Analysis",
-    "Google Search Console Review",
-    "Google Analytics Review",
-    "Growth Roadmap",
+  const proposalIncludes = [
+    "Website Audit (if you have one)",
+    "Design & UX Recommendations",
+    "Tech Stack Recommendation",
+    "Timeline & Fixed Pricing",
+    "SEO-Readiness Checklist",
+    "Conversion Strategy",
   ];
 
   return (
     <div>
       <form
-        id="audit"
+        id="quote"
         onSubmit={onSubmit}
         className="da-shadow-card rounded-3xl border border-brand-navy/10 bg-white p-6 md:p-7"
       >
         <div className="mb-5">
           <div className="inline-flex items-center gap-2 rounded-full bg-brand-orange-soft px-3 py-1 text-xs font-bold uppercase tracking-wider text-brand-orange">
-            <Zap className="h-3.5 w-3.5" /> Free · 48-hour delivery
+            <Zap className="h-3.5 w-3.5" /> Free · No obligation
           </div>
           <h3 className="mt-3 text-2xl font-extrabold leading-tight md:text-[28px]">
-            Get My Free SEO Audit
+            Request My Website Proposal
           </h3>
           <p className="mt-1.5 text-sm text-ink-muted">
-            Reviewed personally by a senior SEO expert in Ahmedabad — not an automated report.
+            Tell us about your business and we'll come back with a plan, timeline and fixed price.
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
           <div>
             <label htmlFor="name" className={labelCls}>Full name</label>
-            <input required id="name" name="name" placeholder="e.g. Raj Patel" className={inputCls} />
+            <input required id="name" name="name" placeholder="e.g. Priya Sharma" className={inputCls} />
           </div>
           <div>
             <label htmlFor="business" className={labelCls}>Business name</label>
             <input required id="business" name="business" placeholder="Your company" className={inputCls} />
-          </div>
-          <div className="sm:col-span-2">
-            <label htmlFor="website" className={labelCls}>Website URL</label>
-            <input
-              required
-              id="website"
-              name="website"
-              type="text"
-              placeholder="yourwebsite.com"
-              className={inputCls}
-            />
           </div>
           <div>
             <label htmlFor="phone" className={labelCls}>Phone number</label>
@@ -480,6 +460,23 @@ function LeadForm() {
           <div>
             <label htmlFor="email" className={labelCls}>Work email</label>
             <input required id="email" name="email" type="email" placeholder="you@business.com" className={inputCls} />
+          </div>
+          <div>
+            <label htmlFor="website" className={labelCls}>Current website (optional)</label>
+            <input id="website" name="website" type="text" placeholder="yourwebsite.com" className={inputCls} />
+          </div>
+          <div>
+            <label htmlFor="project" className={labelCls}>Project type</label>
+            <select id="project" name="project" defaultValue="" className={inputCls}>
+              <option value="" disabled>
+                Select a project type
+              </option>
+              {projectTypes.map((t) => (
+                <option key={t} value={t}>
+                  {t}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
 
@@ -495,7 +492,7 @@ function LeadForm() {
             </>
           ) : (
             <>
-              Get My Free SEO Audit
+              Request My Website Proposal
               <ArrowRight className="h-5 w-5 shrink-0" />
             </>
           )}
@@ -503,7 +500,7 @@ function LeadForm() {
         <p className="mt-2.5 text-center text-xs text-ink-muted">Takes 45 seconds · No credit card · No spam, ever.</p>
 
         <ul className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-ink-muted">
-          {["No obligation", "100% confidential", "Senior consultant call"].map((t) => (
+          {["No obligation", "100% confidential", "Reply within 1 business day"].map((t) => (
             <li key={t} className="flex items-center gap-1.5">
               <CheckCircle2 className="h-3.5 w-3.5 text-brand-orange" /> {t}
             </li>
@@ -513,14 +510,10 @@ function LeadForm() {
 
       <div className="mt-4 rounded-2xl border border-brand-navy/8 bg-surface-2 p-4">
         <div className="flex items-center justify-between">
-          <div className="text-xs font-bold uppercase tracking-wider text-ink-muted">Your Free Audit Includes</div>
-          <div className="flex items-center gap-1.5 text-sm">
-            <span className="text-ink-muted/70 line-through">Worth ₹15,000</span>
-            <span className="font-extrabold text-brand-orange">FREE</span>
-          </div>
+          <div className="text-xs font-bold uppercase tracking-wider text-ink-muted">Your Proposal Includes</div>
         </div>
         <ul className="mt-2.5 grid grid-cols-1 gap-1.5 text-sm text-ink sm:grid-cols-2">
-          {auditIncludes.map((t) => (
+          {proposalIncludes.map((t) => (
             <li key={t} className="flex items-start gap-1.5">
               <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-brand-orange" /> {t}
             </li>
@@ -539,27 +532,26 @@ function Hero() {
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-brand-navy/10 bg-white/70 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-brand-navy backdrop-blur">
             <span className="h-2 w-2 rounded-full bg-brand-orange" />
-            Best SEO Company in Ahmedabad
+            Website Development Services in Ahmedabad
           </div>
 
           <h1 className="mt-6 text-[38px] font-extrabold leading-[1.12] tracking-tight text-brand-navy sm:text-5xl md:text-[54px] md:leading-[1.1]">
-            No{" "}
+            Custom Websites Built to{" "}
             <span className="relative inline-block">
-              <span className="relative z-10 text-brand-orange">#1</span>
+              <span className="relative z-10 text-brand-orange">Win Business</span>
               <span className="absolute inset-x-0 bottom-1 -z-0 h-3 bg-brand-orange/15" />
-            </span>{" "}
-            SEO Services in Ahmedabad.
+            </span>
+            , Not Just Look Good.
           </h1>
 
           <p className="mt-6 max-w-md text-lg leading-relaxed text-ink-muted">
-            We help Ahmedabad businesses grow qualified organic traffic, generate more leads
-            and stay visible across Google Search, AI Search and local results — with a
-            structured, transparent SEO process built around real business outcomes.
+            We design and develop fast, mobile-friendly, SEO-ready websites for Ahmedabad businesses —
+            built on a proper technical foundation so every visitor has a real chance of becoming a lead.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <PrimaryCTA href="#audit">Get My Free SEO Audit</PrimaryCTA>
-            <SecondaryCTA href="#results">View Case Studies</SecondaryCTA>
+            <PrimaryCTA href="#quote">Request My Website Proposal</PrimaryCTA>
+            <SecondaryCTA href="#results">View Our Work</SecondaryCTA>
           </div>
 
           <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-2.5 text-sm font-semibold text-ink-muted">
@@ -595,10 +587,10 @@ function Hero() {
 
 function Stats() {
   const items = [
-    { k: "10×", v: "Average organic growth in 6 months" },
-    { k: "85%", v: "Of clients rank in AI search results" },
-    { k: "120+", v: "Websites optimized end-to-end" },
-    { k: "48h", v: "Free audit turnaround time" },
+    { k: "100%", v: "Custom-built, no rigid templates" },
+    { k: "3×", v: "Faster load times vs. typical WordPress sites" },
+    { k: "40+", v: "Websites designed and shipped" },
+    { k: "SEO", v: "Ready from day one, not bolted on later" },
   ];
   return (
     <section className="bg-surface-2">
@@ -624,24 +616,24 @@ function Stats() {
 function Problem() {
   const pains = [
     {
-      icon: TrendingUp,
-      t: "Traffic up, leads flat",
-      d: "Rankings improve but the phone doesn't ring. Your SEO isn't tied to revenue intent.",
-    },
-    {
-      icon: Bot,
-      t: "Invisible in AI search",
-      d: "ChatGPT, Gemini and Perplexity recommend competitors — your brand isn't being cited.",
-    },
-    {
       icon: Gauge,
-      t: "Slow, leaky website",
-      d: "Poor Core Web Vitals, weak schema and broken internal linking cap your ceiling.",
+      t: "Slow, clunky website",
+      d: "Visitors bounce before the page even loads — every extra second costs you leads.",
+    },
+    {
+      icon: Smartphone,
+      t: "Broken on mobile",
+      d: "Most of your traffic is on a phone, but the site was only ever tested on desktop.",
+    },
+    {
+      icon: MousePointerClick,
+      t: "Traffic that doesn't convert",
+      d: "Visitors land on the site but there's no clear next step, so they leave without enquiring.",
     },
     {
       icon: ShieldCheck,
-      t: "Burned by past agencies",
-      d: "Vanity reports, generic blogs, zero technical work, no accountability for outcomes.",
+      t: "Outdated, hard to maintain",
+      d: "Old themes, no support, and every small change takes weeks and costs extra.",
     },
   ];
   return (
@@ -650,13 +642,12 @@ function Problem() {
         <div className="mx-auto max-w-[720px] text-center">
           <SectionLabel>The real problem</SectionLabel>
           <h2 className="mt-4 text-[28px] font-extrabold leading-[1.25] tracking-tight text-brand-navy sm:text-[32px] md:text-[36px]">
-            Your Business Isn't Losing Leads.
+            Your Website Isn't Just a Brochure.
             <br />
-            It's Losing <span className="text-brand-orange">Visibility</span>.
+            It's Your Best <span className="text-brand-orange">Salesperson</span>.
           </h2>
           <p className="mx-auto mt-4 max-w-[600px] text-base leading-relaxed text-ink-muted md:text-lg">
-            Buyers don't just search Google anymore — they ask AI Overviews, ChatGPT, Gemini and Perplexity too.
-            If you're invisible there, you don't exist to them.
+            A slow, generic or outdated website quietly turns away the customers your marketing works hard to bring in.
           </p>
         </div>
         <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -678,32 +669,31 @@ function Problem() {
   );
 }
 
-/* ---------------- AI Search shift ---------------- */
+/* ---------------- Why a proper website matters ---------------- */
 
-function AIShift() {
+function WhyItMatters() {
   const points = [
-    "Google AI Overviews now answer many queries directly, often without a click",
-    "Buyers increasingly research on ChatGPT, Gemini & Perplexity before Google",
-    "Citations in AI answers tend to drive higher-intent traffic than blue links",
-    "Entity SEO, structured data & topical authority decide who gets quoted",
+    "A fast, well-built site keeps visitors engaged instead of bouncing to a competitor",
+    "Every business website we build starts SEO-ready — clean code, proper structure, no retrofitting later",
+    "Mobile-first design means the majority of your traffic gets a site that actually works",
+    "Clear calls-to-action and conversion-focused layout turn visits into real enquiries",
   ];
   return (
     <section className="da-gradient-navy relative overflow-hidden text-white">
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-16 md:grid-cols-2 md:gap-14 md:px-8 md:py-24">
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-white">
-            <Bot className="h-3.5 w-3.5" /> The AI search shift
+            <Rocket className="h-3.5 w-3.5" /> Built to perform
           </span>
           <h2 className="mt-4 text-3xl font-extrabold leading-tight text-white sm:text-4xl md:text-5xl">
-            Traditional SEO is dying.{" "}
-            <span className="text-brand-orange">AI Search</span> is the new battlefield.
+            A website that just <span className="text-brand-orange">exists</span> isn't good enough anymore.
           </h2>
           <p className="mt-5 text-lg text-white/75">
-            Our AI-powered SEO services in Ahmedabad optimize you for both — Google's classic SERP and the new
-            generation of generative answer engines. One agency. One strategy. Full-funnel visibility.
+            We build websites engineered for speed, mobile usability and search visibility from the first line
+            of code — so your website works as hard as the rest of your marketing.
           </p>
           <div className="mt-7 flex flex-wrap gap-2">
-            {["Google", "ChatGPT", "Gemini", "Perplexity", "AI Overviews"].map((p) => (
+            {["Speed", "Mobile-First", "SEO-Ready", "Conversion-Focused", "Secure"].map((p) => (
               <span
                 key={p}
                 className="rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-sm font-semibold text-white"
@@ -729,66 +719,66 @@ function AIShift() {
   );
 }
 
-/* ---------------- SEO Challenges We Solve ---------------- */
+/* ---------------- Challenges We Solve ---------------- */
 
-function SEOChallenges() {
+function WebsiteChallenges() {
   const challenges = [
     {
-      icon: TrendingDown,
-      t: "Struggling to Improve Organic Traffic",
-      problem: "Rankings have stalled and organic sessions haven't moved in months.",
-      solution: "Full technical + content gap audit, then a rebuild of pages with real ranking potential.",
+      icon: TrendingUp,
+      t: "Website Not Generating Leads",
+      problem: "Traffic comes in but the site isn't converting visitors into enquiries.",
+      solution: "Conversion-focused layouts, clear CTAs and message-match built into every page.",
     },
     {
-      icon: Users,
-      t: "Getting Traffic but Not Enough Leads",
-      problem: "Visitors land on your site but enquiries don't follow.",
-      solution: "Intent-mapped pages with message-match and CTAs built around your buyer journey.",
+      icon: Gauge,
+      t: "Slow Page Load Times",
+      problem: "Pages take too long to load, so visitors leave before they even see your offer.",
+      solution: "Modern, lightweight tech stack engineered for sub-second load times.",
     },
     {
-      icon: Crosshair,
-      t: "Competitors Ranking Higher",
-      problem: "Rivals own page one for the keywords that actually bring you business.",
-      solution: "We reverse-engineer what's winning for them and out-execute it on content and authority.",
-    },
-    {
-      icon: Settings2,
-      t: "Slow Website or Technical SEO Issues",
-      problem: "A slow, error-prone site is quietly capping every ranking you could win.",
-      solution: "Core Web Vitals, crawl errors, indexing and architecture fixed at the root, not the symptoms.",
+      icon: Smartphone,
+      t: "Poor Mobile Experience",
+      problem: "The site looks broken or hard to use on phones, where most visitors are.",
+      solution: "Mobile-first, responsive design tested across real devices before launch.",
     },
     {
       icon: RefreshCw,
-      t: "Google Algorithm Updates",
-      problem: "An algorithm update wiped out rankings you'd worked years to build.",
-      solution: "We diagnose what was actually penalised and rebuild on update-resistant foundations.",
+      t: "Outdated Design",
+      problem: "An old-looking website quietly makes visitors question your credibility.",
+      solution: "A modern, on-brand design system that builds trust the moment the page loads.",
     },
     {
-      icon: MapPinned,
-      t: "Poor Local Search Visibility",
-      problem: "You don't show up in the Map Pack when nearby customers search.",
-      solution: "Google Business Profile, citations and local content built to win searches near you.",
+      icon: Search,
+      t: "Not Showing Up on Google",
+      problem: "The site was never built with SEO fundamentals in mind.",
+      solution: "Clean semantic code, proper structure and metadata built in from day one.",
     },
     {
-      icon: Link2,
-      t: "Weak Backlink Profile",
-      problem: "Thin or spammy backlinks are holding your domain authority back.",
-      solution: "A credible link profile built through digital PR and relevant, earned placements.",
+      icon: Lock,
+      t: "Security & Maintenance Headaches",
+      problem: "Constant plugin issues, hacks and maintenance costs on an old platform.",
+      solution: "A secure, modern stack with far fewer moving parts to break or exploit.",
     },
     {
-      icon: BarChart3,
-      t: "Low ROI from SEO",
-      problem: "Money's going into SEO but it isn't showing up as revenue.",
-      solution: "Every activity tied to rankings, leads and revenue — reported in numbers, not jargon.",
+      icon: LayoutGrid,
+      t: "Hard to Update Content",
+      problem: "Every small text or image change requires a developer and days of waiting.",
+      solution: "A clean, manageable content structure your team can actually update.",
+    },
+    {
+      icon: ShoppingCart,
+      t: "No Ecommerce Capability",
+      problem: "You need to sell online but your current site can't support it.",
+      solution: "Ecommerce-ready builds with secure payments, catalog and order management.",
     },
   ];
   return (
     <section className="bg-white">
       <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
         <SectionHeading
-          eyebrow="Where most SEO breaks down"
-          title={<>SEO Challenges We <span className="text-brand-orange">Solve</span></>}
-          sub="Common SEO problems businesses face before they start seeing real growth."
+          eyebrow="Where most websites break down"
+          title={<>Website Challenges We <span className="text-brand-orange">Solve</span></>}
+          sub="Common problems businesses face with their website before it starts driving real growth."
         />
         <Reveal className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {challenges.map(({ icon: Icon, t, problem, solution }) => (
@@ -817,23 +807,23 @@ function SEOChallenges() {
 
 function Framework() {
   const items = [
-    { icon: FileCode2, t: "Technical SEO", d: "Crawlability, indexability, redirects, log-file audits & architecture fixes that unlock growth." },
-    { icon: Search, t: "On-Page SEO", d: "Intent-mapped pages, entity-rich content & internal linking that compounds rankings." },
-    { icon: Bot, t: "AI SEO (AIO)", d: "Get cited inside ChatGPT, Gemini, Perplexity & Google AI Overviews — not just ranked." },
-    { icon: Sparkles, t: "Generative Engine Optimization (GEO)", d: "AEO SEO services that structure your brand to win answer-engine real estate across LLMs." },
-    { icon: Layers, t: "Content Strategy", d: "Topical clusters & priority pages built around buying intent, not blog volume." },
-    { icon: Database, t: "Schema & Entity SEO", d: "Rich structured data, Knowledge Graph alignment & entity authority signals." },
-    { icon: Gauge, t: "Core Web Vitals", d: "LCP, INP, CLS engineered to green — faster pages, better rankings, more conversions." },
-    { icon: Network, t: "Site Architecture", d: "Information architecture, internal linking & hub-and-spoke models that scale." },
-    { icon: Target, t: "Conversion-Focused SEO", d: "Every page is a sales asset — message match, CRO and lead capture, not just traffic." },
+    { icon: Palette, t: "Custom UI/UX Design", d: "On-brand, conversion-focused design — never a generic templated theme." },
+    { icon: Code2, t: "Custom Development", d: "Hand-built with modern frameworks, not bloated page builders." },
+    { icon: Smartphone, t: "Mobile-First Build", d: "Designed and tested for mobile first, then scaled up to desktop." },
+    { icon: Search, t: "SEO-Ready Foundation", d: "Clean semantic HTML, structured data and metadata built in from day one." },
+    { icon: Gauge, t: "Speed & Core Web Vitals", d: "Engineered for fast load times — good for users and for rankings." },
+    { icon: ShoppingCart, t: "Ecommerce Ready", d: "Secure payments, catalog management and order workflows when you need to sell online." },
+    { icon: Lock, t: "Security Built In", d: "Modern, secure hosting and code practices — far fewer vulnerabilities than legacy CMS setups." },
+    { icon: Server, t: "Reliable Hosting & Support", d: "Deployment, monitoring and ongoing support so the site stays fast and online." },
+    { icon: Target, t: "Conversion-Focused Layout", d: "Every page is built as a sales asset — message match, CRO and lead capture." },
   ];
   return (
     <section id="framework" className="bg-surface-2">
       <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
         <SectionHeading
-          eyebrow="The Digital Aura Framework"
-          title={<>9 pillars. <span className="text-brand-orange">One unfair advantage</span>.</>}
-          sub="A single, integrated system covering technical foundations, content depth, and AI-search dominance — the full scope of search engine optimization, engineered to compound results month after month."
+          eyebrow="What we build"
+          title={<>9 pillars. <span className="text-brand-orange">One website that works</span>.</>}
+          sub="A single, integrated system covering design, engineering and growth-readiness — the full scope of modern website development, built to compound results over time."
         />
         <Reveal className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map(({ icon: Icon, t, d }) => (
@@ -859,18 +849,18 @@ function Framework() {
 
 function Process() {
   const steps = [
-    { n: "01", t: "Deep audit", d: "Technical, on-page, content, schema & AI-visibility audit on your domain and top competitors." },
-    { n: "02", t: "Strategy & roadmap", d: "A 90-day priority roadmap mapped to your revenue pages, intent gaps & quick wins." },
-    { n: "03", t: "Execution sprints", d: "Bi-weekly sprints: technical fixes, on-page optimization, content production, schema, GEO." },
-    { n: "04", t: "Compound & scale", d: "Monthly reporting on rankings, AI citations, traffic, leads — and the next growth lever." },
+    { n: "01", t: "Discovery & strategy", d: "We learn your business, your buyers and what the website actually needs to achieve." },
+    { n: "02", t: "Design", d: "Wireframes and on-brand visual design, reviewed with you before a single line of code." },
+    { n: "03", t: "Development", d: "Custom-built, mobile-first, SEO-ready pages — tested across devices and browsers." },
+    { n: "04", t: "Launch & support", d: "Go-live, then ongoing monitoring, updates and support to keep the site performing." },
   ];
   return (
     <section className="bg-white">
       <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
         <SectionHeading
           eyebrow="Our process"
-          title="How we engineer your SEO growth"
-          sub="A transparent, accountable system — so you always know what's being done, what's being moved, and why."
+          title="How we build your website"
+          sub="A transparent, structured process — so you always know what's happening and when you'll launch."
         />
         <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => (
@@ -887,51 +877,6 @@ function Process() {
             </div>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- SEO Tools We Use ---------------- */
-
-function SEOToolsWeUse() {
-  const tools = [
-    { name: "Semrush", logo: semrushLogo, use: "Competitive keyword & market research" },
-    { name: "Ahrefs", logo: ahrefsLogo, use: "Backlink & content gap analysis" },
-    { name: "Screaming Frog", logo: screamingFrogLogo, use: "Technical crawl audits" },
-    { name: "Surfer SEO", logo: surferSeoLogo, use: "On-page content optimisation" },
-    { name: "Local Falcon", logo: localFalconLogo, use: "Local pack & Map rank tracking" },
-    { name: "DataForSEO", logo: dataForSeoLogo, use: "Large-scale SERP & rank data" },
-    { name: "Google Search Console", logo: googleSearchConsoleToolLogo, use: "Indexing & search performance" },
-    { name: "Google Analytics", logo: googleAnalyticsToolLogo, use: "Traffic & conversion data" },
-    { name: "ChatGPT", logo: chatgptLogo, use: "AI-assisted research & workflows" },
-    { name: "Claude", logo: claudeLogo, use: "AI-assisted research & workflows" },
-    { name: "Gemini", logo: geminiLogo, use: "AI search visibility monitoring" },
-  ];
-  return (
-    <section className="bg-surface-2">
-      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
-        <SectionHeading
-          eyebrow="Our stack"
-          title={<>Professional SEO <span className="text-brand-orange">Tools</span> We Use</>}
-          sub="From enterprise SEO services in Ahmedabad to AI-assisted research, Digital Aura runs every account on the same stack used by serious in-house SEO teams — combining enterprise platforms with AI-assisted workflows for faster, sharper decisions. The tools inform the strategy; our consultants make the call."
-        />
-        <Reveal className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {tools.map((tool) => (
-            <div
-              key={tool.name}
-              className="da-shadow-card da-card-hover flex h-full flex-col items-center gap-3 rounded-2xl border border-brand-navy/12 bg-white p-6 text-center"
-            >
-              <div className="grid h-28 w-full place-items-center rounded-xl bg-white">
-                <img src={tool.logo} alt={`${tool.name} logo`} className="h-24 w-auto max-w-[160px] object-contain" />
-              </div>
-              <div>
-                <div className="text-sm font-bold text-brand-navy">{tool.name}</div>
-                <div className="mt-1 text-xs leading-snug text-ink-muted">{tool.use}</div>
-              </div>
-            </div>
-          ))}
-        </Reveal>
       </div>
     </section>
   );
@@ -959,12 +904,12 @@ function Results() {
       category: "Healthcare · IVF Clinic",
       icon: Baby,
       growth: "+76.7%",
-      growthLabel: "Organic traffic",
+      growthLabel: "Organic traffic after rebuild",
       timeline: "6 Months",
-      title: "IVF Hospital — Organic Growth",
+      title: "IVF Hospital — Website Rebuild",
       description:
-        "Targeted technical SEO and content authority building drove a 76.7% organic traffic increase in six months, generating 3× more appointment leads.",
-      tags: ["Technical SEO", "Content Strategy", "Local SEO"],
+        "A conversion-focused, SEO-ready website rebuild drove a 76.7% organic traffic increase in six months, generating 3× more appointment leads.",
+      tags: ["Web Design", "SEO-Ready Build", "Local SEO"],
       graph: [22, 30, 28, 48, 65, 88],
     },
     {
@@ -975,8 +920,8 @@ function Results() {
       timeline: "Ongoing Engagement",
       title: "Eye Hospital — Full Funnel Growth",
       description:
-        "An integrated Google Ads, Meta Ads and conversion-optimized website drove 120% traffic growth and doubled OPD bookings.",
-      tags: ["Google Ads", "Meta Ads", "Web Design"],
+        "A new conversion-optimized website paired with Google Ads and Meta Ads drove 120% traffic growth and doubled OPD bookings.",
+      tags: ["Web Design", "Google Ads", "Meta Ads"],
       graph: [18, 26, 40, 55, 70, 92],
     },
     {
@@ -985,10 +930,10 @@ function Results() {
       growth: "+174.5%",
       growthLabel: "Local traffic surge",
       timeline: "Ongoing Engagement",
-      title: "Home Appliance Repair — Local Dominance",
+      title: "Home Appliance Repair — New Website + Landing Pages",
       description:
-        "Local SEO, Meta Ads and conversion-optimized landing pages generated a 174.5% traffic surge and 200% more service bookings.",
-      tags: ["Local SEO", "Meta Ads", "Landing Pages"],
+        "A fast, mobile-first website and dedicated landing pages generated a 174.5% traffic surge and 200% more service bookings.",
+      tags: ["Landing Pages", "Local SEO", "Meta Ads"],
       graph: [15, 24, 38, 60, 76, 96],
     },
   ];
@@ -996,9 +941,9 @@ function Results() {
     <section id="results" className="bg-surface-2">
       <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
         <SectionHeading
-          eyebrow="Case studies"
-          title={<>Real businesses. <span className="text-brand-orange">Real revenue</span>.</>}
-          sub="A glimpse into the kind of compounding outcomes our clients see when SEO is treated as engineering, not guesswork."
+          eyebrow="Our work"
+          title={<>Real businesses. <span className="text-brand-orange">Real results</span>.</>}
+          sub="A glimpse into the kind of outcomes our clients see when a website is engineered, not just designed."
         />
         <div className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-3">
           {cases.map((c) => (
@@ -1053,86 +998,6 @@ function Results() {
   );
 }
 
-/* ---------------- GSC Performance Snapshots ---------------- */
-
-function GSCSnapshots() {
-  const slides = [gscSlideBfi, gscSlideKrisha, gscSlideTgp];
-  const [api, setApi] = useState<CarouselApi>();
-  const [selected, setSelected] = useState(0);
-  const autoplay = useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true }),
-  );
-
-  useEffect(() => {
-    if (!api) return;
-    setSelected(api.selectedScrollSnap());
-    const onSelect = () => setSelected(api.selectedScrollSnap());
-    api.on("select", onSelect);
-    return () => {
-      api.off("select", onSelect);
-    };
-  }, [api]);
-
-  return (
-    <section className="bg-surface-2">
-      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
-        <SectionHeading
-          eyebrow="Proof, not promises"
-          title="Verified Organic Growth Snapshots"
-          sub="Real Google Search Console performance from active SEO campaigns."
-        />
-        <div className="mx-auto mt-12 max-w-[1100px]">
-          <Carousel
-            opts={{ align: "center", loop: true }}
-            plugins={[autoplay.current]}
-            setApi={setApi}
-            className="w-full"
-          >
-            <CarouselContent className="ml-0">
-              {slides.map((src, i) => (
-                <CarouselItem key={i} className="basis-full pl-0">
-                  <div
-                    className={cn(
-                      "da-shadow-card mx-auto overflow-hidden rounded-[18px] border border-brand-navy/10 bg-white transition-all duration-700 ease-out",
-                      selected === i ? "scale-100 opacity-100" : "scale-[0.98] opacity-60",
-                    )}
-                  >
-                    <img
-                      src={src}
-                      alt={`Google Search Console performance snapshot ${i + 1}`}
-                      loading={i === 0 ? "eager" : "lazy"}
-                      decoding="async"
-                      width={800}
-                      height={335}
-                      className="h-auto w-full object-contain"
-                    />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="left-2 md:-left-14" />
-            <CarouselNext className="right-2 md:-right-14" />
-          </Carousel>
-
-          <div className="mt-8 flex items-center justify-center gap-2">
-            {slides.map((_, i) => (
-              <button
-                key={i}
-                aria-label={`Go to slide ${i + 1}`}
-                onClick={() => api?.scrollTo(i)}
-                className={cn(
-                  "h-2.5 rounded-full transition-all duration-300",
-                  selected === i ? "w-7 bg-brand-orange" : "w-2.5 bg-brand-navy/20",
-                )}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ---------------- Client Logo Wall ---------------- */
 
 function ClientLogoWall() {
@@ -1161,7 +1026,7 @@ function ClientLogoWall() {
         <SectionHeading
           eyebrow="Our clients"
           title="Trusted by Businesses We've Helped Grow"
-          sub="From healthcare and education to eCommerce and local businesses, we're proud to work with ambitious brands across multiple industries."
+          sub="From healthcare and education to eCommerce and local businesses, we're proud to build websites for ambitious brands across multiple industries."
         />
 
         <div
@@ -1205,7 +1070,6 @@ function ClientLogoWall() {
 
 function Testimonials() {
   // Verified Google reviews from thedigitalaura.com/testimonials.
-  // A 4th review (Navneet Singh) is pending the verified quote — add it here once supplied.
   const items = [
     {
       q: "Digital Aura's team designed a professional website and executed a highly effective Meta Ads campaign that brought us real, measurable results.",
@@ -1310,14 +1174,14 @@ function RatedOnPlatforms() {
 
 function WhyChooseUs() {
   const items = [
-    { icon: FileBarChart, t: "Transparent Reporting", d: "No vanity dashboards — you see exactly what's been done and what it moved." },
-    { icon: Users, t: "Dedicated SEO Experts", d: "A senior consultant on your account, not a rotating junior team." },
-    { icon: Bot, t: "AI-Assisted SEO", d: "Enterprise tools plus AI-assisted research speed up decisions without replacing judgement." },
-    { icon: FileCode2, t: "Technical SEO First", d: "We fix the foundation before content and links — rankings hold longer that way." },
-    { icon: MapPinned, t: "Local SEO Expertise", d: "Deep experience winning the Map Pack and local search visibility in Ahmedabad." },
-    { icon: BarChart3, t: "Data-Driven Decisions", d: "Every recommendation is backed by data, not opinion or guesswork." },
-    { icon: Briefcase, t: "Business-Focused SEO", d: "We optimise for enquiries and revenue, not just traffic and rankings." },
-    { icon: TrendingUp, t: "Monthly Growth Strategy", d: "A living roadmap that adapts every month as your market and competitors move." },
+    { icon: Palette, t: "Custom Design, Not Templates", d: "Every website is designed around your brand, not a reused theme." },
+    { icon: Code2, t: "Modern Development Stack", d: "Built on modern frameworks for speed, security and reliability." },
+    { icon: Search, t: "SEO-Ready From Day One", d: "Clean code and structure means the site is ready to rank the moment it launches." },
+    { icon: Smartphone, t: "Mobile-First By Default", d: "Designed and tested for mobile first, then scaled up — not the other way around." },
+    { icon: Target, t: "Conversion-Focused", d: "We optimise for enquiries and sales, not just how the site looks." },
+    { icon: Server, t: "Reliable Support", d: "Ongoing monitoring, updates and support after launch — not a one-time handoff." },
+    { icon: Briefcase, t: "Business-Focused Process", d: "A transparent process with fixed pricing and clear timelines, start to finish." },
+    { icon: TrendingUp, t: "Built to Scale", d: "Architecture that grows with your business instead of needing a rebuild in a year." },
   ];
   return (
     <section className="bg-white">
@@ -1325,47 +1189,7 @@ function WhyChooseUs() {
         <SectionHeading
           eyebrow="Why Digital Aura"
           title={<>Why Businesses Choose <span className="text-brand-orange">Digital Aura</span></>}
-          sub="Real reasons businesses across Ahmedabad call us the leading SEO company in Ahmedabad."
-        />
-        <Reveal className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {items.map(({ icon: Icon, t, d }) => (
-            <div
-              key={t}
-              className="da-shadow-card da-card-hover flex h-full flex-col rounded-2xl border border-brand-navy/12 bg-white p-7"
-            >
-              <div className="grid h-11 w-11 place-items-center rounded-xl bg-brand-orange-soft text-brand-orange">
-                <Icon className="h-5 w-5" />
-              </div>
-              <h3 className="mt-4 text-base font-bold text-brand-navy">{t}</h3>
-              <p className="mt-1.5 text-sm text-ink-muted">{d}</p>
-            </div>
-          ))}
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- Google Analytics & Reporting ---------------- */
-
-function GAReporting() {
-  const items = [
-    { icon: BarChart3, t: "Google Analytics", d: "Full visibility into who's visiting, where they're from and what they do next." },
-    { icon: Search, t: "Google Search Console", d: "Indexing, impressions and click data straight from Google, reviewed monthly." },
-    { icon: Target, t: "Keyword Tracking", d: "Rank tracking on the keywords tied to your revenue, not vanity terms." },
-    { icon: FileBarChart, t: "Monthly Reports", d: "A clear, jargon-free report — what we did, what moved, what's next." },
-    { icon: TrendingUp, t: "Traffic Analysis", d: "Channel-by-channel breakdown so you know where growth is actually coming from." },
-    { icon: MousePointerClick, t: "Conversion Tracking", d: "Form fills, calls and bookings tracked back to the exact page and source." },
-    { icon: Users, t: "Lead Tracking", d: "Every enquiry tied back to the keyword and campaign that generated it." },
-    { icon: Lightbulb, t: "Business Insights", d: "Reporting translated into decisions — what to scale, fix or stop." },
-  ];
-  return (
-    <section className="bg-surface-2">
-      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
-        <SectionHeading
-          eyebrow="Reporting & insights"
-          title={<>You'll Always Know What's <span className="text-brand-orange">Working</span></>}
-          sub="Every account gets enterprise-grade tracking and a reporting cadence built for decision-makers — not vanity metrics."
+          sub="Real reasons businesses across Ahmedabad choose Digital Aura for website development."
         />
         <Reveal className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {items.map(({ icon: Icon, t, d }) => (
@@ -1402,7 +1226,7 @@ function CertifiedTrusted() {
         <SectionHeading
           eyebrow="Trust & certifications"
           title="Certified Platforms & Trusted Ecosystem"
-          sub="The platforms and certifications behind every account we run."
+          sub="The platforms and certifications behind every website we build."
         />
         <Reveal className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
           {items.map(({ logo, name }) => (
@@ -1426,21 +1250,21 @@ function CertifiedTrusted() {
 
 function Industries() {
   const list = [
-    { icon: HeartPulse, t: "Healthcare", d: "Patients can't find you when they search by symptom and location — local SEO and medical schema fix that." },
-    { icon: UtensilsCrossed, t: "Restaurants", d: "Diners search ‘near me’ and never see you on the map — Map Pack optimisation turns that into table bookings." },
-    { icon: Building2, t: "Real Estate", d: "Listings get buried under bigger portals — location-based SEO puts them in front of buyers ready to act." },
-    { icon: ShoppingCart, t: "eCommerce", d: "Category pages aren't converting browsers into buyers — purchase-intent SEO fixes that, page by page." },
-    { icon: GraduationCap, t: "Education", d: "Prospective students can't find your courses in the noise — admission-intent SEO gets you in front of them." },
-    { icon: Wrench, t: "Home Services", d: "From repairs to pest control, ‘near me’ and emergency searches go to competitors first — local SEO and landing pages turn them into booked jobs." },
-    { icon: Dumbbell, t: "Fitness", d: "Empty classes mean you're not showing up for the right local searches — local SEO fills classes and converts trials." },
-    { icon: Plane, t: "Travel", d: "Travellers research extensively before booking — destination and itinerary content engineered to rank captures them early." },
+    { icon: HeartPulse, t: "Healthcare", d: "Patient-friendly websites with appointment booking, service pages and local SEO built in." },
+    { icon: UtensilsCrossed, t: "Restaurants", d: "Menu-forward sites with online ordering and reservation flows that turn browsers into diners." },
+    { icon: Building2, t: "Real Estate", d: "Listing-rich websites with strong visuals and lead capture built for serious buyers." },
+    { icon: ShoppingCart, t: "eCommerce", d: "Conversion-optimised storefronts with secure checkout and fast product pages." },
+    { icon: GraduationCap, t: "Education", d: "Course and admissions-focused websites that make enquiring effortless." },
+    { icon: Wrench, t: "Home Services", d: "Fast, mobile-first sites with click-to-call and quote-request flows built in." },
+    { icon: Dumbbell, t: "Fitness", d: "Class schedules, trial sign-ups and membership pages designed to fill your calendar." },
+    { icon: Plane, t: "Travel", d: "Destination and itinerary-rich websites built to inform and convert researching travellers." },
   ];
   return (
     <section id="industries" className="bg-surface-2">
       <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
         <SectionHeading
           eyebrow="Who we serve"
-          title={<>Industries we move the <span className="text-brand-orange">needle</span> for</>}
+          title={<>Industries we build <span className="text-brand-orange">websites</span> for</>}
         />
         <Reveal className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {list.map(({ icon: Icon, t, d }) => (
@@ -1465,22 +1289,22 @@ function Industries() {
 
 function Compare() {
   const rows = [
-    ["AI-Search & GEO optimization", true, false],
-    ["Technical SEO + Core Web Vitals", true, "Surface-level"],
-    ["Entity SEO, schema & Knowledge Graph", true, false],
-    ["Conversion-focused page design", true, false],
-    ["Transparent monthly reporting", true, "Vanity dashboards"],
-    ["Senior consultant on every account", true, false],
-    ["Off-page link spam", false, true],
-    ["Generic blog factory", false, true],
+    ["Custom design, not a reused theme", true, false],
+    ["SEO-ready code from day one", true, "Added later, if at all"],
+    ["Mobile-first, tested across devices", true, "Surface-level"],
+    ["Conversion-focused page structure", true, false],
+    ["Transparent, fixed-price scope", true, "Vague, hourly billing"],
+    ["Ongoing support after launch", true, false],
+    ["Cheap template with hidden limits", false, true],
+    ["Slow, bloated page builders", false, true],
   ];
   return (
     <section id="compare" className="bg-white">
       <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
         <SectionHeading
           eyebrow="The difference"
-          title={<>Digital Aura vs. a <span className="text-brand-orange">typical SEO agency</span></>}
-          sub="See why businesses comparing SEO companies in Ahmedabad choose Digital Aura."
+          title={<>Digital Aura vs. a <span className="text-brand-orange">typical web agency</span></>}
+          sub="See why businesses comparing website development companies in Ahmedabad choose Digital Aura."
         />
         <div className="da-shadow-card mt-12 overflow-hidden rounded-3xl border border-brand-navy/12 bg-white">
           <div className="grid grid-cols-[1.4fr_1fr_1fr] bg-surface-2 px-4 py-4 text-xs font-bold uppercase tracking-wider text-ink-muted md:px-8 md:text-sm">
@@ -1535,52 +1359,44 @@ function Compare() {
 function FAQ() {
   const faqs = [
     {
-      q: "How much does SEO cost in Ahmedabad?",
-      a: "SEO pricing depends on your competition, current site health and how fast you want to move. After the free audit, we give you a fixed monthly scope and price — no hidden add-ons, no surprise invoices mid-engagement.",
+      q: "How much does website development cost in Ahmedabad?",
+      a: "Pricing depends on scope — a brochure site, an ecommerce store and a large multi-page site all cost differently. After understanding your goals, we give you a fixed price and timeline — no hidden add-ons.",
     },
     {
-      q: "How long before SEO shows results?",
-      a: "Most clients see early movement — impressions, technical fixes, AI citations — within 30–45 days. Meaningful ranking and lead growth typically compounds from month 3 onward. SEO is engineering, not magic — we move you forward every sprint.",
+      q: "How long does it take to build a website?",
+      a: "A standard business website typically takes 3-5 weeks from kickoff to launch. Ecommerce or larger custom builds can take longer depending on scope — we confirm an exact timeline before starting.",
     },
     {
-      q: "Can SEO actually generate qualified leads, not just traffic?",
-      a: "Yes, when pages are built around buying intent instead of vanity keywords. We map content to where a buyer actually is in their decision and put a clear next step on every page — that's what turns rankings into enquiries.",
+      q: "Will my new website be SEO-friendly?",
+      a: "Yes. Every website we build starts with clean, semantic code, proper heading structure, fast load times and metadata in place — the technical foundation SEO needs, built in from day one, not retrofitted later.",
     },
     {
-      q: "Do you provide Technical SEO services?",
-      a: "Yes — Technical SEO is the first thing we fix, not an add-on. Crawlability, indexing, site speed, Core Web Vitals, schema and architecture are addressed before content or links, because they cap everything else.",
+      q: "Do you build on WordPress or custom code?",
+      a: "Both, depending on your needs. We build custom React-based websites for speed and flexibility, and WordPress sites when a client needs a specific content workflow — we recommend the right platform for your case.",
     },
     {
-      q: "Do you optimise our Google Business Profile?",
-      a: "Yes. Categories, services, posts, photos, Q&A and review strategy are managed as part of Local SEO, alongside citations and Map Pack optimisation for Ahmedabad-based searches.",
+      q: "Can you redesign my existing website instead of building new?",
+      a: "Yes. We regularly redesign outdated sites — improving design, speed, mobile experience and SEO foundations while keeping what's already working for you.",
     },
     {
-      q: "Can you recover rankings after a Google algorithm update?",
-      a: "Yes. We diagnose what the update actually penalised — thin content, technical debt, weak E-E-A-T signals — and rebuild on foundations designed to hold up against future updates, not just this one.",
+      q: "Do you build ecommerce websites?",
+      a: "Yes — secure payments, product catalogs, inventory and order management, built to convert browsers into buyers.",
     },
     {
-      q: "Do you work with local businesses, or only large companies?",
-      a: "Both. We work with local businesses across Ahmedabad as well as larger, multi-location and enterprise accounts — the depth of work scales with the account, the process doesn't change.",
+      q: "Will I be able to update the website myself after launch?",
+      a: "Yes. We build with a manageable content structure so your team can update text, images and basic content without needing a developer for every small change.",
     },
     {
-      q: "Do you guarantee #1 rankings?",
-      a: "No serious SEO company does. What we guarantee is process: technical excellence, on-page depth, schema, AI-search optimization, transparent reporting and a senior consultant on every call.",
+      q: "Do you offer ongoing support after the website launches?",
+      a: "Yes. We offer ongoing maintenance, monitoring and support plans so your website stays fast, secure and up to date after launch.",
     },
     {
-      q: "What makes Digital Aura the best SEO company in Ahmedabad?",
-      a: "Most SEO companies in Ahmedabad still sell SEO services built for 2015-era Google. We're built for the AI-search era — Technical SEO, On-Page SEO, AI SEO (AIO) and Generative Engine Optimization (GEO), getting you cited inside ChatGPT, Gemini, Perplexity and Google AI Overviews, not just ranked on page one.",
+      q: "What makes Digital Aura different from other website development companies in Ahmedabad?",
+      a: "We don't just design — we engineer. Every website is custom-built, mobile-first, SEO-ready and conversion-focused from day one, with a transparent process and fixed pricing, not an open-ended retainer.",
     },
     {
-      q: "Do you do off-page SEO or link building?",
-      a: "We focus on Technical SEO, On-Page, Local SEO, AI SEO and GEO — the levers with the highest ROI right now — and build links through digital PR and earned placements only. We don't sell link packages or PBN-style services.",
-    },
-    {
-      q: "What's included in the free SEO audit?",
-      a: "Technical SEO, on-page, schema, Core Web Vitals, competitor visibility, keyword gap, Google Search Console and Google Analytics review, and an AI-search visibility report covering ChatGPT, Gemini and Perplexity — delivered within 48 hours, plus a 30-minute walkthrough.",
-    },
-    {
-      q: "Which industries do you work with?",
-      a: "We've scaled brands in manufacturing, healthcare, education, professional services, SaaS and local SMBs across Ahmedabad and India.",
+      q: "Can you also help with marketing once the website is live?",
+      a: "Yes. Digital Aura also offers SEO, Google Ads and Meta Ads — so the same team that builds your website can help drive traffic and leads to it.",
     },
   ];
   return (
@@ -1623,15 +1439,14 @@ function FinalCTA() {
             <div>
               <SectionLabel>Ready when you are</SectionLabel>
               <h2 className="mt-4 text-3xl font-extrabold leading-tight text-white sm:text-4xl md:text-5xl">
-                Find out exactly why your SEO isn't generating leads — <span className="text-brand-orange">in 48 hours</span>.
+                Let's build a website that works for your business — <span className="text-brand-orange">not against it</span>.
               </h2>
               <p className="mt-5 max-w-xl text-lg text-white/80">
-                Free, no-obligation audit covering Technical SEO, On-Page SEO, Schema, Core Web Vitals, AI Search
-                visibility and GEO readiness. Delivered with a 30-minute strategy walkthrough by a senior consultant —
-                not a junior account manager reading a template.
+                Free, no-obligation proposal covering design direction, tech recommendation, timeline and fixed
+                pricing. Delivered after a short call with a senior website strategist.
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <PrimaryCTA href="#audit">Get My Free SEO Audit</PrimaryCTA>
+                <PrimaryCTA href="#quote">Request My Website Proposal</PrimaryCTA>
                 <a
                   href="https://wa.me/918141200284"
                   target="_blank"
@@ -1663,11 +1478,11 @@ function Footer() {
           <div>
             <div className="text-lg font-bold text-brand-navy">Still deciding?</div>
             <p className="mt-0.5 text-sm text-ink-muted">
-              Get a free, no-obligation SEO + AI Search audit — delivered within 48 hours.
+              Get a free, no-obligation website proposal — reply within 1 business day.
             </p>
           </div>
-          <PrimaryCTA href="#audit" className="shrink-0">
-            Get My Free SEO Audit
+          <PrimaryCTA href="#quote" className="shrink-0">
+            Request My Website Proposal
           </PrimaryCTA>
         </div>
       </div>
@@ -1676,9 +1491,8 @@ function Footer() {
         <div className="sm:col-span-2 md:col-span-1">
           <Logo />
           <p className="mt-5 max-w-md text-sm leading-relaxed text-ink-muted">
-            Digital Aura is a search engine optimization company in Ahmedabad — a team of SEO experts engineering
-            visibility across Google and AI search engines through Technical SEO, On-Page SEO, AI SEO (AIO) and
-            Generative Engine Optimization (GEO).
+            Digital Aura is a website development company in Ahmedabad — building fast, mobile-friendly,
+            SEO-ready websites engineered to generate more leads, sales and business growth.
           </p>
         </div>
 
@@ -1693,21 +1507,21 @@ function Footer() {
               </li>
             ))}
             <li>
-              <a href="#audit" className="da-focus-ring rounded-sm font-semibold text-brand-orange transition-colors hover:text-brand-navy">
-                Free SEO Audit
+              <a href="#quote" className="da-focus-ring rounded-sm font-semibold text-brand-orange transition-colors hover:text-brand-navy">
+                Request My Website Proposal
               </a>
             </li>
           </ul>
         </div>
 
         <div>
-          <div className="text-sm font-bold uppercase tracking-wider text-brand-navy">SEO Services</div>
+          <div className="text-sm font-bold uppercase tracking-wider text-brand-navy">Website Services</div>
           <ul className="mt-4 space-y-2.5 text-sm text-ink-muted">
-            <li>Technical SEO Company in Ahmedabad</li>
-            <li>Local SEO Company in Ahmedabad</li>
-            <li>Enterprise SEO Services Ahmedabad</li>
-            <li>AI SEO (AIO) &amp; AEO Services</li>
-            <li>Generative Engine Optimization (GEO)</li>
+            <li>Custom Website Development</li>
+            <li>Ecommerce Website Development</li>
+            <li>WordPress Development</li>
+            <li>Website Redesign</li>
+            <li>Landing Page Development</li>
           </ul>
         </div>
 
@@ -1779,10 +1593,10 @@ function MobileStickyCTA() {
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-brand-navy/10 bg-white/95 px-4 py-3 backdrop-blur md:hidden">
       <a
-        href="#audit"
+        href="#quote"
         className="da-shadow-cta da-focus-ring flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-[15px] font-extrabold text-primary-foreground"
       >
-        Get My Free SEO Audit <ArrowRight className="h-4 w-4 shrink-0" />
+        Request My Website Proposal <ArrowRight className="h-4 w-4 shrink-0" />
       </a>
     </div>
   );
@@ -1800,18 +1614,15 @@ function Index() {
         <Hero />
         <Stats />
         <Problem />
-        <AIShift />
-        <SEOChallenges />
+        <WhyItMatters />
+        <WebsiteChallenges />
         <Framework />
         <Process />
-        <SEOToolsWeUse />
         <Results />
-        <GSCSnapshots />
         <ClientLogoWall />
         <Testimonials />
         <RatedOnPlatforms />
         <WhyChooseUs />
-        <GAReporting />
         <CertifiedTrusted />
         <Industries />
         <Compare />

@@ -73,11 +73,14 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 const ASSET_BASE = "https://thedigitalaura.com";
-const SITE_URL = `${ASSET_BASE}/seo-services-ahmedabad`;
 const SITE_TITLE = "Digital Aura | Best SEO Company in Ahmedabad";
 const SITE_DESCRIPTION =
   "Digital Aura helps Ahmedabad businesses grow qualified organic traffic and generate more leads with technical SEO, local SEO and AI/generative search optimization.";
 
+// NOTE: title/description/og:* here are page-level fallbacks only — every route
+// (index.tsx, seo-services-ahmedabad.tsx, etc.) overrides them with its own values.
+// Do NOT hardcode a page-specific `canonical` or `og:url` here — each route must set
+// its own, otherwise every page on the site inherits this page's URL as its canonical.
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
@@ -90,7 +93,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: SITE_TITLE },
       { property: "og:description", content: SITE_DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: SITE_URL },
       { property: "og:site_name", content: "Digital Aura" },
       { property: "og:image", content: `${ASSET_BASE}/og-image.png` },
       { name: "twitter:card", content: "summary_large_image" },
@@ -103,7 +105,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "canonical", href: SITE_URL },
       { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32.png" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       { rel: "icon", type: "image/png", sizes: "192x192", href: "/icon-192.png" },

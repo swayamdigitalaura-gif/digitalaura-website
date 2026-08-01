@@ -9,9 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WebsiteDevelopmentServicesAhmedabadRouteImport } from './routes/website-development-services-ahmedabad'
 import { Route as SeoServicesAhmedabadRouteImport } from './routes/seo-services-ahmedabad'
 import { Route as IndexRouteImport } from './routes/index'
 
+const WebsiteDevelopmentServicesAhmedabadRoute =
+  WebsiteDevelopmentServicesAhmedabadRouteImport.update({
+    id: '/website-development-services-ahmedabad',
+    path: '/website-development-services-ahmedabad',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const SeoServicesAhmedabadRoute = SeoServicesAhmedabadRouteImport.update({
   id: '/seo-services-ahmedabad',
   path: '/seo-services-ahmedabad',
@@ -26,31 +33,52 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/seo-services-ahmedabad': typeof SeoServicesAhmedabadRoute
+  '/website-development-services-ahmedabad': typeof WebsiteDevelopmentServicesAhmedabadRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/seo-services-ahmedabad': typeof SeoServicesAhmedabadRoute
+  '/website-development-services-ahmedabad': typeof WebsiteDevelopmentServicesAhmedabadRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/seo-services-ahmedabad': typeof SeoServicesAhmedabadRoute
+  '/website-development-services-ahmedabad': typeof WebsiteDevelopmentServicesAhmedabadRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/seo-services-ahmedabad'
+  fullPaths:
+    | '/'
+    | '/seo-services-ahmedabad'
+    | '/website-development-services-ahmedabad'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/seo-services-ahmedabad'
-  id: '__root__' | '/' | '/seo-services-ahmedabad'
+  to:
+    | '/'
+    | '/seo-services-ahmedabad'
+    | '/website-development-services-ahmedabad'
+  id:
+    | '__root__'
+    | '/'
+    | '/seo-services-ahmedabad'
+    | '/website-development-services-ahmedabad'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SeoServicesAhmedabadRoute: typeof SeoServicesAhmedabadRoute
+  WebsiteDevelopmentServicesAhmedabadRoute: typeof WebsiteDevelopmentServicesAhmedabadRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/website-development-services-ahmedabad': {
+      id: '/website-development-services-ahmedabad'
+      path: '/website-development-services-ahmedabad'
+      fullPath: '/website-development-services-ahmedabad'
+      preLoaderRoute: typeof WebsiteDevelopmentServicesAhmedabadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/seo-services-ahmedabad': {
       id: '/seo-services-ahmedabad'
       path: '/seo-services-ahmedabad'
@@ -71,6 +99,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SeoServicesAhmedabadRoute: SeoServicesAhmedabadRoute,
+  WebsiteDevelopmentServicesAhmedabadRoute:
+    WebsiteDevelopmentServicesAhmedabadRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

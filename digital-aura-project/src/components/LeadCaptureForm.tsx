@@ -24,6 +24,8 @@ const inputClass =
 
 const LeadCaptureForm = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [formError, setFormError] = useState("");
   const [captchaOk, setCaptchaOk] = useState(false);
   const [form, setForm] = useState({
     name: "", business: "", email: "", phone: "", website: "", challenge: "",
@@ -32,7 +34,34 @@ const LeadCaptureForm = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
     setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); setSubmitted(true); };
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setFormError("");
+    try {
+      const API = import.meta.env.VITE_API_BASE || "http://localhost:5000";
+      const res = await fetch(`${API}/api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          company: form.business,
+          project: form.challenge,
+          message: form.website ? `Website: ${form.website}` : "",
+          source: "home-strategy-session",
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || "Submission failed");
+      setSubmitted(true);
+    } catch (err: unknown) {
+      setFormError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <section id="contact" className="py-20 px-4 md:px-8 relative overflow-hidden">
@@ -148,8 +177,9 @@ const LeadCaptureForm = () => {
                     </select>
                   </div>
                   <MathCaptcha onVerify={setCaptchaOk} inputClass={inputClass} />
-                  <button type="submit" disabled={!captchaOk} className="btn-orange w-full py-4 text-base gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
-                    Claim My Free Strategy Session <ArrowRight size={18} />
+                  {formError && <p className="text-xs text-red-500 text-center">{formError}</p>}
+                  <button type="submit" disabled={!captchaOk || submitting} className="btn-orange w-full py-4 text-base gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                    {submitting ? "Submitting..." : "Claim My Free Strategy Session"} <ArrowRight size={18} />
                   </button>
                   <p className="text-center text-xs text-[#6B7280] flex items-center justify-center gap-1.5">
                     <Lock size={12} /> Your information is 100% secure and never shared

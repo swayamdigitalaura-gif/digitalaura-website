@@ -10,10 +10,12 @@
  */
 
 const express = require('express');
+const { Op } = require('sequelize');
 const router = express.Router();
 
 const Blog = require('../models/Blog');
 const Page = require('../models/Page');
+const { ContactInquiry } = require('../models');
 
 // ---- Auth middleware — do not remove ----
 function requireSharedSecret(req, res, next) {
@@ -101,6 +103,38 @@ router.post('/page/seo', async (req, res) => {
 
     await page.update(fields);
     res.json({ status: 'ok', id: page.id, updated: Object.keys(fields) });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// ---- ANALYTICS SUMMARY — read-only counts for the SEO Autopilot panel's
+// Analytics tab. Never writes anything; just counts existing rows so the
+// panel can show real content/lead numbers without needing DB access. ----
+router.post('/analytics/summary', async (req, res) => {
+  try {
+    const since30 = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+    const sincePrev30 = new Date(Date.now() - 60 * 24 * 60 * 60 * 1000);
+
+    const [
+      totalBlogsPublished, totalPagesPublished,
+      leadsLast30Days, leadsPrev30Days, leadsAllTime,
+    ] = await Promise.all([
+      Blog.count({ where: { status: 'published' } }),
+      Page.count({ where: { status: 'published' } }),
+      ContactInquiry.count({ where: { createdAt: { [Op.gte]: since30 } } }),
+      ContactInquiry.count({ where: { createdAt: { [Op.gte]: sincePrev30, [Op.lt]: since30 } } }),
+      ContactInquiry.count(),
+    ]);
+
+    res.json({
+      status: 'ok',
+      totalBlogsPublished,
+      totalPagesPublished,
+      leadsLast30Days,
+      leadsPrev30Days,
+      leadsAllTime,
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

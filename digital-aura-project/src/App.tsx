@@ -52,6 +52,7 @@ import TermsAndConditionsPage from "./pages/TermsAndConditionsPage.tsx";
 import CancellationRefundPage from "./pages/CancellationRefundPage.tsx";
 import TestimonialsPage from "./pages/TestimonialsPage.tsx";
 import AwardsPage from "./pages/AwardsPage.tsx";
+import WebsiteDevelopmentServicesPage from "./pages/WebsiteDevelopmentServicesPage.tsx";
 import SEOAuditStrategyPage from "./pages/services/seo/SEOAuditStrategyPage.tsx";
 import OnPageSEOPage from "./pages/services/seo/OnPageSEOPage.tsx";
 import TechnicalSEOPage from "./pages/services/seo/TechnicalSEOPage.tsx";
@@ -135,6 +136,7 @@ const App = () => (
           {/* Testimonials */}
           <Route path="/testimonials" element={<TestimonialsPage />} />
           <Route path="/awards" element={<AwardsPage />} />
+          <Route path="/website-development-services-ahmedabad" element={<WebsiteDevelopmentServicesPage />} />
 
           <Route path="/services/ai-filmmaking" element={<AIFilmmakingPage />} />
 

@@ -646,3 +646,54 @@
   .da-faq-item[open] summary::after { content: "\2212"; }
   .da-faq-item p { margin: 0.75rem 0 0; font-size: 0.92rem; color: #4B5563; }
 }
+
+@layer utilities {
+  /* ── Ported from landing-pages design system (website-development-services-ahmedabad) ── */
+  .da-gradient-hero {
+    background:
+      radial-gradient(60% 80% at 85% 0%, rgba(255,107,43,0.14), transparent 60%),
+      radial-gradient(50% 60% at 0% 100%, rgba(10,22,40,0.10), transparent 60%),
+      linear-gradient(180deg, #ffffff 0%, #fbf7f2 100%);
+  }
+  .da-gradient-navy {
+    background: linear-gradient(135deg, #060D18 0%, #0A1628 60%, #2b1a12 100%);
+  }
+  .da-shadow-card {
+    box-shadow: 0 1px 0 0 rgba(10,22,40,0.06), 0 10px 30px -12px rgba(10,22,40,0.18);
+  }
+  .da-shadow-cta {
+    box-shadow: 0 10px 24px -8px rgba(255,107,43,0.4), 0 2px 0 0 rgba(255,107,43,0.3);
+  }
+  .da-card-hover {
+    transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s cubic-bezier(0.16,1,0.3,1), border-color 0.3s ease;
+  }
+  .da-card-hover:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,107,43,0.4);
+    box-shadow: 0 1px 0 0 rgba(10,22,40,0.08), 0 24px 48px -18px rgba(10,22,40,0.26), 0 0 0 1px rgba(255,107,43,0.14);
+  }
+  .da-focus-ring:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(255,107,43,0.28);
+  }
+  .da-btn-sheen { position: relative; overflow: hidden; isolation: isolate; }
+  .da-btn-sheen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform 0.6s ease;
+  }
+  .da-btn-sheen:hover::after { transform: translateX(120%); }
+  .da-reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
+  }
+  .da-reveal.is-visible { opacity: 1; transform: translateY(0); }
+  @keyframes da-marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .da-marquee-track { animation: da-marquee-scroll 32s linear infinite; }
+  .da-marquee-track[data-paused="true"] { animation-play-state: paused; }
+}

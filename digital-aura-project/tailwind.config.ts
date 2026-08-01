@@ -94,6 +94,17 @@ export default {
         },
         surface: {
           elevated: "hsl(var(--surface-elevated))",
+          2: "#F8FAFF",
+        },
+        brand: {
+          navy: "#0A1628",
+          "navy-deep": "#060D18",
+          orange: "#FF6B2B",
+          "orange-soft": "#FFEDE0",
+        },
+        ink: {
+          DEFAULT: "#0A1628",
+          muted: "#6B7280",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",

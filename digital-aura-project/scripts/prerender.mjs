@@ -23,6 +23,7 @@ const ROUTES = [
   '/ai-solutions',
   '/testimonials',
   '/awards',
+  '/website-development-services-ahmedabad',
   '/mobile-apps',
   '/privacy-policy',
   '/terms-and-conditions',

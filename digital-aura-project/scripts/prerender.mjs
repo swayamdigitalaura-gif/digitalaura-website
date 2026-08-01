@@ -22,6 +22,7 @@ const ROUTES = [
   '/services',
   '/ai-solutions',
   '/testimonials',
+  '/awards',
   '/mobile-apps',
   '/privacy-policy',
   '/terms-and-conditions',

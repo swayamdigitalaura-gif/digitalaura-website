@@ -92,7 +92,7 @@ exports.applyPublic = async (req, res) => {
 
     // Notify HR
     sendMail({
-      to: process.env.HR_EMAIL || 'hr@thedigitalaura.com',
+      to: process.env.HR_EMAIL || NOTIFY_EMAIL,
       subject: `💼 New Application — ${career.title} (${name})`,
       html: `
         <h2 style="color:#7C3AED">New Job Application</h2>

@@ -14,18 +14,29 @@ const INSTAGRAM_EMBED_SKELETON = `<div style="padding:16px;"> <a href="https://w
 
 const InstagramReelEmbed = ({ reelId }: { reelId: string }) => {
   useEffect(() => {
-    const process = () => window.instgrm?.Embeds.process();
-    if (window.instgrm) {
-      process();
-      return;
+    let cancelled = false;
+    let attempts = 0;
+
+    const tryProcess = () => {
+      if (cancelled) return;
+      if (window.instgrm) {
+        window.instgrm.Embeds.process();
+        return;
+      }
+      attempts += 1;
+      if (attempts < 12) setTimeout(tryProcess, 500);
+    };
+
+    if (!document.getElementById("instagram-embed-script")) {
+      const script = document.createElement("script");
+      script.id = "instagram-embed-script";
+      script.src = "https://www.instagram.com/embed.js";
+      script.async = true;
+      document.body.appendChild(script);
     }
-    if (document.getElementById("instagram-embed-script")) return;
-    const script = document.createElement("script");
-    script.id = "instagram-embed-script";
-    script.src = "https://www.instagram.com/embed.js";
-    script.async = true;
-    script.onload = process;
-    document.body.appendChild(script);
+    tryProcess();
+
+    return () => { cancelled = true; };
   }, [reelId]);
 
   const permalink = `https://www.instagram.com/reel/${reelId}/?utm_source=ig_embed&utm_campaign=loading`;
@@ -157,6 +168,7 @@ const TIMELINE = [
 // ---------- Full-width alternating award row ----------
 const AwardRow = ({ a, index }: { a: AwardItem; index: number }) => {
   const reversed = index % 2 === 1;
+  const hasReel = !!a.instagramReelId;
   return (
     <motion.div
       initial={{ opacity: 0, y: 32 }}
@@ -166,12 +178,25 @@ const AwardRow = ({ a, index }: { a: AwardItem; index: number }) => {
       className="py-7 md:py-9 border-b last:border-b-0"
       style={{ borderColor: "#F0F1F4" }}
     >
-      <div className="max-w-6xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-        {/* Image side */}
-        <div className={`flex flex-wrap justify-center gap-5 ${reversed ? "md:order-2" : "md:order-1"}`}>
+      <div
+        className={`max-w-6xl mx-auto px-4 md:px-8 grid gap-8 items-center ${
+          hasReel
+            ? reversed
+              ? "md:grid-cols-[1fr_220px_340px] md:gap-6"
+              : "md:grid-cols-[220px_340px_1fr] md:gap-6"
+            : "md:grid-cols-2 md:gap-12"
+        }`}
+      >
+        {/* Trophy image */}
+        <div className={`flex justify-center ${reversed ? "md:order-2" : "md:order-1"}`}>
           <div
-            className="relative w-full max-w-[340px] rounded-[2rem] flex items-center justify-center"
-            style={{ aspectRatio: "4/5", background: `linear-gradient(155deg, ${a.color}12, ${a.color}03)`, border: `1px solid ${a.color}22` }}
+            className="relative w-full rounded-[2rem] flex items-center justify-center"
+            style={{
+              maxWidth: hasReel ? 220 : 340,
+              aspectRatio: "4/5",
+              background: `linear-gradient(155deg, ${a.color}12, ${a.color}03)`,
+              border: `1px solid ${a.color}22`,
+            }}
           >
             <div className="absolute inset-0 flex items-center justify-center p-6">
               <img
@@ -188,33 +213,35 @@ const AwardRow = ({ a, index }: { a: AwardItem; index: number }) => {
               {a.period}
             </span>
           </div>
-          {a.instagramReelId && (
-            <div className="w-full max-w-[360px] flex justify-center">
-              <InstagramReelEmbed reelId={a.instagramReelId} />
-            </div>
-          )}
         </div>
 
+        {/* Instagram reel — beside the trophy */}
+        {hasReel && (
+          <div className={`flex justify-center ${reversed ? "md:order-3" : "md:order-2"}`}>
+            <InstagramReelEmbed reelId={a.instagramReelId as string} />
+          </div>
+        )}
+
         {/* Text side */}
-        <div className={`${reversed ? "md:order-1 md:text-right" : "md:order-2"}`}>
+        <div className={hasReel ? (reversed ? "md:order-1" : "md:order-3") : reversed ? "md:order-1 md:text-right" : "md:order-2"}>
           <span className="inline-block text-[13px] font-black tracking-widest uppercase mb-3" style={{ color: a.color }}>
             {String(index + 1).padStart(2, "0")} — {a.event}
           </span>
           <h3 className="text-2xl md:text-[34px] font-black text-[#0A1628] leading-[1.1] mb-4">{a.title}</h3>
-          <div className={`flex items-center gap-2 text-[#6B7280] text-sm mb-3 ${reversed ? "md:justify-end" : ""}`}>
+          <div className={`flex items-center gap-2 text-[#6B7280] text-sm mb-3 ${!hasReel && reversed ? "md:justify-end" : ""}`}>
             <Building2 size={14} />
             <span>{a.issuer}</span>
           </div>
-          <p className="text-[#4B5563] text-[15px] leading-relaxed max-w-md mb-4" style={{ marginLeft: reversed ? "auto" : undefined }}>
+          <p className="text-[#4B5563] text-[15px] leading-relaxed max-w-md mb-4" style={{ marginLeft: !hasReel && reversed ? "auto" : undefined }}>
             {a.description}
           </p>
           {a.note && (
-            <div className={`flex items-center gap-2 text-[#6B7280] text-sm mb-1 ${reversed ? "md:justify-end" : ""}`}>
+            <div className={`flex items-center gap-2 text-[#6B7280] text-sm mb-1 ${!hasReel && reversed ? "md:justify-end" : ""}`}>
               <Star size={14} />
               <span>{a.note}</span>
             </div>
           )}
-          <div className={`h-1 w-16 rounded-full mt-6 ${reversed ? "md:ml-auto" : ""}`} style={{ background: a.color }} />
+          <div className={`h-1 w-16 rounded-full mt-6 ${!hasReel && reversed ? "md:ml-auto" : ""}`} style={{ background: a.color }} />
         </div>
       </div>
     </motion.div>

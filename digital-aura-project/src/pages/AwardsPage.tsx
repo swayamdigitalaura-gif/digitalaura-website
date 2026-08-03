@@ -1,7 +1,39 @@
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 import { Trophy, Award, Star, ArrowRight, Calendar, Building2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
+
+declare global {
+  interface Window {
+    instgrm?: { Embeds: { process: () => void } };
+  }
+}
+
+const InstagramReelEmbed = ({ reelId }: { reelId: string }) => {
+  useEffect(() => {
+    if (window.instgrm) {
+      window.instgrm.Embeds.process();
+      return;
+    }
+    const existing = document.getElementById("instagram-embed-script");
+    if (existing) return;
+    const script = document.createElement("script");
+    script.id = "instagram-embed-script";
+    script.src = "https://www.instagram.com/embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, [reelId]);
+
+  return (
+    <blockquote
+      className="instagram-media"
+      data-instgrm-permalink={`https://www.instagram.com/reel/${reelId}/`}
+      data-instgrm-version="14"
+      style={{ background: "#FFF", border: 0, margin: 0, width: "100%", minHeight: 400 }}
+    />
+  );
+};
 
 interface AwardItem {
   image: string;
@@ -12,6 +44,7 @@ interface AwardItem {
   note?: string;
   color: string;
   description: string;
+  instagramReelId?: string;
 }
 
 const AWARDS: AwardItem[] = [
@@ -32,6 +65,7 @@ const AWARDS: AwardItem[] = [
     period: "Sep 2025",
     color: "#1A6FE8",
     description: "Honored at QuantumLeap's Business Success Awards for building a scalable, growth-focused agency model — the kind of business trajectory the award is designed to spotlight.",
+    instagramReelId: "DRPTFvHjF-Y",
   },
   {
     image: "/awards/award-2023-outstanding-partner.webp",
@@ -118,7 +152,7 @@ const AwardRow = ({ a, index }: { a: AwardItem; index: number }) => {
     >
       <div className="max-w-6xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
         {/* Image side */}
-        <div className={`flex justify-center ${reversed ? "md:order-2" : "md:order-1"}`}>
+        <div className={`flex flex-wrap justify-center gap-5 ${reversed ? "md:order-2" : "md:order-1"}`}>
           <div
             className="relative w-full max-w-[340px] rounded-[2rem] flex items-center justify-center"
             style={{ aspectRatio: "4/5", background: `linear-gradient(155deg, ${a.color}12, ${a.color}03)`, border: `1px solid ${a.color}22` }}
@@ -138,6 +172,14 @@ const AwardRow = ({ a, index }: { a: AwardItem; index: number }) => {
               {a.period}
             </span>
           </div>
+          {a.instagramReelId && (
+            <div
+              className="relative isolate w-full max-w-[320px] rounded-[1.5rem] overflow-hidden flex justify-center"
+              style={{ border: `1px solid ${a.color}22`, boxShadow: `0 4px 20px ${a.color}14`, maxHeight: 640 }}
+            >
+              <InstagramReelEmbed reelId={a.instagramReelId} />
+            </div>
+          )}
         </div>
 
         {/* Text side */}

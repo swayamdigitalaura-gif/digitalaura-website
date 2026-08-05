@@ -31,6 +31,10 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: 'Case Studies | Real Results for Real Clients | Digital Aura',
     description: "Explore Digital Aura's case studies — measurable results in SEO, PPC, web development, and digital marketing across multiple industries.",
   },
+  '/case-studies/riant-bikes': {
+    title: 'Riant Bikes Case Study: How Digital Aura Saved a Bike Rental Business From Going Extinct',
+    description: 'Riant Bikes was losing customers to competitors with a stronger online presence. See how Digital Aura rebuilt their website, booking system, and Google Ads to bring back daily bookings and grow revenue.',
+  },
   '/blog': {
     title: 'Digital Marketing Blog | Insights & Strategies | Digital Aura',
     description: 'Stay updated with the latest digital marketing trends, SEO tips, Google Ads strategies, and AI insights from the Digital Aura team.',
@@ -204,6 +208,12 @@ const PAGE_SCHEMA: Record<string, object | object[]> = {
     url: `${SITE_URL}/blog/`, description: 'Digital marketing trends, SEO tips, and AI insights.',
     publisher: { '@type': 'Organization', name: 'Digital Aura', logo: DEFAULT_IMAGE } },
   '/case-studies': { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Case Studies | Digital Aura', url: `${SITE_URL}/case-studies/` },
+  '/case-studies/riant-bikes': { '@context': 'https://schema.org', '@type': 'Article',
+    headline: 'Riant Bikes Case Study: How Digital Aura Saved a Bike Rental Business From Going Extinct',
+    description: 'Riant Bikes was losing customers to competitors with a stronger online presence. See how Digital Aura rebuilt their website, booking system, and Google Ads to bring back daily bookings and grow revenue.',
+    author: { '@type': 'Organization', name: 'Digital Aura' },
+    publisher: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/case-studies/riant-bikes/` } },
   '/ai-solutions': { '@context': 'https://schema.org', '@type': 'Service', name: 'AI Solutions & Automation',
     provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL },
     description: 'LLM-powered apps, chatbots, workflow automation, predictive analytics, and custom ML models.', url: `${SITE_URL}/ai-solutions/`, areaServed: 'Worldwide' },

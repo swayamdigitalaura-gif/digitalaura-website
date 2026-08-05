@@ -137,7 +137,7 @@ const PopupLeadForm = () => {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[9998] flex items-center justify-center sm:p-4 bg-[#0A1628]/60 backdrop-blur-sm"
+          className="fixed inset-0 z-[9998] flex items-center justify-center sm:p-4 bg-[#0A1628]/70"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -149,8 +149,12 @@ const PopupLeadForm = () => {
             role="dialog"
             aria-modal="true"
             aria-labelledby="popup-lead-title"
-            className="relative w-full sm:max-w-md bg-white sm:rounded-2xl rounded-t-3xl p-6 sm:p-7 self-end sm:self-center max-h-[92vh] overflow-y-auto"
-            style={{ boxShadow: "0 24px 64px rgba(0,0,0,0.25)" }}
+            className="relative w-full sm:max-w-md bg-white sm:rounded-2xl rounded-t-3xl p-6 sm:p-7 self-end sm:self-center max-h-[92vh] supports-[height:100dvh]:max-h-[92dvh] overflow-y-auto overscroll-contain"
+            style={{
+              boxShadow: "0 24px 64px rgba(0,0,0,0.25)",
+              paddingBottom: "max(1.75rem, calc(env(safe-area-inset-bottom) + 1rem))",
+              WebkitOverflowScrolling: "touch",
+            }}
             initial={{ y: 60, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 40, opacity: 0 }}

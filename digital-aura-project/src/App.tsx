@@ -44,6 +44,7 @@ import CareersPage from "./pages/Careers.tsx";
 import JobDetailPage from "./pages/JobDetailPage.tsx";
 import ScrollToTopButton from "./components/ScrollToTopButton.tsx";
 import PageSEO from "./components/PageSEO.tsx";
+import PopupLeadForm from "./components/PopupLeadForm.tsx";
 import AndroidDevelopmentPage from "./pages/services/AndroidDevelopmentPage.tsx";
 import FlutterAppsPage from "./pages/services/FlutterAppsPage.tsx";
 import ReactNativeAppsPage from "./pages/services/ReactNativeAppsPage.tsx";
@@ -73,6 +74,7 @@ const App = () => (
       <BrowserRouter>
         <PageSEO />
         <ScrollToTopButton />
+        <PopupLeadForm />
         <Routes>
           {/* Homepage */}
           <Route path="/" element={<Index />} />

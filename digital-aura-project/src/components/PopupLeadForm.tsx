@@ -4,7 +4,9 @@ import { X, CheckCircle2, Lock, ArrowRight } from "lucide-react";
 import MathCaptcha from "@/components/MathCaptcha";
 
 const SESSION_KEY = "da_popup_shown";
-const COOKIE_CONSENT_KEY = "da_cookie_consent";
+// Matches FloatingElements.tsx's cookie banner (the one actually mounted in
+// the app) — NOT the unused CookieConsent.tsx component's "da_cookie_consent".
+const COOKIE_CONSENT_KEY = "da_cookie";
 const DELAY_MS = 12000;
 const SCROLL_TRIGGER = 0.5;
 const COOKIE_BANNER_RECHECK_MS = 1500;
@@ -64,9 +66,19 @@ const PopupLeadForm = () => {
     };
     window.addEventListener("scroll", onScroll, { passive: true });
 
+    // Exit intent: cursor leaves toward the top of the viewport (address
+    // bar / tab strip) — the classic "about to close the tab" signal.
+    // Desktop-only; touch devices have no mouse to leave from, so they
+    // still get the popup via the delay/scroll triggers above.
+    const onMouseOut = (e: MouseEvent) => {
+      if (e.clientY <= 0 && !e.relatedTarget) reveal();
+    };
+    document.addEventListener("mouseout", onMouseOut);
+
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
       window.removeEventListener("scroll", onScroll);
+      document.removeEventListener("mouseout", onMouseOut);
     };
   }, [reveal]);
 

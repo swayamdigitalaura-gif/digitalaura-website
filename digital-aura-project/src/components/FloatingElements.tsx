@@ -28,6 +28,7 @@ const CookieBar = () => {
   if (!visible) return null;
   return (
     <div
+      data-cookie-banner="true"
       className="fixed bottom-6 left-6 z-50 max-w-xs rounded-2xl p-4 border shadow-xl bg-white"
       style={{ borderColor: "#E5E7EB", boxShadow: "0 8px 32px rgba(0,0,0,0.10)" }}
     >

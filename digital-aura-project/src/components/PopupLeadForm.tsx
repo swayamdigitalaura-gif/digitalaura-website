@@ -4,8 +4,10 @@ import { X, CheckCircle2, Lock, ArrowRight } from "lucide-react";
 import MathCaptcha from "@/components/MathCaptcha";
 
 const SESSION_KEY = "da_popup_shown";
+const COOKIE_CONSENT_KEY = "da_cookie_consent";
 const DELAY_MS = 12000;
 const SCROLL_TRIGGER = 0.5;
+const COOKIE_BANNER_RECHECK_MS = 1500;
 
 const services = [
   "SEO",
@@ -39,6 +41,12 @@ const PopupLeadForm = () => {
   const reveal = useCallback(() => {
     if (shownRef.current) return;
     if (sessionStorage.getItem(SESSION_KEY)) return;
+    // The cookie-consent banner docks to the same bottom edge as the mobile
+    // bottom-sheet popup. Wait for it to be resolved so the two never stack.
+    if (!localStorage.getItem(COOKIE_CONSENT_KEY)) {
+      timerRef.current = setTimeout(reveal, COOKIE_BANNER_RECHECK_MS);
+      return;
+    }
     shownRef.current = true;
     sessionStorage.setItem(SESSION_KEY, "1");
     setOpen(true);

@@ -4,9 +4,11 @@ import { X, CheckCircle2, Lock, ArrowRight } from "lucide-react";
 import MathCaptcha from "@/components/MathCaptcha";
 
 const SESSION_KEY = "da_popup_shown";
-// Matches FloatingElements.tsx's cookie banner (the one actually mounted in
-// the app) — NOT the unused CookieConsent.tsx component's "da_cookie_consent".
-const COOKIE_CONSENT_KEY = "da_cookie";
+// FloatingElements.tsx's cookie banner (the one actually mounted in the app)
+// tags its root node with this attribute. "Decline" hides the banner without
+// writing to storage, so presence in the DOM — not a storage key — is the
+// only reliable signal that it's been resolved either way.
+const COOKIE_BANNER_SELECTOR = "[data-cookie-banner]";
 const DELAY_MS = 12000;
 const SCROLL_TRIGGER = 0.5;
 const COOKIE_BANNER_RECHECK_MS = 1500;
@@ -44,8 +46,9 @@ const PopupLeadForm = () => {
     if (shownRef.current) return;
     if (sessionStorage.getItem(SESSION_KEY)) return;
     // The cookie-consent banner docks to the same bottom edge as the mobile
-    // bottom-sheet popup. Wait for it to be resolved so the two never stack.
-    if (!localStorage.getItem(COOKIE_CONSENT_KEY)) {
+    // bottom-sheet popup. Wait for it to be resolved (Accept OR Decline —
+    // both remove it from the DOM) so the two never stack.
+    if (document.querySelector(COOKIE_BANNER_SELECTOR)) {
       timerRef.current = setTimeout(reveal, COOKIE_BANNER_RECHECK_MS);
       return;
     }

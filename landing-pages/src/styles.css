@@ -275,3 +275,30 @@
     animation-play-state: paused;
   }
 }
+
+/* Primary orange button — mirrors `.btn-orange` in the main site's
+   index.css. MainSiteNavbar/MainSiteFooter are ports of the main site's
+   components and reference this class, but it lived only in the main
+   site's stylesheet, so the "Get Growth Plan" nav button rendered as
+   unstyled plain text on every landing page. Keep in sync with
+   digital-aura-project/src/index.css. */
+@utility btn-orange {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ff6b2b 0%, #e85a1a 100%);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 18px rgba(255, 107, 43, 0.35);
+
+  &:hover {
+    transform: scale(1.04);
+    box-shadow: 0 6px 28px rgba(255, 107, 43, 0.45);
+  }
+
+  @media (max-width: 639px) {
+    white-space: nowrap;
+  }
+}

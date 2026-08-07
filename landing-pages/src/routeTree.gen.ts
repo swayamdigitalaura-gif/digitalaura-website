@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WebsiteDevelopmentServicesAhmedabadRouteImport } from './routes/website-development-services-ahmedabad'
 import { Route as SeoServicesAhmedabadRouteImport } from './routes/seo-services-ahmedabad'
+import { Route as DigitalMarketingCompanyAhmedabadRouteImport } from './routes/digital-marketing-company-ahmedabad'
 import { Route as IndexRouteImport } from './routes/index'
 
 const WebsiteDevelopmentServicesAhmedabadRoute =
@@ -24,6 +25,12 @@ const SeoServicesAhmedabadRoute = SeoServicesAhmedabadRouteImport.update({
   path: '/seo-services-ahmedabad',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DigitalMarketingCompanyAhmedabadRoute =
+  DigitalMarketingCompanyAhmedabadRouteImport.update({
+    id: '/digital-marketing-company-ahmedabad',
+    path: '/digital-marketing-company-ahmedabad',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -32,17 +39,20 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/digital-marketing-company-ahmedabad': typeof DigitalMarketingCompanyAhmedabadRoute
   '/seo-services-ahmedabad': typeof SeoServicesAhmedabadRoute
   '/website-development-services-ahmedabad': typeof WebsiteDevelopmentServicesAhmedabadRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/digital-marketing-company-ahmedabad': typeof DigitalMarketingCompanyAhmedabadRoute
   '/seo-services-ahmedabad': typeof SeoServicesAhmedabadRoute
   '/website-development-services-ahmedabad': typeof WebsiteDevelopmentServicesAhmedabadRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/digital-marketing-company-ahmedabad': typeof DigitalMarketingCompanyAhmedabadRoute
   '/seo-services-ahmedabad': typeof SeoServicesAhmedabadRoute
   '/website-development-services-ahmedabad': typeof WebsiteDevelopmentServicesAhmedabadRoute
 }
@@ -50,22 +60,26 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/digital-marketing-company-ahmedabad'
     | '/seo-services-ahmedabad'
     | '/website-development-services-ahmedabad'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/digital-marketing-company-ahmedabad'
     | '/seo-services-ahmedabad'
     | '/website-development-services-ahmedabad'
   id:
     | '__root__'
     | '/'
+    | '/digital-marketing-company-ahmedabad'
     | '/seo-services-ahmedabad'
     | '/website-development-services-ahmedabad'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DigitalMarketingCompanyAhmedabadRoute: typeof DigitalMarketingCompanyAhmedabadRoute
   SeoServicesAhmedabadRoute: typeof SeoServicesAhmedabadRoute
   WebsiteDevelopmentServicesAhmedabadRoute: typeof WebsiteDevelopmentServicesAhmedabadRoute
 }
@@ -86,6 +100,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SeoServicesAhmedabadRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/digital-marketing-company-ahmedabad': {
+      id: '/digital-marketing-company-ahmedabad'
+      path: '/digital-marketing-company-ahmedabad'
+      fullPath: '/digital-marketing-company-ahmedabad'
+      preLoaderRoute: typeof DigitalMarketingCompanyAhmedabadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -98,6 +119,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DigitalMarketingCompanyAhmedabadRoute: DigitalMarketingCompanyAhmedabadRoute,
   SeoServicesAhmedabadRoute: SeoServicesAhmedabadRoute,
   WebsiteDevelopmentServicesAhmedabadRoute:
     WebsiteDevelopmentServicesAhmedabadRoute,

@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://thedigitalaura.com/sitemap.xml

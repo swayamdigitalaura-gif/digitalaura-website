@@ -795,7 +795,7 @@ function Solutions() {
             className="group flex h-full flex-col justify-between rounded-3xl bg-gradient-to-br from-[#1E3A6D] to-[#1E40AF] p-7 text-white shadow-[0_10px_30px_rgba(15,23,42,0.08),0_32px_60px_-28px_rgba(15,23,42,0.22)] transition-all duration-300 hover:-translate-y-1.5"
           >
             <div>
-              <h3 className="text-xl font-extrabold tracking-tight">
+              <h3 className="text-xl font-extrabold tracking-tight text-white">
                 Not sure which lever moves first?
               </h3>
               <p className="mt-2.5 text-[0.98rem] leading-relaxed text-white/85">
@@ -1473,7 +1473,7 @@ function FinalCta() {
           <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-3.5 py-1.5 text-xs font-bold tracking-wide text-white uppercase">
             Limited weekly slots
           </span>
-          <h2 className="mt-5 text-[2.1rem] leading-[1.08] font-extrabold tracking-tight sm:text-[2.75rem]">
+          <h2 className="mt-5 text-[2.1rem] leading-[1.08] font-extrabold tracking-tight text-white sm:text-[2.75rem]">
             Book your free strategy call and see the plan before you spend a rupee.
           </h2>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/80 sm:text-xl">

@@ -415,7 +415,7 @@ export function MainSiteNavbar() {
             >
               <Phone size={14} className="text-[#FF6B2B]" /> +91 81412 00284
             </a>
-            <a href={`${BASE}/contact`} className="btn-orange px-5 py-2.5 text-[15px]">
+            <a href={`${BASE}/contact#contact-form`} className="btn-orange px-5 py-2.5 text-[15px]">
               Get Growth Plan
             </a>
           </div>
@@ -576,7 +576,7 @@ export function MainSiteNavbar() {
             <Phone size={14} className="text-[#FF6B2B]" /> +91 81412 00284
           </a>
           <a
-            href={`${BASE}/contact`}
+            href={`${BASE}/contact#contact-form`}
             className="btn-orange px-6 py-4 text-base w-full block text-center"
           >
             Get Growth Plan →

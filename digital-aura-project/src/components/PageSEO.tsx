@@ -266,6 +266,21 @@ function pathToSlug(pathname: string): string {
   return pathname.replace(/\/$/, '').split('/').filter(Boolean).pop() || 'home';
 }
 
+// Admin-panel users paste schema into a plain code box and sometimes include
+// the <script> wrapper themselves (copied straight from a schema generator).
+// Assigning that whole string to a <script>.text creates a literal nested
+// <script type="application/ld+json"><script type="application/ld+json">...
+// tag in the rendered HTML, which every structured-data parser — Google's
+// included — treats as invalid and ignores entirely. Stripping any wrapper
+// the author already included keeps the element valid either way.
+function stripScriptWrapper(code: string): string {
+  return code
+    .trim()
+    .replace(/^<script[^>]*>/i, '')
+    .replace(/<\/script>\s*$/i, '')
+    .trim();
+}
+
 export default function PageSEO() {
   const { pathname } = useLocation();
   const schemaRef   = useRef<HTMLScriptElement | null>(null);
@@ -346,7 +361,7 @@ export default function PageSEO() {
           if (schemaRef.current) { schemaRef.current.remove(); schemaRef.current = null; }
           const script = document.createElement('script');
           script.type = 'application/ld+json';
-          script.text = page.schema_code;
+          script.text = stripScriptWrapper(page.schema_code);
           document.head.appendChild(script);
           schemaRef.current = script;
         }

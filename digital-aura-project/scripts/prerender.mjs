@@ -103,12 +103,16 @@ function looksUnrendered(route, html) {
   return html.includes(`<title>${DEFAULT_TITLE}</title>`) || html.includes('Blog post not found');
 }
 
-// thedigitalaura.com/seo-services-ahmedabad and /google-ads-agency-ahmedabad
-// are real live URLs on this domain, but nginx proxies them to two separate
-// apps (landing-pages/, google-ads-page/) that this script never visits —
-// they're added by hand here so the one sitemap this domain serves stays
-// complete even though it can't prerender-verify these two itself.
-const EXTRA_LIVE_ROUTES = ['/seo-services-ahmedabad', '/google-ads-agency-ahmedabad'];
+// These are real live URLs on this domain, but nginx proxies each one to a
+// separate app (landing-pages/, google-ads-page/) that this script never
+// visits — they're added by hand here so the one sitemap this domain serves
+// stays complete even though it can't prerender-verify them itself.
+// Keep in sync with the `location` blocks in nginx-updated.conf.
+const EXTRA_LIVE_ROUTES = [
+  '/seo-services-ahmedabad',
+  '/google-ads-agency-ahmedabad',
+  '/digital-marketing-company-ahmedabad',
+];
 
 // Only routes that actually prerendered successfully go in the sitemap —
 // listing a route that failed (and so has no fresh dist/ file) would submit

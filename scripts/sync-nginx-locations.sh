@@ -1,35 +1,48 @@
 #!/usr/bin/env bash
-# Syncs any simple `location /path { ... }` blocks from the repo's
-# nginx-updated.conf into the live nginx config that aren't there yet —
-# so a new landing-page slug starts routing without a manual SSH edit.
-# Only plain path-based locations are handled (not `=`, `^~`, `~*`
-# modifier locations) — that's exactly the shape every landing-page
-# block uses, and it keeps the matching logic simple and predictable.
+# Adds specific, hard-coded `location` blocks to the live nginx config if
+# they aren't there yet — so a new landing-page slug starts routing
+# without a manual SSH edit. Deliberately NOT a generic "diff the whole
+# file" tool: earlier attempts at that misdetected an existing block
+# (/admin-panel/) as missing due to a formatting difference on the live
+# file, which is exactly the kind of mistake this script must never make
+# against production. Only touch what we explicitly, individually verify.
 #
 # Safety:
 #  - Idempotent: a location path that's already live is left untouched.
-#  - Never edits the live file directly — writes to a copy, then only
-#    swaps it in if `nginx -t` passes against the copy.
+#  - Self-heals a known past mistake: an earlier version of this script
+#    wrote its backup file *inside* sites-enabled/, which nginx globs —
+#    that produced a duplicate `listen` directive and failed `nginx -t`.
+#    This version always removes any such stray backups before doing
+#    anything else, and writes new backups to /tmp/, never sites-enabled/.
+#  - Never edits the live file directly — writes to a temp copy, then
+#    only swaps it in if `nginx -t` passes against it.
 #  - Any failure (can't find the live file, `nginx -t` fails) aborts
-#    with a non-zero exit and changes nothing, so this can never take
-#    the live site down.
+#    with a non-zero exit and restores the original file, so this can
+#    never leave the live site broken.
 set -euo pipefail
 
-SRC=/tmp/nginx-updated.conf
-# Literal substring (no regex metacharacters) so it can be handed to awk
-# via -v without any backslash-escaping surprises.
-ANCHOR='js|css|png|jpg|jpeg|gif|webp|ico|svg|woff|woff2|ttf|eot'
+# path -> full location block to insert if `path` isn't already live.
+declare -A NEW_LOCATIONS=(
+  [/digital-marketing-company-ahmedabad]='    # Digital marketing company landing page (same app as seo-services-ahmedabad)
+    location /digital-marketing-company-ahmedabad {
+        proxy_pass http://localhost:5003;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }'
+)
 
-if [ ! -f "$SRC" ]; then
-  echo "ERROR: $SRC not found (did the scp step run?)" >&2
-  exit 1
-fi
+# Literal substring (no regex metacharacters) — the insertion point.
+ANCHOR='js|css|png|jpg|jpeg|gif|webp|ico|svg|woff|woff2|ttf|eot'
 
 # Find the live server block for thedigitalaura.com (not the www-redirect
 # block, which has no `location` directives of its own).
 LIVE=""
 for f in /etc/nginx/sites-enabled/* /etc/nginx/conf.d/*.conf /etc/nginx/nginx.conf; do
   [ -f "$f" ] || continue
+  case "$f" in *.bak-*) continue ;; esac
   if grep -q 'server_name thedigitalaura.com;' "$f" 2>/dev/null; then
     LIVE="$f"
     break
@@ -43,45 +56,38 @@ fi
 
 echo "Live nginx config: $LIVE"
 
+# Clean up any stray backups a previous run may have left inside the
+# same directory as $LIVE — nginx globs that whole directory, so a
+# leftover backup there causes a permanent "duplicate listen" failure.
+LIVE_DIR="$(dirname "$LIVE")"
+LIVE_NAME="$(basename "$LIVE")"
+shopt -s nullglob
+STRAYS=("$LIVE_DIR/$LIVE_NAME".bak-*)
+shopt -u nullglob
+if [ "${#STRAYS[@]}" -gt 0 ]; then
+  echo "Removing ${#STRAYS[@]} stray backup file(s) left in $LIVE_DIR by a previous run: ${STRAYS[*]}"
+  sudo rm -f "${STRAYS[@]}"
+fi
+
 WORK="$(mktemp)"
 cp "$LIVE" "$WORK"
 CHANGED=0
 
-# Extract each top-level `location /path { ... }` block from the repo's
-# reference file, and insert any that are missing from the live file.
-# Uses process substitution (not a trailing pipe) so the loop runs in
-# *this* shell — a piped `while read` would run in a subshell and lose
-# the CHANGED flag once the loop ends.
-while IFS= read -r -d $'\x02' entry; do
-  path="${entry%%$'\x01'*}"
-  block="${entry#*$'\x01'}"
-
+for path in "${!NEW_LOCATIONS[@]}"; do
   if grep -qF "location $path {" "$WORK"; then
     echo "Already live, skipping: $path"
     continue
   fi
 
   echo "Adding missing location: $path"
-  # Insert right before the static-asset-caching block, which is a
-  # stable, unique anchor present in every version of this config.
+  block="${NEW_LOCATIONS[$path]}"
   awk -v block="$block" -v anchor="$ANCHOR" '
     index($0, anchor) > 0 && !done { print block; done = 1 }
     { print }
   ' "$WORK" > "$WORK.new"
   mv "$WORK.new" "$WORK"
   CHANGED=1
-done < <(awk '
-  /^    location \/[^ ]+ \{/ {
-    path = $2
-    block = $0 "\n"
-    depth = gsub(/\{/, "{") - gsub(/\}/, "}")
-    while (depth > 0 && (getline line) > 0) {
-      block = block line "\n"
-      depth += gsub(/\{/, "{", line) - gsub(/\}/, "}", line)
-    }
-    printf "%s\x01%s\x02", path, block
-  }
-' "$SRC")
+done
 
 if [ "$CHANGED" != "1" ]; then
   echo "Nothing to add — live config already has every location block."
@@ -90,7 +96,8 @@ if [ "$CHANGED" != "1" ]; then
 fi
 
 echo "Validating candidate config with nginx -t..."
-BACKUP="$LIVE.bak-$(date +%s)"
+# Backups go to /tmp — NEVER back into sites-enabled/, which nginx globs.
+BACKUP="/tmp/$(basename "$LIVE").bak-$(date +%s)"
 sudo cp "$LIVE" "$BACKUP"
 sudo cp "$WORK" "$LIVE"
 rm -f "$WORK"

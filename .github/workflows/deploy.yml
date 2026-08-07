@@ -32,6 +32,7 @@ jobs:
       backend:     ${{ steps.f.outputs.backend }}
       seo:         ${{ steps.f.outputs.seo }}
       gads:        ${{ steps.f.outputs.gads }}
+      nginx:       ${{ steps.f.outputs.nginx }}
     steps:
       - uses: actions/checkout@v4
       - uses: dorny/paths-filter@v3
@@ -42,6 +43,8 @@ jobs:
               - 'digital-aura-project/**'
             admin_panel:
               - 'admin-panel/**'
+            nginx:
+              - 'nginx-updated.conf'
             backend:
               - 'admin-backend/**'
             seo:
@@ -193,3 +196,30 @@ jobs:
           ssh $SSH_OPTS "$H" "rm -rf /home/landing-google-ads/server /home/landing-google-ads/public"
           rsync -az -e "ssh $SSH_OPTS" google-ads-page/.output/ "$H:/home/landing-google-ads/"
           ssh $SSH_OPTS "$H" "pm2 restart google-ads-landing && cp -r /home/landing-google-ads/public/* /home/digitalaura.temp/public_html/"
+
+  # ── 7. Live nginx sync — adds any new `location` blocks from
+  #      nginx-updated.conf into the actual live server config, so new
+  #      landing-page slugs start routing without a manual SSH step.
+  #      Safe by construction: idempotent (skips a block that's already
+  #      live), and always runs `nginx -t` before reloading — if the test
+  #      fails, the job fails and nginx is never reloaded, so a bad edit
+  #      can never take the live site down.
+  nginx-config:
+    needs: detect
+    if: ${{ needs.detect.outputs.nginx == 'true' || github.event.inputs.target == 'all' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.CONTABO_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "${{ secrets.CONTABO_SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || true
+      - name: Add missing `location` blocks to the live nginx config
+        env:
+          H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
+        run: |
+          scp $SSH_OPTS nginx-updated.conf "$H:/tmp/nginx-updated.conf"
+          scp $SSH_OPTS scripts/sync-nginx-locations.sh "$H:/tmp/sync-nginx-locations.sh"
+          ssh $SSH_OPTS "$H" "chmod +x /tmp/sync-nginx-locations.sh && /tmp/sync-nginx-locations.sh"

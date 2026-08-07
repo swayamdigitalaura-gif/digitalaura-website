@@ -6,9 +6,16 @@ const PageLoader = ({ onDone }: { onDone: () => void }) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    // This opaque, full-viewport overlay sits in front of the real page
+    // content (which is already mounted underneath, see Index.tsx) until
+    // this timer finishes — so its own duration is dead time added on top
+    // of the real page's Largest Contentful Paint on every single load.
+    // The original 1600ms animation + 400ms hold (~2s minimum, guaranteed
+    // on every PageSpeed/GSC run) was a major, self-inflicted chunk of the
+    // site's poor LCP scores. Kept the same branded animation, just fast.
     let current = 0;
-    const steps = 80;
-    const interval = 1600 / steps;
+    const steps = 40;
+    const interval = 450 / steps;
 
     const timer = setInterval(() => {
       current += 100 / steps;
@@ -17,7 +24,7 @@ const PageLoader = ({ onDone }: { onDone: () => void }) => {
 
       if (eased >= 100) {
         clearInterval(timer);
-        setTimeout(onDone, 400);
+        setTimeout(onDone, 120);
       }
     }, interval);
 

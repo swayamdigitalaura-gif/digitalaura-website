@@ -1,4 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+/* Font is now loaded via a <link rel="stylesheet"> in index.html instead of
+   @import here — @import forces the browser to fetch and parse this whole
+   stylesheet before it can even discover the font request, adding a fully
+   serial extra round-trip (worse again on slow mobile) before anything can
+   paint. A <link> in the HTML head is discovered by the preload scanner
+   immediately and fetched in parallel with everything else. */
 
 @tailwind base;
 @tailwind components;

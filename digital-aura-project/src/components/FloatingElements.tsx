@@ -1,4 +1,5 @@
 ﻿import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7">
@@ -34,7 +35,7 @@ const CookieBar = () => {
     >
       <p className="text-xs text-[#374151] mb-3 leading-relaxed">
         We use cookies to improve your experience. See our{" "}
-        <a href="#" className="text-[#FF6B2B] font-semibold hover:underline">Privacy Policy</a>.
+        <Link to="/privacy-policy" className="text-[#FF6B2B] font-semibold hover:underline">Privacy Policy</Link>.
       </p>
       <div className="flex gap-2">
         <button onClick={accept} className="btn-orange px-4 py-1.5 text-xs">Accept</button>

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, TrendingUp, ChevronLeft } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
+import { Link } from "react-router-dom";
 
 const FADE_MS = 180;
 
@@ -180,22 +181,22 @@ const CaseStudies = () => {
                     </span>
                   </div>
                   <p className="text-sm leading-relaxed text-[#4B5563] mb-4 flex-1">{c.statDesc}</p>
-                  <a
-                    href="#"
+                  <Link
+                    to="/case-studies"
                     className="text-sm font-semibold inline-flex items-center gap-1 group-hover:gap-2 transition-all mt-auto"
                     style={{ color: c.accent }}
                   >
                     Read Full Case Study <ArrowRight size={13} />
-                  </a>
+                  </Link>
                 </div>
               </div>
             ))}
           </div>
 
         <div className="text-center mt-8">
-          <a href="#" className="btn-outline-orange px-6 md:px-8 py-3 md:py-3.5 text-sm gap-2 inline-flex items-center">
+          <Link to="/case-studies" className="btn-outline-orange px-6 md:px-8 py-3 md:py-3.5 text-sm gap-2 inline-flex items-center">
             View All Case Studies <ArrowRight size={16} />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

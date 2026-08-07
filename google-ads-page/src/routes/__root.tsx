@@ -73,7 +73,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 const ASSET_BASE = "https://thedigitalaura.com";
-const SITE_URL = `${ASSET_BASE}/google-ads-agency-ahmedabad`;
+const SITE_URL = `${ASSET_BASE}/google-ads-agency-ahmedabad/`;
 const SITE_TITLE = "Digital Aura | Premium Performance Marketing Agency in Ahmedabad";
 const SITE_DESCRIPTION = "Premium performance marketing agency in Ahmedabad. Generate revenue with Google Ads, Meta Ads, SEO, AI Search, Web Development, CRO, and Marketing Automation. Get a free audit.";
 

@@ -57,7 +57,8 @@ const ROUTES = [
   '/services/ai/custom-ml-models',
 ];
 
-const API_BASE = 'https://thedigitalaura.com';
+const SITE_URL = 'https://thedigitalaura.com';
+const API_BASE = SITE_URL;
 
 // Fetch every published blog slug so each post gets its own prerendered
 // page — otherwise crawlers/social previews only ever see the empty
@@ -102,6 +103,28 @@ function looksUnrendered(route, html) {
   return html.includes(`<title>${DEFAULT_TITLE}</title>`) || html.includes('Blog post not found');
 }
 
+// thedigitalaura.com/seo-services-ahmedabad and /google-ads-agency-ahmedabad
+// are real live URLs on this domain, but nginx proxies them to two separate
+// apps (landing-pages/, google-ads-page/) that this script never visits —
+// they're added by hand here so the one sitemap this domain serves stays
+// complete even though it can't prerender-verify these two itself.
+const EXTRA_LIVE_ROUTES = ['/seo-services-ahmedabad', '/google-ads-agency-ahmedabad'];
+
+// Only routes that actually prerendered successfully go in the sitemap —
+// listing a route that failed (and so has no fresh dist/ file) would submit
+// a URL to Google that's either 404ing or still serving a stale previous
+// build, both worse than just leaving it out until the next successful run.
+function writeSitemap(succeededRoutes) {
+  const urls = [...succeededRoutes, ...EXTRA_LIVE_ROUTES].map((route) => {
+    const loc = route === '/' ? `${SITE_URL}/` : `${SITE_URL}${route}/`;
+    const priority = route === '/' ? '1.0' : route.startsWith('/blog/') ? '0.6' : '0.8';
+    return `  <url>\n    <loc>${loc}</loc>\n    <changefreq>weekly</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
+  });
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`;
+  writeFileSync(join(DIST, 'sitemap.xml'), xml, 'utf-8');
+  console.log(`  📝  Wrote sitemap.xml with ${succeededRoutes.length} URLs`);
+}
+
 async function main() {
   const blogRoutes = await fetchBlogRoutes();
   const allRoutes = [...ROUTES, ...blogRoutes];
@@ -117,6 +140,7 @@ async function main() {
     });
 
     let ok = 0, fail = 0;
+    const succeededRoutes = [];
     const MAX_ATTEMPTS = 4;
 
     for (const route of allRoutes) {
@@ -162,6 +186,7 @@ async function main() {
           console.log(`  ✓  ${route}${attempt > 1 ? ` (attempt ${attempt})` : ''}`);
           ok++;
           succeeded = true;
+          succeededRoutes.push(route);
         } catch (err) {
           lastErr = err;
         } finally {
@@ -176,6 +201,7 @@ async function main() {
     }
 
     console.log(`\n✅  Prerender complete — ${ok} succeeded, ${fail} failed\n`);
+    writeSitemap(succeededRoutes);
     // A blog post that fails validation on every attempt is never written to
     // disk, so any file already in dist/ for that slug from a *previous*
     // successful deploy is left untouched by this run — the rsync step in

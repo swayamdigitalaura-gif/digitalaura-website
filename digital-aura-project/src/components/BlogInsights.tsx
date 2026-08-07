@@ -3,6 +3,10 @@ import { ArrowRight, Calendar, TrendingUp, Target, DollarSign, Globe, Bot } from
 import { Link } from "react-router-dom";
 import type { LucideIcon } from "lucide-react";
 
+// These four cards are static teasers, not tied to real blog post slugs —
+// point them at the real blog listing rather than a dead "#" anchor.
+const MotionLink = motion(Link);
+
 interface Post {
   category: string;
   catColor: string;
@@ -76,9 +80,9 @@ const BlogInsights = () => (
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {posts.map((p, i) => (
-          <motion.a
+          <MotionLink
             key={p.title}
-            href="#"
+            to="/blog"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -123,7 +127,7 @@ const BlogInsights = () => (
                 </span>
               </div>
             </div>
-          </motion.a>
+          </MotionLink>
         ))}
       </div>
 

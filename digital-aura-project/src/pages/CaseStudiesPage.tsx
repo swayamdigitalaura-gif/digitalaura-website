@@ -192,9 +192,9 @@ const CaseStudiesPage = () => {
                       style={{ background: c.badgeBg, color: c.badgeColor }}>{sv}</span>
                   ))}
                 </div>
-                <a href="#" className="text-sm font-semibold inline-flex items-center gap-1 group-hover:gap-2 transition-all" style={{ color: c.badgeColor }}>
-                  Read Full Case Study <ArrowRight size={14} />
-                </a>
+                <Link to="/contact" className="text-sm font-semibold inline-flex items-center gap-1 group-hover:gap-2 transition-all" style={{ color: c.badgeColor }}>
+                  Get Results Like This <ArrowRight size={14} />
+                </Link>
               </div>
             </motion.div>
           ))}

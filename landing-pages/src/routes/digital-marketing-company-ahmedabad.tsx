@@ -46,6 +46,7 @@ import {
   TrendingDown,
   TrendingUp,
   Workflow,
+  X,
   Youtube,
 } from "lucide-react";
 import heroVisual from "@/assets/hero-visual-full.webp";
@@ -1539,6 +1540,295 @@ function FinalCta() {
   );
 }
 
+/* ---------------- Popup lead form ---------------- */
+// Mirrors the main site's PopupLeadForm (digital-aura-project) — same
+// triggers (12s delay / 50% scroll depth / exit-intent) and the same
+// sessionStorage key, so a visitor who already saw one popup this
+// session on another page of the site won't be shown a second one here.
+
+const POPUP_SESSION_KEY = "da_popup_shown";
+const POPUP_DELAY_MS = 12000;
+const POPUP_SCROLL_TRIGGER = 0.5;
+const POPUP_NEEDS = [
+  "SEO",
+  "Google Ads",
+  "Meta Ads",
+  "Website & App Development",
+  "AI Automation",
+  "Not sure yet",
+];
+
+function useMathCaptcha() {
+  const [q, setQ] = useState(() => {
+    const a = Math.floor(Math.random() * 9) + 1;
+    const b = Math.floor(Math.random() * 9) + 1;
+    return { a, b, answer: a + b };
+  });
+  const [value, setValue] = useState("");
+  const ok = value !== "" && parseInt(value, 10) === q.answer;
+  const error = value !== "" && !ok;
+  function refresh() {
+    const a = Math.floor(Math.random() * 9) + 1;
+    const b = Math.floor(Math.random() * 9) + 1;
+    setQ({ a, b, answer: a + b });
+    setValue("");
+  }
+  return { q, value, setValue, ok, error, refresh };
+}
+
+function PopupLeadForm() {
+  const [open, setOpen] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [formError, setFormError] = useState("");
+  const shownRef = useRef(false);
+  const captcha = useMathCaptcha();
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.sessionStorage.getItem(POPUP_SESSION_KEY)) return;
+
+    function reveal() {
+      if (shownRef.current) return;
+      if (window.sessionStorage.getItem(POPUP_SESSION_KEY)) return;
+      shownRef.current = true;
+      window.sessionStorage.setItem(POPUP_SESSION_KEY, "1");
+      setOpen(true);
+    }
+
+    const timer = window.setTimeout(reveal, POPUP_DELAY_MS);
+
+    function onScroll() {
+      const depth = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      if (depth >= POPUP_SCROLL_TRIGGER) reveal();
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    function onMouseOut(e: MouseEvent) {
+      if (e.clientY <= 0 && !e.relatedTarget) reveal();
+    }
+    document.addEventListener("mouseout", onMouseOut);
+
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener("scroll", onScroll);
+      document.removeEventListener("mouseout", onMouseOut);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setSubmitting(true);
+    setFormError("");
+    const fd = new FormData(e.currentTarget);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: fd.get("name"),
+          email: fd.get("email"),
+          phone: fd.get("phone"),
+          company: fd.get("company"),
+          project: fd.get("service"),
+          message: "",
+          source: "digital-marketing-company-ahmedabad-popup",
+        }),
+      });
+      if (!res.ok) throw new Error("Server error");
+      setSubmitted(true);
+    } catch {
+      setFormError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  if (!open) return null;
+
+  const field =
+    "w-full rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] px-4 py-3 text-sm text-[#0F172A] outline-none transition-all placeholder:text-[#475569]/60 focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/25 focus:bg-white";
+  const labelCls = "mb-1.5 block text-xs font-semibold text-[#374151]";
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="popup-lead-title"
+      className="fixed inset-0 z-[9998] flex items-end justify-center bg-[#0F172A]/70 sm:items-center sm:p-4"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) setOpen(false);
+      }}
+    >
+      <div
+        className="relative max-h-[92vh] w-full self-end overflow-y-auto rounded-t-3xl bg-white p-6 shadow-[0_24px_64px_rgba(0,0,0,0.25)] sm:max-w-md sm:self-center sm:rounded-2xl sm:p-7"
+        style={{ animation: "popup-rise 0.35s cubic-bezier(0.16,1,0.3,1)" }}
+      >
+        <div className="absolute top-2.5 left-1/2 h-1 w-9 -translate-x-1/2 rounded-full bg-[#E2E8F0] sm:hidden" />
+        <button
+          type="button"
+          onClick={() => setOpen(false)}
+          aria-label="Close"
+          className="absolute top-4 right-4 flex size-8 items-center justify-center rounded-full border border-[#E2E8F0] bg-[#F8FAFC] text-[#475569] transition-colors hover:border-[#2563EB]/40 hover:text-[#0F172A]"
+        >
+          <X className="size-3.5" />
+        </button>
+
+        {submitted ? (
+          <div className="py-8 text-center">
+            <div className="mx-auto mb-4 grid size-16 place-items-center rounded-full bg-[#22C55E]/10">
+              <Check className="size-8 text-[#22C55E]" />
+            </div>
+            <h3 className="mb-2 text-xl font-bold text-[#0F172A]">Got It — Thanks!</h3>
+            <p className="text-[#475569]">
+              Our team will WhatsApp you shortly with your free growth plan.
+            </p>
+          </div>
+        ) : (
+          <form onSubmit={onSubmit} className="mt-2 space-y-4">
+            <span className={EYEBROW}>Free Growth Plan</span>
+            <h3 id="popup-lead-title" className="text-2xl leading-tight font-bold text-[#0F172A]">
+              Get Your Free Growth Plan
+            </h3>
+            <p className="mb-1 text-sm text-[#475569]">
+              Tell us about your business — a strategist reviews it and replies on WhatsApp within
+              24 hours.
+            </p>
+
+            <div>
+              <label className={labelCls} htmlFor="popup-name">
+                Full Name *
+              </label>
+              <input
+                id="popup-name"
+                name="name"
+                required
+                placeholder="Your name"
+                className={field}
+              />
+            </div>
+            <div>
+              <label className={labelCls} htmlFor="popup-phone">
+                Phone / WhatsApp *
+              </label>
+              <input
+                id="popup-phone"
+                name="phone"
+                type="tel"
+                required
+                placeholder="+91 98765 43210"
+                className={field}
+              />
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label className={labelCls} htmlFor="popup-company">
+                  Company Name
+                </label>
+                <input
+                  id="popup-company"
+                  name="company"
+                  placeholder="Your business"
+                  className={field}
+                />
+              </div>
+              <div>
+                <label className={labelCls} htmlFor="popup-email">
+                  Email
+                </label>
+                <input
+                  id="popup-email"
+                  name="email"
+                  type="email"
+                  placeholder="you@business.com"
+                  className={field}
+                />
+              </div>
+            </div>
+            <div>
+              <label className={labelCls} htmlFor="popup-service">
+                Service Interested In *
+              </label>
+              <select
+                id="popup-service"
+                name="service"
+                required
+                defaultValue=""
+                className={`${field} cursor-pointer`}
+              >
+                <option value="" disabled>
+                  Select a service
+                </option>
+                {POPUP_NEEDS.map((s) => (
+                  <option key={s} value={s}>
+                    {s}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className={labelCls} htmlFor="popup-captcha">
+                Verification: What is {captcha.q.a} + {captcha.q.b}? *
+              </label>
+              <div className="flex items-center gap-2">
+                <input
+                  id="popup-captcha"
+                  type="number"
+                  value={captcha.value}
+                  onChange={(e) => captcha.setValue(e.target.value)}
+                  placeholder="Enter answer"
+                  className={`${field} max-w-[160px] ${captcha.error ? "border-red-300 ring-2 ring-red-400" : ""}`}
+                />
+                <button
+                  type="button"
+                  onClick={captcha.refresh}
+                  title="New question"
+                  className="grid size-9 shrink-0 place-items-center rounded-xl border border-[#E2E8F0] text-[#475569] transition-colors hover:border-[#2563EB]/40 hover:text-[#2563EB]"
+                >
+                  <RefreshCw className="size-3.5" />
+                </button>
+              </div>
+              {captcha.error && (
+                <p className="mt-1 text-xs text-red-500">Incorrect answer, please try again.</p>
+              )}
+            </div>
+
+            {formError && <p className="text-center text-xs text-red-500">{formError}</p>}
+
+            <button
+              type="submit"
+              disabled={!captcha.ok || submitting}
+              className={`w-full ${PRIMARY_BTN} py-3.5 text-sm disabled:pointer-events-none disabled:opacity-50`}
+            >
+              {submitting ? "Submitting..." : "Get My Free Growth Plan"}
+              <ArrowRight className="size-4" />
+            </button>
+
+            <p className="flex items-center justify-center gap-1.5 text-center text-xs text-[#475569]">
+              <Lock className="size-3" /> No spam. We reply within 24 hours.
+            </p>
+          </form>
+        )}
+      </div>
+      <style>{`@keyframes popup-rise { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }`}</style>
+    </div>
+  );
+}
+
 /* ---------------- Floating / sticky ---------------- */
 
 function FloatingWhatsApp() {
@@ -1590,6 +1880,7 @@ function Index() {
       <MainSiteFooter />
       <FloatingWhatsApp />
       <MobileStickyCTA />
+      <PopupLeadForm />
     </div>
   );
 }

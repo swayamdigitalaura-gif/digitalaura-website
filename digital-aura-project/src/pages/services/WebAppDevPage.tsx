@@ -71,7 +71,7 @@ const FAQItem = ({ q, a, idx = 0 }: { q: string; a: string; idx?: number }) => {
 };
 
 const WebAppDevPage = () => {
-  const _sp = useSettings(['webapp_hero_h1','webapp_hero_sub','webapp_cta_btn']);
+  const sp = useSettings(['webapp_hero_h1','webapp_hero_sub','webapp_cta_btn']);
   return (
   <PageLayout>
 
@@ -92,16 +92,16 @@ const WebAppDevPage = () => {
             </span>
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-[58px] font-bold leading-[1.1] text-[#0A1628] mb-6 tracking-tight">
-            <span data-cms-key="webapp_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">We Don't Just Write Code.<br className="hidden md:block" />
+            <span data-cms-key="webapp_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">{sp.webapp_hero_h1 || (<>We Don't Just Write Code.<br className="hidden md:block" />
             We Engineer Products<br className="hidden md:block" />
-            That Actually Scale.
+            That Actually Scale.</>)}
           </span></h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto leading-relaxed mb-10">
-            <span data-cms-key="webapp_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">From MVP to full-scale platform — we ship clean, tested, production-ready web and mobile applications built with AI baked in from day one. Not handed off. Engineered to last.</span>
+            <span data-cms-key="webapp_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.webapp_hero_sub || "From MVP to full-scale platform — we ship clean, tested, production-ready web and mobile applications built with AI baked in from day one. Not handed off. Engineered to last."}</span>
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2">
-              <span data-cms-key="webapp_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">Book a Free Technical Discovery Call</span> <ArrowRight size={18} />
+              <span data-cms-key="webapp_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.webapp_cta_btn || "Book a Free Technical Discovery Call"}</span> <ArrowRight size={18} />
             </Link>
             <a href="#services-list" className="btn-outline-dark px-8 py-4 text-base">What We Build</a>
           </div>

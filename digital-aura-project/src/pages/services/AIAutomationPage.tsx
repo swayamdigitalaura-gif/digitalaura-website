@@ -186,7 +186,7 @@ const CaseStudyCard = ({ cs, i }: { cs: typeof caseStudies[0]; i: number }) => {
 };
 
 const AIAutomationPage = () => {
-  const _sp = useSettings(['aiauto_hero_h1','aiauto_hero_sub','aiauto_cta_btn']);
+  const sp = useSettings(['aiauto_hero_h1','aiauto_hero_sub','aiauto_cta_btn']);
   return (
   <PageLayout>
 
@@ -207,16 +207,16 @@ const AIAutomationPage = () => {
             </span>
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-[58px] font-bold leading-[1.1] text-[#0A1628] mb-6 tracking-tight">
-            <span data-cms-key="aiauto_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">Your Business Is Generating Signals.<br className="hidden md:block" />
+            <span data-cms-key="aiauto_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">{sp.aiauto_hero_h1 || (<>Your Business Is Generating Signals.<br className="hidden md:block" />
             Your Team Isn't Fast Enough<br className="hidden md:block" />
             to Act on All of Them.
-          </span></h1>
+            </>)}</span></h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto leading-relaxed mb-10">
-            <span data-cms-key="aiauto_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">We build real time AI automation systems — not zaps, not templates, not basic triggers. Custom-engineered pipelines that process data, make decisions, and take action the moment something happens in your business.</span>
+            <span data-cms-key="aiauto_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.aiauto_hero_sub || "We build real time AI automation systems — not zaps, not templates, not basic triggers. Custom-engineered pipelines that process data, make decisions, and take action the moment something happens in your business."}</span>
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2">
-              <span data-cms-key="aiauto_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">Book a Free Automation Architecture Call</span> <ArrowRight size={18} />
+              <span data-cms-key="aiauto_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.aiauto_cta_btn || "Book a Free Automation Architecture Call"}</span> <ArrowRight size={18} />
             </Link>
             <a href="#services-list" className="btn-outline-dark px-8 py-4 text-base">Our Automation Services</a>
           </div>

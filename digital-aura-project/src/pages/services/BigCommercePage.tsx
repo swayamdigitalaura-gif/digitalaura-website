@@ -152,7 +152,7 @@ const FAQItem = ({ q, a, idx = 0 }: { q: string; a: string; idx?: number }) => {
 };
 
 const BigCommercePage = () => {
-  const _sp = useSettings(['bigcommerce_hero_h1','bigcommerce_hero_sub','bigcommerce_cta_btn']);
+  const sp = useSettings(['bigcommerce_hero_h1','bigcommerce_hero_sub','bigcommerce_cta_btn']);
   return (
   <PageLayout>
     <section className="relative pt-[72px] overflow-hidden" style={{ background: "#fff" }}>
@@ -171,15 +171,15 @@ const BigCommercePage = () => {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-[54px] font-black leading-[1.1] text-[#0A1628] mb-5 tracking-tight">
-            <span data-cms-key="bigcommerce_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">Enterprise eCommerce on BigCommerce<br /><span style={{ color: "#1A6FE8" }}>Built for Scale, Speed & Growth</span></span>
+            <span data-cms-key="bigcommerce_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">{sp.bigcommerce_hero_h1 || (<>Enterprise eCommerce on BigCommerce<br /><span style={{ color: "#1A6FE8" }}>Built for Scale, Speed & Growth</span></>)}</span>
           </h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-8 leading-relaxed">
-            <span data-cms-key="bigcommerce_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">We build enterprise grade BigCommerce stores for high volume businesses: with custom themes, B2B capabilities, multi channel selling, and deep integrations.</span>
+            <span data-cms-key="bigcommerce_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.bigcommerce_hero_sub || "We build enterprise grade BigCommerce stores for high volume businesses: with custom themes, B2B capabilities, multi channel selling, and deep integrations."}</span>
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
             <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
               style={{ background: "linear-gradient(135deg, #1A6FE8, #1558c0)", boxShadow: "0 8px 24px rgba(26,111,232,0.4)" }}>
-              <span data-cms-key="bigcommerce_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">Build My BigCommerce Store</span> <CreditCard size={15} />
+              <span data-cms-key="bigcommerce_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.bigcommerce_cta_btn || "Build My BigCommerce Store"}</span> <CreditCard size={15} />
             </Link>
             <a href="#services-list" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold border-2 text-[#0A1628] hover:bg-[#0A1628] hover:text-white transition-all" style={{ borderColor: "#0A1628" }}>What We Build</a>
           </div>

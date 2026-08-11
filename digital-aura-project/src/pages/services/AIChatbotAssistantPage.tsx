@@ -199,7 +199,7 @@ const CaseStudyCard = ({ cs, i }: { cs: typeof caseStudies[0]; i: number }) => {
 };
 
 const AIChatbotAssistantPage = () => {
-  const _sp = useSettings(['aichatbot_hero_h1','aichatbot_hero_sub','aichatbot_cta_btn']);
+  const sp = useSettings(['aichatbot_hero_h1','aichatbot_hero_sub','aichatbot_cta_btn']);
   return (
   <PageLayout>
 
@@ -220,16 +220,16 @@ const AIChatbotAssistantPage = () => {
             </span>
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-[58px] font-bold leading-[1.1] text-[#0A1628] mb-6 tracking-tight">
-            <span data-cms-key="aichatbot_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">Your Business Shouldn't Need a Human<br className="hidden md:block" />
+            <span data-cms-key="aichatbot_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">{sp.aichatbot_hero_h1 || (<>Your Business Shouldn't Need a Human<br className="hidden md:block" />
             to Answer the Same Question<br className="hidden md:block" />
             200 Times a Day.
-          </span></h1>
+            </>)}</span></h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto leading-relaxed mb-10">
-            <span data-cms-key="aichatbot_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">We build AI powered chatbots and intelligent assistants that don't just respond — they understand context, remember conversations, take actions, and resolve problems end to end. Built on your data, trained on your business logic, deployed where your customers and teams actually are.</span>
+            <span data-cms-key="aichatbot_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.aichatbot_hero_sub || "We build AI powered chatbots and intelligent assistants that don't just respond — they understand context, remember conversations, take actions, and resolve problems end to end. Built on your data, trained on your business logic, deployed where your customers and teams actually are."}</span>
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2">
-              <span data-cms-key="aichatbot_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">Book a Free Chatbot Strategy Call</span> <ArrowRight size={18} />
+              <span data-cms-key="aichatbot_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.aichatbot_cta_btn || "Book a Free Chatbot Strategy Call"}</span> <ArrowRight size={18} />
             </Link>
             <a href="#services-list" className="btn-outline-dark px-8 py-4 text-base">Our Assistant Services</a>
           </div>

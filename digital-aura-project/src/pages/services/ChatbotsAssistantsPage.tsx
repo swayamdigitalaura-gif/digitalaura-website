@@ -131,7 +131,7 @@ const FAQItem = ({ q, a, idx = 0 }: { q: string; a: string; idx?: number }) => {
 };
 
 const ChatbotsAssistantsPage = () => {
-  const _sp = useSettings(['chatbots_hero_h1','chatbots_hero_sub','chatbots_cta_btn']);
+  const sp = useSettings(['chatbots_hero_h1','chatbots_hero_sub','chatbots_cta_btn']);
   return (
   <PageLayout>
     {/* HERO */}
@@ -153,13 +153,13 @@ const ChatbotsAssistantsPage = () => {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-[56px] font-black leading-[1.1] text-[#0A1628] mb-5 tracking-tight">
-            <span data-cms-key="chatbots_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">Intelligent Chatbots That<br />
+            <span data-cms-key="chatbots_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">{sp.chatbots_hero_h1 || (<>Intelligent Chatbots That<br />
             <span style={{ background: gradient, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               Work While You Sleep
             </span>
-          </span></h1>
+            </>)}</span></h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-5 leading-relaxed">
-            <span data-cms-key="chatbots_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">We build AI powered chatbots and virtual assistants that handle customer queries, qualify leads, and support your team 24/7 without adding headcount.</span>
+            <span data-cms-key="chatbots_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.chatbots_hero_sub || "We build AI powered chatbots and virtual assistants that handle customer queries, qualify leads, and support your team 24/7 without adding headcount."}</span>
           </p>
           <div className="flex flex-wrap gap-2 justify-center mb-8">
             {["Customer Support", "Lead Qualification", "WhatsApp Bot", "Voice AI", "CRM Integrated", "24/7 Available"].map(tag => (
@@ -170,7 +170,7 @@ const ChatbotsAssistantsPage = () => {
           <div className="flex flex-wrap gap-3 justify-center">
             <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
               style={{ background: gradient, boxShadow: "0 8px 24px rgba(26,111,232,0.4)" }}>
-              <span data-cms-key="chatbots_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">Build My Chatbot</span> <ArrowRight size={16} />
+              <span data-cms-key="chatbots_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.chatbots_cta_btn || "Build My Chatbot"}</span> <ArrowRight size={16} />
             </Link>
             <a href="#channels" className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold border-2 text-[#0A1628] hover:bg-[#0A1628] hover:text-white transition-all"
               style={{ borderColor: "#0A1628" }}>

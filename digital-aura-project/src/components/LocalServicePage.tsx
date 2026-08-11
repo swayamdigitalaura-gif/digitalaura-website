@@ -59,12 +59,12 @@ export interface LocalServiceConfig {
   ctaButton: string;
 }
 
-const FAQItem = ({ q, a, idx, accentColor }: { q: string; a: string; idx: number; accentColor: string }) => {
+const FAQItem = ({ q, a, cmsKey, accentColor }: { q: string; a: string; cmsKey: (field: string) => string; accentColor: string }) => {
   const [open, setOpen] = useState(false);
   return (
     <div className="rounded-2xl overflow-hidden border transition-all duration-200" style={{ borderColor: open ? `${accentColor}40` : "#E5E7EB", background: "#fff" }}>
       <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between px-6 py-5 text-left">
-        <span className="text-[15px] font-semibold text-[#0A1628] pr-4">{q}</span>
+        <span data-cms-key={cmsKey("q")} data-cms-label="FAQ Question" data-cms-attr="text" className="text-[15px] font-semibold text-[#0A1628] pr-4">{q}</span>
         <motion.span animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.2 }}>
           <ChevronDown size={18} color={accentColor} />
         </motion.span>
@@ -72,7 +72,7 @@ const FAQItem = ({ q, a, idx, accentColor }: { q: string; a: string; idx: number
       <AnimatePresence initial={false}>
         {open && (
           <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }} style={{ overflow: "hidden" }}>
-            <p className="px-6 pb-5 text-[14.5px] text-[#6B7280] leading-relaxed">{a}</p>
+            <p data-cms-key={cmsKey("a")} data-cms-label="FAQ Answer" data-cms-attr="text" className="px-6 pb-5 text-[14.5px] text-[#6B7280] leading-relaxed">{a}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -82,24 +82,67 @@ const FAQItem = ({ q, a, idx, accentColor }: { q: string; a: string; idx: number
 
 const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
   useCMSEditor();
-  // Top-level headline/CTA copy is click-to-edit from the admin Pages panel (same
-  // data-cms-key + useSettings mechanism as every other page) — settings keys are
-  // namespaced per page via config.slug so all 18 local-service pages stay independent.
+  // Every piece of copy on this page is click-to-edit from the admin Pages panel (same
+  // data-cms-key + useSettings mechanism as every other page). Settings keys are
+  // namespaced by config.slug (and array index, for list items) so all local-service
+  // pages sharing this one component stay independent of each other.
   const k = (field: string) => `${config.slug}_${field}`;
-  const s = useSettings([
-    k("h1"), k("heroParagraph"), k("heroParagraph2"),
-    k("differentiatorHeading"), k("differentiatorText"),
-    k("ctaHeading"), k("ctaText"),
-  ]);
+  const keys = [
+    k("eyebrow"), k("h1"), k("heroParagraph"), k("heroParagraph2"),
+    k("differentiatorBadge"), k("differentiatorHeading"), k("differentiatorText"),
+    k("painPointsTitle"), k("warningText"), k("includedTitle"),
+    k("processTitle"), k("processSubtext"), k("whyLocalTitle"),
+    k("relatedCategoryLabel"), k("ctaHeading"), k("ctaText"), k("ctaButton"),
+    ...config.painPoints.flatMap((_, i) => [k(`painPoint_${i}_pain`), k(`painPoint_${i}_detail`)]),
+    ...config.included.flatMap((_, i) => [k(`included_${i}_title`), k(`included_${i}_desc`)]),
+    ...config.process.flatMap((_, i) => [k(`process_${i}_title`), k(`process_${i}_desc`)]),
+    ...config.whyLocal.map((_, i) => k(`whyLocal_${i}`)),
+    ...config.relatedServices.flatMap((_, i) => [k(`related_${i}_title`), k(`related_${i}_desc`)]),
+    ...config.faqs.flatMap((_, i) => [k(`faq_${i}_q`), k(`faq_${i}_a`)]),
+  ];
+  const s = useSettings(keys);
+  const g = (field: string, fallback: string) => s[k(field)] || fallback;
   const c = {
     ...config,
-    h1: s[k("h1")] || config.h1,
-    heroParagraph: s[k("heroParagraph")] || config.heroParagraph,
-    heroParagraph2: s[k("heroParagraph2")] || config.heroParagraph2,
-    differentiatorHeading: s[k("differentiatorHeading")] || config.differentiatorHeading,
-    differentiatorText: s[k("differentiatorText")] || config.differentiatorText,
-    ctaHeading: s[k("ctaHeading")] || config.ctaHeading,
-    ctaText: s[k("ctaText")] || config.ctaText,
+    eyebrow: g("eyebrow", config.eyebrow),
+    h1: g("h1", config.h1),
+    heroParagraph: g("heroParagraph", config.heroParagraph),
+    heroParagraph2: g("heroParagraph2", config.heroParagraph2 || ""),
+    differentiatorBadge: g("differentiatorBadge", config.differentiatorBadge),
+    differentiatorHeading: g("differentiatorHeading", config.differentiatorHeading),
+    differentiatorText: g("differentiatorText", config.differentiatorText),
+    painPointsTitle: g("painPointsTitle", config.painPointsTitle),
+    warningText: g("warningText", config.warningText),
+    includedTitle: g("includedTitle", config.includedTitle),
+    processTitle: g("processTitle", config.processTitle),
+    processSubtext: g("processSubtext", config.processSubtext),
+    whyLocalTitle: g("whyLocalTitle", config.whyLocalTitle),
+    relatedCategoryLabel: g("relatedCategoryLabel", config.relatedCategoryLabel),
+    ctaHeading: g("ctaHeading", config.ctaHeading),
+    ctaText: g("ctaText", config.ctaText),
+    ctaButton: g("ctaButton", config.ctaButton),
+    painPoints: config.painPoints.map((p, i) => ({
+      pain: g(`painPoint_${i}_pain`, p.pain),
+      detail: g(`painPoint_${i}_detail`, p.detail),
+    })),
+    included: config.included.map((item, i) => ({
+      title: g(`included_${i}_title`, item.title),
+      desc: g(`included_${i}_desc`, item.desc),
+    })),
+    process: config.process.map((step, i) => ({
+      title: g(`process_${i}_title`, step.title),
+      desc: g(`process_${i}_desc`, step.desc),
+    })),
+    whyLocal: config.whyLocal.map((w, i) => g(`whyLocal_${i}`, w)),
+    relatedServices: config.relatedServices.map((rs, i) => ({
+      ...rs,
+      title: g(`related_${i}_title`, rs.title),
+      desc: g(`related_${i}_desc`, rs.desc),
+    })),
+    faqs: config.faqs.map((f, i) => ({
+      q: g(`faq_${i}_q`, f.q),
+      a: g(`faq_${i}_a`, f.a),
+    })),
   };
   const glow = `${c.accentColor}1f`;
   return (
@@ -118,7 +161,7 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
             <div className="flex justify-center mb-6">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase"
                 style={{ background: `${c.accentColor}12`, color: c.accentColor, border: `1px solid ${c.accentColor}30` }}>
-                <MapPin size={12} /> {c.eyebrow}
+                <MapPin size={12} /> <span data-cms-key={k("eyebrow")} data-cms-label="Eyebrow" data-cms-attr="text">{c.eyebrow}</span>
               </span>
             </div>
             <h1 data-cms-key={k("h1")} data-cms-label="Hero H1" data-cms-attr="text" className="text-3xl md:text-4xl lg:text-[42px] font-black leading-[1.18] text-[#0A1628] mb-5 tracking-tight">{c.h1}</h1>
@@ -143,28 +186,28 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
       <section className="py-16 px-4 md:px-8 bg-white">
         <div className="max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8">
-            <span className="text-[11px] font-black uppercase tracking-[0.14em] px-3 py-1.5 rounded-full mb-6 inline-block" style={{ background: `${c.accentColor}12`, color: c.accentColor }}>{c.differentiatorBadge}</span>
+            <span data-cms-key={k("differentiatorBadge")} data-cms-label="Differentiator Badge" data-cms-attr="text" className="text-[11px] font-black uppercase tracking-[0.14em] px-3 py-1.5 rounded-full mb-6 inline-block" style={{ background: `${c.accentColor}12`, color: c.accentColor }}>{c.differentiatorBadge}</span>
             <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] tracking-tight mb-5 leading-tight">
               <span data-cms-key={k("differentiatorHeading")} data-cms-label="Differentiator Heading" data-cms-attr="text">{c.differentiatorHeading}</span>{c.differentiatorHeading2 && <><br className="hidden md:block" /> {c.differentiatorHeading2}</>}
             </h2>
             <p data-cms-key={k("differentiatorText")} data-cms-label="Differentiator Text" data-cms-attr="text" className="text-[#4B5563] max-w-3xl leading-relaxed mb-8">{c.differentiatorText}</p>
             <p className="text-[11px] font-black uppercase tracking-[0.14em] text-[#EF4444] mb-4 flex items-center gap-2">
-              <span className="w-4 h-0.5 rounded-full bg-[#EF4444]" /> {c.painPointsTitle}
+              <span className="w-4 h-0.5 rounded-full bg-[#EF4444]" /> <span data-cms-key={k("painPointsTitle")} data-cms-label="Pain Points Title" data-cms-attr="text">{c.painPointsTitle}</span>
             </p>
             <div className="grid sm:grid-cols-3 gap-3 mb-8 max-w-3xl">
               {c.painPoints.map((item, i) => (
                 <div key={i} className="flex items-start gap-3 p-4 rounded-xl" style={{ background: "rgba(239,68,68,0.05)", border: "1px solid rgba(239,68,68,0.18)" }}>
                   <span className="text-[#EF4444] font-black text-base leading-none mt-0.5 shrink-0">✕</span>
                   <div>
-                    <p className="text-[13.5px] font-semibold text-[#0A1628] leading-snug mb-1">{item.pain}</p>
-                    <p className="text-[11.5px] text-[#9CA3AF]">{item.detail}</p>
+                    <p data-cms-key={k(`painPoint_${i}_pain`)} data-cms-label={`Pain Point ${i + 1}`} data-cms-attr="text" className="text-[13.5px] font-semibold text-[#0A1628] leading-snug mb-1">{item.pain}</p>
+                    <p data-cms-key={k(`painPoint_${i}_detail`)} data-cms-label={`Pain Point ${i + 1} Detail`} data-cms-attr="text" className="text-[11.5px] text-[#9CA3AF]">{item.detail}</p>
                   </div>
                 </div>
               ))}
             </div>
             <div className="max-w-3xl rounded-xl px-5 py-4 border-l-4 flex items-start gap-3" style={{ background: `${c.accentColor}0f`, borderLeftColor: c.accentColor }}>
               <span className="text-lg font-black mt-0.5 shrink-0" style={{ color: c.accentColor }}>⚠</span>
-              <p className="text-[14.5px] font-semibold text-[#374151] leading-relaxed">{c.warningText}</p>
+              <p data-cms-key={k("warningText")} data-cms-label="Warning Text" data-cms-attr="text" className="text-[14.5px] font-semibold text-[#374151] leading-relaxed">{c.warningText}</p>
             </div>
           </motion.div>
         </div>
@@ -175,7 +218,7 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
         <div className="max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8 text-center">
             <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center justify-center gap-2">
-              <span className="w-4 h-0.5 rounded-full" style={{ background: c.accentColor }} /> {c.includedTitle}
+              <span className="w-4 h-0.5 rounded-full" style={{ background: c.accentColor }} /> <span data-cms-key={k("includedTitle")} data-cms-label="Included Title" data-cms-attr="text">{c.includedTitle}</span>
             </h2>
           </motion.div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -183,8 +226,8 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
               <motion.div key={item.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
                 className="bg-white rounded-2xl p-6 border" style={{ borderColor: "#E5E7EB", boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
                 <div className="w-2 h-2 rounded-full mb-3" style={{ background: c.accentColor }} />
-                <h3 className="font-bold text-[#0A1628] mb-2 text-[15px]">{item.title}</h3>
-                <p className="text-sm text-[#6B7280] leading-relaxed">{item.desc}</p>
+                <h3 data-cms-key={k(`included_${i}_title`)} data-cms-label={`Included ${i + 1} Title`} data-cms-attr="text" className="font-bold text-[#0A1628] mb-2 text-[15px]">{item.title}</h3>
+                <p data-cms-key={k(`included_${i}_desc`)} data-cms-label={`Included ${i + 1} Desc`} data-cms-attr="text" className="text-sm text-[#6B7280] leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -196,9 +239,9 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
         <div className="max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8 text-center">
             <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center justify-center gap-2">
-              <span className="w-4 h-0.5 rounded-full" style={{ background: c.accentColor }} /> {c.processTitle}
+              <span className="w-4 h-0.5 rounded-full" style={{ background: c.accentColor }} /> <span data-cms-key={k("processTitle")} data-cms-label="Process Title" data-cms-attr="text">{c.processTitle}</span>
             </h2>
-            <p className="text-[#6B7280] mt-3 max-w-xl mx-auto text-sm">{c.processSubtext}</p>
+            <p data-cms-key={k("processSubtext")} data-cms-label="Process Subtext" data-cms-attr="text" className="text-[#6B7280] mt-3 max-w-xl mx-auto text-sm">{c.processSubtext}</p>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {c.process.map((step, i) => (
@@ -207,8 +250,8 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
                 <span className="inline-block text-[10px] font-black tracking-[0.15em] uppercase px-2.5 py-1 rounded-full mb-3" style={{ background: `${c.accentColor}12`, color: c.accentColor }}>
                   Step {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="font-black text-[#0A1628] text-[14.5px] leading-snug mb-2">{step.title}</h3>
-                <p className="text-[13px] text-[#6B7280] leading-relaxed">{step.desc}</p>
+                <h3 data-cms-key={k(`process_${i}_title`)} data-cms-label={`Process ${i + 1} Title`} data-cms-attr="text" className="font-black text-[#0A1628] text-[14.5px] leading-snug mb-2">{step.title}</h3>
+                <p data-cms-key={k(`process_${i}_desc`)} data-cms-label={`Process ${i + 1} Desc`} data-cms-attr="text" className="text-[13px] text-[#6B7280] leading-relaxed">{step.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -228,7 +271,7 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
         <div className="max-w-4xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8 text-center">
             <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center justify-center gap-2">
-              <span className="w-4 h-0.5 rounded-full" style={{ background: c.accentColor }} /> {c.whyLocalTitle}
+              <span className="w-4 h-0.5 rounded-full" style={{ background: c.accentColor }} /> <span data-cms-key={k("whyLocalTitle")} data-cms-label="Why Local Title" data-cms-attr="text">{c.whyLocalTitle}</span>
             </h2>
           </motion.div>
           <div className="grid sm:grid-cols-2 gap-3">
@@ -236,7 +279,7 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
               <motion.div key={w} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
                 className="flex items-start gap-3 p-4 rounded-xl" style={{ background: "#F8FAFF", border: "1px solid #E5E7EB" }}>
                 <Check size={16} className="mt-0.5 shrink-0" style={{ color: c.accentColor }} />
-                <span className="text-[14px] text-[#374151] leading-relaxed">{w}</span>
+                <span data-cms-key={k(`whyLocal_${i}`)} data-cms-label={`Why Local ${i + 1}`} data-cms-attr="text" className="text-[14px] text-[#374151] leading-relaxed">{w}</span>
               </motion.div>
             ))}
           </div>
@@ -247,7 +290,7 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
       <section className="py-16 px-4 md:px-8" style={{ background: "#F8FAFF" }}>
         <div className="max-w-6xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8 text-center">
-            <span className="text-[11px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full mb-4 inline-block" style={{ background: `${c.relatedCategoryColor}12`, color: c.relatedCategoryColor }}>
+            <span data-cms-key={k("relatedCategoryLabel")} data-cms-label="Related Category Label" data-cms-attr="text" className="text-[11px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full mb-4 inline-block" style={{ background: `${c.relatedCategoryColor}12`, color: c.relatedCategoryColor }}>
               {c.relatedCategoryLabel}
             </span>
             <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] tracking-tight">More Ways We Can Help</h2>
@@ -256,8 +299,8 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
             {c.relatedServices.map((s, i) => (
               <motion.div key={s.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
                 className="bg-white rounded-2xl p-6 border" style={{ borderColor: "#E5E7EB", boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
-                <h3 className="font-bold text-[#0A1628] mb-2 text-[16px]">{s.title}</h3>
-                <p className="text-sm text-[#6B7280] leading-relaxed mb-4">{s.desc}</p>
+                <h3 data-cms-key={k(`related_${i}_title`)} data-cms-label={`Related ${i + 1} Title`} data-cms-attr="text" className="font-bold text-[#0A1628] mb-2 text-[16px]">{s.title}</h3>
+                <p data-cms-key={k(`related_${i}_desc`)} data-cms-label={`Related ${i + 1} Desc`} data-cms-attr="text" className="text-sm text-[#6B7280] leading-relaxed mb-4">{s.desc}</p>
                 <ul className="space-y-1.5 mb-4">
                   {s.points.map(p => (
                     <li key={p} className="flex items-center gap-2 text-sm font-medium text-[#374151]">
@@ -286,7 +329,7 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
           <div className="space-y-3">
             {c.faqs.map((f, idx) => (
               <motion.div key={f.q} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.06 }}>
-                <FAQItem q={f.q} a={f.a} idx={idx} accentColor={c.accentColor} />
+                <FAQItem q={f.q} a={f.a} cmsKey={(field) => k(`faq_${idx}_${field}`)} accentColor={c.accentColor} />
               </motion.div>
             ))}
           </div>
@@ -308,7 +351,7 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
             <p data-cms-key={k("ctaText")} data-cms-label="CTA Text" data-cms-attr="text" className="text-[#E2E8F0] mb-8 leading-relaxed">{c.ctaText}</p>
             <Link to="/contact#contact-form" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
               style={{ background: `linear-gradient(135deg, ${c.accentColor}, #0A1628)`, boxShadow: `0 4px 20px ${c.accentColor}40` }}>
-              {c.ctaButton} <ArrowRight size={16} />
+              <span data-cms-key={k("ctaButton")} data-cms-label="CTA Button" data-cms-attr="text">{c.ctaButton}</span> <ArrowRight size={16} />
             </Link>
           </motion.div>
         </div>

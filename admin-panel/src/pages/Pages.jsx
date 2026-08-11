@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api';
 import toast from 'react-hot-toast';
-import { Edit2, Trash2, Globe, FileText, Plus, Search, Tag, FileCode, Pencil, X } from 'lucide-react';
+import { Edit2, Trash2, Globe, FileText, Plus, Search, Tag, FileCode } from 'lucide-react';
 
 const statusBadge = (s) => (
   <span style={{ fontSize: 11, fontWeight: 700, padding: '3px 10px', borderRadius: 20, background: s === 'published' ? '#DCFCE7' : '#FEF9C3', color: s === 'published' ? '#15803D' : '#92400E' }}>
@@ -22,8 +22,6 @@ export default function Pages() {
   const [seoForm, setSeoForm] = useState({});
   const [seoTab, setSeoTab] = useState('seo');
   const [search, setSearch] = useState('');
-  const [editContent, setEditContent] = useState(null);
-  const [contentFields, setContentFields] = useState([]);
   const navigate = useNavigate();
 
   const load = () => api.get('/pages').then(r => setPages(r.data.data));
@@ -59,26 +57,6 @@ export default function Pages() {
       await api.put(`/pages/${editSEO.id}`, seoForm);
       toast.success('SEO data saved!');
       setEditSEO(null);
-      load();
-    } catch (err) { toast.error(err.response?.data?.message || 'Error'); }
-  };
-
-  const openContent = (p) => {
-    setEditContent(p);
-    let parsed = {};
-    try { parsed = JSON.parse(p.content_json || '{}'); } catch { parsed = {}; }
-    const fields = Object.entries(parsed).map(([key, value]) => ({ key, value }));
-    setContentFields(fields.length ? fields : [{ key: '', value: '' }]);
-  };
-
-  const saveContent = async (e) => {
-    e.preventDefault();
-    const obj = {};
-    contentFields.forEach(({ key, value }) => { if (key.trim()) obj[key.trim()] = value; });
-    try {
-      await api.put(`/pages/${editContent.id}`, { content_json: JSON.stringify(obj) });
-      toast.success('Content saved!');
-      setEditContent(null);
       load();
     } catch (err) { toast.error(err.response?.data?.message || 'Error'); }
   };
@@ -225,46 +203,6 @@ export default function Pages() {
         </div>
       )}
 
-      {/* Content Edit Modal */}
-      {editContent && (
-        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.55)', zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20 }}>
-          <div style={{ background: '#fff', borderRadius: 16, width: '100%', maxWidth: 680, maxHeight: '92vh', display: 'flex', flexDirection: 'column', boxShadow: '0 24px 64px rgba(0,0,0,0.2)' }}>
-            <div style={{ padding: '20px 28px 16px', borderBottom: '1px solid #E5E7EB' }}>
-              <h2 style={{ fontSize: 18, fontWeight: 800, margin: '0 0 4px' }}>Content — {editContent.title}</h2>
-              <p style={{ fontSize: 12, color: '#94A3B8', margin: 0 }}>
-                Edit the text this page shows live. Fields only exist here if the page's code was built to read them
-                — leaving a value blank keeps the page's built-in default.
-              </p>
-            </div>
-            <form onSubmit={saveContent} style={{ flex: 1, overflowY: 'auto', padding: 28, display: 'flex', flexDirection: 'column', gap: 12 }}>
-              {contentFields.map((f, i) => (
-                <div key={i} style={{ border: '1px solid #E5E7EB', borderRadius: 8, padding: 12 }}>
-                  <div style={{ display: 'flex', gap: 8, marginBottom: 8, alignItems: 'center' }}>
-                    <input value={f.key} onChange={e => setContentFields(prev => prev.map((x, xi) => xi === i ? { ...x, key: e.target.value } : x))}
-                      placeholder="field name (e.g. heroTitle)" style={{ flex: 1, padding: '7px 10px', border: '1px solid #E5E7EB', borderRadius: 6, fontSize: 12.5, fontFamily: 'monospace' }} />
-                    <button type="button" onClick={() => setContentFields(prev => prev.filter((_, xi) => xi !== i))}
-                      style={{ background: '#FEF2F2', border: 'none', borderRadius: 6, color: '#EF4444', cursor: 'pointer', padding: 6 }}>
-                      <X size={13} />
-                    </button>
-                  </div>
-                  <textarea value={f.value} onChange={e => setContentFields(prev => prev.map((x, xi) => xi === i ? { ...x, value: e.target.value } : x))}
-                    placeholder="Leave blank to use the page's default text" rows={3}
-                    style={{ width: '100%', padding: '8px 10px', border: '1px solid #E5E7EB', borderRadius: 6, fontSize: 13, resize: 'vertical' }} />
-                </div>
-              ))}
-              <button type="button" onClick={() => setContentFields(prev => [...prev, { key: '', value: '' }])}
-                style={{ alignSelf: 'flex-start', padding: '7px 14px', background: '#EFF6FF', border: '1px solid #BFDBFE', borderRadius: 6, color: '#1D4ED8', fontSize: 12, cursor: 'pointer', fontWeight: 600 }}>
-                + Add Field
-              </button>
-              <div style={{ display: 'flex', gap: 10, marginTop: 8, paddingTop: 8, borderTop: '1px solid #F1F5F9' }}>
-                <button type="submit" style={{ flex: 1, padding: '11px', background: '#FF6B2B', border: 'none', borderRadius: 8, color: '#fff', fontWeight: 700, cursor: 'pointer' }}>Save Content</button>
-                <button type="button" onClick={() => setEditContent(null)} style={{ flex: 1, padding: '11px', background: '#F1F5F9', border: 'none', borderRadius: 8, color: '#64748B', fontWeight: 600, cursor: 'pointer' }}>Cancel</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
-
       {/* Pages table */}
       <div style={{ background: '#fff', borderRadius: 12, boxShadow: '0 1px 8px rgba(0,0,0,0.06)', overflow: 'hidden' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
@@ -306,11 +244,6 @@ export default function Pages() {
                       title="SEO Settings"
                       style={{ padding: '6px 10px', background: '#F0FDF4', border: 'none', borderRadius: 6, color: '#15803D', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
                       <Globe size={13} />
-                    </button>
-                    <button onClick={() => openContent(p)}
-                      title="Edit Content"
-                      style={{ padding: '6px 10px', background: '#FAF5FF', border: 'none', borderRadius: 6, color: '#7C3AED', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-                      <Pencil size={13} />
                     </button>
                     <button onClick={() => handleDelete(p.id, p.title)}
                       style={{ padding: '6px 10px', background: '#FEF2F2', border: 'none', borderRadius: 6, color: '#EF4444', cursor: 'pointer' }}>

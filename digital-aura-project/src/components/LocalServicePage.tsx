@@ -11,7 +11,8 @@ import PageLayout from "@/components/PageLayout";
 import CaseStudies from "@/components/CaseStudies";
 import Testimonials from "@/components/Testimonials";
 import { ArrowRight, ChevronDown, Check, MapPin } from "lucide-react";
-import { useEditableContent } from "@/hooks/useEditableContent";
+import { useSettings } from "@/hooks/useSettings";
+import { useCMSEditor } from "@/hooks/useCMSEditor";
 
 export interface IncludedItem { title: string; desc: string; }
 export interface FaqItem { q: string; a: string; }
@@ -80,18 +81,26 @@ const FAQItem = ({ q, a, idx, accentColor }: { q: string; a: string; idx: number
 };
 
 const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
-  // Top-level headline/CTA copy is editable from the admin Pages panel (Content tab) without
-  // a code change — everything else (FAQs, process steps, etc.) still comes from the config.
-  const editable = useEditableContent(config.slug, {
-    h1: config.h1,
-    heroParagraph: config.heroParagraph,
-    heroParagraph2: config.heroParagraph2 || "",
-    differentiatorHeading: config.differentiatorHeading,
-    differentiatorText: config.differentiatorText,
-    ctaHeading: config.ctaHeading,
-    ctaText: config.ctaText,
-  });
-  const c = { ...config, ...editable };
+  useCMSEditor();
+  // Top-level headline/CTA copy is click-to-edit from the admin Pages panel (same
+  // data-cms-key + useSettings mechanism as every other page) — settings keys are
+  // namespaced per page via config.slug so all 18 local-service pages stay independent.
+  const k = (field: string) => `${config.slug}_${field}`;
+  const s = useSettings([
+    k("h1"), k("heroParagraph"), k("heroParagraph2"),
+    k("differentiatorHeading"), k("differentiatorText"),
+    k("ctaHeading"), k("ctaText"),
+  ]);
+  const c = {
+    ...config,
+    h1: s[k("h1")] || config.h1,
+    heroParagraph: s[k("heroParagraph")] || config.heroParagraph,
+    heroParagraph2: s[k("heroParagraph2")] || config.heroParagraph2,
+    differentiatorHeading: s[k("differentiatorHeading")] || config.differentiatorHeading,
+    differentiatorText: s[k("differentiatorText")] || config.differentiatorText,
+    ctaHeading: s[k("ctaHeading")] || config.ctaHeading,
+    ctaText: s[k("ctaText")] || config.ctaText,
+  };
   const glow = `${c.accentColor}1f`;
   return (
     <PageLayout>
@@ -112,10 +121,10 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
                 <MapPin size={12} /> {c.eyebrow}
               </span>
             </div>
-            <h1 className="text-3xl md:text-4xl lg:text-[42px] font-black leading-[1.18] text-[#0A1628] mb-5 tracking-tight">{c.h1}</h1>
-            <p className="text-lg text-[#4B5563] max-w-2xl mx-auto mb-4 leading-relaxed">{c.heroParagraph}</p>
+            <h1 data-cms-key={k("h1")} data-cms-label="Hero H1" data-cms-attr="text" className="text-3xl md:text-4xl lg:text-[42px] font-black leading-[1.18] text-[#0A1628] mb-5 tracking-tight">{c.h1}</h1>
+            <p data-cms-key={k("heroParagraph")} data-cms-label="Hero Paragraph" data-cms-attr="text" className="text-lg text-[#4B5563] max-w-2xl mx-auto mb-4 leading-relaxed">{c.heroParagraph}</p>
             {c.heroParagraph2 && (
-              <p className="text-base text-[#6B7280] max-w-2xl mx-auto mb-4 leading-relaxed">{c.heroParagraph2}</p>
+              <p data-cms-key={k("heroParagraph2")} data-cms-label="Hero Paragraph 2" data-cms-attr="text" className="text-base text-[#6B7280] max-w-2xl mx-auto mb-4 leading-relaxed">{c.heroParagraph2}</p>
             )}
             <div className="flex flex-wrap gap-2 justify-center mb-8">
               {c.tags.map(tag => (
@@ -136,9 +145,9 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8">
             <span className="text-[11px] font-black uppercase tracking-[0.14em] px-3 py-1.5 rounded-full mb-6 inline-block" style={{ background: `${c.accentColor}12`, color: c.accentColor }}>{c.differentiatorBadge}</span>
             <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] tracking-tight mb-5 leading-tight">
-              {c.differentiatorHeading}{c.differentiatorHeading2 && <><br className="hidden md:block" /> {c.differentiatorHeading2}</>}
+              <span data-cms-key={k("differentiatorHeading")} data-cms-label="Differentiator Heading" data-cms-attr="text">{c.differentiatorHeading}</span>{c.differentiatorHeading2 && <><br className="hidden md:block" /> {c.differentiatorHeading2}</>}
             </h2>
-            <p className="text-[#4B5563] max-w-3xl leading-relaxed mb-8">{c.differentiatorText}</p>
+            <p data-cms-key={k("differentiatorText")} data-cms-label="Differentiator Text" data-cms-attr="text" className="text-[#4B5563] max-w-3xl leading-relaxed mb-8">{c.differentiatorText}</p>
             <p className="text-[11px] font-black uppercase tracking-[0.14em] text-[#EF4444] mb-4 flex items-center gap-2">
               <span className="w-4 h-0.5 rounded-full bg-[#EF4444]" /> {c.painPointsTitle}
             </p>
@@ -295,8 +304,8 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
             <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mb-6 tracking-widest uppercase" style={{ background: `${c.accentColor}15`, border: `1px solid ${c.accentColor}40`, color: c.accentColor }}>
               Let's Build Together
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4">{c.ctaHeading}</h2>
-            <p className="text-[#E2E8F0] mb-8 leading-relaxed">{c.ctaText}</p>
+            <h2 data-cms-key={k("ctaHeading")} data-cms-label="CTA Heading" data-cms-attr="text" className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4">{c.ctaHeading}</h2>
+            <p data-cms-key={k("ctaText")} data-cms-label="CTA Text" data-cms-attr="text" className="text-[#E2E8F0] mb-8 leading-relaxed">{c.ctaText}</p>
             <Link to="/contact#contact-form" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
               style={{ background: `linear-gradient(135deg, ${c.accentColor}, #0A1628)`, boxShadow: `0 4px 20px ${c.accentColor}40` }}>
               {c.ctaButton} <ArrowRight size={16} />

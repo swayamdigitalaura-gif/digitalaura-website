@@ -5,7 +5,8 @@ import {
   ArrowRight, ArrowLeft, CheckCircle2, XCircle, TrendingUp,
   Star, ChevronDown,
 } from "lucide-react";
-import { useEditableContent } from "@/hooks/useEditableContent";
+import { useSettings } from "@/hooks/useSettings";
+import { useCMSEditor } from "@/hooks/useCMSEditor";
 
 const NAVY = "#0A1628";
 const BLUE = "#1A6FE8";
@@ -150,13 +151,14 @@ const numberStats = [
 const IMG = "/case-studies/riant-bikes";
 
 const CaseStudyRiantBikes = () => {
-  // Hero headline/subtitle are editable from admin (Pages > Content tab) without a code
-  // change. The rest of the article body is still authored in code — see useEditableContent.
-  const editable = useEditableContent("riant-bikes", {
-    heroTitle: "They Built Riant Bikes From Zero. The Internet Almost Killed It.",
-    heroSubtitle:
-      "This is the story of a bike rental business that ruled Ahmedabad with almost no marketing — and then watched itself slowly disappear because it never adapted. Here's how we brought it back from the edge.",
-  });
+  useCMSEditor();
+  // Hero headline/subtitle are click-to-edit from admin — same data-cms-key + useSettings
+  // mechanism used across the rest of the site. The article body stays code-authored.
+  const s = useSettings(["riantbikes_heroTitle", "riantbikes_heroSubtitle"]);
+  const heroTitle = s.riantbikes_heroTitle || "They Built Riant Bikes From Zero. The Internet Almost Killed It.";
+  const heroSubtitle =
+    s.riantbikes_heroSubtitle ||
+    "This is the story of a bike rental business that ruled Ahmedabad with almost no marketing — and then watched itself slowly disappear because it never adapted. Here's how we brought it back from the edge.";
   return (
     <PageLayout>
       {/* Hero */}
@@ -190,11 +192,11 @@ const CaseStudyRiantBikes = () => {
             >
               Case Study &middot; Local Business
             </span>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold leading-[1.15] text-white mb-6 tracking-tight">
-              {editable.heroTitle}
+            <h1 data-cms-key="riantbikes_heroTitle" data-cms-label="Hero Title" data-cms-attr="text" className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold leading-[1.15] text-white mb-6 tracking-tight">
+              {heroTitle}
             </h1>
-            <p className="text-base md:text-lg max-w-2xl mx-auto" style={{ color: "#C7D2FE" }}>
-              {editable.heroSubtitle}
+            <p data-cms-key="riantbikes_heroSubtitle" data-cms-label="Hero Subtitle" data-cms-attr="text" className="text-base md:text-lg max-w-2xl mx-auto" style={{ color: "#C7D2FE" }}>
+              {heroSubtitle}
             </p>
           </motion.div>
         </div>

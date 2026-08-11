@@ -2,6 +2,8 @@ import { ArrowRight, Gauge, MapPin, Search, ShieldCheck, Smartphone } from "luci
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Reveal, SectionLabel } from "./Reveal";
+import { useSettings } from "@/hooks/useSettings";
+import { useCMSEditor } from "@/hooks/useCMSEditor";
 
 const trustItems = [
   { icon: MapPin, text: "Trusted by Businesses Across Ahmedabad" },
@@ -12,6 +14,24 @@ const trustItems = [
 ];
 
 export function Hero() {
+  useCMSEditor();
+  const s = useSettings([
+    "wds_hero_label",
+    "wds_hero_h1_main",
+    "wds_hero_h1_highlight",
+    "wds_hero_subtitle",
+    "wds_hero_cta1",
+    "wds_hero_cta2",
+    ...trustItems.map((_, i) => `wds_hero_trust_${i}_text`),
+  ]);
+  const label = s.wds_hero_label || "Website Development Company · Ahmedabad";
+  const h1Main = s.wds_hero_h1_main || "Websites that win customers.";
+  const h1Highlight = s.wds_hero_h1_highlight || "Not just admirers.";
+  const subtitle =
+    s.wds_hero_subtitle ||
+    "Digital Aura is a website design and development company in Ahmedabad building fast, SEO-friendly websites designed around one goal: turning visitors into enquiries. Every page is planned around your buyers, built for performance, and measured against real business results.";
+  const cta1 = s.wds_hero_cta1 || "Get My Free Website Strategy";
+  const cta2 = s.wds_hero_cta2 || "See Our Results";
   return (
     <section className="relative overflow-hidden bg-cream">
       <div className="pointer-events-none absolute inset-0 grid-soft opacity-60" />
@@ -21,25 +41,35 @@ export function Hero() {
       <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-5 py-14 sm:px-8 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:py-20">
         <div>
           <Reveal>
-            <SectionLabel>Website Development Company · Ahmedabad</SectionLabel>
+            <SectionLabel>
+              <span data-cms-key="wds_hero_label" data-cms-label="Hero Label" data-cms-attr="text">
+                {label}
+              </span>
+            </SectionLabel>
           </Reveal>
 
           <Reveal delay={80}>
             <h1 className="mt-6 text-display text-foreground">
-              Websites that win customers.{" "}
+              <span data-cms-key="wds_hero_h1_main" data-cms-label="Hero H1 Main" data-cms-attr="text">
+                {h1Main}
+              </span>{" "}
               <span className="relative text-primary">
-                Not just admirers.
+                <span data-cms-key="wds_hero_h1_highlight" data-cms-label="Hero H1 Highlight" data-cms-attr="text">
+                  {h1Highlight}
+                </span>
                 <span className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-primary/25" />
               </span>
             </h1>
           </Reveal>
 
           <Reveal delay={160}>
-            <p className="mt-6 max-w-xl text-muted-foreground">
-              Digital Aura is a website design and development company in Ahmedabad building fast,
-              SEO-friendly websites designed around one goal: turning visitors into enquiries.
-              Every page is planned around your buyers, built for performance, and measured
-              against real business results.
+            <p
+              data-cms-key="wds_hero_subtitle"
+              data-cms-label="Hero Subtitle"
+              data-cms-attr="text"
+              className="mt-6 max-w-xl text-muted-foreground"
+            >
+              {subtitle}
             </p>
           </Reveal>
 
@@ -51,7 +81,9 @@ export function Hero() {
                 className="group h-[3.25rem] rounded-full px-7 text-base font-bold shadow-[var(--shadow-glow)] transition-transform hover:-translate-y-0.5"
               >
                 <a href="#strategy">
-                  Get My Free Website Strategy
+                  <span data-cms-key="wds_hero_cta1" data-cms-label="Hero CTA 1" data-cms-attr="text">
+                    {cta1}
+                  </span>
                   <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
               </Button>
@@ -61,7 +93,11 @@ export function Hero() {
                 variant="outline"
                 className="h-[3.25rem] rounded-full border-foreground/15 bg-background px-7 text-base font-bold transition-transform hover:-translate-y-0.5 hover:bg-background"
               >
-                <a href="#results">See Our Results</a>
+                <a href="#results">
+                  <span data-cms-key="wds_hero_cta2" data-cms-label="Hero CTA 2" data-cms-attr="text">
+                    {cta2}
+                  </span>
+                </a>
               </Button>
             </div>
           </Reveal>
@@ -92,7 +128,14 @@ export function Hero() {
                 )}
               >
                 <item.icon className="h-3.5 w-3.5 shrink-0 text-primary" />
-                <span className="lg:whitespace-nowrap">{item.text}</span>
+                <span
+                  data-cms-key={`wds_hero_trust_${index}_text`}
+                  data-cms-label={`Hero Trust Item ${index + 1}`}
+                  data-cms-attr="text"
+                  className="lg:whitespace-nowrap"
+                >
+                  {s[`wds_hero_trust_${index}_text`] || item.text}
+                </span>
               </li>
             ))}
           </ul>

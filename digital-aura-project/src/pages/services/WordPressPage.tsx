@@ -41,7 +41,7 @@ const wpComparison = (
 );
 
 const WordPressPage = () => {
-  const _sp = useSettings(["wordpress_hero_h1","wordpress_hero_sub","wordpress_cta_btn"]);
+  const sp = useSettings(["wordpress_hero_h1", "wordpress_hero_sub", "wordpress_cta_btn"]);
   return (
   <ServicePageLayout
     badge="WordPress Development"
@@ -49,8 +49,8 @@ const WordPressPage = () => {
     accentColor="#21759B"
     glowColor="rgba(33,117,155,0.12)"
     HeaderIcon={Globe2}
-    title="Custom WordPress Websites Built to Perform"
-    subtitle="Fast, secure, and fully tailored WordPress sites: designed for your brand, optimised for search engines, and easy to manage yourself."
+    title={sp.wordpress_hero_h1 || "Custom WordPress Websites Built to Perform"}
+    subtitle={sp.wordpress_hero_sub || "Fast, secure, and fully tailored WordPress sites: designed for your brand, optimised for search engines, and easy to manage yourself."}
     desc="We build custom WordPress websites that go beyond templates. From bespoke theme development and plugin customisation to speed optimisation and SEO: every site we deliver is built for performance, security, and long term growth. Whether you need a business site, a blog, or a full content platform, we make WordPress work for you."
     services={["Custom WordPress Theme Development","Plugin Development & Customisation","Speed & Performance Optimisation","WordPress SEO Setup & Optimisation","Website Migration & Upgrades","Ongoing Maintenance & Support"]}
     whyUs={["100% custom: no bloated templates","Mobile first, pixel perfect design","Built for speed and Google rankings","Easy admin: manage content yourself","Secure setup with regular updates","Ongoing support after launch"]}
@@ -76,7 +76,7 @@ const WordPressPage = () => {
       { Icon: Gauge,       text: "Easy self-management after launch" },
       { Icon: Star,        text: "Professional, brand aligned design" },
     ]}
-    ctaLabel="Build My WordPress Site"
+    ctaLabel={sp.wordpress_cta_btn || "Build My WordPress Site"}
     ctaGradient="linear-gradient(135deg, #21759B, #185a78)"
     cmsPrefix="wordpress"
     comparisonSection={wpComparison}

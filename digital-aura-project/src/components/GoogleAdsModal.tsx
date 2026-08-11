@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowRight, Check, Zap, Target, Search, ShoppingBag, BarChart2, RefreshCw, Globe2, TrendingUp, Gauge, DollarSign, ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useSettings } from "@/hooks/useSettings";
 
 interface Props { open: boolean; onClose: () => void; }
 
@@ -49,6 +50,7 @@ const results = [
 ];
 
 const GoogleAdsModal = ({ open, onClose }: Props) => {
+  const s = useSettings(["gadsmodal_h2_1", "gadsmodal_p_1", "gadsmodal_p_2"]);
   useEffect(() => {
     const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
     if (open) window.addEventListener("keydown", handler);
@@ -94,8 +96,8 @@ const GoogleAdsModal = ({ open, onClose }: Props) => {
                   </div>
                   <div>
                     <span className="text-[11px] font-bold uppercase tracking-[0.15em] mb-1.5 block" style={{ color: ACCENT }}>Google Ads</span>
-                    <h2 className="text-[22px] font-black text-white leading-snug mb-3"><span data-cms-key="gadsmodal_h2_1" data-cms-label="Modal Heading" data-cms-attr="text">Google Ads That Deliver High-Quality Leads at Low Cost</span></h2>
-                    <p className="text-[14px] leading-relaxed" style={{ color: "#94A3B8" }}><span data-cms-key="gadsmodal_p_1" data-cms-label="Body Text" data-cms-attr="text">Data driven Google campaigns, Search, Display, Shopping, and YouTube, managed to maximise your ROI and deliver consistent, qualified leads.</span></p>
+                    <h2 className="text-[22px] font-black text-white leading-snug mb-3"><span data-cms-key="gadsmodal_h2_1" data-cms-label="Modal Heading" data-cms-attr="text">{s.gadsmodal_h2_1 || "Google Ads That Deliver High-Quality Leads at Low Cost"}</span></h2>
+                    <p className="text-[14px] leading-relaxed" style={{ color: "#94A3B8" }}><span data-cms-key="gadsmodal_p_1" data-cms-label="Body Text" data-cms-attr="text">{s.gadsmodal_p_1 || "Data driven Google campaigns, Search, Display, Shopping, and YouTube, managed to maximise your ROI and deliver consistent, qualified leads."}</span></p>
                   </div>
                 </div>
               </div>
@@ -181,7 +183,7 @@ const GoogleAdsModal = ({ open, onClose }: Props) => {
                       <Zap size={14} style={{ color: ACCENT }} />
                       <span className="text-[11px] font-bold uppercase tracking-wider" style={{ color: ACCENT }}>Ready to Run Ads?</span>
                     </div>
-                    <p className="text-[13px] text-[#94A3B8] leading-relaxed"><span data-cms-key="gadsmodal_p_2" data-cms-label="Body Text" data-cms-attr="text">Let's launch Google Ads campaigns that bring you qualified leads and measurable ROI from day one.</span></p>
+                    <p className="text-[13px] text-[#94A3B8] leading-relaxed"><span data-cms-key="gadsmodal_p_2" data-cms-label="Body Text" data-cms-attr="text">{s.gadsmodal_p_2 || "Let's launch Google Ads campaigns that bring you qualified leads and measurable ROI from day one."}</span></p>
                   </div>
                   <Link to="/contact" onClick={onClose}
                     className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-bold text-white whitespace-nowrap transition-all hover:gap-3"

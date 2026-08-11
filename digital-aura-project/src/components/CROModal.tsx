@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowRight, Check, Zap, FlaskConical, MousePointer, BarChart2, Layout, Target, TrendingUp, Gauge, DollarSign, ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useSettings } from "@/hooks/useSettings";
 
 interface Props { open: boolean; onClose: () => void; }
 const ACCENT = "#FF6B2B";
@@ -30,6 +31,7 @@ const results = [
 ];
 
 const CROModal = ({ open, onClose }: Props) => {
+  const s = useSettings(["cromodal_h2_1", "cromodal_p_1", "cromodal_p_2"]);
   useEffect(() => { const h = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); }; if (open) window.addEventListener("keydown", h); return () => window.removeEventListener("keydown", h); }, [open, onClose]);
   useEffect(() => { document.body.style.overflow = open ? "hidden" : ""; return () => { document.body.style.overflow = ""; }; }, [open]);
 
@@ -56,8 +58,8 @@ const CROModal = ({ open, onClose }: Props) => {
                   </div>
                   <div>
                     <span className="text-[11px] font-bold uppercase tracking-[0.15em] mb-1.5 block" style={{ color: ACCENT }}>Conversion Rate Optimisation</span>
-                    <h2 className="text-[22px] font-black text-white leading-snug mb-3"><span data-cms-key="cromodal_h2_1" data-cms-label="Modal Heading" data-cms-attr="text">Turn More Visitors Into Paying Customers</span></h2>
-                    <p className="text-[14px] leading-relaxed" style={{ color: "#94A3B8" }}><span data-cms-key="cromodal_p_1" data-cms-label="Body Text" data-cms-attr="text">Stop losing leads from your existing traffic. We audit, test, and optimise your funnels so more visitors take action, without spending more on ads.</span></p>
+                    <h2 className="text-[22px] font-black text-white leading-snug mb-3"><span data-cms-key="cromodal_h2_1" data-cms-label="Modal Heading" data-cms-attr="text">{s.cromodal_h2_1 || "Turn More Visitors Into Paying Customers"}</span></h2>
+                    <p className="text-[14px] leading-relaxed" style={{ color: "#94A3B8" }}><span data-cms-key="cromodal_p_1" data-cms-label="Body Text" data-cms-attr="text">{s.cromodal_p_1 || "Stop losing leads from your existing traffic. We audit, test, and optimise your funnels so more visitors take action, without spending more on ads."}</span></p>
                   </div>
                 </div>
               </div>
@@ -84,7 +86,7 @@ const CROModal = ({ open, onClose }: Props) => {
                 <div className="rounded-xl p-6 flex flex-col sm:flex-row items-center gap-4" style={{ background: "linear-gradient(135deg, #0A1628, #1A2744)", border: "1px solid rgba(255,107,43,0.2)" }}>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1"><Zap size={14} style={{ color: ACCENT }} /><span className="text-[11px] font-bold uppercase tracking-wider" style={{ color: ACCENT }}>Ready to Convert More?</span></div>
-                    <p className="text-[13px] text-[#94A3B8] leading-relaxed"><span data-cms-key="cromodal_p_2" data-cms-label="Body Text" data-cms-attr="text">Let's audit your funnel and turn your existing traffic into more leads, sales, and revenue.</span></p>
+                    <p className="text-[13px] text-[#94A3B8] leading-relaxed"><span data-cms-key="cromodal_p_2" data-cms-label="Body Text" data-cms-attr="text">{s.cromodal_p_2 || "Let's audit your funnel and turn your existing traffic into more leads, sales, and revenue."}</span></p>
                   </div>
                   <Link to="/contact" onClick={onClose} className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-bold text-white whitespace-nowrap transition-all hover:gap-3" style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 6px 20px rgba(255,107,43,0.4)" }}>
                     Optimise My Funnel <ArrowRight size={14} />

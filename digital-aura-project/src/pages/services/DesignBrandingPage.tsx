@@ -23,7 +23,7 @@ const deliverables = [
 ];
 
 const DesignBrandingPage = () => {
-  const _sp = useSettings(['design_hero_h1','design_hero_sub','design_cta_btn']);
+  const sp = useSettings(['design_hero_h1','design_hero_sub','design_cta_btn']);
   return (
   <PageLayout>
     <section className="relative pt-[72px] overflow-hidden" style={{ background: "#FFFFFF" }}>
@@ -42,15 +42,15 @@ const DesignBrandingPage = () => {
             </span>
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-[58px] font-bold leading-[1.1] text-[#0A1628] mb-6 tracking-tight">
-            <span data-cms-key="design_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">Design That Converts.
-            <br /><span style={{ background: "linear-gradient(135deg,#F59E0B,#d97706)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Brands That Stick.</span>
+            <span data-cms-key="design_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">{sp.design_hero_h1 || (<>Design That Converts.
+            <br /><span style={{ background: "linear-gradient(135deg,#F59E0B,#d97706)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Brands That Stick.</span></>)}
           </span></h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto leading-relaxed mb-10">
-            <span data-cms-key="design_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">Strategic brand identity and conversion first UI/UX design: every pixel intentional, every decision tied to a business outcome.</span>
+            <span data-cms-key="design_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.design_hero_sub || "Strategic brand identity and conversion first UI/UX design: every pixel intentional, every decision tied to a business outcome."}</span>
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2" style={{ background: "linear-gradient(135deg,#F59E0B,#d97706)", boxShadow: "0 4px 18px rgba(245,158,11,0.35)" }}>
-              <span data-cms-key="design_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">Start a Design Project</span> <ArrowRight size={18} />
+              <span data-cms-key="design_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.design_cta_btn || "Start a Design Project"}</span> <ArrowRight size={18} />
             </Link>
             <a href="#services-list" className="btn-outline-dark px-8 py-4 text-base">See What We Design</a>
           </div>

@@ -22,7 +22,7 @@ const results = [
 ];
 
 const DigitalMarketingPage = () => {
-  const _sp = useSettings(['digmkt_hero_h1','digmkt_hero_sub','digmkt_cta_btn']);
+  const sp = useSettings(['digmkt_hero_h1','digmkt_hero_sub','digmkt_cta_btn']);
   return (
   <PageLayout>
     <section className="relative pt-[72px] overflow-hidden" style={{ background: "#FFFFFF" }}>
@@ -41,15 +41,15 @@ const DigitalMarketingPage = () => {
             </span>
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-[58px] font-bold leading-[1.1] text-[#0A1628] mb-6 tracking-tight">
-            <span data-cms-key="digmkt_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">AI Assisted Marketing
-            <br /><span data-cms-key="digmkt_hl_111" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-orange-gradient">That Fills Your Pipeline.</span>
+            <span data-cms-key="digmkt_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">{sp.digmkt_hero_h1 || (<>AI Assisted Marketing
+            <br /><span data-cms-key="digmkt_hl_111" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-orange-gradient">That Fills Your Pipeline.</span></>)}
           </span></h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto leading-relaxed mb-10">
-            <span data-cms-key="digmkt_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">SEO, paid ads, and social campaigns measured against revenue: not vanity metrics. Built on AI analysis, optimised by expert hands.</span>
+            <span data-cms-key="digmkt_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.digmkt_hero_sub || "SEO, paid ads, and social campaigns measured against revenue: not vanity metrics. Built on AI analysis, optimised by expert hands."}</span>
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2">
-              <span data-cms-key="digmkt_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">Get a Free Audit</span> <ArrowRight size={18} /></Link>
+              <span data-cms-key="digmkt_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.digmkt_cta_btn || "Get a Free Audit"}</span> <ArrowRight size={18} /></Link>
             <a href="#services-list" className="btn-outline-dark px-8 py-4 text-base">Our Services</a>
           </div>
         </motion.div>

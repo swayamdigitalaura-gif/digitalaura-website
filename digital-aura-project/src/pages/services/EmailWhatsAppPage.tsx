@@ -154,7 +154,7 @@ const FAQItem = ({ q, a, idx = 0 }: { q: string; a: string; idx?: number }) => {
 };
 
 const EmailWhatsAppPage = () => {
-  const _sp = useSettings(['emailwa_hero_h1','emailwa_hero_sub','emailwa_cta_btn']);
+  const sp = useSettings(['emailwa_hero_h1','emailwa_hero_sub','emailwa_cta_btn']);
   return (
   <PageLayout>
     {/* ── Hero ── */}
@@ -176,17 +176,17 @@ const EmailWhatsAppPage = () => {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-[54px] font-black leading-[1.1] text-[#0A1628] mb-5 tracking-tight">
-            <span data-cms-key="emailwa_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">Build Relationships & Drive<br />
-            <span style={{ color: accentColor }}>Conversions with Direct Marketing</span>
+            <span data-cms-key="emailwa_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">{sp.emailwa_hero_h1 || (<>Build Relationships & Drive<br />
+            <span style={{ color: accentColor }}>Conversions with Direct Marketing</span></>)}
           </span></h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-8 leading-relaxed">
-            <span data-cms-key="emailwa_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">We help businesses connect with their audience through personalised email and WhatsApp marketing: focused on engagement, automation, and conversion that turns leads into loyal customers.</span>
+            <span data-cms-key="emailwa_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.emailwa_hero_sub || "We help businesses connect with their audience through personalised email and WhatsApp marketing: focused on engagement, automation, and conversion that turns leads into loyal customers."}</span>
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
             <Link to="/contact"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
               style={{ background: "linear-gradient(135deg, #25D366, #128C7E)", boxShadow: `0 8px 24px ${accentColor}40` }}>
-              <span data-cms-key="emailwa_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">Start My Campaign</span> <Send size={15} />
+              <span data-cms-key="emailwa_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.emailwa_cta_btn || "Start My Campaign"}</span> <Send size={15} />
             </Link>
             <a href="#services-list" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold border-2 text-[#0A1628] hover:bg-[#0A1628] hover:text-white transition-all" style={{ borderColor: "#0A1628" }}>Our Services</a>
           </div>

@@ -198,7 +198,7 @@ const CaseStudyCard = ({ cs, i }: { cs: typeof caseStudies[0]; i: number }) => {
 };
 
 const CustomAIWebSolutionsPage = () => {
-  const _sp = useSettings(['customai_hero_h1','customai_hero_sub','customai_cta_btn']);
+  const sp = useSettings(['customai_hero_h1','customai_hero_sub','customai_cta_btn']);
   return (
   <PageLayout>
 
@@ -219,16 +219,16 @@ const CustomAIWebSolutionsPage = () => {
             </span>
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-[58px] font-bold leading-[1.1] text-[#0A1628] mb-6 tracking-tight">
-            <span data-cms-key="customai_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">Your Business Has Problems That<br className="hidden md:block" />
+            <span data-cms-key="customai_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">{sp.customai_hero_h1 || (<>Your Business Has Problems That<br className="hidden md:block" />
             Off-The-Shelf Software Was<br className="hidden md:block" />
-            Never Built to Solve.
+            Never Built to Solve.</>)}
           </span></h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto leading-relaxed mb-10">
-            <span data-cms-key="customai_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">We design and engineer fully custom, AI powered web solutions built from the ground up around your specific business model, your data, and the outcomes you need — No templates — No compromises — No ceiling.</span>
+            <span data-cms-key="customai_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.customai_hero_sub || "We design and engineer fully custom, AI powered web solutions built from the ground up around your specific business model, your data, and the outcomes you need — No templates — No compromises — No ceiling."}</span>
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2">
-              <span data-cms-key="customai_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">Book a Free Solution Discovery Call</span> <ArrowRight size={18} />
+              <span data-cms-key="customai_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.customai_cta_btn || "Book a Free Solution Discovery Call"}</span> <ArrowRight size={18} />
             </Link>
             <a href="#services-list" className="btn-outline-dark px-8 py-4 text-base">What We Build</a>
           </div>

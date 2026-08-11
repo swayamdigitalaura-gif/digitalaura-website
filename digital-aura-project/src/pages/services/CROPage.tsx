@@ -192,7 +192,7 @@ const FAQItem = ({ q, a, idx = 0 }: { q: string; a: string; idx?: number }) => {
 };
 
 const CROPage = () => {
-  const _sp = useSettings(['cro_hero_h1','cro_hero_sub','cro_cta_btn']);
+  const sp = useSettings(['cro_hero_h1','cro_hero_sub','cro_cta_btn']);
   return (
   <PageLayout>
     {/* ── Hero ── */}
@@ -214,11 +214,11 @@ const CROPage = () => {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-[54px] font-black leading-[1.1] text-[#0A1628] mb-5 tracking-tight">
-            <span data-cms-key="cro_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">Turn More Visitors Into<br />
-            <span style={{ color: accentColor }}>Paying Customers</span>
+            <span data-cms-key="cro_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">{sp.cro_hero_h1 || (<>Turn More Visitors Into<br />
+            <span style={{ color: accentColor }}>Paying Customers</span></>)}
           </span></h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-8 leading-relaxed">
-            <span data-cms-key="cro_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">Stop losing leads from your existing traffic. We audit, test, and optimise your funnels so more visitors take action: without spending more on ads.</span>
+            <span data-cms-key="cro_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.cro_hero_sub || "Stop losing leads from your existing traffic. We audit, test, and optimise your funnels so more visitors take action: without spending more on ads."}</span>
           </p>
           {/* stat pills */}
           <div className="flex flex-wrap gap-2 justify-center mb-8">
@@ -233,7 +233,7 @@ const CROPage = () => {
             <Link to="/contact"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
               style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: `0 8px 24px ${accentColor}40` }}>
-              <span data-cms-key="cro_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">Optimise My Funnel</span> <FlaskConical size={15} />
+              <span data-cms-key="cro_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.cro_cta_btn || "Optimise My Funnel"}</span> <FlaskConical size={15} />
             </Link>
             <a href="#services-list" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold border-2 text-[#0A1628] hover:bg-[#0A1628] hover:text-white transition-all" style={{ borderColor: "#0A1628" }}>What We Do</a>
           </div>

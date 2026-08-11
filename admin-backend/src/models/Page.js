@@ -14,6 +14,10 @@ const Page = sequelize.define('Page', {
   canonical: { type: DataTypes.STRING(500) },
   status: { type: DataTypes.ENUM('draft', 'published'), defaultValue: 'draft' },
   grapes_data: { type: DataTypes.TEXT("long"), defaultValue: '{}' },
+  // Flat key->text/html JSON map of editable body content for this page (headline, subtitle,
+  // paragraph copy, etc). The live React page merges these over its hardcoded defaults at
+  // runtime via useEditableContent(), so an empty/missing key just falls back to the default.
+  content_json: { type: DataTypes.TEXT("long"), defaultValue: '{}' },
 }, {
   tableName: 'pages',
   timestamps: true,

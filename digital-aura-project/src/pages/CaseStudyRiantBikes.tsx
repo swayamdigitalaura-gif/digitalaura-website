@@ -5,6 +5,7 @@ import {
   ArrowRight, ArrowLeft, CheckCircle2, XCircle, TrendingUp,
   Star, ChevronDown,
 } from "lucide-react";
+import { useEditableContent } from "@/hooks/useEditableContent";
 
 const NAVY = "#0A1628";
 const BLUE = "#1A6FE8";
@@ -149,6 +150,13 @@ const numberStats = [
 const IMG = "/case-studies/riant-bikes";
 
 const CaseStudyRiantBikes = () => {
+  // Hero headline/subtitle are editable from admin (Pages > Content tab) without a code
+  // change. The rest of the article body is still authored in code — see useEditableContent.
+  const editable = useEditableContent("riant-bikes", {
+    heroTitle: "They Built Riant Bikes From Zero. The Internet Almost Killed It.",
+    heroSubtitle:
+      "This is the story of a bike rental business that ruled Ahmedabad with almost no marketing — and then watched itself slowly disappear because it never adapted. Here's how we brought it back from the edge.",
+  });
   return (
     <PageLayout>
       {/* Hero */}
@@ -183,12 +191,10 @@ const CaseStudyRiantBikes = () => {
               Case Study &middot; Local Business
             </span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold leading-[1.15] text-white mb-6 tracking-tight">
-              They Built Riant Bikes From Zero. The Internet Almost Killed It.
+              {editable.heroTitle}
             </h1>
             <p className="text-base md:text-lg max-w-2xl mx-auto" style={{ color: "#C7D2FE" }}>
-              This is the story of a bike rental business that ruled Ahmedabad with almost no marketing —
-              and then watched itself slowly disappear because it never adapted. Here's how we brought it
-              back from the edge.
+              {editable.heroSubtitle}
             </p>
           </motion.div>
         </div>

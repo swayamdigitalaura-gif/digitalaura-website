@@ -22,6 +22,7 @@ import {
   ArrowRight, ChevronDown, Clapperboard,
   Film, Megaphone, Mic, CalendarDays, Target,
 } from "lucide-react";
+import { useSettings } from "@/hooks/useSettings";
 
 const accent = "#EC4899";
 const accentBg = "rgba(236,72,153,0.08)";
@@ -82,7 +83,70 @@ const FAQItem = ({ q, a, idx = 0 }: { q: string; a: string; idx?: number }) => {
   );
 };
 
+const painPoints = [
+  { pain: "Generic stock-footage reels", detail: "Looks like everyone else's Instagram page" },
+  { pain: "A posting calendar with no strategy", detail: "No reason behind why each video exists" },
+  { pain: "Expensive film shoots for short-lived content", detail: "24 hours of relevance for a full-day shoot" },
+];
+
+const positioningCards = [
+  { title: "AI Video Production at Scale",              desc: "Ten script variations and ten finished videos in the time one traditional shoot takes, so we test hooks instead of guessing at them." },
+  { title: "Strategy-Led Content Calendars",            desc: "Every video is tied to a business goal — awareness, lead capture, retargeting — before a single frame is generated." },
+  { title: "Built for the Algorithm, Not the Award Show", desc: "Hook-first editing, native captions, and platform-correct aspect ratios designed for watch-time and shares." },
+];
+
 const AIFilmmakingPage = () => {
+  // This page already had data-cms-key markup from an earlier pass, but nothing ever read
+  // the saved overrides back — edits only appeared live inside the admin builder session
+  // and were lost on reload. Wiring useSettings() here fixes that for every existing key
+  // plus the handful of sections that were never marked up at all.
+  const keys = [
+    "aifilm_hero_h1", "aifilm_hero_sub", "aifilm_cta_btn", "aifilm_trust_line",
+    "aifilm_badge_1", "aifilm_h2_main", "aifilm_h2_main2", "aifilm_body_1", "aifilm_warning",
+    "aifilm_badge_2", "aifilm_s2_h2", "aifilm_body_2",
+    "aifilm_badge_3", "aifilm_s3_h2", "aifilm_s3_sub",
+    "aifilm_badge_4", "aifilm_s4_h2",
+    "aifilm_badge_5", "aifilm_s5_h2",
+    "aifilm_badge_6", "aifilm_s6_h2",
+    "aifilm_brands_eyebrow", "aifilm_brands_h2",
+    "aifilm_cta_badge", "aifilm_cta_h2", "aifilm_cta_sub", "aifilm_cta_final_btn",
+    ...painPoints.flatMap((_, i) => [`aifilm_pain_${i}_pain`, `aifilm_pain_${i}_detail`]),
+    ...positioningCards.flatMap((_, i) => [`aifilm_card_${i}_t`, `aifilm_card_${i}_d`]),
+    ...services.flatMap((_, i) => [`aifilm_svc_${i}_title`, `aifilm_svc_${i}_desc`]),
+    ...processSteps.flatMap((_, i) => [`aifilm_step_${i}_t`, `aifilm_step_${i}_d`]),
+    ...whyUs.flatMap((_, i) => [`aifilm_why_${i}_title`, `aifilm_why_${i}_desc`]),
+    ...faqs.flatMap((_, i) => [`aifilm_faq_${i}_q`, `aifilm_faq_${i}_a`]),
+  ];
+  const s = useSettings(keys);
+  const g = (key: string, fallback: string) => s[key] || fallback;
+
+  const painItems = painPoints.map((p, i) => ({
+    pain: g(`aifilm_pain_${i}_pain`, p.pain),
+    detail: g(`aifilm_pain_${i}_detail`, p.detail),
+  }));
+  const cardItems = positioningCards.map((c, i) => ({
+    title: g(`aifilm_card_${i}_t`, c.title),
+    desc: g(`aifilm_card_${i}_d`, c.desc),
+  }));
+  const serviceItems = services.map((sv, i) => ({
+    ...sv,
+    title: g(`aifilm_svc_${i}_title`, sv.title),
+    desc: g(`aifilm_svc_${i}_desc`, sv.desc),
+  }));
+  const stepItems = processSteps.map((st, i) => ({
+    ...st,
+    title: g(`aifilm_step_${i}_t`, st.title),
+    desc: g(`aifilm_step_${i}_d`, st.desc),
+  }));
+  const whyItems = whyUs.map((w, i) => ({
+    title: g(`aifilm_why_${i}_title`, w.title),
+    desc: g(`aifilm_why_${i}_desc`, w.desc),
+  }));
+  const faqItems = faqs.map((f, i) => ({
+    q: g(`aifilm_faq_${i}_q`, f.q),
+    a: g(`aifilm_faq_${i}_a`, f.a),
+  }));
+
   return (
   <PageLayout>
 
@@ -103,19 +167,18 @@ const AIFilmmakingPage = () => {
             </span>
           </span>
           <h1 className="text-3xl md:text-4xl lg:text-[44px] font-bold leading-[1.15] text-[#0A1628] mb-5 tracking-tight">
-            <span data-cms-key="aifilm_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">Most Content Fills a Feed.<br className="hidden md:block" />
-            Yours Should Fill a Pipeline.
-          </span></h1>
+            <span data-cms-key="aifilm_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">{g("aifilm_hero_h1", "Most Content Fills a Feed. Yours Should Fill a Pipeline.")}</span>
+          </h1>
           <p className="text-base md:text-lg text-[#4B5563] max-w-xl mx-auto leading-relaxed mb-10">
-            <span data-cms-key="aifilm_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">AI-produced Reels, Shorts, and ad creatives in days, not weeks — plus the strategy and paid promotion to back them.</span>
+            <span data-cms-key="aifilm_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{g("aifilm_hero_sub", "AI-produced Reels, Shorts, and ad creatives in days, not weeks — plus the strategy and paid promotion to back them.")}</span>
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2">
-              <span data-cms-key="aifilm_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">Book a Free Content Strategy Call</span> <ArrowRight size={18} />
+              <span data-cms-key="aifilm_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{g("aifilm_cta_btn", "Book a Free Content Strategy Call")}</span> <ArrowRight size={18} />
             </Link>
             <a href="#services-list" className="btn-outline-dark px-8 py-4 text-base">See What We Create</a>
           </div>
-          <p className="text-xs text-[#9CA3AF] mt-6"><span data-cms-key="aifilm_trust_line" data-cms-label="Body Text" data-cms-attr="text">Trusted by 750+ brands across healthcare, restaurants, real estate, eCommerce and more</span></p>
+          <p className="text-xs text-[#9CA3AF] mt-6"><span data-cms-key="aifilm_trust_line" data-cms-label="Body Text" data-cms-attr="text">{g("aifilm_trust_line", "Trusted by 750+ brands across healthcare, restaurants, real estate, eCommerce and more")}</span></p>
         </motion.div>
       </div>
     </section>
@@ -124,26 +187,22 @@ const AIFilmmakingPage = () => {
     <section id="services-list" className="py-16 px-4 md:px-8 bg-white">
       <div className="max-w-5xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
-          <span className="section-badge" data-cms-key="aifilm_badge_1" data-cms-label="Section Badge" data-cms-attr="text">Not Your Typical Social Media Agency</span>
+          <span className="section-badge" data-cms-key="aifilm_badge_1" data-cms-label="Section Badge" data-cms-attr="text">{g("aifilm_badge_1", "Not Your Typical Social Media Agency")}</span>
           <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] tracking-tight mb-5 leading-tight">
-            <span data-cms-key="aifilm_h2_main" data-cms-label="Section Heading" data-cms-attr="text">Most Agencies Sell You a Posting Calendar.</span><br className="hidden md:block" /> <span data-cms-key="aifilm_h2_main2" data-cms-label="Section Heading 2" data-cms-attr="text">We Build You a Content Engine.</span>
+            <span data-cms-key="aifilm_h2_main" data-cms-label="Section Heading" data-cms-attr="text">{g("aifilm_h2_main", "Most Agencies Sell You a Posting Calendar.")}</span><br className="hidden md:block" /> <span data-cms-key="aifilm_h2_main2" data-cms-label="Section Heading 2" data-cms-attr="text">{g("aifilm_h2_main2", "We Build You a Content Engine.")}</span>
           </h2>
-          <p className="text-[#4B5563] max-w-3xl leading-relaxed mb-8"><span data-cms-key="aifilm_body_1" data-cms-label="Body Text" data-cms-attr="text">Stock-footage reels and generic captions don't move a feed anymore. AI video production only pays off when it's built on real strategy — so that's where we start.</span></p>
+          <p className="text-[#4B5563] max-w-3xl leading-relaxed mb-8"><span data-cms-key="aifilm_body_1" data-cms-label="Body Text" data-cms-attr="text">{g("aifilm_body_1", "Stock-footage reels and generic captions don't move a feed anymore. AI video production only pays off when it's built on real strategy — so that's where we start.")}</span></p>
 
           <p className="text-[11px] font-black uppercase tracking-[0.14em] text-[#EF4444] mb-4 flex items-center gap-2">
             <span className="w-4 h-0.5 rounded-full bg-[#EF4444]" /> What Most Agencies Deliver
           </p>
           <div className="grid sm:grid-cols-3 gap-3 mb-8 max-w-3xl">
-            {[
-              { pain: "Generic stock-footage reels", detail: "Looks like everyone else's Instagram page" },
-              { pain: "A posting calendar with no strategy", detail: "No reason behind why each video exists" },
-              { pain: "Expensive film shoots for short-lived content", detail: "24 hours of relevance for a full-day shoot" },
-            ].map((item, i) => (
+            {painItems.map((item, i) => (
               <div key={i} className="flex items-start gap-3 p-4 rounded-xl" style={{ background: "rgba(239,68,68,0.05)", border: "1px solid rgba(239,68,68,0.18)" }}>
                 <span className="text-[#EF4444] font-black text-base leading-none mt-0.5 shrink-0">✕</span>
                 <div>
-                  <p className="text-[13.5px] font-semibold text-[#0A1628] leading-snug mb-1">{item.pain}</p>
-                  <p className="text-[11.5px] text-[#9CA3AF]">{item.detail}</p>
+                  <p data-cms-key={`aifilm_pain_${i}_pain`} data-cms-label={`Pain Point ${i + 1}`} data-cms-attr="text" className="text-[13.5px] font-semibold text-[#0A1628] leading-snug mb-1">{item.pain}</p>
+                  <p data-cms-key={`aifilm_pain_${i}_detail`} data-cms-label={`Pain Point ${i + 1} Detail`} data-cms-attr="text" className="text-[11.5px] text-[#9CA3AF]">{item.detail}</p>
                 </div>
               </div>
             ))}
@@ -152,16 +211,12 @@ const AIFilmmakingPage = () => {
           <div className="max-w-3xl rounded-xl px-5 py-4 border-l-4 flex items-start gap-3" style={{ background: "rgba(236,72,153,0.06)", borderLeftColor: accent }}>
             <span style={{ color: accent }} className="text-lg font-black mt-0.5 shrink-0">⚠</span>
             <p className="text-[14.5px] font-semibold text-[#374151] leading-relaxed">
-              <span data-cms-key="aifilm_warning" data-cms-label="Body Text" data-cms-attr="text">If your last "viral reel attempt" cost a full-day shoot and got 400 views, the process — not the platform — is the problem.</span>
+              <span data-cms-key="aifilm_warning" data-cms-label="Body Text" data-cms-attr="text">{g("aifilm_warning", 'If your last "viral reel attempt" cost a full-day shoot and got 400 views, the process — not the platform — is the problem.')}</span>
             </p>
           </div>
         </motion.div>
         <div className="grid sm:grid-cols-3 gap-5">
-          {[
-            { title: "AI Video Production at Scale",              desc: "Ten script variations and ten finished videos in the time one traditional shoot takes, so we test hooks instead of guessing at them." },
-            { title: "Strategy-Led Content Calendars",            desc: "Every video is tied to a business goal — awareness, lead capture, retargeting — before a single frame is generated." },
-            { title: "Built for the Algorithm, Not the Award Show", desc: "Hook-first editing, native captions, and platform-correct aspect ratios designed for watch-time and shares." },
-          ].map((card, i) => (
+          {cardItems.map((card, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
               className="rounded-2xl p-6" style={{ background: accentBg, border: `1px solid ${accentBorder}` }}>
               <div className="w-2 h-2 rounded-full mb-3" style={{ background: accent }} />
@@ -177,12 +232,12 @@ const AIFilmmakingPage = () => {
     <section className="py-16 px-4 md:px-8" style={{ background: "#F8FAFF" }}>
       <div className="max-w-5xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
-          <span className="section-badge" data-cms-key="aifilm_badge_2" data-cms-label="Section Badge" data-cms-attr="text">What We Create</span>
-          <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] tracking-tight mb-3"><span data-cms-key="aifilm_s2_h2" data-cms-label="Section Heading" data-cms-attr="text">Six Formats, One Content Engine</span></h2>
-          <p className="text-[#4B5563] max-w-2xl mx-auto"><span data-cms-key="aifilm_body_2" data-cms-label="Body Text" data-cms-attr="text">Every format below is produced with AI video and film-making tools, then reviewed and edited by our in-house team before it ever reaches your feed.</span></p>
+          <span className="section-badge" data-cms-key="aifilm_badge_2" data-cms-label="Section Badge" data-cms-attr="text">{g("aifilm_badge_2", "What We Create")}</span>
+          <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] tracking-tight mb-3"><span data-cms-key="aifilm_s2_h2" data-cms-label="Section Heading" data-cms-attr="text">{g("aifilm_s2_h2", "Six Formats, One Content Engine")}</span></h2>
+          <p className="text-[#4B5563] max-w-2xl mx-auto"><span data-cms-key="aifilm_body_2" data-cms-label="Body Text" data-cms-attr="text">{g("aifilm_body_2", "Every format below is produced with AI video and film-making tools, then reviewed and edited by our in-house team before it ever reaches your feed.")}</span></p>
         </motion.div>
         <div className="grid md:grid-cols-2 gap-5">
-          {services.map((s, si) => (
+          {serviceItems.map((s, si) => (
             <motion.div key={si} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: si * 0.07 }}
               className="bg-white rounded-2xl p-6 border hover:-translate-y-1 transition-all duration-200" style={{ borderColor: "#E5E7EB", boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
               <div className="h-0.5 w-10 rounded-full mb-4" style={{ background: accent }} />
@@ -201,16 +256,16 @@ const AIFilmmakingPage = () => {
     <section className="py-20 px-4 md:px-8 overflow-hidden" style={{ background: "#F8FAFF" }}>
       <div className="max-w-5xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-          <span className="section-badge" data-cms-key="aifilm_badge_3" data-cms-label="Section Badge" data-cms-attr="text">How We Work</span>
-          <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] tracking-tight mt-2"><span data-cms-key="aifilm_s3_h2" data-cms-label="Section Heading" data-cms-attr="text">From Brief to Published Post</span></h2>
-          <p className="text-[#6B7280] mt-3 max-w-xl mx-auto"><span data-cms-key="aifilm_s3_sub" data-cms-label="Section Subtext" data-cms-attr="text">A fixed four-phase cycle that repeats every month, so content quality compounds instead of resetting.</span></p>
+          <span className="section-badge" data-cms-key="aifilm_badge_3" data-cms-label="Section Badge" data-cms-attr="text">{g("aifilm_badge_3", "How We Work")}</span>
+          <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] tracking-tight mt-2"><span data-cms-key="aifilm_s3_h2" data-cms-label="Section Heading" data-cms-attr="text">{g("aifilm_s3_h2", "From Brief to Published Post")}</span></h2>
+          <p className="text-[#6B7280] mt-3 max-w-xl mx-auto"><span data-cms-key="aifilm_s3_sub" data-cms-label="Section Subtext" data-cms-attr="text">{g("aifilm_s3_sub", "A fixed four-phase cycle that repeats every month, so content quality compounds instead of resetting.")}</span></p>
         </motion.div>
 
         <div className="hidden md:block relative">
           <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px]"
             style={{ background: `linear-gradient(180deg, transparent, ${accent} 8%, ${accent} 92%, transparent)` }} />
           <div className="space-y-8">
-            {processSteps.map((step, i) => {
+            {stepItems.map((step, i) => {
               const isLeft = i % 2 === 0;
               return (
                 <motion.div key={i}
@@ -248,7 +303,7 @@ const AIFilmmakingPage = () => {
           <div className="absolute left-4 top-2 bottom-2 w-[2px] rounded-full"
             style={{ background: `linear-gradient(180deg, ${accent}, ${accent}30)` }} />
           <div className="space-y-6">
-            {processSteps.map((step, i) => (
+            {stepItems.map((step, i) => (
               <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="relative">
                 <div className="absolute -left-[34px] w-8 h-8 rounded-full flex items-center justify-center font-black text-white text-xs z-10"
                   style={{ background: `linear-gradient(135deg, ${accent}, #be185d)`, boxShadow: `0 2px 12px ${accent}40` }}>
@@ -272,8 +327,8 @@ const AIFilmmakingPage = () => {
     <section className="py-20 px-4 md:px-8 bg-white">
       <div className="max-w-6xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-          <span className="section-badge" data-cms-key="aifilm_badge_4" data-cms-label="Section Badge" data-cms-attr="text">Client Love</span>
-          <h2 className="text-3xl md:text-[42px] font-bold text-[#0A1628] tracking-tight"><span data-cms-key="aifilm_s4_h2" data-cms-label="Section Heading" data-cms-attr="text">What Clients Say About Working With Us</span></h2>
+          <span className="section-badge" data-cms-key="aifilm_badge_4" data-cms-label="Section Badge" data-cms-attr="text">{g("aifilm_badge_4", "Client Love")}</span>
+          <h2 className="text-3xl md:text-[42px] font-bold text-[#0A1628] tracking-tight"><span data-cms-key="aifilm_s4_h2" data-cms-label="Section Heading" data-cms-attr="text">{g("aifilm_s4_h2", "What Clients Say About Working With Us")}</span></h2>
         </motion.div>
         <DBTestimonialCarousel />
       </div>
@@ -283,11 +338,11 @@ const AIFilmmakingPage = () => {
     <section className="py-16 px-4 md:px-8" style={{ background: "#F8FAFF" }}>
       <div className="max-w-5xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
-          <span className="section-badge" data-cms-key="aifilm_badge_5" data-cms-label="Section Badge" data-cms-attr="text">Why Digital Aura</span>
-          <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] tracking-tight"><span data-cms-key="aifilm_s5_h2" data-cms-label="Section Heading" data-cms-attr="text">AI Speed, Without Losing the Strategy</span></h2>
+          <span className="section-badge" data-cms-key="aifilm_badge_5" data-cms-label="Section Badge" data-cms-attr="text">{g("aifilm_badge_5", "Why Digital Aura")}</span>
+          <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] tracking-tight"><span data-cms-key="aifilm_s5_h2" data-cms-label="Section Heading" data-cms-attr="text">{g("aifilm_s5_h2", "AI Speed, Without Losing the Strategy")}</span></h2>
         </motion.div>
         <div className="grid md:grid-cols-2 gap-5">
-          {whyUs.map((w, i) => (
+          {whyItems.map((w, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
               className="bg-white rounded-2xl p-6 border group relative overflow-hidden" style={{ borderColor: "#E5E7EB" }}>
               <div className="absolute bottom-0 left-0 h-0.5 w-0 group-hover:w-full transition-all duration-500" style={{ background: `linear-gradient(90deg, ${accent}, #7C3AED)` }} />
@@ -304,8 +359,8 @@ const AIFilmmakingPage = () => {
     <section className="py-14 px-4 md:px-8 bg-white" style={{ borderTop: "1px solid #F3F4F6", borderBottom: "1px solid #F3F4F6" }}>
       <div className="max-w-5xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
-          <p className="text-[11px] font-black uppercase tracking-[0.16em] mb-2" style={{ color: "#9CA3AF" }}>Brands We've Created AI Video Content For</p>
-          <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2">Real Businesses, Real AI Video Content, Delivered by Digital Aura</h2>
+          <p data-cms-key="aifilm_brands_eyebrow" data-cms-label="Brands Eyebrow" data-cms-attr="text" className="text-[11px] font-black uppercase tracking-[0.16em] mb-2" style={{ color: "#9CA3AF" }}>{g("aifilm_brands_eyebrow", "Brands We've Created AI Video Content For")}</p>
+          <h2 data-cms-key="aifilm_brands_h2" data-cms-label="Brands Heading" data-cms-attr="text" className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2">{g("aifilm_brands_h2", "Real Businesses, Real AI Video Content, Delivered by Digital Aura")}</h2>
         </motion.div>
         <ClientLogoGrid accentColor={accent} clients={[
           { name: "Track My Ads",         tag: "AdTech",            logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 130 44'%3E%3Crect width='130' height='44' rx='8' fill='%232B4FD8'/%3E%3Crect x='8' y='7' width='30' height='30' rx='6' fill='white'/%3E%3Ctext x='23' y='27' font-family='Arial,sans-serif' font-size='17' font-weight='900' fill='%232B4FD8' text-anchor='middle'%3ET%3C/text%3E%3Ctext x='88' y='27' font-family='Arial,sans-serif' font-size='12' font-weight='700' fill='white' text-anchor='middle'%3Erackmyads%3C/text%3E%3C/svg%3E", logoBg: "#f0f8ff" },
@@ -319,10 +374,10 @@ const AIFilmmakingPage = () => {
     <section className="py-16 px-4 md:px-8 bg-white">
       <div className="max-w-3xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
-          <span className="section-badge" data-cms-key="aifilm_badge_6" data-cms-label="Section Badge" data-cms-attr="text">FAQ</span>
-          <h2 className="text-3xl font-black text-[#0A1628] tracking-tight"><span data-cms-key="aifilm_s6_h2" data-cms-label="Section Heading" data-cms-attr="text">Common Questions</span></h2>
+          <span className="section-badge" data-cms-key="aifilm_badge_6" data-cms-label="Section Badge" data-cms-attr="text">{g("aifilm_badge_6", "FAQ")}</span>
+          <h2 className="text-3xl font-black text-[#0A1628] tracking-tight"><span data-cms-key="aifilm_s6_h2" data-cms-label="Section Heading" data-cms-attr="text">{g("aifilm_s6_h2", "Common Questions")}</span></h2>
         </motion.div>
-        <div>{faqs.map((f, i) => <FAQItem key={i} q={f.q} a={f.a} idx={i} />)}</div>
+        <div>{faqItems.map((f, i) => <FAQItem key={i} q={f.q} a={f.a} idx={i} />)}</div>
       </div>
     </section>
 
@@ -334,17 +389,17 @@ const AIFilmmakingPage = () => {
       <div className="absolute bottom-8 right-8 w-36 h-36 rounded-full animate-drift-2 opacity-15 pointer-events-none" style={{ background: "radial-gradient(circle, #7C3AED, transparent)" }} />
       <div className="max-w-3xl mx-auto relative z-10">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mb-6 tracking-widest uppercase"
+          <span data-cms-key="aifilm_cta_badge" data-cms-label="CTA Badge" data-cms-attr="text" className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mb-6 tracking-widest uppercase"
             style={{ background: "rgba(236,72,153,0.12)", border: "1px solid rgba(236,72,153,0.3)", color: accent }}>
-            Let's Build Together
+            {g("aifilm_cta_badge", "Let's Build Together")}
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4">
-            <span data-cms-key="aifilm_cta_h2" data-cms-label="CTA Heading" data-cms-attr="text">Let's Turn Your Brand Into Scroll-Stopping Content</span>
+            <span data-cms-key="aifilm_cta_h2" data-cms-label="CTA Heading" data-cms-attr="text">{g("aifilm_cta_h2", "Let's Turn Your Brand Into Scroll-Stopping Content")}</span>
           </h2>
-          <p className="text-[#E2E8F0] mb-8 leading-relaxed"><span data-cms-key="aifilm_cta_sub" data-cms-label="CTA Subtext" data-cms-attr="text">Book a free content strategy call. We'll look at your current social presence and show you exactly which AI video formats would move the needle first — no generic proposal.</span></p>
+          <p className="text-[#E2E8F0] mb-8 leading-relaxed"><span data-cms-key="aifilm_cta_sub" data-cms-label="CTA Subtext" data-cms-attr="text">{g("aifilm_cta_sub", "Book a free content strategy call. We'll look at your current social presence and show you exactly which AI video formats would move the needle first — no generic proposal.")}</span></p>
           <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
             style={{ background: `linear-gradient(135deg, ${accent}, #be185d)`, boxShadow: `0 4px 20px ${accent}40` }}>
-            Book My Free Content Strategy Call <ArrowRight size={16} />
+            <span data-cms-key="aifilm_cta_final_btn" data-cms-label="CTA Final Button" data-cms-attr="text">{g("aifilm_cta_final_btn", "Book My Free Content Strategy Call")}</span> <ArrowRight size={16} />
           </Link>
         </motion.div>
       </div>

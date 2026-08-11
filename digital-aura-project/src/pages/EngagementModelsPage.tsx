@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import CMSIcon from "@/components/CMSIcon";
+import { useSettings } from "@/hooks/useSettings";
 import {
   ArrowRight, CheckCircle2, Clock, DollarSign,
   Users, RefreshCw, Zap, Shield, BarChart3, MessageCircle,
@@ -108,9 +109,97 @@ const levelMap: Record<string, { color: string; bg: string; bars?: number }> = {
   Planned:  { color: "#F59E0B", bg: "rgba(245,158,11,0.08)", bars: undefined },
 };
 
+const heroStats = [
+  { n: "4",    l: "Engagement Models",  color: "#7C3AED" },
+  { n: "750+", l: "Projects Delivered", color: "#FF6B2B" },
+  { n: "10+",  l: "Years Experience",   color: "#1A6FE8" },
+  { n: "98%",  l: "Client Satisfaction",color: "#22C55E" },
+];
+
+const guideItems = [
+  { q: "Is your scope fully defined?",           a: "Go with Fixed Price",         color: "#7C3AED", emoji: "📋" },
+  { q: "Do you need ongoing digital marketing?", a: "Choose Monthly Retainer",     color: "#22C55E", emoji: "🔄" },
+  { q: "Are requirements likely to change?",     a: "Flexible Hours is ideal",    color: "#1A6FE8", emoji: "⏱️" },
+  { q: "Do you want full control of the team?",  a: "Go with Dedicated Team",      color: "#FF6B2B", emoji: "👥" },
+];
+
 const EngagementModelsPage = () => {
   const [active, setActive] = useState("fixed");
-  const current = models.find(m => m.id === active)!;
+
+  const s = useSettings([
+    "engage_hero_badge", "engage_hero_h1", "engage_hero_h1b", "engage_hero_sub", "engage_hero_cta", "engage_hero_btn2",
+    ...heroStats.flatMap((_, i) => [`engage_stat_${i}_n`, `engage_stat_${i}_l`]),
+    "engage_badge_1", "engage_models_h2", "engage_models_h2b",
+    ...models.flatMap(m => [
+      `engage_model_${m.id}_title`, `engage_model_${m.id}_tagline`, `engage_model_${m.id}_overview`,
+      ...m.steps.flatMap((_, i) => [`engage_step_${m.id}_${i}_t`, `engage_step_${m.id}_${i}_d`]),
+      ...m.bestFor.map((_, bi) => `engage_bestfor_${m.id}_${bi}`),
+      ...m.benefits.flatMap((_, i) => [`engage_benefit_${m.id}_${i}_t`, `engage_benefit_${m.id}_${i}_d`]),
+    ]),
+    "engage_badge_2", "engage_cmp_h2", "engage_cmp_h2b", "engage_p_4",
+    "engage_badge_3", "engage_guide_h2", "engage_guide_h2b", "engage_p_5",
+    ...guideItems.flatMap((_, i) => [`engage_guide_${i}_q`, `engage_guide_${i}_a`]),
+    "engage_p_6", "engage_guide_cta",
+    "engage_cta_badge", "engage_cta_h2", "engage_cta_h2b", "engage_p_7", "engage_cta_btn",
+  ]);
+  const g = (key: string, fallback: string) => s[key] || fallback;
+
+  const heroBadge = g("engage_hero_badge", "Engagement Models");
+  const heroH1 = g("engage_hero_h1", "Flexible Ways to");
+  const heroH1b = g("engage_hero_h1b", "Work With Us");
+  const heroSub = g("engage_hero_sub", "4 engagement models built around how businesses actually work — pick what fits your project, budget, and timeline.");
+  const heroCta = g("engage_hero_cta", "Get a Free Recommendation");
+  const heroBtn2 = g("engage_hero_btn2", "Explore Models");
+  const stats = heroStats.map((stat, i) => ({
+    ...stat,
+    n: g(`engage_stat_${i}_n`, stat.n),
+    l: g(`engage_stat_${i}_l`, stat.l),
+  }));
+  const badge1 = g("engage_badge_1", "Our Models");
+  const modelsH2 = g("engage_models_h2", "Choose How We");
+  const modelsH2b = g("engage_models_h2b", "Work Together");
+
+  const modelsWithSettings = models.map(m => ({
+    ...m,
+    titleField: g(`engage_model_${m.id}_title`, `${m.title} Model`),
+    tagline: g(`engage_model_${m.id}_tagline`, m.tagline),
+    overview: g(`engage_model_${m.id}_overview`, m.overview),
+    steps: m.steps.map((st, i) => ({
+      ...st,
+      t: g(`engage_step_${m.id}_${i}_t`, st.t),
+      d: g(`engage_step_${m.id}_${i}_d`, st.d),
+    })),
+    bestFor: m.bestFor.map((b, bi) => g(`engage_bestfor_${m.id}_${bi}`, b)),
+    benefits: m.benefits.map((b, i) => ({
+      ...b,
+      t: g(`engage_benefit_${m.id}_${i}_t`, b.t),
+      d: g(`engage_benefit_${m.id}_${i}_d`, b.d),
+    })),
+  }));
+  const current = modelsWithSettings.find(m => m.id === active)!;
+
+  const badge2 = g("engage_badge_2", "Compare");
+  const cmpH2 = g("engage_cmp_h2", "Side-by-Side");
+  const cmpH2b = g("engage_cmp_h2b", "Comparison");
+  const p4 = g("engage_p_4", "Not sure which model fits? Compare all four at a glance.");
+
+  const badge3 = g("engage_badge_3", "Decision Guide");
+  const guideH2 = g("engage_guide_h2", "Not Sure Which to");
+  const guideH2b = g("engage_guide_h2b", "Pick?");
+  const p5 = g("engage_p_5", "Answer one question — get a clear direction.");
+  const guide = guideItems.map((item, i) => ({
+    ...item,
+    q: g(`engage_guide_${i}_q`, item.q),
+    a: g(`engage_guide_${i}_a`, `→ ${item.a}`),
+  }));
+  const p6 = g("engage_p_6", "Still unsure? Let's talk — we'll recommend the best model for your project, free of charge.");
+  const guideCta = g("engage_guide_cta", "Get a Free Consultation");
+
+  const ctaBadge = g("engage_cta_badge", "Let's Build Together");
+  const ctaH2 = g("engage_cta_h2", "Ready to Find Your");
+  const ctaH2b = g("engage_cta_h2b", "Perfect Model");
+  const p7 = g("engage_p_7", "Connect with us and we'll recommend the engagement model that fits your project, timeline, and budget — no commitment required.");
+  const ctaBtn = g("engage_cta_btn", "Start a Conversation");
 
   return (
     <PageLayout>
@@ -124,15 +213,15 @@ const EngagementModelsPage = () => {
         <div className="max-w-6xl mx-auto px-4 md:px-8 relative z-10 pt-16 pb-20">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-center mb-14">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold mb-5 tracking-widest uppercase"
-              style={{ background: "rgba(124,58,237,0.08)", color: "#7C3AED", border: "1px solid rgba(124,58,237,0.18)" }}><Layers size={12} /> <span data-cms-key="engage_hero_badge" data-cms-label="Hero Badge" data-cms-attr="text">Engagement Models</span></span>
-            <h1 className="text-4xl md:text-5xl lg:text-[56px] font-black leading-[1.1] text-[#0A1628] mb-5 tracking-tight"><span data-cms-key="engage_hero_h1" data-cms-label="Hero Heading" data-cms-attr="text">Flexible Ways to</span> <span data-cms-key="engage_hero_h1b" data-cms-label="Hero Heading (Highlight)" data-cms-attr="text" className="text-orange-gradient">Work With Us</span></h1>
-            <p className="text-[#4B5563] text-lg max-w-xl mx-auto leading-relaxed mb-8"><span data-cms-key="engage_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">4 engagement models built around how businesses actually work — pick what fits your project, budget, and timeline.</span></p>
+              style={{ background: "rgba(124,58,237,0.08)", color: "#7C3AED", border: "1px solid rgba(124,58,237,0.18)" }}><Layers size={12} /> <span data-cms-key="engage_hero_badge" data-cms-label="Hero Badge" data-cms-attr="text">{heroBadge}</span></span>
+            <h1 className="text-4xl md:text-5xl lg:text-[56px] font-black leading-[1.1] text-[#0A1628] mb-5 tracking-tight"><span data-cms-key="engage_hero_h1" data-cms-label="Hero Heading" data-cms-attr="text">{heroH1}</span> <span data-cms-key="engage_hero_h1b" data-cms-label="Hero Heading (Highlight)" data-cms-attr="text" className="text-orange-gradient">{heroH1b}</span></h1>
+            <p className="text-[#4B5563] text-lg max-w-xl mx-auto leading-relaxed mb-8"><span data-cms-key="engage_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{heroSub}</span></p>
             <div className="flex flex-wrap gap-3 justify-center">
               <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-bold text-sm transition-all hover:gap-3"
-                style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 8px 24px rgba(255,107,43,0.3)" }}><span data-cms-key="engage_hero_cta" data-cms-label="Hero CTA Button" data-cms-attr="text">Get a Free Recommendation</span> <ArrowRight size={15} />
+                style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 8px 24px rgba(255,107,43,0.3)" }}><span data-cms-key="engage_hero_cta" data-cms-label="Hero CTA Button" data-cms-attr="text">{heroCta}</span> <ArrowRight size={15} />
               </Link>
               <a href="#models" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm border transition-all"
-                style={{ color: "#374151", borderColor: "#E5E7EB", background: "#F8FAFF" }}><span data-cms-key="engage_hero_btn2" data-cms-label="Hero Secondary Button" data-cms-attr="text">Explore Models</span></a>
+                style={{ color: "#374151", borderColor: "#E5E7EB", background: "#F8FAFF" }}><span data-cms-key="engage_hero_btn2" data-cms-label="Hero Secondary Button" data-cms-attr="text">{heroBtn2}</span></a>
             </div>
           </motion.div>
 
@@ -142,15 +231,10 @@ const EngagementModelsPage = () => {
       {/* ── STATS STRIP ── */}
       <section className="py-8 px-4" style={{ background: "#F8FAFF", borderBottom: "1px solid #E5E7EB" }}>
         <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          {[
-            { n: "4",    l: "Engagement Models",  color: "#7C3AED" },
-            { n: "750+", l: "Projects Delivered", color: "#FF6B2B" },
-            { n: "10+",  l: "Years Experience",   color: "#1A6FE8" },
-            { n: "98%",  l: "Client Satisfaction",color: "#22C55E" },
-          ].map((s, i) => (
-            <motion.div key={s.l} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
-              <div className="text-3xl font-black" style={{ color: s.color }}><span data-cms-key={`engage_stat_${i}_n`} data-cms-label="Stat Number" data-cms-attr="text">{s.n}</span></div>
-              <div className="text-xs text-[#6B7280] mt-1 font-medium"><span data-cms-key={`engage_stat_${i}_l`} data-cms-label="Stat Label" data-cms-attr="text">{s.l}</span></div>
+          {stats.map((stat, i) => (
+            <motion.div key={stat.l} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
+              <div className="text-3xl font-black" style={{ color: stat.color }}><span data-cms-key={`engage_stat_${i}_n`} data-cms-label="Stat Number" data-cms-attr="text">{stat.n}</span></div>
+              <div className="text-xs text-[#6B7280] mt-1 font-medium"><span data-cms-key={`engage_stat_${i}_l`} data-cms-label="Stat Label" data-cms-attr="text">{stat.l}</span></div>
             </motion.div>
           ))}
         </div>
@@ -160,13 +244,13 @@ const EngagementModelsPage = () => {
       <section id="models" className="py-20 px-4 md:px-8" style={{ background: "#F8FAFF" }}>
         <div className="max-w-6xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <span className="section-badge" data-cms-key="engage_badge_1" data-cms-label="Section Badge" data-cms-attr="text">Our Models</span>
-            <h2 className="text-3xl md:text-[42px] font-black text-[#0A1628] tracking-tight"><span data-cms-key="engage_models_h2" data-cms-label="Models Section Heading" data-cms-attr="text">Choose How We</span> <span data-cms-key="engage_models_h2b" data-cms-label="Models Section Heading (Highlight)" data-cms-attr="text" className="text-purple-gradient">Work Together</span></h2>
+            <span className="section-badge" data-cms-key="engage_badge_1" data-cms-label="Section Badge" data-cms-attr="text">{badge1}</span>
+            <h2 className="text-3xl md:text-[42px] font-black text-[#0A1628] tracking-tight"><span data-cms-key="engage_models_h2" data-cms-label="Models Section Heading" data-cms-attr="text">{modelsH2}</span> <span data-cms-key="engage_models_h2b" data-cms-label="Models Section Heading (Highlight)" data-cms-attr="text" className="text-purple-gradient">{modelsH2b}</span></h2>
           </motion.div>
 
           {/* Tab pills */}
           <div className="flex flex-wrap justify-center gap-3 mb-10">
-            {models.map(m => (
+            {modelsWithSettings.map(m => (
               <button key={m.id} onClick={() => setActive(m.id)}
                 className="flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-200"
                 style={active === m.id
@@ -192,7 +276,7 @@ const EngagementModelsPage = () => {
                     <CMSIcon cmsKey={`engage_dyn_100_${current.iconName||'icon'}`} cmsLabel={"Icon"} name={current.iconName || "Star"} size={28} color={current.color} />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-2xl md:text-3xl font-black text-[#0A1628]"><span data-cms-key={`engage_model_${current.id}_title`} data-cms-label="Model Title" data-cms-attr="text">{current.title} Model</span></h3>
+                    <h3 className="text-2xl md:text-3xl font-black text-[#0A1628]"><span data-cms-key={`engage_model_${current.id}_title`} data-cms-label="Model Title" data-cms-attr="text">{current.titleField}</span></h3>
                     <p className="font-semibold mt-1 text-sm" style={{ color: current.color }}><span data-cms-key={`engage_model_${current.id}_tagline`} data-cms-label="Model Tagline" data-cms-attr="text">{current.tagline}</span></p>
                   </div>
                   <Link to="/contact"
@@ -271,9 +355,9 @@ const EngagementModelsPage = () => {
       <section className="py-20 px-4 md:px-8" style={{ background: "#fff" }}>
         <div className="max-w-6xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <span className="section-badge" data-cms-key="engage_badge_2" data-cms-label="Section Badge" data-cms-attr="text">Compare</span>
-            <h2 className="text-3xl md:text-[42px] font-black text-[#0A1628] tracking-tight"><span data-cms-key="engage_cmp_h2" data-cms-label="Comparison Heading" data-cms-attr="text">Side-by-Side</span> <span data-cms-key="engage_cmp_h2b" data-cms-label="Comparison Heading (Highlight)" data-cms-attr="text" className="text-orange-gradient">Comparison</span></h2>
-            <p className="text-[#6B7280] mt-4 text-sm max-w-lg mx-auto"><span data-cms-key="engage_p_4" data-cms-label="Body Text" data-cms-attr="text">Not sure which model fits? Compare all four at a glance.</span></p>
+            <span className="section-badge" data-cms-key="engage_badge_2" data-cms-label="Section Badge" data-cms-attr="text">{badge2}</span>
+            <h2 className="text-3xl md:text-[42px] font-black text-[#0A1628] tracking-tight"><span data-cms-key="engage_cmp_h2" data-cms-label="Comparison Heading" data-cms-attr="text">{cmpH2}</span> <span data-cms-key="engage_cmp_h2b" data-cms-label="Comparison Heading (Highlight)" data-cms-attr="text" className="text-orange-gradient">{cmpH2b}</span></h2>
+            <p className="text-[#6B7280] mt-4 text-sm max-w-lg mx-auto"><span data-cms-key="engage_p_4" data-cms-label="Body Text" data-cms-attr="text">{p4}</span></p>
           </motion.div>
           <div className="rounded-3xl overflow-hidden border" style={{ borderColor: "#E5E7EB", boxShadow: "0 4px 32px rgba(0,0,0,0.06)" }}>
             <div className="overflow-x-auto">
@@ -329,17 +413,12 @@ const EngagementModelsPage = () => {
       <section className="py-20 px-4 md:px-8" style={{ background: "#F8FAFF" }}>
         <div className="max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <span className="section-badge" data-cms-key="engage_badge_3" data-cms-label="Section Badge" data-cms-attr="text">Decision Guide</span>
-            <h2 className="text-3xl md:text-[42px] font-black text-[#0A1628] tracking-tight"><span data-cms-key="engage_guide_h2" data-cms-label="Decision Guide Heading" data-cms-attr="text">Not Sure Which to</span> <span data-cms-key="engage_guide_h2b" data-cms-label="Decision Guide Heading (Highlight)" data-cms-attr="text" className="text-purple-gradient">Pick?</span></h2>
-            <p className="text-[#6B7280] mt-4 text-sm max-w-lg mx-auto"><span data-cms-key="engage_p_5" data-cms-label="Body Text" data-cms-attr="text">Answer one question — get a clear direction.</span></p>
+            <span className="section-badge" data-cms-key="engage_badge_3" data-cms-label="Section Badge" data-cms-attr="text">{badge3}</span>
+            <h2 className="text-3xl md:text-[42px] font-black text-[#0A1628] tracking-tight"><span data-cms-key="engage_guide_h2" data-cms-label="Decision Guide Heading" data-cms-attr="text">{guideH2}</span> <span data-cms-key="engage_guide_h2b" data-cms-label="Decision Guide Heading (Highlight)" data-cms-attr="text" className="text-purple-gradient">{guideH2b}</span></h2>
+            <p className="text-[#6B7280] mt-4 text-sm max-w-lg mx-auto"><span data-cms-key="engage_p_5" data-cms-label="Body Text" data-cms-attr="text">{p5}</span></p>
           </motion.div>
           <div className="grid sm:grid-cols-2 gap-4 mb-10">
-            {[
-              { q: "Is your scope fully defined?",           a: "Go with Fixed Price",         color: "#7C3AED", emoji: "📋" },
-              { q: "Do you need ongoing digital marketing?", a: "Choose Monthly Retainer",     color: "#22C55E", emoji: "🔄" },
-              { q: "Are requirements likely to change?",     a: "Flexible Hours is ideal",    color: "#1A6FE8", emoji: "⏱️" },
-              { q: "Do you want full control of the team?",  a: "Go with Dedicated Team",      color: "#FF6B2B", emoji: "👥" },
-            ].map((item, i) => (
+            {guide.map((item, i) => (
               <motion.div key={i}
                 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
                 className="rounded-2xl p-6 bg-white border card-hover flex gap-4 items-start"
@@ -348,16 +427,16 @@ const EngagementModelsPage = () => {
                   style={{ background: `${item.color}10` }}>{item.emoji}</div>
                 <div>
                   <p className="font-bold text-[#0A1628] text-sm mb-1"><span data-cms-key={`engage_guide_${i}_q`} data-cms-label="Guide Question" data-cms-attr="text">{item.q}</span></p>
-                  <p className="text-sm font-black" style={{ color: item.color }}><span data-cms-key={`engage_guide_${i}_a`} data-cms-label="Guide Answer" data-cms-attr="text">→ {item.a}</span></p>
+                  <p className="text-sm font-black" style={{ color: item.color }}><span data-cms-key={`engage_guide_${i}_a`} data-cms-label="Guide Answer" data-cms-attr="text">{item.a}</span></p>
                 </div>
               </motion.div>
             ))}
           </div>
           <div className="text-center">
-            <p className="text-[#6B7280] text-sm mb-5"><span data-cms-key="engage_p_6" data-cms-label="Body Text" data-cms-attr="text">Still unsure? Let's talk — we'll recommend the best model for your project, free of charge.</span></p>
+            <p className="text-[#6B7280] text-sm mb-5"><span data-cms-key="engage_p_6" data-cms-label="Body Text" data-cms-attr="text">{p6}</span></p>
             <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
               style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 8px 24px rgba(255,107,43,0.35)" }}>
-              <span data-cms-key="engage_guide_cta" data-cms-label="Guide CTA Button" data-cms-attr="text">Get a Free Consultation</span> <ArrowRight size={16} />
+              <span data-cms-key="engage_guide_cta" data-cms-label="Guide CTA Button" data-cms-attr="text">{guideCta}</span> <ArrowRight size={16} />
             </Link>
           </div>
         </div>
@@ -373,12 +452,12 @@ const EngagementModelsPage = () => {
         <div className="max-w-3xl mx-auto relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mb-6 tracking-widest uppercase text-[#FF6B2B]"
-              style={{ background: "rgba(255,107,43,0.12)", border: "1px solid rgba(255,107,43,0.3)" }}><span data-cms-key="engage_cta_badge" data-cms-label="CTA Badge" data-cms-attr="text">Let's Build Together</span></span>
-            <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4"><span data-cms-key="engage_cta_h2" data-cms-label="CTA Heading" data-cms-attr="text">Ready to Find Your</span> <span data-cms-key="engage_cta_h2b" data-cms-label="CTA Heading (Highlight)" data-cms-attr="text" className="text-orange-gradient">Perfect Model</span>?</h2>
-            <p className="text-[#94a3b8] mb-8 leading-relaxed"><span data-cms-key="engage_p_7" data-cms-label="Body Text" data-cms-attr="text">Connect with us and we'll recommend the engagement model that fits your project, timeline, and budget — no commitment required.</span></p>
+              style={{ background: "rgba(255,107,43,0.12)", border: "1px solid rgba(255,107,43,0.3)" }}><span data-cms-key="engage_cta_badge" data-cms-label="CTA Badge" data-cms-attr="text">{ctaBadge}</span></span>
+            <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4"><span data-cms-key="engage_cta_h2" data-cms-label="CTA Heading" data-cms-attr="text">{ctaH2}</span> <span data-cms-key="engage_cta_h2b" data-cms-label="CTA Heading (Highlight)" data-cms-attr="text" className="text-orange-gradient">{ctaH2b}</span>?</h2>
+            <p className="text-[#94a3b8] mb-8 leading-relaxed"><span data-cms-key="engage_p_7" data-cms-label="Body Text" data-cms-attr="text">{p7}</span></p>
             <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
               style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 4px 20px rgba(255,107,43,0.4)" }}>
-              <span data-cms-key="engage_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">Start a Conversation</span> <ArrowRight size={16} />
+              <span data-cms-key="engage_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{ctaBtn}</span> <ArrowRight size={16} />
             </Link>
           </motion.div>
         </div>

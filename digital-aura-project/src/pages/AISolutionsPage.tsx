@@ -9,6 +9,7 @@ import {
   ArrowRight, ShieldCheck, BarChart4, Network, Cpu, Database, Target, ChevronDown, CheckCircle2, Zap, Bot, Workflow as WorkflowIcon, Brain, Blocks, Code2, LineChart, Users, Clock, Briefcase, Check, Lock
 } from "lucide-react";
 import CMSIcon from "@/components/CMSIcon";
+import { useSettings } from "@/hooks/useSettings";
 
 const accentColor = "#7C3AED";
 const glowColor = "rgba(124,58,237,0.12)";
@@ -92,13 +93,13 @@ const AIAuditForm = () => {
           <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: "rgba(124,58,237,0.1)" }}>
             <CheckCircle2 size={32} style={{ color: accentColor }} />
           </div>
-          <h3 className="text-xl font-bold text-[#0A1628] mb-2"><span data-cms-key="aisol_h3_2" data-cms-label="Card Heading" data-cms-attr="text">Request Received!</span></h3>
-          <p className="text-[#6B7280]"><span data-cms-key="aisol_p_5" data-cms-label="Body Text" data-cms-attr="text">We will review your context and send your custom AI feasibility report within 48 hours.</span></p>
+          <h3 className="text-xl font-bold text-[#0A1628] mb-2"><span data-cms-key="aisol_h3_2" data-cms-label="Card Heading" data-cms-attr="text">{h3_2}</span></h3>
+          <p className="text-[#6B7280]"><span data-cms-key="aisol_p_5" data-cms-label="Body Text" data-cms-attr="text">{p_5}</span></p>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">
-          <h3 className="text-xl font-bold text-[#0A1628] mb-1"><span data-cms-key="aisol_h3_3" data-cms-label="Card Heading" data-cms-attr="text">Get Your Free AI Readiness Scorecard</span></h3>
-          <p className="text-sm text-[#6B7280] mb-4"><span data-cms-key="aisol_p_6" data-cms-label="Body Text" data-cms-attr="text">Complete this quick assessment to evaluate your AI potential.</span></p>
+          <h3 className="text-xl font-bold text-[#0A1628] mb-1"><span data-cms-key="aisol_h3_3" data-cms-label="Card Heading" data-cms-attr="text">{h3_3}</span></h3>
+          <p className="text-sm text-[#6B7280] mb-4"><span data-cms-key="aisol_p_6" data-cms-label="Body Text" data-cms-attr="text">{p_6}</span></p>
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
               <label className="text-xs font-semibold text-[#374151] mb-1.5 block">First Name *</label>
@@ -134,7 +135,24 @@ const AIAuditForm = () => {
 };
 
 /* ─── PAGE MAP ─── */
-const AISolutionsPage = () => (
+const AISolutionsPage = () => {
+  const s = useSettings([
+    "aisol_h3_2", "aisol_p_5", "aisol_h3_3", "aisol_p_6", "aisol_p_7", "aisol_p_8",
+    "aisol_h3_4", "aisol_p_9", "aisol_p_10", "aisol_h2_1", "aisol_p_11",
+  ]);
+  const h3_2 = s.aisol_h3_2 || "Request Received!";
+  const p_5 = s.aisol_p_5 || "We will review your context and send your custom AI feasibility report within 48 hours.";
+  const h3_3 = s.aisol_h3_3 || "Get Your Free AI Readiness Scorecard";
+  const p_6 = s.aisol_p_6 || "Complete this quick assessment to evaluate your AI potential.";
+  const p_7 = s.aisol_p_7 || "We move organisations beyond basic chatbots and simple prompting. We architect and deploy profound institutional intelligence, secure, scalable AI infrastructure built precisely for how your enterprise operates.";
+  const p_8 = s.aisol_p_8 || "Explore our comprehensive suite of artificial intelligence solutions tailored for high-scale environments.";
+  const h3_4 = s.aisol_h3_4 || "How We Build AI for Production Success.";
+  const p_9 = s.aisol_p_9 || "Most generic consultancies treat AI as a software plugin. We treat it as critical infrastructure. We setup safeguards against hallucinations, model drift, and logic breakdowns.";
+  const p_10 = s.aisol_p_10 || "We don't do 12-month PowerPoint consulting phases. In 30 days, we scope, build, and deploy a functional AI model addressing your highest ROI bottleneck.";
+  const h2_1 = s.aisol_h2_1 || "Ready to Institutionalise Intelligence?";
+  const p_11 = s.aisol_p_11 || "Schedule a technical discovery session with our Lead Solution Architects. We'll map exactly where AI can create leverage in your enterprise.";
+
+  return (
   <PageLayout>
     {/* ── Hero ── */}
     <section className="relative pt-[72px] overflow-hidden" style={{ background: "#fff" }}>
@@ -155,7 +173,7 @@ const AISolutionsPage = () => (
             Stop Experimenting with AI.<br />
             <span style={{ color: accentColor }}>Start Building Real Value.</span>
           </h1>
-          <p className="text-lg md:text-xl text-[#4B5563] max-w-3xl mx-auto mb-8 leading-relaxed"><span data-cms-key="aisol_p_7" data-cms-label="Body Text" data-cms-attr="text">We move organisations beyond basic chatbots and simple prompting. We architect and deploy profound institutional intelligence, secure, scalable AI infrastructure built precisely for how your enterprise operates.</span></p>
+          <p className="text-lg md:text-xl text-[#4B5563] max-w-3xl mx-auto mb-8 leading-relaxed"><span data-cms-key="aisol_p_7" data-cms-label="Body Text" data-cms-attr="text">{p_7}</span></p>
           <div className="flex flex-wrap gap-2 justify-center mb-8">
             {["Agentic Workflows", "Custom LLMs", "Predictive ML", "RAG Systems", "AI Dashboards"].map(tag => (
               <span key={tag} className="text-[11px] font-bold px-3 py-1 rounded-full"
@@ -182,7 +200,7 @@ const AISolutionsPage = () => (
           <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center gap-2">
             <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> Specialized AI Practices
           </h2>
-          <p className="text-[#6B7280] mt-2 text-sm max-w-lg"><span data-cms-key="aisol_p_8" data-cms-label="Body Text" data-cms-attr="text">Explore our comprehensive suite of artificial intelligence solutions tailored for high-scale environments.</span></p>
+          <p className="text-[#6B7280] mt-2 text-sm max-w-lg"><span data-cms-key="aisol_p_8" data-cms-label="Body Text" data-cms-attr="text">{p_8}</span></p>
         </motion.div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -210,8 +228,8 @@ const AISolutionsPage = () => (
           <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] mb-6 flex items-center gap-2">
             <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> Development Philosophy
           </h2>
-          <h3 className="text-2xl font-bold text-[#0A1628] mb-4"><span data-cms-key="aisol_h3_4" data-cms-label="Card Heading" data-cms-attr="text">How We Build AI for Production Success.</span></h3>
-          <p className="text-[#6B7280] text-sm leading-relaxed mb-6"><span data-cms-key="aisol_p_9" data-cms-label="Body Text" data-cms-attr="text">Most generic consultancies treat AI as a software plugin. We treat it as critical infrastructure. We setup safeguards against hallucinations, model drift, and logic breakdowns.</span></p>
+          <h3 className="text-2xl font-bold text-[#0A1628] mb-4"><span data-cms-key="aisol_h3_4" data-cms-label="Card Heading" data-cms-attr="text">{h3_4}</span></h3>
+          <p className="text-[#6B7280] text-sm leading-relaxed mb-6"><span data-cms-key="aisol_p_9" data-cms-label="Body Text" data-cms-attr="text">{p_9}</span></p>
           <ul className="space-y-3">
             {failurePillars.map(w => (
               <li key={w} className="flex items-start gap-3 p-4 rounded-xl" style={{ background: "#F8FAFF", border: "1px solid #E5E7EB" }}>
@@ -332,7 +350,7 @@ const AISolutionsPage = () => (
             <h2 className="text-3xl md:text-[40px] font-black text-white leading-tight mb-6">
               Zero-Risk Proof of<br />Value Delivery
             </h2>
-            <p className="text-white/80 text-lg mb-8"><span data-cms-key="aisol_p_10" data-cms-label="Body Text" data-cms-attr="text">We don't do 12-month PowerPoint consulting phases. In 30 days, we scope, build, and deploy a functional AI model addressing your highest ROI bottleneck.</span></p>
+            <p className="text-white/80 text-lg mb-8"><span data-cms-key="aisol_p_10" data-cms-label="Body Text" data-cms-attr="text">{p_10}</span></p>
             <div className="space-y-3 mb-8">
               {[
                 "Architecture audit & feasibility assessment",
@@ -367,8 +385,8 @@ const AISolutionsPage = () => (
     <section className="py-20 px-4 md:px-8" style={{ background: accentGradient }}>
       <div className="max-w-3xl mx-auto text-center">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-4"><span data-cms-key="aisol_h2_1" data-cms-label="Section Heading" data-cms-attr="text">Ready to Institutionalise Intelligence?</span></h2>
-          <p className="text-white/80 mb-8 text-lg"><span data-cms-key="aisol_p_11" data-cms-label="Body Text" data-cms-attr="text">Schedule a technical discovery session with our Lead Solution Architects. We'll map exactly where AI can create leverage in your enterprise.</span></p>
+          <h2 className="text-3xl md:text-4xl font-black text-white mb-4"><span data-cms-key="aisol_h2_1" data-cms-label="Section Heading" data-cms-attr="text">{h2_1}</span></h2>
+          <p className="text-white/80 mb-8 text-lg"><span data-cms-key="aisol_p_11" data-cms-label="Body Text" data-cms-attr="text">{p_11}</span></p>
           <Link to="/contact"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-bold bg-white transition-all hover:gap-3 hover:shadow-xl"
             style={{ color: accentColor }}>
@@ -378,6 +396,7 @@ const AISolutionsPage = () => (
       </div>
     </section>
   </PageLayout>
-);
+  );
+};
 
 export default AISolutionsPage;

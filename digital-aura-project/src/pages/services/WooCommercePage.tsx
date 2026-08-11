@@ -156,7 +156,7 @@ const FAQItem = ({ q, a, idx = 0 }: { q: string; a: string; idx?: number }) => {
 };
 
 const WooCommercePage = () => {
-  const _sp = useSettings(['woo_hero_h1','woo_hero_sub','woo_cta_btn']);
+  const sp = useSettings(['woo_hero_h1','woo_hero_sub','woo_cta_btn']);
   return (
   <PageLayout>
     <section className="relative pt-[72px] overflow-hidden" style={{ background: "#fff" }}>
@@ -175,15 +175,15 @@ const WooCommercePage = () => {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-[54px] font-black leading-[1.1] text-[#0A1628] mb-5 tracking-tight">
-            <span data-cms-key="woo_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">Powerful WooCommerce Stores<br /><span style={{ color: accentColor }}>Built for Full Control & Growth</span></span>
+            <span data-cms-key="woo_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">{sp.woo_hero_h1 || (<>Powerful WooCommerce Stores<br /><span style={{ color: accentColor }}>Built for Full Control & Growth</span></>)}</span>
           </h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-8 leading-relaxed">
-            <span data-cms-key="woo_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">We build flexible, scalable WooCommerce stores on WordPress: giving you complete ownership, custom functionality, and zero platform lock-in.</span>
+            <span data-cms-key="woo_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.woo_hero_sub || "We build flexible, scalable WooCommerce stores on WordPress: giving you complete ownership, custom functionality, and zero platform lock-in."}</span>
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
             <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
               style={{ background: "linear-gradient(135deg, #7F54B3, #6a3fa0)", boxShadow: `0 8px 24px ${accentColor}40` }}>
-              <span data-cms-key="woo_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">Build My WooCommerce Store</span> <Store size={15} />
+              <span data-cms-key="woo_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.woo_cta_btn || "Build My WooCommerce Store"}</span> <Store size={15} />
             </Link>
             <a href="#services-list" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold border-2 text-[#0A1628] hover:bg-[#0A1628] hover:text-white transition-all" style={{ borderColor: "#0A1628" }}>What We Build</a>
           </div>

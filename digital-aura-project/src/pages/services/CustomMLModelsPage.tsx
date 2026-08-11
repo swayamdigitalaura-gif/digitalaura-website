@@ -131,7 +131,7 @@ const FAQItem = ({ q, a, idx = 0 }: { q: string; a: string; idx?: number }) => {
 };
 
 const CustomMLModelsPage = () => {
-  const _sp = useSettings(['mlmodels_hero_h1','mlmodels_hero_sub','mlmodels_cta_btn']);
+  const sp = useSettings(['mlmodels_hero_h1','mlmodels_hero_sub','mlmodels_cta_btn']);
   return (
   <PageLayout>
     {/* HERO */}
@@ -153,13 +153,13 @@ const CustomMLModelsPage = () => {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-[56px] font-black leading-[1.1] text-[#0A1628] mb-5 tracking-tight">
-            <span data-cms-key="mlmodels_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">ML Models Built for<br />
+            <span data-cms-key="mlmodels_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">{sp.mlmodels_hero_h1 || (<>ML Models Built for<br />
             <span style={{ background: gradient, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               Your Data. Your Domain.
-            </span>
+            </span></>)}
           </span></h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-5 leading-relaxed">
-            <span data-cms-key="mlmodels_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">Domain specific machine learning models trained on your proprietary data for recommendation engines, fraud detection, document classification, computer vision, and more.</span>
+            <span data-cms-key="mlmodels_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.mlmodels_hero_sub || "Domain specific machine learning models trained on your proprietary data for recommendation engines, fraud detection, document classification, computer vision, and more."}</span>
           </p>
           <div className="flex flex-wrap gap-2 justify-center mb-8">
             {["Recommendation", "Fraud Detection", "NLP & Classification", "Fine tuned LLMs", "Computer Vision", "You Own the IP"].map(tag => (
@@ -170,7 +170,7 @@ const CustomMLModelsPage = () => {
           <div className="flex flex-wrap gap-3 justify-center">
             <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
               style={{ background: gradient, boxShadow: "0 8px 24px rgba(26,111,232,0.4)" }}>
-              <span data-cms-key="mlmodels_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">Discuss My ML Project</span> <ArrowRight size={16} />
+              <span data-cms-key="mlmodels_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.mlmodels_cta_btn || "Discuss My ML Project"}</span> <ArrowRight size={16} />
             </Link>
             <a href="#industries" className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold border-2 text-[#0A1628] hover:bg-[#0A1628] hover:text-white transition-all"
               style={{ borderColor: "#0A1628" }}>

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { STATIC_JOBS } from "@/data/jobs";
 import PageLayout from "@/components/PageLayout";
 import CMSIcon from "@/components/CMSIcon";
+import { useSettings } from "@/hooks/useSettings";
 import {
   ArrowRight, MapPin, Clock, Users, Heart, Zap, Shield,
   TrendingUp, Star, Briefcase, Code, BarChart3, Globe2,
@@ -23,6 +24,11 @@ const ApplyModal = ({ job, onClose, color = "#7C3AED" }: { job: Record<string, s
   const [captchaOk, setCaptchaOk] = useState(false);
   const [dragging, setDragging] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
+
+  const s = useSettings(["careers_pg_1", "careers_pg_3", "careers_pg_4"]);
+  const pg1 = s.careers_pg_1 || "Application Sent!";
+  const pg3 = s.careers_pg_3 || "PDF, DOC, DOCX up to 5MB";
+  const pg4 = s.careers_pg_4 || "We respect your privacy. Your data is only used for recruitment purposes.";
 
   if (!job) return null;
 
@@ -94,7 +100,7 @@ const ApplyModal = ({ job, onClose, color = "#7C3AED" }: { job: Record<string, s
                   style={{ background: `${color}12` }}>
                   <CMSIcon cmsKey="careers_icon_1" cmsLabel="CheckCircle Icon" name="CheckCircle" size={32} color={color} />
                 </div>
-                <h3 className="font-black text-[#0A1628] text-xl mb-2"><span data-cms-key="careers_pg_1" data-cms-label="H3 Text" data-cms-attr="text">Application Sent!</span></h3>
+                <h3 className="font-black text-[#0A1628] text-xl mb-2"><span data-cms-key="careers_pg_1" data-cms-label="H3 Text" data-cms-attr="text">{pg1}</span></h3>
                 <p className="text-[#6B7280] text-sm max-w-xs mx-auto leading-relaxed">
                   Thanks {form.name.split(" ")[0]}! We'll review your application and get back to you within 2–3 business days.
                 </p>
@@ -168,7 +174,7 @@ const ApplyModal = ({ job, onClose, color = "#7C3AED" }: { job: Record<string, s
                           <CMSIcon cmsKey="careers_icon_2" cmsLabel="Upload Icon" name="Upload" size={22} color={color} />
                         </div>
                         <p className="text-sm font-bold text-[#0A1628] mb-0.5">Drop your CV here or <span style={{ color: color }}>browse</span></p>
-                        <p className="text-xs text-[#9CA3AF]"><span data-cms-key="careers_pg_3" data-cms-label="P Text" data-cms-attr="text">PDF, DOC, DOCX up to 5MB</span></p>
+                        <p className="text-xs text-[#9CA3AF]"><span data-cms-key="careers_pg_3" data-cms-label="P Text" data-cms-attr="text">{pg3}</span></p>
                       </>
                     )}
                     <input ref={fileRef} type="file" accept=".pdf,.doc,.docx" className="hidden"
@@ -190,7 +196,7 @@ const ApplyModal = ({ job, onClose, color = "#7C3AED" }: { job: Record<string, s
                   style={{ background: `linear-gradient(135deg, ${color}, ${color}cc)`, boxShadow: `0 4px 20px ${color}35` }}>
                   {submitting ? "Submitting…" : <>Submit Application <ArrowRight size={15} /></>}
                 </button>
-                <p className="text-center text-[10px] text-[#9CA3AF]"><span data-cms-key="careers_pg_4" data-cms-label="P Text" data-cms-attr="text">We respect your privacy. Your data is only used for recruitment purposes.</span></p>
+                <p className="text-center text-[10px] text-[#9CA3AF]"><span data-cms-key="careers_pg_4" data-cms-label="P Text" data-cms-attr="text">{pg4}</span></p>
               </form>
             )}
           </div>
@@ -212,9 +218,76 @@ const perks = [
 const JOB_COLORS = ["#7C3AED","#FF6B2B","#1A6FE8","#22C55E","#F59E0B","#EC4899","#0EA5E9","#14B8A6"];
 const JOB_ICONS = [BarChart3, TrendingUp, Code, Globe2, Briefcase, Star, Zap, Users];
 
+const cultureValues = [
+  "We don't do cookie-cutter work — ever.",
+  "Every team member's growth is our growth.",
+  "Open doors, honest conversations always.",
+  "Work hard, ship fast, learn continuously.",
+];
+
+const heroStats = [
+  { n: "10+",  l: "Years in Business", color: "#FF6B2B" },
+  { n: "10+",  l: "Team Members",       color: "#7C3AED" },
+  { n: "750+", l: "Happy Clients",      color: "#1A6FE8" },
+  { n: "2",    l: "Office Locations",   color: "#22C55E" },
+];
+
 const Careers = () => {
   const [openings, setOpenings] = useState<Record<string, string>[]>([]);
   const [activeJob, setActiveJob] = useState<Record<string, string> | null>(null);
+
+  const s = useSettings([
+    "careers_hero_badge", "careers_hero_h1", "careers_hl_117", "careers_pg_p_9",
+    "careers_hero_cta", "careers_hero_btn2",
+    ...heroStats.flatMap((_, i) => [`careers_stat_${i}_n`, `careers_stat_${i}_l`]),
+    "careers_pg_badge_7", "careers_life_h2", "careers_hl_118", "careers_pg_5",
+    ...perks.flatMap((_, i) => [`careers_perk_${i}_t`, `careers_perk_${i}_d`]),
+    "careers_culture_badge", "careers_side_h2", "careers_pg_p_10",
+    ...cultureValues.map((_, i) => `careers_val_${i}`),
+    "careers_pg_badge_8", "careers_jobs_h2", "careers_hl_119", "careers_pg_6", "careers_pg_p_11",
+    "careers_pg_2", "careers_pg_p_12", "careers_resume_btn",
+    "careers_cta_badge", "careers_cta_h2", "careers_hl_120", "careers_cta_h2b", "careers_pg_p_13", "careers_cta_btn",
+  ]);
+  const g = (key: string, fallback: string) => s[key] || fallback;
+
+  const heroBadge = g("careers_hero_badge", "We're Hiring · Ahmedabad");
+  const heroH1 = g("careers_hero_h1", "Do Your Best Work");
+  const heroHl117 = g("careers_hl_117", "at Digital Aura");
+  const heroSub = g("careers_pg_p_9", "We're a full-service digital agency delivering real growth since 2015. Join a team where your work is seen, your ideas matter, and your career actually moves forward.");
+  const heroCta = g("careers_hero_cta", "See Open Roles");
+  const heroBtn2 = g("careers_hero_btn2", "Send Open Application");
+  const stats = heroStats.map((stat, i) => ({
+    ...stat,
+    n: g(`careers_stat_${i}_n`, stat.n),
+    l: g(`careers_stat_${i}_l`, stat.l),
+  }));
+  const badge7 = g("careers_pg_badge_7", "Life at Digital Aura");
+  const lifeH2 = g("careers_life_h2", "Why People Love");
+  const heroHl118 = g("careers_hl_118", "Working Here");
+  const pg5 = g("careers_pg_5", "We're not just a workplace — we're a place where careers are built.");
+  const perksList = perks.map((p, i) => ({
+    ...p,
+    title: g(`careers_perk_${i}_t`, p.title),
+    desc: g(`careers_perk_${i}_d`, p.desc),
+  }));
+  const cultureBadge = g("careers_culture_badge", "Our Culture");
+  const sideH2 = g("careers_side_h2", "\"Equal Opportunities.\nSheer Dedication.\"");
+  const pgP10 = g("careers_pg_p_10", "Our doors are always open to individuals with the right attitude. We believe in growing together — not just as a company, but as people.");
+  const values = cultureValues.map((v, i) => g(`careers_val_${i}`, v));
+  const badge8 = g("careers_pg_badge_8", "Open Positions");
+  const jobsH2 = g("careers_jobs_h2", "Current");
+  const heroHl119 = g("careers_hl_119", "Openings");
+  const pg6 = g("careers_pg_6", "Based in Ahmedabad. Freshers welcome on select roles — attitude matters more than a resume.");
+  const pgP11 = g("careers_pg_p_11", "No open positions right now. Check back soon!");
+  const pg2 = g("careers_pg_2", "Don't See the Right Role?");
+  const pgP12 = g("careers_pg_p_12", "We're always open to exceptional people. Send us your resume with a note on what you do best — we'll reach out when something fits.");
+  const resumeBtn = g("careers_resume_btn", "Send Your Resume");
+  const ctaBadge = g("careers_cta_badge", "Join the Team");
+  const ctaH2 = g("careers_cta_h2", "Ready to");
+  const heroHl120 = g("careers_hl_120", "Build Something");
+  const ctaH2b = g("careers_cta_h2b", "Great?");
+  const pgP13 = g("careers_pg_p_13", "Explore the roles above or drop us a direct message. We reply to every application.");
+  const ctaBtn = g("careers_cta_btn", "Get In Touch");
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_BASE || 'http://localhost:5000'}/api/careers`)
@@ -239,36 +312,31 @@ const Careers = () => {
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold mb-6 tracking-widest uppercase"
             style={{ background: "rgba(255,107,43,0.1)", color: "#FF6B2B", border: "1px solid rgba(255,107,43,0.25)" }}>
-            <Sparkles size={12} /> <span data-cms-key="careers_hero_badge" data-cms-label="Hero Badge" data-cms-attr="text">We're Hiring · Ahmedabad</span>
+            <Sparkles size={12} /> <span data-cms-key="careers_hero_badge" data-cms-label="Hero Badge" data-cms-attr="text">{heroBadge}</span>
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-[60px] font-black leading-[1.08] text-[#0A1628] mb-6 tracking-tight">
-            <span data-cms-key="careers_hero_h1" data-cms-label="Hero Heading" data-cms-attr="text">Do Your Best Work</span><br />
-            <span data-cms-key="careers_hl_117" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-orange-gradient">at Digital Aura</span>
+            <span data-cms-key="careers_hero_h1" data-cms-label="Hero Heading" data-cms-attr="text">{heroH1}</span><br />
+            <span data-cms-key="careers_hl_117" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-orange-gradient">{heroHl117}</span>
           </h1>
-          <p className="text-[#4B5563] text-lg max-w-2xl mx-auto leading-relaxed mb-10"><span data-cms-key="careers_pg_p_9" data-cms-label="Body Text" data-cms-attr="text">We're a full-service digital agency delivering real growth since 2015. Join a team where your work is seen, your ideas matter, and your career actually moves forward.</span></p>
+          <p className="text-[#4B5563] text-lg max-w-2xl mx-auto leading-relaxed mb-10"><span data-cms-key="careers_pg_p_9" data-cms-label="Body Text" data-cms-attr="text">{heroSub}</span></p>
           <div className="flex flex-wrap gap-4 justify-center mb-16">
             <a href="#openings" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-bold text-sm transition-all hover:gap-3"
-              style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 8px 24px rgba(255,107,43,0.35)" }}><span data-cms-key="careers_hero_cta" data-cms-label="Primary CTA" data-cms-attr="text">See Open Roles</span> <ArrowRight size={15} />
+              style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 8px 24px rgba(255,107,43,0.35)" }}><span data-cms-key="careers_hero_cta" data-cms-label="Primary CTA" data-cms-attr="text">{heroCta}</span> <ArrowRight size={15} />
             </a>
             <a href="mailto:info@thedigitalaura.com?subject=Open Application"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm border transition-all"
               style={{ color: "#7C3AED", borderColor: "rgba(124,58,237,0.25)", background: "rgba(124,58,237,0.05)" }}>
-              <Mail size={15} /> <span data-cms-key="careers_hero_btn2" data-cms-label="Secondary Button" data-cms-attr="text">Send Open Application</span>
+              <Mail size={15} /> <span data-cms-key="careers_hero_btn2" data-cms-label="Secondary Button" data-cms-attr="text">{heroBtn2}</span>
             </a>
           </div>
           {/* Stats bar */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-            {[
-              { n: "10+",  l: "Years in Business", color: "#FF6B2B" },
-              { n: "10+",  l: "Team Members",       color: "#7C3AED" },
-              { n: "750+", l: "Happy Clients",      color: "#1A6FE8" },
-              { n: "2",    l: "Office Locations",   color: "#22C55E" },
-            ].map((s, i) => (
-              <motion.div key={s.l} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.1 }}
+            {stats.map((stat, i) => (
+              <motion.div key={stat.l} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.1 }}
                 className="rounded-2xl py-5 px-4 text-center bg-white border"
-                style={{ borderColor: `${s.color}20`, boxShadow: `0 4px 16px ${s.color}0a` }}>
-                <div className="text-3xl font-black mb-1" style={{ color: s.color }}><span data-cms-key={`careers_stat_${i}_n`} data-cms-label="Stat Number" data-cms-attr="text">{s.n}</span></div>
-                <div className="text-xs text-[#6B7280] font-medium"><span data-cms-key={`careers_stat_${i}_l`} data-cms-label="Stat Label" data-cms-attr="text">{s.l}</span></div>
+                style={{ borderColor: `${stat.color}20`, boxShadow: `0 4px 16px ${stat.color}0a` }}>
+                <div className="text-3xl font-black mb-1" style={{ color: stat.color }}><span data-cms-key={`careers_stat_${i}_n`} data-cms-label="Stat Number" data-cms-attr="text">{stat.n}</span></div>
+                <div className="text-xs text-[#6B7280] font-medium"><span data-cms-key={`careers_stat_${i}_l`} data-cms-label="Stat Label" data-cms-attr="text">{stat.l}</span></div>
               </motion.div>
             ))}
           </div>
@@ -280,14 +348,14 @@ const Careers = () => {
     <section className="py-20 px-4 md:px-8" style={{ background: "#F8FAFF" }}>
       <div className="max-w-5xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-          <span className="section-badge" data-cms-key="careers_pg_badge_7" data-cms-label="Section Badge" data-cms-attr="text">Life at Digital Aura</span>
+          <span className="section-badge" data-cms-key="careers_pg_badge_7" data-cms-label="Section Badge" data-cms-attr="text">{badge7}</span>
           <h2 className="text-3xl md:text-[42px] font-black text-[#0A1628] tracking-tight">
-            <span data-cms-key="careers_life_h2" data-cms-label="Life Section Heading" data-cms-attr="text">Why People Love</span> <span data-cms-key="careers_hl_118" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-orange-gradient">Working Here</span>
+            <span data-cms-key="careers_life_h2" data-cms-label="Life Section Heading" data-cms-attr="text">{lifeH2}</span> <span data-cms-key="careers_hl_118" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-orange-gradient">{heroHl118}</span>
           </h2>
-          <p className="text-[#6B7280] mt-4 max-w-xl mx-auto text-sm"><span data-cms-key="careers_pg_5" data-cms-label="P Text" data-cms-attr="text">We're not just a workplace — we're a place where careers are built.</span></p>
+          <p className="text-[#6B7280] mt-4 max-w-xl mx-auto text-sm"><span data-cms-key="careers_pg_5" data-cms-label="P Text" data-cms-attr="text">{pg5}</span></p>
         </motion.div>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
-          {perks.map((p, i) => (
+          {perksList.map((p, i) => (
             <motion.div key={p.title}
               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
               className="rounded-2xl p-7 bg-white border card-hover relative overflow-hidden"
@@ -318,18 +386,13 @@ const Careers = () => {
             <div className="p-10 md:p-14 flex flex-col justify-center">
               <span className="inline-block text-[11px] font-black uppercase tracking-widest px-3 py-1 rounded-full mb-5 w-fit"
                 style={{ background: "rgba(255,107,43,0.15)", color: "#FF6B2B", border: "1px solid rgba(255,107,43,0.25)" }}>
-                <span data-cms-key="careers_culture_badge" data-cms-label="Culture Badge" data-cms-attr="text">Our Culture</span>
+                <span data-cms-key="careers_culture_badge" data-cms-label="Culture Badge" data-cms-attr="text">{cultureBadge}</span>
               </span>
-              <h2 className="text-2xl md:text-3xl font-black text-white mb-4 leading-tight"><span data-cms-key="careers_side_h2" data-cms-label="Side Card Heading" data-cms-attr="text">"Equal Opportunities.<br />Sheer Dedication."</span></h2>
-              <p className="text-[#94a3b8] text-sm leading-relaxed"><span data-cms-key="careers_pg_p_10" data-cms-label="Body Text" data-cms-attr="text">Our doors are always open to individuals with the right attitude. We believe in growing together — not just as a company, but as people.</span></p>
+              <h2 className="text-2xl md:text-3xl font-black text-white mb-4 leading-tight"><span data-cms-key="careers_side_h2" data-cms-label="Side Card Heading" data-cms-attr="text" style={{ whiteSpace: "pre-line" }}>{sideH2}</span></h2>
+              <p className="text-[#94a3b8] text-sm leading-relaxed"><span data-cms-key="careers_pg_p_10" data-cms-label="Body Text" data-cms-attr="text">{pgP10}</span></p>
             </div>
             <div className="p-10 md:p-14 flex flex-col justify-center space-y-4 border-t md:border-t-0 md:border-l" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
-              {[
-                "We don't do cookie-cutter work — ever.",
-                "Every team member's growth is our growth.",
-                "Open doors, honest conversations always.",
-                "Work hard, ship fast, learn continuously.",
-              ].map((v, i) => (
+              {values.map((v, i) => (
                 <motion.div key={i} initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
                   className="flex items-start gap-3">
                   <CheckCircle size={16} className="shrink-0 mt-0.5" style={{ color: "#22C55E" }} />
@@ -346,15 +409,15 @@ const Careers = () => {
     <section id="openings" className="py-20 px-4 md:px-8" style={{ background: "#F8FAFF" }}>
       <div className="max-w-5xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-          <span className="section-badge" data-cms-key="careers_pg_badge_8" data-cms-label="Section Badge" data-cms-attr="text">Open Positions</span>
+          <span className="section-badge" data-cms-key="careers_pg_badge_8" data-cms-label="Section Badge" data-cms-attr="text">{badge8}</span>
           <h2 className="text-3xl md:text-[42px] font-black text-[#0A1628] tracking-tight">
-            <span data-cms-key="careers_jobs_h2" data-cms-label="Jobs Heading" data-cms-attr="text">Current</span> <span data-cms-key="careers_hl_119" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-purple-gradient">Openings</span>
+            <span data-cms-key="careers_jobs_h2" data-cms-label="Jobs Heading" data-cms-attr="text">{jobsH2}</span> <span data-cms-key="careers_hl_119" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-purple-gradient">{heroHl119}</span>
           </h2>
-          <p className="text-[#6B7280] mt-4 text-sm max-w-lg mx-auto"><span data-cms-key="careers_pg_6" data-cms-label="P Text" data-cms-attr="text">Based in Ahmedabad. Freshers welcome on select roles — attitude matters more than a resume.</span></p>
+          <p className="text-[#6B7280] mt-4 text-sm max-w-lg mx-auto"><span data-cms-key="careers_pg_6" data-cms-label="P Text" data-cms-attr="text">{pg6}</span></p>
         </motion.div>
         <div className="space-y-4">
           {openings.length === 0 && (
-            <p className="text-center text-[#9CA3AF] py-12"><span data-cms-key="careers_pg_p_11" data-cms-label="Body Text" data-cms-attr="text">No open positions right now. Check back soon!</span></p>
+            <p className="text-center text-[#9CA3AF] py-12"><span data-cms-key="careers_pg_p_11" data-cms-label="Body Text" data-cms-attr="text">{pgP11}</span></p>
           )}
           {openings.map((job, i) => {
             const color = JOB_COLORS[i % JOB_COLORS.length];
@@ -425,14 +488,14 @@ const Careers = () => {
           <div className="absolute right-0 top-0 w-64 h-64 rounded-full pointer-events-none"
             style={{ background: "radial-gradient(circle, rgba(255,107,43,0.06) 0%, transparent 70%)" }} />
           <div className="relative z-10">
-            <h3 className="font-black text-[#0A1628] text-2xl mb-3"><span data-cms-key="careers_pg_2" data-cms-label="H3 Text" data-cms-attr="text">Don't See the Right Role?</span></h3>
-            <p className="text-[#6B7280] text-sm leading-relaxed max-w-md"><span data-cms-key="careers_pg_p_12" data-cms-label="Body Text" data-cms-attr="text">We're always open to exceptional people. Send us your resume with a note on what you do best — we'll reach out when something fits.</span></p>
+            <h3 className="font-black text-[#0A1628] text-2xl mb-3"><span data-cms-key="careers_pg_2" data-cms-label="H3 Text" data-cms-attr="text">{pg2}</span></h3>
+            <p className="text-[#6B7280] text-sm leading-relaxed max-w-md"><span data-cms-key="careers_pg_p_12" data-cms-label="Body Text" data-cms-attr="text">{pgP12}</span></p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0 relative z-10">
             <a href="mailto:info@thedigitalaura.com?subject=Open Application"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
               style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 4px 20px rgba(255,107,43,0.3)" }}>
-              <Mail size={15} /> <span data-cms-key="careers_resume_btn" data-cms-label="Send Resume Button" data-cms-attr="text">Send Your Resume</span>
+              <Mail size={15} /> <span data-cms-key="careers_resume_btn" data-cms-label="Send Resume Button" data-cms-attr="text">{resumeBtn}</span>
             </a>
             <a href="tel:+918141200284"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm border transition-all"
@@ -455,13 +518,13 @@ const Careers = () => {
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mb-6 tracking-widest uppercase text-[#FF6B2B]"
             style={{ background: "rgba(255,107,43,0.12)", border: "1px solid rgba(255,107,43,0.3)" }}>
-            <span data-cms-key="careers_cta_badge" data-cms-label="CTA Badge" data-cms-attr="text">Join the Team</span>
+            <span data-cms-key="careers_cta_badge" data-cms-label="CTA Badge" data-cms-attr="text">{ctaBadge}</span>
           </span>
-          <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4"><span data-cms-key="careers_cta_h2" data-cms-label="CTA Heading" data-cms-attr="text">Ready to</span> <span data-cms-key="careers_hl_120" data-cms-label="CTA Heading Highlight" data-cms-attr="text" className="text-orange-gradient">Build Something</span> <span data-cms-key="careers_cta_h2b" data-cms-label="CTA Heading End" data-cms-attr="text">Great?</span></h2>
-          <p className="text-[#94a3b8] mb-8 text-sm leading-relaxed max-w-lg mx-auto"><span data-cms-key="careers_pg_p_13" data-cms-label="Body Text" data-cms-attr="text">Explore the roles above or drop us a direct message. We reply to every application.</span></p>
+          <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4"><span data-cms-key="careers_cta_h2" data-cms-label="CTA Heading" data-cms-attr="text">{ctaH2}</span> <span data-cms-key="careers_hl_120" data-cms-label="CTA Heading Highlight" data-cms-attr="text" className="text-orange-gradient">{heroHl120}</span> <span data-cms-key="careers_cta_h2b" data-cms-label="CTA Heading End" data-cms-attr="text">{ctaH2b}</span></h2>
+          <p className="text-[#94a3b8] mb-8 text-sm leading-relaxed max-w-lg mx-auto"><span data-cms-key="careers_pg_p_13" data-cms-label="Body Text" data-cms-attr="text">{pgP13}</span></p>
           <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
             style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 4px 20px rgba(255,107,43,0.4)" }}>
-            <span data-cms-key="careers_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">Get In Touch</span> <ArrowRight size={16} />
+            <span data-cms-key="careers_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{ctaBtn}</span> <ArrowRight size={16} />
           </Link>
         </motion.div>
       </div>

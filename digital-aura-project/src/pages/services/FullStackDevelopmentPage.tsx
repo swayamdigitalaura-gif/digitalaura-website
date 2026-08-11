@@ -186,7 +186,7 @@ const CaseStudyCard = ({ cs, i }: { cs: typeof caseStudies[0]; i: number }) => {
 };
 
 const FullStackDevelopmentPage = () => {
-  const _sp = useSettings(['fullstack_hero_h1','fullstack_hero_sub','fullstack_cta_btn']);
+  const sp = useSettings(['fullstack_hero_h1','fullstack_hero_sub','fullstack_cta_btn']);
   return (
   <PageLayout>
 
@@ -207,15 +207,15 @@ const FullStackDevelopmentPage = () => {
             </span>
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-[58px] font-bold leading-[1.1] text-[#0A1628] mb-6 tracking-tight">
-            <span data-cms-key="fullstack_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">An Idea Without Engineering<br className="hidden md:block" />
-            Behind It Is Just a Conversation.
+            <span data-cms-key="fullstack_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">{sp.fullstack_hero_h1 || (<>An Idea Without Engineering<br className="hidden md:block" />
+            Behind It Is Just a Conversation.</>)}
           </span></h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto leading-relaxed mb-10">
-            <span data-cms-key="fullstack_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">We build complete, production-ready web applications from front to back clean interfaces, robust APIs, scalable databases, and AI capabilities woven through every layer. End to end engineering delivered by one team, with one vision, from first line to final deployment.</span>
+            <span data-cms-key="fullstack_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.fullstack_hero_sub || "We build complete, production-ready web applications from front to back clean interfaces, robust APIs, scalable databases, and AI capabilities woven through every layer. End to end engineering delivered by one team, with one vision, from first line to final deployment."}</span>
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2">
-              <span data-cms-key="fullstack_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">Book a Free Technical Discovery Call</span> <ArrowRight size={18} />
+              <span data-cms-key="fullstack_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.fullstack_cta_btn || "Book a Free Technical Discovery Call"}</span> <ArrowRight size={18} />
             </Link>
             <a href="#services-list" className="btn-outline-dark px-8 py-4 text-base">What We Build</a>
           </div>

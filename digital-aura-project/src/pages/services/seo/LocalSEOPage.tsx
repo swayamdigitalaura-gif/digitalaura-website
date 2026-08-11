@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
+import { useSettings } from "@/hooks/useSettings";
 import Testimonials from "@/components/Testimonials";
 import CaseStudies from "@/components/CaseStudies";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
@@ -136,7 +137,16 @@ const seoClients = [
 
 const inputClass = "w-full px-4 py-3 rounded-xl text-sm text-[#0A1628] outline-none focus:ring-2 focus:ring-[#22C55E] transition-all placeholder-[#9CA3AF] border border-[#E5E7EB] bg-[#F8FAFF] focus:bg-white";
 
-const AuditForm = () => {
+interface AuditFormProps {
+  formTitle: string;
+  formSubtext: string;
+  submitLabel: string;
+  disclaimer: string;
+  successTitle: string;
+  successText: string;
+}
+
+const AuditForm = ({ formTitle, formSubtext, submitLabel, disclaimer, successTitle, successText }: AuditFormProps) => {
   const [submitted, setSubmitted] = useState(false);
   const [captchaOk, setCaptchaOk] = useState(false);
   const [form, setForm] = useState({ name: "", business: "", email: "", phone: "", website: "", goal: "" });
@@ -151,13 +161,13 @@ const AuditForm = () => {
           <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: "rgba(34,197,94,0.1)" }}>
             <CheckCircle2 size={32} className="text-[#22C55E]" />
           </div>
-          <h3 className="text-xl font-bold text-[#0A1628] mb-2">Audit Request Received!</h3>
-          <p className="text-[#6B7280]">We'll analyse your site and send your free audit within 24 hours.</p>
+          <h3 className="text-xl font-bold text-[#0A1628] mb-2">{successTitle}</h3>
+          <p className="text-[#6B7280]">{successText}</p>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">
-          <h3 className="text-xl font-bold text-[#0A1628] mb-1">Request Your Free Local SEO Review</h3>
-          <p className="text-sm text-[#6B7280] mb-4">Fill in your details and we'll get started right away.</p>
+          <h3 className="text-xl font-bold text-[#0A1628] mb-1">{formTitle}</h3>
+          <p className="text-sm text-[#6B7280] mb-4">{formSubtext}</p>
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
               <label className="text-xs font-semibold text-[#374151] mb-1.5 block">Full Name *</label>
@@ -197,10 +207,10 @@ const AuditForm = () => {
           <MathCaptcha onVerify={setCaptchaOk} inputClass={inputClass} />
           <button type="submit" disabled={!captchaOk} className="w-full py-4 rounded-xl text-base font-bold text-white flex items-center justify-center gap-2 transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
             style={{ background: "linear-gradient(135deg, #22C55E, #16a34a)" }}>
-            Get My Free Review <ArrowRight size={18} />
+            {submitLabel} <ArrowRight size={18} />
           </button>
           <p className="text-center text-xs text-[#6B7280] flex items-center justify-center gap-1.5">
-            <Lock size={12} /> 100% free no credit card, no obligation
+            <Lock size={12} /> {disclaimer}
           </p>
         </form>
       )}
@@ -209,6 +219,112 @@ const AuditForm = () => {
 };
 
 const LocalSEOPage = () => {
+  // Every piece of static marketing copy on this page is click-to-edit from the admin
+  // Pages panel (same data-cms-key + useSettings mechanism as every other page). All
+  // new keys are namespaced with `localseo_` so they can't collide with any other page.
+  const keys = [
+    "localseo_hero_badge", "localseo_hero_h1a", "localseo_hero_h1b", "localseo_hero_sub",
+    "localseo_hero_cta1", "localseo_hero_cta2",
+    "localseo_included_title",
+    "localseo_process_title",
+    "localseo_issues_title",
+    "localseo_tools_title", "localseo_tools_subtext",
+    "localseo_whyus_title", "localseo_whatwedo_title",
+    "localseo_clients_eyebrow", "localseo_clients_title", "localseo_clients_subtext",
+    "localseo_faq_title",
+    "localseo_audit_badge", "localseo_audit_h2a", "localseo_audit_h2b", "localseo_audit_text",
+    "localseo_audit_form_title", "localseo_audit_form_subtext", "localseo_audit_form_submit", "localseo_audit_form_disclaimer",
+    "localseo_audit_success_title", "localseo_audit_success_text",
+    "localseo_related_title",
+    "localseo_cta_badge", "localseo_cta_h2", "localseo_cta_text", "localseo_cta_button",
+    ...["Google Business Profile", "Local Citations", "Geo-Targeted Pages", "Review Growth"].map((_, i) => `localseo_hero_tag_${i}`),
+    ...included.flatMap((_, i) => [`localseo_included_${i}_title`, `localseo_included_${i}_desc`]),
+    ...processSteps.flatMap((_, i) => [`localseo_process_${i}_title`, `localseo_process_${i}_desc`]),
+    ...commonIssues.map((_, i) => `localseo_issue_${i}`),
+    ...toolGroups.map((_, i) => `localseo_toolgroup_${i}_label`),
+    ...whyUsPoints.map((_, i) => `localseo_whyus_${i}`),
+    ...whatWeDoPoints.map((_, i) => `localseo_whatwedo_${i}`),
+    ...faqs.flatMap((_, i) => [`localseo_faq_${i}_q`, `localseo_faq_${i}_a`]),
+    ...[0, 1, 2, 3].map((i) => `localseo_audit_checklist_${i}`),
+  ];
+  const s = useSettings(keys);
+  const g = (key: string, fallback: string) => s[key] || fallback;
+
+  const heroBadge = g("localseo_hero_badge", "Local SEO");
+  const heroH1a = g("localseo_hero_h1a", "Local SEO Services");
+  const heroH1b = g("localseo_hero_h1b", "That Win the Map Pack");
+  const heroSub = g(
+    "localseo_hero_sub",
+    "Local SEO gets your business found in Google Maps, the local pack, and \"near me\" searches, through Google Business Profile optimisation, consistent citations, review growth, and geo-targeted landing pages."
+  );
+  const heroCta1 = g("localseo_hero_cta1", "Get a Free Local SEO Review");
+  const heroCta2 = g("localseo_hero_cta2", "See What's Included");
+  const heroTags = ["Google Business Profile", "Local Citations", "Geo-Targeted Pages", "Review Growth"].map((tag, i) => g(`localseo_hero_tag_${i}`, tag));
+
+  const includedTitle = g("localseo_included_title", "What Local SEO Covers");
+  const includedItems = included.map((item, i) => ({
+    ...item,
+    title: g(`localseo_included_${i}_title`, item.title),
+    desc: g(`localseo_included_${i}_desc`, item.desc),
+  }));
+
+  const processTitle = g("localseo_process_title", "How We Build Local Rankings");
+  const processStepsResolved = processSteps.map((step, i) => ({
+    ...step,
+    title: g(`localseo_process_${i}_title`, step.title),
+    desc: g(`localseo_process_${i}_desc`, step.desc),
+  }));
+
+  const issuesTitle = g("localseo_issues_title", "Local SEO Issues We Find Most Often");
+  const commonIssuesResolved = commonIssues.map((issue, i) => g(`localseo_issue_${i}`, issue));
+
+  const toolsTitle = g("localseo_tools_title", "Tools & Technologies We Use");
+  const toolsSubtext = g("localseo_tools_subtext", "Industry-leading SEO tools plus cutting edge AI search platforms for complete visibility.");
+  const toolGroupsResolved = toolGroups.map((group, i) => ({
+    ...group,
+    label: g(`localseo_toolgroup_${i}_label`, group.label),
+  }));
+
+  const whyUsTitle = g("localseo_whyus_title", "Why Choose Us");
+  const whyUsPointsResolved = whyUsPoints.map((w, i) => g(`localseo_whyus_${i}`, w));
+
+  const whatWeDoTitle = g("localseo_whatwedo_title", "What We Can Do for Your Business");
+  const whatWeDoPointsResolved = whatWeDoPoints.map((w, i) => g(`localseo_whatwedo_${i}`, w));
+
+  const clientsEyebrow = g("localseo_clients_eyebrow", "Brands We've Grown With SEO");
+  const clientsTitle = g("localseo_clients_title", "Clients We've Grown With SEO");
+  const clientsSubtext = g("localseo_clients_subtext", "Real businesses. Real rankings. Organic growth delivered by Digital Aura.");
+
+  const faqTitle = g("localseo_faq_title", "Frequently Asked Questions");
+  const faqsResolved = faqs.map((f, i) => ({
+    q: g(`localseo_faq_${i}_q`, f.q),
+    a: g(`localseo_faq_${i}_a`, f.a),
+  }));
+
+  const auditBadge = g("localseo_audit_badge", "Free Local SEO Review");
+  const auditH2a = g("localseo_audit_h2a", "Get Your Free");
+  const auditH2b = g("localseo_audit_h2b", "Local SEO Review");
+  const auditText = g("localseo_audit_text", "We'll review your Google Business Profile, citations, and local rankings against nearby competitors, completely free.");
+  const auditChecklist = [
+    "Google Business Profile audit",
+    "NAP consistency check",
+    "Local citation gap analysis",
+    "Local pack ranking snapshot",
+  ].map((item, i) => g(`localseo_audit_checklist_${i}`, item));
+  const auditFormTitle = g("localseo_audit_form_title", "Request Your Free Local SEO Review");
+  const auditFormSubtext = g("localseo_audit_form_subtext", "Fill in your details and we'll get started right away.");
+  const auditFormSubmit = g("localseo_audit_form_submit", "Get My Free Review");
+  const auditFormDisclaimer = g("localseo_audit_form_disclaimer", "100% free no credit card, no obligation");
+  const auditSuccessTitle = g("localseo_audit_success_title", "Audit Request Received!");
+  const auditSuccessText = g("localseo_audit_success_text", "We'll analyse your site and send your free audit within 24 hours.");
+
+  const relatedTitle = g("localseo_related_title", "Related SEO Services");
+
+  const ctaBadge = g("localseo_cta_badge", "Let's Build Together");
+  const ctaH2 = g("localseo_cta_h2", "Ready to Own the Local Pack?");
+  const ctaText = g("localseo_cta_text", "Book a free local SEO review. We'll check your Google Business Profile, citations, and rankings against nearby competitors.");
+  const ctaButton = g("localseo_cta_button", "Book My Free Review");
+
   return (
   <PageLayout>
     {/* Hero */}
@@ -223,25 +339,25 @@ const LocalSEOPage = () => {
           <Link to="/services/seo-content-marketing" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: accentColor }}>← Back to SEO &amp; Content Marketing</Link>
           <div className="flex justify-center mb-6">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase" style={{ background: `${accentColor}12`, color: accentColor, border: `1px solid ${accentColor}30` }}>
-              <MapPin size={12} /> Local SEO
+              <MapPin size={12} /> <span data-cms-key="localseo_hero_badge" data-cms-label="Hero Badge" data-cms-attr="text">{heroBadge}</span>
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-[50px] font-black leading-[1.12] text-[#0A1628] mb-5 tracking-tight">
-            Local SEO Services<br /><span style={{ color: accentColor }}>That Win the Map Pack</span>
+            <span data-cms-key="localseo_hero_h1a" data-cms-label="Hero H1" data-cms-attr="text">{heroH1a}</span><br /><span style={{ color: accentColor }} data-cms-key="localseo_hero_h1b" data-cms-label="Hero H1 Highlight" data-cms-attr="text">{heroH1b}</span>
           </h1>
-          <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-4 leading-relaxed">
-            Local SEO gets your business found in Google Maps, the local pack, and "near me" searches, through Google Business Profile optimisation, consistent citations, review growth, and geo-targeted landing pages.
+          <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-4 leading-relaxed" data-cms-key="localseo_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">
+            {heroSub}
           </p>
           <div className="flex flex-wrap gap-2 justify-center mb-8">
-            {["Google Business Profile", "Local Citations", "Geo-Targeted Pages", "Review Growth"].map(tag => (
-              <span key={tag} className="text-[11px] font-bold px-3 py-1 rounded-full" style={{ background: `${accentColor}10`, color: accentColor, border: `1px solid ${accentColor}25` }}>{tag}</span>
+            {heroTags.map((tag, i) => (
+              <span key={i} className="text-[11px] font-bold px-3 py-1 rounded-full" style={{ background: `${accentColor}10`, color: accentColor, border: `1px solid ${accentColor}25` }} data-cms-key={`localseo_hero_tag_${i}`} data-cms-label="Hero Tag" data-cms-attr="text">{tag}</span>
             ))}
           </div>
           <div className="flex flex-wrap gap-3 justify-center">
             <Link to="/contact#contact-form" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3" style={{ background: "linear-gradient(135deg, #22C55E, #16a34a)", boxShadow: `0 8px 24px ${accentColor}40` }}>
-              Get a Free Local SEO Review <MapPin size={15} />
+              <span data-cms-key="localseo_hero_cta1" data-cms-label="Hero CTA 1" data-cms-attr="text">{heroCta1}</span> <MapPin size={15} />
             </Link>
-            <a href="#included" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold border-2 text-[#0A1628] hover:bg-[#0A1628] hover:text-white transition-all" style={{ borderColor: "#0A1628" }}>See What's Included</a>
+            <a href="#included" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold border-2 text-[#0A1628] hover:bg-[#0A1628] hover:text-white transition-all" style={{ borderColor: "#0A1628" }}><span data-cms-key="localseo_hero_cta2" data-cms-label="Hero CTA 2" data-cms-attr="text">{heroCta2}</span></a>
           </div>
         </motion.div>
       </div>
@@ -252,18 +368,18 @@ const LocalSEOPage = () => {
       <div className="max-w-5xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8 text-center">
           <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center justify-center gap-2">
-            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> What Local SEO Covers
+            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> <span data-cms-key="localseo_included_title" data-cms-label="Included Section Title" data-cms-attr="text">{includedTitle}</span>
           </h2>
         </motion.div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {included.map((s, i) => (
-            <motion.div key={s.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
+          {includedItems.map((s, i) => (
+            <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
               className="bg-white rounded-2xl p-6 border hover:-translate-y-1 transition-all duration-200" style={{ borderColor: "#E5E7EB", boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
               <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: `${accentColor}12` }}>
                 <s.Icon size={20} style={{ color: accentColor }} />
               </div>
-              <h3 className="font-bold text-[#0A1628] mb-2 text-[15px]">{s.title}</h3>
-              <p className="text-sm text-[#6B7280] leading-relaxed">{s.desc}</p>
+              <h3 className="font-bold text-[#0A1628] mb-2 text-[15px]" data-cms-key={`localseo_included_${i}_title`} data-cms-label="Included Card Title" data-cms-attr="text">{s.title}</h3>
+              <p className="text-sm text-[#6B7280] leading-relaxed" data-cms-key={`localseo_included_${i}_desc`} data-cms-label="Included Card Description" data-cms-attr="text">{s.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -275,16 +391,16 @@ const LocalSEOPage = () => {
       <div className="max-w-5xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8 text-center">
           <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center justify-center gap-2">
-            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> How We Build Local Rankings
+            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> <span data-cms-key="localseo_process_title" data-cms-label="Process Section Title" data-cms-attr="text">{processTitle}</span>
           </h2>
         </motion.div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {processSteps.map((step, i) => (
+          {processStepsResolved.map((step, i) => (
             <motion.div key={step.num} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
               className="bg-white rounded-2xl p-5 border" style={{ borderColor: "#E5E7EB" }}>
               <span className="inline-block text-[10px] font-black tracking-[0.15em] uppercase px-2.5 py-1 rounded-full mb-3" style={{ background: `${accentColor}12`, color: accentColor }}>Step {step.num}</span>
-              <h3 className="font-black text-[#0A1628] text-[14.5px] leading-snug mb-2">{step.title}</h3>
-              <p className="text-[13px] text-[#6B7280] leading-relaxed">{step.desc}</p>
+              <h3 className="font-black text-[#0A1628] text-[14.5px] leading-snug mb-2" data-cms-key={`localseo_process_${i}_title`} data-cms-label="Process Step Title" data-cms-attr="text">{step.title}</h3>
+              <p className="text-[13px] text-[#6B7280] leading-relaxed" data-cms-key={`localseo_process_${i}_desc`} data-cms-label="Process Step Description" data-cms-attr="text">{step.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -296,15 +412,15 @@ const LocalSEOPage = () => {
       <div className="max-w-4xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8">
           <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center gap-2">
-            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> Local SEO Issues We Find Most Often
+            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> <span data-cms-key="localseo_issues_title" data-cms-label="Issues Section Title" data-cms-attr="text">{issuesTitle}</span>
           </h2>
         </motion.div>
         <div className="space-y-3">
-          {commonIssues.map((issue, i) => (
-            <motion.div key={issue} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
+          {commonIssuesResolved.map((issue, i) => (
+            <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
               className="flex items-start gap-3 p-4 rounded-xl" style={{ background: "#F8FAFF", border: "1px solid #E5E7EB" }}>
               <Check size={16} className="mt-0.5 shrink-0" style={{ color: accentColor }} />
-              <span className="text-[14px] text-[#374151] leading-relaxed">{issue}</span>
+              <span className="text-[14px] text-[#374151] leading-relaxed" data-cms-key={`localseo_issue_${i}`} data-cms-label="Common Issue" data-cms-attr="text">{issue}</span>
             </motion.div>
           ))}
         </div>
@@ -317,15 +433,15 @@ const LocalSEOPage = () => {
       <div className="max-w-5xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8">
           <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center gap-2">
-            <span className="w-4 h-0.5 rounded-full bg-[#6C47FF]" /> Tools &amp; Technologies We Use
+            <span className="w-4 h-0.5 rounded-full bg-[#6C47FF]" /> <span data-cms-key="localseo_tools_title" data-cms-label="Tools Section Title" data-cms-attr="text">{toolsTitle}</span>
           </h2>
-          <p className="text-[#6B7280] mt-2 text-sm">Industry-leading SEO tools plus cutting edge AI search platforms for complete visibility.</p>
+          <p className="text-[#6B7280] mt-2 text-sm" data-cms-key="localseo_tools_subtext" data-cms-label="Tools Section Subtext" data-cms-attr="text">{toolsSubtext}</p>
         </motion.div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {toolGroups.map((g, i) => (
-            <motion.div key={g.label} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+          {toolGroupsResolved.map((g, i) => (
+            <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
               className="rounded-2xl p-5" style={{ background: "#F8FAFF", border: "1px solid #E5E7EB", boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
-              <p className="text-[11px] font-bold uppercase tracking-wider mb-3" style={{ color: g.color }}>{g.label}</p>
+              <p className="text-[11px] font-bold uppercase tracking-wider mb-3" style={{ color: g.color }} data-cms-key={`localseo_toolgroup_${i}_label`} data-cms-label="Tool Group Label" data-cms-attr="text">{g.label}</p>
               <div className="flex flex-wrap gap-2">
                 {g.pills.map(p => (
                   <span key={p} className="text-[12px] font-semibold px-2.5 py-1 rounded-full" style={{ background: g.bg, color: g.color }}>{p}</span>
@@ -342,28 +458,28 @@ const LocalSEOPage = () => {
       <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
         <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
           <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] mb-6 flex items-center gap-2">
-            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> Why Choose Us
+            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> <span data-cms-key="localseo_whyus_title" data-cms-label="Why Choose Us Title" data-cms-attr="text">{whyUsTitle}</span>
           </h2>
           <ul className="space-y-3">
-            {whyUsPoints.map((w) => (
-              <li key={w} className="flex items-start gap-3 p-3.5 rounded-xl" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
+            {whyUsPointsResolved.map((w, i) => (
+              <li key={i} className="flex items-start gap-3 p-3.5 rounded-xl" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
                 <Check size={16} className="mt-0.5 shrink-0" style={{ color: accentColor }} />
-                <span className="text-[14.5px] text-[#374151]">{w}</span>
+                <span className="text-[14.5px] text-[#374151]" data-cms-key={`localseo_whyus_${i}`} data-cms-label="Why Choose Us Point" data-cms-attr="text">{w}</span>
               </li>
             ))}
           </ul>
         </motion.div>
         <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
           <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] mb-6 flex items-center gap-2">
-            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> What We Can Do for Your Business
+            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> <span data-cms-key="localseo_whatwedo_title" data-cms-label="What We Can Do Title" data-cms-attr="text">{whatWeDoTitle}</span>
           </h2>
           <div className="grid grid-cols-1 gap-3">
-            {whatWeDoPoints.map((label) => (
-              <div key={label} className="flex items-center gap-3 p-3.5 rounded-xl" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
+            {whatWeDoPointsResolved.map((label, i) => (
+              <div key={i} className="flex items-center gap-3 p-3.5 rounded-xl" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: `${accentColor}12` }}>
                   <Check size={15} style={{ color: accentColor }} />
                 </div>
-                <span className="text-[14.5px] text-[#374151]">{label}</span>
+                <span className="text-[14.5px] text-[#374151]" data-cms-key={`localseo_whatwedo_${i}`} data-cms-label="What We Can Do Point" data-cms-attr="text">{label}</span>
               </div>
             ))}
           </div>
@@ -382,9 +498,9 @@ const LocalSEOPage = () => {
     {/* Clients We've Grown With SEO */}
     <section className="py-14 px-4 md:px-8" style={{ background: "#fff", borderTop: "1px solid #F3F4F6", borderBottom: "1px solid #F3F4F6" }}>
       <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
-        <p className="text-[11px] font-black uppercase tracking-[0.16em] mb-2" style={{ color: "#9CA3AF" }}>Brands We've Grown With SEO</p>
-        <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2">Clients We've Grown With SEO</h2>
-        <p className="text-[#6B7280] text-sm max-w-md mx-auto">Real businesses. Real rankings. Organic growth delivered by Digital Aura.</p>
+        <p className="text-[11px] font-black uppercase tracking-[0.16em] mb-2" style={{ color: "#9CA3AF" }} data-cms-key="localseo_clients_eyebrow" data-cms-label="Clients Eyebrow" data-cms-attr="text">{clientsEyebrow}</p>
+        <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2" data-cms-key="localseo_clients_title" data-cms-label="Clients Title" data-cms-attr="text">{clientsTitle}</h2>
+        <p className="text-[#6B7280] text-sm max-w-md mx-auto" data-cms-key="localseo_clients_subtext" data-cms-label="Clients Subtext" data-cms-attr="text">{clientsSubtext}</p>
       </motion.div>
       <div className="max-w-5xl mx-auto">
         <ClientLogoGrid clients={seoClients} accentColor={accentColor} />
@@ -396,12 +512,12 @@ const LocalSEOPage = () => {
       <div className="max-w-3xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8 text-center">
           <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center justify-center gap-2">
-            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> Frequently Asked Questions <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} />
+            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> <span data-cms-key="localseo_faq_title" data-cms-label="FAQ Section Title" data-cms-attr="text">{faqTitle}</span> <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} />
           </h2>
         </motion.div>
         <div className="space-y-3">
-          {faqs.map((f, idx) => (
-            <motion.div key={f.q} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.06 }}>
+          {faqsResolved.map((f, idx) => (
+            <motion.div key={idx} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.06 }}>
               <FAQItem q={f.q} a={f.a} idx={idx} />
             </motion.div>
           ))}
@@ -417,18 +533,24 @@ const LocalSEOPage = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-5 bg-white/20 text-white">Free Local SEO Review</span>
-            <h2 className="text-3xl md:text-[40px] font-black text-white leading-tight mb-6">Get Your Free<br />Local SEO Review</h2>
-            <p className="text-white/80 text-lg mb-8">We'll review your Google Business Profile, citations, and local rankings against nearby competitors, completely free.</p>
+            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-5 bg-white/20 text-white" data-cms-key="localseo_audit_badge" data-cms-label="Audit Badge" data-cms-attr="text">{auditBadge}</span>
+            <h2 className="text-3xl md:text-[40px] font-black text-white leading-tight mb-6"><span data-cms-key="localseo_audit_h2a" data-cms-label="Audit Heading Line 1" data-cms-attr="text">{auditH2a}</span><br /><span data-cms-key="localseo_audit_h2b" data-cms-label="Audit Heading Line 2" data-cms-attr="text">{auditH2b}</span></h2>
+            <p className="text-white/80 text-lg mb-8" data-cms-key="localseo_audit_text" data-cms-label="Audit Text" data-cms-attr="text">{auditText}</p>
             <div className="space-y-3 mb-8">
-              <div key="Google Business Profile audit" className="flex items-center gap-3"><CheckCircle2 size={18} className="text-white shrink-0" /><span className="text-white font-medium">Google Business Profile audit</span></div>
-              <div key="NAP consistency check" className="flex items-center gap-3"><CheckCircle2 size={18} className="text-white shrink-0" /><span className="text-white font-medium">NAP consistency check</span></div>
-              <div key="Local citation gap analysis" className="flex items-center gap-3"><CheckCircle2 size={18} className="text-white shrink-0" /><span className="text-white font-medium">Local citation gap analysis</span></div>
-              <div key="Local pack ranking snapshot" className="flex items-center gap-3"><CheckCircle2 size={18} className="text-white shrink-0" /><span className="text-white font-medium">Local pack ranking snapshot</span></div>
+              {auditChecklist.map((item, i) => (
+                <div key={i} className="flex items-center gap-3"><CheckCircle2 size={18} className="text-white shrink-0" /><span className="text-white font-medium" data-cms-key={`localseo_audit_checklist_${i}`} data-cms-label="Audit Checklist Item" data-cms-attr="text">{item}</span></div>
+              ))}
             </div>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }}>
-            <AuditForm />
+            <AuditForm
+              formTitle={auditFormTitle}
+              formSubtext={auditFormSubtext}
+              submitLabel={auditFormSubmit}
+              disclaimer={auditFormDisclaimer}
+              successTitle={auditSuccessTitle}
+              successText={auditSuccessText}
+            />
           </motion.div>
         </div>
       </div>
@@ -437,7 +559,7 @@ const LocalSEOPage = () => {
     {/* Related Services */}
     <section className="py-12 px-4 md:px-8 bg-white" style={{ borderTop: "1px solid #F3F4F6" }}>
       <div className="max-w-4xl mx-auto text-center">
-        <p className="text-[11px] font-black uppercase tracking-[0.16em] mb-4" style={{ color: "#9CA3AF" }}>Related SEO Services</p>
+        <p className="text-[11px] font-black uppercase tracking-[0.16em] mb-4" style={{ color: "#9CA3AF" }} data-cms-key="localseo_related_title" data-cms-label="Related Services Title" data-cms-attr="text">{relatedTitle}</p>
         <div className="flex flex-wrap justify-center gap-2.5">
           {relatedServices.map(s => (
             <Link key={s.href} to={s.href} className="text-[13px] font-semibold px-4 py-2 rounded-full border transition-all hover:-translate-y-0.5" style={{ borderColor: "#E5E7EB", color: "#374151" }}>{s.label}</Link>
@@ -454,11 +576,11 @@ const LocalSEOPage = () => {
       <div className="absolute bottom-8 right-8 w-36 h-36 rounded-full animate-drift-2 opacity-15 pointer-events-none" style={{ background: "radial-gradient(circle, #7C3AED, transparent)" }} />
       <div className="max-w-3xl mx-auto relative z-10">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mb-6 tracking-widest uppercase" style={{ background: `${accentColor}15`, border: `1px solid ${accentColor}40`, color: accentColor }}>Let's Build Together</span>
-          <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4">Ready to Own the Local Pack?</h2>
-          <p className="text-[#E2E8F0] mb-8 leading-relaxed">Book a free local SEO review. We'll check your Google Business Profile, citations, and rankings against nearby competitors.</p>
+          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mb-6 tracking-widest uppercase" style={{ background: `${accentColor}15`, border: `1px solid ${accentColor}40`, color: accentColor }} data-cms-key="localseo_cta_badge" data-cms-label="Final CTA Badge" data-cms-attr="text">{ctaBadge}</span>
+          <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4" data-cms-key="localseo_cta_h2" data-cms-label="Final CTA Heading" data-cms-attr="text">{ctaH2}</h2>
+          <p className="text-[#E2E8F0] mb-8 leading-relaxed" data-cms-key="localseo_cta_text" data-cms-label="Final CTA Text" data-cms-attr="text">{ctaText}</p>
           <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3" style={{ background: "linear-gradient(135deg, #22C55E, #16a34a)", boxShadow: "0 4px 20px rgba(34,197,94,0.4)" }}>
-            Book My Free Review <ArrowRight size={16} />
+            <span data-cms-key="localseo_cta_button" data-cms-label="Final CTA Button" data-cms-attr="text">{ctaButton}</span> <ArrowRight size={16} />
           </Link>
         </motion.div>
       </div>

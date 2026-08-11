@@ -232,7 +232,7 @@ const AppAuditForm = () => {
 
 /* ─── PAGE MAP ─── */
 const MobileAppDevPage = () => {
-  const _sp = useSettings(["mobileapp_hero_h1","mobileapp_hero_sub","mobileapp_cta_btn"]);
+  const sp = useSettings(["mobileapp_hero_h1","mobileapp_hero_sub","mobileapp_cta_btn"]);
   const [searchParams] = useSearchParams();
   const type = searchParams.get("type") || "";
   const hero = typeHero[type];
@@ -258,12 +258,12 @@ const MobileAppDevPage = () => {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-[54px] font-black leading-[1.1] text-[#0A1628] mb-5 tracking-tight">
-            <span data-cms-key="mobileapp_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">{hero ? hero.title.split("\n").map((line, i) => (
+            <span data-cms-key="mobileapp_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">{sp.mobileapp_hero_h1 || (hero ? hero.title.split("\n").map((line, i) => (
               <span key={i}>{i > 0 && <br />}{i === 1 ? <span style={{ color: accentColor }}>{line}</span> : line}</span>
-            )) : (<>Design Apps That Scale.<br /><span style={{ color: accentColor }}>Build for Retention.</span></>)}
+            )) : (<>Design Apps That Scale.<br /><span style={{ color: accentColor }}>Build for Retention.</span></>))}
           </span></h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-3xl mx-auto mb-8 leading-relaxed">
-            <span data-cms-key="mobileapp_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{hero ? hero.subtitle : "We build Android, iOS, and cross platform apps crafted for performance. From rigorous state management to offline first architectures, we ship applications users actually keep."}</span>
+            <span data-cms-key="mobileapp_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.mobileapp_hero_sub || (hero ? hero.subtitle : "We build Android, iOS, and cross platform apps crafted for performance. From rigorous state management to offline first architectures, we ship applications users actually keep.")}</span>
           </p>
           <div className="flex flex-wrap gap-2 justify-center mb-8">
             {(hero ? hero.tags : ["React Native", "Flutter", "Swift", "Kotlin", "Offline First"]).map(tag => (
@@ -277,7 +277,7 @@ const MobileAppDevPage = () => {
             <Link to="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-white transition-all hover:gap-3 hover:shadow-lg"
               style={{ background: accentGradient }}>
-              <span data-cms-key="mobileapp_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">Request App Architecture Audit</span> <ArrowRight size={15} />
+              <span data-cms-key="mobileapp_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.mobileapp_cta_btn || "Request App Architecture Audit"}</span> <ArrowRight size={15} />
             </Link>
             <a href="#services-list" className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold border-2 text-[#0A1628] hover:bg-[#0A1628] hover:text-white transition-all" style={{ borderColor: "#0A1628" }}>Our Capabilities</a>
           </div>

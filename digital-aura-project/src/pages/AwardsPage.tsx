@@ -3,6 +3,8 @@ import { useRef, useState } from "react";
 import { Trophy, Award, Star, ArrowRight, Calendar, Building2, Volume2, VolumeX } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
+import { useSettings } from "@/hooks/useSettings";
+import { useCMSEditor } from "@/hooks/useCMSEditor";
 
 const ReelVideo = ({ src }: { src: string }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -148,6 +150,7 @@ const TIMELINE = [
 // ---------- Full-width alternating award row ----------
 const AwardRow = ({ a, index }: { a: AwardItem; index: number }) => {
   const reversed = index % 2 === 1;
+  const k = (field: string) => `awards_card_${index}_${field}`;
   const hasReel = !!a.reelVideo;
   return (
     <motion.div
@@ -187,6 +190,9 @@ const AwardRow = ({ a, index }: { a: AwardItem; index: number }) => {
               />
             </div>
             <span
+              data-cms-key={k("period")}
+              data-cms-label="Award Card Period"
+              data-cms-attr="text"
               className="absolute top-5 right-5 text-[11px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full"
               style={{ background: "#fff", color: a.color, boxShadow: `0 4px 14px ${a.color}25` }}
             >
@@ -205,20 +211,20 @@ const AwardRow = ({ a, index }: { a: AwardItem; index: number }) => {
         {/* Text side */}
         <div className={hasReel ? (reversed ? "md:order-1" : "md:order-3") : reversed ? "md:order-1 md:text-right" : "md:order-2"}>
           <span className="inline-block text-[13px] font-black tracking-widest uppercase mb-3" style={{ color: a.color }}>
-            {String(index + 1).padStart(2, "0")} — {a.event}
+            {String(index + 1).padStart(2, "0")} — <span data-cms-key={k("event")} data-cms-label="Award Card Event" data-cms-attr="text">{a.event}</span>
           </span>
-          <h3 className="text-2xl md:text-[34px] font-black text-[#0A1628] leading-[1.1] mb-4">{a.title}</h3>
+          <h3 data-cms-key={k("title")} data-cms-label="Award Card Title" data-cms-attr="text" className="text-2xl md:text-[34px] font-black text-[#0A1628] leading-[1.1] mb-4">{a.title}</h3>
           <div className={`flex items-center gap-2 text-[#6B7280] text-sm mb-3 ${!hasReel && reversed ? "md:justify-end" : ""}`}>
             <Building2 size={14} />
-            <span>{a.issuer}</span>
+            <span data-cms-key={k("issuer")} data-cms-label="Award Card Issuer" data-cms-attr="text">{a.issuer}</span>
           </div>
-          <p className="text-[#4B5563] text-[15px] leading-relaxed max-w-md mb-4" style={{ marginLeft: !hasReel && reversed ? "auto" : undefined }}>
+          <p data-cms-key={k("description")} data-cms-label="Award Card Description" data-cms-attr="text" className="text-[#4B5563] text-[15px] leading-relaxed max-w-md mb-4" style={{ marginLeft: !hasReel && reversed ? "auto" : undefined }}>
             {a.description}
           </p>
           {a.note && (
             <div className={`flex items-center gap-2 text-[#6B7280] text-sm mb-1 ${!hasReel && reversed ? "md:justify-end" : ""}`}>
               <Star size={14} />
-              <span>{a.note}</span>
+              <span data-cms-key={k("note")} data-cms-label="Award Card Note" data-cms-attr="text">{a.note}</span>
             </div>
           )}
           <div className={`h-1 w-16 rounded-full mt-6 ${!hasReel && reversed ? "md:ml-auto" : ""}`} style={{ background: a.color }} />
@@ -229,6 +235,64 @@ const AwardRow = ({ a, index }: { a: AwardItem; index: number }) => {
 };
 
 const AwardsPage = () => {
+  useCMSEditor();
+  // Every piece of static marketing copy on this page is click-to-edit from the admin
+  // Pages panel (same data-cms-key + useSettings mechanism as every other page). All
+  // keys are namespaced with `awards_` so they can't collide with any other page.
+  const keys = [
+    "awards_hero_badge", "awards_hero_h1", "awards_hero_h1_highlight", "awards_hero_sub",
+    "awards_timeline_badge", "awards_timeline_h2",
+    "awards_cabinet_badge", "awards_cabinet_h2",
+    "awards_cta_badge", "awards_cta_h2", "awards_cta_h2_highlight", "awards_cta_text",
+    "awards_cta_button1", "awards_cta_button2",
+    ...STATS.flatMap((_, i) => [`awards_stat_${i}_label`, `awards_stat_${i}_value`]),
+    ...TIMELINE.flatMap((_, i) => [`awards_timeline_${i}_year`, `awards_timeline_${i}_text`]),
+    ...AWARDS.flatMap((_, i) => [
+      `awards_card_${i}_title`, `awards_card_${i}_event`, `awards_card_${i}_issuer`,
+      `awards_card_${i}_period`, `awards_card_${i}_description`, `awards_card_${i}_note`,
+    ]),
+  ];
+  const s = useSettings(keys);
+  const g = (key: string, fallback: string) => s[key] || fallback;
+
+  const heroBadge = g("awards_hero_badge", "Awards & Recognition");
+  const heroH1 = g("awards_hero_h1", "Results That Get");
+  const heroH1Highlight = g("awards_hero_h1_highlight", "Recognized");
+  const heroSub = g(
+    "awards_hero_sub",
+    "From an Emerging Business Award in 2017 to Growth Partner of the Year in 2025 — our work has been recognized by national and global business councils every step of the way."
+  );
+  const timelineBadge = g("awards_timeline_badge", "Journey So Far");
+  const timelineH2 = g("awards_timeline_h2", "A Track Record Built Year After Year");
+  const cabinetBadge = g("awards_cabinet_badge", "Our Trophy Cabinet");
+  const cabinetH2 = g("awards_cabinet_h2", "Every Award, Every Year");
+  const ctaBadge = g("awards_cta_badge", "Award-Winning Growth Partner");
+  const ctaH2 = g("awards_cta_h2", "Let's Add Your Success");
+  const ctaH2Highlight = g("awards_cta_h2_highlight", "to the Story");
+  const ctaText = g("awards_cta_text", "Partner with an agency whose results have been recognized nationally and globally, year after year.");
+  const ctaButton1 = g("awards_cta_button1", "Get a Free Consultation");
+  const ctaButton2 = g("awards_cta_button2", "View Case Studies");
+
+  const stats = STATS.map((stat, i) => ({
+    ...stat,
+    label: g(`awards_stat_${i}_label`, stat.label),
+    value: g(`awards_stat_${i}_value`, stat.value),
+  }));
+  const timeline = TIMELINE.map((t, i) => ({
+    ...t,
+    year: g(`awards_timeline_${i}_year`, t.year),
+    text: g(`awards_timeline_${i}_text`, t.text),
+  }));
+  const awards = AWARDS.map((a, i) => ({
+    ...a,
+    title: g(`awards_card_${i}_title`, a.title),
+    event: g(`awards_card_${i}_event`, a.event),
+    issuer: g(`awards_card_${i}_issuer`, a.issuer),
+    period: g(`awards_card_${i}_period`, a.period),
+    description: g(`awards_card_${i}_description`, a.description),
+    note: a.note ? g(`awards_card_${i}_note`, a.note) : a.note,
+  }));
+
   return (
     <PageLayout>
       {/* Hero */}
@@ -242,14 +306,14 @@ const AwardsPage = () => {
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold mb-6 tracking-widest uppercase"
               style={{ background: "rgba(255,107,43,0.1)", color: "#FF6B2B", border: "1px solid rgba(255,107,43,0.25)" }}>
-              <Trophy size={12} /> Awards & Recognition
+              <Trophy size={12} /> <span data-cms-key="awards_hero_badge" data-cms-label="Hero Badge" data-cms-attr="text">{heroBadge}</span>
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-[58px] font-black leading-[1.08] text-[#0A1628] mb-5 tracking-tight">
-              Results That Get <span className="text-orange-gradient">Recognized</span>
+              <span data-cms-key="awards_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">{heroH1}</span>{" "}
+              <span className="text-orange-gradient" data-cms-key="awards_hero_h1_highlight" data-cms-label="Hero H1 Highlight" data-cms-attr="text">{heroH1Highlight}</span>
             </h1>
-            <p className="text-[#4B5563] text-lg max-w-2xl mx-auto leading-relaxed">
-              From an Emerging Business Award in 2017 to Growth Partner of the Year in 2025 — our work has been
-              recognized by national and global business councils every step of the way.
+            <p className="text-[#4B5563] text-lg max-w-2xl mx-auto leading-relaxed" data-cms-key="awards_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">
+              {heroSub}
             </p>
           </motion.div>
         </div>
@@ -257,13 +321,13 @@ const AwardsPage = () => {
         {/* Stats */}
         <div className="max-w-5xl mx-auto px-4 md:px-8 relative z-10 pb-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-            {STATS.map((s, i) => (
-              <motion.div key={s.label}
+            {stats.map((stat, i) => (
+              <motion.div key={stat.label}
                 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
                 className="rounded-2xl p-6 text-center border bg-white"
-                style={{ borderColor: `${s.color}20`, boxShadow: `0 4px 20px ${s.color}08` }}>
-                <div className="text-3xl md:text-4xl font-black mb-1" style={{ color: s.color }}>{s.value}</div>
-                <div className="text-xs text-[#6B7280] font-medium">{s.label}</div>
+                style={{ borderColor: `${stat.color}20`, boxShadow: `0 4px 20px ${stat.color}08` }}>
+                <div className="text-3xl md:text-4xl font-black mb-1" style={{ color: stat.color }} data-cms-key={`awards_stat_${i}_value`} data-cms-label="Stat Value" data-cms-attr="text">{stat.value}</div>
+                <div className="text-xs text-[#6B7280] font-medium" data-cms-key={`awards_stat_${i}_label`} data-cms-label="Stat Label" data-cms-attr="text">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -276,19 +340,19 @@ const AwardsPage = () => {
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold mb-4 tracking-widest uppercase"
               style={{ background: "rgba(255,107,43,0.08)", color: "#FF6B2B", border: "1px solid rgba(255,107,43,0.2)" }}>
-              <Calendar size={11} /> Journey So Far
+              <Calendar size={11} /> <span data-cms-key="awards_timeline_badge" data-cms-label="Timeline Badge" data-cms-attr="text">{timelineBadge}</span>
             </span>
-            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628]">A Track Record Built Year After Year</h2>
+            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628]" data-cms-key="awards_timeline_h2" data-cms-label="Timeline Heading" data-cms-attr="text">{timelineH2}</h2>
           </motion.div>
           <div className="relative flex flex-col md:flex-row md:items-start justify-between gap-8 md:gap-4">
             <div className="hidden md:block absolute top-4 left-0 right-0 h-0.5" style={{ background: "linear-gradient(90deg, #F59E0B, #22C55E, #7C3AED, #FF6B2B)" }} />
-            {TIMELINE.map((t, i) => (
+            {timeline.map((t, i) => (
               <motion.div key={t.year} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }} className="relative flex md:flex-col items-center md:items-start gap-3 md:gap-3 md:flex-1">
                 <div className="w-3 h-3 rounded-full shrink-0 relative z-10" style={{ background: t.color, boxShadow: `0 0 0 4px ${t.color}25` }} />
                 <div>
-                  <p className="font-black text-[#0A1628] text-lg">{t.year}</p>
-                  <p className="text-xs text-[#6B7280] max-w-[220px]">{t.text}</p>
+                  <p className="font-black text-[#0A1628] text-lg" data-cms-key={`awards_timeline_${i}_year`} data-cms-label="Timeline Year" data-cms-attr="text">{t.year}</p>
+                  <p className="text-xs text-[#6B7280] max-w-[220px]" data-cms-key={`awards_timeline_${i}_text`} data-cms-label="Timeline Text" data-cms-attr="text">{t.text}</p>
                 </div>
               </motion.div>
             ))}
@@ -301,12 +365,12 @@ const AwardsPage = () => {
         <div className="max-w-6xl mx-auto px-4 md:px-8 pt-16 pb-4 text-center">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold mb-4 tracking-widest uppercase"
             style={{ background: "rgba(124,58,237,0.08)", color: "#7C3AED", border: "1px solid rgba(124,58,237,0.2)" }}>
-            <Award size={11} /> Our Trophy Cabinet
+            <Award size={11} /> <span data-cms-key="awards_cabinet_badge" data-cms-label="Trophy Cabinet Badge" data-cms-attr="text">{cabinetBadge}</span>
           </span>
-          <h2 className="text-2xl md:text-3xl font-black text-[#0A1628]">Every Award, Every Year</h2>
+          <h2 className="text-2xl md:text-3xl font-black text-[#0A1628]" data-cms-key="awards_cabinet_h2" data-cms-label="Trophy Cabinet Heading" data-cms-attr="text">{cabinetH2}</h2>
         </div>
         <div>
-          {AWARDS.map((a, i) => (
+          {awards.map((a, i) => (
             <AwardRow key={`${a.title}-${i}`} a={a} index={i} />
           ))}
         </div>
@@ -320,25 +384,27 @@ const AwardsPage = () => {
         <div className="max-w-2xl mx-auto relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mb-6 tracking-widest uppercase text-[#FF6B2B]"
-              style={{ background: "rgba(255,107,43,0.12)", border: "1px solid rgba(255,107,43,0.3)" }}>
-              Award-Winning Growth Partner
+              style={{ background: "rgba(255,107,43,0.12)", border: "1px solid rgba(255,107,43,0.3)" }}
+              data-cms-key="awards_cta_badge" data-cms-label="CTA Badge" data-cms-attr="text">
+              {ctaBadge}
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4">
-              Let's Add Your Success <span className="text-orange-gradient">to the Story</span>
+              <span data-cms-key="awards_cta_h2" data-cms-label="CTA Heading" data-cms-attr="text">{ctaH2}</span>{" "}
+              <span className="text-orange-gradient" data-cms-key="awards_cta_h2_highlight" data-cms-label="CTA Heading Highlight" data-cms-attr="text">{ctaH2Highlight}</span>
             </h2>
-            <p className="text-[#94a3b8] mb-8 text-sm leading-relaxed max-w-lg mx-auto">
-              Partner with an agency whose results have been recognized nationally and globally, year after year.
+            <p className="text-[#94a3b8] mb-8 text-sm leading-relaxed max-w-lg mx-auto" data-cms-key="awards_cta_text" data-cms-label="CTA Text" data-cms-attr="text">
+              {ctaText}
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link to="/contact"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
                 style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 4px 20px rgba(255,107,43,0.4)" }}>
-                Get a Free Consultation <ArrowRight size={15} />
+                <span data-cms-key="awards_cta_button1" data-cms-label="CTA Button 1" data-cms-attr="text">{ctaButton1}</span> <ArrowRight size={15} />
               </Link>
               <Link to="/case-studies"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm border transition-all"
                 style={{ color: "#fff", borderColor: "rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.05)" }}>
-                View Case Studies <ArrowRight size={15} />
+                <span data-cms-key="awards_cta_button2" data-cms-label="CTA Button 2" data-cms-attr="text">{ctaButton2}</span> <ArrowRight size={15} />
               </Link>
             </div>
           </motion.div>

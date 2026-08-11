@@ -431,7 +431,7 @@ const SeoCardTabs = () => {
                   ))}
                 </div>
                 <Link to={card.href || "/contact"} className="inline-flex items-center gap-1.5 text-[12.5px] font-semibold transition-all hover:gap-2.5" style={{ color: tab.color }}>
-              <span data-cms-key="seo_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">Learn More</span> <ArrowRight size={13} />
+              <span data-cms-key="seo_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.seo_cta_btn || "Learn More"}</span> <ArrowRight size={13} />
                 </Link>
               </motion.div>
             ))}
@@ -660,7 +660,7 @@ const FAQItem = ({ q, a, idx = 0 }: { q: string; a: string; idx?: number }) => {
 };
 
 const SEOPage = () => {
-  const _sp = useSettings(['seo_hero_h1','seo_hero_sub','seo_cta_btn']);
+  const sp = useSettings(['seo_hero_h1','seo_hero_sub','seo_cta_btn']);
   return (
   <PageLayout>
     {/* ── Hero ── */}
@@ -682,11 +682,11 @@ const SEOPage = () => {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-[54px] font-black leading-[1.1] text-[#0A1628] mb-5 tracking-tight">
-            <span data-cms-key="seo_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">Drive Organic Growth with<br />
-            <span style={{ color: accentColor }}>Data Driven SEO & Content Marketing</span>
+            <span data-cms-key="seo_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">{sp.seo_hero_h1 || (<>Drive Organic Growth with<br />
+            <span style={{ color: accentColor }}>Data Driven SEO & Content Marketing</span></>)}
           </span></h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-4 leading-relaxed">
-            <span data-cms-key="seo_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">We help businesses grow their online presence through strategic SEO, high quality content marketing, and next generation AI search optimisation: including AIO, GEO, and generative engine visibility.</span>
+            <span data-cms-key="seo_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.seo_hero_sub || "We help businesses grow their online presence through strategic SEO, high quality content marketing, and next generation AI search optimisation: including AIO, GEO, and generative engine visibility."}</span>
           </p>
           {/* AI badges */}
           <div className="flex flex-wrap gap-2 justify-center mb-8">

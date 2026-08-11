@@ -12,6 +12,8 @@ import {
 } from "@/components/ui/select";
 import { toast } from "sonner";
 import { Reveal } from "./Reveal";
+import { useSettings } from "@/hooks/useSettings";
+import { useCMSEditor } from "@/hooks/useCMSEditor";
 
 export function CtaBand({
   tone = "dark",
@@ -114,6 +116,13 @@ const projectTypes = [
 ];
 
 export function QuickEnquiry() {
+  useCMSEditor();
+  const s = useSettings([
+    "wds_enquiry_badge",
+    "wds_enquiry_h2",
+    "wds_enquiry_p",
+    "wds_enquiry_button",
+  ]);
   const [sent, setSent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
@@ -153,17 +162,30 @@ export function QuickEnquiry() {
           <Reveal>
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary-soft/60 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-primary">
               <MessageSquareText className="h-3.5 w-3.5" />
-              Start the Conversation
+              <span data-cms-key="wds_enquiry_badge" data-cms-label="Enquiry Badge" data-cms-attr="text">
+                {s.wds_enquiry_badge || "Start the Conversation"}
+              </span>
             </span>
           </Reveal>
           <Reveal delay={80}>
-            <h2 className="mt-5 text-section">Every project starts with your goals, not a template</h2>
+            <h2
+              data-cms-key="wds_enquiry_h2"
+              data-cms-label="Enquiry Heading"
+              data-cms-attr="text"
+              className="mt-5 text-section"
+            >
+              {s.wds_enquiry_h2 || "Every project starts with your goals, not a template"}
+            </h2>
           </Reveal>
           <Reveal delay={140}>
-            <p className="mt-4 max-w-md text-muted-foreground">
-              Before we talk design or platform, we take the time to understand your business,
-              your buyers and what you actually need this website to achieve. Share a few details
-              and we'll come back with next steps.
+            <p
+              data-cms-key="wds_enquiry_p"
+              data-cms-label="Enquiry Paragraph"
+              data-cms-attr="text"
+              className="mt-4 max-w-md text-muted-foreground"
+            >
+              {s.wds_enquiry_p ||
+                "Before we talk design or platform, we take the time to understand your business, your buyers and what you actually need this website to achieve. Share a few details and we'll come back with next steps."}
             </p>
           </Reveal>
         </div>
@@ -222,7 +244,15 @@ export function QuickEnquiry() {
               disabled={submitting}
               className="group mt-6 h-[3.25rem] w-full rounded-full text-base font-bold shadow-[var(--shadow-glow)] transition-transform hover:-translate-y-0.5"
             >
-              {sent ? "Request Received" : submitting ? "Sending..." : "Request My Website Proposal"}
+              {sent ? (
+                "Request Received"
+              ) : submitting ? (
+                "Sending..."
+              ) : (
+                <span data-cms-key="wds_enquiry_button" data-cms-label="Enquiry Button" data-cms-attr="text">
+                  {s.wds_enquiry_button || "Request My Website Proposal"}
+                </span>
+              )}
               <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </form>

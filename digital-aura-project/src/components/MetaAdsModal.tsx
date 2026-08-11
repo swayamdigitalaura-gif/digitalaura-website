@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowRight, Check, Zap, Target, Image, Video, Users, RefreshCw, BarChart2, TrendingUp, Gauge, DollarSign, ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useSettings } from "@/hooks/useSettings";
 
 interface Props { open: boolean; onClose: () => void; }
 
@@ -49,6 +50,7 @@ const results = [
 ];
 
 const MetaAdsModal = ({ open, onClose }: Props) => {
+  const s = useSettings(["metamodal_h2_1", "metamodal_p_1", "metamodal_p_2"]);
   useEffect(() => {
     const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
     if (open) window.addEventListener("keydown", handler);
@@ -91,8 +93,8 @@ const MetaAdsModal = ({ open, onClose }: Props) => {
                   </div>
                   <div>
                     <span className="text-[11px] font-bold uppercase tracking-[0.15em] mb-1.5 block" style={{ color: ACCENT }}>Meta Ads</span>
-                    <h2 className="text-[22px] font-black text-white leading-snug mb-3"><span data-cms-key="metamodal_h2_1" data-cms-label="Modal Heading" data-cms-attr="text">Meta Ads That Generate Consistent Leads & Sales</span></h2>
-                    <p className="text-[14px] leading-relaxed" style={{ color: "#94A3B8" }}><span data-cms-key="metamodal_p_1" data-cms-label="Body Text" data-cms-attr="text">High converting Facebook & Instagram ad campaigns, from creative to targeting to optimisation, managed to bring you real business results every month.</span></p>
+                    <h2 className="text-[22px] font-black text-white leading-snug mb-3"><span data-cms-key="metamodal_h2_1" data-cms-label="Modal Heading" data-cms-attr="text">{s.metamodal_h2_1 || "Meta Ads That Generate Consistent Leads & Sales"}</span></h2>
+                    <p className="text-[14px] leading-relaxed" style={{ color: "#94A3B8" }}><span data-cms-key="metamodal_p_1" data-cms-label="Body Text" data-cms-attr="text">{s.metamodal_p_1 || "High converting Facebook & Instagram ad campaigns, from creative to targeting to optimisation, managed to bring you real business results every month."}</span></p>
                   </div>
                 </div>
               </div>
@@ -178,7 +180,7 @@ const MetaAdsModal = ({ open, onClose }: Props) => {
                       <Zap size={14} style={{ color: ACCENT }} />
                       <span className="text-[11px] font-bold uppercase tracking-wider" style={{ color: ACCENT }}>Ready to Run Ads?</span>
                     </div>
-                    <p className="text-[13px] text-[#94A3B8] leading-relaxed"><span data-cms-key="metamodal_p_2" data-cms-label="Body Text" data-cms-attr="text">Let's build Meta ad campaigns that reach your ideal audience and turn clicks into paying customers.</span></p>
+                    <p className="text-[13px] text-[#94A3B8] leading-relaxed"><span data-cms-key="metamodal_p_2" data-cms-label="Body Text" data-cms-attr="text">{s.metamodal_p_2 || "Let's build Meta ad campaigns that reach your ideal audience and turn clicks into paying customers."}</span></p>
                   </div>
                   <Link to="/contact" onClick={onClose}
                     className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-bold text-white whitespace-nowrap transition-all hover:gap-3"

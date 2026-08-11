@@ -14,6 +14,8 @@ import {
   FinalCta,
 } from "@/components/website-dev/SectionsC";
 import { CtaBand, CtaBanner, QuickEnquiry } from "@/components/website-dev/Cta";
+import { useSettings } from "@/hooks/useSettings";
+import { useCMSEditor } from "@/hooks/useCMSEditor";
 
 const PAGE_TITLE = "Website Development Services | Custom Business Websites | Digital Aura";
 const PAGE_DESCRIPTION =
@@ -93,6 +95,17 @@ function LocalBusinessSchema() {
 
 const WebsiteDevelopmentServicesPage = () => {
   useBasicSEO();
+  useCMSEditor();
+  const s = useSettings([
+    "wds_ctaband1_headline",
+    "wds_ctaband1_desc",
+    "wds_ctaband1_button",
+    "wds_ctabanner_headline",
+    "wds_ctabanner_button",
+    "wds_ctaband2_headline",
+    "wds_ctaband2_desc",
+    "wds_ctaband2_button",
+  ]);
   return (
     <PageLayout>
       <div className="bg-background">
@@ -102,9 +115,14 @@ const WebsiteDevelopmentServicesPage = () => {
         <Problems />
         <CtaBand
           tone="dark"
-          headline="Let's Build a Website That Works for Your Business"
-          description="Whether you're starting from scratch or redesigning an existing website, we'll help you create a website focused on performance, user experience and business growth."
-          buttonText="Request My Website Proposal"
+          headline={
+            s.wds_ctaband1_headline || "Let's Build a Website That Works for Your Business"
+          }
+          description={
+            s.wds_ctaband1_desc ||
+            "Whether you're starting from scratch or redesigning an existing website, we'll help you create a website focused on performance, user experience and business growth."
+          }
+          buttonText={s.wds_ctaband1_button || "Request My Website Proposal"}
           href="#enquiry"
         />
         <Included />
@@ -113,8 +131,8 @@ const WebsiteDevelopmentServicesPage = () => {
         <TechStack />
         <PerformanceSnapshot />
         <CtaBanner
-          headline="Let's Discuss Your Website Goals"
-          buttonText="Talk to Our Team"
+          headline={s.wds_ctabanner_headline || "Let's Discuss Your Website Goals"}
+          buttonText={s.wds_ctabanner_button || "Talk to Our Team"}
           href="#strategy"
           bg="bg-cream"
         />
@@ -124,9 +142,14 @@ const WebsiteDevelopmentServicesPage = () => {
         <Testimonials />
         <CtaBand
           tone="light"
-          headline="Still Comparing Website Development Companies?"
-          description="Let's discuss your project and recommend the right solution for your business."
-          buttonText="Get Expert Advice"
+          headline={
+            s.wds_ctaband2_headline || "Still Comparing Website Development Companies?"
+          }
+          description={
+            s.wds_ctaband2_desc ||
+            "Let's discuss your project and recommend the right solution for your business."
+          }
+          buttonText={s.wds_ctaband2_button || "Get Expert Advice"}
           href="#strategy"
         />
         <Faq />

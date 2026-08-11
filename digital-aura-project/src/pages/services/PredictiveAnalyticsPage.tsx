@@ -131,7 +131,7 @@ const FAQItem = ({ q, a, idx = 0 }: { q: string; a: string; idx?: number }) => {
 };
 
 const PredictiveAnalyticsPage = () => {
-  const _sp = useSettings(['predictive_hero_h1','predictive_hero_sub','predictive_cta_btn']);
+  const sp = useSettings(['predictive_hero_h1','predictive_hero_sub','predictive_cta_btn']);
   return (
   <PageLayout>
     {/* HERO */}
@@ -153,13 +153,13 @@ const PredictiveAnalyticsPage = () => {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-[56px] font-black leading-[1.1] text-[#0A1628] mb-5 tracking-tight">
-            <span data-cms-key="predictive_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">Act Before Problems Happen.<br />
+            <span data-cms-key="predictive_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">{sp.predictive_hero_h1 || (<>Act Before Problems Happen.<br />
             <span style={{ background: gradient, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               Predict What's Coming Next.
-            </span>
+            </span></>)}
           </span></h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-5 leading-relaxed">
-            <span data-cms-key="predictive_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">We build AI models that forecast demand, predict churn, detect fraud, and surface revenue opportunities so you can act on data before problems cost you money.</span>
+            <span data-cms-key="predictive_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.predictive_hero_sub || "We build AI models that forecast demand, predict churn, detect fraud, and surface revenue opportunities so you can act on data before problems cost you money."}</span>
           </p>
           <div className="flex flex-wrap gap-2 justify-center mb-8">
             {["Churn Prediction", "Demand Forecasting", "CLV Modelling", "Fraud Detection", "Revenue Forecasting", "Real time"].map(tag => (
@@ -170,7 +170,7 @@ const PredictiveAnalyticsPage = () => {
           <div className="flex flex-wrap gap-3 justify-center">
             <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
               style={{ background: gradient, boxShadow: "0 8px 24px rgba(34,197,94,0.4)" }}>
-              <span data-cms-key="predictive_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">Start Predicting</span> <ArrowRight size={16} />
+              <span data-cms-key="predictive_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.predictive_cta_btn || "Start Predicting"}</span> <ArrowRight size={16} />
             </Link>
             <a href="#use cases" className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold border-2 text-[#0A1628] hover:bg-[#0A1628] hover:text-white transition-all"
               style={{ borderColor: "#0A1628" }}>

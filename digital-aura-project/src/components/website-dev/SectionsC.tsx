@@ -19,6 +19,8 @@ import {
 } from "@/components/ui/accordion";
 import { toast } from "sonner";
 import { Reveal, SectionLabel, SectionLabelDark } from "./Reveal";
+import { useSettings } from "@/hooks/useSettings";
+import { useCMSEditor } from "@/hooks/useCMSEditor";
 
 const logos = [
   { name: "Clarity Eye Surgeons", category: "Healthcare", src: "/wds/logos/clarity-eye-surgeons.png" },
@@ -40,13 +42,22 @@ const logos = [
 ];
 
 export function LogoMarquee() {
+  useCMSEditor();
+  const s = useSettings(["wds_logos_h2", "wds_logos_subtitle"]);
   return (
     <section id="clients" className="border-y border-border bg-background py-12">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-section">Clients We've Grown</h2>
-          <p className="mt-3 text-sm font-bold uppercase tracking-[0.2em] text-primary">
-            750+ Businesses We've Helped Grow
+          <h2 data-cms-key="wds_logos_h2" data-cms-label="Logos Heading" data-cms-attr="text" className="text-section">
+            {s.wds_logos_h2 || "Clients We've Grown"}
+          </h2>
+          <p
+            data-cms-key="wds_logos_subtitle"
+            data-cms-label="Logos Subtitle"
+            data-cms-attr="text"
+            className="mt-3 text-sm font-bold uppercase tracking-[0.2em] text-primary"
+          >
+            {s.wds_logos_subtitle || "750+ Businesses We've Helped Grow"}
           </p>
         </div>
       </div>
@@ -133,13 +144,30 @@ function GoogleWordmark() {
 }
 
 export function RatedPlatforms() {
+  useCMSEditor();
+  const s = useSettings([
+    "wds_rated_h2",
+    "wds_rated_p",
+    ...ratingPlatforms.flatMap((_, i) => [
+      `wds_rated_${i}_badge`,
+      `wds_rated_${i}_rating`,
+      `wds_rated_${i}_reviews`,
+    ]),
+  ]);
   return (
     <section id="results" className="bg-cream">
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-section">Rated on Top Platforms</h2>
-          <p className="mt-4 text-muted-foreground">
-            Recognised by leading industry directories across India and worldwide.
+          <h2 data-cms-key="wds_rated_h2" data-cms-label="Rated Heading" data-cms-attr="text" className="text-section">
+            {s.wds_rated_h2 || "Rated on Top Platforms"}
+          </h2>
+          <p
+            data-cms-key="wds_rated_p"
+            data-cms-label="Rated Paragraph"
+            data-cms-attr="text"
+            className="mt-4 text-muted-foreground"
+          >
+            {s.wds_rated_p || "Recognised by leading industry directories across India and worldwide."}
           </p>
         </div>
 
@@ -154,18 +182,35 @@ export function RatedPlatforms() {
                     <GoogleWordmark />
                   )}
                 </div>
-                <span className={`mt-5 inline-flex rounded-full px-3 py-1.5 text-xs font-bold ${p.pillClass}`}>
-                  {p.badge}
+                <span
+                  data-cms-key={`wds_rated_${i}_badge`}
+                  data-cms-label={`Rated Platform ${i + 1} Badge`}
+                  data-cms-attr="text"
+                  className={`mt-5 inline-flex rounded-full px-3 py-1.5 text-xs font-bold ${p.pillClass}`}
+                >
+                  {s[`wds_rated_${i}_badge`] || p.badge}
                 </span>
                 <div className="mt-4 flex gap-0.5">
-                  {Array.from({ length: 5 }).map((_, s) => (
-                    <Star key={s} className={`h-[18px] w-[18px] ${p.starClass}`} />
+                  {Array.from({ length: 5 }).map((_, star) => (
+                    <Star key={star} className={`h-[18px] w-[18px] ${p.starClass}`} />
                   ))}
                 </div>
-                <p className={`mt-2 text-3xl font-extrabold tracking-tight ${p.ratingClass}`}>
-                  {p.rating}
+                <p
+                  data-cms-key={`wds_rated_${i}_rating`}
+                  data-cms-label={`Rated Platform ${i + 1} Rating`}
+                  data-cms-attr="text"
+                  className={`mt-2 text-3xl font-extrabold tracking-tight ${p.ratingClass}`}
+                >
+                  {s[`wds_rated_${i}_rating`] || p.rating}
                 </p>
-                <p className="mt-1 text-xs font-semibold text-muted-foreground">{p.reviews}</p>
+                <p
+                  data-cms-key={`wds_rated_${i}_reviews`}
+                  data-cms-label={`Rated Platform ${i + 1} Reviews`}
+                  data-cms-attr="text"
+                  className="mt-1 text-xs font-semibold text-muted-foreground"
+                >
+                  {s[`wds_rated_${i}_reviews`] || p.reviews}
+                </p>
               </div>
             </Reveal>
           ))}
@@ -197,15 +242,37 @@ const testimonials = [
 ];
 
 export function Testimonials() {
+  useCMSEditor();
+  const s = useSettings([
+    "wds_testimonials_label",
+    "wds_testimonials_h2",
+    "wds_testimonials_verified_badge",
+    ...testimonials.flatMap((_, i) => [
+      `wds_testimonial_${i}_quote`,
+      `wds_testimonial_${i}_name`,
+      `wds_testimonial_${i}_role`,
+    ]),
+  ]);
   return (
     <section className="bg-cream">
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
         <div className="max-w-2xl">
           <Reveal>
-            <SectionLabel>Client Feedback</SectionLabel>
+            <SectionLabel>
+              <span data-cms-key="wds_testimonials_label" data-cms-label="Testimonials Label" data-cms-attr="text">
+                {s.wds_testimonials_label || "Client Feedback"}
+              </span>
+            </SectionLabel>
           </Reveal>
           <Reveal delay={80}>
-            <h2 className="mt-5 text-section">What our clients say changed after launch</h2>
+            <h2
+              data-cms-key="wds_testimonials_h2"
+              data-cms-label="Testimonials Heading"
+              data-cms-attr="text"
+              className="mt-5 text-section"
+            >
+              {s.wds_testimonials_h2 || "What our clients say changed after launch"}
+            </h2>
           </Reveal>
         </div>
         <div className="mt-16 grid gap-6 lg:grid-cols-3">
@@ -215,26 +282,48 @@ export function Testimonials() {
                 <div className="flex items-center justify-between gap-3">
                   <Quote className="h-7 w-7 text-primary/50" />
                   <div className="flex gap-0.5">
-                    {Array.from({ length: 5 }).map((_, s) => (
-                      <Star key={s} className="h-[18px] w-[18px] fill-primary text-primary" />
+                    {Array.from({ length: 5 }).map((_, star) => (
+                      <Star key={star} className="h-[18px] w-[18px] fill-primary text-primary" />
                     ))}
                   </div>
                 </div>
-                <blockquote className="mt-6 flex-1 text-[15px] leading-relaxed text-foreground/85">
-                  &ldquo;{t.quote}&rdquo;
+                <blockquote
+                  data-cms-key={`wds_testimonial_${i}_quote`}
+                  data-cms-label={`Testimonial ${i + 1} Quote`}
+                  data-cms-attr="text"
+                  className="mt-6 flex-1 text-[15px] leading-relaxed text-foreground/85"
+                >
+                  &ldquo;{s[`wds_testimonial_${i}_quote`] || t.quote}&rdquo;
                 </blockquote>
                 <figcaption className="mt-6 flex min-w-0 items-center gap-3 border-t border-border pt-5">
                   <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-navy text-sm font-extrabold text-primary">
-                    {t.name.charAt(0)}
+                    {(s[`wds_testimonial_${i}_name`] || t.name).charAt(0)}
                   </span>
                   <span className="min-w-0">
-                    <span className="block truncate text-sm font-extrabold">{t.name}</span>
-                    <span className="block truncate text-xs font-semibold text-muted-foreground">
-                      {t.role}
+                    <span
+                      data-cms-key={`wds_testimonial_${i}_name`}
+                      data-cms-label={`Testimonial ${i + 1} Name`}
+                      data-cms-attr="text"
+                      className="block truncate text-sm font-extrabold"
+                    >
+                      {s[`wds_testimonial_${i}_name`] || t.name}
+                    </span>
+                    <span
+                      data-cms-key={`wds_testimonial_${i}_role`}
+                      data-cms-label={`Testimonial ${i + 1} Role`}
+                      data-cms-attr="text"
+                      className="block truncate text-xs font-semibold text-muted-foreground"
+                    >
+                      {s[`wds_testimonial_${i}_role`] || t.role}
                     </span>
                   </span>
-                  <span className="ml-auto shrink-0 rounded-full bg-primary/12 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.1em] text-primary">
-                    Verified
+                  <span
+                    data-cms-key="wds_testimonials_verified_badge"
+                    data-cms-label="Testimonials Verified Badge"
+                    data-cms-attr="text"
+                    className="ml-auto shrink-0 rounded-full bg-primary/12 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.1em] text-primary"
+                  >
+                    {s.wds_testimonials_verified_badge || "Verified"}
                   </span>
                 </figcaption>
               </figure>
@@ -274,36 +363,65 @@ const faqs = [
 ];
 
 export function Faq() {
+  useCMSEditor();
+  const s = useSettings([
+    "wds_faq_label",
+    "wds_faq_h2",
+    "wds_faq_p",
+    ...faqs.flatMap((_, i) => [`wds_faq_${i}_q`, `wds_faq_${i}_a`]),
+  ]);
   return (
     <section id="faq" className="bg-cream">
       <div className="mx-auto max-w-4xl px-5 py-16 sm:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
-            <SectionLabel>FAQ</SectionLabel>
+            <SectionLabel>
+              <span data-cms-key="wds_faq_label" data-cms-label="FAQ Label" data-cms-attr="text">
+                {s.wds_faq_label || "FAQ"}
+              </span>
+            </SectionLabel>
           </Reveal>
           <Reveal delay={80}>
-            <h2 className="mt-5 text-section">Questions worth asking before you hire us</h2>
+            <h2
+              data-cms-key="wds_faq_h2"
+              data-cms-label="FAQ Heading"
+              data-cms-attr="text"
+              className="mt-5 text-section"
+            >
+              {s.wds_faq_h2 || "Questions worth asking before you hire us"}
+            </h2>
           </Reveal>
           <Reveal delay={140}>
-            <p className="mt-4 text-muted-foreground">
-              Still unsure about something? Ask it on the strategy call — no obligation, no sales
-              script.
+            <p
+              data-cms-key="wds_faq_p"
+              data-cms-label="FAQ Paragraph"
+              data-cms-attr="text"
+              className="mt-4 text-muted-foreground"
+            >
+              {s.wds_faq_p ||
+                "Still unsure about something? Ask it on the strategy call — no obligation, no sales script."}
             </p>
           </Reveal>
         </div>
         <Reveal delay={160} className="mt-14 block">
+          {/* Accordion identity (key/value) stays tied to the original question text so
+              open/close state doesn't break if the CMS overrides the displayed copy. */}
           <Accordion type="single" collapsible defaultValue={faqs[0].q} className="w-full">
-            {faqs.map((f) => (
+            {faqs.map((f, i) => (
               <AccordionItem
                 key={f.q}
                 value={f.q}
                 className="mb-3 overflow-hidden rounded-2xl border border-border bg-background px-5 shadow-[var(--shadow-soft)] transition-colors hover:border-primary/40"
               >
                 <AccordionTrigger className="py-5 text-left text-base font-extrabold tracking-tight hover:no-underline">
-                  {f.q}
+                  <span data-cms-key={`wds_faq_${i}_q`} data-cms-label={`FAQ ${i + 1} Question`} data-cms-attr="text">
+                    {s[`wds_faq_${i}_q`] || f.q}
+                  </span>
                 </AccordionTrigger>
                 <AccordionContent className="pb-5 text-[15px] leading-relaxed text-muted-foreground">
-                  {f.a}
+                  <span data-cms-key={`wds_faq_${i}_a`} data-cms-label={`FAQ ${i + 1} Answer`} data-cms-attr="text">
+                    {s[`wds_faq_${i}_a`] || f.a}
+                  </span>
                 </AccordionContent>
               </AccordionItem>
             ))}
@@ -338,6 +456,15 @@ const budgetRanges = [
 ];
 
 export function FinalCta() {
+  useCMSEditor();
+  const s = useSettings([
+    "wds_finalcta_label",
+    "wds_finalcta_h2",
+    "wds_finalcta_p",
+    "wds_finalcta_button",
+    "wds_finalcta_footnote",
+    ...finalCtaSteps.flatMap((_, i) => [`wds_finalcta_step_${i}_title`, `wds_finalcta_step_${i}_text`]),
+  ]);
   const [sent, setSent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
@@ -383,17 +510,31 @@ export function FinalCta() {
       <div className="relative mx-auto grid max-w-7xl gap-16 px-5 sm:px-8 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
         <div className="lg:py-4">
           <Reveal>
-            <SectionLabelDark>Free Website Strategy Session</SectionLabelDark>
+            <SectionLabelDark>
+              <span data-cms-key="wds_finalcta_label" data-cms-label="Final CTA Label" data-cms-attr="text">
+                {s.wds_finalcta_label || "Free Website Strategy Session"}
+              </span>
+            </SectionLabelDark>
           </Reveal>
           <Reveal delay={80}>
-            <h2 className="mt-6 text-section text-navy-foreground">
-              Book Your Website Strategy Session
+            <h2
+              data-cms-key="wds_finalcta_h2"
+              data-cms-label="Final CTA Heading"
+              data-cms-attr="text"
+              className="mt-6 text-section text-navy-foreground"
+            >
+              {s.wds_finalcta_h2 || "Book Your Website Strategy Session"}
             </h2>
           </Reveal>
           <Reveal delay={140}>
-            <p className="mt-5 max-w-lg text-navy-foreground/70">
-              Fill in the form and our team will review your details before we speak. Here's
-              exactly what happens after you submit it:
+            <p
+              data-cms-key="wds_finalcta_p"
+              data-cms-label="Final CTA Paragraph"
+              data-cms-attr="text"
+              className="mt-5 max-w-lg text-navy-foreground/70"
+            >
+              {s.wds_finalcta_p ||
+                "Fill in the form and our team will review your details before we speak. Here's exactly what happens after you submit it:"}
             </p>
           </Reveal>
           <Reveal delay={200}>
@@ -404,8 +545,22 @@ export function FinalCta() {
                     {i + 1}
                   </span>
                   <div className="min-w-0">
-                    <p className="text-base font-extrabold text-navy-foreground">{step.title}</p>
-                    <p className="mt-1 text-sm text-navy-foreground/70">{step.text}</p>
+                    <p
+                      data-cms-key={`wds_finalcta_step_${i}_title`}
+                      data-cms-label={`Final CTA Step ${i + 1} Title`}
+                      data-cms-attr="text"
+                      className="text-base font-extrabold text-navy-foreground"
+                    >
+                      {s[`wds_finalcta_step_${i}_title`] || step.title}
+                    </p>
+                    <p
+                      data-cms-key={`wds_finalcta_step_${i}_text`}
+                      data-cms-label={`Final CTA Step ${i + 1} Text`}
+                      data-cms-attr="text"
+                      className="mt-1 text-sm text-navy-foreground/70"
+                    >
+                      {s[`wds_finalcta_step_${i}_text`] || step.text}
+                    </p>
                   </div>
                 </li>
               ))}
@@ -502,12 +657,25 @@ export function FinalCta() {
               disabled={submitting}
               className="group mt-8 h-[3.25rem] w-full rounded-full text-base font-bold shadow-[var(--shadow-glow)] transition-transform hover:-translate-y-0.5"
             >
-              {sent ? "Request Received" : submitting ? "Sending..." : "Request My Website Proposal"}
+              {sent ? (
+                "Request Received"
+              ) : submitting ? (
+                "Sending..."
+              ) : (
+                <span data-cms-key="wds_finalcta_button" data-cms-label="Final CTA Button" data-cms-attr="text">
+                  {s.wds_finalcta_button || "Request My Website Proposal"}
+                </span>
+              )}
               <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
-            <p className="mt-4 text-center text-xs font-semibold text-navy-foreground/50">
-              No obligation, no sales pressure. Most enquiries receive a response within one
-              business day.
+            <p
+              data-cms-key="wds_finalcta_footnote"
+              data-cms-label="Final CTA Footnote"
+              data-cms-attr="text"
+              className="mt-4 text-center text-xs font-semibold text-navy-foreground/50"
+            >
+              {s.wds_finalcta_footnote ||
+                "No obligation, no sales pressure. Most enquiries receive a response within one business day."}
             </p>
           </form>
         </Reveal>

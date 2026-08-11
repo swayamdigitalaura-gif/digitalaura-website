@@ -14,6 +14,7 @@ import Testimonials from "@/components/Testimonials";
 import CaseStudies from "@/components/CaseStudies";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 import MathCaptcha from "@/components/MathCaptcha";
+import { useSettings } from "@/hooks/useSettings";
 import {
   ArrowRight, ChevronDown, Check, ShoppingCart, Layers,
   FileCode, Search, Image as ImageIcon, TrendingUp,
@@ -136,7 +137,16 @@ const seoClients = [
 
 const inputClass = "w-full px-4 py-3 rounded-xl text-sm text-[#0A1628] outline-none focus:ring-2 focus:ring-[#22C55E] transition-all placeholder-[#9CA3AF] border border-[#E5E7EB] bg-[#F8FAFF] focus:bg-white";
 
-const AuditForm = () => {
+interface AuditFormProps {
+  heading: string;
+  sub: string;
+  buttonText: string;
+  disclaimer: string;
+  successTitle: string;
+  successText: string;
+}
+
+const AuditForm = ({ heading, sub, buttonText, disclaimer, successTitle, successText }: AuditFormProps) => {
   const [submitted, setSubmitted] = useState(false);
   const [captchaOk, setCaptchaOk] = useState(false);
   const [form, setForm] = useState({ name: "", business: "", email: "", phone: "", website: "", goal: "" });
@@ -151,13 +161,13 @@ const AuditForm = () => {
           <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: "rgba(34,197,94,0.1)" }}>
             <CheckCircle2 size={32} className="text-[#22C55E]" />
           </div>
-          <h3 className="text-xl font-bold text-[#0A1628] mb-2">Audit Request Received!</h3>
-          <p className="text-[#6B7280]">We'll analyse your site and send your free audit within 24 hours.</p>
+          <h3 className="text-xl font-bold text-[#0A1628] mb-2" data-cms-key="ecomseo_auditform_success_title" data-cms-label="Audit Form Success Title" data-cms-attr="text">{successTitle}</h3>
+          <p className="text-[#6B7280]" data-cms-key="ecomseo_auditform_success_text" data-cms-label="Audit Form Success Text" data-cms-attr="text">{successText}</p>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">
-          <h3 className="text-xl font-bold text-[#0A1628] mb-1">Request Your Free eCommerce Audit</h3>
-          <p className="text-sm text-[#6B7280] mb-4">Fill in your details and we'll get started right away.</p>
+          <h3 className="text-xl font-bold text-[#0A1628] mb-1" data-cms-key="ecomseo_auditform_h3" data-cms-label="Audit Form Heading" data-cms-attr="text">{heading}</h3>
+          <p className="text-sm text-[#6B7280] mb-4" data-cms-key="ecomseo_auditform_sub" data-cms-label="Audit Form Subtext" data-cms-attr="text">{sub}</p>
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
               <label className="text-xs font-semibold text-[#374151] mb-1.5 block">Full Name *</label>
@@ -197,10 +207,10 @@ const AuditForm = () => {
           <MathCaptcha onVerify={setCaptchaOk} inputClass={inputClass} />
           <button type="submit" disabled={!captchaOk} className="w-full py-4 rounded-xl text-base font-bold text-white flex items-center justify-center gap-2 transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
             style={{ background: "linear-gradient(135deg, #22C55E, #16a34a)" }}>
-            Get My Free Audit <ArrowRight size={18} />
+            <span data-cms-key="ecomseo_auditform_button" data-cms-label="Audit Form Button" data-cms-attr="text">{buttonText}</span> <ArrowRight size={18} />
           </button>
           <p className="text-center text-xs text-[#6B7280] flex items-center justify-center gap-1.5">
-            <Lock size={12} /> 100% free no credit card, no obligation
+            <Lock size={12} /> <span data-cms-key="ecomseo_auditform_disclaimer" data-cms-label="Audit Form Disclaimer" data-cms-attr="text">{disclaimer}</span>
           </p>
         </form>
       )}
@@ -209,6 +219,99 @@ const AuditForm = () => {
 };
 
 const EcommerceSEOPage = () => {
+  const keys = [
+    "ecomseo_hero_badge", "ecomseo_hero_h1_line1", "ecomseo_hero_h1_line2", "ecomseo_hero_sub",
+    "ecomseo_hero_cta1", "ecomseo_hero_cta2",
+    "ecomseo_included_heading", "ecomseo_process_heading", "ecomseo_issues_heading",
+    "ecomseo_tools_heading", "ecomseo_tools_sub",
+    "ecomseo_whyus_heading", "ecomseo_whatwedo_heading",
+    "ecomseo_clients_tagline", "ecomseo_clients_heading", "ecomseo_clients_sub",
+    "ecomseo_faq_heading",
+    "ecomseo_auditcta_badge", "ecomseo_auditcta_h2_line1", "ecomseo_auditcta_h2_line2", "ecomseo_auditcta_sub",
+    "ecomseo_auditform_h3", "ecomseo_auditform_sub", "ecomseo_auditform_button", "ecomseo_auditform_disclaimer",
+    "ecomseo_auditform_success_title", "ecomseo_auditform_success_text",
+    "ecomseo_related_tagline",
+    "ecomseo_finalcta_badge", "ecomseo_finalcta_h2", "ecomseo_finalcta_text", "ecomseo_finalcta_button",
+    ...["Product Page SEO", "Category Structure", "Product Schema", "Shopify & WooCommerce"].map((_, i) => `ecomseo_hero_tag_${i}`),
+    ...included.flatMap((_, i) => [`ecomseo_included_${i}_title`, `ecomseo_included_${i}_desc`]),
+    ...processSteps.flatMap((_, i) => [`ecomseo_process_${i}_title`, `ecomseo_process_${i}_desc`]),
+    ...commonIssues.map((_, i) => `ecomseo_issue_${i}`),
+    ...toolGroups.map((_, i) => `ecomseo_toolgroup_${i}_label`),
+    ...whyUsPoints.map((_, i) => `ecomseo_whyus_${i}`),
+    ...whatWeDoPoints.map((_, i) => `ecomseo_whatwedo_${i}`),
+    ...faqs.flatMap((_, i) => [`ecomseo_faq_${i}_q`, `ecomseo_faq_${i}_a`]),
+    ...["Product & category page audit", "Product schema validation", "Crawl budget health check", "Competitor product ranking snapshot"].map((_, i) => `ecomseo_auditcta_bullet_${i}`),
+  ];
+  const s = useSettings(keys);
+  const g = (key: string, fallback: string) => s[key] || fallback;
+
+  const heroBadge = g("ecomseo_hero_badge", "eCommerce SEO");
+  const heroH1Line1 = g("ecomseo_hero_h1_line1", "eCommerce SEO Services");
+  const heroH1Line2 = g("ecomseo_hero_h1_line2", "That Get Products Found");
+  const heroSub = g("ecomseo_hero_sub", "eCommerce SEO optimises product pages, category structures, and product schema across Shopify, WooCommerce, and custom stores so your listings rank in Google Shopping and organic search, not just paid ads.");
+  const heroCta1 = g("ecomseo_hero_cta1", "Get a Free Store Audit");
+  const heroCta2 = g("ecomseo_hero_cta2", "See What's Included");
+  const heroTags = ["Product Page SEO", "Category Structure", "Product Schema", "Shopify & WooCommerce"].map((t, i) => g(`ecomseo_hero_tag_${i}`, t));
+
+  const includedHeading = g("ecomseo_included_heading", "What eCommerce SEO Covers");
+  const includedResolved = included.map((item, i) => ({
+    ...item,
+    title: g(`ecomseo_included_${i}_title`, item.title),
+    desc: g(`ecomseo_included_${i}_desc`, item.desc),
+  }));
+
+  const processHeading = g("ecomseo_process_heading", "How We Optimise Your Store");
+  const processStepsResolved = processSteps.map((step, i) => ({
+    ...step,
+    title: g(`ecomseo_process_${i}_title`, step.title),
+    desc: g(`ecomseo_process_${i}_desc`, step.desc),
+  }));
+
+  const issuesHeading = g("ecomseo_issues_heading", "Store Issues We Find Most Often");
+  const commonIssuesResolved = commonIssues.map((issue, i) => g(`ecomseo_issue_${i}`, issue));
+
+  const toolsHeading = g("ecomseo_tools_heading", "Tools & Technologies We Use");
+  const toolsSub = g("ecomseo_tools_sub", "Industry-leading SEO tools plus cutting edge AI search platforms for complete visibility.");
+  const toolGroupsResolved = toolGroups.map((grp, i) => ({
+    ...grp,
+    label: g(`ecomseo_toolgroup_${i}_label`, grp.label),
+  }));
+
+  const whyUsHeading = g("ecomseo_whyus_heading", "Why Choose Us");
+  const whyUsPointsResolved = whyUsPoints.map((w, i) => g(`ecomseo_whyus_${i}`, w));
+  const whatWeDoHeading = g("ecomseo_whatwedo_heading", "What We Can Do for Your Business");
+  const whatWeDoPointsResolved = whatWeDoPoints.map((w, i) => g(`ecomseo_whatwedo_${i}`, w));
+
+  const clientsTagline = g("ecomseo_clients_tagline", "Brands We've Grown With SEO");
+  const clientsHeading = g("ecomseo_clients_heading", "Clients We've Grown With SEO");
+  const clientsSub = g("ecomseo_clients_sub", "Real businesses. Real rankings. Organic growth delivered by Digital Aura.");
+
+  const faqHeading = g("ecomseo_faq_heading", "Frequently Asked Questions");
+  const faqsResolved = faqs.map((f, i) => ({
+    q: g(`ecomseo_faq_${i}_q`, f.q),
+    a: g(`ecomseo_faq_${i}_a`, f.a),
+  }));
+
+  const auditCtaBadge = g("ecomseo_auditcta_badge", "Free Store Audit");
+  const auditCtaH2Line1 = g("ecomseo_auditcta_h2_line1", "Get Your Free");
+  const auditCtaH2Line2 = g("ecomseo_auditcta_h2_line2", "eCommerce SEO Audit");
+  const auditCtaSub = g("ecomseo_auditcta_sub", "We'll audit your product and category pages, check your schema, and show you exactly what's costing you organic sales, completely free.");
+  const auditCtaBullets = ["Product & category page audit", "Product schema validation", "Crawl budget health check", "Competitor product ranking snapshot"].map((b, i) => g(`ecomseo_auditcta_bullet_${i}`, b));
+
+  const auditFormHeading = g("ecomseo_auditform_h3", "Request Your Free eCommerce Audit");
+  const auditFormSub = g("ecomseo_auditform_sub", "Fill in your details and we'll get started right away.");
+  const auditFormButton = g("ecomseo_auditform_button", "Get My Free Audit");
+  const auditFormDisclaimer = g("ecomseo_auditform_disclaimer", "100% free no credit card, no obligation");
+  const auditFormSuccessTitle = g("ecomseo_auditform_success_title", "Audit Request Received!");
+  const auditFormSuccessText = g("ecomseo_auditform_success_text", "We'll analyse your site and send your free audit within 24 hours.");
+
+  const relatedTagline = g("ecomseo_related_tagline", "Related SEO Services");
+
+  const finalCtaBadge = g("ecomseo_finalcta_badge", "Let's Build Together");
+  const finalCtaH2 = g("ecomseo_finalcta_h2", "Ready to Turn Product Pages Into a Sales Channel?");
+  const finalCtaText = g("ecomseo_finalcta_text", "Book a free store audit. We'll show you exactly which product and category pages are leaking potential organic traffic.");
+  const finalCtaButton = g("ecomseo_finalcta_button", "Book My Free Audit");
+
   return (
   <PageLayout>
     {/* Hero */}
@@ -223,25 +326,25 @@ const EcommerceSEOPage = () => {
           <Link to="/services/seo-content-marketing" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: accentColor }}>← Back to SEO &amp; Content Marketing</Link>
           <div className="flex justify-center mb-6">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase" style={{ background: `${accentColor}12`, color: accentColor, border: `1px solid ${accentColor}30` }}>
-              <ShoppingCart size={12} /> eCommerce SEO
+              <ShoppingCart size={12} /> <span data-cms-key="ecomseo_hero_badge" data-cms-label="Hero Badge" data-cms-attr="text">{heroBadge}</span>
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-[50px] font-black leading-[1.12] text-[#0A1628] mb-5 tracking-tight">
-            eCommerce SEO Services<br /><span style={{ color: accentColor }}>That Get Products Found</span>
+            <span data-cms-key="ecomseo_hero_h1_line1" data-cms-label="Hero H1 Line 1" data-cms-attr="text">{heroH1Line1}</span><br /><span style={{ color: accentColor }} data-cms-key="ecomseo_hero_h1_line2" data-cms-label="Hero H1 Line 2" data-cms-attr="text">{heroH1Line2}</span>
           </h1>
-          <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-4 leading-relaxed">
-            eCommerce SEO optimises product pages, category structures, and product schema across Shopify, WooCommerce, and custom stores so your listings rank in Google Shopping and organic search, not just paid ads.
+          <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-4 leading-relaxed" data-cms-key="ecomseo_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">
+            {heroSub}
           </p>
           <div className="flex flex-wrap gap-2 justify-center mb-8">
-            {["Product Page SEO", "Category Structure", "Product Schema", "Shopify & WooCommerce"].map(tag => (
-              <span key={tag} className="text-[11px] font-bold px-3 py-1 rounded-full" style={{ background: `${accentColor}10`, color: accentColor, border: `1px solid ${accentColor}25` }}>{tag}</span>
+            {heroTags.map((tag, i) => (
+              <span key={tag} className="text-[11px] font-bold px-3 py-1 rounded-full" style={{ background: `${accentColor}10`, color: accentColor, border: `1px solid ${accentColor}25` }} data-cms-key={`ecomseo_hero_tag_${i}`} data-cms-label="Hero Tag" data-cms-attr="text">{tag}</span>
             ))}
           </div>
           <div className="flex flex-wrap gap-3 justify-center">
             <Link to="/contact#contact-form" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3" style={{ background: "linear-gradient(135deg, #22C55E, #16a34a)", boxShadow: `0 8px 24px ${accentColor}40` }}>
-              Get a Free Store Audit <ShoppingCart size={15} />
+              <span data-cms-key="ecomseo_hero_cta1" data-cms-label="Hero CTA 1" data-cms-attr="text">{heroCta1}</span> <ShoppingCart size={15} />
             </Link>
-            <a href="#included" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold border-2 text-[#0A1628] hover:bg-[#0A1628] hover:text-white transition-all" style={{ borderColor: "#0A1628" }}>See What's Included</a>
+            <a href="#included" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold border-2 text-[#0A1628] hover:bg-[#0A1628] hover:text-white transition-all" style={{ borderColor: "#0A1628" }}><span data-cms-key="ecomseo_hero_cta2" data-cms-label="Hero CTA 2" data-cms-attr="text">{heroCta2}</span></a>
           </div>
         </motion.div>
       </div>
@@ -252,18 +355,18 @@ const EcommerceSEOPage = () => {
       <div className="max-w-5xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8 text-center">
           <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center justify-center gap-2">
-            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> What eCommerce SEO Covers
+            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> <span data-cms-key="ecomseo_included_heading" data-cms-label="Included Section Heading" data-cms-attr="text">{includedHeading}</span>
           </h2>
         </motion.div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {included.map((s, i) => (
+          {includedResolved.map((s, i) => (
             <motion.div key={s.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}
               className="bg-white rounded-2xl p-6 border hover:-translate-y-1 transition-all duration-200" style={{ borderColor: "#E5E7EB", boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
               <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: `${accentColor}12` }}>
                 <s.Icon size={20} style={{ color: accentColor }} />
               </div>
-              <h3 className="font-bold text-[#0A1628] mb-2 text-[15px]">{s.title}</h3>
-              <p className="text-sm text-[#6B7280] leading-relaxed">{s.desc}</p>
+              <h3 className="font-bold text-[#0A1628] mb-2 text-[15px]" data-cms-key={`ecomseo_included_${i}_title`} data-cms-label="Included Card Title" data-cms-attr="text">{s.title}</h3>
+              <p className="text-sm text-[#6B7280] leading-relaxed" data-cms-key={`ecomseo_included_${i}_desc`} data-cms-label="Included Card Description" data-cms-attr="text">{s.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -275,16 +378,16 @@ const EcommerceSEOPage = () => {
       <div className="max-w-5xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8 text-center">
           <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center justify-center gap-2">
-            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> How We Optimise Your Store
+            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> <span data-cms-key="ecomseo_process_heading" data-cms-label="Process Section Heading" data-cms-attr="text">{processHeading}</span>
           </h2>
         </motion.div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {processSteps.map((step, i) => (
+          {processStepsResolved.map((step, i) => (
             <motion.div key={step.num} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
               className="bg-white rounded-2xl p-5 border" style={{ borderColor: "#E5E7EB" }}>
               <span className="inline-block text-[10px] font-black tracking-[0.15em] uppercase px-2.5 py-1 rounded-full mb-3" style={{ background: `${accentColor}12`, color: accentColor }}>Step {step.num}</span>
-              <h3 className="font-black text-[#0A1628] text-[14.5px] leading-snug mb-2">{step.title}</h3>
-              <p className="text-[13px] text-[#6B7280] leading-relaxed">{step.desc}</p>
+              <h3 className="font-black text-[#0A1628] text-[14.5px] leading-snug mb-2" data-cms-key={`ecomseo_process_${i}_title`} data-cms-label="Process Step Title" data-cms-attr="text">{step.title}</h3>
+              <p className="text-[13px] text-[#6B7280] leading-relaxed" data-cms-key={`ecomseo_process_${i}_desc`} data-cms-label="Process Step Description" data-cms-attr="text">{step.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -296,15 +399,15 @@ const EcommerceSEOPage = () => {
       <div className="max-w-4xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8">
           <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center gap-2">
-            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> Store Issues We Find Most Often
+            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> <span data-cms-key="ecomseo_issues_heading" data-cms-label="Common Issues Heading" data-cms-attr="text">{issuesHeading}</span>
           </h2>
         </motion.div>
         <div className="space-y-3">
-          {commonIssues.map((issue, i) => (
-            <motion.div key={issue} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
+          {commonIssuesResolved.map((issue, i) => (
+            <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
               className="flex items-start gap-3 p-4 rounded-xl" style={{ background: "#F8FAFF", border: "1px solid #E5E7EB" }}>
               <Check size={16} className="mt-0.5 shrink-0" style={{ color: accentColor }} />
-              <span className="text-[14px] text-[#374151] leading-relaxed">{issue}</span>
+              <span className="text-[14px] text-[#374151] leading-relaxed" data-cms-key={`ecomseo_issue_${i}`} data-cms-label="Common Issue" data-cms-attr="text">{issue}</span>
             </motion.div>
           ))}
         </div>
@@ -317,18 +420,18 @@ const EcommerceSEOPage = () => {
       <div className="max-w-5xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8">
           <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center gap-2">
-            <span className="w-4 h-0.5 rounded-full bg-[#6C47FF]" /> Tools &amp; Technologies We Use
+            <span className="w-4 h-0.5 rounded-full bg-[#6C47FF]" /> <span data-cms-key="ecomseo_tools_heading" data-cms-label="Tools Section Heading" data-cms-attr="text">{toolsHeading}</span>
           </h2>
-          <p className="text-[#6B7280] mt-2 text-sm">Industry-leading SEO tools plus cutting edge AI search platforms for complete visibility.</p>
+          <p className="text-[#6B7280] mt-2 text-sm" data-cms-key="ecomseo_tools_sub" data-cms-label="Tools Section Subtext" data-cms-attr="text">{toolsSub}</p>
         </motion.div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {toolGroups.map((g, i) => (
-            <motion.div key={g.label} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+          {toolGroupsResolved.map((g2, i) => (
+            <motion.div key={g2.label} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
               className="rounded-2xl p-5" style={{ background: "#F8FAFF", border: "1px solid #E5E7EB", boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
-              <p className="text-[11px] font-bold uppercase tracking-wider mb-3" style={{ color: g.color }}>{g.label}</p>
+              <p className="text-[11px] font-bold uppercase tracking-wider mb-3" style={{ color: g2.color }} data-cms-key={`ecomseo_toolgroup_${i}_label`} data-cms-label="Tool Group Label" data-cms-attr="text">{g2.label}</p>
               <div className="flex flex-wrap gap-2">
-                {g.pills.map(p => (
-                  <span key={p} className="text-[12px] font-semibold px-2.5 py-1 rounded-full" style={{ background: g.bg, color: g.color }}>{p}</span>
+                {g2.pills.map(p => (
+                  <span key={p} className="text-[12px] font-semibold px-2.5 py-1 rounded-full" style={{ background: g2.bg, color: g2.color }}>{p}</span>
                 ))}
               </div>
             </motion.div>
@@ -342,28 +445,28 @@ const EcommerceSEOPage = () => {
       <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
         <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
           <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] mb-6 flex items-center gap-2">
-            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> Why Choose Us
+            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> <span data-cms-key="ecomseo_whyus_heading" data-cms-label="Why Choose Us Heading" data-cms-attr="text">{whyUsHeading}</span>
           </h2>
           <ul className="space-y-3">
-            {whyUsPoints.map((w) => (
-              <li key={w} className="flex items-start gap-3 p-3.5 rounded-xl" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
+            {whyUsPointsResolved.map((w, i) => (
+              <li key={i} className="flex items-start gap-3 p-3.5 rounded-xl" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
                 <Check size={16} className="mt-0.5 shrink-0" style={{ color: accentColor }} />
-                <span className="text-[14.5px] text-[#374151]">{w}</span>
+                <span className="text-[14.5px] text-[#374151]" data-cms-key={`ecomseo_whyus_${i}`} data-cms-label="Why Us Point" data-cms-attr="text">{w}</span>
               </li>
             ))}
           </ul>
         </motion.div>
         <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
           <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] mb-6 flex items-center gap-2">
-            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> What We Can Do for Your Business
+            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> <span data-cms-key="ecomseo_whatwedo_heading" data-cms-label="What We Can Do Heading" data-cms-attr="text">{whatWeDoHeading}</span>
           </h2>
           <div className="grid grid-cols-1 gap-3">
-            {whatWeDoPoints.map((label) => (
-              <div key={label} className="flex items-center gap-3 p-3.5 rounded-xl" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
+            {whatWeDoPointsResolved.map((label, i) => (
+              <div key={i} className="flex items-center gap-3 p-3.5 rounded-xl" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: `${accentColor}12` }}>
                   <Check size={15} style={{ color: accentColor }} />
                 </div>
-                <span className="text-[14.5px] text-[#374151]">{label}</span>
+                <span className="text-[14.5px] text-[#374151]" data-cms-key={`ecomseo_whatwedo_${i}`} data-cms-label="What We Do Point" data-cms-attr="text">{label}</span>
               </div>
             ))}
           </div>
@@ -382,9 +485,9 @@ const EcommerceSEOPage = () => {
     {/* Clients We've Grown With SEO */}
     <section className="py-14 px-4 md:px-8" style={{ background: "#fff", borderTop: "1px solid #F3F4F6", borderBottom: "1px solid #F3F4F6" }}>
       <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
-        <p className="text-[11px] font-black uppercase tracking-[0.16em] mb-2" style={{ color: "#9CA3AF" }}>Brands We've Grown With SEO</p>
-        <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2">Clients We've Grown With SEO</h2>
-        <p className="text-[#6B7280] text-sm max-w-md mx-auto">Real businesses. Real rankings. Organic growth delivered by Digital Aura.</p>
+        <p className="text-[11px] font-black uppercase tracking-[0.16em] mb-2" style={{ color: "#9CA3AF" }} data-cms-key="ecomseo_clients_tagline" data-cms-label="Clients Tagline" data-cms-attr="text">{clientsTagline}</p>
+        <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2" data-cms-key="ecomseo_clients_heading" data-cms-label="Clients Heading" data-cms-attr="text">{clientsHeading}</h2>
+        <p className="text-[#6B7280] text-sm max-w-md mx-auto" data-cms-key="ecomseo_clients_sub" data-cms-label="Clients Subtext" data-cms-attr="text">{clientsSub}</p>
       </motion.div>
       <div className="max-w-5xl mx-auto">
         <ClientLogoGrid clients={seoClients} accentColor={accentColor} />
@@ -396,12 +499,12 @@ const EcommerceSEOPage = () => {
       <div className="max-w-3xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8 text-center">
           <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center justify-center gap-2">
-            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> Frequently Asked Questions <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} />
+            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> <span data-cms-key="ecomseo_faq_heading" data-cms-label="FAQ Heading" data-cms-attr="text">{faqHeading}</span> <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} />
           </h2>
         </motion.div>
         <div className="space-y-3">
-          {faqs.map((f, idx) => (
-            <motion.div key={f.q} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.06 }}>
+          {faqsResolved.map((f, idx) => (
+            <motion.div key={idx} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.06 }}>
               <FAQItem q={f.q} a={f.a} idx={idx} />
             </motion.div>
           ))}
@@ -417,18 +520,24 @@ const EcommerceSEOPage = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-5 bg-white/20 text-white">Free Store Audit</span>
-            <h2 className="text-3xl md:text-[40px] font-black text-white leading-tight mb-6">Get Your Free<br />eCommerce SEO Audit</h2>
-            <p className="text-white/80 text-lg mb-8">We'll audit your product and category pages, check your schema, and show you exactly what's costing you organic sales, completely free.</p>
+            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-5 bg-white/20 text-white" data-cms-key="ecomseo_auditcta_badge" data-cms-label="Audit CTA Badge" data-cms-attr="text">{auditCtaBadge}</span>
+            <h2 className="text-3xl md:text-[40px] font-black text-white leading-tight mb-6"><span data-cms-key="ecomseo_auditcta_h2_line1" data-cms-label="Audit CTA Heading Line 1" data-cms-attr="text">{auditCtaH2Line1}</span><br /><span data-cms-key="ecomseo_auditcta_h2_line2" data-cms-label="Audit CTA Heading Line 2" data-cms-attr="text">{auditCtaH2Line2}</span></h2>
+            <p className="text-white/80 text-lg mb-8" data-cms-key="ecomseo_auditcta_sub" data-cms-label="Audit CTA Subtext" data-cms-attr="text">{auditCtaSub}</p>
             <div className="space-y-3 mb-8">
-              <div key="Product & category page audit" className="flex items-center gap-3"><CheckCircle2 size={18} className="text-white shrink-0" /><span className="text-white font-medium">Product & category page audit</span></div>
-              <div key="Product schema validation" className="flex items-center gap-3"><CheckCircle2 size={18} className="text-white shrink-0" /><span className="text-white font-medium">Product schema validation</span></div>
-              <div key="Crawl budget health check" className="flex items-center gap-3"><CheckCircle2 size={18} className="text-white shrink-0" /><span className="text-white font-medium">Crawl budget health check</span></div>
-              <div key="Competitor product ranking snapshot" className="flex items-center gap-3"><CheckCircle2 size={18} className="text-white shrink-0" /><span className="text-white font-medium">Competitor product ranking snapshot</span></div>
+              {auditCtaBullets.map((b, i) => (
+                <div key={i} className="flex items-center gap-3"><CheckCircle2 size={18} className="text-white shrink-0" /><span className="text-white font-medium" data-cms-key={`ecomseo_auditcta_bullet_${i}`} data-cms-label="Audit CTA Bullet" data-cms-attr="text">{b}</span></div>
+              ))}
             </div>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }}>
-            <AuditForm />
+            <AuditForm
+              heading={auditFormHeading}
+              sub={auditFormSub}
+              buttonText={auditFormButton}
+              disclaimer={auditFormDisclaimer}
+              successTitle={auditFormSuccessTitle}
+              successText={auditFormSuccessText}
+            />
           </motion.div>
         </div>
       </div>
@@ -437,7 +546,7 @@ const EcommerceSEOPage = () => {
     {/* Related Services */}
     <section className="py-12 px-4 md:px-8 bg-white" style={{ borderTop: "1px solid #F3F4F6" }}>
       <div className="max-w-4xl mx-auto text-center">
-        <p className="text-[11px] font-black uppercase tracking-[0.16em] mb-4" style={{ color: "#9CA3AF" }}>Related SEO Services</p>
+        <p className="text-[11px] font-black uppercase tracking-[0.16em] mb-4" style={{ color: "#9CA3AF" }} data-cms-key="ecomseo_related_tagline" data-cms-label="Related Services Tagline" data-cms-attr="text">{relatedTagline}</p>
         <div className="flex flex-wrap justify-center gap-2.5">
           {relatedServices.map(s => (
             <Link key={s.href} to={s.href} className="text-[13px] font-semibold px-4 py-2 rounded-full border transition-all hover:-translate-y-0.5" style={{ borderColor: "#E5E7EB", color: "#374151" }}>{s.label}</Link>
@@ -454,11 +563,11 @@ const EcommerceSEOPage = () => {
       <div className="absolute bottom-8 right-8 w-36 h-36 rounded-full animate-drift-2 opacity-15 pointer-events-none" style={{ background: "radial-gradient(circle, #7C3AED, transparent)" }} />
       <div className="max-w-3xl mx-auto relative z-10">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mb-6 tracking-widest uppercase" style={{ background: `${accentColor}15`, border: `1px solid ${accentColor}40`, color: accentColor }}>Let's Build Together</span>
-          <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4">Ready to Turn Product Pages Into a Sales Channel?</h2>
-          <p className="text-[#E2E8F0] mb-8 leading-relaxed">Book a free store audit. We'll show you exactly which product and category pages are leaking potential organic traffic.</p>
+          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mb-6 tracking-widest uppercase" style={{ background: `${accentColor}15`, border: `1px solid ${accentColor}40`, color: accentColor }} data-cms-key="ecomseo_finalcta_badge" data-cms-label="Final CTA Badge" data-cms-attr="text">{finalCtaBadge}</span>
+          <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4" data-cms-key="ecomseo_finalcta_h2" data-cms-label="Final CTA Heading" data-cms-attr="text">{finalCtaH2}</h2>
+          <p className="text-[#E2E8F0] mb-8 leading-relaxed" data-cms-key="ecomseo_finalcta_text" data-cms-label="Final CTA Text" data-cms-attr="text">{finalCtaText}</p>
           <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3" style={{ background: "linear-gradient(135deg, #22C55E, #16a34a)", boxShadow: "0 4px 20px rgba(34,197,94,0.4)" }}>
-            Book My Free Audit <ArrowRight size={16} />
+            <span data-cms-key="ecomseo_finalcta_button" data-cms-label="Final CTA Button" data-cms-attr="text">{finalCtaButton}</span> <ArrowRight size={16} />
           </Link>
         </motion.div>
       </div>

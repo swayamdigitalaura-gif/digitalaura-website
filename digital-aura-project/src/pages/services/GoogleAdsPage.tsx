@@ -568,7 +568,7 @@ const FAQItem = ({ q, a, idx = 0 }: { q: string; a: string; idx?: number }) => {
 
 /* ─── Page ─── */
 const GoogleAdsPage = () => {
-  const _sp = useSettings(['gads_hero_h1','gads_hero_sub','gads_cta_btn']);
+  const sp = useSettings(['gads_hero_h1','gads_hero_sub','gads_cta_btn']);
   return (
   <PageLayout>
     {/* ── Hero ── */}
@@ -590,11 +590,11 @@ const GoogleAdsPage = () => {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-[54px] font-black leading-[1.1] text-[#0A1628] mb-5 tracking-tight">
-            <span data-cms-key="gads_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">Drive Instant Traffic &<br />
-            <span style={{ color: accentColor }}>High Performance Conversions</span>
+            <span data-cms-key="gads_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">{sp.gads_hero_h1 || (<>Drive Instant Traffic &<br />
+            <span style={{ color: accentColor }}>High Performance Conversions</span></>)}
           </span></h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-4 leading-relaxed">
-            <span data-cms-key="gads_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">We help businesses generate high quality leads and sales through strategic Google Ads campaigns. Our data driven approach ensures your ads reach the right audience at the right time maximising ROI and minimising wasted spend.</span>
+            <span data-cms-key="gads_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.gads_hero_sub || "We help businesses generate high quality leads and sales through strategic Google Ads campaigns. Our data driven approach ensures your ads reach the right audience at the right time maximising ROI and minimising wasted spend."}</span>
           </p>
           {/* Badges */}
           <div className="flex flex-wrap gap-2 justify-center mb-8">
@@ -609,7 +609,7 @@ const GoogleAdsPage = () => {
             <Link to="/contact"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
               style={{ background: "linear-gradient(135deg, #4285F4, #1a56db)", boxShadow: `0 8px 24px ${accentColor}40` }}>
-              Launch My Google Ads <Target size={15} />
+              <span data-cms-key="gads_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.gads_cta_btn || "Launch My Google Ads"}</span> <Target size={15} />
             </Link>
             <a href="#services-list" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold border-2 text-[#0A1628] hover:bg-[#0A1628] hover:text-white transition-all" style={{ borderColor: "#0A1628" }}>Our Services</a>
           </div>

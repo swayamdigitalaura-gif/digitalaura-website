@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, Lock, ArrowRight } from "lucide-react";
 import MathCaptcha from "@/components/MathCaptcha";
+import { useSettings } from "@/hooks/useSettings";
 
 const challenges = [
   "I need a website or app built",
@@ -23,6 +24,7 @@ const inputClass =
   "w-full px-4 py-3 rounded-xl text-sm text-[#0A1628] outline-none focus:ring-2 focus:ring-[#FF6B2B] transition-all placeholder-[#9CA3AF] border border-[#E5E7EB] bg-[#F8FAFF] focus:bg-white";
 
 const LeadCaptureForm = () => {
+  const s = useSettings(["lead_h3_1", "lead_p_3", "lead_h3_2"]);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [formError, setFormError] = useState("");
@@ -133,12 +135,12 @@ const LeadCaptureForm = () => {
                   >
                     <CheckCircle2 size={32} className="text-[#22C55E]" />
                   </div>
-                  <h3 className="text-xl font-bold text-[#0A1628] mb-2"><span data-cms-key="lead_h3_1" data-cms-label="Card Heading" data-cms-attr="text">You're All Set!</span></h3>
-                  <p className="text-[#6B7280]"><span data-cms-key="lead_p_3" data-cms-label="Body Text" data-cms-attr="text">We'll review your details and reach out within 24 hours with your free strategy session.</span></p>
+                  <h3 className="text-xl font-bold text-[#0A1628] mb-2"><span data-cms-key="lead_h3_1" data-cms-label="Card Heading" data-cms-attr="text">{s.lead_h3_1 || "You're All Set!"}</span></h3>
+                  <p className="text-[#6B7280]"><span data-cms-key="lead_p_3" data-cms-label="Body Text" data-cms-attr="text">{s.lead_p_3 || "We'll review your details and reach out within 24 hours with your free strategy session."}</span></p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <h3 className="text-xl font-bold text-[#0A1628] mb-5"><span data-cms-key="lead_h3_2" data-cms-label="Card Heading" data-cms-attr="text">Book Your Free Strategy Session</span></h3>
+                  <h3 className="text-xl font-bold text-[#0A1628] mb-5"><span data-cms-key="lead_h3_2" data-cms-label="Card Heading" data-cms-attr="text">{s.lead_h3_2 || "Book Your Free Strategy Session"}</span></h3>
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
                       <label className="text-xs font-semibold text-[#374151] mb-1.5 block">Full Name *</label>

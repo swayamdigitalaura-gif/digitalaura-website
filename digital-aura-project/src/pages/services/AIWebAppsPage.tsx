@@ -210,7 +210,7 @@ const CaseStudyCard = ({ cs, i }: { cs: typeof caseStudies[0]; i: number }) => {
 };
 
 const AIWebAppsPage = () => {
-  const _sp = useSettings(['aiwebapp_hero_h1','aiwebapp_hero_sub','aiwebapp_cta_btn']);
+  const sp = useSettings(['aiwebapp_hero_h1','aiwebapp_hero_sub','aiwebapp_cta_btn']);
   return (
   <PageLayout>
 
@@ -231,15 +231,15 @@ const AIWebAppsPage = () => {
             </span>
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-[58px] font-bold leading-[1.1] text-[#0A1628] mb-6 tracking-tight">
-            <span data-cms-key="aiwebapp_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">Most Web Apps Display Data.<br className="hidden md:block" />
+            <span data-cms-key="aiwebapp_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">{sp.aiwebapp_hero_h1 || (<>Most Web Apps Display Data.<br className="hidden md:block" />
             Yours Should Think With It.
-          </span></h1>
+            </>)}</span></h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto leading-relaxed mb-10">
-            <span data-cms-key="aiwebapp_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">We design and engineer AI powered web applications where intelligence is built into the product — not bolted on. Apps that reason, personalise, predict, and act on what your users do, in real time.</span>
+            <span data-cms-key="aiwebapp_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.aiwebapp_hero_sub || "We design and engineer AI powered web applications where intelligence is built into the product — not bolted on. Apps that reason, personalise, predict, and act on what your users do, in real time."}</span>
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2">
-              <span data-cms-key="aiwebapp_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">Book a Free Product Discovery Call</span> <ArrowRight size={18} />
+              <span data-cms-key="aiwebapp_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.aiwebapp_cta_btn || "Book a Free Product Discovery Call"}</span> <ArrowRight size={18} />
             </Link>
             <a href="#services-list" className="btn-outline-dark px-8 py-4 text-base">What We Build</a>
           </div>

@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowRight, Check, Zap, Search, FileText, Link2, BarChart2, Globe2, PenTool, TrendingUp, ShieldCheck, Gauge, Smile } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useSettings } from "@/hooks/useSettings";
 
 interface Props { open: boolean; onClose: () => void; }
 
@@ -49,6 +50,7 @@ const results = [
 ];
 
 const SEOModal = ({ open, onClose }: Props) => {
+  const s = useSettings(["seomodal_h2_1", "seomodal_p_1", "seomodal_p_2"]);
   useEffect(() => {
     const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
     if (open) window.addEventListener("keydown", handler);
@@ -88,8 +90,8 @@ const SEOModal = ({ open, onClose }: Props) => {
                   </div>
                   <div>
                     <span className="text-[11px] font-bold uppercase tracking-[0.15em] mb-1.5 block" style={{ color: ACCENT }}>SEO & Content Marketing</span>
-                    <h2 className="text-[22px] font-black text-white leading-snug mb-3"><span data-cms-key="seomodal_h2_1" data-cms-label="Modal Heading" data-cms-attr="text">SEO & Content That Drives Organic Growth at Scale</span></h2>
-                    <p className="text-[14px] leading-relaxed" style={{ color: "#94A3B8" }}><span data-cms-key="seomodal_p_1" data-cms-label="Body Text" data-cms-attr="text">Rank higher, attract the right audience, and convert visitors into customers, through technical SEO, content strategy, and authoritative link building.</span></p>
+                    <h2 className="text-[22px] font-black text-white leading-snug mb-3"><span data-cms-key="seomodal_h2_1" data-cms-label="Modal Heading" data-cms-attr="text">{s.seomodal_h2_1 || "SEO & Content That Drives Organic Growth at Scale"}</span></h2>
+                    <p className="text-[14px] leading-relaxed" style={{ color: "#94A3B8" }}><span data-cms-key="seomodal_p_1" data-cms-label="Body Text" data-cms-attr="text">{s.seomodal_p_1 || "Rank higher, attract the right audience, and convert visitors into customers, through technical SEO, content strategy, and authoritative link building."}</span></p>
                   </div>
                 </div>
               </div>
@@ -175,7 +177,7 @@ const SEOModal = ({ open, onClose }: Props) => {
                       <Zap size={14} style={{ color: ACCENT }} />
                       <span className="text-[11px] font-bold uppercase tracking-wider" style={{ color: ACCENT }}>Ready to Rank?</span>
                     </div>
-                    <p className="text-[13px] text-[#94A3B8] leading-relaxed"><span data-cms-key="seomodal_p_2" data-cms-label="Body Text" data-cms-attr="text">Let's build an SEO strategy that brings consistent, high quality traffic to your business every month.</span></p>
+                    <p className="text-[13px] text-[#94A3B8] leading-relaxed"><span data-cms-key="seomodal_p_2" data-cms-label="Body Text" data-cms-attr="text">{s.seomodal_p_2 || "Let's build an SEO strategy that brings consistent, high quality traffic to your business every month."}</span></p>
                   </div>
                   <Link to="/contact" onClick={onClose}
                     className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-bold text-white whitespace-nowrap transition-all hover:gap-3"

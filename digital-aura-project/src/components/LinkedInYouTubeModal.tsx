@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowRight, Check, Zap, Linkedin, Video, Users, Target, RefreshCw, BarChart2, TrendingUp, Gauge, DollarSign, ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useSettings } from "@/hooks/useSettings";
 
 interface Props { open: boolean; onClose: () => void; }
 const ACCENT = "#0A66C2";
@@ -30,6 +31,7 @@ const results = [
 ];
 
 const LinkedInYouTubeModal = ({ open, onClose }: Props) => {
+  const s = useSettings(["limodal_h2_1", "limodal_p_1", "limodal_p_2"]);
   useEffect(() => { const h = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); }; if (open) window.addEventListener("keydown", h); return () => window.removeEventListener("keydown", h); }, [open, onClose]);
   useEffect(() => { document.body.style.overflow = open ? "hidden" : ""; return () => { document.body.style.overflow = ""; }; }, [open]);
 
@@ -56,8 +58,8 @@ const LinkedInYouTubeModal = ({ open, onClose }: Props) => {
                   </div>
                   <div>
                     <span className="text-[11px] font-bold uppercase tracking-[0.15em] mb-1.5 block" style={{ color: ACCENT }}>LinkedIn & YouTube Ads</span>
-                    <h2 className="text-[22px] font-black text-white leading-snug mb-3"><span data-cms-key="limodal_h2_1" data-cms-label="Modal Heading" data-cms-attr="text">Reach Professionals & High-Intent Audiences That Convert</span></h2>
-                    <p className="text-[14px] leading-relaxed" style={{ color: "#94A3B8" }}><span data-cms-key="limodal_p_1" data-cms-label="Body Text" data-cms-attr="text">Targeted LinkedIn campaigns for B2B leads and compelling YouTube video ads for brand awareness and conversions, managed by specialists.</span></p>
+                    <h2 className="text-[22px] font-black text-white leading-snug mb-3"><span data-cms-key="limodal_h2_1" data-cms-label="Modal Heading" data-cms-attr="text">{s.limodal_h2_1 || "Reach Professionals & High-Intent Audiences That Convert"}</span></h2>
+                    <p className="text-[14px] leading-relaxed" style={{ color: "#94A3B8" }}><span data-cms-key="limodal_p_1" data-cms-label="Body Text" data-cms-attr="text">{s.limodal_p_1 || "Targeted LinkedIn campaigns for B2B leads and compelling YouTube video ads for brand awareness and conversions, managed by specialists."}</span></p>
                   </div>
                 </div>
               </div>
@@ -84,7 +86,7 @@ const LinkedInYouTubeModal = ({ open, onClose }: Props) => {
                 <div className="rounded-xl p-6 flex flex-col sm:flex-row items-center gap-4" style={{ background: "linear-gradient(135deg, #0A1628, #1A2744)", border: "1px solid rgba(10,102,194,0.2)" }}>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1"><Zap size={14} style={{ color: ACCENT }} /><span className="text-[11px] font-bold uppercase tracking-wider" style={{ color: ACCENT }}>Ready to Reach Professionals?</span></div>
-                    <p className="text-[13px] text-[#94A3B8] leading-relaxed"><span data-cms-key="limodal_p_2" data-cms-label="Body Text" data-cms-attr="text">Let's build LinkedIn and YouTube campaigns that put your brand in front of the right decision makers.</span></p>
+                    <p className="text-[13px] text-[#94A3B8] leading-relaxed"><span data-cms-key="limodal_p_2" data-cms-label="Body Text" data-cms-attr="text">{s.limodal_p_2 || "Let's build LinkedIn and YouTube campaigns that put your brand in front of the right decision makers."}</span></p>
                   </div>
                   <Link to="/contact" onClick={onClose} className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-bold text-white whitespace-nowrap transition-all hover:gap-3" style={{ background: "linear-gradient(135deg, #0A66C2, #084d94)", boxShadow: "0 6px 20px rgba(10,102,194,0.4)" }}>
                     Launch My Campaign <ArrowRight size={14} />

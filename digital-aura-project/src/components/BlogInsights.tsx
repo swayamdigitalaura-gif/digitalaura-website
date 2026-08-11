@@ -2,6 +2,7 @@
 import { ArrowRight, Calendar, TrendingUp, Target, DollarSign, Globe, Bot } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { LucideIcon } from "lucide-react";
+import { useSettings } from "@/hooks/useSettings";
 
 // These four cards are static teasers, not tied to real blog post slugs —
 // point them at the real blog listing rather than a dead "#" anchor.
@@ -61,7 +62,9 @@ const posts: Post[] = [
   },
 ];
 
-const BlogInsights = () => (
+const BlogInsights = () => {
+  const s = useSettings(["blog_ins_badge_5", "blog_sec_1", "blog_ins_hl_105"]);
+  return (
   <section id="blog" className="pt-20 pb-4 px-4 md:px-8" style={{ background: "#F8FAFF" }}>
     <div className="max-w-7xl mx-auto">
       <motion.div
@@ -70,10 +73,10 @@ const BlogInsights = () => (
         viewport={{ once: true }}
         className="text-center mb-14"
       >
-        <span className="section-badge" data-cms-key="blog_ins_badge_5" data-cms-label="Section Badge" data-cms-attr="text">Blog</span>
+        <span className="section-badge" data-cms-key="blog_ins_badge_5" data-cms-label="Section Badge" data-cms-attr="text">{s.blog_ins_badge_5 || "Blog"}</span>
         <h2 className="text-3xl md:text-[42px] font-bold text-[#0A1628] tracking-tight">
           <span data-cms-key="blog_sec_1" data-cms-label="Blog Section Heading" data-cms-attr="text">
-            Digital Intelligence &amp; <span data-cms-key="blog_ins_hl_105" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-orange-gradient">AI Insights</span>
+            {s.blog_sec_1 || <>Digital Intelligence &amp; <span data-cms-key="blog_ins_hl_105" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-orange-gradient">{s.blog_ins_hl_105 || "AI Insights"}</span></>}
           </span>
         </h2>
       </motion.div>
@@ -138,6 +141,7 @@ const BlogInsights = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default BlogInsights;

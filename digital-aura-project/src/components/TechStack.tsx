@@ -1,4 +1,5 @@
 ﻿import { motion } from "framer-motion";
+import { useSettings } from "@/hooks/useSettings";
 
 const row1 = [
   { name: "React",        dot: "#61DAFB" },
@@ -72,7 +73,9 @@ const TechPill = ({ name, dot }: { name: string; dot: string }) => (
   </span>
 );
 
-const TechStack = () => (
+const TechStack = () => {
+  const s = useSettings(["techstack_badge_2", "techstack_h2_3", "techstack_1"]);
+  return (
   <section className="pt-4 pb-16 px-0 overflow-hidden" style={{ background: "#F8F9FF" }}>
     <div className="max-w-7xl mx-auto px-4 md:px-8 text-center mb-6">
       <motion.div
@@ -80,9 +83,9 @@ const TechStack = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        <span className="section-badge" data-cms-key="techstack_badge_2" data-cms-label="Section Badge" data-cms-attr="text">Tech Stack</span>
-        <h2 className="text-2xl md:text-3xl font-bold text-[#0A1628] mt-2 mb-2"><span data-cms-key="techstack_h2_3" data-cms-label="Section Heading" data-cms-attr="text">Technologies We Work With</span></h2>
-        <p className="text-[#6B7280] text-sm"><span data-cms-key="techstack_1" data-cms-label="P Text" data-cms-attr="text">Modern tech stack for modern businesses</span></p>
+        <span className="section-badge" data-cms-key="techstack_badge_2" data-cms-label="Section Badge" data-cms-attr="text">{s.techstack_badge_2 || "Tech Stack"}</span>
+        <h2 className="text-2xl md:text-3xl font-bold text-[#0A1628] mt-2 mb-2"><span data-cms-key="techstack_h2_3" data-cms-label="Section Heading" data-cms-attr="text">{s.techstack_h2_3 || "Technologies We Work With"}</span></h2>
+        <p className="text-[#6B7280] text-sm"><span data-cms-key="techstack_1" data-cms-label="P Text" data-cms-attr="text">{s.techstack_1 || "Modern tech stack for modern businesses"}</span></p>
       </motion.div>
     </div>
 
@@ -100,6 +103,7 @@ const TechStack = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default TechStack;

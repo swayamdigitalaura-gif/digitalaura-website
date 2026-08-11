@@ -100,6 +100,25 @@ exports.publish = async (req, res) => {
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };
 
+// Idempotent bulk-register: given [{slug, title}], create a Page row for any slug that
+// doesn't already exist yet (existing pages are left untouched). Lets a local script keep
+// the CMS in sync with routes added to the live site via git, without duplicating pages.
+exports.ensure = async (req, res) => {
+  try {
+    const list = Array.isArray(req.body.pages) ? req.body.pages : [];
+    const created = [];
+    for (const p of list) {
+      if (!p?.slug || !p?.title) continue;
+      const [page, wasCreated] = await Page.findOrCreate({
+        where: { slug: p.slug },
+        defaults: { title: p.title, status: 'published' },
+      });
+      if (wasCreated) created.push(page.slug);
+    }
+    res.json({ success: true, created, total: list.length });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};
+
 exports.remove = async (req, res) => {
   try {
     const page = await Page.findByPk(req.params.id);

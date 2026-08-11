@@ -5,6 +5,7 @@ const { protect } = require('../middleware/auth');
 router.get('/', protect, c.getAll);
 router.get('/:slug', c.getOne);           // public (frontend reads this)
 router.post('/', protect, c.create);
+router.post('/ensure', protect, c.ensure);
 router.put('/:id', protect, c.update);
 router.put('/:id/builder', protect, c.saveBuilder);
 router.put('/:id/publish', protect, c.publish);

@@ -11,6 +11,7 @@ import PageLayout from "@/components/PageLayout";
 import CaseStudies from "@/components/CaseStudies";
 import Testimonials from "@/components/Testimonials";
 import { ArrowRight, ChevronDown, Check, MapPin } from "lucide-react";
+import { useEditableContent } from "@/hooks/useEditableContent";
 
 export interface IncludedItem { title: string; desc: string; }
 export interface FaqItem { q: string; a: string; }
@@ -79,7 +80,18 @@ const FAQItem = ({ q, a, idx, accentColor }: { q: string; a: string; idx: number
 };
 
 const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
-  const c = config;
+  // Top-level headline/CTA copy is editable from the admin Pages panel (Content tab) without
+  // a code change — everything else (FAQs, process steps, etc.) still comes from the config.
+  const editable = useEditableContent(config.slug, {
+    h1: config.h1,
+    heroParagraph: config.heroParagraph,
+    heroParagraph2: config.heroParagraph2 || "",
+    differentiatorHeading: config.differentiatorHeading,
+    differentiatorText: config.differentiatorText,
+    ctaHeading: config.ctaHeading,
+    ctaText: config.ctaText,
+  });
+  const c = { ...config, ...editable };
   const glow = `${c.accentColor}1f`;
   return (
     <PageLayout>

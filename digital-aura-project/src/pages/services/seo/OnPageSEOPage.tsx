@@ -14,6 +14,7 @@ import Testimonials from "@/components/Testimonials";
 import CaseStudies from "@/components/CaseStudies";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 import MathCaptcha from "@/components/MathCaptcha";
+import { useSettings } from "@/hooks/useSettings";
 import {
   ArrowRight, ChevronDown, Check, FileText, Heading,
   Link2, ImageIcon, Gauge, ListTree,
@@ -23,7 +24,7 @@ import {
 const accentColor = "#22C55E";
 const glowColor = "rgba(34,197,94,0.12)";
 
-const included = [
+const INCLUDED = [
   { Icon: Heading,  title: "Title Tags & Meta Descriptions",  desc: "Every page gets a unique, keyword-aligned title and description written to earn the click, not just the impression." },
   { Icon: FileText, title: "Header Structure (H1-H6)",        desc: "A logical heading hierarchy that tells Google exactly what each section is about and improves readability for users." },
   { Icon: ListTree, title: "Keyword Mapping",                  desc: "Every page assigned a primary and set of secondary keywords, matched to real search intent, not stuffed in randomly." },
@@ -32,14 +33,14 @@ const included = [
   { Icon: Gauge,    title: "Content-to-Intent Alignment",       desc: "Content restructured so it directly answers what the searcher actually wants, which is what keeps them on the page." },
 ];
 
-const processSteps = [
+const PROCESS_STEPS = [
   { num: "01", title: "Page-by-Page Content Audit",     desc: "Every target page reviewed against its assigned keyword and current ranking position." },
   { num: "02", title: "On-Page Element Rewrite",        desc: "Titles, meta descriptions, headings, and body copy rewritten or restructured for both users and search engines." },
   { num: "03", title: "Internal Link Mapping",          desc: "A linking structure built so authority flows to the pages that matter most to your business." },
   { num: "04", title: "Implementation & Verification",  desc: "Changes are pushed live and verified in Google Search Console to confirm they're indexed correctly." },
 ];
 
-const commonIssues = [
+const COMMON_ISSUES = [
   "Title tags that are duplicated across dozens of pages, so Google can't tell which one to rank",
   "H1 headings that don't contain the target keyword at all, or worse, multiple H1s on one page",
   "Money pages with zero internal links pointing to them from anywhere else on the site",
@@ -48,7 +49,7 @@ const commonIssues = [
   "Content written for a keyword that doesn't match what the page's H1 and title actually promise",
 ];
 
-const faqs = [
+const FAQS = [
   { q: "What is on-page SEO and why does it matter?", a: "On-page SEO is the practice of optimising individual pages — titles, headings, content, internal links, and images — so search engines understand what the page is about and rank it for the right searches. It matters because even great content won't rank if the on-page signals don't clearly match search intent." },
   { q: "What's the difference between on-page and off-page SEO?", a: "On-page SEO covers everything you control directly on your own pages: content, titles, headings, and internal links. Off-page SEO covers external signals like backlinks and brand mentions from other websites." },
   { q: "How many keywords should one page target?", a: "One primary keyword per page, supported by 3-5 closely related secondary keywords and variations. Targeting too many unrelated keywords on one page dilutes relevance and confuses search engines about what the page is really for." },
@@ -83,7 +84,7 @@ const FAQItem = ({ q, a, idx = 0 }: { q: string; a: string; idx?: number }) => {
 };
 
 
-const toolGroups = [
+const TOOL_GROUPS = [
   { label: "SEO Tools", color: "#22C55E", bg: "rgba(34,197,94,0.08)", pills: ["Google Search Console", "Ahrefs", "SEMrush", "Screaming Frog"] },
   { label: "AI & GEO Tools", color: "#7C3AED", bg: "rgba(124,58,237,0.08)", pills: ["Perplexity", "ChatGPT", "Google SGE", "AI Overviews"] },
   { label: "Content & Research", color: "#1A6FE8", bg: "rgba(26,111,232,0.08)", pills: ["Surfer SEO", "Clearscope", "Google Trends", "AnswerThePublic"] },
@@ -91,7 +92,7 @@ const toolGroups = [
   { label: "Analytics & Tracking", color: "#EC4899", bg: "rgba(236,72,153,0.08)", pills: ["Google Analytics 4", "Search Console", "Custom Dashboards"] },
 ];
 
-const whyUsPoints = [
+const WHY_US_POINTS = [
   "Data driven strategies focused on real results",
   "Full AIO & GEO optimisation: future proof your SEO",
   "High quality, human first content (not AI spam)",
@@ -100,7 +101,7 @@ const whyUsPoints = [
   "Customised solutions for your business and industry",
 ];
 
-const whatWeDoPoints = [
+const WHAT_WE_DO_POINTS = [
   "Increase organic website traffic",
   "Improve search engine rankings",
   "Appear in AI Overviews & AI answers",
@@ -209,6 +210,84 @@ const AuditForm = () => {
 };
 
 const OnPageSEOPage = () => {
+  // Every piece of static marketing copy on this page is click-to-edit from the admin
+  // Pages panel (same data-cms-key + useSettings mechanism as every other page). All
+  // new keys are namespaced with `onpageseo_`, matching the prefix already used by the
+  // existing FAQ keys on this page.
+  const keys = [
+    "onpageseo_hero_h1", "onpageseo_hero_h1_highlight", "onpageseo_hero_sub",
+    "onpageseo_included_h2",
+    "onpageseo_process_h2",
+    "onpageseo_issues_h2",
+    "onpageseo_tools_h2", "onpageseo_tools_sub",
+    "onpageseo_whyus_h2", "onpageseo_whatwedo_h2",
+    "onpageseo_clients_eyebrow", "onpageseo_clients_h2", "onpageseo_clients_sub",
+    "onpageseo_freeaudit_badge", "onpageseo_freeaudit_h2_line1", "onpageseo_freeaudit_h2_line2", "onpageseo_freeaudit_text",
+    "onpageseo_related_label",
+    "onpageseo_cta_badge", "onpageseo_cta_h2", "onpageseo_cta_text", "onpageseo_cta_button",
+    ...INCLUDED.flatMap((_, i) => [`onpageseo_included_${i}_title`, `onpageseo_included_${i}_desc`]),
+    ...PROCESS_STEPS.flatMap((_, i) => [`onpageseo_process_${i}_title`, `onpageseo_process_${i}_desc`]),
+    ...COMMON_ISSUES.flatMap((_, i) => [`onpageseo_issue_${i}`]),
+    ...TOOL_GROUPS.flatMap((_, i) => [`onpageseo_toolgroup_${i}_label`]),
+    ...WHY_US_POINTS.flatMap((_, i) => [`onpageseo_whyus_${i}`]),
+    ...WHAT_WE_DO_POINTS.flatMap((_, i) => [`onpageseo_whatwedo_${i}`]),
+    ...FAQS.flatMap((_, i) => [`onpageseo_faq_${i}_q`, `onpageseo_faq_${i}_a`]),
+    ...[0, 1, 2, 3].flatMap((i) => [`onpageseo_freeaudit_point_${i}`]),
+  ];
+  const s = useSettings(keys);
+  const g = (key: string, fallback: string) => s[key] || fallback;
+
+  const heroH1 = g("onpageseo_hero_h1", "On Page SEO Services");
+  const heroH1Highlight = g("onpageseo_hero_h1_highlight", "Built Around Search Intent");
+  const heroSub = g("onpageseo_hero_sub", "On-page SEO optimises the titles, headings, content, internal links, and images on every page of your site so Google understands exactly what each page is about — and ranks it for the searches that actually matter.");
+  const includedH2 = g("onpageseo_included_h2", "What On-Page SEO Covers");
+  const processH2 = g("onpageseo_process_h2", "How We Optimise Every Page");
+  const issuesH2 = g("onpageseo_issues_h2", "On-Page Issues We Find Most Often");
+  const toolsH2 = g("onpageseo_tools_h2", "Tools & Technologies We Use");
+  const toolsSub = g("onpageseo_tools_sub", "Industry-leading SEO tools plus cutting edge AI search platforms for complete visibility.");
+  const whyUsH2 = g("onpageseo_whyus_h2", "Why Choose Us");
+  const whatWeDoH2 = g("onpageseo_whatwedo_h2", "What We Can Do for Your Business");
+  const clientsEyebrow = g("onpageseo_clients_eyebrow", "Brands We've Grown With SEO");
+  const clientsH2 = g("onpageseo_clients_h2", "Clients We've Grown With SEO");
+  const clientsSub = g("onpageseo_clients_sub", "Real businesses. Real rankings. Organic growth delivered by Digital Aura.");
+  const freeAuditBadge = g("onpageseo_freeaudit_badge", "Free On-Page Review");
+  const freeAuditH2Line1 = g("onpageseo_freeaudit_h2_line1", "Get Your Free");
+  const freeAuditH2Line2 = g("onpageseo_freeaudit_h2_line2", "On-Page SEO Review");
+  const freeAuditText = g("onpageseo_freeaudit_text", "We'll review your key pages, identify on-page gaps, and show you exactly what's holding your rankings back, completely free.");
+  const freeAuditPoints = [
+    g("onpageseo_freeaudit_point_0", "Full on-page audit of your key pages"),
+    g("onpageseo_freeaudit_point_1", "Title, meta & heading gap analysis"),
+    g("onpageseo_freeaudit_point_2", "Internal linking opportunity map"),
+    g("onpageseo_freeaudit_point_3", "Content-to-intent alignment report"),
+  ];
+  const relatedLabel = g("onpageseo_related_label", "Related SEO Services");
+  const ctaBadge = g("onpageseo_cta_badge", "Let's Build Together");
+  const ctaH2 = g("onpageseo_cta_h2", "Ready to Make Every Page Work as Hard as It Should?");
+  const ctaText = g("onpageseo_cta_text", "Book a free on-page review. We'll show you exactly which pages are underperforming and what specific changes would move them.");
+  const ctaButton = g("onpageseo_cta_button", "Book My Free Review");
+
+  const included = INCLUDED.map((item, i) => ({
+    ...item,
+    title: g(`onpageseo_included_${i}_title`, item.title),
+    desc: g(`onpageseo_included_${i}_desc`, item.desc),
+  }));
+  const processSteps = PROCESS_STEPS.map((step, i) => ({
+    ...step,
+    title: g(`onpageseo_process_${i}_title`, step.title),
+    desc: g(`onpageseo_process_${i}_desc`, step.desc),
+  }));
+  const commonIssues = COMMON_ISSUES.map((issue, i) => g(`onpageseo_issue_${i}`, issue));
+  const toolGroups = TOOL_GROUPS.map((group, i) => ({
+    ...group,
+    label: g(`onpageseo_toolgroup_${i}_label`, group.label),
+  }));
+  const whyUsPoints = WHY_US_POINTS.map((w, i) => g(`onpageseo_whyus_${i}`, w));
+  const whatWeDoPoints = WHAT_WE_DO_POINTS.map((w, i) => g(`onpageseo_whatwedo_${i}`, w));
+  const faqs = FAQS.map((f, i) => ({
+    q: g(`onpageseo_faq_${i}_q`, f.q),
+    a: g(`onpageseo_faq_${i}_a`, f.a),
+  }));
+
   return (
   <PageLayout>
     {/* Hero */}
@@ -227,10 +306,11 @@ const OnPageSEOPage = () => {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-[50px] font-black leading-[1.12] text-[#0A1628] mb-5 tracking-tight">
-            On Page SEO Services<br /><span style={{ color: accentColor }}>Built Around Search Intent</span>
+            <span data-cms-key="onpageseo_hero_h1" data-cms-label="Hero H1" data-cms-attr="text">{heroH1}</span><br />
+            <span data-cms-key="onpageseo_hero_h1_highlight" data-cms-label="Hero H1 Highlight" data-cms-attr="text" style={{ color: accentColor }}>{heroH1Highlight}</span>
           </h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-4 leading-relaxed">
-            On-page SEO optimises the titles, headings, content, internal links, and images on every page of your site so Google understands exactly what each page is about — and ranks it for the searches that actually matter.
+            <span data-cms-key="onpageseo_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{heroSub}</span>
           </p>
           <div className="flex flex-wrap gap-2 justify-center mb-8">
             {["Title & Meta Optimisation", "Keyword Mapping", "Internal Linking", "Content Structure"].map(tag => (
@@ -252,7 +332,7 @@ const OnPageSEOPage = () => {
       <div className="max-w-5xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8 text-center">
           <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center justify-center gap-2">
-            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> What On-Page SEO Covers
+            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> <span data-cms-key="onpageseo_included_h2" data-cms-label="Included Heading" data-cms-attr="text">{includedH2}</span>
           </h2>
         </motion.div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -262,8 +342,8 @@ const OnPageSEOPage = () => {
               <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: `${accentColor}12` }}>
                 <s.Icon size={20} style={{ color: accentColor }} />
               </div>
-              <h3 className="font-bold text-[#0A1628] mb-2 text-[15px]">{s.title}</h3>
-              <p className="text-sm text-[#6B7280] leading-relaxed">{s.desc}</p>
+              <h3 data-cms-key={`onpageseo_included_${i}_title`} data-cms-label={`Included ${i + 1} Title`} data-cms-attr="text" className="font-bold text-[#0A1628] mb-2 text-[15px]">{s.title}</h3>
+              <p data-cms-key={`onpageseo_included_${i}_desc`} data-cms-label={`Included ${i + 1} Desc`} data-cms-attr="text" className="text-sm text-[#6B7280] leading-relaxed">{s.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -275,7 +355,7 @@ const OnPageSEOPage = () => {
       <div className="max-w-5xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8 text-center">
           <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center justify-center gap-2">
-            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> How We Optimise Every Page
+            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> <span data-cms-key="onpageseo_process_h2" data-cms-label="Process Heading" data-cms-attr="text">{processH2}</span>
           </h2>
         </motion.div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -283,8 +363,8 @@ const OnPageSEOPage = () => {
             <motion.div key={step.num} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
               className="bg-white rounded-2xl p-5 border" style={{ borderColor: "#E5E7EB" }}>
               <span className="inline-block text-[10px] font-black tracking-[0.15em] uppercase px-2.5 py-1 rounded-full mb-3" style={{ background: `${accentColor}12`, color: accentColor }}>Step {step.num}</span>
-              <h3 className="font-black text-[#0A1628] text-[14.5px] leading-snug mb-2">{step.title}</h3>
-              <p className="text-[13px] text-[#6B7280] leading-relaxed">{step.desc}</p>
+              <h3 data-cms-key={`onpageseo_process_${i}_title`} data-cms-label={`Process ${i + 1} Title`} data-cms-attr="text" className="font-black text-[#0A1628] text-[14.5px] leading-snug mb-2">{step.title}</h3>
+              <p data-cms-key={`onpageseo_process_${i}_desc`} data-cms-label={`Process ${i + 1} Desc`} data-cms-attr="text" className="text-[13px] text-[#6B7280] leading-relaxed">{step.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -296,7 +376,7 @@ const OnPageSEOPage = () => {
       <div className="max-w-4xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8">
           <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center gap-2">
-            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> On-Page Issues We Find Most Often
+            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> <span data-cms-key="onpageseo_issues_h2" data-cms-label="Issues Heading" data-cms-attr="text">{issuesH2}</span>
           </h2>
         </motion.div>
         <div className="space-y-3">
@@ -304,7 +384,7 @@ const OnPageSEOPage = () => {
             <motion.div key={issue} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
               className="flex items-start gap-3 p-4 rounded-xl" style={{ background: "#F8FAFF", border: "1px solid #E5E7EB" }}>
               <Check size={16} className="mt-0.5 shrink-0" style={{ color: accentColor }} />
-              <span className="text-[14px] text-[#374151] leading-relaxed">{issue}</span>
+              <span data-cms-key={`onpageseo_issue_${i}`} data-cms-label={`Issue ${i + 1}`} data-cms-attr="text" className="text-[14px] text-[#374151] leading-relaxed">{issue}</span>
             </motion.div>
           ))}
         </div>
@@ -317,18 +397,18 @@ const OnPageSEOPage = () => {
       <div className="max-w-5xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8">
           <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center gap-2">
-            <span className="w-4 h-0.5 rounded-full bg-[#6C47FF]" /> Tools &amp; Technologies We Use
+            <span className="w-4 h-0.5 rounded-full bg-[#6C47FF]" /> <span data-cms-key="onpageseo_tools_h2" data-cms-label="Tools Heading" data-cms-attr="text">{toolsH2}</span>
           </h2>
-          <p className="text-[#6B7280] mt-2 text-sm">Industry-leading SEO tools plus cutting edge AI search platforms for complete visibility.</p>
+          <p className="text-[#6B7280] mt-2 text-sm"><span data-cms-key="onpageseo_tools_sub" data-cms-label="Tools Subtext" data-cms-attr="text">{toolsSub}</span></p>
         </motion.div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {toolGroups.map((g, i) => (
-            <motion.div key={g.label} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+          {toolGroups.map((group, i) => (
+            <motion.div key={TOOL_GROUPS[i].label} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
               className="rounded-2xl p-5" style={{ background: "#F8FAFF", border: "1px solid #E5E7EB", boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
-              <p className="text-[11px] font-bold uppercase tracking-wider mb-3" style={{ color: g.color }}>{g.label}</p>
+              <p data-cms-key={`onpageseo_toolgroup_${i}_label`} data-cms-label={`Tool Group ${i + 1} Label`} data-cms-attr="text" className="text-[11px] font-bold uppercase tracking-wider mb-3" style={{ color: group.color }}>{group.label}</p>
               <div className="flex flex-wrap gap-2">
-                {g.pills.map(p => (
-                  <span key={p} className="text-[12px] font-semibold px-2.5 py-1 rounded-full" style={{ background: g.bg, color: g.color }}>{p}</span>
+                {group.pills.map(p => (
+                  <span key={p} className="text-[12px] font-semibold px-2.5 py-1 rounded-full" style={{ background: group.bg, color: group.color }}>{p}</span>
                 ))}
               </div>
             </motion.div>
@@ -342,28 +422,28 @@ const OnPageSEOPage = () => {
       <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
         <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
           <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] mb-6 flex items-center gap-2">
-            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> Why Choose Us
+            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> <span data-cms-key="onpageseo_whyus_h2" data-cms-label="Why Us Heading" data-cms-attr="text">{whyUsH2}</span>
           </h2>
           <ul className="space-y-3">
-            {whyUsPoints.map((w) => (
-              <li key={w} className="flex items-start gap-3 p-3.5 rounded-xl" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
+            {whyUsPoints.map((w, i) => (
+              <li key={WHY_US_POINTS[i]} className="flex items-start gap-3 p-3.5 rounded-xl" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
                 <Check size={16} className="mt-0.5 shrink-0" style={{ color: accentColor }} />
-                <span className="text-[14.5px] text-[#374151]">{w}</span>
+                <span data-cms-key={`onpageseo_whyus_${i}`} data-cms-label={`Why Us ${i + 1}`} data-cms-attr="text" className="text-[14.5px] text-[#374151]">{w}</span>
               </li>
             ))}
           </ul>
         </motion.div>
         <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
           <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] mb-6 flex items-center gap-2">
-            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> What We Can Do for Your Business
+            <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> <span data-cms-key="onpageseo_whatwedo_h2" data-cms-label="What We Do Heading" data-cms-attr="text">{whatWeDoH2}</span>
           </h2>
           <div className="grid grid-cols-1 gap-3">
-            {whatWeDoPoints.map((label) => (
-              <div key={label} className="flex items-center gap-3 p-3.5 rounded-xl" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
+            {whatWeDoPoints.map((label, i) => (
+              <div key={WHAT_WE_DO_POINTS[i]} className="flex items-center gap-3 p-3.5 rounded-xl" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: `${accentColor}12` }}>
                   <Check size={15} style={{ color: accentColor }} />
                 </div>
-                <span className="text-[14.5px] text-[#374151]">{label}</span>
+                <span data-cms-key={`onpageseo_whatwedo_${i}`} data-cms-label={`What We Do ${i + 1}`} data-cms-attr="text" className="text-[14.5px] text-[#374151]">{label}</span>
               </div>
             ))}
           </div>
@@ -382,9 +462,9 @@ const OnPageSEOPage = () => {
     {/* Clients We've Grown With SEO */}
     <section className="py-14 px-4 md:px-8" style={{ background: "#fff", borderTop: "1px solid #F3F4F6", borderBottom: "1px solid #F3F4F6" }}>
       <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
-        <p className="text-[11px] font-black uppercase tracking-[0.16em] mb-2" style={{ color: "#9CA3AF" }}>Brands We've Grown With SEO</p>
-        <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2">Clients We've Grown With SEO</h2>
-        <p className="text-[#6B7280] text-sm max-w-md mx-auto">Real businesses. Real rankings. Organic growth delivered by Digital Aura.</p>
+        <p className="text-[11px] font-black uppercase tracking-[0.16em] mb-2" style={{ color: "#9CA3AF" }}><span data-cms-key="onpageseo_clients_eyebrow" data-cms-label="Clients Eyebrow" data-cms-attr="text">{clientsEyebrow}</span></p>
+        <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2"><span data-cms-key="onpageseo_clients_h2" data-cms-label="Clients Heading" data-cms-attr="text">{clientsH2}</span></h2>
+        <p className="text-[#6B7280] text-sm max-w-md mx-auto"><span data-cms-key="onpageseo_clients_sub" data-cms-label="Clients Subtext" data-cms-attr="text">{clientsSub}</span></p>
       </motion.div>
       <div className="max-w-5xl mx-auto">
         <ClientLogoGrid clients={seoClients} accentColor={accentColor} />
@@ -401,7 +481,7 @@ const OnPageSEOPage = () => {
         </motion.div>
         <div className="space-y-3">
           {faqs.map((f, idx) => (
-            <motion.div key={f.q} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.06 }}>
+            <motion.div key={FAQS[idx].q} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.06 }}>
               <FAQItem q={f.q} a={f.a} idx={idx} />
             </motion.div>
           ))}
@@ -417,14 +497,16 @@ const OnPageSEOPage = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-5 bg-white/20 text-white">Free On-Page Review</span>
-            <h2 className="text-3xl md:text-[40px] font-black text-white leading-tight mb-6">Get Your Free<br />On-Page SEO Review</h2>
-            <p className="text-white/80 text-lg mb-8">We'll review your key pages, identify on-page gaps, and show you exactly what's holding your rankings back, completely free.</p>
+            <span data-cms-key="onpageseo_freeaudit_badge" data-cms-label="Free Audit Badge" data-cms-attr="text" className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-5 bg-white/20 text-white">{freeAuditBadge}</span>
+            <h2 className="text-3xl md:text-[40px] font-black text-white leading-tight mb-6">
+              <span data-cms-key="onpageseo_freeaudit_h2_line1" data-cms-label="Free Audit Heading Line 1" data-cms-attr="text">{freeAuditH2Line1}</span><br />
+              <span data-cms-key="onpageseo_freeaudit_h2_line2" data-cms-label="Free Audit Heading Line 2" data-cms-attr="text">{freeAuditH2Line2}</span>
+            </h2>
+            <p className="text-white/80 text-lg mb-8"><span data-cms-key="onpageseo_freeaudit_text" data-cms-label="Free Audit Text" data-cms-attr="text">{freeAuditText}</span></p>
             <div className="space-y-3 mb-8">
-              <div key="Full on-page audit of your key pages" className="flex items-center gap-3"><CheckCircle2 size={18} className="text-white shrink-0" /><span className="text-white font-medium">Full on-page audit of your key pages</span></div>
-              <div key="Title, meta & heading gap analysis" className="flex items-center gap-3"><CheckCircle2 size={18} className="text-white shrink-0" /><span className="text-white font-medium">Title, meta & heading gap analysis</span></div>
-              <div key="Internal linking opportunity map" className="flex items-center gap-3"><CheckCircle2 size={18} className="text-white shrink-0" /><span className="text-white font-medium">Internal linking opportunity map</span></div>
-              <div key="Content-to-intent alignment report" className="flex items-center gap-3"><CheckCircle2 size={18} className="text-white shrink-0" /><span className="text-white font-medium">Content-to-intent alignment report</span></div>
+              {freeAuditPoints.map((point, i) => (
+                <div key={`freeaudit-point-${i}`} className="flex items-center gap-3"><CheckCircle2 size={18} className="text-white shrink-0" /><span data-cms-key={`onpageseo_freeaudit_point_${i}`} data-cms-label={`Free Audit Point ${i + 1}`} data-cms-attr="text" className="text-white font-medium">{point}</span></div>
+              ))}
             </div>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }}>
@@ -437,7 +519,7 @@ const OnPageSEOPage = () => {
     {/* Related Services */}
     <section className="py-12 px-4 md:px-8 bg-white" style={{ borderTop: "1px solid #F3F4F6" }}>
       <div className="max-w-4xl mx-auto text-center">
-        <p className="text-[11px] font-black uppercase tracking-[0.16em] mb-4" style={{ color: "#9CA3AF" }}>Related SEO Services</p>
+        <p className="text-[11px] font-black uppercase tracking-[0.16em] mb-4" style={{ color: "#9CA3AF" }}><span data-cms-key="onpageseo_related_label" data-cms-label="Related Services Label" data-cms-attr="text">{relatedLabel}</span></p>
         <div className="flex flex-wrap justify-center gap-2.5">
           {relatedServices.map(s => (
             <Link key={s.href} to={s.href} className="text-[13px] font-semibold px-4 py-2 rounded-full border transition-all hover:-translate-y-0.5" style={{ borderColor: "#E5E7EB", color: "#374151" }}>{s.label}</Link>
@@ -454,11 +536,11 @@ const OnPageSEOPage = () => {
       <div className="absolute bottom-8 right-8 w-36 h-36 rounded-full animate-drift-2 opacity-15 pointer-events-none" style={{ background: "radial-gradient(circle, #7C3AED, transparent)" }} />
       <div className="max-w-3xl mx-auto relative z-10">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mb-6 tracking-widest uppercase" style={{ background: `${accentColor}15`, border: `1px solid ${accentColor}40`, color: accentColor }}>Let's Build Together</span>
-          <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4">Ready to Make Every Page Work as Hard as It Should?</h2>
-          <p className="text-[#E2E8F0] mb-8 leading-relaxed">Book a free on-page review. We'll show you exactly which pages are underperforming and what specific changes would move them.</p>
+          <span data-cms-key="onpageseo_cta_badge" data-cms-label="CTA Badge" data-cms-attr="text" className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mb-6 tracking-widest uppercase" style={{ background: `${accentColor}15`, border: `1px solid ${accentColor}40`, color: accentColor }}>{ctaBadge}</span>
+          <h2 data-cms-key="onpageseo_cta_h2" data-cms-label="CTA Heading" data-cms-attr="text" className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4">{ctaH2}</h2>
+          <p data-cms-key="onpageseo_cta_text" data-cms-label="CTA Text" data-cms-attr="text" className="text-[#E2E8F0] mb-8 leading-relaxed">{ctaText}</p>
           <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3" style={{ background: "linear-gradient(135deg, #22C55E, #16a34a)", boxShadow: "0 4px 20px rgba(34,197,94,0.4)" }}>
-            Book My Free Review <ArrowRight size={16} />
+            <span data-cms-key="onpageseo_cta_button" data-cms-label="CTA Button" data-cms-attr="text">{ctaButton}</span> <ArrowRight size={16} />
           </Link>
         </motion.div>
       </div>

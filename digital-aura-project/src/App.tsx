@@ -38,6 +38,8 @@ import CaseStudiesPage from "./pages/CaseStudiesPage.tsx";
 import CaseStudyRiantBikes from "./pages/CaseStudyRiantBikes.tsx";
 import BlogPage from "./pages/BlogPage.tsx";
 import BlogPost from "./pages/BlogPost.tsx";
+import StaticSeoPostView from "./components/StaticSeoPostView.tsx";
+import { posts as seoBlogPosts } from "./data/seoBlogPosts.ts";
 import ContactPage from "./pages/ContactPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import EngagementModelsPage from "./pages/EngagementModelsPage.tsx";
@@ -88,6 +90,9 @@ const App = () => (
           <Route path="/case-studies" element={<CaseStudiesPage />} />
           <Route path="/case-studies/riant-bikes" element={<CaseStudyRiantBikes />} />
           <Route path="/blog" element={<BlogPage />} />
+          {seoBlogPosts.map(p => (
+            <Route key={p.slug} path={`/blog/${p.slug}`} element={<StaticSeoPostView post={p} />} />
+          ))}
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/contact" element={<ContactPage />} />
 

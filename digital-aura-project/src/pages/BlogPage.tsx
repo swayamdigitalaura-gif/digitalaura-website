@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 import PageLayout from "@/components/PageLayout";
-import { Calendar, Clock, ArrowRight, Search, Zap, CheckCircle2, BadgeCheck, BookOpen } from "lucide-react";
+import { Calendar, ArrowRight, Search, Zap, CheckCircle2, BadgeCheck, BookOpen } from "lucide-react";
 import { useSettings } from "@/hooks/useSettings";
 import { getBlogTheme } from "@/data/blogCategoryTheme";
 import { posts as seoBlogPosts } from "@/data/seoBlogPosts";
@@ -82,10 +82,6 @@ const BlogPage = () => {
     return matchesCategory && matchesQuery;
   }), [posts, activeCategory, query]);
 
-  const isDefaultView = activeCategory === "All" && query.trim() === "";
-  const featured = posts[0];
-  const featuredTheme = getBlogTheme(featured?.category);
-  const FeaturedIcon = featuredTheme.Icon;
 
   return (
   <PageLayout>
@@ -224,47 +220,14 @@ const BlogPage = () => {
       </div>
     </section>
 
-    {/* Featured post */}
-    {isDefaultView && featured && (
-      <section className="px-4 md:px-8 pt-10">
-        <div className="max-w-6xl mx-auto">
-          <Link
-            to={featured.slug ? `/blog/${featured.slug}` : "#"}
-            className="group grid grid-cols-1 md:grid-cols-2 gap-0 rounded-3xl overflow-hidden border card-hover"
-            style={{ borderColor: "#E5E7EB" }}
-          >
-            <div className="p-8 md:p-10 flex flex-col justify-center relative overflow-hidden" style={{ background: "#0A1628" }}>
-              <div className="absolute -top-10 -right-10 w-56 h-56 rounded-full pointer-events-none" style={{ background: `radial-gradient(circle, ${featuredTheme.color}33 0%, transparent 70%)` }} />
-              <span className="relative inline-flex w-fit items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full mb-4" style={{ color: featuredTheme.color, background: "rgba(255,255,255,0.08)" }}>
-                <FeaturedIcon size={12} /> Featured &middot; {featured.category}
-              </span>
-              <h2 className="relative text-2xl md:text-3xl font-black text-white leading-tight mb-3">{featured.title}</h2>
-              <p className="relative text-sm mb-5 leading-relaxed" style={{ color: "#CBD5E1" }}>{featured.excerpt}</p>
-              <div className="relative flex items-center gap-4 text-xs mb-5" style={{ color: "#9CA3AF" }}>
-                <span className="flex items-center gap-1.5"><Calendar size={12} /> {featured.date}</span>
-                {featured.readTime && <span className="flex items-center gap-1.5"><Clock size={12} /> {featured.readTime}</span>}
-              </div>
-              <span className="relative inline-flex items-center gap-2 text-sm font-bold group-hover:gap-3 transition-all w-fit" style={{ color: featuredTheme.color }}>
-                Read Article <ArrowRight size={14} />
-              </span>
-            </div>
-            <div className="hidden md:flex items-center justify-center relative" style={{ background: `linear-gradient(135deg, ${featuredTheme.bg}, rgba(124,58,237,0.08))` }}>
-              <div className="absolute inset-0 dot-pattern opacity-25" />
-              <FeaturedIcon size={120} strokeWidth={1} style={{ color: featuredTheme.color, opacity: 0.25 }} />
-            </div>
-          </Link>
-        </div>
-      </section>
-    )}
-
-    {/* Grid */}
+    {/* Grid — every post shown the same way, no special "featured" treatment */}
     <section className="py-14 px-4 md:px-8">
       <div className="max-w-6xl mx-auto">
         {filtered.length === 0 ? (
           <p className="text-center py-20" style={{ color: "#9CA3AF" }}>No articles match your search.</p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {(isDefaultView ? filtered.slice(1) : filtered).map((p, i) => {
+            {filtered.map((p, i) => {
               const t = getBlogTheme(p.category);
               const Icon = t.Icon;
               return (

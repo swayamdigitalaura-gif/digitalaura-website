@@ -1,11 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import {
-  ArrowLeft, ArrowRight, ArrowUp, Calendar, Clock, Eye,
-  Linkedin, Link as LinkIcon, RefreshCw, Tag, ImageOff,
+  ArrowLeft, ArrowRight, Calendar, Clock,
+  Linkedin, Link as LinkIcon,
 } from "lucide-react";
+import { getBlogTheme } from "@/data/blogCategoryTheme";
+import sambhavPhoto from "@/assets/sambhav.jpg";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
 const SITE_URL = "https://thedigitalaura.com";
@@ -31,8 +33,6 @@ type Blog = {
   author?: { id: number; name: string } | null;
 };
 
-type TocItem = { id: string; label: string };
-
 function setTag(selector: string, valueAttr: string, value: string) {
   let el = document.head.querySelector(selector);
   if (!el) {
@@ -53,20 +53,11 @@ const readTime = (html?: string) => {
 const fmtDate = (iso: string) =>
   new Date(iso).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
 
-const slugifyHeading = (text: string, i: number) =>
-  text.toLowerCase().trim().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-").slice(0, 50) || `section-${i}`;
-
-function CardImage({ src, alt, className }: { src?: string; alt: string; className?: string }) {
-  const [failed, setFailed] = useState(false);
-  if (!src || failed) {
-    return (
-      <div className={`flex items-center justify-center ${className || ""}`} style={{ background: "linear-gradient(135deg, rgba(255,107,43,0.1), rgba(26,111,232,0.08))" }}>
-        <ImageOff size={24} style={{ color: ACCENT }} strokeWidth={1.5} />
-      </div>
-    );
-  }
-  return <img src={src} alt={alt} loading="lazy" onError={() => setFailed(true)} className={className} />;
-}
+const shortTeaser = (text?: string) => {
+  if (!text) return "";
+  const firstSentence = text.split(/(?<=\.)\s/)[0];
+  return firstSentence.length > 140 ? firstSentence.slice(0, 140).trim() + "…" : firstSentence;
+};
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -75,14 +66,6 @@ const BlogPost = () => {
   const [notFound, setNotFound] = useState(false);
   const [related, setRelated] = useState<Blog[]>([]);
   const [latest, setLatest] = useState<Blog[]>([]);
-  const [prev, setPrev] = useState<Blog | null>(null);
-  const [next, setNext] = useState<Blog | null>(null);
-  const [toc, setToc] = useState<TocItem[]>([]);
-  const [activeId, setActiveId] = useState("");
-  const [progress, setProgress] = useState(0);
-  const [showTop, setShowTop] = useState(false);
-  const schemaRef = useRef<HTMLScriptElement | null>(null);
-  const articleRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setLoading(true);
@@ -101,14 +84,9 @@ const BlogPost = () => {
       .then((d) => {
         const all: Blog[] = d?.data || [];
         const sorted = [...all].sort((a, b) => +new Date(b.createdAt) - +new Date(a.createdAt));
-        const idx = sorted.findIndex((b) => b.slug === slug);
-        if (idx !== -1) {
-          setPrev(sorted[idx + 1] || null);
-          setNext(idx > 0 ? sorted[idx - 1] : null);
-        }
+        const sameCategory = sorted.filter((b) => b.slug !== slug && b.category === all.find((x) => x.slug === slug)?.category);
         const others = sorted.filter((b) => b.slug !== slug);
-        setRelated(others.slice(0, 3));
-        // Show a different set than "Related" when there are enough posts
+        setRelated((sameCategory.length ? sameCategory : others).slice(0, 3));
         setLatest(others.length > 3 ? others.slice(3, 6) : others.slice(0, 3));
       })
       .catch(() => {});
@@ -134,7 +112,7 @@ const BlogPost = () => {
       setTag('meta[name="twitter:image"]', "content", blog.cover_image);
     }
 
-    if (schemaRef.current) { schemaRef.current.remove(); schemaRef.current = null; }
+    document.head.querySelectorAll('script[type="application/ld+json"]').forEach((el) => el.remove());
     const schemaJson = blog.schema_code?.trim() || JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BlogPosting",
@@ -151,39 +129,8 @@ const BlogPost = () => {
     script.type = "application/ld+json";
     script.text = schemaJson;
     document.head.appendChild(script);
-    schemaRef.current = script;
-
-    return () => { if (schemaRef.current) { schemaRef.current.remove(); schemaRef.current = null; } };
+    return () => { script.remove(); };
   }, [blog]);
-
-  // Build TOC from real headings inside the rendered content
-  useEffect(() => {
-    if (!blog || !articleRef.current) return;
-    const headings = Array.from(articleRef.current.querySelectorAll("h2"));
-    const items: TocItem[] = headings.map((h, i) => {
-      if (!h.id) h.id = slugifyHeading(h.textContent || "", i);
-      return { id: h.id, label: h.textContent || "" };
-    });
-    setToc(items);
-    if (items[0]) setActiveId(items[0].id);
-  }, [blog]);
-
-  // Reading progress + scrollspy + scroll-to-top visibility
-  useEffect(() => {
-    const onScroll = () => {
-      const h = document.documentElement;
-      const total = h.scrollHeight - h.clientHeight;
-      setProgress(total > 0 ? Math.min(100, (h.scrollTop / total) * 100) : 0);
-      setShowTop(window.scrollY > 800);
-      for (const item of toc) {
-        const el = document.getElementById(item.id);
-        if (el && el.getBoundingClientRect().top < 140) setActiveId(item.id);
-      }
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [toc]);
 
   if (loading) return (
     <PageLayout>
@@ -207,281 +154,181 @@ const BlogPost = () => {
   const canonicalUrl = `${SITE_URL}/blog/${blog.slug}`;
   const minutes = readTime(blog.content);
   const dateStr = fmtDate(blog.createdAt);
-  const updatedStr = blog.updatedAt && blog.updatedAt !== blog.createdAt ? fmtDate(blog.updatedAt) : null;
+  const theme = getBlogTheme(blog.category);
+  const CategoryIcon = theme.Icon;
+  const authorName = blog.author?.name || "Sambhav Shah";
 
   return (
     <PageLayout>
-      {/* Reading progress bar */}
-      <div className="fixed left-0 right-0 top-[72px] z-40 h-[3px] bg-transparent">
-        <div className="h-full transition-[width] duration-150" style={{ width: `${progress}%`, background: `linear-gradient(90deg, ${ACCENT}, ${BLUE})` }} />
-      </div>
-
       <div className="pt-[72px]">
-        <Hero blog={blog} dateStr={dateStr} updatedStr={updatedStr} minutes={minutes} canonicalUrl={canonicalUrl} />
+        {/* Hero */}
+        <section className="relative overflow-hidden pt-8 pb-10" style={{ background: "#fff" }}>
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute animate-drift rounded-full" style={{ width: 560, height: 560, top: "-18%", right: "-8%", background: `radial-gradient(circle, ${theme.glow} 0%, transparent 70%)`, filter: "blur(60px)" }} />
+            <div className="absolute animate-drift-2 rounded-full" style={{ width: 380, height: 380, bottom: "-10%", left: "-6%", background: "radial-gradient(circle, rgba(124,58,237,0.07) 0%, transparent 70%)", filter: "blur(60px)" }} />
+            <div className="absolute inset-0 dot-pattern opacity-20" />
+          </div>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="max-w-3xl mx-auto relative z-10 py-10 text-center px-5">
+            <Link to="/blog" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: theme.color }}>
+              ← Back to All Articles
+            </Link>
+            {blog.category && (
+              <div className="flex justify-center mb-6">
+                <span className="inline-flex items-center gap-2 text-xs font-bold px-4 py-2 rounded-full" style={{ color: theme.color, background: theme.bg, border: `1px solid ${theme.border}` }}>
+                  <CategoryIcon size={13} /> {blog.category}
+                </span>
+              </div>
+            )}
+            <h1 className="text-3xl sm:text-4xl md:text-[44px] font-black tracking-tight mb-5 leading-[1.15]" style={{ color: HEADING }}>
+              {blog.title}
+            </h1>
+            {blog.excerpt && (
+              <p className="text-lg mb-8 leading-relaxed max-w-xl mx-auto text-[#4B5563]">{shortTeaser(blog.excerpt)}</p>
+            )}
+            <div className="flex flex-wrap items-center gap-5 text-sm justify-center text-[#6B7280]">
+              <span className="flex items-center gap-1.5"><Calendar size={14} style={{ color: theme.color }} /> {dateStr}</span>
+              <span className="flex items-center gap-1.5"><Clock size={14} style={{ color: theme.color }} /> {minutes} min read</span>
+              <span>By <strong style={{ color: HEADING }}>{authorName}</strong></span>
+            </div>
+          </motion.div>
+        </section>
 
-        <div className="mx-auto grid max-w-[1240px] grid-cols-1 gap-10 px-5 pb-16 lg:grid-cols-[240px_minmax(0,760px)_1fr] lg:gap-12 lg:px-8">
-          <FloatingSidebar toc={toc} activeId={activeId} progress={progress} minutes={minutes} canonicalUrl={canonicalUrl} title={blog.title} />
+        {/* Body + sidebar */}
+        <section className="py-12 px-5 lg:px-8 bg-white">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10 lg:items-start">
+            <div className="lg:col-span-2 min-w-0">
+              <div
+                className="blog-prose"
+                style={{ ["--accent" as string]: theme.color }}
+                dangerouslySetInnerHTML={{ __html: blog.content || "" }}
+              />
 
-          <article className="min-w-0 pt-10">
-            <div
-              ref={articleRef}
-              className="text-[#374151] leading-relaxed text-[15.5px] [&_h2]:font-black [&_h2]:text-[#0A1628] [&_h2]:text-2xl [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:font-bold [&_h3]:text-[#0A1628] [&_h3]:text-lg [&_h3]:mt-7 [&_h3]:mb-2 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1.5 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:space-y-1.5 [&_li]:leading-relaxed [&_p]:mb-4 [&_a]:text-[#1A6FE8] [&_a]:underline [&_strong]:font-semibold [&_strong]:text-[#0A1628] [&_img]:rounded-xl [&_img]:my-5 [&_img]:mx-auto [&_img]:max-h-[340px] [&_img]:w-auto [&_img]:max-w-full [&_img]:object-cover [&_img]:border [&_img]:border-[#E5E7EB] [&_img]:shadow-sm [&_table]:w-full [&_table]:border-collapse [&_table]:my-6 [&_th]:text-left [&_th]:bg-[#F8FAFF] [&_th]:p-3 [&_th]:border [&_th]:border-[#E5E7EB] [&_td]:p-3 [&_td]:border [&_td]:border-[#E5E7EB] [&_blockquote]:border-l-4 [&_blockquote]:border-[#FF6B2B] [&_blockquote]:pl-5 [&_blockquote]:italic [&_blockquote]:text-[#0A1628] [&_blockquote]:font-medium [&_blockquote]:my-6 [&_pre]:bg-[#0A1628] [&_pre]:text-white [&_pre]:rounded-xl [&_pre]:p-4 [&_pre]:overflow-x-auto [&_pre]:my-6 [&_pre]:text-sm"
-              dangerouslySetInnerHTML={{ __html: blog.content || "" }}
-            />
+              {/* Author box */}
+              <div className="mt-12 rounded-2xl p-6 md:p-8 border" style={{ borderColor: "#E5E7EB", background: "#F8FAFF" }}>
+                <p className="text-[11px] font-black uppercase tracking-[0.14em] mb-5 flex items-center gap-2" style={{ color: HEADING }}>
+                  <span className="w-4 h-0.5 rounded-full" style={{ background: theme.color }} /> About the Author
+                </p>
+                <div className="flex flex-col sm:flex-row gap-6">
+                  <div className="shrink-0 flex sm:flex-col items-center sm:items-start gap-4 sm:gap-3">
+                    <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden" style={{ boxShadow: `0 8px 32px ${theme.glow}`, border: `3px solid ${theme.border}` }}>
+                      <img src={sambhavPhoto} alt={authorName} className="w-full h-full object-cover object-top" />
+                    </div>
+                    <div className="sm:hidden">
+                      <p className="font-black text-lg leading-tight" style={{ color: HEADING }}>{authorName}</p>
+                      <p className="text-sm font-semibold" style={{ color: theme.color }}>Founder, Digital Aura</p>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <div className="hidden sm:block mb-3">
+                      <p className="font-black text-xl leading-tight" style={{ color: HEADING }}>{authorName}</p>
+                      <p className="text-sm font-semibold" style={{ color: theme.color }}>Founder, Digital Aura</p>
+                    </div>
+                    <p className="text-[15px] leading-relaxed mb-3 text-[#4B5563]">
+                      Sambhav didn't learn digital marketing in a classroom. Starting in 2015, he built his expertise the hard way — self-taught, hands-on, scaling teams and driving growth across industries for over a decade.
+                    </p>
+                    <p className="text-sm leading-relaxed text-[#4B5563]">
+                      With 10+ years of cross-functional experience in client acquisition, team leadership, and digital execution, he's personally involved in strategy on every engagement Digital Aura takes on.
+                    </p>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {["SEO Strategy", "Performance Marketing", "AI Solutions", "Team Leadership"].map((tag) => (
+                        <span key={tag} className="text-[11px] font-semibold px-2.5 py-1 rounded-full" style={{ background: "#fff", color: theme.color, border: `1px solid ${theme.border}` }}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-            <ArticleNav prev={prev} next={next} />
-          </article>
+              <div className="pt-8 mt-8 border-t flex items-center justify-between flex-wrap gap-4" style={{ borderColor: "#E5E7EB" }}>
+                <Link to="/blog" className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.color }}>
+                  <ArrowLeft size={14} /> Back to all posts
+                </Link>
+                <div className="flex items-center gap-2">
+                  <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(canonicalUrl)}`} target="_blank" rel="noreferrer" aria-label="Share on LinkedIn"
+                    className="grid h-9 w-9 place-items-center rounded-full border border-[#E5E7EB] bg-white text-[#6B7280] transition-all hover:-translate-y-0.5" style={{ borderColor: "#E5E7EB" }}>
+                    <Linkedin size={15} />
+                  </a>
+                  <span className="inline-flex items-center gap-1.5 text-xs text-[#9CA3AF]"><LinkIcon size={12} /> {canonicalUrl.replace("https://", "")}</span>
+                </div>
+              </div>
+            </div>
 
-          <div className="hidden lg:block" />
-        </div>
+            {/* Sidebar */}
+            <div className="lg:sticky lg:top-24 space-y-6">
+              <div className="rounded-2xl p-6 border overflow-hidden relative" style={{ borderColor: "#E5E7EB" }}>
+                <div className="h-1.5 w-full rounded-full mb-5" style={{ background: `linear-gradient(90deg, ${theme.color}, #7C3AED)` }} />
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: theme.bg, border: `1px solid ${theme.border}` }}>
+                  <CategoryIcon size={18} style={{ color: theme.color }} />
+                </div>
+                <h3 className="font-black text-base mb-2" style={{ color: HEADING }}>Want results like this?</h3>
+                <p className="text-xs mb-4 leading-relaxed text-[#6B7280]">Talk to Digital Aura about your growth.</p>
+                <Link to="/contact" className="btn-orange w-full py-3 text-sm inline-flex items-center justify-center gap-2">
+                  Get in Touch <ArrowRight size={14} />
+                </Link>
+              </div>
 
-        {related.length > 0 && <RelatedArticles items={related} />}
-        <AuthorProfile authorName={blog.author?.name} />
+              {related.length > 0 && (
+                <div className="rounded-2xl p-6 border" style={{ borderColor: "#E5E7EB" }}>
+                  <h3 className="font-black text-base mb-4 flex items-center gap-2" style={{ color: HEADING }}>
+                    <span className="w-4 h-0.5 rounded-full" style={{ background: theme.color }} /> More Posts
+                  </h3>
+                  <div className="space-y-3">
+                    {related.map((b) => {
+                      const bTheme = getBlogTheme(b.category);
+                      return (
+                        <Link key={b.id} to={`/blog/${b.slug}`} className="block p-3 rounded-xl border-l-4 border transition-all" style={{ borderColor: "#E5E7EB", borderLeftColor: bTheme.color }}>
+                          <p className="text-sm font-bold leading-snug" style={{ color: HEADING }}>{b.title}</p>
+                          {b.category && <p className="text-xs mt-1 font-semibold" style={{ color: bTheme.color }}>{b.category}</p>}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+
         {latest.length > 0 && <LatestPosts items={latest} />}
         <FinalCTA />
       </div>
-
-      <ScrollToTop show={showTop} />
     </PageLayout>
   );
 };
 
-function Hero({ blog, dateStr, updatedStr, minutes, canonicalUrl }: {
-  blog: Blog; dateStr: string; updatedStr: string | null; minutes: number; canonicalUrl: string;
-}) {
-  const [copied, setCopied] = useState(false);
-  const shareUrl = encodeURIComponent(canonicalUrl);
-  const authorName = blog.author?.name || "Digital Aura Team";
-
-  const copyLink = async () => {
-    try {
-      await navigator.clipboard.writeText(canonicalUrl);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1800);
-    } catch { /* clipboard unavailable — no-op */ }
-  };
-
-  return (
-    <section className="relative overflow-hidden pb-12 pt-12 lg:pb-14 lg:pt-16" style={{ background: "linear-gradient(180deg, #F8FAFF 0%, #FFFFFF 100%)" }}>
-      <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full opacity-[0.12] blur-3xl" style={{ background: ACCENT }} />
-      <div className="pointer-events-none absolute -right-24 top-10 h-72 w-72 rounded-full opacity-[0.10] blur-3xl" style={{ background: BLUE }} />
-      <div className="absolute inset-0 dot-pattern opacity-20 pointer-events-none" />
-
-      <div className="relative mx-auto max-w-[820px] px-5 text-center lg:px-8">
-        <nav aria-label="Breadcrumb" className="mb-5 flex items-center justify-center gap-2 text-[12.5px] text-[#9CA3AF]">
-          <Link to="/" className="hover:text-[#FF6B2B]">Home</Link>
-          <span>/</span>
-          <Link to="/blog" className="hover:text-[#FF6B2B]">Blog</Link>
-          {blog.category && (<><span>/</span><span className="text-[#FF6B2B]">{blog.category}</span></>)}
-        </nav>
-
-        {blog.category && (
-          <span className="inline-flex items-center gap-1.5 rounded-full mb-5 px-3 py-1 text-[11.5px] font-bold uppercase tracking-wider" style={{ color: ACCENT, background: "rgba(255,107,43,0.1)" }}>
-            <Tag size={12} /> {blog.category}
-          </span>
-        )}
-
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-          <h1 className="mx-auto max-w-3xl text-[28px] font-black leading-[1.15] tracking-tight sm:text-[36px] lg:text-[42px]" style={{ color: HEADING }}>
-            {blog.title}
-          </h1>
-          {blog.excerpt && (
-            <p className="mx-auto mt-5 max-w-xl text-[15.5px] leading-relaxed text-[#6B7280] lg:text-[16.5px]">
-              {blog.excerpt}
-            </p>
-          )}
-
-          <div className="mt-7 inline-flex flex-wrap items-center justify-center gap-x-5 gap-y-2 rounded-full border border-[#E5E7EB] bg-white px-5 py-2.5 text-[13px] text-[#6B7280]" style={{ boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
-            <span className="inline-flex items-center gap-1.5">
-              <span className="grid h-5 w-5 place-items-center rounded-full text-[10px] font-black text-white" style={{ background: `linear-gradient(135deg, ${ACCENT}, #7C3AED)` }}>
-                {authorName.charAt(0).toUpperCase()}
-              </span>
-              <span className="font-semibold" style={{ color: HEADING }}>{authorName}</span>
-            </span>
-            <span className="inline-flex items-center gap-1.5"><Calendar size={13} style={{ color: ACCENT }} /> {dateStr}</span>
-            {updatedStr && <span className="inline-flex items-center gap-1.5"><RefreshCw size={13} style={{ color: ACCENT }} /> Updated {updatedStr}</span>}
-            <span className="inline-flex items-center gap-1.5"><Clock size={13} style={{ color: ACCENT }} /> {minutes} min read</span>
-            {!!blog.views && <span className="inline-flex items-center gap-1.5"><Eye size={13} style={{ color: ACCENT }} /> {blog.views.toLocaleString()}</span>}
-          </div>
-
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
-            <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`} target="_blank" rel="noreferrer" aria-label="Share on LinkedIn"
-              className="grid h-9 w-9 place-items-center rounded-full border border-[#E5E7EB] bg-white text-[#6B7280] transition-all hover:-translate-y-0.5 hover:border-[#FF6B2B] hover:text-[#FF6B2B]">
-              <Linkedin size={15} />
-            </a>
-            <button onClick={copyLink} aria-label="Copy link"
-              className="inline-flex items-center gap-2 rounded-full border border-[#E5E7EB] bg-white px-4 py-2 text-[13px] font-semibold transition-all hover:-translate-y-0.5 hover:border-[#FF6B2B]"
-              style={{ color: copied ? "#22C55E" : HEADING }}>
-              <LinkIcon size={13} /> {copied ? "Copied!" : "Copy link"}
-            </button>
-          </div>
-        </motion.div>
-      </div>
-
-      {blog.cover_image ? (
-        <div className="relative mx-auto mt-10 max-w-[880px] px-5 lg:px-8">
-          <div className="mx-auto max-h-[420px] overflow-hidden rounded-2xl border border-[#E5E7EB] shadow-lg">
-            <img src={blog.cover_image} alt={blog.title} width={1600} height={900} fetchPriority="high" className="aspect-[16/9] max-h-[420px] w-full object-cover" />
-          </div>
-        </div>
-      ) : null}
-    </section>
-  );
-}
-
-function FloatingSidebar({ toc, activeId, progress, minutes, canonicalUrl }: {
-  toc: TocItem[]; activeId: string; progress: number; minutes: number; canonicalUrl: string; title: string;
-}) {
-  const shareUrl = encodeURIComponent(canonicalUrl);
-  return (
-    <aside className="hidden lg:block">
-      <div className="sticky top-24 pt-10">
-        <div className="rounded-2xl border border-[#E5E7EB] bg-white p-5" style={{ boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
-          <div className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-[#9CA3AF]">
-            <span>Progress</span>
-            <span style={{ color: ACCENT }}>{Math.round(progress)}%</span>
-          </div>
-          <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-[#F1F5F9]">
-            <div className="h-full transition-all" style={{ width: `${progress}%`, background: `linear-gradient(90deg, ${ACCENT}, ${BLUE})` }} />
-          </div>
-
-          {toc.length > 0 && (
-            <>
-              <div className="mt-6 text-[11px] font-bold uppercase tracking-wider text-[#9CA3AF]">On this page</div>
-              <ul className="mt-3 space-y-1.5">
-                {toc.map((item) => (
-                  <li key={item.id}>
-                    <a href={`#${item.id}`}
-                      className="block rounded-lg border-l-2 py-1.5 pl-3 text-[13.5px] leading-snug transition-all"
-                      style={activeId === item.id
-                        ? { borderColor: ACCENT, background: "rgba(255,107,43,0.06)", fontWeight: 600, color: HEADING }
-                        : { borderColor: "transparent", color: "#6B7280" }}>
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </>
-          )}
-
-          <div className="mt-6 flex items-center gap-1.5 text-[12px] text-[#9CA3AF]">
-            <Clock size={14} style={{ color: ACCENT }} /> {minutes} min read
-          </div>
-
-          <div className="mt-5 flex items-center gap-1.5">
-            <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`} target="_blank" rel="noreferrer" aria-label="Share"
-              className="grid h-8 w-8 place-items-center rounded-lg border border-[#E5E7EB] text-[#6B7280] transition-colors hover:border-[#FF6B2B] hover:text-[#FF6B2B]">
-              <Linkedin size={14} />
-            </a>
-          </div>
-
-          <Link to="/blog" className="mt-5 inline-flex w-full items-center justify-center gap-1.5 rounded-xl border border-[#E5E7EB] py-2 text-[13px] font-semibold transition-colors hover:border-[#FF6B2B] hover:text-[#FF6B2B]" style={{ color: HEADING }}>
-            <ArrowLeft size={14} /> Back to blog
-          </Link>
-        </div>
-      </div>
-    </aside>
-  );
-}
-
-function ArticleNav({ prev, next }: { prev: Blog | null; next: Blog | null }) {
-  if (!prev && !next) return null;
-  return (
-    <nav className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2">
-      {prev && (
-        <Link to={`/blog/${prev.slug}`} className="group rounded-2xl border border-[#E5E7EB] bg-white p-6 transition-all hover:-translate-y-1 hover:border-[#FF6B2B]/40" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
-          <div className="flex items-center gap-2 text-[12px] font-bold uppercase tracking-wider" style={{ color: ACCENT }}>
-            <ArrowLeft size={14} /> Previous
-          </div>
-          <div className="mt-2 text-[16px] font-bold leading-snug" style={{ color: HEADING }}>{prev.title}</div>
-        </Link>
-      )}
-      {next && (
-        <Link to={`/blog/${next.slug}`} className="group rounded-2xl border border-[#E5E7EB] bg-white p-6 text-right transition-all hover:-translate-y-1 hover:border-[#FF6B2B]/40" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
-          <div className="flex items-center justify-end gap-2 text-[12px] font-bold uppercase tracking-wider" style={{ color: ACCENT }}>
-            Next <ArrowRight size={14} />
-          </div>
-          <div className="mt-2 text-[16px] font-bold leading-snug" style={{ color: HEADING }}>{next.title}</div>
-        </Link>
-      )}
-    </nav>
-  );
-}
-
-function RelatedArticles({ items }: { items: Blog[] }) {
-  return (
-    <section className="border-t border-[#E5E7EB] py-16 lg:py-20" style={{ background: "#F8FAFF" }}>
-      <div className="mx-auto max-w-[1240px] px-5 lg:px-8">
-        <div className="text-[12px] font-bold uppercase tracking-wider" style={{ color: ACCENT }}>Keep reading</div>
-        <h2 className="mt-2 text-2xl font-black tracking-tight sm:text-3xl" style={{ color: HEADING }}>Related articles</h2>
-
-        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {items.map((b) => (
-            <Link key={b.id} to={`/blog/${b.slug}`} className="group overflow-hidden rounded-2xl border border-[#E5E7EB] bg-white transition-all hover:-translate-y-1 hover:shadow-lg" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
-              <div className="relative">
-                <CardImage src={b.cover_image} alt="" className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                {b.category && (
-                  <span className="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-[11px] font-bold" style={{ color: ACCENT }}>{b.category}</span>
-                )}
-              </div>
-              <div className="p-5">
-                <div className="flex items-center gap-1.5 text-[12px] font-medium text-[#9CA3AF]">
-                  <Clock size={12} /> {readTime(b.content)} min read
-                </div>
-                <h3 className="mt-2.5 text-[16px] font-bold leading-snug transition-colors group-hover:text-[#FF6B2B]" style={{ color: HEADING }}>{b.title}</h3>
-                <span className="mt-3 inline-flex items-center gap-1 text-[13px] font-semibold" style={{ color: ACCENT }}>
-                  Read more <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function AuthorProfile({ authorName }: { authorName?: string }) {
-  const name = authorName || "Digital Aura Team";
-  const initial = name.charAt(0).toUpperCase();
-  return (
-    <section className="border-t border-[#E5E7EB] bg-white py-14">
-      <div className="mx-auto max-w-[800px] px-5 lg:px-8">
-        <div className="flex items-center gap-5 rounded-2xl border border-[#E5E7EB] p-6" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
-          <div className="grid h-14 w-14 shrink-0 place-items-center rounded-full text-lg font-black text-white" style={{ background: `linear-gradient(135deg, ${ACCENT}, #7C3AED)` }}>
-            {initial}
-          </div>
-          <div>
-            <div className="text-[11px] font-bold uppercase tracking-wider" style={{ color: ACCENT }}>Written by</div>
-            <h3 className="text-lg font-black" style={{ color: HEADING }}>{name}</h3>
-            <p className="text-sm text-[#6B7280]">Performance marketing team, Digital Aura</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function LatestPosts({ items }: { items: Blog[] }) {
   return (
-    <section className="border-t border-[#E5E7EB] px-5 py-16 lg:px-8" style={{ background: "#FFFFFF" }}>
+    <section className="border-t border-[#E5E7EB] px-5 py-16 lg:px-8" style={{ background: "#F8FAFF" }}>
       <div className="mx-auto max-w-[1240px]">
         <div className="text-[12px] font-bold uppercase tracking-wider" style={{ color: ACCENT }}>Fresh off the press</div>
         <h2 className="mt-2 text-2xl font-black tracking-tight sm:text-3xl" style={{ color: HEADING }}>Latest posts</h2>
 
         <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {items.map((b) => (
-            <Link key={b.id} to={`/blog/${b.slug}`} className="group overflow-hidden rounded-2xl border border-[#E5E7EB] bg-white transition-all hover:-translate-y-1 hover:shadow-lg" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
-              <CardImage src={b.cover_image} alt="" className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-              <div className="p-5">
-                {b.category && (
-                  <span className="rounded-full px-2.5 py-0.5 text-[12px] font-semibold" style={{ background: "rgba(255,107,43,0.1)", color: ACCENT }}>{b.category}</span>
-                )}
-                <h3 className="mt-3 text-[16px] font-bold leading-snug transition-colors group-hover:text-[#FF6B2B]" style={{ color: HEADING }}>{b.title}</h3>
-                {b.excerpt && <p className="mt-2 text-[13.5px] leading-relaxed text-[#6B7280] line-clamp-2">{b.excerpt}</p>}
-              </div>
-            </Link>
-          ))}
+          {items.map((b) => {
+            const bTheme = getBlogTheme(b.category);
+            const Icon = bTheme.Icon;
+            return (
+              <Link key={b.id} to={`/blog/${b.slug}`} className="group flex flex-col h-full overflow-hidden rounded-2xl border border-[#E5E7EB] bg-white transition-all hover:-translate-y-1 hover:shadow-lg" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
+                <div className="h-20 flex items-center justify-center relative overflow-hidden" style={{ background: bTheme.bg }}>
+                  <div className="absolute inset-0 dot-pattern opacity-20" />
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center relative" style={{ background: "#fff", border: `1px solid ${bTheme.border}` }}>
+                    <Icon size={18} style={{ color: bTheme.color }} />
+                  </div>
+                </div>
+                <div className="p-5 flex flex-col flex-1">
+                  {b.category && (
+                    <span className="w-fit rounded-full px-2.5 py-0.5 text-[12px] font-semibold mb-2.5" style={{ background: bTheme.bg, color: bTheme.color }}>{b.category}</span>
+                  )}
+                  <h3 className="text-[16px] font-bold leading-snug transition-colors group-hover:text-[#FF6B2B]" style={{ color: HEADING }}>{b.title}</h3>
+                  {b.excerpt && <p className="mt-2 text-[13.5px] leading-relaxed text-[#6B7280] line-clamp-2 flex-1">{b.excerpt}</p>}
+                  <span className="mt-3 inline-flex items-center gap-1 text-[13px] font-semibold" style={{ color: bTheme.color }}>
+                    Read more <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -490,39 +337,29 @@ function LatestPosts({ items }: { items: Blog[] }) {
 
 function FinalCTA() {
   return (
-    <section className="border-t border-[#E5E7EB] px-5 py-16 lg:px-8" style={{ background: "#F8FAFF" }}>
-      <div className="relative mx-auto max-w-[900px] overflow-hidden rounded-3xl px-6 py-14 text-center sm:px-14" style={{ background: `linear-gradient(135deg, ${HEADING} 0%, #16233D 100%)` }}>
-        <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-20 blur-3xl" style={{ background: ACCENT }} />
-        <div className="pointer-events-none absolute -bottom-20 -left-16 h-56 w-56 rounded-full opacity-20 blur-3xl" style={{ background: BLUE }} />
-
-        <div className="relative">
-          <h2 className="text-[26px] font-black leading-tight text-white sm:text-[34px]">Ready to grow faster?</h2>
-          <p className="mx-auto mt-4 max-w-lg text-[15.5px] leading-relaxed text-white/70">
-            Book a free strategy session with our senior team — we'll audit your funnel and hand you a 30-day action plan.
-          </p>
-          <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-            <Link to="/contact" className="btn-orange px-7 py-3.5 text-[15px] gap-2 inline-flex items-center">
-              Book a free strategy session <ArrowRight size={16} />
-            </Link>
-            <Link to="/case-studies" className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-white/10">
-              View our work
-            </Link>
-          </div>
+    <section className="py-16 px-5 lg:px-8 relative overflow-hidden text-center" style={{ background: HEADING }}>
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none" style={{ width: 800, height: 800, background: "radial-gradient(circle, rgba(255,107,43,0.1) 0%, rgba(124,58,237,0.08) 40%, transparent 70%)" }} />
+      <div className="absolute top-0 left-0 right-0 h-1" style={{ background: `linear-gradient(90deg, ${ACCENT}, #7C3AED, ${BLUE})` }} />
+      <div className="absolute top-8 left-8 w-48 h-48 rounded-full animate-drift opacity-20 pointer-events-none" style={{ background: `radial-gradient(circle, ${ACCENT}, transparent)` }} />
+      <div className="absolute bottom-8 right-8 w-36 h-36 rounded-full animate-drift-2 opacity-15 pointer-events-none" style={{ background: "radial-gradient(circle, #7C3AED, transparent)" }} />
+      <div className="max-w-2xl mx-auto relative z-10">
+        <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mb-6 tracking-widest uppercase text-[#FF6B2B]" style={{ background: "rgba(255,107,43,0.12)", border: "1px solid rgba(255,107,43,0.3)" }}>
+          Let's Build Together
+        </span>
+        <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4">Ready to Grow Faster?</h2>
+        <p className="text-[#E2E8F0] mb-8 leading-relaxed">
+          Book a free strategy session with our senior team — we'll audit your funnel and hand you a 30-day action plan.
+        </p>
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <Link to="/contact" className="btn-orange px-7 py-3.5 text-[15px] gap-2 inline-flex items-center">
+            Book a free strategy session <ArrowRight size={16} />
+          </Link>
+          <Link to="/case-studies" className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-white/10">
+            View our work
+          </Link>
         </div>
       </div>
     </section>
-  );
-}
-
-function ScrollToTop({ show }: { show: boolean }) {
-  return (
-    <button
-      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      aria-label="Scroll to top"
-      className={`fixed bottom-6 right-6 z-40 grid h-12 w-12 place-items-center rounded-full text-white shadow-lg transition-all ${show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"}`}
-      style={{ background: `linear-gradient(135deg, ${ACCENT}, #7C3AED)` }}>
-      <ArrowUp size={20} />
-    </button>
   );
 }
 

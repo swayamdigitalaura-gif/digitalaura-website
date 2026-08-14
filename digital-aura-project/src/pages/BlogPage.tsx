@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 import PageLayout from "@/components/PageLayout";
-import { Calendar, ArrowRight, Search, Zap, CheckCircle2, BadgeCheck, BookOpen } from "lucide-react";
+import { Calendar, ArrowRight, Zap } from "lucide-react";
 import { useSettings } from "@/hooks/useSettings";
 import { getBlogTheme } from "@/data/blogCategoryTheme";
 import { posts as seoBlogPosts } from "@/data/seoBlogPosts";
@@ -30,6 +30,10 @@ const readTimeOf = (html?: string) => {
   return words ? `${Math.max(1, Math.round(words / 200))} min read` : "";
 };
 
+// Every SEO-flavored category groups under one "SEO" filter pill; only
+// non-SEO categories (like "AI Search") get their own pill.
+const SEO_CATEGORIES = ["SEO Strategy", "Local SEO", "On-Page SEO", "Technical SEO"];
+
 const BlogPage = () => {
   const s = useSettings([
     'blog_hero_badge', 'blog_hero_heading', 'blog_hero_subtext',
@@ -38,7 +42,6 @@ const BlogPage = () => {
 
   const [realBlogs, setRealBlogs] = useState<RealBlog[] | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>("All");
-  const [query, setQuery] = useState("");
 
   useEffect(() => {
     fetch(`${API_BASE}/api/blogs?status=published`)
@@ -74,13 +77,18 @@ const BlogPage = () => {
   // defaults entirely rather than only showing when no DB posts exist.
   const posts = [...staticSeoPosts, ...dbPosts];
 
-  const categories = useMemo(() => Array.from(new Set(posts.map(p => p.category))), [posts]);
+  // Non-SEO categories present in the data get their own pill; everything
+  // else falls under the single grouped "SEO" pill.
+  const otherCategories = useMemo(
+    () => Array.from(new Set(posts.map(p => p.category))).filter(c => !SEO_CATEGORIES.includes(c)),
+    [posts]
+  );
 
   const filtered = useMemo(() => posts.filter(p => {
-    const matchesCategory = activeCategory === "All" || p.category === activeCategory;
-    const matchesQuery = query.trim() === "" || p.title.toLowerCase().includes(query.toLowerCase());
-    return matchesCategory && matchesQuery;
-  }), [posts, activeCategory, query]);
+    if (activeCategory === "All") return true;
+    if (activeCategory === "SEO") return SEO_CATEGORIES.includes(p.category);
+    return p.category === activeCategory;
+  }), [posts, activeCategory]);
 
 
   return (
@@ -93,108 +101,30 @@ const BlogPage = () => {
       </div>
       <div className="absolute inset-0 pointer-events-none dot-pattern opacity-40" />
 
-      <div className="max-w-7xl mx-auto px-4 md:px-8 w-full relative z-10 py-14 md:py-20">
-        <div className="grid lg:grid-cols-5 gap-10 lg:gap-16 items-center">
-          <div className="lg:col-span-3">
-            <motion.div {...fadeUp(0.05)}>
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-5 border animate-ai-glow" style={{ background: "rgba(124,58,237,0.08)", borderColor: "rgba(124,58,237,0.3)", color: "#7C3AED" }}
-                data-cms-key="blog_hero_badge" data-cms-label="Blog Hero Badge" data-cms-attr="text">
-                <Zap size={14} fill="#7C3AED" /> {s.blog_hero_badge || 'Blog & Insights'}
-              </span>
-            </motion.div>
+      <div className="max-w-3xl mx-auto px-4 md:px-8 w-full relative z-10 py-14 md:py-20 text-center">
+        <motion.div {...fadeUp(0.05)}>
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-5 border animate-ai-glow" style={{ background: "rgba(124,58,237,0.08)", borderColor: "rgba(124,58,237,0.3)", color: "#7C3AED" }}
+            data-cms-key="blog_hero_badge" data-cms-label="Blog Hero Badge" data-cms-attr="text">
+            <Zap size={14} fill="#7C3AED" /> {s.blog_hero_badge || 'Blog & Insights'}
+          </span>
+        </motion.div>
 
-            <motion.h1 {...fadeUp(0.15)} className="text-4xl md:text-5xl lg:text-[52px] font-bold leading-[1.12] text-[#0A1628] mb-4 tracking-tight"
-              data-cms-key="blog_hero_heading" data-cms-label="Blog Hero Heading" data-cms-attr="text">
-              {s.blog_hero_heading || <>Digital Intelligence,<br /><span className="text-orange-gradient">No Fluff.</span></>}
-            </motion.h1>
+        <motion.h1 {...fadeUp(0.15)} className="text-4xl md:text-5xl lg:text-[52px] font-bold leading-[1.12] text-[#0A1628] mb-4 tracking-tight"
+          data-cms-key="blog_hero_heading" data-cms-label="Blog Hero Heading" data-cms-attr="text">
+          {s.blog_hero_heading || <>Digital Intelligence,<br /><span className="text-orange-gradient">No Fluff.</span></>}
+        </motion.h1>
 
-            <motion.p {...fadeUp(0.25)} className="text-lg leading-relaxed mb-7 max-w-lg text-[#4B5563]"
-              data-cms-key="blog_hero_subtext" data-cms-label="Blog Hero Subtext" data-cms-attr="text">
-              {s.blog_hero_subtext || 'Practical strategies on AI, development, marketing, and design, from the team that actually does it.'}
-            </motion.p>
-
-            <motion.div {...fadeUp(0.35)} className="flex flex-wrap gap-x-6 gap-y-3">
-              {["Written by Practitioners", "No Recycled Advice", "Updated Regularly"].map((t) => (
-                <span key={t} className="flex items-center gap-2 text-sm font-medium text-[#374151]">
-                  <CheckCircle2 size={16} className="text-[#22C55E] shrink-0" /> {t}
-                </span>
-              ))}
-            </motion.div>
-          </div>
-
-          <div className="lg:col-span-2 hidden lg:flex justify-center">
-            <motion.div
-              initial={{ opacity: 0, x: 40, y: 10 }} animate={{ opacity: 1, x: 0, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="animate-bob w-full max-w-[320px]"
-            >
-              <div className="rounded-2xl p-6 border" style={{ background: "#fff", borderColor: "#E5E7EB", boxShadow: "0 24px 64px rgba(0,0,0,0.10), 0 4px 16px rgba(124,58,237,0.07)" }}>
-                <div className="flex items-center justify-between mb-5">
-                  <div className="flex items-center gap-2">
-                    <div className="flex items-center gap-1 px-2 py-1 rounded-lg text-[10px] font-bold" style={{ background: "rgba(124,58,237,0.1)", color: "#7C3AED" }}>
-                      <BookOpen size={10} /> Blog
-                    </div>
-                    <h3 className="font-bold text-[#0A1628] text-sm">Content Library</h3>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#22C55E] animate-pulse-ring" />
-                    <span className="text-xs text-[#22C55E] font-semibold">Live</span>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-3 mb-4">
-                  <div className="rounded-xl p-3.5" style={{ background: "#F8FAFF", border: "1px solid #E5E7EB" }}>
-                    <p className="text-2xl font-black" style={{ color: "#FF6B2B" }}>{posts.length}</p>
-                    <p className="text-[11px] font-semibold text-[#6B7280] mt-0.5">Articles</p>
-                  </div>
-                  <div className="rounded-xl p-3.5" style={{ background: "#F8FAFF", border: "1px solid #E5E7EB" }}>
-                    <p className="text-2xl font-black" style={{ color: "#7C3AED" }}>{categories.length}</p>
-                    <p className="text-[11px] font-semibold text-[#6B7280] mt-0.5">Categories</p>
-                  </div>
-                </div>
-
-                <div className="flex gap-2 flex-wrap mb-4">
-                  {categories.slice(0, 3).map(cat => {
-                    const t = getBlogTheme(cat);
-                    return (
-                      <span key={cat} className="text-xs font-semibold px-2.5 py-1 rounded-full border" style={{ color: t.color, background: t.bg, borderColor: t.bg }}>
-                        {cat}
-                      </span>
-                    );
-                  })}
-                </div>
-
-                <div className="pt-4 border-t flex items-center justify-between" style={{ borderColor: "#F3F4F6" }}>
-                  <div>
-                    <p className="text-xs text-[#6B7280]">Written by</p>
-                    <p className="text-sm font-bold text-[#0A1628]">Digital Aura Team</p>
-                  </div>
-                  <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg" style={{ background: "rgba(124,58,237,0.08)" }}>
-                    <BadgeCheck size={14} style={{ color: "#7C3AED" }} />
-                    <span className="text-[11px] font-bold" style={{ color: "#7C3AED" }}>Verified Experts</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
+        <motion.p {...fadeUp(0.25)} className="text-lg leading-relaxed mx-auto text-[#4B5563]"
+          data-cms-key="blog_hero_subtext" data-cms-label="Blog Hero Subtext" data-cms-attr="text">
+          {s.blog_hero_subtext || 'Practical strategies on AI, development, marketing, and design, from the team that actually does it.'}
+        </motion.p>
       </div>
     </section>
 
     {/* Filters */}
-    <section className="px-4 md:px-8 relative z-10 pb-2">
-      <div className="max-w-6xl mx-auto bg-white rounded-2xl border shadow-[0_8px_30px_rgba(0,0,0,0.06)] p-4 flex flex-col md:flex-row gap-4 items-stretch md:items-center" style={{ borderColor: "#E5E7EB" }}>
-        <div className="relative flex-1">
-          <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2" style={{ color: "#9CA3AF" }} />
-          <input
-            value={query}
-            onChange={e => setQuery(e.target.value)}
-            placeholder="Search articles..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-xl text-sm outline-none border"
-            style={{ borderColor: "#E5E7EB", color: "#0A1628" }}
-          />
-        </div>
-        <div className="flex flex-wrap gap-2">
+    <section className="px-4 md:px-8 relative z-10 pt-4 pb-8">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-wrap gap-3 justify-center">
           <button
             onClick={() => setActiveCategory("All")}
             className="text-xs font-bold px-3.5 py-2 rounded-full border transition-colors"
@@ -202,7 +132,7 @@ const BlogPage = () => {
           >
             All
           </button>
-          {categories.map(cat => {
+          {["SEO", ...otherCategories].map(cat => {
             const t = getBlogTheme(cat);
             const isActive = activeCategory === cat;
             return (

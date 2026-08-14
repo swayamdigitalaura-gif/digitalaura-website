@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import PageLayout from "@/components/PageLayout";
-import { Calendar, ArrowRight, TrendingUp, Target, DollarSign, Bot, Code2, Palette } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { Calendar, Clock, ArrowRight, Search, Zap, CheckCircle2, BadgeCheck, BookOpen } from "lucide-react";
 import { useSettings } from "@/hooks/useSettings";
+import { getBlogTheme } from "@/data/blogCategoryTheme";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
 
@@ -15,14 +15,8 @@ type RealBlog = {
   excerpt?: string;
   category?: string;
   createdAt: string;
+  content?: string;
 };
-
-const POST_ICONS: LucideIcon[] = [TrendingUp, Target, DollarSign, Bot, Code2, Palette];
-const POST_COLORS = ["#1A6FE8", "#FF6B2B", "#22C55E", "#7C3AED", "#1A6FE8", "#F59E0B"];
-const POST_BG = [
-  "rgba(26,111,232,0.1)", "rgba(255,107,43,0.1)", "rgba(34,197,94,0.1)",
-  "rgba(124,58,237,0.1)", "rgba(26,111,232,0.1)", "rgba(245,158,11,0.1)",
-];
 
 const POST_DEFAULTS = [
   { category: "SEO",             title: "10 SEO Strategies That Will Dominate Google in 2025",                                     excerpt: "AI generated content, EEAT signals, and Core Web Vitals, here's what's actually moving the needle this year.",                                                                            date: "Mar 28, 2025", readTime: "6 min read" },
@@ -32,6 +26,17 @@ const POST_DEFAULTS = [
   { category: "Development",     title: "SaaS MVP in 6 Weeks: Our Full Stack Development Framework",                               excerpt: "The exact tech stack, sprint structure, and delivery process we use to launch production-ready MVPs faster than any agency.",                                                          date: "Jan 22, 2025", readTime: "9 min read" },
   { category: "Design",          title: "Why 90% of Landing Pages Fail (And What Great Design Actually Looks Like)",               excerpt: "A teardown of 50 landing pages, the patterns that kill conversion and the design decisions that consistently outperform.",                                                               date: "Jan 10, 2025", readTime: "7 min read" },
 ];
+
+const fadeUp = (delay: number) => ({
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] as const },
+});
+
+const readTimeOf = (html?: string) => {
+  const words = (html || "").replace(/<[^>]+>/g, " ").trim().split(/\s+/).filter(Boolean).length;
+  return words ? `${Math.max(1, Math.round(words / 200))} min read` : "";
+};
 
 const BlogPage = () => {
   const s = useSettings([
@@ -46,6 +51,8 @@ const BlogPage = () => {
   ]);
 
   const [realBlogs, setRealBlogs] = useState<RealBlog[] | null>(null);
+  const [activeCategory, setActiveCategory] = useState<string>("All");
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     fetch(`${API_BASE}/api/blogs?status=published`)
@@ -56,115 +63,256 @@ const BlogPage = () => {
 
   const fallbackPosts = POST_DEFAULTS.map((def, i) => ({
     n: i + 1,
-    Icon: POST_ICONS[i],
-    catColor: POST_COLORS[i],
-    catBg: POST_BG[i],
-    category: s[`blog_post${i+1}_cat`] || def.category,
-    title: s[`blog_post${i+1}_title`] || def.title,
-    excerpt: s[`blog_post${i+1}_excerpt`] || def.excerpt,
-    date: s[`blog_post${i+1}_date`] || def.date,
-    readTime: s[`blog_post${i+1}_readtime`] || def.readTime,
-    href: "#",
+    category: s[`blog_post${i + 1}_cat`] || def.category,
+    title: s[`blog_post${i + 1}_title`] || def.title,
+    excerpt: s[`blog_post${i + 1}_excerpt`] || def.excerpt,
+    date: s[`blog_post${i + 1}_date`] || def.date,
+    readTime: s[`blog_post${i + 1}_readtime`] || def.readTime,
     slug: null as string | null,
   }));
 
-  // Use real published blogs from the CMS/API when available; otherwise
-  // fall back to the CMS-settings-driven placeholder posts.
   const posts = realBlogs
-    ? realBlogs.map((b, i) => ({
-        n: i + 1,
-        Icon: POST_ICONS[i % POST_ICONS.length],
-        catColor: POST_COLORS[i % POST_COLORS.length],
-        catBg: POST_BG[i % POST_BG.length],
-        category: b.category || "Blog",
+    ? realBlogs.map((b) => ({
+        n: b.id,
+        category: b.category || "SEO",
         title: b.title,
         excerpt: b.excerpt || "",
         date: new Date(b.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }),
-        readTime: "",
-        href: `/blog/${b.slug}`,
+        readTime: readTimeOf(b.content),
         slug: b.slug,
       }))
     : fallbackPosts;
 
+  const categories = useMemo(() => Array.from(new Set(posts.map(p => p.category))), [posts]);
+
+  const filtered = useMemo(() => posts.filter(p => {
+    const matchesCategory = activeCategory === "All" || p.category === activeCategory;
+    const matchesQuery = query.trim() === "" || p.title.toLowerCase().includes(query.toLowerCase());
+    return matchesCategory && matchesQuery;
+  }), [posts, activeCategory, query]);
+
+  const isDefaultView = activeCategory === "All" && query.trim() === "";
+  const featured = posts[0];
+  const featuredTheme = getBlogTheme(featured?.category);
+  const FeaturedIcon = featuredTheme.Icon;
+
   return (
   <PageLayout>
-    <section className="relative pt-[72px] overflow-hidden" style={{ background: "#FFFFFF" }}>
+    {/* Hero */}
+    <section className="relative overflow-hidden pt-[72px]" style={{ background: "#fff" }}>
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute rounded-full animate-drift" style={{ width: 500, height: 500, top: "-20%", right: "-10%", background: "radial-gradient(circle, rgba(26,111,232,0.08) 0%, transparent 70%)", filter: "blur(60px)" }} />
+        <div className="absolute animate-drift rounded-full" style={{ width: 600, height: 600, top: "-18%", right: "-10%", background: "radial-gradient(circle at 40% 40%, rgba(255,107,43,0.13) 0%, rgba(255,107,43,0.04) 50%, transparent 70%)", filter: "blur(40px)" }} />
+        <div className="absolute animate-drift-2 rounded-full" style={{ width: 520, height: 520, bottom: "-16%", left: "-10%", background: "radial-gradient(circle at 60% 60%, rgba(124,58,237,0.08) 0%, rgba(26,111,232,0.05) 50%, transparent 70%)", filter: "blur(40px)" }} />
       </div>
-      <div className="absolute inset-0 pointer-events-none dot-pattern opacity-30" />
+      <div className="absolute inset-0 pointer-events-none dot-pattern opacity-40" />
 
-      <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative z-10 pt-20 pb-16">
-        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold mb-6 tracking-widest uppercase"
-            style={{ background: "rgba(26,111,232,0.1)", color: "#1A6FE8", border: "1px solid rgba(26,111,232,0.25)" }}
-            data-cms-key="blog_hero_badge" data-cms-label="Blog Hero Badge" data-cms-attr="text">
-            {s.blog_hero_badge || 'Blog & Insights'}
-          </span>
-          <h1 className="text-4xl md:text-5xl lg:text-[56px] font-bold leading-[1.1] text-[#0A1628] mb-6 tracking-tight"
-            data-cms-key="blog_hero_heading" data-cms-label="Blog Hero Heading" data-cms-attr="text">
-            {s.blog_hero_heading || 'Digital Intelligence, No Fluff.'}
-          </h1>
-          <p className="text-lg text-[#4B5563] max-w-xl mx-auto"
-            data-cms-key="blog_hero_subtext" data-cms-label="Blog Hero Subtext" data-cms-attr="text">
-            {s.blog_hero_subtext || 'Practical strategies on AI, development, marketing, and design, from the team that actually does it.'}
-          </p>
-        </motion.div>
+      <div className="max-w-7xl mx-auto px-4 md:px-8 w-full relative z-10 py-14 md:py-20">
+        <div className="grid lg:grid-cols-5 gap-10 lg:gap-16 items-center">
+          <div className="lg:col-span-3">
+            <motion.div {...fadeUp(0.05)}>
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-5 border animate-ai-glow" style={{ background: "rgba(124,58,237,0.08)", borderColor: "rgba(124,58,237,0.3)", color: "#7C3AED" }}
+                data-cms-key="blog_hero_badge" data-cms-label="Blog Hero Badge" data-cms-attr="text">
+                <Zap size={14} fill="#7C3AED" /> {s.blog_hero_badge || 'Blog & Insights'}
+              </span>
+            </motion.div>
+
+            <motion.h1 {...fadeUp(0.15)} className="text-4xl md:text-5xl lg:text-[52px] font-bold leading-[1.12] text-[#0A1628] mb-4 tracking-tight"
+              data-cms-key="blog_hero_heading" data-cms-label="Blog Hero Heading" data-cms-attr="text">
+              {s.blog_hero_heading || <>Digital Intelligence,<br /><span className="text-orange-gradient">No Fluff.</span></>}
+            </motion.h1>
+
+            <motion.p {...fadeUp(0.25)} className="text-lg leading-relaxed mb-7 max-w-lg text-[#4B5563]"
+              data-cms-key="blog_hero_subtext" data-cms-label="Blog Hero Subtext" data-cms-attr="text">
+              {s.blog_hero_subtext || 'Practical strategies on AI, development, marketing, and design, from the team that actually does it.'}
+            </motion.p>
+
+            <motion.div {...fadeUp(0.35)} className="flex flex-wrap gap-x-6 gap-y-3">
+              {["Written by Practitioners", "No Recycled Advice", "Updated Regularly"].map((t) => (
+                <span key={t} className="flex items-center gap-2 text-sm font-medium text-[#374151]">
+                  <CheckCircle2 size={16} className="text-[#22C55E] shrink-0" /> {t}
+                </span>
+              ))}
+            </motion.div>
+          </div>
+
+          <div className="lg:col-span-2 hidden lg:flex justify-center">
+            <motion.div
+              initial={{ opacity: 0, x: 40, y: 10 }} animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="animate-bob w-full max-w-[320px]"
+            >
+              <div className="rounded-2xl p-6 border" style={{ background: "#fff", borderColor: "#E5E7EB", boxShadow: "0 24px 64px rgba(0,0,0,0.10), 0 4px 16px rgba(124,58,237,0.07)" }}>
+                <div className="flex items-center justify-between mb-5">
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1 px-2 py-1 rounded-lg text-[10px] font-bold" style={{ background: "rgba(124,58,237,0.1)", color: "#7C3AED" }}>
+                      <BookOpen size={10} /> Blog
+                    </div>
+                    <h3 className="font-bold text-[#0A1628] text-sm">Content Library</h3>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#22C55E] animate-pulse-ring" />
+                    <span className="text-xs text-[#22C55E] font-semibold">Live</span>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3 mb-4">
+                  <div className="rounded-xl p-3.5" style={{ background: "#F8FAFF", border: "1px solid #E5E7EB" }}>
+                    <p className="text-2xl font-black" style={{ color: "#FF6B2B" }}>{posts.length}</p>
+                    <p className="text-[11px] font-semibold text-[#6B7280] mt-0.5">Articles</p>
+                  </div>
+                  <div className="rounded-xl p-3.5" style={{ background: "#F8FAFF", border: "1px solid #E5E7EB" }}>
+                    <p className="text-2xl font-black" style={{ color: "#7C3AED" }}>{categories.length}</p>
+                    <p className="text-[11px] font-semibold text-[#6B7280] mt-0.5">Categories</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-2 flex-wrap mb-4">
+                  {categories.slice(0, 3).map(cat => {
+                    const t = getBlogTheme(cat);
+                    return (
+                      <span key={cat} className="text-xs font-semibold px-2.5 py-1 rounded-full border" style={{ color: t.color, background: t.bg, borderColor: t.bg }}>
+                        {cat}
+                      </span>
+                    );
+                  })}
+                </div>
+
+                <div className="pt-4 border-t flex items-center justify-between" style={{ borderColor: "#F3F4F6" }}>
+                  <div>
+                    <p className="text-xs text-[#6B7280]">Written by</p>
+                    <p className="text-sm font-bold text-[#0A1628]">Digital Aura Team</p>
+                  </div>
+                  <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg" style={{ background: "rgba(124,58,237,0.08)" }}>
+                    <BadgeCheck size={14} style={{ color: "#7C3AED" }} />
+                    <span className="text-[11px] font-bold" style={{ color: "#7C3AED" }}>Verified Experts</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section className="py-16 px-4 md:px-8" style={{ background: "#F8FAFF" }}>
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {posts.map((p, i) => (
-            <motion.a key={p.slug || i} href={p.href}
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.09 }}
-              className="card-hover group rounded-2xl overflow-hidden border bg-white block"
-              style={{ borderColor: "#E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
-              <div className="h-44 flex items-center justify-center relative overflow-hidden"
-                style={{ background: `linear-gradient(135deg, ${p.catBg} 0%, rgba(255,255,255,0.5) 100%)` }}>
-                <div className="w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500"
-                  style={{ background: `${p.catColor}15`, border: `1.5px solid ${p.catColor}25` }}>
-                  <p.Icon size={32} style={{ color: p.catColor }} strokeWidth={1.5} />
-                </div>
-                <span className="absolute top-4 left-4 text-xs font-bold px-3 py-1.5 rounded-full"
-                  style={{ color: p.catColor, background: p.catBg }}
-                  {...(!p.slug && { 'data-cms-key': `blog_post${p.n}_cat`, 'data-cms-label': `Blog Post ${p.n} Category`, 'data-cms-attr': 'text' })}>
-                  {p.category}
-                </span>
-              </div>
-              <div className="p-6">
-                <h2 className="text-base font-bold text-[#0A1628] mb-2 leading-snug group-hover:text-[#FF6B2B] transition-colors"
-                  {...(!p.slug && { 'data-cms-key': `blog_post${p.n}_title`, 'data-cms-label': `Blog Post ${p.n} Title`, 'data-cms-attr': 'text' })}>
-                  {p.title}
-                </h2>
-                <p className="text-sm text-[#6B7280] leading-relaxed mb-4"
-                  {...(!p.slug && { 'data-cms-key': `blog_post${p.n}_excerpt`, 'data-cms-label': `Blog Post ${p.n} Excerpt`, 'data-cms-attr': 'text' })}>
-                  {p.excerpt}
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="flex items-center gap-1.5 text-xs text-[#9CA3AF]">
-                    <Calendar size={11} />
-                    <span {...(!p.slug && { 'data-cms-key': `blog_post${p.n}_date`, 'data-cms-label': `Blog Post ${p.n} Date`, 'data-cms-attr': 'text' })}>{p.date}</span>
-                    {p.readTime && (
-                      <>
-                        {" · "}
-                        <span {...(!p.slug && { 'data-cms-key': `blog_post${p.n}_readtime`, 'data-cms-label': `Blog Post ${p.n} Read Time`, 'data-cms-attr': 'text' })}>{p.readTime}</span>
-                      </>
-                    )}
-                  </span>
-                  <span className="text-xs font-semibold inline-flex items-center gap-1 group-hover:gap-2 transition-all" style={{ color: "#FF6B2B" }}>
-                    Read <ArrowRight size={11} />
-                  </span>
-                </div>
-              </div>
-            </motion.a>
-          ))}
+    {/* Filters */}
+    <section className="px-4 md:px-8 relative z-10 pb-2">
+      <div className="max-w-6xl mx-auto bg-white rounded-2xl border shadow-[0_8px_30px_rgba(0,0,0,0.06)] p-4 flex flex-col md:flex-row gap-4 items-stretch md:items-center" style={{ borderColor: "#E5E7EB" }}>
+        <div className="relative flex-1">
+          <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2" style={{ color: "#9CA3AF" }} />
+          <input
+            value={query}
+            onChange={e => setQuery(e.target.value)}
+            placeholder="Search articles..."
+            className="w-full pl-10 pr-4 py-2.5 rounded-xl text-sm outline-none border"
+            style={{ borderColor: "#E5E7EB", color: "#0A1628" }}
+          />
         </div>
+        <div className="flex flex-wrap gap-2">
+          <button
+            onClick={() => setActiveCategory("All")}
+            className="text-xs font-bold px-3.5 py-2 rounded-full border transition-colors"
+            style={activeCategory === "All" ? { background: "#0A1628", borderColor: "#0A1628", color: "#fff" } : { background: "#fff", borderColor: "#E5E7EB", color: "#4B5563" }}
+          >
+            All
+          </button>
+          {categories.map(cat => {
+            const t = getBlogTheme(cat);
+            const isActive = activeCategory === cat;
+            return (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className="text-xs font-bold px-3.5 py-2 rounded-full border transition-colors flex items-center gap-1.5"
+                style={isActive ? { background: t.color, borderColor: t.color, color: "#fff" } : { background: t.bg, borderColor: t.border, color: t.color }}
+              >
+                <t.Icon size={12} /> {cat}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {/* Featured post */}
+    {isDefaultView && featured && (
+      <section className="px-4 md:px-8 pt-10">
+        <div className="max-w-6xl mx-auto">
+          <Link
+            to={featured.slug ? `/blog/${featured.slug}` : "#"}
+            className="group grid grid-cols-1 md:grid-cols-2 gap-0 rounded-3xl overflow-hidden border card-hover"
+            style={{ borderColor: "#E5E7EB" }}
+          >
+            <div className="p-8 md:p-10 flex flex-col justify-center relative overflow-hidden" style={{ background: "#0A1628" }}>
+              <div className="absolute -top-10 -right-10 w-56 h-56 rounded-full pointer-events-none" style={{ background: `radial-gradient(circle, ${featuredTheme.color}33 0%, transparent 70%)` }} />
+              <span className="relative inline-flex w-fit items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full mb-4" style={{ color: featuredTheme.color, background: "rgba(255,255,255,0.08)" }}>
+                <FeaturedIcon size={12} /> Featured &middot; {featured.category}
+              </span>
+              <h2 className="relative text-2xl md:text-3xl font-black text-white leading-tight mb-3">{featured.title}</h2>
+              <p className="relative text-sm mb-5 leading-relaxed" style={{ color: "#CBD5E1" }}>{featured.excerpt}</p>
+              <div className="relative flex items-center gap-4 text-xs mb-5" style={{ color: "#9CA3AF" }}>
+                <span className="flex items-center gap-1.5"><Calendar size={12} /> {featured.date}</span>
+                {featured.readTime && <span className="flex items-center gap-1.5"><Clock size={12} /> {featured.readTime}</span>}
+              </div>
+              <span className="relative inline-flex items-center gap-2 text-sm font-bold group-hover:gap-3 transition-all w-fit" style={{ color: featuredTheme.color }}>
+                Read Article <ArrowRight size={14} />
+              </span>
+            </div>
+            <div className="hidden md:flex items-center justify-center relative" style={{ background: `linear-gradient(135deg, ${featuredTheme.bg}, rgba(124,58,237,0.08))` }}>
+              <div className="absolute inset-0 dot-pattern opacity-25" />
+              <FeaturedIcon size={120} strokeWidth={1} style={{ color: featuredTheme.color, opacity: 0.25 }} />
+            </div>
+          </Link>
+        </div>
+      </section>
+    )}
+
+    {/* Grid */}
+    <section className="py-14 px-4 md:px-8">
+      <div className="max-w-6xl mx-auto">
+        {filtered.length === 0 ? (
+          <p className="text-center py-20" style={{ color: "#9CA3AF" }}>No articles match your search.</p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {(isDefaultView ? filtered.slice(1) : filtered).map((p, i) => {
+              const t = getBlogTheme(p.category);
+              const Icon = t.Icon;
+              return (
+                <motion.div key={p.slug || p.n} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: (i % 6) * 0.05 }}>
+                  <Link
+                    to={p.slug ? `/blog/${p.slug}` : "#"}
+                    className="group flex flex-col h-full rounded-2xl border bg-white overflow-hidden card-hover"
+                    style={{ borderColor: "#E5E7EB" }}
+                  >
+                    <div className="h-24 flex items-center justify-center relative overflow-hidden" style={{ background: t.bg }}>
+                      <div className="absolute inset-0 dot-pattern opacity-20" />
+                      <div className="w-12 h-12 rounded-xl flex items-center justify-center relative" style={{ background: "#fff", border: `1px solid ${t.border}` }}>
+                        <Icon size={22} style={{ color: t.color }} />
+                      </div>
+                    </div>
+                    <div className="p-6 flex flex-col flex-1">
+                      <span className="inline-flex w-fit text-[11px] font-bold px-2.5 py-1 rounded-full mb-3" style={{ color: t.color, background: t.bg }}>
+                        {p.category}
+                      </span>
+                      <h3 className="text-[17px] font-black leading-snug mb-2.5 transition-colors" style={{ color: "#0A1628" }}>{p.title}</h3>
+                      <p className="text-[13.5px] leading-relaxed mb-5 flex-1" style={{ color: "#6B7280" }}>
+                        {p.excerpt.length > 130 ? p.excerpt.slice(0, 130).trim() + "…" : p.excerpt}
+                      </p>
+                      <div className="flex items-center justify-between text-xs pt-4 border-t" style={{ borderColor: "#F3F4F6", color: "#9CA3AF" }}>
+                        <span className="flex items-center gap-1.5"><Calendar size={12} /> {p.date}</span>
+                        <span className="flex items-center gap-1 font-bold group-hover:gap-2 transition-all" style={{ color: t.color }}>
+                          Read <ArrowRight size={12} />
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </div>
+        )}
 
         <div className="text-center mt-16">
-          <p className="text-[#6B7280] mb-6"
-            data-cms-key="blog_cta_text" data-cms-label="Blog CTA Text" data-cms-attr="text">
+          <p className="text-[#6B7280] mb-6" data-cms-key="blog_cta_text" data-cms-label="Blog CTA Text" data-cms-attr="text">
             {s.blog_cta_text || 'Want strategies like these implemented for your business?'}
           </p>
           <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2 inline-flex">

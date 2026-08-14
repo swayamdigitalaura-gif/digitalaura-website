@@ -5,6 +5,7 @@ import PageLayout from "@/components/PageLayout";
 import { Calendar, Clock, ArrowRight, Search, Zap, CheckCircle2, BadgeCheck, BookOpen } from "lucide-react";
 import { useSettings } from "@/hooks/useSettings";
 import { getBlogTheme } from "@/data/blogCategoryTheme";
+import { posts as seoBlogPosts } from "@/data/seoBlogPosts";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
 
@@ -17,15 +18,6 @@ type RealBlog = {
   createdAt: string;
   content?: string;
 };
-
-const POST_DEFAULTS = [
-  { category: "SEO",             title: "10 SEO Strategies That Will Dominate Google in 2025",                                     excerpt: "AI generated content, EEAT signals, and Core Web Vitals, here's what's actually moving the needle this year.",                                                                            date: "Mar 28, 2025", readTime: "6 min read" },
-  { category: "Meta Ads",        title: "How Meta Ads Can Triple Your Leads in 30 Days",                                           excerpt: "A breakdown of the exact audience structure, creative format, and bidding strategy we use to hit 3x ROAS consistently.",                                                             date: "Mar 15, 2025", readTime: "8 min read" },
-  { category: "Google Ads",      title: "Why Your Google Ads Are Losing Money (And How to Fix It)",                                excerpt: "The 5 most common mistakes that drain ad budgets, and the exact fixes that have saved our clients lakhs every month.",                                                                    date: "Feb 20, 2025", readTime: "7 min read" },
-  { category: "AI & Automation", title: "How We Built an AI Chatbot That Reduced Support Tickets by 68%",                          excerpt: "A technical walkthrough of how we architected a GPT-4 powered support assistant for an eCommerce brand, from prompt engineering to deployment.",                                           date: "Feb 5, 2025",  readTime: "10 min read" },
-  { category: "Development",     title: "SaaS MVP in 6 Weeks: Our Full Stack Development Framework",                               excerpt: "The exact tech stack, sprint structure, and delivery process we use to launch production-ready MVPs faster than any agency.",                                                          date: "Jan 22, 2025", readTime: "9 min read" },
-  { category: "Design",          title: "Why 90% of Landing Pages Fail (And What Great Design Actually Looks Like)",               excerpt: "A teardown of 50 landing pages, the patterns that kill conversion and the design decisions that consistently outperform.",                                                               date: "Jan 10, 2025", readTime: "7 min read" },
-];
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -41,12 +33,6 @@ const readTimeOf = (html?: string) => {
 const BlogPage = () => {
   const s = useSettings([
     'blog_hero_badge', 'blog_hero_heading', 'blog_hero_subtext',
-    'blog_post1_cat', 'blog_post1_title', 'blog_post1_excerpt', 'blog_post1_date', 'blog_post1_readtime',
-    'blog_post2_cat', 'blog_post2_title', 'blog_post2_excerpt', 'blog_post2_date', 'blog_post2_readtime',
-    'blog_post3_cat', 'blog_post3_title', 'blog_post3_excerpt', 'blog_post3_date', 'blog_post3_readtime',
-    'blog_post4_cat', 'blog_post4_title', 'blog_post4_excerpt', 'blog_post4_date', 'blog_post4_readtime',
-    'blog_post5_cat', 'blog_post5_title', 'blog_post5_excerpt', 'blog_post5_date', 'blog_post5_readtime',
-    'blog_post6_cat', 'blog_post6_title', 'blog_post6_excerpt', 'blog_post6_date', 'blog_post6_readtime',
     'blog_cta_text', 'blog_cta_button',
   ]);
 
@@ -61,17 +47,17 @@ const BlogPage = () => {
       .catch(() => setRealBlogs(null));
   }, []);
 
-  const fallbackPosts = POST_DEFAULTS.map((def, i) => ({
-    n: i + 1,
-    category: s[`blog_post${i + 1}_cat`] || def.category,
-    title: s[`blog_post${i + 1}_title`] || def.title,
-    excerpt: s[`blog_post${i + 1}_excerpt`] || def.excerpt,
-    date: s[`blog_post${i + 1}_date`] || def.date,
-    readTime: s[`blog_post${i + 1}_readtime`] || def.readTime,
-    slug: null as string | null,
+  const staticSeoPosts = seoBlogPosts.map((p) => ({
+    n: p.slug,
+    category: p.category,
+    title: p.title,
+    excerpt: p.metaDescription,
+    date: p.dateDisplay,
+    readTime: p.readTime,
+    slug: p.slug,
   }));
 
-  const posts = realBlogs
+  const dbPosts = realBlogs
     ? realBlogs.map((b) => ({
         n: b.id,
         category: b.category || "SEO",
@@ -81,7 +67,12 @@ const BlogPage = () => {
         readTime: readTimeOf(b.content),
         slug: b.slug,
       }))
-    : fallbackPosts;
+    : [];
+
+  // Real content always wins over the generic CMS placeholders — the 11
+  // SEO/AEO/GEO posts are genuinely live, so they replace the 6 fallback
+  // defaults entirely rather than only showing when no DB posts exist.
+  const posts = [...staticSeoPosts, ...dbPosts];
 
   const categories = useMemo(() => Array.from(new Set(posts.map(p => p.category))), [posts]);
 

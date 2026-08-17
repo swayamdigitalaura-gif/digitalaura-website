@@ -10,6 +10,13 @@ import sambhavPhoto from "@/assets/sambhav.jpg";
 
 const SITE = "https://thedigitalaura.com";
 
+const AUTHOR_PHOTOS: Record<string, string> = {
+  "Sambhav Shah": sambhavPhoto,
+  "Jinali Lodariya": "/team/jinali.png",
+  "Swayam Parikh": "/team/swayam.png",
+  "Deepak Nagar": "/team/deepak.png",
+};
+
 const shortTeaser = (text: string) => {
   const firstSentence = text.split(/(?<=\.)\s/)[0];
   return firstSentence.length > 140 ? firstSentence.slice(0, 140).trim() + "…" : firstSentence;
@@ -143,7 +150,7 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
           <div className="flex flex-wrap items-center gap-5 text-sm justify-center" style={{ color: "#6B7280" }}>
             <span className="flex items-center gap-1.5"><Calendar size={14} style={{ color: theme.color }} /> {post.dateDisplay}</span>
             <span className="flex items-center gap-1.5"><Clock size={14} style={{ color: theme.color }} /> {post.readTime}</span>
-            <span>By <strong style={{ color: "#0A1628" }}>{post.author}</strong></span>
+            <span>Reviewed by: <strong style={{ color: "#0A1628" }}>Sambhav Shah</strong></span>
           </div>
         </motion.div>
       </section>
@@ -194,7 +201,7 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
               <div className="flex flex-col sm:flex-row gap-6">
                 <div className="shrink-0 flex sm:flex-col items-center sm:items-start gap-4 sm:gap-3">
                   <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden" style={{ boxShadow: `0 8px 32px ${theme.glow}`, border: `3px solid ${theme.border}` }}>
-                    <img src={sambhavPhoto} alt={post.author} className="w-full h-full object-cover object-top" />
+                    <img src={AUTHOR_PHOTOS[post.author] || sambhavPhoto} alt={post.author} className="w-full h-full object-cover object-top scale-110" />
                   </div>
                   <div className="sm:hidden">
                     <p className="font-black text-lg leading-tight" style={{ color: "#0A1628" }}>{post.author}</p>

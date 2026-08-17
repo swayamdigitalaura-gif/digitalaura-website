@@ -30,6 +30,21 @@ const AUTHOR_BIO = "Sambhav didn't learn digital marketing in a classroom. Start
 const AUTHOR_TAGS = ["SEO Strategy", "Performance Marketing", "AI Solutions", "Team Leadership", "Client Success", "Business Growth"];
 const AUTHOR_LINK = "https://thedigitalaura.com/about";
 
+const AUTHOR_JINALI = "Jinali Lodariya";
+const AUTHOR_JINALI_ROLE = "SEO Executive, Digital Aura";
+const AUTHOR_JINALI_BIO = "Jinali handles SEO at Digital Aura. She runs technical audits, fixes what's holding a site back in search, and builds keyword and content strategies around what a business can realistically rank for. That means going through a site page by page — checking how it's indexed, how it's structured, and what's already working before deciding what to change.\n\nBefore recommending anything, she checks the data first — Search Console, rankings, site health — so every fix is backed by what's actually happening, not a guess. She keeps track of what's already been tried on a site so she isn't repeating work that didn't move the needle. After a change goes live, she follows up to see whether it actually improved rankings or traffic, not just whether it was completed.";
+const AUTHOR_JINALI_TAGS = ["Technical SEO", "Keyword Research", "On-Page SEO", "Local SEO", "Search Console", "SEO Audits"];
+
+const AUTHOR_SWAYAM = "Swayam Parikh";
+const AUTHOR_SWAYAM_ROLE = "Full Stack AI Developer, Digital Aura";
+const AUTHOR_SWAYAM_BIO = "Swayam builds the AI and automation systems behind Digital Aura's tech-forward client work — from custom chatbots and AI-powered internal tools to full-stack web applications that plug directly into a client's operations. He works across the entire stack, front end to backend to the AI layer, and specializes in turning \"we wish this were automated\" into something shipped and running in production. Most of his projects start as a rough idea from a client and end up as a working tool their team actually uses day to day.\n\nHe stays close to how fast AI tooling moves — new models, new frameworks, new ways to wire an LLM into a real product — and brings that into client builds rather than treating AI as a buzzword bolted onto existing work. Before adding an AI feature to anything, he checks whether it actually solves the problem better than a simpler solution would. That keeps his builds practical instead of AI for the sake of AI.";
+const AUTHOR_SWAYAM_TAGS = ["AI Development", "Full-Stack Engineering", "Chatbots & Automation", "LLM Integration", "Product Engineering"];
+
+const AUTHOR_DEEPAK = "Deepak Nagar";
+const AUTHOR_DEEPAK_ROLE = "Full Stack AI Developer, Digital Aura";
+const AUTHOR_DEEPAK_BIO = "Deepak works alongside the AI development team on Digital Aura's full-stack and automation projects — building the applications, integrations, and AI-powered features that turn a client's idea into working software. He's comfortable moving across the stack, from backend logic and APIs to the AI models and automations that sit on top of them. That range means he can take a project from a database schema and an API all the way through to the AI feature sitting on top of it, without handing pieces off between specialists.\n\nHe approaches AI development the way a good engineer approaches any build: start with what the client actually needs, then find the simplest, most reliable way to make the AI layer do that job well. He'd rather ship something reliable that does one thing well than something impressive that breaks under real use. Once a feature is live, he keeps testing it against real scenarios, not just the ones it was originally built for.";
+const AUTHOR_DEEPAK_TAGS = ["AI Development", "Full-Stack Engineering", "API Integrations", "AI Automation", "Backend Engineering"];
+
 export const posts: BlogPost[] = [
   // ────────────────────────────────────────────────────────────────────
   {
@@ -42,10 +57,10 @@ export const posts: BlogPost[] = [
     date: "2026-01-12",
     dateDisplay: "Jan 12, 2026",
     readTime: "9 min read",
-    author: AUTHOR,
-    authorRole: AUTHOR_ROLE,
-    authorBio: AUTHOR_BIO,
-    authorTags: AUTHOR_TAGS,
+    author: AUTHOR_JINALI,
+    authorRole: AUTHOR_JINALI_ROLE,
+    authorBio: AUTHOR_JINALI_BIO,
+    authorTags: AUTHOR_JINALI_TAGS,
     authorLink: AUTHOR_LINK,
     directAnswer: "SEO in 2026 still rewards technically sound, genuinely useful content — but two things changed: Google now answers a growing share of queries directly inside AI Overviews before a user ever clicks a blue link, and AI assistants like ChatGPT and Perplexity have become a real discovery channel alongside Google. Ranking well now means optimising for three layers at once: traditional search rankings (SEO), Google's AI-generated answers (AEO), and citations inside AI chat tools (GEO).",
     keyTakeaways: [
@@ -126,10 +141,10 @@ export const posts: BlogPost[] = [
     date: "2026-01-19",
     dateDisplay: "Jan 19, 2026",
     readTime: "8 min read",
-    author: AUTHOR,
-    authorRole: AUTHOR_ROLE,
-    authorBio: AUTHOR_BIO,
-    authorTags: AUTHOR_TAGS,
+    author: AUTHOR_JINALI,
+    authorRole: AUTHOR_JINALI_ROLE,
+    authorBio: AUTHOR_JINALI_BIO,
+    authorTags: AUTHOR_JINALI_TAGS,
     authorLink: AUTHOR_LINK,
     directAnswer: "Ranking #1 in the Google Maps local pack comes down to three ranking factors Google has confirmed: relevance, distance, and prominence. You can't change distance, but relevance and prominence are both directly within your control through specific Google Business Profile actions — category selection, photo volume, review velocity, and Q&A management being the highest-leverage ones.",
     keyTakeaways: [
@@ -205,10 +220,10 @@ export const posts: BlogPost[] = [
     date: "2026-01-26",
     dateDisplay: "Jan 26, 2026",
     readTime: "10 min read",
-    author: AUTHOR,
-    authorRole: AUTHOR_ROLE,
-    authorBio: AUTHOR_BIO,
-    authorTags: AUTHOR_TAGS,
+    author: AUTHOR_JINALI,
+    authorRole: AUTHOR_JINALI_ROLE,
+    authorBio: AUTHOR_JINALI_BIO,
+    authorTags: AUTHOR_JINALI_TAGS,
     authorLink: AUTHOR_LINK,
     directAnswer: "On-page SEO in 2026 means optimising title tags, meta descriptions, headings, content structure, internal links, and images on every page so both search engines and AI answer engines understand exactly what the page is about. The checklist below covers every element in the order that has the most ranking impact, so you can work through it page by page without guessing what matters most.",
     keyTakeaways: [
@@ -325,10 +340,10 @@ export const posts: BlogPost[] = [
     date: "2026-02-02",
     dateDisplay: "Feb 2, 2026",
     readTime: "9 min read",
-    author: AUTHOR,
-    authorRole: AUTHOR_ROLE,
-    authorBio: AUTHOR_BIO,
-    authorTags: AUTHOR_TAGS,
+    author: AUTHOR_JINALI,
+    authorRole: AUTHOR_JINALI_ROLE,
+    authorBio: AUTHOR_JINALI_BIO,
+    authorTags: AUTHOR_JINALI_TAGS,
     authorLink: AUTHOR_LINK,
     directAnswer: "A brand new website with no existing authority typically needs 4-6 months of consistent technical, content, and link-building work before ranking competitively for its target keywords — there is no legitimate way to skip this timeline. The roadmap that works fastest starts with technical foundations and long-tail keyword targeting in month one, moves to content depth and internal linking by month three, and layers in link building and authority signals from month two onward, running in parallel rather than sequentially.",
     keyTakeaways: [
@@ -411,10 +426,10 @@ export const posts: BlogPost[] = [
     date: "2026-02-09",
     dateDisplay: "Feb 9, 2026",
     readTime: "8 min read",
-    author: AUTHOR,
-    authorRole: AUTHOR_ROLE,
-    authorBio: AUTHOR_BIO,
-    authorTags: AUTHOR_TAGS,
+    author: AUTHOR_SWAYAM,
+    authorRole: AUTHOR_SWAYAM_ROLE,
+    authorBio: AUTHOR_SWAYAM_BIO,
+    authorTags: AUTHOR_SWAYAM_TAGS,
     authorLink: AUTHOR_LINK,
     directAnswer: "AEO (Answer Engine Optimization) targets Google's AI Overviews and featured snippets. GEO (Generative Engine Optimization) targets being cited by AI chat tools like ChatGPT, Perplexity, and Gemini. LLMO (Large Language Model Optimization) is a broader, related term covering how content is structured to be understood and trusted by large language models generally — it overlaps heavily with GEO and the two terms are often used interchangeably. All three sit on top of solid traditional SEO; none of them replace it.",
     keyTakeaways: [
@@ -491,10 +506,10 @@ export const posts: BlogPost[] = [
     date: "2026-02-16",
     dateDisplay: "Feb 16, 2026",
     readTime: "9 min read",
-    author: AUTHOR,
-    authorRole: AUTHOR_ROLE,
-    authorBio: AUTHOR_BIO,
-    authorTags: AUTHOR_TAGS,
+    author: AUTHOR_JINALI,
+    authorRole: AUTHOR_JINALI_ROLE,
+    authorBio: AUTHOR_JINALI_BIO,
+    authorTags: AUTHOR_JINALI_TAGS,
     authorLink: AUTHOR_LINK,
     directAnswer: "A 10x increase in organic traffic is achievable for most under-optimised sites, but it comes from compounding several things at once over months, not a single tactic: fixing technical issues that are actively suppressing existing pages, expanding content coverage into a genuine topic cluster rather than isolated posts, and consistently earning the internal linking and backlinks that turn individual pages into a mutually reinforcing system.",
     keyTakeaways: [
@@ -577,10 +592,10 @@ export const posts: BlogPost[] = [
     date: "2026-02-23",
     dateDisplay: "Feb 23, 2026",
     readTime: "9 min read",
-    author: AUTHOR,
-    authorRole: AUTHOR_ROLE,
-    authorBio: AUTHOR_BIO,
-    authorTags: AUTHOR_TAGS,
+    author: AUTHOR_JINALI,
+    authorRole: AUTHOR_JINALI_ROLE,
+    authorBio: AUTHOR_JINALI_BIO,
+    authorTags: AUTHOR_JINALI_TAGS,
     authorLink: AUTHOR_LINK,
     directAnswer: "Technical SEO in 2026 centers on nine practices that directly affect whether Google and AI crawlers can access, understand, and trust your site: Core Web Vitals, mobile-first indexing, crawl budget management, clean site architecture, structured data, HTTPS and security, canonicalisation, XML sitemaps, and AI-crawler accessibility. Skipping any of these caps how well even excellent content can perform.",
     keyTakeaways: [
@@ -673,10 +688,10 @@ Allow: /</code></pre>
     date: "2026-03-02",
     dateDisplay: "Mar 2, 2026",
     readTime: "10 min read",
-    author: AUTHOR,
-    authorRole: AUTHOR_ROLE,
-    authorBio: AUTHOR_BIO,
-    authorTags: AUTHOR_TAGS,
+    author: AUTHOR_JINALI,
+    authorRole: AUTHOR_JINALI_ROLE,
+    authorBio: AUTHOR_JINALI_BIO,
+    authorTags: AUTHOR_JINALI_TAGS,
     authorLink: AUTHOR_LINK,
     directAnswer: "Shopify SEO in 2026 means fixing the platform's specific default limitations — duplicate content from variant URLs, weak default title tag structures, and thin auto-generated collection pages — while applying standard on-page and technical SEO to every product and category page. The steps below walk through exactly what to fix, in the order that has the most impact on a typical Shopify store.",
     keyTakeaways: [
@@ -772,10 +787,10 @@ Allow: /</code></pre>
     date: "2026-03-09",
     dateDisplay: "Mar 9, 2026",
     readTime: "9 min read",
-    author: AUTHOR,
-    authorRole: AUTHOR_ROLE,
-    authorBio: AUTHOR_BIO,
-    authorTags: AUTHOR_TAGS,
+    author: AUTHOR_JINALI,
+    authorRole: AUTHOR_JINALI_ROLE,
+    authorBio: AUTHOR_JINALI_BIO,
+    authorTags: AUTHOR_JINALI_TAGS,
     authorLink: AUTHOR_LINK,
     directAnswer: "The local SEO strategies that actually work in 2026 center on four areas in priority order: a fully optimised and actively managed Google Business Profile, consistent NAP citations across the web, genuinely unique location-specific content (not a template with the city name swapped), and a steady review generation system. Businesses serving multiple areas need a dedicated, unique page per location — one generic 'service areas' page dilutes relevance for all of them.",
     keyTakeaways: [
@@ -847,10 +862,10 @@ Allow: /</code></pre>
     date: "2026-03-16",
     dateDisplay: "Mar 16, 2026",
     readTime: "8 min read",
-    author: AUTHOR,
-    authorRole: AUTHOR_ROLE,
-    authorBio: AUTHOR_BIO,
-    authorTags: AUTHOR_TAGS,
+    author: AUTHOR_JINALI,
+    authorRole: AUTHOR_JINALI_ROLE,
+    authorBio: AUTHOR_JINALI_BIO,
+    authorTags: AUTHOR_JINALI_TAGS,
     authorLink: AUTHOR_LINK,
     directAnswer: "A complete Google Business Profile optimisation covers eight areas: business information accuracy, category selection, photos, services and products listings, posts, Q&A, reviews, and messaging/booking features. Working through this checklist fully — not just the parts that take five minutes — is what separates local pack winners from businesses stuck below the fold on Google Maps.",
     keyTakeaways: [
@@ -979,10 +994,10 @@ Allow: /</code></pre>
     date: "2026-03-23",
     dateDisplay: "Mar 23, 2026",
     readTime: "8 min read",
-    author: AUTHOR,
-    authorRole: AUTHOR_ROLE,
-    authorBio: AUTHOR_BIO,
-    authorTags: AUTHOR_TAGS,
+    author: AUTHOR_DEEPAK,
+    authorRole: AUTHOR_DEEPAK_ROLE,
+    authorBio: AUTHOR_DEEPAK_BIO,
+    authorTags: AUTHOR_DEEPAK_TAGS,
     authorLink: AUTHOR_LINK,
     directAnswer: "The six AI SEO skills that matter most for marketers in 2026 are: writing answer-first content structured for AI extraction, implementing and validating structured data, auditing AI-crawler accessibility, manually tracking AI Overview and AI chat citation visibility, understanding how E-E-A-T signals are evaluated by AI systems, and knowing when NOT to use AI-generated content. None of these require becoming a developer — they're strategic and editorial skills layered onto existing SEO knowledge.",
     keyTakeaways: [

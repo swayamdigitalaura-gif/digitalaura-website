@@ -150,7 +150,6 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
           <div className="flex flex-wrap items-center gap-5 text-sm justify-center" style={{ color: "#6B7280" }}>
             <span className="flex items-center gap-1.5"><Calendar size={14} style={{ color: theme.color }} /> {post.dateDisplay}</span>
             <span className="flex items-center gap-1.5"><Clock size={14} style={{ color: theme.color }} /> {post.readTime}</span>
-            <span>By <strong style={{ color: "#0A1628" }}>{post.author}</strong></span>
             <span>Reviewed by: <strong style={{ color: "#0A1628" }}>Sambhav Shah</strong></span>
           </div>
         </motion.div>

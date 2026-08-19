@@ -203,7 +203,7 @@ const PAGE_SCHEMA: Record<string, object | object[]> = {
       email: 'swayam.digitalaura@gmail.com', description: 'Data-driven digital marketing agency', logo: DEFAULT_IMAGE },
   ],
   '/testimonials': { '@context': 'https://schema.org', '@type': 'Organization', name: 'Digital Aura', url: SITE_URL,
-    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '750', bestRating: '5', worstRating: '1' } },
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '34', bestRating: '5', worstRating: '1' } },
   '/blog': { '@context': 'https://schema.org', '@type': 'Blog', name: 'Digital Aura Blog',
     url: `${SITE_URL}/blog/`, description: 'Digital marketing trends, SEO tips, and AI insights.',
     publisher: { '@type': 'Organization', name: 'Digital Aura', logo: DEFAULT_IMAGE } },

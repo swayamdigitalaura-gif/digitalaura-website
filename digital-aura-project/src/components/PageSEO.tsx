@@ -176,6 +176,40 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     description: 'Build bespoke machine learning models with Digital Aura. Image recognition, NLP, recommendation engines, and custom AI solutions for your business.',
   },
 
+  // ── Previously missing pages (were falling back to homepage title/description) ──
+  '/awards': {
+    title: 'Awards & Recognition | Digital Aura',
+    description: "From an Emerging Business Award in 2017 to Growth Partner of the Year in 2025 — Digital Aura's work has been recognized by national and global business councils every step of the way.",
+  },
+  '/services/ai-filmmaking': {
+    title: 'AI Video & Film Making for Social Media Marketing | Digital Aura',
+    description: 'Get scroll-stopping Reels, Shorts and video ads made with AI — no camera crew, no studio. Strategy, production and paid promotion in one team.',
+  },
+  '/services/seo-content-marketing/ecommerce-seo': {
+    title: 'eCommerce SEO Services | Shopify & WooCommerce SEO | Digital Aura',
+    description: 'eCommerce SEO for Shopify and WooCommerce stores — product page optimisation, Product schema, and Google Shopping visibility to turn traffic into sales.',
+  },
+  '/services/seo-content-marketing/local-seo': {
+    title: 'Local SEO Services | Google Business Profile & Maps Ranking | Digital Aura',
+    description: 'Local SEO services to rank higher on Google Maps and the local pack — Google Business Profile optimisation, citations, and location page strategy.',
+  },
+  '/services/seo-content-marketing/off-page-seo': {
+    title: 'Off-Page SEO & Link Building Services | Digital Aura',
+    description: 'Off-page SEO and link building services — earned backlinks, digital PR, and authority building through manual, relevant outreach, not spam link schemes.',
+  },
+  '/services/seo-content-marketing/on-page-seo': {
+    title: 'On-Page SEO Services | Digital Aura',
+    description: 'On-page SEO services — title tags, headings, content, internal links, and images optimised so search engines understand and rank your pages for the right searches.',
+  },
+  '/services/seo-content-marketing/seo-audit-strategy': {
+    title: 'SEO Audit & Strategy Services | Digital Aura',
+    description: 'A full SEO audit and strategy — site crawl, keyword gap analysis, competitor benchmarking, and a prioritised action roadmap tied to your business goals.',
+  },
+  '/services/seo-content-marketing/technical-seo': {
+    title: 'Technical SEO Services | Core Web Vitals & Site Health | Digital Aura',
+    description: 'Technical SEO services covering site speed, Core Web Vitals, crawlability, structured data, and site health so search engines can properly index your pages.',
+  },
+
   // ── Local / city landing pages ──
   '/website-design-development-ahmedabad': {
     title: "Website Design & Development Company in Ahmedabad, Gujarat | Digital Aura",
@@ -418,6 +452,78 @@ const PAGE_SCHEMA: Record<string, object | object[]> = {
   '/digital-marketing-agency-gujarat': [
     {"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Digital Marketing Agency in Gujarat", "description": "Digital Aura is a Gujarat-based digital marketing agency serving businesses across Ahmedabad, Surat, Vadodara, and Rajkot with SEO, paid ads, web development, and AI automation.", "url": "https://thedigitalaura.com/digital-marketing-agency-gujarat/", "areaServed": ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Gandhinagar", "Gujarat"]},
     {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do you serve digital marketing clients across all of Gujarat?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — we work with businesses across Ahmedabad, Surat, Vadodara, Rajkot, and other Gujarat cities, delivering every service through the same in-house team."}}, {"@type": "Question", "name": "I don't know which service I need — where do I start?", "acceptedAnswer": {"@type": "Answer", "text": "Book a free consultation. We'll talk through your business goals and current challenges before recommending anything, rather than defaulting to the most expensive package."}}, {"@type": "Question", "name": "Can digital marketing services be managed fully remotely?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — strategy calls, reporting, and campaign management are all handled over video calls and shared dashboards regardless of your city."}}, {"@type": "Question", "name": "How much does digital marketing cost for a Gujarat business?", "acceptedAnswer": {"@type": "Answer", "text": "Cost depends on which services and how much ad spend or scope is involved. An exact quote follows a discovery call about your specific goals."}}, {"@type": "Question", "name": "What industries in Gujarat have you worked with?", "acceptedAnswer": {"@type": "Answer", "text": "Manufacturing, textiles, healthcare, retail, and professional services are among the industries we've delivered digital marketing for across the state."}}]},
+  ],
+
+  // ── Previously missing pages ──
+  '/awards': { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Awards & Recognition | Digital Aura', url: `${SITE_URL}/awards/`,
+    description: "From an Emerging Business Award in 2017 to Growth Partner of the Year in 2025 — Digital Aura's work has been recognized by national and global business councils every step of the way." },
+  '/services/ai-filmmaking': { '@context': 'https://schema.org', '@type': 'Service', name: 'AI Filmmaking & Video Production', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'AI Video Production', areaServed: 'Worldwide', url: `${SITE_URL}/services/ai-filmmaking/`,
+    description: 'Get scroll-stopping Reels, Shorts and video ads made with AI — no camera crew, no studio. Strategy, production and paid promotion in one team.' },
+  '/services/seo-content-marketing/ecommerce-seo': [
+    { '@context': 'https://schema.org', '@type': 'Service', name: 'eCommerce SEO Services', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'eCommerce SEO', areaServed: 'Worldwide', url: `${SITE_URL}/services/seo-content-marketing/ecommerce-seo/` },
+    { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [
+      { '@type': 'Question', name: 'What is ecommerce SEO and how is it different from regular SEO?', acceptedAnswer: { '@type': 'Answer', text: 'eCommerce SEO applies SEO principles specifically to online stores — optimising product pages, category structures, and Product schema for platforms like Shopify and WooCommerce. It differs from regular SEO in managing crawl budget across thousands of product URLs and handling commercial, transactional search intent.' } },
+      { '@type': 'Question', name: "Why don't my product pages rank even though the site has good SEO overall?", acceptedAnswer: { '@type': 'Answer', text: 'Usually duplicate manufacturer descriptions, thin content, or missing schema. If ten other stores sell the identical product with the identical description, Google has no reason to rank yours above theirs — unique content and proper schema are what create differentiation.' } },
+      { '@type': 'Question', name: 'Do you work with Shopify and WooCommerce specifically?', acceptedAnswer: { '@type': 'Answer', text: 'Yes — both platforms have SEO limitations in how they handle URLs, canonical tags, and faceted navigation by default, and we implement platform-specific fixes for each.' } },
+      { '@type': 'Question', name: 'How do I get my products to show up in Google Shopping?', acceptedAnswer: { '@type': 'Answer', text: 'Google Shopping visibility depends on a Merchant Center feed plus properly implemented Product and Offer schema on the page itself — both need to align on price, availability, and product identifiers.' } },
+      { '@type': 'Question', name: 'Should every product variant have its own page?', acceptedAnswer: { '@type': 'Answer', text: 'It depends on search volume and cannibalisation risk. Significant variants (different colours or sizes with real independent search demand) usually warrant their own optimised page; minor variants are better handled as options on one page.' } },
+      { '@type': 'Question', name: 'How long does ecommerce SEO take to increase sales?', acceptedAnswer: { '@type': 'Answer', text: 'Initial technical and schema fixes can show visibility improvements within 4-6 weeks. Meaningful organic sales growth from ranking and content improvements typically builds over 3-4 months as new pages gain authority.' } },
+    ] },
+  ],
+  '/services/seo-content-marketing/local-seo': [
+    { '@context': 'https://schema.org', '@type': 'Service', name: 'Local SEO Services', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Local SEO', areaServed: 'Worldwide', url: `${SITE_URL}/services/seo-content-marketing/local-seo/` },
+    { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [
+      { '@type': 'Question', name: 'What is local SEO and how is it different from regular SEO?', acceptedAnswer: { '@type': 'Answer', text: 'Local SEO optimises a business to appear in location-based searches — Google Maps, the local pack, and "near me" queries. It differs from regular SEO by weighting signals like Google Business Profile completeness, local citations, and proximity, alongside standard ranking factors.' } },
+      { '@type': 'Question', name: 'How do I rank higher on Google Maps?', acceptedAnswer: { '@type': 'Answer', text: 'Google Maps ranking depends on relevance, distance, and prominence. Prominence is built through a complete, active Google Business Profile, consistent citations, strong review volume and ratings, and locally relevant content on your website.' } },
+      { '@type': 'Question', name: 'Do I need a separate page for every city I serve?', acceptedAnswer: { '@type': 'Answer', text: 'Yes, if you genuinely serve multiple distinct areas — one generic page trying to rank for five cities dilutes local relevance for all of them. Each location page needs unique, locally specific content, not a copy-pasted template with the city name swapped.' } },
+      { '@type': 'Question', name: 'How important are Google reviews for local SEO?', acceptedAnswer: { '@type': 'Answer', text: 'Very important — review count, rating, and recency are direct ranking factors for the local pack, and reviews also strongly influence whether users actually click through and convert.' } },
+      { '@type': 'Question', name: 'How long does local SEO take to show results?', acceptedAnswer: { '@type': 'Answer', text: 'Google Business Profile optimisation can show local pack movement within 4-6 weeks. Citation building and location page authority typically take 2-3 months to fully compound.' } },
+      { '@type': 'Question', name: 'Do you manage the Google Business Profile ongoing, or just set it up once?', acceptedAnswer: { '@type': 'Answer', text: 'Both options are available. Ongoing management includes weekly posts, review responses, and monthly monitoring, since local pack rankings respond to consistent activity, not a one-time setup.' } },
+    ] },
+  ],
+  '/services/seo-content-marketing/off-page-seo': [
+    { '@context': 'https://schema.org', '@type': 'Service', name: 'Off-Page SEO & Link Building Services', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Off-Page SEO', areaServed: 'Worldwide', url: `${SITE_URL}/services/seo-content-marketing/off-page-seo/` },
+    { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [
+      { '@type': 'Question', name: 'What is off-page SEO?', acceptedAnswer: { '@type': 'Answer', text: "Off-page SEO covers everything that builds your site's authority from outside your own domain — primarily backlinks from other websites, along with brand mentions and digital PR. It signals to Google that other credible sites vouch for your content." } },
+      { '@type': 'Question', name: 'Is link building still effective, or does Google penalise it?', acceptedAnswer: { '@type': 'Answer', text: "Earned, relevant backlinks are still one of Google's strongest ranking factors. What gets penalised is manipulative link building — private blog networks, paid link schemes, and irrelevant mass link placements. We only do manual, relevant outreach." } },
+      { '@type': 'Question', name: 'How many backlinks do I need to rank?', acceptedAnswer: { '@type': 'Answer', text: "There's no fixed number — what matters is relevance and authority relative to what's already ranking for your target keywords. A competitor analysis reveals the realistic link profile needed to compete." } },
+      { '@type': 'Question', name: "What's the difference between link building and digital PR?", acceptedAnswer: { '@type': 'Answer', text: 'Link building is direct outreach to place links on relevant sites. Digital PR earns links indirectly by pitching newsworthy stories, data, or expert commentary to journalists and publications, often resulting in higher-authority coverage.' } },
+      { '@type': 'Question', name: 'Can bad backlinks hurt my site?', acceptedAnswer: { '@type': 'Answer', text: 'Yes — toxic or spammy links can trigger algorithmic devaluation or, in severe cases, manual penalties. Part of off-page SEO is auditing the existing profile and disavowing harmful links.' } },
+      { '@type': 'Question', name: 'How long does it take to see results from link building?', acceptedAnswer: { '@type': 'Answer', text: "Individual links can be indexed within days, but their ranking impact typically compounds over 2-4 months as Google re-evaluates the site's overall authority signals." } },
+    ] },
+  ],
+  '/services/seo-content-marketing/on-page-seo': [
+    { '@context': 'https://schema.org', '@type': 'Service', name: 'On-Page SEO Services', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'On-Page SEO', areaServed: 'Worldwide', url: `${SITE_URL}/services/seo-content-marketing/on-page-seo/` },
+    { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [
+      { '@type': 'Question', name: 'What is on-page SEO and why does it matter?', acceptedAnswer: { '@type': 'Answer', text: "On-page SEO is the practice of optimising individual pages — titles, headings, content, internal links, and images — so search engines understand what the page is about and rank it for the right searches. It matters because even great content won't rank if the on-page signals don't clearly match search intent." } },
+      { '@type': 'Question', name: "What's the difference between on-page and off-page SEO?", acceptedAnswer: { '@type': 'Answer', text: 'On-page SEO covers everything you control directly on your own pages: content, titles, headings, and internal links. Off-page SEO covers external signals like backlinks and brand mentions from other websites.' } },
+      { '@type': 'Question', name: 'How many keywords should one page target?', acceptedAnswer: { '@type': 'Answer', text: 'One primary keyword per page, supported by 3-5 closely related secondary keywords and variations. Targeting too many unrelated keywords on one page dilutes relevance and confuses search engines about what the page is really for.' } },
+      { '@type': 'Question', name: 'Will on-page SEO changes affect my current rankings?', acceptedAnswer: { '@type': 'Answer', text: 'Well-executed on-page changes typically improve rankings within weeks, since they directly clarify relevance signals to Google. Poorly planned changes — like removing ranking content — can hurt, which is why every change is mapped against current performance data first.' } },
+      { '@type': 'Question', name: 'Do you rewrite existing content or just the technical elements?', acceptedAnswer: { '@type': 'Answer', text: 'Both, where needed. Some pages only need title, meta, and heading fixes; others need the body content itself restructured or expanded to properly match search intent.' } },
+      { '@type': 'Question', name: 'How long does an on-page SEO project take?', acceptedAnswer: { '@type': 'Answer', text: 'For a site with 20-50 pages, a full on-page optimisation pass typically takes 2-3 weeks. Larger sites are prioritised by traffic and revenue potential so the highest-impact pages are fixed first.' } },
+    ] },
+  ],
+  '/services/seo-content-marketing/seo-audit-strategy': [
+    { '@context': 'https://schema.org', '@type': 'Service', name: 'SEO Audit & Strategy Services', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'SEO Audit', areaServed: 'Worldwide', url: `${SITE_URL}/services/seo-content-marketing/seo-audit-strategy/` },
+    { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [
+      { '@type': 'Question', name: 'What is an SEO audit and what does it actually include?', acceptedAnswer: { '@type': 'Answer', text: 'An SEO audit is a full review of a website\'s technical health, on-page optimisation, content quality, and backlink profile, benchmarked against real competitors. Ours includes a full site crawl, keyword gap analysis, competitor benchmarking, content review, backlink audit, and a prioritised action roadmap.' } },
+      { '@type': 'Question', name: 'How long does an SEO audit take?', acceptedAnswer: { '@type': 'Answer', text: 'A standard audit for a site under 500 pages typically takes 5-7 working days from kickoff to the final report and walkthrough call. Larger or more complex sites can take up to 2 weeks.' } },
+      { '@type': 'Question', name: 'How much does an SEO audit cost?', acceptedAnswer: { '@type': 'Answer', text: 'Audit pricing depends on site size and complexity. A free initial audit is available to assess fit; a full in-depth audit with a custom strategy roadmap is quoted after a short discovery call.' } },
+      { '@type': 'Question', name: 'Do I need an SEO audit if my site is already ranking well?', acceptedAnswer: { '@type': 'Answer', text: "Yes — audits aren't only for underperforming sites. Rankings can quietly erode from technical issues, algorithm updates, or new competitors, and a periodic audit catches problems before they show up as a traffic drop." } },
+      { '@type': 'Question', name: "What's the difference between an SEO audit and an SEO strategy?", acceptedAnswer: { '@type': 'Answer', text: 'An audit tells you what\'s wrong and what\'s working right now. A strategy is the plan built from those findings — which keywords to target, what content to create, and in what order, tied to your business goals.' } },
+      { '@type': 'Question', name: 'Will someone walk me through the findings, or do I just get a PDF?', acceptedAnswer: { '@type': 'Answer', text: 'You get a full written report plus a live call where we walk through every finding in plain English, answer questions, and agree on next steps together.' } },
+    ] },
+  ],
+  '/services/seo-content-marketing/technical-seo': [
+    { '@context': 'https://schema.org', '@type': 'Service', name: 'Technical SEO Services', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Technical SEO', areaServed: 'Worldwide', url: `${SITE_URL}/services/seo-content-marketing/technical-seo/` },
+    { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [
+      { '@type': 'Question', name: 'What is technical SEO and why does it matter?', acceptedAnswer: { '@type': 'Answer', text: "Technical SEO covers everything that affects how search engines crawl, index, and render your site — site speed, mobile usability, crawlability, structured data, and security. It matters because no amount of great content will rank if Google can't properly access or understand your pages." } },
+      { '@type': 'Question', name: 'What are Core Web Vitals and do they really affect rankings?', acceptedAnswer: { '@type': 'Answer', text: "Core Web Vitals are Google's metrics for loading speed (LCP), interactivity (INP), and visual stability (CLS). Yes, they're a confirmed ranking factor, and pages that fail them are also proven to lose users before content is even seen." } },
+      { '@type': 'Question', name: 'How do I know if my site has technical SEO problems?', acceptedAnswer: { '@type': 'Answer', text: 'Common signs include pages that rank well but suddenly drop, slow load times reported in PageSpeed Insights, or a gap between how many pages you have and how many Google Search Console shows as indexed. A technical audit reveals the exact list.' } },
+      { '@type': 'Question', name: 'Will fixing technical SEO issues improve my rankings immediately?', acceptedAnswer: { '@type': 'Answer', text: 'Some fixes, like resolving a blocked crawl directive, can show impact within days. Others, like Core Web Vitals improvements, typically show measurable ranking movement within 4-8 weeks as Google re-crawls and re-evaluates the site.' } },
+      { '@type': 'Question', name: 'Do you need developer access to fix technical SEO issues?', acceptedAnswer: { '@type': 'Answer', text: 'For most fixes, yes — changes typically require code, server configuration, or CMS-level access. We work directly with your development team or CMS admin to implement fixes safely.' } },
+      { '@type': 'Question', name: 'How often should technical SEO be checked?', acceptedAnswer: { '@type': 'Answer', text: 'A full technical audit is recommended quarterly, with continuous monitoring for crawl errors and Core Web Vitals in between, since site changes and algorithm updates can introduce new technical issues at any time.' } },
+    ] },
   ],
 };
 

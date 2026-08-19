@@ -8,8 +8,8 @@ const DEFAULT_IMAGE = `${SITE_URL}/logos/digital-aura-logo.png`;
 // Per-page SEO defaults — overridden by DB values if set via admin panel
 const PAGE_META: Record<string, { title: string; description: string }> = {
   '/': {
-    title: 'Digital Aura — Data-Driven Digital Marketing Agency',
-    description: 'Digital Aura is a data-driven digital marketing agency specializing in SEO, Google Ads, Meta Ads, Social Media Marketing & Web Design. 500+ happy clients.',
+    title: 'Digital Marketing Agency in Ahmedabad | Digital Aura',
+    description: 'Digital Aura is a data-driven digital marketing agency in Ahmedabad specializing in SEO, Google Ads, Meta Ads, Social Media Marketing & Web Design. 750+ happy clients.',
   },
   '/about': {
     title: 'About Digital Aura | Our Story, Vision & Expert Team',
@@ -203,7 +203,7 @@ const PAGE_SCHEMA: Record<string, object | object[]> = {
       email: 'swayam.digitalaura@gmail.com', description: 'Data-driven digital marketing agency', logo: DEFAULT_IMAGE },
   ],
   '/testimonials': { '@context': 'https://schema.org', '@type': 'Organization', name: 'Digital Aura', url: SITE_URL,
-    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '750', bestRating: '5', worstRating: '1' } },
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '34', bestRating: '5', worstRating: '1' } },
   '/blog': { '@context': 'https://schema.org', '@type': 'Blog', name: 'Digital Aura Blog',
     url: `${SITE_URL}/blog/`, description: 'Digital marketing trends, SEO tips, and AI insights.',
     publisher: { '@type': 'Organization', name: 'Digital Aura', logo: DEFAULT_IMAGE } },

@@ -8,8 +8,8 @@ const DEFAULT_IMAGE = `${SITE_URL}/logos/digital-aura-logo.png`;
 // Per-page SEO defaults — overridden by DB values if set via admin panel
 const PAGE_META: Record<string, { title: string; description: string }> = {
   '/': {
-    title: 'Digital Aura — Data-Driven Digital Marketing Agency',
-    description: 'Digital Aura is a data-driven digital marketing agency specializing in SEO, Google Ads, Meta Ads, Social Media Marketing & Web Design. 500+ happy clients.',
+    title: 'Digital Marketing Agency in Ahmedabad | Digital Aura',
+    description: 'Digital Aura is a data-driven digital marketing agency in Ahmedabad specializing in SEO, Google Ads, Meta Ads, Social Media Marketing & Web Design. 750+ happy clients.',
   },
   '/about': {
     title: 'About Digital Aura | Our Story, Vision & Expert Team',

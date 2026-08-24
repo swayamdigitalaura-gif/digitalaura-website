@@ -10,9 +10,6 @@ import {
 import logo from "@/assets/logo.png";
 import sambhavPhoto from "@/assets/sambhav.jpg";
 import swayamPhoto from "@/assets/swayam.jpg";
-import clutchBadge from "@/assets/clutch.png";
-import goodfirmsBadge from "@/assets/goodfirms.png";
-import designrushBadge from "@/assets/designrush.webp";
 import { useSettings } from "@/hooks/useSettings";
 import CMSIcon from "@/components/CMSIcon";
 
@@ -75,13 +72,6 @@ const DEFAULT_TESTIMONIALS = [
   { quote: "They ranked our keywords high on search engines and organic traffic has been increasing exponentially. Feels more personal than any other agency I've worked with.", name: "Stephen Conolly", service: "SEO Services", color: "#1A6FE8" },
 ];
 
-const DEFAULT_PLATFORMS = [
-  { name: "Clutch",     logo: clutchBadge,      rating: "4.9", reviews: "50+",  tagline: "Best of Clutch · Digital Marketing 2025", color: "#E8251A" },
-  { name: "GoodFirms", logo: goodfirmsBadge,    rating: "4.8", reviews: "40+",  tagline: "Top Digital Marketing Company",           color: "#2E86DE" },
-  { name: "DesignRush", logo: designrushBadge,  rating: "4.7", reviews: "30+",  tagline: "Best Digital Marketing Agencies",         color: "#6C47FF" },
-  { name: "Google",    logo: "google",           rating: "5.0", reviews: "100+", tagline: "Google Reviews",                          color: "#4285F4" },
-];
-
 const DEFAULT_CLIENTS = ["Healthcare","Restaurants","Real Estate","eCommerce","Education","Home Services","Retail","Ophthalmology","IVF Clinics","Fitness","Pest Control","Travel"];
 
 /* ─── COMPONENT ─────────────────────────────────────────────────────── */
@@ -124,13 +114,12 @@ const About = () => {
     // Client Voices section
     'about_voices_badge', 'about_voices_heading',
     // Recognition section
-    'about_recog_badge', 'about_recog_heading', 'about_recog_subtext',
     // Why Digital Aura section headings
     'about_why_badge', 'about_why_heading', 'about_why_subtext',
     // Case Studies section
     'about_cs_badge', 'about_cs_heading',
     // JSON blocks
-    'about_team', 'about_testimonials', 'about_platforms', 'about_clients',
+    'about_team', 'about_testimonials', 'about_clients',
     // Founder skills tags
     'about_founder_skills',
   ]);
@@ -155,7 +144,6 @@ const About = () => {
 
   const team = apiTeam.length > 0 ? apiTeam : (() => { try { if (s.about_team) return JSON.parse(s.about_team); } catch (_e) { void _e; } return DEFAULT_TEAM;})();
   const testimonials = (() => { try { if (s.about_testimonials) return JSON.parse(s.about_testimonials); } catch (_e) { void _e; } return DEFAULT_TESTIMONIALS;})();
-  const platforms = (() => { try { if (s.about_platforms) return JSON.parse(s.about_platforms); } catch (_e) { void _e; } return DEFAULT_PLATFORMS;})();
   const clientList: string[] = (() => { try { if (s.about_clients) return JSON.parse(s.about_clients); } catch (_e) { void _e; } return DEFAULT_CLIENTS;})();
 
   const heroStats = [
@@ -622,54 +610,6 @@ const About = () => {
               </motion.div>
             );
           })}
-        </div>
-      </div>
-    </section>
-
-    {/* ── PLATFORM RATINGS ── */}
-    <section className="py-20 px-4 md:px-8" style={{ background: "#FFFFFF" }}>
-      <div className="max-w-5xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-          <span data-cms-key="about_recog_badge" data-cms-label="Recognition Badge" data-cms-attr="text" className="section-badge">{s.about_recog_badge || "Recognition"}</span>
-          <h2 className="text-3xl md:text-[40px] font-black text-[#0A1628] tracking-tight">
-            <span data-cms-key="about_recog_heading" data-cms-label="Recognition Heading" data-cms-attr="text">{s.about_recog_heading || "Rated on Top Platforms"}</span>
-          </h2>
-          <p data-cms-key="about_recog_subtext" data-cms-label="Recognition Subtext" data-cms-attr="text" className="text-[#6B7280] mt-3 text-sm max-w-md mx-auto">{s.about_recog_subtext || "Recognised by leading industry directories across India and worldwide."}</p>
-        </motion.div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-          {platforms.map((p: Record<string, string>, i: number) => (
-            <motion.div key={i}
-              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-              className="rounded-2xl bg-white border flex flex-col items-center text-center card-hover overflow-hidden"
-              style={{ borderColor: "#E5E7EB", boxShadow: "0 4px 20px rgba(0,0,0,0.06)" }}>
-              <div className="w-full flex flex-col items-center px-4 pt-5 pb-4" style={{ height: 170 }}>
-                <div className="flex-1 flex items-center justify-center">
-                {p.logo === "google" ? (
-                  <svg width="100" height="34" viewBox="0 0 272 92" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="#EA4335" d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
-                    <path fill="#FBBC05" d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
-                    <path fill="#4285F4" d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z"/>
-                    <path fill="#34A853" d="M225 3v65h-9.5V3h9.5z"/>
-                    <path fill="#EA4335" d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z"/>
-                    <path fill="#4285F4" d="M35.29 41.41V32h31.36c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 35.48.36 17.07 16.32 1.61 34.95 1.61c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.14.47z"/>
-                  </svg>
-                ) : (
-                  <img src={p.logo} alt={p.name} className="object-contain" style={{ height: 85, maxWidth: 150, mixBlendMode: "multiply" }} />
-                )}
-                </div>
-                <span className="text-[10px] font-semibold px-3 py-1.5 rounded-full text-center leading-snug" style={{ background: `${p.color}12`, color: p.color, maxWidth: "90%" }}>
-                  {p.tagline}
-                </span>
-              </div>
-              <div className="w-full px-5 pb-5 border-t pt-4" style={{ borderColor: "#F3F4F6" }}>
-                <div className="flex gap-0.5 justify-center mb-2">
-                  {[...Array(5)].map((_, s2) => <Star key={s2} size={13} fill={p.color} stroke="none" />)}
-                </div>
-                <p className="text-2xl font-black" style={{ color: p.color }}>{p.rating}</p>
-                <p className="text-[11px] text-[#9CA3AF] mt-0.5">{p.reviews} reviews</p>
-              </div>
-            </motion.div>
-          ))}
         </div>
       </div>
     </section>

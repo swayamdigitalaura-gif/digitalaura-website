@@ -13,7 +13,6 @@ import CMSIcon from "@/components/CMSIcon";
 import { useSettings } from "@/hooks/useSettings";
 import Testimonials from "@/components/Testimonials";
 import CaseStudies from "@/components/CaseStudies";
-import RatedOnPlatforms from "@/components/RatedOnPlatforms";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 
 const accentColor = "#22C55E";

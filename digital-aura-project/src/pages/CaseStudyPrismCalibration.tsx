@@ -174,7 +174,10 @@ const topStats = [
 const chips = ["Calibration & Testing", "Validation", "EHS & Safety", "Environmental Testing", "Energy Audits", "NABL & ISO Consulting", "Industrial Compliance"];
 const loop = ["Relationship", "Trust", "Referral", "Business"];
 
-const IMG = "/case-studies/prism-calibration";
+// Deliberately NOT under /case-studies/ — that path collides with the React route of the
+// same name, and nginx resolves the URL to this real directory and 403s instead of falling
+// through to the SPA rewrite.
+const IMG = "/case-study-assets/prism-calibration";
 
 const PRISM_KEYS = [
   "prism_heroTitle", "prism_heroSubtitle", "prism_intro",

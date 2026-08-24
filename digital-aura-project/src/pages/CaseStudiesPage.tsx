@@ -37,7 +37,76 @@ const FEATURED_CASE = {
   services: ["Web Design", "Online Booking System", "Google Ads", "Fleet Management"],
   color: "#1A6FE8",
   href: "/case-studies/riant-bikes",
+  quad: [
+    { n: "230", l: "Customers managed" },
+    { n: "30", l: "Vehicles tracked live" },
+    { n: "3", l: "Branches unified" },
+    { n: "₹1.6L+", l: "Revenue tracked" },
+  ],
 };
+
+const FEATURED_CASE_2 = {
+  tag: "Industrial B2B · SEO & AEO/GEO",
+  badge: "70–100 Leads/mo",
+  title: "Prism Calibration Centre, From Referral-Only to Search-Found",
+  statBig: "70–100",
+  statLabel: "qualified leads generated every month",
+  desc: "A 20-year NABL-accredited calibration lab had grown entirely on referrals — and was losing visibility to newer, more digital competitors. We rebuilt their site into a structured search & AI-visibility engine, and got them featured in Google's AI Overview.",
+  services: ["SEO", "Technical SEO", "AEO/GEO", "Local SEO", "Website Development"],
+  color: "#22C55E",
+  href: "/case-studies/prism-calibration",
+  quad: [
+    { n: "Top 3", l: "Keyword rankings" },
+    { n: "20 Yrs", l: "NABL-accredited expertise" },
+    { n: "Featured", l: "In Google's AI Overview" },
+    { n: "70–100", l: "Leads every month" },
+  ],
+};
+
+type FeaturedCase = typeof FEATURED_CASE;
+
+const FeaturedCaseBanner = ({ item }: { item: FeaturedCase }) => (
+  <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+    className="rounded-2xl overflow-hidden border bg-white grid md:grid-cols-2"
+    style={{ borderColor: "#E5E7EB", boxShadow: "0 4px 20px rgba(0,0,0,0.06)" }}>
+    <div className="p-8 md:p-10 flex flex-col justify-center" style={{ background: `linear-gradient(135deg, ${item.color}10 0%, transparent 100%)` }}>
+      <span className="inline-flex w-fit items-center gap-2 px-3 py-1 rounded-full text-xs font-bold mb-4"
+        style={{ color: item.color, background: `${item.color}15` }}>
+        Featured Case Study
+      </span>
+      <span className="text-xs font-semibold mb-2" style={{ color: item.color }}>{item.tag}</span>
+      <h3 className="text-2xl md:text-3xl font-bold text-[#0A1628] mb-4">{item.title}</h3>
+      <p className="text-sm md:text-base leading-relaxed text-[#4B5563] mb-6">{item.desc}</p>
+      <div className="flex flex-wrap gap-1.5 mb-6">
+        {item.services.map((sv) => (
+          <span key={sv} className="text-xs px-2.5 py-1 rounded-full font-medium"
+            style={{ background: `${item.color}15`, color: item.color }}>{sv}</span>
+        ))}
+      </div>
+      <Link to={item.href} className="text-sm font-semibold inline-flex items-center gap-1 w-fit hover:gap-2 transition-all"
+        style={{ color: item.color }}>
+        Read Full Case Study <ArrowRight size={14} />
+      </Link>
+    </div>
+    <div className="flex flex-col justify-center gap-4 p-8 md:p-10" style={{ background: "#F8FAFF" }}>
+      <div className="flex items-center gap-3">
+        <TrendingUp size={22} style={{ color: item.color }} />
+        <div>
+          <div className="text-2xl font-black leading-none" style={{ color: item.color }}>{item.statBig}</div>
+          <div className="text-xs text-[#6B7280] mt-1">{item.statLabel}</div>
+        </div>
+      </div>
+      <div className="grid grid-cols-2 gap-3">
+        {item.quad.map((q) => (
+          <div key={q.l} className="rounded-lg bg-white border px-4 py-3 text-center" style={{ borderColor: "#E5E7EB" }}>
+            <div className="text-lg font-bold text-[#0A1628]">{q.n}</div>
+            <div className="text-[11px] text-[#6B7280]">{q.l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </motion.div>
+);
 
 const CaseStudiesPage = () => {
   const s = useSettings([
@@ -97,57 +166,9 @@ const CaseStudiesPage = () => {
     </section>
 
     <section className="py-12 px-4 md:px-8" style={{ background: "#F8FAFF" }}>
-      <div className="max-w-7xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-          className="rounded-2xl overflow-hidden border bg-white grid md:grid-cols-2"
-          style={{ borderColor: "#E5E7EB", boxShadow: "0 4px 20px rgba(0,0,0,0.06)" }}>
-          <div className="p-8 md:p-10 flex flex-col justify-center" style={{ background: `linear-gradient(135deg, ${FEATURED_CASE.color}10 0%, transparent 100%)` }}>
-            <span className="inline-flex w-fit items-center gap-2 px-3 py-1 rounded-full text-xs font-bold mb-4"
-              style={{ color: FEATURED_CASE.color, background: `${FEATURED_CASE.color}15` }}>
-              Featured Case Study
-            </span>
-            <span className="text-xs font-semibold mb-2" style={{ color: FEATURED_CASE.color }}>{FEATURED_CASE.tag}</span>
-            <h3 className="text-2xl md:text-3xl font-bold text-[#0A1628] mb-4">{FEATURED_CASE.title}</h3>
-            <p className="text-sm md:text-base leading-relaxed text-[#4B5563] mb-6">{FEATURED_CASE.desc}</p>
-            <div className="flex flex-wrap gap-1.5 mb-6">
-              {FEATURED_CASE.services.map((sv) => (
-                <span key={sv} className="text-xs px-2.5 py-1 rounded-full font-medium"
-                  style={{ background: `${FEATURED_CASE.color}15`, color: FEATURED_CASE.color }}>{sv}</span>
-              ))}
-            </div>
-            <Link to={FEATURED_CASE.href} className="text-sm font-semibold inline-flex items-center gap-1 w-fit hover:gap-2 transition-all"
-              style={{ color: FEATURED_CASE.color }}>
-              Read Full Case Study <ArrowRight size={14} />
-            </Link>
-          </div>
-          <div className="flex flex-col justify-center gap-4 p-8 md:p-10" style={{ background: "#F8FAFF" }}>
-            <div className="flex items-center gap-3">
-              <TrendingUp size={22} style={{ color: FEATURED_CASE.color }} />
-              <div>
-                <div className="text-2xl font-black leading-none" style={{ color: FEATURED_CASE.color }}>{FEATURED_CASE.statBig}</div>
-                <div className="text-xs text-[#6B7280] mt-1">{FEATURED_CASE.statLabel}</div>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              <div className="rounded-lg bg-white border px-4 py-3 text-center" style={{ borderColor: "#E5E7EB" }}>
-                <div className="text-lg font-bold text-[#0A1628]">230</div>
-                <div className="text-[11px] text-[#6B7280]">Customers managed</div>
-              </div>
-              <div className="rounded-lg bg-white border px-4 py-3 text-center" style={{ borderColor: "#E5E7EB" }}>
-                <div className="text-lg font-bold text-[#0A1628]">30</div>
-                <div className="text-[11px] text-[#6B7280]">Vehicles tracked live</div>
-              </div>
-              <div className="rounded-lg bg-white border px-4 py-3 text-center" style={{ borderColor: "#E5E7EB" }}>
-                <div className="text-lg font-bold text-[#0A1628]">3</div>
-                <div className="text-[11px] text-[#6B7280]">Branches unified</div>
-              </div>
-              <div className="rounded-lg bg-white border px-4 py-3 text-center" style={{ borderColor: "#E5E7EB" }}>
-                <div className="text-lg font-bold text-[#0A1628]">₹1.6L+</div>
-                <div className="text-[11px] text-[#6B7280]">Revenue tracked</div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+      <div className="max-w-7xl mx-auto space-y-6">
+        <FeaturedCaseBanner item={FEATURED_CASE} />
+        <FeaturedCaseBanner item={FEATURED_CASE_2} />
       </div>
     </section>
 

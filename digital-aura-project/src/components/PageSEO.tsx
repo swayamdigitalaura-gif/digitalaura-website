@@ -35,6 +35,10 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: 'Riant Bikes Case Study: How Digital Aura Saved a Bike Rental Business From Going Extinct',
     description: 'Riant Bikes was losing customers to competitors with a stronger online presence. See how Digital Aura rebuilt their website, booking system, and Google Ads to bring back daily bookings and grow revenue.',
   },
+  '/case-studies/prism-calibration': {
+    title: 'From Being Known to Being Found — Prism Calibration Centre | Digital Aura Case Study',
+    description: "How Digital Aura took a 20-year NABL-accredited calibration company in Ahmedabad from referral-only to 70–100 qualified search leads a month — and into Google's AI Overview.",
+  },
   '/blog': {
     title: 'Digital Marketing Blog | Insights & Strategies | Digital Aura',
     description: 'Stay updated with the latest digital marketing trends, SEO tips, Google Ads strategies, and AI insights from the Digital Aura team.',
@@ -334,6 +338,12 @@ const PAGE_SCHEMA: Record<string, object | object[]> = {
     author: { '@type': 'Organization', name: 'Digital Aura' },
     publisher: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/case-studies/riant-bikes/` } },
+  '/case-studies/prism-calibration': { '@context': 'https://schema.org', '@type': 'Article',
+    headline: 'From Being Known to Being Found — Prism Calibration Centre',
+    description: "How Digital Aura took a 20-year NABL-accredited calibration company in Ahmedabad from referral-only to 70–100 qualified search leads a month — and into Google's AI Overview.",
+    author: { '@type': 'Organization', name: 'Digital Aura' },
+    publisher: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/case-studies/prism-calibration/` } },
   '/ai-solutions': { '@context': 'https://schema.org', '@type': 'Service', name: 'AI Solutions & Automation',
     provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL },
     description: 'LLM-powered apps, chatbots, workflow automation, predictive analytics, and custom ML models.', url: `${SITE_URL}/ai-solutions/`, areaServed: 'Worldwide' },

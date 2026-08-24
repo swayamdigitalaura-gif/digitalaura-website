@@ -36,6 +36,7 @@ import CustomMLModelsPage from "./pages/services/CustomMLModelsPage.tsx";
 import AISolutionsPage from "./pages/AISolutionsPage.tsx";
 import CaseStudiesPage from "./pages/CaseStudiesPage.tsx";
 import CaseStudyRiantBikes from "./pages/CaseStudyRiantBikes.tsx";
+import CaseStudyPrismCalibration from "./pages/CaseStudyPrismCalibration.tsx";
 import BlogPage from "./pages/BlogPage.tsx";
 import BlogPost from "./pages/BlogPost.tsx";
 import StaticSeoPostView from "./components/StaticSeoPostView.tsx";
@@ -89,6 +90,7 @@ const App = () => (
           <Route path="/engagement-models" element={<EngagementModelsPage />} />
           <Route path="/case-studies" element={<CaseStudiesPage />} />
           <Route path="/case-studies/riant-bikes" element={<CaseStudyRiantBikes />} />
+          <Route path="/case-studies/prism-calibration" element={<CaseStudyPrismCalibration />} />
           <Route path="/blog" element={<BlogPage />} />
           {seoBlogPosts.map(p => (
             <Route key={p.slug} path={`/blog/${p.slug}`} element={<StaticSeoPostView post={p} />} />

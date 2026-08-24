@@ -17,7 +17,6 @@ import Testimonials from "@/components/Testimonials";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
 import BlogInsights from "@/components/BlogInsights";
 import TechStack from "@/components/TechStack";
-import RatedOnPlatforms from "@/components/RatedOnPlatforms";
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
 import FloatingElements from "@/components/FloatingElements";
@@ -75,7 +74,6 @@ const Index = () => {
         <LeadCaptureForm />
         <BlogInsights />
         <TechStack />
-        <RatedOnPlatforms />
         <CtaBanner />
         <Footer />
         <FloatingElements />

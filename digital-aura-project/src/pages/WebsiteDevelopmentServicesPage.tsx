@@ -8,7 +8,6 @@ import { TrustMetrics, Problems, Included, Process } from "@/components/website-
 import { TechStack, PerformanceSnapshot, Industries } from "@/components/website-dev/SectionsB";
 import {
   LogoMarquee,
-  RatedPlatforms,
   Testimonials,
   Faq,
   FinalCta,
@@ -138,7 +137,6 @@ const WebsiteDevelopmentServicesPage = () => {
         />
         <Industries />
         <LogoMarquee />
-        <RatedPlatforms />
         <Testimonials />
         <CtaBand
           tone="light"

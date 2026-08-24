@@ -156,7 +156,10 @@ const numberStats = [
   { num: "3", label: "Branches unified into a single dashboard" },
 ];
 
-const IMG = "/case-studies/riant-bikes";
+// Deliberately NOT under /case-studies/ — that path collides with the React route of the
+// same name, and nginx resolves the URL to this real directory and 403s instead of falling
+// through to the SPA rewrite.
+const IMG = "/case-study-assets/riant-bikes";
 
 // Every editable string on this page — hero, body paragraphs, list items, stats,
 // testimonial, and CTA — is registered here once so useSettings() can fetch them all in

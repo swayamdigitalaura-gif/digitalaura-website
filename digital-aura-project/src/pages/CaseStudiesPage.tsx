@@ -63,6 +63,42 @@ const FEATURED_CASE_2 = {
   ],
 };
 
+const FEATURED_CASE_3 = {
+  tag: "Healthcare & Fertility · SEO + YouTube",
+  badge: "+76.7% Traffic",
+  title: "IVF Clinic, Quiet Authority to Measurable Demand",
+  statBig: "25–30",
+  statLabel: "qualified leads generated every single day",
+  desc: "This IVF clinic had the reputation and the results — but not the visibility. We ran SEO and YouTube growth in parallel, turning a strong offline reputation into daily online demand in just six months.",
+  services: ["SEO", "Content Strategy", "YouTube Growth", "AEO/GEO", "Conversion Optimization"],
+  color: "#22C55E",
+  href: "/case-studies/ivf-clinic",
+  quad: [
+    { n: "76.7%", l: "Organic traffic growth" },
+    { n: "85.9%", l: "YouTube views growth" },
+    { n: "6 Mo", l: "Time to results" },
+    { n: "25–30", l: "Leads every day" },
+  ],
+};
+
+const FEATURED_CASE_4 = {
+  tag: "Home Services · Local SEO & AEO",
+  badge: "10–15 Leads/day",
+  title: "DP Electrical Repairs, From Invisible to Local Leader",
+  statBig: "10–15",
+  statLabel: "qualified leads generated every day from the website",
+  desc: "A Melbourne appliance repair business stuck relying on word-of-mouth and shared-lead platforms rebuilt its online presence with Digital Aura — becoming the local search leader for appliance repair in just four months.",
+  services: ["Local SEO", "Service Pages", "AEO/GEO", "Conversion Optimization"],
+  color: "#1A6FE8",
+  href: "/case-studies/dp-electrical-repairs",
+  quad: [
+    { n: "3,000+", l: "Monthly website visitors" },
+    { n: "200+", l: "Suburb pages built" },
+    { n: "4 Mo", l: "Time to results" },
+    { n: "10–15", l: "Leads every day" },
+  ],
+};
+
 type FeaturedCase = typeof FEATURED_CASE;
 
 const FeaturedCaseBanner = ({ item }: { item: FeaturedCase }) => (
@@ -169,6 +205,8 @@ const CaseStudiesPage = () => {
       <div className="max-w-7xl mx-auto space-y-6">
         <FeaturedCaseBanner item={FEATURED_CASE} />
         <FeaturedCaseBanner item={FEATURED_CASE_2} />
+        <FeaturedCaseBanner item={FEATURED_CASE_3} />
+        <FeaturedCaseBanner item={FEATURED_CASE_4} />
       </div>
     </section>
 

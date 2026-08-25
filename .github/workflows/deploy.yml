@@ -41,6 +41,8 @@ jobs:
           filters: |
             main_site:
               - 'digital-aura-project/**'
+              # so changes to this workflow's own main-site steps actually run
+              - '.github/workflows/deploy.yml'
             admin_panel:
               - 'admin-panel/**'
             nginx:
@@ -84,6 +86,17 @@ jobs:
           H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
         run: |
           rsync -az -e "ssh $SSH_OPTS" digital-aura-project/dist/ "$H:/home/digitalaura.temp/public_html/"
+      # Case-study images used to live in public/case-studies/, but that path collides
+      # with the /case-studies/<slug> SPA routes: nginx resolves the URL to the real
+      # directory, finds no index.html inside it and returns 403 instead of falling
+      # through to the SPA rewrite. The assets moved to case-study-assets/, but the
+      # overlay rsync above never deletes, so the old directory survives on the server
+      # and keeps shadowing the routes until it is removed explicitly.
+      - name: Remove stale case-studies asset dir that shadows the SPA routes
+        env:
+          H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
+        run: |
+          ssh $SSH_OPTS "$H" "rm -rf /home/digitalaura.temp/public_html/case-studies"
 
   # ── 3. Admin panel  →  /home/digitalaura.temp/public_html/aura-desk/ ───────
   admin-panel:

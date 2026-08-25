@@ -72,7 +72,7 @@ const FEATURED_CASE_3 = {
   desc: "This IVF clinic had the reputation and the results — but not the visibility. We ran SEO and YouTube growth in parallel, turning a strong offline reputation into daily online demand in just six months.",
   services: ["SEO", "Content Strategy", "YouTube Growth", "AEO/GEO", "Conversion Optimization"],
   color: "#22C55E",
-  href: "/case-studies/bavishi-ivf",
+  href: "/case-studies/ivf-clinic",
   quad: [
     { n: "76.7%", l: "Organic traffic growth" },
     { n: "85.9%", l: "YouTube views growth" },

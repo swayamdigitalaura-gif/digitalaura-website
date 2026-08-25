@@ -133,64 +133,64 @@ const youtubeResultStats = [
   { num: "30.3%", label: "Growth in subscribers" },
 ];
 
-const BAVISHI_KEYS = [
-  "bavishi_heroTitle", "bavishi_heroSubtitle",
-  "bavishi_h2_situation", "bavishi_p_situation_1",
-  "bavishi_h3_website", "bavishi_h3_youtube",
-  "bavishi_h2_approach", "bavishi_p_approach_1", "bavishi_p_approach_2",
-  "bavishi_h3_seo", "bavishi_h3_yt",
-  "bavishi_h2_results", "bavishi_p_results_1",
-  "bavishi_h3_website_results", "bavishi_h3_youtube_results",
-  "bavishi_rank_note",
-  "bavishi_callout",
-  "bavishi_cta_heading", "bavishi_cta_text", "bavishi_cta_button",
-  ...heroStats.flatMap((_, i) => [`bavishi_herostat_${i}_num`, `bavishi_herostat_${i}_label`]),
-  ...websiteChallenges.map((_, i) => `bavishi_webchallenge_${i}`),
-  ...youtubeChallenges.map((_, i) => `bavishi_ytchallenge_${i}`),
-  ...seoApproach.map((_, i) => `bavishi_seo_${i}`),
-  ...youtubeApproach.map((_, i) => `bavishi_yt_${i}`),
-  ...timeline.flatMap((_, i) => [`bavishi_timeline_${i}_phase`, `bavishi_timeline_${i}_cap`]),
-  ...websiteResultStats.flatMap((_, i) => [`bavishi_webresult_${i}_num`, `bavishi_webresult_${i}_label`]),
-  ...youtubeResultStats.flatMap((_, i) => [`bavishi_ytresult_${i}_num`, `bavishi_ytresult_${i}_label`]),
+const IVF_CLINIC_KEYS = [
+  "ivfclinic_heroTitle", "ivfclinic_heroSubtitle",
+  "ivfclinic_h2_situation", "ivfclinic_p_situation_1",
+  "ivfclinic_h3_website", "ivfclinic_h3_youtube",
+  "ivfclinic_h2_approach", "ivfclinic_p_approach_1", "ivfclinic_p_approach_2",
+  "ivfclinic_h3_seo", "ivfclinic_h3_yt",
+  "ivfclinic_h2_results", "ivfclinic_p_results_1",
+  "ivfclinic_h3_website_results", "ivfclinic_h3_youtube_results",
+  "ivfclinic_rank_note",
+  "ivfclinic_callout",
+  "ivfclinic_cta_heading", "ivfclinic_cta_text", "ivfclinic_cta_button",
+  ...heroStats.flatMap((_, i) => [`ivfclinic_herostat_${i}_num`, `ivfclinic_herostat_${i}_label`]),
+  ...websiteChallenges.map((_, i) => `ivfclinic_webchallenge_${i}`),
+  ...youtubeChallenges.map((_, i) => `ivfclinic_ytchallenge_${i}`),
+  ...seoApproach.map((_, i) => `ivfclinic_seo_${i}`),
+  ...youtubeApproach.map((_, i) => `ivfclinic_yt_${i}`),
+  ...timeline.flatMap((_, i) => [`ivfclinic_timeline_${i}_phase`, `ivfclinic_timeline_${i}_cap`]),
+  ...websiteResultStats.flatMap((_, i) => [`ivfclinic_webresult_${i}_num`, `ivfclinic_webresult_${i}_label`]),
+  ...youtubeResultStats.flatMap((_, i) => [`ivfclinic_ytresult_${i}_num`, `ivfclinic_ytresult_${i}_label`]),
 ];
 
 // Deliberately NOT under /case-studies/ — that path collides with the React route of the
 // same name, and nginx resolves the URL to this real directory and 403s instead of falling
 // through to the SPA rewrite.
 
-const CaseStudyBavishi = () => {
+const CaseStudyIvfClinic = () => {
   useCMSEditor();
-  const s = useSettings(BAVISHI_KEYS);
+  const s = useSettings(IVF_CLINIC_KEYS);
   const t = (key: string, fallback: React.ReactNode) => s[key] || fallback;
 
   const heroTitle = t(
-    "bavishi_heroTitle",
+    "ivfclinic_heroTitle",
     <>How an IVF Hospital Turned <em style={{ fontStyle: "normal", color: GREEN }}>Quiet Authority</em> Into Measurable Demand — In Six Months.</>
   );
   const heroSubtitle = t(
-    "bavishi_heroSubtitle",
+    "ivfclinic_heroSubtitle",
     "This IVF clinic had the reputation and the results. What it didn't have was visibility — on Google, or on YouTube. Here's how we closed that gap."
   );
 
   const heroStatItems = heroStats.map((stat, i) => ({
-    num: t(`bavishi_herostat_${i}_num`, stat.num),
-    label: t(`bavishi_herostat_${i}_label`, stat.label),
+    num: t(`ivfclinic_herostat_${i}_num`, stat.num),
+    label: t(`ivfclinic_herostat_${i}_label`, stat.label),
   }));
-  const webChallengeItems = websiteChallenges.map((c, i) => t(`bavishi_webchallenge_${i}`, c));
-  const ytChallengeItems = youtubeChallenges.map((c, i) => t(`bavishi_ytchallenge_${i}`, c));
-  const seoItems = seoApproach.map((c, i) => t(`bavishi_seo_${i}`, c));
-  const ytItems = youtubeApproach.map((c, i) => t(`bavishi_yt_${i}`, c));
+  const webChallengeItems = websiteChallenges.map((c, i) => t(`ivfclinic_webchallenge_${i}`, c));
+  const ytChallengeItems = youtubeChallenges.map((c, i) => t(`ivfclinic_ytchallenge_${i}`, c));
+  const seoItems = seoApproach.map((c, i) => t(`ivfclinic_seo_${i}`, c));
+  const ytItems = youtubeApproach.map((c, i) => t(`ivfclinic_yt_${i}`, c));
   const timelineItems = timeline.map((tl, i) => ({
-    phase: t(`bavishi_timeline_${i}_phase`, tl.phase),
-    cap: t(`bavishi_timeline_${i}_cap`, tl.cap),
+    phase: t(`ivfclinic_timeline_${i}_phase`, tl.phase),
+    cap: t(`ivfclinic_timeline_${i}_cap`, tl.cap),
   }));
   const webResultItems = websiteResultStats.map((stat, i) => ({
-    num: t(`bavishi_webresult_${i}_num`, stat.num),
-    label: t(`bavishi_webresult_${i}_label`, stat.label),
+    num: t(`ivfclinic_webresult_${i}_num`, stat.num),
+    label: t(`ivfclinic_webresult_${i}_label`, stat.label),
   }));
   const ytResultItems = youtubeResultStats.map((stat, i) => ({
-    num: t(`bavishi_ytresult_${i}_num`, stat.num),
-    label: t(`bavishi_ytresult_${i}_label`, stat.label),
+    num: t(`ivfclinic_ytresult_${i}_num`, stat.num),
+    label: t(`ivfclinic_ytresult_${i}_label`, stat.label),
   }));
 
   return (
@@ -226,20 +226,20 @@ const CaseStudyBavishi = () => {
             >
               Case Study &middot; Healthcare &amp; Fertility &middot; SEO + YouTube
             </span>
-            <h1 data-cms-key="bavishi_heroTitle" data-cms-label="Hero Title" data-cms-attr="text" className="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-bold leading-[1.15] text-white mb-6 tracking-tight">
+            <h1 data-cms-key="ivfclinic_heroTitle" data-cms-label="Hero Title" data-cms-attr="text" className="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-bold leading-[1.15] text-white mb-6 tracking-tight">
               {heroTitle}
             </h1>
-            <p data-cms-key="bavishi_heroSubtitle" data-cms-label="Hero Subtitle" data-cms-attr="text" className="text-base md:text-lg max-w-2xl mx-auto" style={{ color: "#BBF7D0" }}>
+            <p data-cms-key="ivfclinic_heroSubtitle" data-cms-label="Hero Subtitle" data-cms-attr="text" className="text-base md:text-lg max-w-2xl mx-auto" style={{ color: "#BBF7D0" }}>
               {heroSubtitle}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10 max-w-2xl mx-auto">
               {heroStatItems.map((stat, i) => (
                 <div key={i} className="rounded-xl px-5 py-5 text-center" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)" }}>
-                  <span data-cms-key={`bavishi_herostat_${i}_num`} data-cms-label={`Hero Stat ${i + 1} Number`} data-cms-attr="text" className="block text-2xl font-black mb-1.5 text-white">
+                  <span data-cms-key={`ivfclinic_herostat_${i}_num`} data-cms-label={`Hero Stat ${i + 1} Number`} data-cms-attr="text" className="block text-2xl font-black mb-1.5 text-white">
                     {stat.num}
                   </span>
-                  <span data-cms-key={`bavishi_herostat_${i}_label`} data-cms-label={`Hero Stat ${i + 1} Label`} data-cms-attr="text" className="text-xs leading-snug" style={{ color: "#BBF7D0" }}>{stat.label}</span>
+                  <span data-cms-key={`ivfclinic_herostat_${i}_label`} data-cms-label={`Hero Stat ${i + 1} Label`} data-cms-attr="text" className="text-xs leading-snug" style={{ color: "#BBF7D0" }}>{stat.label}</span>
                 </div>
               ))}
             </div>
@@ -276,84 +276,84 @@ const CaseStudyBavishi = () => {
           <motion.div {...fadeUp} className="grid sm:grid-cols-3 gap-5 mb-10 rounded-xl border bg-white px-6 py-6" style={{ borderColor: "#E5E7EB" }}>
             {timelineItems.map((tl, i) => (
               <div key={i} className="pl-4 border-l-2" style={{ borderColor: "#DCD5C6" }}>
-                <div className="font-bold text-[15px]" style={{ color: NAVY }} data-cms-key={`bavishi_timeline_${i}_phase`} data-cms-label={`Timeline ${i + 1} Phase`} data-cms-attr="text">{tl.phase}</div>
-                <div className="text-sm mt-1.5" style={{ color: MUTED }} data-cms-key={`bavishi_timeline_${i}_cap`} data-cms-label={`Timeline ${i + 1} Caption`} data-cms-attr="text">{tl.cap}</div>
+                <div className="font-bold text-[15px]" style={{ color: NAVY }} data-cms-key={`ivfclinic_timeline_${i}_phase`} data-cms-label={`Timeline ${i + 1} Phase`} data-cms-attr="text">{tl.phase}</div>
+                <div className="text-sm mt-1.5" style={{ color: MUTED }} data-cms-key={`ivfclinic_timeline_${i}_cap`} data-cms-label={`Timeline ${i + 1} Caption`} data-cms-attr="text">{tl.cap}</div>
               </div>
             ))}
           </motion.div>
 
-          <H2 k="bavishi_h2_situation">{t("bavishi_h2_situation", "Do Any of These Problems Sound Familiar?")}</H2>
-          <P k="bavishi_p_situation_1">
-            {t("bavishi_p_situation_1", "This clinic was a market leader by reputation — but that authority wasn't showing up in search or on YouTube, where prospective patients were actually looking for answers.")}
+          <H2 k="ivfclinic_h2_situation">{t("ivfclinic_h2_situation", "Do Any of These Problems Sound Familiar?")}</H2>
+          <P k="ivfclinic_p_situation_1">
+            {t("ivfclinic_p_situation_1", "This clinic was a market leader by reputation — but that authority wasn't showing up in search or on YouTube, where prospective patients were actually looking for answers.")}
           </P>
 
           <motion.div {...fadeUp} className="grid sm:grid-cols-2 gap-4 my-6">
             <div className="rounded-xl border bg-white px-5 py-5" style={{ borderColor: "#E5E7EB" }}>
-              <H3 k="bavishi_h3_website">{t("bavishi_h3_website", "On the Website")}</H3>
+              <H3 k="ivfclinic_h3_website">{t("ivfclinic_h3_website", "On the Website")}</H3>
               <ul className="space-y-2.5 mt-3">
                 {webChallengeItems.map((item, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm" style={{ color: MUTED }}>
                     <ChevronRight size={15} style={{ color: GREEN }} className="mt-0.5 flex-shrink-0" />
-                    <span data-cms-key={`bavishi_webchallenge_${i}`} data-cms-label={`Website Challenge ${i + 1}`} data-cms-attr="text">{item}</span>
+                    <span data-cms-key={`ivfclinic_webchallenge_${i}`} data-cms-label={`Website Challenge ${i + 1}`} data-cms-attr="text">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
             <div className="rounded-xl border bg-white px-5 py-5" style={{ borderColor: "#E5E7EB" }}>
-              <H3 k="bavishi_h3_youtube">{t("bavishi_h3_youtube", "On YouTube")}</H3>
+              <H3 k="ivfclinic_h3_youtube">{t("ivfclinic_h3_youtube", "On YouTube")}</H3>
               <ul className="space-y-2.5 mt-3">
                 {ytChallengeItems.map((item, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm" style={{ color: MUTED }}>
                     <ChevronRight size={15} style={{ color: GREEN }} className="mt-0.5 flex-shrink-0" />
-                    <span data-cms-key={`bavishi_ytchallenge_${i}`} data-cms-label={`YouTube Challenge ${i + 1}`} data-cms-attr="text">{item}</span>
+                    <span data-cms-key={`ivfclinic_ytchallenge_${i}`} data-cms-label={`YouTube Challenge ${i + 1}`} data-cms-attr="text">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
           </motion.div>
 
-          <H2 k="bavishi_h2_approach">{t("bavishi_h2_approach", "Two Tracks, Run in Parallel")}</H2>
-          <P k="bavishi_p_approach_1">
-            {t("bavishi_p_approach_1", "Search and YouTube feed the same goal — more couples finding trustworthy answers, faster. So we built the plan as one system with two engines.")}
+          <H2 k="ivfclinic_h2_approach">{t("ivfclinic_h2_approach", "Two Tracks, Run in Parallel")}</H2>
+          <P k="ivfclinic_p_approach_1">
+            {t("ivfclinic_p_approach_1", "Search and YouTube feed the same goal — more couples finding trustworthy answers, faster. So we built the plan as one system with two engines.")}
           </P>
-          <P k="bavishi_p_approach_2">{t("bavishi_p_approach_2", "Here's what we did.")}</P>
+          <P k="ivfclinic_p_approach_2">{t("ivfclinic_p_approach_2", "Here's what we did.")}</P>
 
           <motion.div {...fadeUp} className="rounded-2xl px-6 py-7 md:px-8 md:py-8" style={{ background: "#F3EDE2" }}>
-            <H3 k="bavishi_h3_seo">{t("bavishi_h3_seo", "Website & SEO")}</H3>
+            <H3 k="ivfclinic_h3_seo">{t("ivfclinic_h3_seo", "Website & SEO")}</H3>
             <div className="mt-2">
               {seoItems.map((item, i) => (
                 <div key={i} className="grid grid-cols-[40px_1fr] gap-4 py-3.5 border-t first:border-t-0" style={{ borderColor: "#DCD5C6" }}>
                   <div className="font-bold text-lg" style={{ color: GREEN }}>{String(i + 1).padStart(2, "0")}</div>
-                  <div className="text-sm md:text-[15px] leading-relaxed" style={{ color: NAVY }} data-cms-key={`bavishi_seo_${i}`} data-cms-label={`SEO Step ${i + 1}`} data-cms-attr="text">{item}</div>
+                  <div className="text-sm md:text-[15px] leading-relaxed" style={{ color: NAVY }} data-cms-key={`ivfclinic_seo_${i}`} data-cms-label={`SEO Step ${i + 1}`} data-cms-attr="text">{item}</div>
                 </div>
               ))}
             </div>
 
-            <H3 k="bavishi_h3_yt">{t("bavishi_h3_yt", "YouTube")}</H3>
+            <H3 k="ivfclinic_h3_yt">{t("ivfclinic_h3_yt", "YouTube")}</H3>
             <div className="mt-2">
               {ytItems.map((item, i) => (
                 <div key={i} className="grid grid-cols-[40px_1fr] gap-4 py-3.5 border-t first:border-t-0" style={{ borderColor: "#DCD5C6" }}>
                   <div className="font-bold text-lg" style={{ color: GREEN }}>{String(seoItems.length + i + 1).padStart(2, "0")}</div>
-                  <div className="text-sm md:text-[15px] leading-relaxed" style={{ color: NAVY }} data-cms-key={`bavishi_yt_${i}`} data-cms-label={`YouTube Step ${i + 1}`} data-cms-attr="text">{item}</div>
+                  <div className="text-sm md:text-[15px] leading-relaxed" style={{ color: NAVY }} data-cms-key={`ivfclinic_yt_${i}`} data-cms-label={`YouTube Step ${i + 1}`} data-cms-attr="text">{item}</div>
                 </div>
               ))}
             </div>
           </motion.div>
 
-          <H2 k="bavishi_h2_results">{t("bavishi_h2_results", "Six Months, Measured in Full")}</H2>
-          <P k="bavishi_p_results_1">
-            {t("bavishi_p_results_1", "Both engines compounded — search visibility fed steady organic demand, while YouTube turned dormant content into an active audience.")}
+          <H2 k="ivfclinic_h2_results">{t("ivfclinic_h2_results", "Six Months, Measured in Full")}</H2>
+          <P k="ivfclinic_p_results_1">
+            {t("ivfclinic_p_results_1", "Both engines compounded — search visibility fed steady organic demand, while YouTube turned dormant content into an active audience.")}
           </P>
 
-          <H3 k="bavishi_h3_website_results">{t("bavishi_h3_website_results", "For the Website")}</H3>
+          <H3 k="ivfclinic_h3_website_results">{t("ivfclinic_h3_website_results", "For the Website")}</H3>
           <motion.div {...fadeUp} className="grid sm:grid-cols-3 gap-4 my-6">
             {webResultItems.map((stat, i) => (
               <div key={i} className="rounded-xl px-5 py-5" style={{ background: NAVY }}>
                 <div className="flex items-center gap-2 mb-2">
                   <TrendingUp size={16} style={{ color: GREEN }} />
-                  <span data-cms-key={`bavishi_webresult_${i}_num`} data-cms-label={`Website Result ${i + 1} Number`} data-cms-attr="text" className="text-2xl font-black" style={{ color: "#86EFAC" }}>{stat.num}</span>
+                  <span data-cms-key={`ivfclinic_webresult_${i}_num`} data-cms-label={`Website Result ${i + 1} Number`} data-cms-attr="text" className="text-2xl font-black" style={{ color: "#86EFAC" }}>{stat.num}</span>
                 </div>
-                <div data-cms-key={`bavishi_webresult_${i}_label`} data-cms-label={`Website Result ${i + 1} Label`} data-cms-attr="text" className="text-xs" style={{ color: "#D1D5DB" }}>{stat.label}</div>
+                <div data-cms-key={`ivfclinic_webresult_${i}_label`} data-cms-label={`Website Result ${i + 1} Label`} data-cms-attr="text" className="text-xs" style={{ color: "#D1D5DB" }}>{stat.label}</div>
               </div>
             ))}
           </motion.div>
@@ -380,25 +380,25 @@ const CaseStudyBavishi = () => {
               </tbody>
             </table>
           </motion.div>
-          <p data-cms-key="bavishi_rank_note" data-cms-label="Ranking Note" data-cms-attr="text" className="text-sm mb-8" style={{ color: MUTED }}>
-            {t("bavishi_rank_note", <>Total clicks over 6 months: <strong style={{ color: NAVY }}>9.78K</strong> · Total impressions: <strong style={{ color: NAVY }}>640K</strong></>)}
+          <p data-cms-key="ivfclinic_rank_note" data-cms-label="Ranking Note" data-cms-attr="text" className="text-sm mb-8" style={{ color: MUTED }}>
+            {t("ivfclinic_rank_note", <>Total clicks over 6 months: <strong style={{ color: NAVY }}>9.78K</strong> · Total impressions: <strong style={{ color: NAVY }}>640K</strong></>)}
           </p>
 
-          <H3 k="bavishi_h3_youtube_results">{t("bavishi_h3_youtube_results", "For YouTube")}</H3>
+          <H3 k="ivfclinic_h3_youtube_results">{t("ivfclinic_h3_youtube_results", "For YouTube")}</H3>
           <motion.div {...fadeUp} className="grid sm:grid-cols-3 gap-4 my-6">
             {ytResultItems.map((stat, i) => (
               <div key={i} className="rounded-xl px-5 py-5" style={{ background: NAVY }}>
                 <div className="flex items-center gap-2 mb-2">
                   <TrendingUp size={16} style={{ color: GREEN }} />
-                  <span data-cms-key={`bavishi_ytresult_${i}_num`} data-cms-label={`YouTube Result ${i + 1} Number`} data-cms-attr="text" className="text-2xl font-black" style={{ color: "#86EFAC" }}>{stat.num}</span>
+                  <span data-cms-key={`ivfclinic_ytresult_${i}_num`} data-cms-label={`YouTube Result ${i + 1} Number`} data-cms-attr="text" className="text-2xl font-black" style={{ color: "#86EFAC" }}>{stat.num}</span>
                 </div>
-                <div data-cms-key={`bavishi_ytresult_${i}_label`} data-cms-label={`YouTube Result ${i + 1} Label`} data-cms-attr="text" className="text-xs" style={{ color: "#D1D5DB" }}>{stat.label}</div>
+                <div data-cms-key={`ivfclinic_ytresult_${i}_label`} data-cms-label={`YouTube Result ${i + 1} Label`} data-cms-attr="text" className="text-xs" style={{ color: "#D1D5DB" }}>{stat.label}</div>
               </div>
             ))}
           </motion.div>
 
-          <Callout tone="green" k="bavishi_callout">
-            {t("bavishi_callout", "This wasn't a story about weak service — it was a story about weak visibility. Once search and YouTube were both working as demand engines, the reputation this clinic had already earned finally started showing up where patients were actually looking.")}
+          <Callout tone="green" k="ivfclinic_callout">
+            {t("ivfclinic_callout", "This wasn't a story about weak service — it was a story about weak visibility. Once search and YouTube were both working as demand engines, the reputation this clinic had already earned finally started showing up where patients were actually looking.")}
           </Callout>
 
           {/* CTA */}
@@ -407,14 +407,14 @@ const CaseStudyBavishi = () => {
             className="mt-14 rounded-2xl text-center px-6 py-10 md:px-10 md:py-12"
             style={{ background: NAVY }}
           >
-            <h2 data-cms-key="bavishi_cta_heading" data-cms-label="CTA Heading" data-cms-attr="text" className="text-2xl md:text-[28px] font-bold text-white mb-3">
-              {t("bavishi_cta_heading", "Facing the Same Gap Between Your Reputation and Your Visibility?")}
+            <h2 data-cms-key="ivfclinic_cta_heading" data-cms-label="CTA Heading" data-cms-attr="text" className="text-2xl md:text-[28px] font-bold text-white mb-3">
+              {t("ivfclinic_cta_heading", "Facing the Same Gap Between Your Reputation and Your Visibility?")}
             </h2>
-            <p data-cms-key="bavishi_cta_text" data-cms-label="CTA Text" data-cms-attr="text" className="text-[15px] md:text-base max-w-xl mx-auto mb-6" style={{ color: "#BBF7D0" }}>
-              {t("bavishi_cta_text", "Let Digital Aura build the search and content engine that turns your existing authority into steady, measurable demand.")}
+            <p data-cms-key="ivfclinic_cta_text" data-cms-label="CTA Text" data-cms-attr="text" className="text-[15px] md:text-base max-w-xl mx-auto mb-6" style={{ color: "#BBF7D0" }}>
+              {t("ivfclinic_cta_text", "Let Digital Aura build the search and content engine that turns your existing authority into steady, measurable demand.")}
             </p>
             <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2 inline-flex">
-              <span data-cms-key="bavishi_cta_button" data-cms-label="CTA Button" data-cms-attr="text">{t("bavishi_cta_button", "Talk to Digital Aura Today")}</span> <ArrowRight size={18} />
+              <span data-cms-key="ivfclinic_cta_button" data-cms-label="CTA Button" data-cms-attr="text">{t("ivfclinic_cta_button", "Talk to Digital Aura Today")}</span> <ArrowRight size={18} />
             </Link>
           </motion.div>
         </div>
@@ -423,4 +423,4 @@ const CaseStudyBavishi = () => {
   );
 };
 
-export default CaseStudyBavishi;
+export default CaseStudyIvfClinic;

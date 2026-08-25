@@ -39,7 +39,7 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: 'From Being Known to Being Found — Prism Calibration Centre | Digital Aura Case Study',
     description: "How Digital Aura took a 20-year NABL-accredited calibration company in Ahmedabad from referral-only to 70–100 qualified search leads a month — and into Google's AI Overview.",
   },
-  '/case-studies/bavishi-ivf': {
+  '/case-studies/ivf-clinic': {
     title: 'IVF Clinic SEO & YouTube Case Study | Digital Aura',
     description: 'How an IVF hospital turned quiet authority into measurable demand: 76.7% organic traffic growth, 85.9% YouTube views growth, and 25–30 qualified leads a day in six months.',
   },
@@ -352,12 +352,12 @@ const PAGE_SCHEMA: Record<string, object | object[]> = {
     author: { '@type': 'Organization', name: 'Digital Aura' },
     publisher: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/case-studies/prism-calibration/` } },
-  '/case-studies/bavishi-ivf': { '@context': 'https://schema.org', '@type': 'Article',
+  '/case-studies/ivf-clinic': { '@context': 'https://schema.org', '@type': 'Article',
     headline: 'How an IVF Hospital Turned Quiet Authority Into Measurable Demand — In Six Months',
     description: 'How an IVF hospital turned quiet authority into measurable demand: 76.7% organic traffic growth, 85.9% YouTube views growth, and 25–30 qualified leads a day in six months.',
     author: { '@type': 'Organization', name: 'Digital Aura' },
     publisher: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/case-studies/bavishi-ivf/` } },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/case-studies/ivf-clinic/` } },
   '/case-studies/dp-electrical-repairs': { '@context': 'https://schema.org', '@type': 'Article',
     headline: 'How DP Electrical Repairs Went From Invisible to 10–15 Qualified Leads a Day',
     description: 'How a Melbourne appliance repair business went from invisible to 10–15 qualified leads a day with a local SEO structure built around service, brand, and suburb pages.',

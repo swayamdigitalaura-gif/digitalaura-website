@@ -213,19 +213,21 @@ const CaseStudyIvfClinic = () => {
 
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative z-10 pt-16 pb-14 md:pt-20 md:pb-16">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
-            <Link
-              to="/case-studies"
-              className="inline-flex items-center gap-1.5 text-sm font-medium mb-6"
-              style={{ color: "#BBF7D0" }}
-            >
-              <ArrowLeft size={15} /> All Case Studies
-            </Link>
-            <span
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold mb-6 tracking-widest uppercase"
-              style={{ background: GREEN, color: "#052e16" }}
-            >
-              Case Study &middot; Healthcare &amp; Fertility &middot; SEO + YouTube
-            </span>
+            <div className="flex flex-col items-center gap-4 mb-6">
+              <Link
+                to="/case-studies"
+                className="inline-flex items-center gap-1.5 text-sm font-medium self-center"
+                style={{ color: "#BBF7D0" }}
+              >
+                <ArrowLeft size={15} /> All Case Studies
+              </Link>
+              <span
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase text-center"
+                style={{ background: GREEN, color: "#052e16" }}
+              >
+                Case Study &middot; Healthcare &amp; Fertility &middot; SEO + YouTube
+              </span>
+            </div>
             <h1 data-cms-key="ivfclinic_heroTitle" data-cms-label="Hero Title" data-cms-attr="text" className="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-bold leading-[1.15] text-white mb-6 tracking-tight">
               {heroTitle}
             </h1>
@@ -243,6 +245,39 @@ const CaseStudyIvfClinic = () => {
                 </div>
               ))}
             </div>
+
+            <svg
+              className="w-full mt-12"
+              style={{ height: 150 }}
+              viewBox="0 0 1000 160"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none"
+              aria-label="Organic traffic growth climbing from 0% to +76.7% over six months"
+            >
+              <path d="M20 114.4 C 116 114.4, 116 101.1, 212 101.1 C 308 101.1, 308 85.6, 404 85.6 C 500 85.6, 500 66.7, 596 66.7 C 692 66.7, 692 47.8, 788 47.8 C 884 47.8, 884 29.2, 980 29.2" stroke="#86EFAC" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+              <path d="M20 114.4 C 116 114.4, 116 101.1, 212 101.1 C 308 101.1, 308 85.6, 404 85.6 C 500 85.6, 500 66.7, 596 66.7 C 692 66.7, 692 47.8, 788 47.8 C 884 47.8, 884 29.2, 980 29.2 L980 160 L20 160 Z" fill="url(#ivfGrowthFade)" />
+              {[
+                { x: 20, y: 114.4, label: "Start", month: "M1" },
+                { x: 212, y: 101.1, label: "+12%", month: "M2" },
+                { x: 404, y: 85.6, label: "+26%", month: "M3" },
+                { x: 596, y: 66.7, label: "+43%", month: "M4" },
+                { x: 788, y: 47.8, label: "+60%", month: "M5" },
+                { x: 980, y: 29.2, label: "+76.7%", month: "M6" },
+              ].map((p, i) => (
+                <g key={i}>
+                  <circle cx={p.x} cy={p.y} r="4" fill="#FF6B2B" stroke="#0A1628" strokeWidth="2" />
+                  <text x={p.x} y={p.y - 14} fontSize="13" fontWeight="700" fill="#FFFFFF" textAnchor="middle" fontFamily="system-ui, sans-serif">{p.label}</text>
+                  <text x={p.x} y="156" fontSize="11" fill="#BBF7D0" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="600">{p.month}</text>
+                </g>
+              ))}
+              <defs>
+                <linearGradient id="ivfGrowthFade" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stopColor="#22C55E" stopOpacity="0.22" />
+                  <stop offset="1" stopColor="#22C55E" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+            </svg>
           </motion.div>
         </div>
       </section>
@@ -384,6 +419,42 @@ const CaseStudyIvfClinic = () => {
             {t("ivfclinic_rank_note", <>Total clicks over 6 months: <strong style={{ color: NAVY }}>9.78K</strong> · Total impressions: <strong style={{ color: NAVY }}>640K</strong></>)}
           </p>
 
+          <motion.div {...fadeUp} className="rounded-xl border bg-white px-6 py-6 md:px-7 md:py-7 mb-10" style={{ borderColor: "#E5E7EB" }}>
+            <div className="flex gap-5 mb-4">
+              <span className="inline-flex items-center gap-2 text-xs font-semibold" style={{ color: MUTED }}><i className="inline-block w-2.5 h-2.5 rounded-sm" style={{ background: ORANGE }} />#1</span>
+              <span className="inline-flex items-center gap-2 text-xs font-semibold" style={{ color: MUTED }}><i className="inline-block w-2.5 h-2.5 rounded-sm" style={{ background: BLUE }} />#2–3</span>
+              <span className="inline-flex items-center gap-2 text-xs font-semibold" style={{ color: MUTED }}><i className="inline-block w-2.5 h-2.5 rounded-sm" style={{ background: GREEN }} />#4–10</span>
+            </div>
+            <svg viewBox="0 0 640 280" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }} aria-label="Keywords ranking on page 1 of Google, by position bucket, May to July 2024">
+              {[0, 15, 30, 45, 60].map((v, i) => {
+                const y = 235 - (v / 60) * 205;
+                return (
+                  <g key={v}>
+                    <line x1="60" y1={y} x2="620" y2={y} stroke="#E5E7EB" strokeWidth="1" />
+                    <text x="50" y={y + 4} fontSize="11" fill={MUTED} textAnchor="end" fontFamily="system-ui, sans-serif">{v}</text>
+                  </g>
+                );
+              })}
+              {[
+                { month: "May", mx: 100, bars: [{ x: 70, y: 231.6, h: 3.4, v: 1, c: ORANGE }, { x: 92, y: 204.2, h: 30.8, v: 9, c: BLUE }, { x: 114, y: 170.1, h: 64.9, v: 19, c: GREEN }] },
+                { month: "June", mx: 220, bars: [{ x: 190, y: 211.1, h: 23.9, v: 7, c: ORANGE }, { x: 212, y: 187.2, h: 47.8, v: 14, c: BLUE }, { x: 234, y: 115.4, h: 119.6, v: 35, c: GREEN }] },
+                { month: "July", mx: 340, bars: [{ x: 310, y: 200.8, h: 34.2, v: 10, c: ORANGE }, { x: 332, y: 156.4, h: 78.6, v: 23, c: BLUE }, { x: 354, y: 40.2, h: 194.8, v: 57, c: GREEN }] },
+              ].map((group, gi) => (
+                <g key={gi}>
+                  {group.bars.map((b, bi) => (
+                    <g key={bi}>
+                      <rect x={b.x} y={b.y} width="16" height={b.h} rx="3" fill={b.c} />
+                      <text x={b.x + 8} y={b.y - 6} fontSize="11.5" fontWeight="700" fill={NAVY} textAnchor="middle" fontFamily="system-ui, sans-serif">{b.v}</text>
+                    </g>
+                  ))}
+                  <text x={group.mx} y="257" fontSize="12.5" fill={MUTED} textAnchor="middle" fontWeight="600" fontFamily="system-ui, sans-serif">{group.month}</text>
+                </g>
+              ))}
+              <line x1="60" y1="235" x2="620" y2="235" stroke={NAVY} strokeWidth="1.2" />
+            </svg>
+            <div className="text-center text-xs mt-3.5" style={{ color: MUTED }}>Keywords ranking on page 1 of Google, by position bucket</div>
+          </motion.div>
+
           <H3 k="ivfclinic_h3_youtube_results">{t("ivfclinic_h3_youtube_results", "For YouTube")}</H3>
           <motion.div {...fadeUp} className="grid sm:grid-cols-3 gap-4 my-6">
             {ytResultItems.map((stat, i) => (
@@ -395,6 +466,36 @@ const CaseStudyIvfClinic = () => {
                 <div data-cms-key={`ivfclinic_ytresult_${i}_label`} data-cms-label={`YouTube Result ${i + 1} Label`} data-cms-attr="text" className="text-xs" style={{ color: "#D1D5DB" }}>{stat.label}</div>
               </div>
             ))}
+          </motion.div>
+
+          <motion.div {...fadeUp} className="rounded-xl border bg-white px-6 py-6 md:px-7 md:py-7 mb-10" style={{ borderColor: "#E5E7EB" }}>
+            <svg viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "auto" }} aria-label="YouTube channel growth over the six-month engagement">
+              {[
+                { pct: "0%", y: 210 },
+                { pct: "25%", y: 165 },
+                { pct: "50%", y: 120 },
+                { pct: "75%", y: 75 },
+                { pct: "100%", y: 30 },
+              ].map((g) => (
+                <g key={g.pct}>
+                  <line x1="60" y1={g.y} x2="620" y2={g.y} stroke="#E5E7EB" strokeWidth="1" />
+                  <text x="50" y={g.y + 4} fontSize="11" fill={MUTED} textAnchor="end" fontFamily="system-ui, sans-serif">{g.pct}</text>
+                </g>
+              ))}
+              {[
+                { x: 90, y: 55.4, h: 154.6, label: "+85.9%", cap: "Views", c: ORANGE },
+                { x: 240, y: 127.6, h: 82.4, label: "+45.8%", cap: "Watch time", c: BLUE },
+                { x: 390, y: 155.5, h: 54.5, label: "+30.3%", cap: "Subscribers", c: GREEN },
+              ].map((b, i) => (
+                <g key={i}>
+                  <rect x={b.x} y={b.y} width="90" height={b.h} rx="6" fill={b.c} />
+                  <text x={b.x + 45} y={b.y - 10} fontSize="16" fontWeight="700" fill={NAVY} textAnchor="middle" fontFamily="system-ui, sans-serif">{b.label}</text>
+                  <text x={b.x + 45} y="234" fontSize="13" fill={MUTED} textAnchor="middle" fontWeight="600" fontFamily="system-ui, sans-serif">{b.cap}</text>
+                </g>
+              ))}
+              <line x1="60" y1="210" x2="620" y2="210" stroke={NAVY} strokeWidth="1.2" />
+            </svg>
+            <div className="text-center text-xs mt-3.5" style={{ color: MUTED }}>YouTube channel growth over the 6-month engagement</div>
           </motion.div>
 
           <Callout tone="green" k="ivfclinic_callout">

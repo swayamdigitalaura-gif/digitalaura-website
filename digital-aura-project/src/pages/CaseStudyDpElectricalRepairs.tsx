@@ -161,6 +161,10 @@ const DP_KEYS = [
   "dp_shot_4_tag", "dp_shot_4_caption",
   "dp_shot_5_tag", "dp_shot_5_caption",
   "dp_shot_6_tag", "dp_shot_6_caption",
+  "dp_shot_7_tag", "dp_shot_7_caption",
+  "dp_shot_8_tag", "dp_shot_8_caption",
+  "dp_shot_9_tag", "dp_shot_9_caption",
+  "dp_shot_10_tag", "dp_shot_10_caption",
   "dp_callout",
   "dp_cta_heading", "dp_cta_text", "dp_cta_button",
   ...heroStats.flatMap((_, i) => [`dp_herostat_${i}_num`, `dp_herostat_${i}_label`]),
@@ -220,19 +224,21 @@ const CaseStudyDpElectricalRepairs = () => {
 
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative z-10 pt-16 pb-14 md:pt-20 md:pb-16">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
-            <Link
-              to="/case-studies"
-              className="inline-flex items-center gap-1.5 text-sm font-medium mb-6"
-              style={{ color: "#BFD3FF" }}
-            >
-              <ArrowLeft size={15} /> All Case Studies
-            </Link>
-            <span
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold mb-6 tracking-widest uppercase"
-              style={{ background: BLUE, color: "#FFFFFF" }}
-            >
-              Case Study &middot; SEO &amp; AEO
-            </span>
+            <div className="flex flex-col items-center gap-4 mb-6">
+              <Link
+                to="/case-studies"
+                className="inline-flex items-center gap-1.5 text-sm font-medium self-center"
+                style={{ color: "#BFD3FF" }}
+              >
+                <ArrowLeft size={15} /> All Case Studies
+              </Link>
+              <span
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase text-center"
+                style={{ background: BLUE, color: "#FFFFFF" }}
+              >
+                Case Study &middot; SEO &amp; AEO
+              </span>
+            </div>
             <h1 data-cms-key="dp_heroTitle" data-cms-label="Hero Title" data-cms-attr="text" className="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] font-bold leading-[1.15] text-white mb-6 tracking-tight">
               {heroTitle}
             </h1>
@@ -383,6 +389,16 @@ const CaseStudyDpElectricalRepairs = () => {
             captionKey="dp_shot_5_caption"
           />
 
+          <AIQuery>same day appliance repair Melbourne</AIQuery>
+          <Screenshot
+            tag={t("dp_shot_7_tag", "ChatGPT — \"same day appliance repair Melbourne\"") as string}
+            tagKey="dp_shot_7_tag"
+            src={`${IMG}/chatgpt-same-day-appliance-repair.jpg`}
+            alt="ChatGPT recommending DP Electric for same day appliance repair Melbourne"
+            caption={t("dp_shot_7_caption", "Cited as a strong recommendation, with phone number and services listed.") as string}
+            captionKey="dp_shot_7_caption"
+          />
+
           <AIQuery>best appliance repair service Melbourne</AIQuery>
           <Screenshot
             tag={t("dp_shot_6_tag", "Gemini — \"best appliance repair service Melbourne\"") as string}
@@ -391,6 +407,36 @@ const CaseStudyDpElectricalRepairs = () => {
             alt="Gemini naming DP Electric the number 1 choice for best appliance repair service Melbourne"
             caption={t("dp_shot_6_caption", "Named the #1 choice, with same-day service, brand range, and licensing called out.") as string}
             captionKey="dp_shot_6_caption"
+          />
+
+          <AIQuery>dishwasher repair Melbourne</AIQuery>
+          <Screenshot
+            tag={t("dp_shot_8_tag", "Gemini — \"dishwasher repair Melbourne\"") as string}
+            tagKey="dp_shot_8_tag"
+            src={`${IMG}/gemini-dishwasher-repair-melbourne.jpg`}
+            alt="Gemini naming DP Electric the number 1 choice for dishwasher repair Melbourne"
+            caption={t("dp_shot_8_caption", "Top-recommended provider, with common fault types pulled straight from the service pages.") as string}
+            captionKey="dp_shot_8_caption"
+          />
+
+          <AIQuery>washing machine repair Melbourne</AIQuery>
+          <Screenshot
+            tag={t("dp_shot_9_tag", "Gemini — \"washing machine repair Melbourne\"") as string}
+            tagKey="dp_shot_9_tag"
+            src={`${IMG}/gemini-washing-machine-repair-melbourne.jpg`}
+            alt="Gemini naming DP Electric the number 1 choice for washing machine repair Melbourne"
+            caption={t("dp_shot_9_caption", "Top-recommended provider across front loaders, top loaders, and combos.") as string}
+            captionKey="dp_shot_9_caption"
+          />
+
+          <AIQuery>fridge repair Melbourne</AIQuery>
+          <Screenshot
+            tag={t("dp_shot_10_tag", "Gemini — \"fridge repair Melbourne\"") as string}
+            tagKey="dp_shot_10_tag"
+            src={`${IMG}/gemini-fridge-repair-melbourne.jpg`}
+            alt="Gemini naming DP Electric the number 1 choice for fridge repair Melbourne"
+            caption={t("dp_shot_10_caption", "Top-recommended provider for urgent fridge and freezer breakdowns.") as string}
+            captionKey="dp_shot_10_caption"
           />
 
           <Callout tone="blue" k="dp_callout">

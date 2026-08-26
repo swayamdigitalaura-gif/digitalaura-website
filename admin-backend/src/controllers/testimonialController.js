@@ -1,4 +1,5 @@
 const { Testimonial } = require('../models');
+const { refreshGoogleReviews } = require('../services/googleReviewsService');
 
 exports.getAll = async (req, res) => {
   try {
@@ -29,5 +30,12 @@ exports.remove = async (req, res) => {
     if (!item) return res.status(404).json({ success: false, message: 'Not found' });
     await item.destroy();
     res.json({ success: true, message: 'Deleted' });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};
+
+exports.refreshGoogle = async (req, res) => {
+  try {
+    const summary = await refreshGoogleReviews();
+    res.json({ success: true, ...summary });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };

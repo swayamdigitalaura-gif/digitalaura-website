@@ -14,6 +14,10 @@ const Testimonial = sequelize.define('Testimonial', {
   order_index: { type: DataTypes.INTEGER, defaultValue: 0 },
   video_url: { type: DataTypes.STRING(500) },
   testimonial_type: { type: DataTypes.ENUM('text', 'video'), defaultValue: 'text' },
+  // Stable dedupe key for reviews auto-fetched from Google Places API — null for
+  // manually-added testimonials. Lets a "Refresh Now" re-fetch upsert instead of
+  // creating duplicate rows for the same review.
+  google_review_id: { type: DataTypes.STRING(64), unique: true, allowNull: true },
 }, {
   tableName: 'testimonials',
   timestamps: true,

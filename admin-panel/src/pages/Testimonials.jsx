@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import api from '../api';
 import toast from 'react-hot-toast';
-import { Plus, Edit2, Trash2, Star, Play } from 'lucide-react';
+import { Plus, Edit2, Trash2, Star, Play, RefreshCw } from 'lucide-react';
 
 const emptyForm = { name: '', role: '', company: '', photo: '', quote: '', rating: 5, platform: 'Google', is_visible: true, order_index: 0, testimonial_type: 'text', video_url: '' };
 
@@ -9,9 +9,23 @@ export default function Testimonials() {
   const [list, setList] = useState([]);
   const [editing, setEditing] = useState(null);
   const [form, setForm] = useState(emptyForm);
+  const [refreshing, setRefreshing] = useState(false);
 
   const load = () => api.get('/testimonials').then(r => setList(r.data.data));
   useEffect(() => { load(); }, []);
+
+  const handleRefreshGoogle = async () => {
+    setRefreshing(true);
+    try {
+      const { data } = await api.post('/testimonials/refresh-google');
+      toast.success(`Fetched ${data.fiveStar} 5-star reviews (${data.created} new, ${data.updated} already had)`);
+      load();
+    } catch (err) {
+      toast.error(err?.response?.data?.message || 'Refresh failed');
+    } finally {
+      setRefreshing(false);
+    }
+  };
 
   const open = (t = null) => { setEditing(t?.id || 'new'); setForm(t ? { ...emptyForm, ...t } : emptyForm); };
   const close = () => setEditing(null);
@@ -55,9 +69,14 @@ export default function Testimonials() {
           <h1 style={{ fontSize: 24, fontWeight: 800, color: '#0F172A', margin: 0 }}>Testimonials</h1>
           <p style={{ color: '#64748B', fontSize: 13, margin: '4px 0 0' }}>Manage text and video testimonials</p>
         </div>
-        <button onClick={() => open()} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 20px', background: '#FF6B2B', border: 'none', borderRadius: 8, color: '#fff', fontWeight: 700, fontSize: 14, cursor: 'pointer' }}>
-          <Plus size={16} /> Add Testimonial
-        </button>
+        <div style={{ display: 'flex', gap: 10 }}>
+          <button onClick={handleRefreshGoogle} disabled={refreshing} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 20px', background: '#fff', border: '1.5px solid #E5E7EB', borderRadius: 8, color: '#374151', fontWeight: 700, fontSize: 14, cursor: refreshing ? 'default' : 'pointer', opacity: refreshing ? 0.6 : 1 }}>
+            <RefreshCw size={16} style={refreshing ? { animation: 'spin 1s linear infinite' } : undefined} /> {refreshing ? 'Fetching...' : 'Refresh from Google'}
+          </button>
+          <button onClick={() => open()} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 20px', background: '#FF6B2B', border: 'none', borderRadius: 8, color: '#fff', fontWeight: 700, fontSize: 14, cursor: 'pointer' }}>
+            <Plus size={16} /> Add Testimonial
+          </button>
+        </div>
       </div>
 
       {editing && (

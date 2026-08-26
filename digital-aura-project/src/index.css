@@ -58,7 +58,7 @@
     100% { transform: translateX(-50%); }
   }
 
-  .client-logo-marquee { animation: marquee-scroll 60s linear infinite; }
+  .client-logo-marquee { animation: marquee-scroll 110s linear infinite; }
   .client-logo-marquee:hover { animation-play-state: paused; }
 
   /* ── Hero shape drift ── */

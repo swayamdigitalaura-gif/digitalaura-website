@@ -44,3 +44,8 @@ body { font-family: 'Inter', system-ui, sans-serif; background: #F1F5F9; color: 
 /* Canvas selection */
 .gjs-selected { outline: 2px solid #FF6B2B !important; outline-offset: -2px !important; }
 .gjs-hovered { outline: 1px dashed #94A3B8 !important; outline-offset: -1px !important; }
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

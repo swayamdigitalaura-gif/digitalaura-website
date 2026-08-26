@@ -11,6 +11,7 @@ const NAVY = "#0A1628";
 const BLUE = "#1A6FE8";
 const ORANGE = "#FF6B2B";
 const GREEN = "#22C55E";
+const RED = "#DC2626";
 const MUTED = "#4B5563";
 
 const fadeUp = {
@@ -328,7 +329,7 @@ const CaseStudyIvfClinic = () => {
               <ul className="space-y-2.5 mt-3">
                 {webChallengeItems.map((item, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm" style={{ color: MUTED }}>
-                    <ChevronRight size={15} style={{ color: GREEN }} className="mt-0.5 flex-shrink-0" />
+                    <ChevronRight size={15} style={{ color: RED }} className="mt-0.5 flex-shrink-0" />
                     <span data-cms-key={`ivfclinic_webchallenge_${i}`} data-cms-label={`Website Challenge ${i + 1}`} data-cms-attr="text">{item}</span>
                   </li>
                 ))}
@@ -339,7 +340,7 @@ const CaseStudyIvfClinic = () => {
               <ul className="space-y-2.5 mt-3">
                 {ytChallengeItems.map((item, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm" style={{ color: MUTED }}>
-                    <ChevronRight size={15} style={{ color: GREEN }} className="mt-0.5 flex-shrink-0" />
+                    <ChevronRight size={15} style={{ color: RED }} className="mt-0.5 flex-shrink-0" />
                     <span data-cms-key={`ivfclinic_ytchallenge_${i}`} data-cms-label={`YouTube Challenge ${i + 1}`} data-cms-attr="text">{item}</span>
                   </li>
                 ))}

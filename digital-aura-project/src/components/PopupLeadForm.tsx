@@ -9,8 +9,8 @@ const SESSION_KEY = "da_popup_shown";
 // writing to storage, so presence in the DOM — not a storage key — is the
 // only reliable signal that it's been resolved either way.
 const COOKIE_BANNER_SELECTOR = "[data-cookie-banner]";
-const DELAY_MS = 12000;
-const SCROLL_TRIGGER = 0.5;
+const DELAY_MS = 18000;
+const SCROLL_TRIGGER = 0.6;
 const COOKIE_BANNER_RECHECK_MS = 1500;
 
 const services = [

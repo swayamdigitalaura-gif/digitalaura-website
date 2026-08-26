@@ -372,7 +372,7 @@ const CaseStudyPrismCalibration = () => {
                 <span style={{ color: "#9CA3AF" }}>Parameter: Digital Visibility</span>
                 <span>Status: Pass</span>
               </div>
-              <svg viewBox="0 0 320 145" className="w-full h-auto" role="img" aria-label="Calibration gauge showing digital visibility moving from referral-only to search-visible">
+              <svg viewBox="0 -10 320 155" className="w-full h-auto" role="img" aria-label="Calibration gauge showing digital visibility moving from referral-only to search-visible">
                 <path d="M20,130 A140,140 0 0 1 90,8.76" fill="none" stroke="#DC2626" strokeWidth="14" strokeLinecap="round" opacity="0.85" />
                 <path d="M90,8.76 A140,140 0 0 1 230,8.76" fill="none" stroke="#E3A048" strokeWidth="14" opacity="0.9" />
                 <path d="M230,8.76 A140,140 0 0 1 300,130" fill="none" stroke={GREEN} strokeWidth="14" strokeLinecap="round" />

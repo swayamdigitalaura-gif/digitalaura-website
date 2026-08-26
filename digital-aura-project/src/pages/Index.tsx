@@ -24,13 +24,12 @@ import FloatingElements from "@/components/FloatingElements";
 // Persists across SPA navigations, resets on actual browser reload
 let loaderShown = false;
 
-const TMA_SVG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 130 44'%3E%3Crect width='130' height='44' rx='8' fill='%232B4FD8'/%3E%3Crect x='8' y='7' width='30' height='30' rx='6' fill='white'/%3E%3Ctext x='23' y='27' font-family='Arial,sans-serif' font-size='17' font-weight='900' fill='%232B4FD8' text-anchor='middle'%3ET%3C/text%3E%3Ctext x='88' y='27' font-family='Arial,sans-serif' font-size='12' font-weight='700' fill='white' text-anchor='middle'%3Erackmyads%3C/text%3E%3C/svg%3E";
-
 // Shown until real logos are added for the "home" page in the admin panel (Client Logos → Home Page).
 // Pulled from the full pool of real client logos already seeded across other service pages
-// (see admin-backend/seed-client-logos.js), so the homepage isn't stuck with only a dozen.
+// (see admin-backend/seed-client-logos.js), plus additional client logos supplied directly
+// (public/logos/), so the homepage isn't stuck with only a dozen.
 const HOME_LOGOS_FALLBACK: ClientLogoItem[] = [
-  { name: "Track My Ads", tag: "AdTech", logo: TMA_SVG, logoBg: "#f0f8ff" },
+  { name: "Track My Ads", tag: "AdTech", logo: "/logos/track-my-ads.png", logoBg: "#f0f8ff" },
   { name: "Silverstone Financial", tag: "Financial Services", logo: "https://silverstonefinancial.co.nz/wp-content/uploads/2025/03/Transparent-BG-e1747031572364.png", logoBg: "#f0faff" },
   { name: "Gleekey", tag: "EdTech", logo: "https://www.gleekey.in/public/front/images/logos/1765275447_logo.png", logoBg: "#f5f0ff" },
   { name: "Game Zone Events", tag: "Events", logo: "https://gamezoneevents.ca/wp-content/uploads/2025/07/Game-Zone-Events-02-1024x717.png", logoBg: "#f5fff5" },
@@ -65,6 +64,15 @@ const HOME_LOGOS_FALLBACK: ClientLogoItem[] = [
   { name: "OBL Print", tag: "Printing Services", logo: "https://oblprint.com/assets/logo/logo.webp", logoBg: "#f8f5f0" },
   { name: "Upmatrix", tag: "Tech & Software", logo: "https://upmatrix.in/wp-content/uploads/2025/09/UpMatrix-Logo-1.svg", logoBg: "#f0f4ff" },
   { name: "Atul Bakery", tag: "Food & Bakery", logo: "https://image.pngaaa.com/331/3078331-middle.png", logoBg: "#fff8f0" },
+  { name: "Gift Care", tag: "Healthcare", logo: "/logos/gift-care.png", logoBg: "#f0fff8" },
+  { name: "Riant Bikes", tag: "Bike Rental", logo: "/logos/riant-bikes.png", logoBg: "#fffdf0" },
+  { name: "Letap", tag: "Immigration & Consulting", logo: "/logos/letap.png", logoBg: "#0A1628" },
+  { name: "Levapor", tag: "Biofilm Technology", logo: "/logos/levapor.png", logoBg: "#f0fff8" },
+  { name: "Purezen", tag: "Wellness", logo: "/logos/purezen.webp", logoBg: "#f0fff5" },
+  { name: "Saarthi Cab", tag: "Travel & Transport", logo: "/logos/saarthi-cab.webp", logoBg: "#f0f8ff" },
+  { name: "Shree Khodiyar Plastics", tag: "Manufacturing", logo: "/logos/shree-khodiyar-plastics.webp", logoBg: "#f0f8ff" },
+  { name: "Swastik Gold Alloys", tag: "Metals & Alloys", logo: "/logos/swastik-gold-alloys.webp", logoBg: "#fff8f0" },
+  { name: "Adroit", tag: "Staffing & HR", logo: "/logos/adroit.webp", logoBg: "#f0f8ff" },
 ];
 
 const Index = () => {

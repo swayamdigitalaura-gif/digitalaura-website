@@ -253,19 +253,21 @@ const CaseStudyRiantBikes = () => {
 
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative z-10 pt-16 pb-14 md:pt-20 md:pb-16">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
-            <Link
-              to="/case-studies"
-              className="inline-flex items-center gap-1.5 text-sm font-medium mb-6"
-              style={{ color: "#C7D2FE" }}
-            >
-              <ArrowLeft size={15} /> All Case Studies
-            </Link>
-            <span
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold mb-6 tracking-widest uppercase"
-              style={{ background: BLUE, color: "#fff" }}
-            >
-              Case Study &middot; Local Business
-            </span>
+            <div className="flex flex-col items-center gap-4 mb-6">
+              <Link
+                to="/case-studies"
+                className="inline-flex items-center gap-1.5 text-sm font-medium"
+                style={{ color: "#C7D2FE" }}
+              >
+                <ArrowLeft size={15} /> All Case Studies
+              </Link>
+              <span
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase"
+                style={{ background: BLUE, color: "#fff" }}
+              >
+                Case Study &middot; Local Business
+              </span>
+            </div>
             <h1 data-cms-key="riantbikes_heroTitle" data-cms-label="Hero Title" data-cms-attr="text" className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold leading-[1.15] text-white mb-6 tracking-tight">
               {heroTitle}
             </h1>

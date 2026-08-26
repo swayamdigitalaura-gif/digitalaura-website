@@ -179,7 +179,7 @@ const BlogPost = () => {
                 </span>
               </div>
             )}
-            <h1 className="text-3xl sm:text-4xl md:text-[44px] font-black tracking-tight mb-5 leading-[1.15]" style={{ color: HEADING }}>
+            <h1 className="text-3xl sm:text-4xl md:text-[44px] font-black tracking-tight mb-5 leading-[1.3]" style={{ color: HEADING }}>
               {blog.title}
             </h1>
             {blog.excerpt && (

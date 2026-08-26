@@ -171,6 +171,78 @@ const topStats = [
   { num: "Featured", label: "In Google's AI Overview" },
 ];
 
+const siteShowcase = [
+  {
+    src: "homepage-services-menu.jpg",
+    alt: "Prism Group of Company homepage showing the structured services mega-menu: Calibration & Testing, Validation, EHS & Audit and Consulting",
+    captionKey: "prism_showcase_1_caption",
+    caption: "Every service organised into a structured menu — Calibration & Testing, Validation, EHS & Audit, Consulting — instead of one flat list.",
+  },
+  {
+    src: "industries-menu.jpg",
+    alt: "Prism website industries mega-menu showing Pharmaceutical, Oil & Gas, Chemical, Food & Beverage, Manufacturing, Healthcare and Government/Labs",
+    captionKey: "prism_showcase_2_caption",
+    caption: "The industry architecture in action — Pharmaceutical, Oil & Gas, Chemical, Manufacturing, Healthcare and more, each with its own path in.",
+  },
+  {
+    src: "ecosystem-menu.jpg",
+    alt: "Prism website eco-system menu showing Prism Calibration, E Industries and Industrial Pathshala",
+    captionKey: "prism_showcase_3_caption",
+    caption: "And the wider Prism ecosystem, all connected back to the same digital foundation.",
+  },
+];
+
+const aeoScanShots = [
+  {
+    query: "pressure gauge calibration in Ahmedabad",
+    src: "chatgpt-pressure-gauge.jpg",
+    alt: "ChatGPT result for pressure gauge calibration in Ahmedabad, ranking Prism Calibration Centre first",
+    source: "ChatGPT",
+    textKey: "prism_aeo_1_text",
+    text: "Ranked #1 of the \"strongest options\" — pressure range (0–1000 bar) and onsite calibration cited directly from Prism's service pages.",
+  },
+  {
+    query: "multimeter calibration in Ahmedabad",
+    src: "chatgpt-multimeter.jpg",
+    alt: "ChatGPT result for multimeter calibration in Ahmedabad, naming Prism Calibration Centre as a strong option",
+    source: "ChatGPT",
+    textKey: "prism_aeo_2_text",
+    text: "Named as \"a strong option\" with a full profile — NABL number, location, phone and calibration scope pulled straight from the site.",
+  },
+  {
+    query: "Thermometer calibration in Ahmedabad",
+    src: "gemini-thermometer.jpg",
+    alt: "Gemini result for thermometer calibration in Ahmedabad, listing Prism Calibration Centre first",
+    source: "Gemini",
+    textKey: "prism_aeo_3_text",
+    text: "Listed first among NABL-accredited labs near Vatva and Changodar, with address, phone, email and scope cited.",
+  },
+  {
+    query: "RTD calibration in Ahmedabad",
+    src: "gemini-rtd.jpg",
+    alt: "Gemini result for RTD calibration in Ahmedabad, listing Prism Calibration Centre first with temperature range",
+    source: "Gemini",
+    textKey: "prism_aeo_4_text",
+    text: "Named first, with the exact temperature range (−200°C to +600°C) and calibration method cited from Prism's own page.",
+  },
+  {
+    query: "Temperature sensor calibration Ahmedabad",
+    src: "gemini-temperature-sensor.jpg",
+    alt: "Gemini result for temperature sensor calibration in Ahmedabad, listing Prism Calibration Centre first",
+    source: "Gemini",
+    textKey: "prism_aeo_5_text",
+    text: "First result again — this time with the full sensor range covered (RTDs, thermocouples, IR pyrometers) quoted directly.",
+  },
+  {
+    query: "Calibration laboratory in Vatva Ahmedabad",
+    src: "gemini-vatva-lab.jpg",
+    alt: "Gemini result for calibration laboratory in Vatva Ahmedabad, featuring Prism Calibration Centre with an image card",
+    source: "Gemini",
+    textKey: "prism_aeo_6_text",
+    text: "For a hyper-local query, Prism doesn't just get listed — it gets an image card of its own, ahead of the text results.",
+  },
+];
+
 const chips = ["Calibration & Testing", "Validation", "EHS & Safety", "Environmental Testing", "Energy Audits", "NABL & ISO Consulting", "Industrial Compliance"];
 const loop = ["Relationship", "Trust", "Referral", "Business"];
 
@@ -188,14 +260,18 @@ const PRISM_KEYS = [
   "prism_h2_internal", "prism_p_internal_1",
   "prism_h2_met", "prism_p_met_1", "prism_p_met_2",
   "prism_h2_built", "prism_p_built_1",
+  "prism_showcase_lede",
+  "prism_showcase_1_caption", "prism_showcase_2_caption", "prism_showcase_3_caption",
   "prism_h2_results",
   "prism_callout_results",
   "prism_h2_proof", "prism_p_proof_1",
-  "prism_shot_1_tag", "prism_shot_1_caption",
-  "prism_shot_2_tag", "prism_shot_2_caption",
-  "prism_shot_3_tag", "prism_shot_3_caption", "prism_p_shot_3",
-  "prism_shot_4_tag", "prism_shot_4_caption", "prism_p_shot_4",
-  "prism_shot_5_tag", "prism_shot_5_caption", "prism_p_shot_5",
+  "prism_reading1_eyebrow", "prism_reading1_text",
+  "prism_reading2_eyebrow", "prism_reading2_text",
+  "prism_reading3_eyebrow", "prism_reading3_text", "prism_reading3_followup",
+  "prism_reading4_eyebrow", "prism_reading4_intro",
+  "prism_reading4a_text", "prism_reading4b_text",
+  "prism_reading5_eyebrow", "prism_reading5_intro",
+  "prism_scan_stat_big", "prism_scan_stat_text",
   "prism_h2_testimonial",
   "prism_testimonial_challenge", "prism_testimonial_solution", "prism_testimonial_result",
   "prism_testimonial_sig", "prism_testimonial_note",
@@ -207,6 +283,7 @@ const PRISM_KEYS = [
   ...beforeList.map((_, i) => `prism_before_${i}`),
   ...afterList.map((_, i) => `prism_after_${i}`),
   ...topStats.flatMap((_, i) => [`prism_topstat_${i}_num`, `prism_topstat_${i}_label`]),
+  ...aeoScanShots.map((s) => s.textKey),
 ];
 
 const CaseStudyPrismCalibration = () => {
@@ -256,19 +333,21 @@ const CaseStudyPrismCalibration = () => {
 
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative z-10 pt-16 pb-14 md:pt-20 md:pb-16">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
-            <Link
-              to="/case-studies"
-              className="inline-flex items-center gap-1.5 text-sm font-medium mb-6"
-              style={{ color: "#BBF7D0" }}
-            >
-              <ArrowLeft size={15} /> All Case Studies
-            </Link>
-            <span
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold mb-6 tracking-widest uppercase"
-              style={{ background: GREEN, color: "#052e16" }}
-            >
-              Case Study &middot; SEO &amp; AEO
-            </span>
+            <div className="flex flex-col items-center gap-4 mb-6">
+              <Link
+                to="/case-studies"
+                className="inline-flex items-center gap-1.5 text-sm font-medium"
+                style={{ color: "#BBF7D0" }}
+              >
+                <ArrowLeft size={15} /> All Case Studies
+              </Link>
+              <span
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase"
+                style={{ background: GREEN, color: "#052e16" }}
+              >
+                Case Study &middot; NABL-Accredited Calibration Lab &middot; Ahmedabad
+              </span>
+            </div>
             <h1 data-cms-key="prism_heroTitle" data-cms-label="Hero Title" data-cms-attr="text" className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold leading-[1.15] text-white mb-6 tracking-tight">
               {heroTitle}
             </h1>
@@ -285,6 +364,27 @@ const CaseStudyPrismCalibration = () => {
                   <span data-cms-key={`prism_topstat_${i}_label`} data-cms-label={`Top Stat ${i + 1} Label`} data-cms-attr="text" className="text-xs leading-snug" style={{ color: "#BBF7D0" }}>{stat.label}</span>
                 </div>
               ))}
+            </div>
+
+            {/* Calibration gauge readout */}
+            <div className="mt-8 max-w-sm mx-auto rounded-xl px-6 py-5" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)" }}>
+              <div className="flex justify-between text-[10px] font-bold uppercase tracking-wider mb-3" style={{ color: "#7FD9A8" }}>
+                <span style={{ color: "#9CA3AF" }}>Parameter: Digital Visibility</span>
+                <span>Status: Pass</span>
+              </div>
+              <svg viewBox="0 0 320 145" className="w-full h-auto" role="img" aria-label="Calibration gauge showing digital visibility moving from referral-only to search-visible">
+                <path d="M20,130 A140,140 0 0 1 90,8.76" fill="none" stroke="#DC2626" strokeWidth="14" strokeLinecap="round" opacity="0.85" />
+                <path d="M90,8.76 A140,140 0 0 1 230,8.76" fill="none" stroke="#E3A048" strokeWidth="14" opacity="0.9" />
+                <path d="M230,8.76 A140,140 0 0 1 300,130" fill="none" stroke={GREEN} strokeWidth="14" strokeLinecap="round" />
+                <line x1="160" y1="130" x2="258" y2="61" stroke="#EBE4D2" strokeWidth="3" strokeLinecap="round" />
+                <circle cx="160" cy="130" r="9" fill="#0A1628" stroke="#EBE4D2" strokeWidth="2.5" />
+                <text x="20" y="144" fontFamily="monospace" fontSize="9.5" fill="#DC2626" letterSpacing="0.5">REFERRAL-ONLY</text>
+                <text x="300" y="144" textAnchor="end" fontFamily="monospace" fontSize="9.5" fill={GREEN} letterSpacing="0.5">SEARCH-VISIBLE</text>
+              </svg>
+              <div className="text-center -mt-1">
+                <div className="text-2xl font-black text-white">70–100 / mo</div>
+                <div className="text-[11px] uppercase tracking-wider mt-1" style={{ color: "#9CA3AF" }}>qualified leads — reading in tolerance</div>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -401,6 +501,21 @@ const CaseStudyPrismCalibration = () => {
             ))}
           </motion.div>
 
+          {/* Site showcase */}
+          <p data-cms-key="prism_showcase_lede" data-cms-label="Showcase Lede" data-cms-attr="text" className="text-xs font-bold uppercase tracking-wider mt-10 mb-4" style={{ color: GREEN }}>
+            {t("prism_showcase_lede", "Here's what that foundation looks like, live.")}
+          </p>
+          {siteShowcase.map((shot, i) => (
+            <motion.div key={shot.src} {...fadeUp} className="mb-8">
+              <div className="rounded-xl overflow-hidden border" style={{ borderColor: "#E5E7EB", boxShadow: "0 8px 24px rgba(10,22,40,0.08)" }}>
+                <img src={`${IMG}/${shot.src}`} alt={shot.alt} loading="lazy" className="w-full h-auto block" />
+              </div>
+              <p data-cms-key={shot.captionKey} data-cms-label={`Showcase Caption ${i + 1}`} data-cms-attr="text" className="text-sm mt-3" style={{ color: MUTED }}>
+                {t(shot.captionKey, shot.caption)}
+              </p>
+            </motion.div>
+          ))}
+
           <H2 k="prism_h2_results">{t("prism_h2_results", "The Results")}</H2>
           <motion.div {...fadeUp} className="grid sm:grid-cols-2 gap-4 my-6">
             <div className="rounded-xl border-2 bg-white px-5 py-5" style={{ borderColor: "#FCA5A5" }}>
@@ -432,60 +547,102 @@ const CaseStudyPrismCalibration = () => {
           </motion.div>
 
           <H2 k="prism_h2_proof">{t("prism_h2_proof", "The Proof")}</H2>
-          <P k="prism_p_proof_1">{t("prism_p_proof_1", "The website evolved from a company brochure into a consistent source of enquiries. Here's what that looks like.")}</P>
+          <P k="prism_p_proof_1">{t("prism_p_proof_1", "The website evolved from a company brochure into a consistent source of enquiries. Here's the instrument panel.")}</P>
 
+          {/* Reading 01 — Organic traffic */}
+          <H3 k="prism_reading1_eyebrow">{t("prism_reading1_eyebrow", "Reading 01 — Organic traffic")}</H3>
+          <P k="prism_reading1_text">
+            {t("prism_reading1_text", <>Organic search now sits at the top of the channel mix — 1,860 sessions, 43.5% of total traffic, up 18.6% month over month. And notice the new column that didn't exist a year ago: <strong style={{ color: NAVY }}>AI Assistant</strong> traffic, referrals arriving directly from AI chat tools.</>)}
+          </P>
           <Screenshot
-            tag={t("prism_shot_1_tag", "Organic Traffic, Climbing") as string}
-            tagKey="prism_shot_1_tag"
-            src={`${IMG}/organic-traffic-ga4.jpg`}
-            alt="Google Analytics 4 chart showing website traffic by channel, with organic search as a steadily rising line"
-            caption={t("prism_shot_1_caption", "Sessions by channel, one month. Organic search — a steady, compounding source of traffic that isn't dependent on someone happening to remember Prism's name.") as string}
-            captionKey="prism_shot_1_caption"
+            tag="Organic Traffic, Climbing"
+            src={`${IMG}/traffic-acquisition-dashboard.jpg`}
+            alt="Traffic acquisition dashboard showing 4,280 total sessions for July 2026, with Organic Search leading at 1,860 sessions (43.5%), followed by Direct, AI Assistant, Referral and Unassigned channels"
+            caption="Source: Analytics · Traffic acquisition overview, July 2026"
           />
+
+          {/* Reading 02 — Inquiries */}
+          <H3 k="prism_reading2_eyebrow">{t("prism_reading2_eyebrow", "Reading 02 — Inquiries, landing")}</H3>
+          <P k="prism_reading2_text">
+            {t("prism_reading2_text", "Every quote and contact form submitted on the site lands here — real requests, for real instruments, from real companies. Contact details are blurred for privacy.")}
+          </P>
           <Screenshot
-            tag={t("prism_shot_2_tag", "Real Enquiries, Landing") as string}
-            tagKey="prism_shot_2_tag"
+            tag="Real Enquiries, Landing"
             src={`${IMG}/inquiries-dashboard.png`}
             alt="Dashboard list of website inquiries showing service requested, source page, date received and status, with contact details blurred for privacy"
-            caption={t("prism_shot_2_caption", "Every quote and contact form submitted on the site lands here — real requests, for real instruments, from real companies. Contact details are blurred for privacy.") as string}
-            captionKey="prism_shot_2_caption"
+            caption="Source: Enquiry dashboard · Contact column blurred for privacy"
           />
 
-          <P k="prism_p_shot_3">{t("prism_p_shot_3", "We wanted to see whether Prism's authority was extending beyond traditional rankings. So we searched:")}</P>
+          {/* Reading 03 — AI moment */}
+          <H3 k="prism_reading3_eyebrow">{t("prism_reading3_eyebrow", "Reading 03 — The AI moment")}</H3>
+          <P k="prism_reading3_text">{t("prism_reading3_text", "We wanted to see whether Prism's authority was extending beyond traditional rankings. So we searched:")}</P>
           <AIQuery>Which is the best NABL accredited lab in Ahmedabad?</AIQuery>
           <Screenshot
-            tag={t("prism_shot_3_tag", "The AI Moment") as string}
-            tagKey="prism_shot_3_tag"
+            tag="The AI Moment"
             src={`${IMG}/google-ai-overview.jpg`}
             alt="Google search results showing an AI Overview naming Prism Calibration Centre for the query 'which is the best NABL accredited lab in ahmedabad'"
-            caption={t("prism_shot_3_caption", "Source: Google Search, AI Overview") as string}
-            captionKey="prism_shot_3_caption"
+            caption="Source: Google Search, AI Overview"
           />
-          <P>
-            A company that had spent twenty years growing through referrals, networking and word-of-mouth was now being surfaced inside an AI-powered search experience. The business had gone from being known — to being found.
+          <P k="prism_reading3_followup">
+            {t("prism_reading3_followup", "A company that had spent twenty years growing through referrals, networking and word-of-mouth was now being surfaced inside an AI-powered search experience. The business had gone from being known — to being found.")}
           </P>
 
-          <P k="prism_p_shot_4">{t("prism_p_shot_4", "Google's AI Overview was one signal. We wanted to know if that visibility held up on the AI assistants buyers are increasingly asking directly — so we asked Claude the same kind of question an industrial buyer would.")}</P>
+          {/* Reading 04 — AI assistants */}
+          <H3 k="prism_reading4_eyebrow">{t("prism_reading4_eyebrow", "Reading 04 — Visibility across AI assistants")}</H3>
+          <P k="prism_reading4_intro">
+            {t("prism_reading4_intro", "Google's AI Overview was one signal. We wanted to know if that visibility held up on the AI assistants buyers are increasingly asking directly — so we asked Claude and ChatGPT the same kind of question an industrial buyer would.")}
+          </P>
           <AIQuery>Best calibration lab in Ahmedabad</AIQuery>
           <Screenshot
-            tag={t("prism_shot_4_tag", "Visibility Across AI Assistants") as string}
-            tagKey="prism_shot_4_tag"
+            tag="Visibility Across AI Assistants"
             src={`${IMG}/claude-ai-response.png`}
             alt="Claude AI response to 'Best calibration lab in Ahmedabad' listing Prism Calibration Centre first among NABL-accredited labs"
-            caption={t("prism_shot_4_caption", "Source: Claude") as string}
-            captionKey="prism_shot_4_caption"
+            caption="Source: Claude"
           />
-
-          <P k="prism_p_shot_5">{t("prism_p_shot_5", "Even for a narrow, instrument-specific query, ChatGPT surfaces Prism on the map and flags it as a strong match — citing the exact gases and standards named on their service pages.")}</P>
+          <P k="prism_reading4a_text">
+            {t("prism_reading4a_text", "Prism Calibration Centre is named first among NABL-accredited labs — with its accreditation number, ISO/IEC 17025:2017 status and turnaround time cited directly.")}
+          </P>
           <AIQuery>Gas detector calibration in Ahmedabad</AIQuery>
           <Screenshot
-            tag={t("prism_shot_5_tag", "Even the Narrow Queries") as string}
-            tagKey="prism_shot_5_tag"
-            src={`${IMG}/chatgpt-map-response.png`}
+            tag="Even the Narrow Queries"
+            src={`${IMG}/chatgpt-gas-detector-map.png`}
             alt="ChatGPT response to 'Gas detector calibration in Ahmedabad' showing Prism Calibration Centre on the map with strong visibility for the specific service"
-            caption={t("prism_shot_5_caption", "Source: ChatGPT") as string}
-            captionKey="prism_shot_5_caption"
+            caption="Source: ChatGPT"
           />
+          <P k="prism_reading4b_text">
+            {t("prism_reading4b_text", "Even for a narrow, instrument-specific query, ChatGPT surfaces Prism on the map and flags it as a strong match — citing the exact gases and standards named on their service pages.")}
+          </P>
+
+          {/* Reading 05 — Wider AEO scan */}
+          <H3 k="prism_reading5_eyebrow">{t("prism_reading5_eyebrow", "Reading 05 — The wider AEO scan")}</H3>
+          <P k="prism_reading5_intro">
+            {t("prism_reading5_intro", "One good result could be luck. So we ran it back across instrument-specific queries, on both ChatGPT and Gemini.")}
+          </P>
+          <motion.div
+            {...fadeUp}
+            className="flex items-baseline gap-4 my-6 px-5 py-4 rounded-xl border"
+            style={{ borderColor: "rgba(227,160,72,0.4)", background: "linear-gradient(180deg, rgba(34,197,94,0.06), transparent 70%)" }}
+          >
+            <span data-cms-key="prism_scan_stat_big" data-cms-label="AEO Scan Stat" data-cms-attr="text" className="text-2xl md:text-3xl font-black" style={{ color: GREEN }}>
+              {t("prism_scan_stat_big", "8 / 8")}
+            </span>
+            <span data-cms-key="prism_scan_stat_text" data-cms-label="AEO Scan Stat Text" data-cms-attr="text" className="text-xs md:text-sm font-semibold uppercase tracking-wide" style={{ color: MUTED }}>
+              {t("prism_scan_stat_text", "Instrument & location queries tested — Prism named as a top recommendation in every one")}
+            </span>
+          </motion.div>
+
+          {aeoScanShots.map((shot, i) => (
+            <div key={shot.src}>
+              <AIQuery>{shot.query}</AIQuery>
+              <Screenshot
+                tag={shot.source === "ChatGPT" ? "AEO Scan · ChatGPT" : "AEO Scan · Gemini"}
+                src={`${IMG}/${shot.src}`}
+                alt={shot.alt}
+                caption={`Source: ${shot.source}`}
+              />
+              <P k={shot.textKey}>{t(shot.textKey, shot.text)}</P>
+            </div>
+          ))}
 
           {/* Testimonial */}
           <H2 k="prism_h2_testimonial">{t("prism_h2_testimonial", "The Client's Story")}</H2>

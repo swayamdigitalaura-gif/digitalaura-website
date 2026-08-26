@@ -153,6 +153,19 @@ jobs:
             -e "ssh $SSH_OPTS" \
             admin-backend/ "$H:/home/digitalaura-backend/"
           ssh $SSH_OPTS "$H" "cd /home/digitalaura-backend && npm install --omit=dev && pm2 restart digitalaura-api"
+      # One-time bootstrap for the Google Places auto-review-fetch feature: adds
+      # GOOGLE_PLACES_API_KEY to the server's .env if it isn't already there.
+      # Idempotent (grep-guarded) so it's a no-op on every deploy after the first.
+      # The key is base64-encoded and piped over SSH stdin — it never appears in a
+      # command line, a file on the runner, or (since -x tracing is off) job logs.
+      - name: Ensure GOOGLE_PLACES_API_KEY is set in server .env
+        if: ${{ secrets.GOOGLE_PLACES_API_KEY != '' }}
+        env:
+          H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
+          GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
+        run: |
+          REMOTE_CMD='KEY=$(base64 -d); ENV_FILE=/home/digitalaura-backend/.env; if ! grep -q "^GOOGLE_PLACES_API_KEY=" "$ENV_FILE" 2>/dev/null; then printf "GOOGLE_PLACES_API_KEY=%s\n" "$KEY" >> "$ENV_FILE"; pm2 restart digitalaura-api; fi'
+          printf '%s' "$GOOGLE_PLACES_API_KEY" | base64 -w0 | ssh $SSH_OPTS "$H" "$REMOTE_CMD"
 
   # ── 5. SEO landing page  →  /home/landing-seo/  (pm2: seo-landing) ────────
   seo-landing:

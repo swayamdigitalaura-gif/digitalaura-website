@@ -55,7 +55,6 @@ import clientAmvi from "@/assets/client-logos/amvi-hospital.png";
 import clientClarityEye from "@/assets/client-logos/clarity-eye-surgeons.png";
 import clientGameZone from "@/assets/client-logos/game-zone-events.webp";
 import clientInnOfTheDove from "@/assets/client-logos/inn-of-the-dove.png";
-import clientIvf from "@/assets/client-logos/ivf.png";
 import clientKrishaEye from "@/assets/client-logos/krisha-eye-hospital.webp";
 import clientLevapor from "@/assets/client-logos/levapor.png";
 import clientPrism from "@/assets/client-logos/prism.png";
@@ -469,7 +468,6 @@ const CLIENTS = [
   { name: "Game Zone Events", industry: "Events", logo: clientGameZone },
   { name: "Krisha Eye Hospital", industry: "Healthcare", logo: clientKrishaEye },
   { name: "Clarity Eye Surgeons", industry: "Healthcare", logo: clientClarityEye },
-  { name: "IVF Hospital", industry: "Healthcare", logo: clientIvf },
   { name: "Shukan Hospital", industry: "Healthcare", logo: clientShukan },
   { name: "The Grand Palace", industry: "Hospitality", logo: clientTgp },
   { name: "A-One Auto Care", industry: "Automotive", logo: clientAOneAutoCare },

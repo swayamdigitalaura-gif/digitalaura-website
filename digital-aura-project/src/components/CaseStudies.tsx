@@ -7,76 +7,56 @@ const FADE_MS = 180;
 
 const cases = [
   {
-    tag: "Healthcare · SEO",
-    badge: "+76.7% Traffic",
+    tag: "Local Business · Web + Booking System",
+    badge: "230 Customers Managed",
     badgeColor: "#1A6FE8",
     badgeBg: "rgba(26,111,232,0.08)",
-    title: "IVF Hospital",
-    statBig: "76.7%",
+    title: "Riant Bikes",
+    statBig: "177",
     statColor: "#1A6FE8",
-    statDesc: "organic traffic increase in 6 months through targeted SEO and content authority building.",
+    statDesc: "bookings processed through the new website, online booking system and fleet management we built.",
     accent: "#1A6FE8",
     topBg: "linear-gradient(135deg, rgba(26,111,232,0.08) 0%, rgba(26,111,232,0.02) 100%)",
+    href: "/case-studies/riant-bikes",
   },
   {
-    tag: "Restaurant · Meta Ads",
-    badge: "+200 Customers/mo",
-    badgeColor: "#FF6B2B",
-    badgeBg: "rgba(255,107,43,0.08)",
-    title: "Restaurant Chain",
-    statBig: "200+",
-    statColor: "#FF6B2B",
-    statDesc: "new dine-in customers per month from Meta Ads with creative A/B testing and 3.8x ROAS.",
-    accent: "#FF6B2B",
-    topBg: "linear-gradient(135deg, rgba(255,107,43,0.08) 0%, rgba(255,107,43,0.02) 100%)",
-  },
-  {
-    tag: "Home Services · Ads + SEO",
-    badge: "+174.5% Traffic",
+    tag: "Industrial B2B · SEO & AEO/GEO",
+    badge: "70–100 Leads/mo",
     badgeColor: "#22C55E",
     badgeBg: "rgba(34,197,94,0.08)",
-    title: "Home Appliance Repair",
-    statBig: "174.5%",
+    title: "Prism Calibration Centre",
+    statBig: "70–100",
     statColor: "#22C55E",
-    statDesc: "traffic surge powered by local SEO, Meta Ads, and conversion optimised landing pages.",
+    statDesc: "qualified leads generated every month after we rebuilt their site into a search & AI-visibility engine.",
     accent: "#22C55E",
     topBg: "linear-gradient(135deg, rgba(34,197,94,0.08) 0%, rgba(34,197,94,0.02) 100%)",
+    href: "/case-studies/prism-calibration",
   },
   {
-    tag: "Healthcare · Digital Marketing",
-    badge: "+120% Traffic",
+    tag: "Healthcare & Fertility · SEO + YouTube",
+    badge: "+76.7% Traffic",
     badgeColor: "#7C3AED",
     badgeBg: "rgba(124,58,237,0.08)",
-    title: "Eye Hospital",
-    statBig: "120%",
+    title: "IVF Clinic",
+    statBig: "76.7%",
     statColor: "#7C3AED",
-    statDesc: "traffic growth through integrated Google Ads, Meta Ads, and a conversion optimised website.",
+    statDesc: "organic traffic growth in 6 months, turning a strong offline reputation into daily online demand.",
     accent: "#7C3AED",
     topBg: "linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(124,58,237,0.02) 100%)",
+    href: "/case-studies/ivf-clinic",
   },
   {
-    tag: "eCommerce · AI Development",
-    badge: "-68% Support Tickets",
-    badgeColor: "#F59E0B",
-    badgeBg: "rgba(245,158,11,0.08)",
-    title: "eCommerce Brand",
-    statBig: "68%",
-    statColor: "#F59E0B",
-    statDesc: "reduction in support tickets after AI chatbot handles 70% of queries automatically, saving 25 hrs/week.",
-    accent: "#F59E0B",
-    topBg: "linear-gradient(135deg, rgba(245,158,11,0.08) 0%, rgba(245,158,11,0.02) 100%)",
-  },
-  {
-    tag: "SaaS · Custom Development",
-    badge: "MVP in 6 Weeks",
-    badgeColor: "#06B6D4",
-    badgeBg: "rgba(6,182,212,0.08)",
-    title: "eCommerce Founder",
-    statBig: "20 hrs",
-    statColor: "#06B6D4",
-    statDesc: "saved per week after custom inventory management app delivered in 6 weeks, eliminating manual tracking.",
-    accent: "#06B6D4",
-    topBg: "linear-gradient(135deg, rgba(6,182,212,0.08) 0%, rgba(6,182,212,0.02) 100%)",
+    tag: "Home Services · Local SEO & AEO",
+    badge: "10–15 Leads/day",
+    badgeColor: "#FF6B2B",
+    badgeBg: "rgba(255,107,43,0.08)",
+    title: "DP Electrical Repairs",
+    statBig: "10–15",
+    statColor: "#FF6B2B",
+    statDesc: "qualified leads generated every day from the website — from invisible to local search leader in 4 months.",
+    accent: "#FF6B2B",
+    topBg: "linear-gradient(135deg, rgba(255,107,43,0.08) 0%, rgba(255,107,43,0.02) 100%)",
+    href: "/case-studies/dp-electrical-repairs",
   },
 ];
 
@@ -173,16 +153,18 @@ const CaseStudies = () => {
                   </span>
                 </div>
                 <div className="p-5 flex flex-col flex-1">
-                  <h3 className="text-base font-bold text-[#0A1628] mb-3">{c.title}</h3>
+                  <Link to={c.href}>
+                    <h3 className="text-base font-bold text-[#0A1628] mb-3 hover:underline">{c.title}</h3>
+                  </Link>
                   <div className="flex items-center gap-2 mb-2">
                     <TrendingUp size={16} style={{ color: c.statColor }} />
                     <span className="text-[36px] font-black leading-none" style={{ color: c.statColor }}>
-                      +{c.statBig}
+                      {c.statBig}
                     </span>
                   </div>
                   <p className="text-sm leading-relaxed text-[#4B5563] mb-4 flex-1">{c.statDesc}</p>
                   <Link
-                    to="/case-studies"
+                    to={c.href}
                     className="text-sm font-semibold inline-flex items-center gap-1 group-hover:gap-2 transition-all mt-auto"
                     style={{ color: c.accent }}
                   >

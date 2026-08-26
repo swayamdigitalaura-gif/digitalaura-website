@@ -5,6 +5,7 @@ import { ArrowRight, Layers, Zap, Palette, Database, Globe2, Rocket, Check, Chev
 import PageLayout from "@/components/PageLayout";
 import ClientLogoSection from "@/components/ClientLogoSection";
 import CaseStudies from "@/components/CaseStudies";
+import BlogInsights from "@/components/BlogInsights";
 import Testimonials from "@/components/Testimonials";
 
 const accent = "#54C5F8";
@@ -185,6 +186,7 @@ const FlutterAppsPage = () => (
 
     {/* Case Studies */}
     <CaseStudies />
+    <BlogInsights />
 
     {/* Testimonials */}
     <Testimonials />

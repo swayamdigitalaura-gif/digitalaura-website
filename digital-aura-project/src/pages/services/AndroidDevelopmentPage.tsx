@@ -5,6 +5,7 @@ import { ArrowRight, Smartphone, Rocket, Palette, Database, Zap, Shield, Check, 
 import PageLayout from "@/components/PageLayout";
 import ClientLogoSection from "@/components/ClientLogoSection";
 import CaseStudies from "@/components/CaseStudies";
+import BlogInsights from "@/components/BlogInsights";
 import Testimonials from "@/components/Testimonials";
 
 const accent = "#3DDC84";
@@ -185,6 +186,7 @@ const AndroidDevelopmentPage = () => (
 
     {/* Case Studies */}
     <CaseStudies />
+    <BlogInsights />
 
     {/* Testimonials */}
     <Testimonials />

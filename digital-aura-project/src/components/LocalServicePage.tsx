@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
 import CaseStudies from "@/components/CaseStudies";
+import BlogInsights from "@/components/BlogInsights";
 import Testimonials from "@/components/Testimonials";
 import { ArrowRight, ChevronDown, Check, MapPin } from "lucide-react";
 import { useSettings } from "@/hooks/useSettings";
@@ -261,6 +262,7 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
       {/* Proof */}
       <div style={{ marginBottom: "-60px" }}>
         <CaseStudies />
+        <BlogInsights />
       </div>
 
       {/* Testimonials */}

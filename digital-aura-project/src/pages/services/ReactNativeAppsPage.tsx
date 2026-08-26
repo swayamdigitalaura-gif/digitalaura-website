@@ -5,6 +5,7 @@ import { ArrowRight, Code2, Settings, Layers, Database, Zap, Shield, ChevronDown
 import PageLayout from "@/components/PageLayout";
 import ClientLogoSection from "@/components/ClientLogoSection";
 import CaseStudies from "@/components/CaseStudies";
+import BlogInsights from "@/components/BlogInsights";
 import Testimonials from "@/components/Testimonials";
 
 const accent = "#8B5CF6";
@@ -185,6 +186,7 @@ const ReactNativeAppsPage = () => (
 
     {/* Case Studies */}
     <CaseStudies />
+    <BlogInsights />
 
     {/* Testimonials */}
     <Testimonials />

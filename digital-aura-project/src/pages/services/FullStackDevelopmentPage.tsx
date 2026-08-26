@@ -1,4 +1,5 @@
 ﻿import CaseStudies from "@/components/CaseStudies";
+import BlogInsights from "@/components/BlogInsights";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -368,6 +369,7 @@ const FullStackDevelopmentPage = () => {
       </div>
     </section>
     <CaseStudies />
+    <BlogInsights />
         {/* Testimonials */}
     <section className="py-20 px-4 md:px-8 bg-white">
       <div className="max-w-6xl mx-auto">

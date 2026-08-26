@@ -12,6 +12,7 @@ import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
 import Testimonials from "@/components/Testimonials";
 import CaseStudies from "@/components/CaseStudies";
+import BlogInsights from "@/components/BlogInsights";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 import MathCaptcha from "@/components/MathCaptcha";
 import { useSettings } from "@/hooks/useSettings";
@@ -454,6 +455,7 @@ const OnPageSEOPage = () => {
     {/* Real Clients. Real Growth. Real Results. */}
     <div style={{ marginBottom: "-60px" }}>
       <CaseStudies />
+      <BlogInsights categories={["On-Page SEO"]} />
     </div>
 
     {/* What Our Clients Say */}

@@ -12,6 +12,7 @@ import CMSIcon from "@/components/CMSIcon";
 import { useSettings } from "@/hooks/useSettings";
 import Testimonials from "@/components/Testimonials";
 import CaseStudies from "@/components/CaseStudies";
+import BlogInsights from "@/components/BlogInsights";
 
 const accent = "#1A6FE8";
 const accentLight = "rgba(26,111,232,0.1)";
@@ -358,6 +359,7 @@ const CustomMLModelsPage = () => {
     </section>
 
     <div style={{ marginBottom: "-60px" }}><CaseStudies /></div>
+    <BlogInsights categories={["AI Search"]} />
     <Testimonials />
 
     {/* FAQ */}

@@ -11,6 +11,7 @@ import CMSIcon from "@/components/CMSIcon";
 import { useSettings } from "@/hooks/useSettings";
 import Testimonials from "@/components/Testimonials";
 import CaseStudies from "@/components/CaseStudies";
+import BlogInsights from "@/components/BlogInsights";
 
 const accent = "#7C3AED";
 const accentLight = "rgba(124,58,237,0.1)";
@@ -340,6 +341,7 @@ const LLMPoweredAppsPage = () => {
     {/* CASE STUDIES */}
     <div style={{ marginBottom: "-60px" }}>
       <CaseStudies />
+      <BlogInsights categories={["AI Search"]} />
     </div>
 
     {/* TESTIMONIALS */}

@@ -58,6 +58,9 @@
     100% { transform: translateX(-50%); }
   }
 
+  .client-logo-marquee { animation: marquee-scroll 60s linear infinite; }
+  .client-logo-marquee:hover { animation-play-state: paused; }
+
   /* ── Hero shape drift ── */
   @keyframes shape-drift {
     0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }

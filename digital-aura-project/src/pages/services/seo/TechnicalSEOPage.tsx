@@ -13,6 +13,7 @@ import PageLayout from "@/components/PageLayout";
 import { useSettings } from "@/hooks/useSettings";
 import Testimonials from "@/components/Testimonials";
 import CaseStudies from "@/components/CaseStudies";
+import BlogInsights from "@/components/BlogInsights";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 import MathCaptcha from "@/components/MathCaptcha";
 import {
@@ -490,6 +491,7 @@ const TechnicalSEOPage = () => {
     {/* Real Clients. Real Growth. Real Results. */}
     <div style={{ marginBottom: "-60px" }}>
       <CaseStudies />
+      <BlogInsights categories={["Technical SEO"]} />
     </div>
 
     {/* What Our Clients Say */}

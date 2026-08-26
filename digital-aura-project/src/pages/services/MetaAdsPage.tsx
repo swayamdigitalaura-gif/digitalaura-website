@@ -15,6 +15,7 @@ import CMSIcon from "@/components/CMSIcon";
 import { useSettings } from "@/hooks/useSettings";
 import Testimonials from "@/components/Testimonials";
 import CaseStudies from "@/components/CaseStudies";
+import BlogInsights from "@/components/BlogInsights";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 
 const accentColor = "#1877F2";
@@ -766,6 +767,7 @@ const MetaAdsPage = () => {
     {/* ── Case Studies ── */}
     <div style={{ marginBottom: "-60px" }}>
       <CaseStudies />
+      <BlogInsights />
     </div>
 
     {/* ── Testimonials ── */}

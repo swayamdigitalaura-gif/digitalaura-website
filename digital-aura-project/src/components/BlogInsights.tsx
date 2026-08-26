@@ -7,12 +7,25 @@ import { getBlogTheme } from "@/data/blogCategoryTheme";
 
 const MotionLink = motion(Link);
 
-const posts = [...seoBlogPosts]
-  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-  .slice(0, 4);
+const byNewest = (a: { date: string }, b: { date: string }) =>
+  new Date(b.date).getTime() - new Date(a.date).getTime();
 
-const BlogInsights = () => {
+interface BlogInsightsProps {
+  /** Show posts from these categories first (e.g. ["Local SEO", "SEO Strategy"]).
+   *  Falls back to the latest posts overall when a service has no matching posts yet. */
+  categories?: string[];
+  heading?: React.ReactNode;
+  badge?: string;
+}
+
+const BlogInsights = ({ categories, heading, badge }: BlogInsightsProps) => {
   const s = useSettings(["blog_ins_badge_5", "blog_sec_1", "blog_ins_hl_105"]);
+
+  const matched = categories
+    ? seoBlogPosts.filter(p => categories.includes(p.category))
+    : [];
+  const posts = [...(matched.length ? matched : seoBlogPosts)].sort(byNewest).slice(0, 4);
+
   return (
   <section id="blog" className="pt-20 pb-4 px-4 md:px-8" style={{ background: "#F8FAFF" }}>
     <div className="max-w-7xl mx-auto">
@@ -22,12 +35,23 @@ const BlogInsights = () => {
         viewport={{ once: true }}
         className="text-center mb-14"
       >
-        <span className="section-badge" data-cms-key="blog_ins_badge_5" data-cms-label="Section Badge" data-cms-attr="text">{s.blog_ins_badge_5 || "Blog"}</span>
-        <h2 className="text-3xl md:text-[42px] font-bold text-[#0A1628] tracking-tight">
-          <span data-cms-key="blog_sec_1" data-cms-label="Blog Section Heading" data-cms-attr="text">
-            {s.blog_sec_1 || <>Digital Intelligence &amp; <span data-cms-key="blog_ins_hl_105" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-orange-gradient">{s.blog_ins_hl_105 || "AI Insights"}</span></>}
-          </span>
-        </h2>
+        {categories ? (
+          <>
+            <span className="section-badge">{badge || "Blog"}</span>
+            <h2 className="text-3xl md:text-[42px] font-bold text-[#0A1628] tracking-tight">
+              {heading || <>Guides &amp; <span className="text-orange-gradient">Insights</span></>}
+            </h2>
+          </>
+        ) : (
+          <>
+            <span className="section-badge" data-cms-key="blog_ins_badge_5" data-cms-label="Section Badge" data-cms-attr="text">{s.blog_ins_badge_5 || "Blog"}</span>
+            <h2 className="text-3xl md:text-[42px] font-bold text-[#0A1628] tracking-tight">
+              <span data-cms-key="blog_sec_1" data-cms-label="Blog Section Heading" data-cms-attr="text">
+                {s.blog_sec_1 || <>Digital Intelligence &amp; <span data-cms-key="blog_ins_hl_105" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-orange-gradient">{s.blog_ins_hl_105 || "AI Insights"}</span></>}
+              </span>
+            </h2>
+          </>
+        )}
       </motion.div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

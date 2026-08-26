@@ -13,6 +13,7 @@ import CMSIcon from "@/components/CMSIcon";
 import { useSettings } from "@/hooks/useSettings";
 import Testimonials from "@/components/Testimonials";
 import CaseStudies from "@/components/CaseStudies";
+import BlogInsights from "@/components/BlogInsights";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 
 const accentColor = "#22C55E";
@@ -854,6 +855,7 @@ const SEOPage = () => {
     {/* ── Case Studies ── */}
     <div style={{ marginBottom: "-60px" }}>
       <CaseStudies />
+      <BlogInsights categories={["SEO Strategy","Technical SEO","On-Page SEO","Local SEO"]} />
     </div>
 
     {/* ── Testimonials ── */}

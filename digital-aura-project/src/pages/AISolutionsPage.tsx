@@ -4,6 +4,7 @@ import { useState } from "react";
 import MathCaptcha from "@/components/MathCaptcha";
 import PageLayout from "@/components/PageLayout";
 import CaseStudies from "@/components/CaseStudies";
+import BlogInsights from "@/components/BlogInsights";
 import Testimonials from "@/components/Testimonials";
 import {
   ArrowRight, ShieldCheck, BarChart4, Network, Cpu, Database, Target, ChevronDown, CheckCircle2, Zap, Bot, Workflow as WorkflowIcon, Brain, Blocks, Code2, LineChart, Users, Clock, Briefcase, Check, Lock
@@ -93,13 +94,13 @@ const AIAuditForm = () => {
           <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: "rgba(124,58,237,0.1)" }}>
             <CheckCircle2 size={32} style={{ color: accentColor }} />
           </div>
-          <h3 className="text-xl font-bold text-[#0A1628] mb-2"><span data-cms-key="aisol_h3_2" data-cms-label="Card Heading" data-cms-attr="text">{h3_2}</span></h3>
-          <p className="text-[#6B7280]"><span data-cms-key="aisol_p_5" data-cms-label="Body Text" data-cms-attr="text">{p_5}</span></p>
+          <h3 className="text-xl font-bold text-[#0A1628] mb-2">Request Received!</h3>
+          <p className="text-[#6B7280]">We will review your context and send your custom AI feasibility report within 48 hours.</p>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">
-          <h3 className="text-xl font-bold text-[#0A1628] mb-1"><span data-cms-key="aisol_h3_3" data-cms-label="Card Heading" data-cms-attr="text">{h3_3}</span></h3>
-          <p className="text-sm text-[#6B7280] mb-4"><span data-cms-key="aisol_p_6" data-cms-label="Body Text" data-cms-attr="text">{p_6}</span></p>
+          <h3 className="text-xl font-bold text-[#0A1628] mb-1">Get Your Free AI Readiness Scorecard</h3>
+          <p className="text-sm text-[#6B7280] mb-4">Complete this quick assessment to evaluate your AI potential.</p>
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
               <label className="text-xs font-semibold text-[#374151] mb-1.5 block">First Name *</label>
@@ -314,6 +315,7 @@ const AISolutionsPage = () => {
     {/* ── Case Studies ── */}
     <div style={{ marginBottom: "-60px" }}>
       <CaseStudies />
+      <BlogInsights categories={["AI Search"]} />
     </div>
 
     {/* ── Testimonials ── */}

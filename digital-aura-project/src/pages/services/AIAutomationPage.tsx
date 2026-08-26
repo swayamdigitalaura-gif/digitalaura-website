@@ -1,4 +1,5 @@
 ﻿import CaseStudies from "@/components/CaseStudies";
+import BlogInsights from "@/components/BlogInsights";
 import ClientLogoSection from "@/components/ClientLogoSection";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -369,6 +370,7 @@ const AIAutomationPage = () => {
       </div>
     </section>
     <CaseStudies />
+    <BlogInsights categories={["AI Search"]} />
         {/* Testimonials */}
     <section className="py-20 px-4 md:px-8 bg-white">
       <div className="max-w-6xl mx-auto">

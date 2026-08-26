@@ -22,9 +22,12 @@ const BlogInsights = ({ categories, heading, badge }: BlogInsightsProps) => {
   const s = useSettings(["blog_ins_badge_5", "blog_sec_1", "blog_ins_hl_105"]);
 
   const matched = categories
-    ? seoBlogPosts.filter(p => categories.includes(p.category))
+    ? [...seoBlogPosts].filter(p => categories.includes(p.category)).sort(byNewest)
     : [];
-  const posts = [...(matched.length ? matched : seoBlogPosts)].sort(byNewest).slice(0, 4);
+  const backfill = categories
+    ? [...seoBlogPosts].filter(p => !categories.includes(p.category)).sort(byNewest)
+    : [...seoBlogPosts].sort(byNewest);
+  const posts = [...matched, ...backfill].slice(0, 4);
 
   return (
   <section id="blog" className="pt-20 pb-4 px-4 md:px-8" style={{ background: "#F8FAFF" }}>

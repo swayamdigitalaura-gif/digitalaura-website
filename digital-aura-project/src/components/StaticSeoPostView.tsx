@@ -143,7 +143,7 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
               <CategoryIcon size={13} /> {post.category}
             </span>
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-[44px] font-black tracking-tight mb-5 leading-[1.15]" style={{ color: "#0A1628" }}>
+          <h1 className="text-3xl sm:text-4xl md:text-[44px] font-black tracking-tight mb-5 leading-[1.3]" style={{ color: "#0A1628" }}>
             <TitleWithHighlight title={post.title} highlight={post.titleHighlight} />
           </h1>
           <p className="text-lg mb-7 leading-relaxed max-w-xl mx-auto" style={{ color: "#4B5563" }}>{shortTeaser(post.directAnswer)}</p>

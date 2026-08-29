@@ -15,6 +15,7 @@ const AUTHOR_PHOTOS: Record<string, string> = {
   "Jinali Lodariya": "/team/jinali.png",
   "Swayam Parikh": "/team/swayam.png",
   "Deepak Nagar": "/team/deepak.png",
+  "Satish Prajapati": "/team/satish.png",
 };
 
 const shortTeaser = (text: string) => {
@@ -223,6 +224,9 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
                       </span>
                     ))}
                   </div>
+                  <p className="text-xs mt-4 pt-4 border-t" style={{ color: "#9CA3AF", borderColor: "#E5E7EB" }}>
+                    Reviewed by: <strong style={{ color: "#0A1628" }}>Sambhav Shah</strong>
+                  </p>
                 </div>
               </div>
             </div>

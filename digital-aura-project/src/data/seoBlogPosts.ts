@@ -45,6 +45,11 @@ const AUTHOR_DEEPAK_ROLE = "Full Stack AI Developer, Digital Aura";
 const AUTHOR_DEEPAK_BIO = "Deepak works alongside the AI development team on Digital Aura's full-stack and automation projects — building the applications, integrations, and AI-powered features that turn a client's idea into working software. He's comfortable moving across the stack, from backend logic and APIs to the AI models and automations that sit on top of them. That range means he can take a project from a database schema and an API all the way through to the AI feature sitting on top of it, without handing pieces off between specialists.\n\nHe approaches AI development the way a good engineer approaches any build: start with what the client actually needs, then find the simplest, most reliable way to make the AI layer do that job well. He'd rather ship something reliable that does one thing well than something impressive that breaks under real use. Once a feature is live, he keeps testing it against real scenarios, not just the ones it was originally built for.";
 const AUTHOR_DEEPAK_TAGS = ["AI Development", "Full-Stack Engineering", "API Integrations", "AI Automation", "Backend Engineering"];
 
+const AUTHOR_SATISH = "Satish Prajapati";
+const AUTHOR_SATISH_ROLE = "Google Ads & Meta Ads, Digital Aura";
+const AUTHOR_SATISH_BIO = "Satish runs paid advertising at Digital Aura — Google Ads and Meta Ads campaigns for clients who need results they can measure, not just impressions. He handles everything from campaign structure and audience targeting to ad creative and budget allocation, adjusting spend toward whatever's actually converting. Most of his campaigns run across both platforms at once, so a client isn't relying on a single channel for their paid traffic.\n\nHe treats a campaign's first few weeks as a testing phase, not a finished product — running multiple ad variations and audience segments to see what actually performs before scaling budget behind it. He checks cost-per-result and return on ad spend closely, and cuts what isn't working instead of leaving underperforming ads running out of habit. That keeps client budgets going toward what's proven, not what looks good on paper.";
+const AUTHOR_SATISH_TAGS = ["Google Ads", "Meta Ads", "Paid Media", "Campaign Strategy", "Conversion Tracking"];
+
 export const posts: BlogPost[] = [
   // ────────────────────────────────────────────────────────────────────
   {
@@ -426,10 +431,10 @@ export const posts: BlogPost[] = [
     date: "2026-02-09",
     dateDisplay: "Feb 9, 2026",
     readTime: "8 min read",
-    author: AUTHOR_SWAYAM,
-    authorRole: AUTHOR_SWAYAM_ROLE,
-    authorBio: AUTHOR_SWAYAM_BIO,
-    authorTags: AUTHOR_SWAYAM_TAGS,
+    author: AUTHOR_SATISH,
+    authorRole: AUTHOR_SATISH_ROLE,
+    authorBio: AUTHOR_SATISH_BIO,
+    authorTags: AUTHOR_SATISH_TAGS,
     authorLink: AUTHOR_LINK,
     directAnswer: "AEO (Answer Engine Optimization) targets Google's AI Overviews and featured snippets. GEO (Generative Engine Optimization) targets being cited by AI chat tools like ChatGPT, Perplexity, and Gemini. LLMO (Large Language Model Optimization) is a broader, related term covering how content is structured to be understood and trusted by large language models generally — it overlaps heavily with GEO and the two terms are often used interchangeably. All three sit on top of solid traditional SEO; none of them replace it.",
     keyTakeaways: [
@@ -688,10 +693,10 @@ Allow: /</code></pre>
     date: "2026-03-02",
     dateDisplay: "Mar 2, 2026",
     readTime: "10 min read",
-    author: AUTHOR_JINALI,
-    authorRole: AUTHOR_JINALI_ROLE,
-    authorBio: AUTHOR_JINALI_BIO,
-    authorTags: AUTHOR_JINALI_TAGS,
+    author: AUTHOR_SWAYAM,
+    authorRole: AUTHOR_SWAYAM_ROLE,
+    authorBio: AUTHOR_SWAYAM_BIO,
+    authorTags: AUTHOR_SWAYAM_TAGS,
     authorLink: AUTHOR_LINK,
     directAnswer: "Shopify SEO in 2026 means fixing the platform's specific default limitations — duplicate content from variant URLs, weak default title tag structures, and thin auto-generated collection pages — while applying standard on-page and technical SEO to every product and category page. The steps below walk through exactly what to fix, in the order that has the most impact on a typical Shopify store.",
     keyTakeaways: [
@@ -994,10 +999,10 @@ Allow: /</code></pre>
     date: "2026-03-23",
     dateDisplay: "Mar 23, 2026",
     readTime: "8 min read",
-    author: AUTHOR_DEEPAK,
-    authorRole: AUTHOR_DEEPAK_ROLE,
-    authorBio: AUTHOR_DEEPAK_BIO,
-    authorTags: AUTHOR_DEEPAK_TAGS,
+    author: AUTHOR_SATISH,
+    authorRole: AUTHOR_SATISH_ROLE,
+    authorBio: AUTHOR_SATISH_BIO,
+    authorTags: AUTHOR_SATISH_TAGS,
     authorLink: AUTHOR_LINK,
     directAnswer: "The six AI SEO skills that matter most for marketers in 2026 are: writing answer-first content structured for AI extraction, implementing and validating structured data, auditing AI-crawler accessibility, manually tracking AI Overview and AI chat citation visibility, understanding how E-E-A-T signals are evaluated by AI systems, and knowing when NOT to use AI-generated content. None of these require becoming a developer — they're strategic and editorial skills layered onto existing SEO knowledge.",
     keyTakeaways: [

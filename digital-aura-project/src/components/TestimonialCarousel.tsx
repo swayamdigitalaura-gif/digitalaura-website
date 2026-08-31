@@ -5,6 +5,28 @@ import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 type Item = { quote: string; name: string; personName?: string; company: string; initials: string; color: string };
 
 const FADE_MS = 180;
+const QUOTE_LIMIT = 160;
+
+const TruncatedQuote = ({ text, color }: { text: string; color: string }) => {
+  const [expanded, setExpanded] = useState(false);
+  const isLong = text.length > QUOTE_LIMIT;
+  const shown = expanded || !isLong ? text : `${text.slice(0, QUOTE_LIMIT).trimEnd()}…`;
+  return (
+    <p className="text-[#374151] leading-relaxed text-[15px] flex-1 mb-6 italic">
+      "{shown}"
+      {isLong && (
+        <button
+          type="button"
+          onClick={(e) => { e.stopPropagation(); setExpanded((v) => !v); }}
+          className="not-italic font-semibold ml-1.5 whitespace-nowrap"
+          style={{ color }}
+        >
+          {expanded ? "Show less" : "Read more"}
+        </button>
+      )}
+    </p>
+  );
+};
 
 const useVisibleCount = () => {
   const [count, setCount] = useState(() => {
@@ -79,7 +101,7 @@ const TestimonialCarousel = ({ items }: { items: Item[] }) => {
             <div className="flex gap-0.5 mb-4">
               {Array.from({ length: 5 }).map((_, j) => <Star key={j} size={15} fill="#FF6B2B" color="#FF6B2B" />)}
             </div>
-            <p className="text-[#374151] leading-relaxed text-[15px] flex-1 mb-6 italic">"{t.quote}"</p>
+            <TruncatedQuote text={t.quote} color={t.color} />
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0" style={{ background: t.color }}>

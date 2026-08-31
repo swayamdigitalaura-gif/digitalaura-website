@@ -4,6 +4,28 @@ import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 import { useSettings } from "@/hooks/useSettings";
 
 const COLORS = ["#FF6B2B","#7C3AED","#1A6FE8","#22C55E"];
+const QUOTE_LIMIT = 160;
+
+const TruncatedQuote = ({ text, color }: { text: string; color: string }) => {
+  const [expanded, setExpanded] = useState(false);
+  const isLong = text.length > QUOTE_LIMIT;
+  const shown = expanded || !isLong ? text : `${text.slice(0, QUOTE_LIMIT).trimEnd()}…`;
+  return (
+    <p className="text-[#374151] leading-relaxed text-[15px] flex-1 mb-6 italic">
+      "{shown}"
+      {isLong && (
+        <button
+          type="button"
+          onClick={(e) => { e.stopPropagation(); setExpanded((v) => !v); }}
+          className="not-italic font-semibold ml-1.5 whitespace-nowrap"
+          style={{ color }}
+        >
+          {expanded ? "Show less" : "Read more"}
+        </button>
+      )}
+    </p>
+  );
+};
 const FALLBACK = [
   { quote: "Digital Aura's team designed a professional website and executed a highly effective Meta Ads campaign.", name: "Sahebrav Patil", company: "Pest Control Business Owner", initials: "SP" },
   { quote: "We partnered with them for website development and lead generation campaigns, and the results were beyond our expectations.", name: "Chintan Joshi", company: "Local Guide · 141 Reviews", initials: "CJ" },
@@ -98,7 +120,7 @@ const Testimonials = () => {
                   <Star key={j} size={15} fill="#FF6B2B" color="#FF6B2B" />
                 ))}
               </div>
-              <p className="text-[#374151] leading-relaxed text-[15px] flex-1 mb-6 italic">"{t.quote}"</p>
+              <TruncatedQuote text={t.quote} color={t.color} />
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0" style={{ background: t.color }}>

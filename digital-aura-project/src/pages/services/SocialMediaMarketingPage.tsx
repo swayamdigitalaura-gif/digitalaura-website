@@ -468,18 +468,14 @@ const SMMAuditForm = () => {
 };
 
 const smmClients = [
-  { name: "DP Electric",           tag: "Electrical Services",   logo: "https://dpelectric.com.au/wp-content/uploads/2023/05/logooo.png",                                                                                                                 logoBg: "#fffff0" },
-  { name: "The Grand Palace",      tag: "Hospitality",           logo: "https://www.thegrandpalace.com.au/wp-content/uploads/2025/04/Logo-removebg-preview.png",                                                                                          logoBg: "#fffbf0" },
-  { name: "Mainstream Real Estate",tag: "Real Estate",           logo: "https://mainstreamrealestate.com.au/wp-content/uploads/2023/02/logo-320x184-1.png",                                                                                         logoBg: "#f0fff8" },
-  { name: "Grand Bavarchi",        tag: "Restaurant & Events",   logo: "https://grandbavarchi.com.au/wp-content/uploads/2024/03/GB-logo.png",                                                                                                            logoBg: "#fff8f0" },
-  { name: "Jump Swim Schools",     tag: "Education & Sports",    logo: "https://jumpswimschools.com.au/wp-content/uploads/logo.png",                                                                                                                 logoBg: "#f0faff" },
-  { name: "Parasher Academy",      tag: "Education",             logo: "/logos/parasher-academy.png",                                                                                                  logoBg: "#f5f0ff" },
-  { name: "Inn of the Dove",       tag: "Hospitality",           logo: "https://innofthedovehotel.com/wp-content/uploads/2026/02/logo-1.webp",                                                                                                           logoBg: "#fff8f5" },
-  { name: "Game Zone Events",      tag: "Events & Entertainment",logo: "https://gamezoneevents.ca/wp-content/uploads/2025/07/Game-Zone-Events-02-1024x717.png",                                                                                           logoBg: "#f0fff0" },
-  { name: "Dr Ronak Patel",        tag: "Healthcare",            logo: "/logos/dr-ronak-patel.webp",                                                                                                      logoBg: "#f0f7ff" },
-  { name: "AMVI Hospitals",        tag: "Healthcare",            logo: "https://amvihospitals.com/wp-content/uploads/2025/04/amvi-new-logo-1536x219-1.png",                                                                                              logoBg: "#f5f0ff" },
-  { name: "Krisha Hospital",       tag: "Healthcare",            logo: "https://www.krishahospital.in/wp-content/uploads/2025/01/newlogo.png",                                                                                                            logoBg: "#fff0f5" },
-  { name: "Shukan Hospital",       tag: "Healthcare",            logo: "https://shukanhospital.com/wp-content/uploads/2025/11/Frame-16-removebg-preview.png",                                                                                            logoBg: "#f0fff8" },
+  { name: "Atul Bakery",                  tag: "Food & Bakery",          logo: "/logos/atul-bakery.jpg",                     logoBg: "#fff0f0" },
+  { name: "Grand Gift Care",              tag: "Gifting & Retail",       logo: "/logos/grand-gift-care.jpg",                 logoBg: "#f5f8ff" },
+  { name: "Grand Bavarchi",               tag: "Restaurant & Events",    logo: "/logos/grand-bavarchi.jpg",                  logoBg: "#0A1628" },
+  { name: "Swastik Gold Alloys",          tag: "Jewellery & Alloys",     logo: "/logos/swastik-gold-alloys-square.jpg",      logoBg: "#fffaf0" },
+  { name: "Synergy Hospital",             tag: "Healthcare",             logo: "/logos/synergy-hospital.jpg",                logoBg: "#fff0f5" },
+  { name: "Track My Ad",                  tag: "AdTech & Verification",  logo: "/logos/track-my-ads-square.jpg",             logoBg: "#f0f5ff" },
+  { name: "Aagman Women's Hospital",      tag: "Healthcare",             logo: "/logos/aagman-womens-hospital.jpg",          logoBg: "#fff5f0" },
+  { name: "Bharat Invisible Grills",      tag: "Home Safety & Nets",     logo: "/logos/bharat-invisible-grills-nets.jpg",    logoBg: "#0A1628" },
 ];
 
 const SMMClientSlider = () => {

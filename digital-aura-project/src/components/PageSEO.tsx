@@ -47,6 +47,10 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: 'DP Electrical Repairs SEO & AEO Case Study | Digital Aura',
     description: 'How a Melbourne appliance repair business went from invisible to 10–15 qualified leads a day with a local SEO structure built around service, brand, and suburb pages.',
   },
+  '/case-studies/oblprint': {
+    title: 'OBLPrint Google Ads Case Study | Digital Aura',
+    description: "How Digital Aura turned OBLPrint's silent Google Ads account into Dubai's busiest WhatsApp inbox — from a 31/100 health score to 79.1%, and 35 WhatsApp chats in a month.",
+  },
   '/blog': {
     title: 'Digital Marketing Blog | Insights & Strategies | Digital Aura',
     description: 'Stay updated with the latest digital marketing trends, SEO tips, Google Ads strategies, and AI insights from the Digital Aura team.',
@@ -364,6 +368,12 @@ const PAGE_SCHEMA: Record<string, object | object[]> = {
     author: { '@type': 'Organization', name: 'Digital Aura' },
     publisher: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/case-studies/dp-electrical-repairs/` } },
+  '/case-studies/oblprint': { '@context': 'https://schema.org', '@type': 'Article',
+    headline: "Turning a Silent Google Ads Account Into Dubai's Busiest WhatsApp Inbox",
+    description: "How Digital Aura turned OBLPrint's silent Google Ads account into Dubai's busiest WhatsApp inbox — from a 31/100 health score to 79.1%, and 35 WhatsApp chats in a month.",
+    author: { '@type': 'Organization', name: 'Digital Aura' },
+    publisher: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/case-studies/oblprint/` } },
   '/ai-solutions': { '@context': 'https://schema.org', '@type': 'Service', name: 'AI Solutions & Automation',
     provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL },
     description: 'LLM-powered apps, chatbots, workflow automation, predictive analytics, and custom ML models.', url: `${SITE_URL}/ai-solutions/`, areaServed: 'Worldwide' },

@@ -76,6 +76,24 @@ const FEATURED_CASE_4 = {
   ],
 };
 
+const FEATURED_CASE_5 = {
+  tag: "Custom Printing & Signage · Google Ads & Shopping",
+  badge: "35 WhatsApp Chats/mo",
+  title: "OBLPrint, From a Silent Ad Account to Dubai's Busiest WhatsApp Inbox",
+  statBig: "79.1%",
+  statLabel: "ad account optimization score, up from 31/100",
+  desc: "A 4.9-star Dubai printing business had every ingredient for online success — except a Google Ads account that could be found. We rebuilt the account from the ground up, turning silence into a steady stream of real buyer conversations.",
+  services: ["Google Ads", "Google Shopping", "Conversion Tracking", "Campaign Restructuring"],
+  color: "#1A6FE8",
+  href: "/case-studies/oblprint",
+  quad: [
+    { n: "38,295", l: "Impressions in July" },
+    { n: "595", l: "Clicks generated" },
+    { n: "35", l: "WhatsApp click-to-chats" },
+    { n: "AED 0.99", l: "Shopping cost / click" },
+  ],
+};
+
 type FeaturedCase = typeof FEATURED_CASE;
 
 const FeaturedCaseBanner = ({ item }: { item: FeaturedCase }) => (
@@ -162,6 +180,7 @@ const CaseStudiesPage = () => {
         <FeaturedCaseBanner item={FEATURED_CASE_2} />
         <FeaturedCaseBanner item={FEATURED_CASE_3} />
         <FeaturedCaseBanner item={FEATURED_CASE_4} />
+        <FeaturedCaseBanner item={FEATURED_CASE_5} />
 
         <div className="text-center mt-16">
           <p className="text-[#6B7280] mb-6"

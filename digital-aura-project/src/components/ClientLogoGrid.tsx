@@ -29,13 +29,13 @@ const ClientLogoGrid = ({ clients, accentColor = "#22C55E" }: Props) => {
         className="rounded-2xl bg-white border flex flex-col items-center text-center overflow-hidden card-hover shrink-0"
         style={{ borderColor: "#E5E7EB", boxShadow: "0 4px 20px rgba(0,0,0,0.06)", width: 220 }}
       >
-        <div className="w-full flex items-center justify-center p-5" style={{ background: failed ? "#F0F4F8" : (c.logoBg || "#F0F4F8"), minHeight: 110 }}>
+        <div className="w-full flex items-center justify-center p-4" style={{ background: failed ? "#F0F4F8" : (c.logoBg || "#F0F4F8"), minHeight: 140 }}>
           {failed ? (
             <span style={{ fontSize: 13, fontWeight: 800, color: "#374151", textAlign: "center", padding: "0 8px" }}>{c.name}</span>
           ) : (
             <img src={c.logo} alt={c.name}
               style={{
-                height: 58, maxWidth: 150, objectFit: "contain",
+                height: 92, maxWidth: 190, objectFit: "contain",
                 filter: "drop-shadow(0 0 2px rgba(0,0,0,0.18)) drop-shadow(0 1px 3px rgba(0,0,0,0.12))"
               }}
               onError={() => handleImgError(c.logo)}

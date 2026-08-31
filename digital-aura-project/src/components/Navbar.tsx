@@ -3,7 +3,7 @@ import { Menu, X, Phone, ChevronDown,
   Bot, Brain, Workflow, Film,
   Globe2, Code2, PenTool,
   ShoppingCart, Store, CreditCard,
-  Search, Share2, Target,
+  Search, Share2, Target, Hash,
   Smartphone, AppWindow, Layers,
   ArrowRight,
 } from "lucide-react";
@@ -72,6 +72,7 @@ const megaCategories = [
       { icon: Search, title: "SEO & Content Marketing", desc: "Rank on page 1 with technical SEO & content",  route: "/services/seo-content-marketing" },
       { icon: Target, title: "Google Ads",              desc: "Data driven Search, Display & Shopping ads",    route: "/services/google-ads" },
       { icon: Share2, title: "Meta Ads",                desc: "Facebook & Instagram campaigns that convert",   route: "/services/meta-ads" },
+      { icon: Hash,   title: "Social Media Marketing",  desc: "Content, community & organic growth",           route: "/services/social-media-marketing" },
     ],
   },
   {

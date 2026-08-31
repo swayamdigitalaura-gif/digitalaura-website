@@ -138,20 +138,6 @@ const TestimonialCarousel = ({ items }: { items: Item[] }) => {
         >
           <ChevronLeft size={18} />
         </button>
-        <div className="flex gap-2 flex-wrap justify-center max-w-[200px]">
-          {items.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => goTo(i)}
-              className="rounded-full transition-all"
-              style={{
-                width: i === current % items.length ? 24 : 8,
-                height: 8,
-                background: i === current % items.length ? "#FF6B2B" : "#E5E7EB",
-              }}
-            />
-          ))}
-        </div>
         <button
           onClick={() => goTo((current + 1) % items.length)}
           className="w-10 h-10 rounded-full border flex items-center justify-center text-[#6B7280] hover:border-[#FF6B2B] hover:text-[#FF6B2B] transition-all"

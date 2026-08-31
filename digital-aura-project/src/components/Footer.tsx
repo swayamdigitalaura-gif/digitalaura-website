@@ -36,6 +36,7 @@ const servicesRight = [
     { label: "SEO, AIO & GEO", href: "/services/seo-content-marketing" },
     { label: "Google Ads",     href: "/services/google-ads" },
     { label: "Meta Ads",       href: "/services/meta-ads" },
+    { label: "Social Media Marketing", href: "/services/social-media-marketing" },
   ]},
   { heading: "Mobile App Development", color: "#EC4899", items: [
     { label: "Android Development",           href: "/services/mobile-app-development?type=android" },

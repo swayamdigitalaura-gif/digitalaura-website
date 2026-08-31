@@ -6,7 +6,7 @@ import {
   Bot, Brain, Workflow, Film,
   Globe2, Code2, PenTool,
   ShoppingCart, Store, CreditCard,
-  Search, Share2, Target, Megaphone, BarChart3,
+  Search, Share2, Target, Megaphone, BarChart3, Hash,
   Smartphone, AppWindow, Layers,
   ArrowRight,
 } from "lucide-react";
@@ -130,6 +130,13 @@ const content: Record<TabKey, { icon: React.ElementType; iconName: string; title
       desc: "High converting Facebook & Instagram ad campaigns targeting the right audience to generate consistent leads and sales.",
       points: ["Facebook & Instagram", "Audience targeting", "Creative A/B testing"],
       route: "/services/meta-ads",
+    },
+    {
+      icon: Hash, iconName: "Hash",
+      title: "Social Media Marketing",
+      desc: "Strategic content, daily publishing, and community management that builds a genuinely engaged audience across every platform.",
+      points: ["Content strategy", "Community management", "Organic growth"],
+      route: "/services/social-media-marketing",
     },
   ],
   mobile: [

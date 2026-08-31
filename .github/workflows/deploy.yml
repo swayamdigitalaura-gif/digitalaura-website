@@ -165,6 +165,20 @@ jobs:
           fi
           REMOTE_CMD='KEY=$(base64 -d); ENV_FILE=/home/digitalaura-backend/.env; if ! grep -q "^GOOGLE_PLACES_API_KEY=" "$ENV_FILE" 2>/dev/null; then printf "GOOGLE_PLACES_API_KEY=%s\n" "$KEY" >> "$ENV_FILE"; pm2 restart digitalaura-api; fi'
           printf '%s' "$GOOGLE_PLACES_API_KEY" | base64 -w0 | ssh $SSH_OPTS "$H" "$REMOTE_CMD"
+      # Same bootstrap pattern as above, for the Place ID the Google Places
+      # auto-review-fetch feature looks up reviews for. Not a secret, but kept
+      # consistent with the key above (idempotent, only appended if missing).
+      - name: Ensure GOOGLE_PLACE_ID is set in server .env
+        env:
+          H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
+          GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
+        run: |
+          if [ -z "$GOOGLE_PLACE_ID" ]; then
+            echo "GOOGLE_PLACE_ID secret not set — skipping."
+            exit 0
+          fi
+          REMOTE_CMD='ID=$(base64 -d); ENV_FILE=/home/digitalaura-backend/.env; if ! grep -q "^GOOGLE_PLACE_ID=" "$ENV_FILE" 2>/dev/null; then printf "GOOGLE_PLACE_ID=%s\n" "$ID" >> "$ENV_FILE"; pm2 restart digitalaura-api; fi'
+          printf '%s' "$GOOGLE_PLACE_ID" | base64 -w0 | ssh $SSH_OPTS "$H" "$REMOTE_CMD"
 
   # ── 5. SEO landing page  →  /home/landing-seo/  (pm2: seo-landing) ────────
   seo-landing:

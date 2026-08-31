@@ -1,6 +1,6 @@
 ﻿import { useState, useEffect, useRef } from "react";
 import { Menu, X, Phone, ChevronDown,
-  Bot, Brain, Workflow,
+  Bot, Brain, Workflow, Film,
   Globe2, Code2, PenTool,
   ShoppingCart, Store, CreditCard,
   Search, Share2, Target,
@@ -39,6 +39,7 @@ const megaCategories = [
       { icon: Bot,      title: "AI Powered Web Apps",       desc: "Smart, scalable apps with AI at the core",          route: "/services/ai-powered-web-apps" },
       { icon: Brain,    title: "AI Automation Systems",     desc: "Intelligent workflows that save hours daily",         route: "/services/ai-automation" },
       { icon: Workflow, title: "AI Chatbots & Assistants",  desc: "24/7 conversational AI for leads & support",         route: "/services/ai-chatbot-assistant" },
+      { icon: Film,     title: "AI Filmmaking",             desc: "AI-produced Reels, Shorts & ad creatives",           route: "/services/ai-filmmaking" },
     ],
   },
   {

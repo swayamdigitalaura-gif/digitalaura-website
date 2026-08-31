@@ -10,7 +10,6 @@ const SESSION_KEY = "da_popup_shown";
 // only reliable signal that it's been resolved either way.
 const COOKIE_BANNER_SELECTOR = "[data-cookie-banner]";
 const DELAY_MS = 18000;
-const SCROLL_TRIGGER = 0.6;
 const COOKIE_BANNER_RECHECK_MS = 1500;
 
 const services = [
@@ -62,26 +61,8 @@ const PopupLeadForm = () => {
 
     timerRef.current = setTimeout(reveal, DELAY_MS);
 
-    const onScroll = () => {
-      const depth =
-        window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-      if (depth >= SCROLL_TRIGGER) reveal();
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-
-    // Exit intent: cursor leaves toward the top of the viewport (address
-    // bar / tab strip) — the classic "about to close the tab" signal.
-    // Desktop-only; touch devices have no mouse to leave from, so they
-    // still get the popup via the delay/scroll triggers above.
-    const onMouseOut = (e: MouseEvent) => {
-      if (e.clientY <= 0 && !e.relatedTarget) reveal();
-    };
-    document.addEventListener("mouseout", onMouseOut);
-
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
-      window.removeEventListener("scroll", onScroll);
-      document.removeEventListener("mouseout", onMouseOut);
     };
   }, [reveal]);
 

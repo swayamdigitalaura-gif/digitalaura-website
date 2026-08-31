@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useSettings } from "@/hooks/useSettings";
 import {
-  Bot, Brain, Workflow,
+  Bot, Brain, Workflow, Film,
   Globe2, Code2, PenTool,
   ShoppingCart, Store, CreditCard,
   Search, Share2, Target, Megaphone, BarChart3,
@@ -54,6 +54,13 @@ const content: Record<TabKey, { icon: React.ElementType; iconName: string; title
       desc: "Deploy 24/7 conversational AI that handles queries, qualifies leads, and books appointments automatically.",
       points: ["Lead qualification", "WhatsApp & web", "Human handoff"],
       route: "/services/ai-chatbot-assistant",
+    },
+    {
+      icon: Film, iconName: "Film",
+      title: "AI Filmmaking",
+      desc: "AI-produced Reels, Shorts, and ad creatives in days, not weeks, backed by real strategy and paid promotion.",
+      points: ["AI video production", "Reels & Shorts", "Strategy + promotion"],
+      route: "/services/ai-filmmaking",
     },
   ],
   web: [

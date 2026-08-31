@@ -18,6 +18,7 @@ const servicesLeft = [
     { label: "AI Powered Web Apps",    href: "/services/ai-powered-web-apps" },
     { label: "AI Automation Systems",  href: "/services/ai-automation" },
     { label: "AI Chatbot & Assistants",href: "/services/ai-chatbot-assistant" },
+    { label: "AI Filmmaking",          href: "/services/ai-filmmaking" },
   ]},
   { heading: "Web Solutions", color: "#1A6FE8", items: [
     { label: "Full Stack Development", href: "/services/full-stack-development" },

@@ -1,8 +1,14 @@
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
-import { Shield, Lock, Eye, Users, AlertCircle, CheckCircle2 } from "lucide-react";
+import { Shield, Lock, Eye, Users, AlertCircle, CheckCircle2, MessageSquare } from "lucide-react";
 
 const sections = [
+  {
+    icon: MessageSquare,
+    color: "#25D366",
+    title: "Lead Genie – WhatsApp CRM Platform",
+    body: "Digital Aura operates Lead Genie, a WhatsApp Business CRM and messaging platform, as part of its service offerings. This policy also governs data collected, processed, and stored through Lead Genie, including WhatsApp message content, message templates, contact lists, conversation history, and customer relationship data submitted by businesses using the platform. Lead Genie integrates with Meta's WhatsApp Business API to send and receive messages on behalf of client businesses.",
+  },
   {
     icon: Eye,
     color: "#FF6B2B",
@@ -107,7 +113,7 @@ const PrivacyPolicyPage = () => (
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
           className="rounded-2xl p-6 text-center" style={{ background: "rgba(255,107,43,0.05)", border: "1px solid rgba(255,107,43,0.15)" }}>
           <p className="text-sm text-[#6B7280]">
-            Last updated: May 2026 · For privacy queries, contact us at{" "}
+            Last updated: August 31, 2026 · For privacy queries, contact us at{" "}
             <a href="mailto:info@thedigitalaura.com" className="font-semibold" style={{ color: "#FF6B2B" }}>
               info@thedigitalaura.com
             </a>

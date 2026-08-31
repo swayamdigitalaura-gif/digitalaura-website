@@ -139,6 +139,10 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: 'Meta Ads (Facebook & Instagram) Management | Digital Aura',
     description: "Scale your business with Digital Aura's Meta Ads expertise. Facebook and Instagram advertising campaigns that convert and grow.",
   },
+  '/services/social-media-marketing': {
+    title: 'Social Media Marketing Services | Digital Aura',
+    description: "Build a genuinely engaged social media presence with Digital Aura. Content strategy, daily publishing, community management, and growth across every platform that matters.",
+  },
   '/services/email-whatsapp-marketing': {
     title: 'Email & WhatsApp Marketing Services | Digital Aura',
     description: "Reach customers directly with Digital Aura's email and WhatsApp marketing. Automated campaigns, segmentation, and high-converting sequences.",
@@ -383,6 +387,7 @@ const PAGE_SCHEMA: Record<string, object | object[]> = {
   '/services/seo-content-marketing':    { '@context': 'https://schema.org', '@type': 'Service', name: 'SEO & Content Marketing', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'SEO & Content Marketing', areaServed: 'Worldwide', url: `${SITE_URL}/services/seo-content-marketing/` },
   '/services/google-ads':               { '@context': 'https://schema.org', '@type': 'Service', name: 'Google Ads Management', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Google Ads Management', areaServed: 'Worldwide', url: `${SITE_URL}/services/google-ads/` },
   '/services/meta-ads':                 { '@context': 'https://schema.org', '@type': 'Service', name: 'Meta Ads (Facebook & Instagram)', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Social Media Advertising', areaServed: 'Worldwide', url: `${SITE_URL}/services/meta-ads/` },
+  '/services/social-media-marketing':   { '@context': 'https://schema.org', '@type': 'Service', name: 'Social Media Marketing', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Social Media Marketing', areaServed: 'Worldwide', url: `${SITE_URL}/services/social-media-marketing/` },
   '/services/shopify-development':      { '@context': 'https://schema.org', '@type': 'Service', name: 'Shopify Development', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'E-Commerce Development', areaServed: 'Worldwide', url: `${SITE_URL}/services/shopify-development/` },
   '/services/woocommerce-development':  { '@context': 'https://schema.org', '@type': 'Service', name: 'WooCommerce Development', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'E-Commerce Development', areaServed: 'Worldwide', url: `${SITE_URL}/services/woocommerce-development/` },
   '/services/full-stack-development':   { '@context': 'https://schema.org', '@type': 'Service', name: 'Full-Stack Development', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Web Development', areaServed: 'Worldwide', url: `${SITE_URL}/services/full-stack-development/` },

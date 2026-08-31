@@ -47,6 +47,7 @@ const ROUTES = [
   '/services/seo-content-marketing',
   '/services/google-ads',
   '/services/meta-ads',
+  '/services/social-media-marketing',
   '/services/email-whatsapp-marketing',
   '/services/linkedin-youtube-ads',
   '/services/cro',

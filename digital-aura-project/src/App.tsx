@@ -23,6 +23,7 @@ import WordPressPage from "./pages/services/WordPressPage.tsx";
 import SEOPage from "./pages/services/SEOPage.tsx";
 import GoogleAdsPage from "./pages/services/GoogleAdsPage.tsx";
 import MetaAdsPage from "./pages/services/MetaAdsPage.tsx";
+import SocialMediaMarketingPage from "./pages/services/SocialMediaMarketingPage.tsx";
 import EmailWhatsAppPage from "./pages/services/EmailWhatsAppPage.tsx";
 import LinkedInYouTubePage from "./pages/services/LinkedInYouTubePage.tsx";
 import CROPage from "./pages/services/CROPage.tsx";
@@ -130,6 +131,7 @@ const App = () => (
           <Route path="/services/seo-content-marketing/ecommerce-seo" element={<EcommerceSEOPage />} />
           <Route path="/services/google-ads" element={<GoogleAdsPage />} />
           <Route path="/services/meta-ads" element={<MetaAdsPage />} />
+          <Route path="/services/social-media-marketing" element={<SocialMediaMarketingPage />} />
           <Route path="/services/email-whatsapp-marketing" element={<EmailWhatsAppPage />} />
           <Route path="/services/linkedin-youtube-ads" element={<LinkedInYouTubePage />} />
           <Route path="/services/cro" element={<CROPage />} />

@@ -94,6 +94,24 @@ const FEATURED_CASE_5 = {
   ],
 };
 
+const FEATURED_CASE_6 = {
+  tag: "Hospitality & Restaurant · SEO & Social",
+  badge: "1.26K+ Organic Visitors",
+  title: "The Grand Palace, From Word of Mouth to a Digital Front Door",
+  statBig: "1.26K+",
+  statLabel: "organic search sessions in 90 days, from a standing start",
+  desc: "A decade-old Sydney CBD restaurant ran on reputation alone — no website, no search presence, no way for new customers to find them. We built their site, SEO, and social presence from zero, and it started paying off within 90 days.",
+  services: ["Website Development", "Local SEO", "Content Strategy", "Social Media Marketing"],
+  color: "#c8952f",
+  href: "/case-studies/grand-palace",
+  quad: [
+    { n: "2.4K+", l: "Total website sessions" },
+    { n: "21", l: "Keywords ranking #1–#3" },
+    { n: "+45%", l: "Online reservations & orders" },
+    { n: "+78.3%", l: "Google Business Profile interactions" },
+  ],
+};
+
 type FeaturedCase = typeof FEATURED_CASE;
 
 const FeaturedCaseBanner = ({ item }: { item: FeaturedCase }) => (
@@ -181,6 +199,7 @@ const CaseStudiesPage = () => {
         <FeaturedCaseBanner item={FEATURED_CASE_3} />
         <FeaturedCaseBanner item={FEATURED_CASE_4} />
         <FeaturedCaseBanner item={FEATURED_CASE_5} />
+        <FeaturedCaseBanner item={FEATURED_CASE_6} />
 
         <div className="text-center mt-16">
           <p className="text-[#6B7280] mb-6"

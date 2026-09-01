@@ -41,6 +41,7 @@ import CaseStudyPrismCalibration from "./pages/CaseStudyPrismCalibration.tsx";
 import CaseStudyIvfClinic from "./pages/CaseStudyIvfClinic.tsx";
 import CaseStudyDpElectricalRepairs from "./pages/CaseStudyDpElectricalRepairs.tsx";
 import CaseStudyOblprint from "./pages/CaseStudyOblprint.tsx";
+import CaseStudyGrandPalace from "./pages/CaseStudyGrandPalace.tsx";
 import BlogPage from "./pages/BlogPage.tsx";
 import BlogPost from "./pages/BlogPost.tsx";
 import StaticSeoPostView from "./components/StaticSeoPostView.tsx";
@@ -98,6 +99,7 @@ const App = () => (
           <Route path="/case-studies/ivf-clinic" element={<CaseStudyIvfClinic />} />
           <Route path="/case-studies/dp-electrical-repairs" element={<CaseStudyDpElectricalRepairs />} />
           <Route path="/case-studies/oblprint" element={<CaseStudyOblprint />} />
+          <Route path="/case-studies/grand-palace" element={<CaseStudyGrandPalace />} />
           <Route path="/blog" element={<BlogPage />} />
           {seoBlogPosts.map(p => (
             <Route key={p.slug} path={`/blog/${p.slug}`} element={<StaticSeoPostView post={p} />} />

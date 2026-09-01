@@ -22,6 +22,7 @@ const ROUTES = [
   '/case-studies/ivf-clinic',
   '/case-studies/dp-electrical-repairs',
   '/case-studies/oblprint',
+  '/case-studies/grand-palace',
   '/blog',
   '/contact',
   '/services',

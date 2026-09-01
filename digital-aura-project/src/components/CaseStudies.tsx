@@ -58,6 +58,19 @@ const cases = [
     topBg: "linear-gradient(135deg, rgba(255,107,43,0.08) 0%, rgba(255,107,43,0.02) 100%)",
     href: "/case-studies/dp-electrical-repairs",
   },
+  {
+    tag: "Hospitality & Restaurant · SEO & Social",
+    badge: "1.26K+ Organic Visitors",
+    badgeColor: "#c8952f",
+    badgeBg: "rgba(200,149,47,0.08)",
+    title: "The Grand Palace",
+    statBig: "1.26K+",
+    statColor: "#c8952f",
+    statDesc: "organic search sessions in 90 days, from a standing start — a decade-old restaurant's first real digital front door.",
+    accent: "#c8952f",
+    topBg: "linear-gradient(135deg, rgba(200,149,47,0.08) 0%, rgba(200,149,47,0.02) 100%)",
+    href: "/case-studies/grand-palace",
+  },
 ];
 
 const VISIBLE = 3;

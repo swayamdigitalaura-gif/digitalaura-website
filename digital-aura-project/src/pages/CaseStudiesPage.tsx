@@ -139,9 +139,9 @@ const CaseStudyCard = ({ item, i }: { item: FeaturedCase; i: number }) => (
     </div>
 
     <div className="px-6 pb-4 flex-1">
-      <div className="flex items-baseline gap-2 mb-3 pb-4 border-b" style={{ borderColor: "#F3F4F6" }}>
-        <span className="text-2xl font-black leading-none" style={{ color: item.color }}>{item.statBig}</span>
-        <span className="text-xs text-[#6B7280]">{item.statLabel}</span>
+      <div className="mb-3 pb-4 border-b" style={{ borderColor: "#F3F4F6" }}>
+        <div className="text-2xl font-black leading-tight" style={{ color: item.color }}>{item.statBig}</div>
+        <div className="text-xs text-[#6B7280] mt-0.5">{item.statLabel}</div>
       </div>
       <p className="text-[13.5px] leading-relaxed text-[#4B5563] mb-4">{item.desc}</p>
       <div className="flex flex-wrap gap-1.5">

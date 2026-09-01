@@ -317,6 +317,58 @@ const SMMCardTabs = () => {
   );
 };
 
+/* ─── Our Work Data ─── */
+const ourWork = [
+  { type: "image", src: "/work/atul-bakery-mothers-day.jpg", client: "Atul Bakery", tag: "Restaurant & Bakery", caption: "Mother's Day campaign creative" },
+  { type: "image", src: "/work/atul-bakery-vada-pav.jpg", client: "Atul Bakery", tag: "Restaurant & Bakery", caption: "Product-led social ad creative" },
+  { type: "image", src: "/work/giftcare-tech-collections.jpg", client: "GiftCare", tag: "Gifting & Retail", caption: "Category showcase creative" },
+  { type: "image", src: "/work/krisha-hospital-hand-fracture.jpg", client: "Krisha Hospital", tag: "Healthcare", caption: "Patient-education awareness post" },
+];
+
+const OurWork = () => (
+  <section className="py-16 px-4 md:px-8" style={{ background: "#F8FAFF" }}>
+    <div className="max-w-5xl mx-auto">
+      <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10 text-center">
+        <div
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4"
+          style={{ background: "rgba(225,48,108,0.08)", color: igColor, border: "1px solid rgba(225,48,108,0.2)" }}>
+          <Image size={12} /> Our Work
+        </div>
+        <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2">Real Content, Real Clients</h2>
+        <p className="text-[#6B7280] max-w-2xl mx-auto text-[15px] leading-relaxed">A look at the social content and creatives we've produced and run for our clients across industries.</p>
+      </motion.div>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {ourWork.map((item, i) => (
+          <motion.div
+            key={item.src}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.08 }}
+            className="rounded-2xl overflow-hidden border group"
+            style={{ background: "#fff", borderColor: "#E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
+            <div className="relative overflow-hidden" style={{ aspectRatio: "4/5", background: "#F3F4F6" }}>
+              <img
+                src={item.src}
+                alt={`${item.client} — ${item.caption}`}
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+            <div className="p-4">
+              <span className="inline-block text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full mb-2" style={{ background: "rgba(225,48,108,0.08)", color: igColor }}>
+                {item.tag}
+              </span>
+              <h3 className="text-[14px] font-bold text-[#0A1628] mb-0.5">{item.client}</h3>
+              <p className="text-[12.5px] text-[#6B7280] leading-relaxed">{item.caption}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
 /* ─── Supporting Data ─── */
 const toolGroups = [
   { label: "Publishing Platforms", color: "#7C3AED", bg: "rgba(124,58,237,0.08)",  pills: ["Meta Business Suite", "Buffer / Later", "LinkedIn Creator Studio"] },
@@ -649,6 +701,9 @@ const SocialMediaMarketingPage = () => {
 
     {/* ── Tab Cards Section ── */}
     <SMMCardTabs />
+
+    {/* ── Our Work ── */}
+    <OurWork />
 
     {/* ── Our Approach ── */}
     <section className="py-16 px-4 md:px-8" style={{ background: "#F8FAFF" }}>

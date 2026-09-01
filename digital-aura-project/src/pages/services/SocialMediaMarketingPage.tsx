@@ -369,82 +369,6 @@ const OurWork = () => (
   </section>
 );
 
-/* ─── Instagram Reels ─── */
-const igReels = [
-  { url: "https://www.instagram.com/reel/Dcc5GSSAUa-/", client: "Swastik Gold Alloys" },
-  { url: "https://www.instagram.com/reel/Db2v4g1Et6a/", client: "Gift Care" },
-  { url: "https://www.instagram.com/reel/DbAQ9D_nUuE/", client: "Star Line Advertising" },
-  { url: "https://www.instagram.com/reel/DVNluUuCHk4/", client: "Dr. Karn Maheshwari" },
-];
-
-/* Instagram's raw /embed iframe includes a profile header above the video
-   and caption/comment UI below it. We render the iframe taller than the
-   visible card and shift it up with a negative margin inside an
-   overflow-hidden wrapper so only the video area shows. Instagram can
-   change this layout at any time, which would require re-tuning the
-   offsets below. */
-const REEL_IFRAME_HEIGHT = 900;
-const REEL_CARD_HEIGHT = 580;
-const REEL_TOP_CROP = 80;
-
-const InstagramReelEmbed = ({ url }: { url: string }) => {
-  const embedUrl = `${url}embed/captioned`;
-  return (
-    <div
-      className="relative w-full overflow-hidden rounded-2xl border"
-      style={{ height: REEL_CARD_HEIGHT, maxWidth: 340, borderColor: "#E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.08)" }}>
-      <iframe
-        src={embedUrl}
-        title="Instagram reel"
-        loading="lazy"
-        allow="autoplay; encrypted-media"
-        allowFullScreen
-        frameBorder={0}
-        scrolling="no"
-        style={{
-          position: "absolute",
-          top: -REEL_TOP_CROP,
-          left: 0,
-          width: "100%",
-          height: REEL_IFRAME_HEIGHT,
-          border: 0,
-        }}
-      />
-    </div>
-  );
-};
-
-const InstagramReels = () => {
-  return (
-    <section className="py-16 px-4 md:px-8" style={{ background: "#fff" }}>
-      <div className="max-w-6xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10 text-center">
-          <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4"
-            style={{ background: "rgba(225,48,108,0.08)", color: igColor, border: "1px solid rgba(225,48,108,0.2)" }}>
-            <Video size={12} /> Reels We've Produced
-          </div>
-          <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2">Watch Our Client Reels in Action</h2>
-          <p className="text-[#6B7280] max-w-2xl mx-auto text-[15px] leading-relaxed">Short-form video we've produced and run for real clients — tap any reel to play it right here on Instagram.</p>
-        </motion.div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {igReels.map((reel, i) => (
-            <motion.div
-              key={reel.url}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="flex justify-center">
-              <InstagramReelEmbed url={reel.url} />
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
 /* ─── Supporting Data ─── */
 const toolGroups = [
   { label: "Publishing Platforms", color: "#7C3AED", bg: "rgba(124,58,237,0.08)",  pills: ["Meta Business Suite", "Buffer / Later", "LinkedIn Creator Studio"] },
@@ -780,9 +704,6 @@ const SocialMediaMarketingPage = () => {
 
     {/* ── Our Work ── */}
     <OurWork />
-
-    {/* ── Instagram Reels ── */}
-    <InstagramReels />
 
     {/* ── Our Approach ── */}
     <section className="py-16 px-4 md:px-8" style={{ background: "#F8FAFF" }}>

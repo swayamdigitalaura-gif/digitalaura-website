@@ -8,7 +8,7 @@ import {
   MousePointerClick, Globe2, Settings, Eye, Heart,
   Hash, Calendar, MessageCircle, ChevronLeft,
 } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import MathCaptcha from "@/components/MathCaptcha";
 import PageLayout from "@/components/PageLayout";
 import CMSIcon from "@/components/CMSIcon";
@@ -377,45 +377,41 @@ const igReels = [
   { url: "https://www.instagram.com/reel/DVNluUuCHk4/", client: "Dr. Karn Maheshwari" },
 ];
 
-declare global {
-  interface Window {
-    instgrm?: { Embeds: { process: () => void } };
-  }
-}
+/* Instagram's raw /embed iframe includes a profile header above the video
+   and caption/comment UI below it. We render the iframe taller than the
+   visible card and shift it up with a negative margin inside an
+   overflow-hidden wrapper so only the video area shows. Instagram can
+   change this layout at any time, which would require re-tuning the
+   offsets below. */
+const REEL_IFRAME_HEIGHT = 900;
+const REEL_CARD_HEIGHT = 580;
+const REEL_TOP_CROP = 80;
 
-let igEmbedScriptPromise: Promise<void> | null = null;
-const loadInstagramEmbedScript = () => {
-  if (!igEmbedScriptPromise) {
-    igEmbedScriptPromise = new Promise<void>((resolve) => {
-      const existing = document.querySelector<HTMLScriptElement>('script[src="https://www.instagram.com/embed.js"]');
-      if (existing) {
-        existing.addEventListener("load", () => resolve(), { once: true });
-        if (window.instgrm) resolve();
-        return;
-      }
-      const script = document.createElement("script");
-      script.src = "https://www.instagram.com/embed.js";
-      script.async = true;
-      script.onload = () => resolve();
-      document.body.appendChild(script);
-    });
-  }
-  return igEmbedScriptPromise;
-};
-
-/* Renders the IG blockquote as static HTML so React never re-reconciles it
-   after embed.js replaces its contents with the real player iframe. */
 const InstagramReelEmbed = ({ url }: { url: string }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-    container.innerHTML = `<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="${url}?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.08);margin:0;max-width:340px;min-width:280px;padding:0;width:100%;"></blockquote>`;
-    loadInstagramEmbedScript().then(() => window.instgrm?.Embeds.process());
-  }, [url]);
-
-  return <div ref={containerRef} className="flex justify-center w-full" />;
+  const embedUrl = `${url}embed/captioned`;
+  return (
+    <div
+      className="relative w-full overflow-hidden rounded-2xl border"
+      style={{ height: REEL_CARD_HEIGHT, maxWidth: 340, borderColor: "#E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.08)" }}>
+      <iframe
+        src={embedUrl}
+        title="Instagram reel"
+        loading="lazy"
+        allow="autoplay; encrypted-media"
+        allowFullScreen
+        frameBorder={0}
+        scrolling="no"
+        style={{
+          position: "absolute",
+          top: -REEL_TOP_CROP,
+          left: 0,
+          width: "100%",
+          height: REEL_IFRAME_HEIGHT,
+          border: 0,
+        }}
+      />
+    </div>
+  );
 };
 
 const InstagramReels = () => {
@@ -439,8 +435,7 @@ const InstagramReels = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className="flex justify-center"
-              style={{ minHeight: 500 }}>
+              className="flex justify-center">
               <InstagramReelEmbed url={reel.url} />
             </motion.div>
           ))}

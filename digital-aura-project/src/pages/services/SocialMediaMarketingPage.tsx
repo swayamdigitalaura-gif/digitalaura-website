@@ -383,26 +383,42 @@ declare global {
   }
 }
 
-const InstagramReels = () => {
-  const loadedRef = useRef(false);
+let igEmbedScriptPromise: Promise<void> | null = null;
+const loadInstagramEmbedScript = () => {
+  if (!igEmbedScriptPromise) {
+    igEmbedScriptPromise = new Promise<void>((resolve) => {
+      const existing = document.querySelector<HTMLScriptElement>('script[src="https://www.instagram.com/embed.js"]');
+      if (existing) {
+        existing.addEventListener("load", () => resolve(), { once: true });
+        if (window.instgrm) resolve();
+        return;
+      }
+      const script = document.createElement("script");
+      script.src = "https://www.instagram.com/embed.js";
+      script.async = true;
+      script.onload = () => resolve();
+      document.body.appendChild(script);
+    });
+  }
+  return igEmbedScriptPromise;
+};
+
+/* Renders the IG blockquote as static HTML so React never re-reconciles it
+   after embed.js replaces its contents with the real player iframe. */
+const InstagramReelEmbed = ({ url }: { url: string }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const process = () => window.instgrm?.Embeds.process();
+    const container = containerRef.current;
+    if (!container) return;
+    container.innerHTML = `<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="${url}?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.08);margin:0;max-width:340px;min-width:280px;padding:0;width:100%;"></blockquote>`;
+    loadInstagramEmbedScript().then(() => window.instgrm?.Embeds.process());
+  }, [url]);
 
-    if (window.instgrm) {
-      process();
-      return;
-    }
-    if (loadedRef.current) return;
-    loadedRef.current = true;
+  return <div ref={containerRef} className="flex justify-center w-full" />;
+};
 
-    const script = document.createElement("script");
-    script.src = "https://www.instagram.com/embed.js";
-    script.async = true;
-    script.onload = process;
-    document.body.appendChild(script);
-  }, []);
-
+const InstagramReels = () => {
   return (
     <section className="py-16 px-4 md:px-8" style={{ background: "#fff" }}>
       <div className="max-w-6xl mx-auto">
@@ -425,23 +441,7 @@ const InstagramReels = () => {
               transition={{ delay: i * 0.08 }}
               className="flex justify-center"
               style={{ minHeight: 500 }}>
-              <blockquote
-                className="instagram-media"
-                data-instgrm-captioned
-                data-instgrm-permalink={`${reel.url}?utm_source=ig_embed&utm_campaign=loading`}
-                data-instgrm-version="14"
-                style={{
-                  background: "#FFF",
-                  border: 0,
-                  borderRadius: 12,
-                  boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
-                  margin: 0,
-                  maxWidth: 340,
-                  minWidth: 280,
-                  padding: 0,
-                  width: "100%",
-                }}
-              />
+              <InstagramReelEmbed url={reel.url} />
             </motion.div>
           ))}
         </div>

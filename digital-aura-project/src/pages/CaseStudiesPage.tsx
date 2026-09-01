@@ -114,47 +114,53 @@ const FEATURED_CASE_6 = {
 
 type FeaturedCase = typeof FEATURED_CASE;
 
-const FeaturedCaseBanner = ({ item }: { item: FeaturedCase }) => (
-  <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-    className="rounded-2xl overflow-hidden border bg-white grid md:grid-cols-2"
-    style={{ borderColor: "#E5E7EB", boxShadow: "0 4px 20px rgba(0,0,0,0.06)" }}>
-    <div className="p-8 md:p-10 flex flex-col justify-center" style={{ background: `linear-gradient(135deg, ${item.color}10 0%, transparent 100%)` }}>
-      <span className="inline-flex w-fit items-center gap-2 px-3 py-1 rounded-full text-xs font-bold mb-4"
-        style={{ color: item.color, background: `${item.color}15` }}>
-        Featured Case Study
-      </span>
-      <span className="text-xs font-semibold mb-2" style={{ color: item.color }}>{item.tag}</span>
-      <Link to={item.href}>
-        <h3 className="text-2xl md:text-3xl font-bold text-[#0A1628] mb-4 hover:underline">{item.title}</h3>
-      </Link>
-      <p className="text-sm md:text-base leading-relaxed text-[#4B5563] mb-6">{item.desc}</p>
-      <div className="flex flex-wrap gap-1.5 mb-6">
-        {item.services.map((sv) => (
-          <span key={sv} className="text-xs px-2.5 py-1 rounded-full font-medium"
-            style={{ background: `${item.color}15`, color: item.color }}>{sv}</span>
-        ))}
+const ALL_CASES = [FEATURED_CASE, FEATURED_CASE_2, FEATURED_CASE_3, FEATURED_CASE_4, FEATURED_CASE_5, FEATURED_CASE_6];
+
+const CaseStudyCard = ({ item, i }: { item: FeaturedCase; i: number }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 24 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-60px" }}
+    transition={{ delay: (i % 3) * 0.08 }}
+    className="group rounded-2xl overflow-hidden border bg-white flex flex-col h-full"
+    style={{ borderColor: "#E5E7EB", boxShadow: "0 4px 16px rgba(0,0,0,0.05)" }}
+  >
+    <div className="p-6 pb-5" style={{ background: `linear-gradient(135deg, ${item.color}10 0%, transparent 100%)` }}>
+      <div className="flex items-center justify-between mb-3">
+        <span className="text-[11px] font-bold px-2.5 py-1 rounded-full" style={{ color: item.color, background: `${item.color}15` }}>
+          {item.badge}
+        </span>
+        <TrendingUp size={16} style={{ color: item.color }} />
       </div>
-      <Link to={item.href} className="text-sm font-semibold inline-flex items-center gap-1 w-fit hover:gap-2 transition-all"
-        style={{ color: item.color }}>
-        Read Full Case Study <ArrowRight size={14} />
+      <span className="text-xs font-semibold block mb-2" style={{ color: item.color }}>{item.tag}</span>
+      <Link to={item.href}>
+        <h3 className="text-lg md:text-xl font-bold text-[#0A1628] leading-snug group-hover:underline">{item.title}</h3>
       </Link>
     </div>
-    <div className="flex flex-col justify-center gap-4 p-8 md:p-10" style={{ background: "#F8FAFF" }}>
-      <div className="flex items-center gap-3">
-        <TrendingUp size={22} style={{ color: item.color }} />
-        <div>
-          <div className="text-2xl font-black leading-none" style={{ color: item.color }}>{item.statBig}</div>
-          <div className="text-xs text-[#6B7280] mt-1">{item.statLabel}</div>
-        </div>
+
+    <div className="px-6 pb-4 flex-1">
+      <div className="flex items-baseline gap-2 mb-3 pb-4 border-b" style={{ borderColor: "#F3F4F6" }}>
+        <span className="text-2xl font-black leading-none" style={{ color: item.color }}>{item.statBig}</span>
+        <span className="text-xs text-[#6B7280]">{item.statLabel}</span>
       </div>
-      <div className="grid grid-cols-2 gap-3">
-        {item.quad.map((q) => (
-          <div key={q.l} className="rounded-lg bg-white border px-4 py-3 text-center" style={{ borderColor: "#E5E7EB" }}>
-            <div className="text-lg font-bold text-[#0A1628]">{q.n}</div>
-            <div className="text-[11px] text-[#6B7280]">{q.l}</div>
-          </div>
+      <p className="text-[13.5px] leading-relaxed text-[#4B5563] mb-4">{item.desc}</p>
+      <div className="flex flex-wrap gap-1.5">
+        {item.services.slice(0, 3).map((sv) => (
+          <span key={sv} className="text-[11px] px-2 py-1 rounded-full font-medium" style={{ background: `${item.color}12`, color: item.color }}>
+            {sv}
+          </span>
         ))}
       </div>
+    </div>
+
+    <div className="px-6 pb-6">
+      <Link
+        to={item.href}
+        className="text-sm font-semibold inline-flex items-center gap-1 w-fit hover:gap-2 transition-all"
+        style={{ color: item.color }}
+      >
+        Read Full Case Study <ArrowRight size={14} />
+      </Link>
     </div>
   </motion.div>
 );
@@ -193,13 +199,12 @@ const CaseStudiesPage = () => {
     </section>
 
     <section className="py-12 px-4 md:px-8" style={{ background: "#F8FAFF" }}>
-      <div className="max-w-7xl mx-auto space-y-6">
-        <FeaturedCaseBanner item={FEATURED_CASE} />
-        <FeaturedCaseBanner item={FEATURED_CASE_2} />
-        <FeaturedCaseBanner item={FEATURED_CASE_3} />
-        <FeaturedCaseBanner item={FEATURED_CASE_4} />
-        <FeaturedCaseBanner item={FEATURED_CASE_5} />
-        <FeaturedCaseBanner item={FEATURED_CASE_6} />
+      <div className="max-w-7xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {ALL_CASES.map((item, i) => (
+            <CaseStudyCard key={item.href} item={item} i={i} />
+          ))}
+        </div>
 
         <div className="text-center mt-16">
           <p className="text-[#6B7280] mb-6"

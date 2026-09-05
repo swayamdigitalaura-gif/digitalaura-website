@@ -1,6 +1,6 @@
 import { chromium } from 'playwright';
 import { spawn } from 'child_process';
-import { writeFileSync, mkdirSync } from 'fs';
+import { writeFileSync, mkdirSync, readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -95,6 +95,25 @@ const ROUTES = [
 const SITE_URL = 'https://thedigitalaura.com';
 const API_BASE = SITE_URL;
 
+// The 11 SEO/AEO/GEO posts are static content (src/data/seoBlogPosts.ts),
+// not database-driven, so they never show up in the /api/blogs fetch below.
+// Without this, crawlers that don't execute JS get the generic homepage
+// shell for every one of these URLs instead of the post's own title, meta,
+// FAQ, and citations — read as plain text since this is a .mjs script with
+// no TypeScript loader, matching the pattern used elsewhere in this repo's
+// own tooling (see sync-pages.mjs).
+function getStaticSeoBlogRoutes() {
+  try {
+    const filePath = join(ROOT, 'src', 'data', 'seoBlogPosts.ts');
+    const src = readFileSync(filePath, 'utf-8');
+    const slugs = [...src.matchAll(/slug:\s*"([^"]+)"/g)].map((m) => m[1]);
+    return slugs.map((slug) => `/blog/${slug}`);
+  } catch (err) {
+    console.log(`  ⚠  Could not read static SEO blog slugs for prerendering: ${err.message}`);
+    return [];
+  }
+}
+
 // Fetch every published blog slug so each post gets its own prerendered
 // page — otherwise crawlers/social previews only ever see the empty
 // client-rendered shell for dynamic /blog/:slug routes.
@@ -165,9 +184,10 @@ function writeSitemap(succeededRoutes) {
 }
 
 async function main() {
+  const staticSeoBlogRoutes = getStaticSeoBlogRoutes();
   const blogRoutes = await fetchBlogRoutes();
-  const allRoutes = [...ROUTES, ...blogRoutes];
-  console.log(`\n🚀  Prerendering ${allRoutes.length} routes (${ROUTES.length} static + ${blogRoutes.length} blog posts) (API → https://thedigitalaura.com/api/)...\n`);
+  const allRoutes = [...ROUTES, ...staticSeoBlogRoutes, ...blogRoutes];
+  console.log(`\n🚀  Prerendering ${allRoutes.length} routes (${ROUTES.length} static + ${staticSeoBlogRoutes.length} static SEO posts + ${blogRoutes.length} DB blog posts) (API → https://thedigitalaura.com/api/)...\n`);
 
   const server = await startServer();
 

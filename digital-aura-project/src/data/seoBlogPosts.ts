@@ -181,13 +181,13 @@ export const posts: BlogPost[] = [
 <div class="da-stat-callout">A home appliance repair client of ours saw a 174.5% traffic surge and 200% more service bookings after we rebuilt their GBP profile around exactly this kind of review and category discipline, combined with Meta Ads and conversion-focused landing pages.</div>
 
 <h2>3. Upload photos with descriptive, geotagged file names</h2>
-<p>Before uploading, rename image files from "IMG_2481.jpg" to something like "seo-agency-ahmedabad-office.jpg." Add fresh photos at least twice a month — team photos, work-in-progress shots, completed projects. Profiles with 10+ recent photos consistently outperform sparse ones in local pack visibility.</p>
+<p>Rename image files from "IMG_2481.jpg" to something like "seo-agency-ahmedabad-office.jpg" before uploading, and add fresh photos at least twice a month. We cover the full photo strategy, section by section, in our <a href="/blog/google-business-profile-seo-checklist">complete GBP SEO checklist</a>.</p>
 
 <h2>4. Answer your own Q&A section before customers do</h2>
-<p>The Q&A feature on GBP is public and searchable, but most businesses ignore it until a customer asks something. Proactively add and answer 8-10 questions yourself — the ones you get asked on every sales call. This is one of the most under-used local SEO tactics because it requires no technical skill, just initiative.</p>
+<p>Proactively add and answer 8-10 questions yourself — the ones you get asked on every sales call — instead of waiting for the Q&A feature to fill up with customer questions first. Our <a href="/blog/google-business-profile-seo-checklist">GBP SEO checklist</a> covers the full Q&A approach alongside every other profile section.</p>
 
 <h2>5. Post to GBP weekly, not sporadically</h2>
-<p>GBP Posts expire after seven days, and Google treats consistent posting as an activity signal. Rotate between "What's New," offers, and service highlights. A profile that posts weekly reads as more actively managed than one that posted once in March and never again.</p>
+<p>GBP Posts expire after seven days, and consistent weekly posting reads as an active-management signal to Google. Full posting cadence and content rotation is covered in our <a href="/blog/google-business-profile-seo-checklist">GBP SEO checklist</a>.</p>
 
 <h2>6. Keep NAP identical everywhere</h2>
 <p>Any mismatch between your GBP listing and your website footer, Facebook page, or directory listings — even "St." versus "Street" — creates confusion Google has to resolve, usually by trusting you less. This is one part of a much broader citation strategy; see our <a href="/blog/local-seo-strategies-2026">local SEO strategies guide</a> for the full citation-building approach.</p>

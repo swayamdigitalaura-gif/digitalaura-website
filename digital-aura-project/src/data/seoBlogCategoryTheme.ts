@@ -1,4 +1,4 @@
-import { TrendingUp, MapPin, FileText, Gauge, ShoppingCart, Bot, type LucideIcon } from "lucide-react";
+import { TrendingUp, MapPin, FileText, Gauge, ShoppingCart, Bot, MousePointerClick, Megaphone, Instagram, type LucideIcon } from "lucide-react";
 
 export interface CategoryTheme {
   color: string;
@@ -15,6 +15,9 @@ export const categoryTheme: Record<string, CategoryTheme> = {
   "Technical SEO": { color: "#7C3AED", bg: "rgba(124,58,237,0.08)", border: "rgba(124,58,237,0.25)", glow: "rgba(124,58,237,0.14)", Icon: Gauge },
   "eCommerce SEO": { color: "#96BF48", bg: "rgba(150,191,72,0.1)", border: "rgba(150,191,72,0.3)", glow: "rgba(150,191,72,0.16)", Icon: ShoppingCart },
   "AI Search": { color: "#EC4899", bg: "rgba(236,72,153,0.08)", border: "rgba(236,72,153,0.25)", glow: "rgba(236,72,153,0.14)", Icon: Bot },
+  "Google Ads": { color: "#4285F4", bg: "rgba(66,133,244,0.08)", border: "rgba(66,133,244,0.25)", glow: "rgba(66,133,244,0.14)", Icon: MousePointerClick },
+  "Meta Ads": { color: "#0866FF", bg: "rgba(8,102,255,0.08)", border: "rgba(8,102,255,0.25)", glow: "rgba(8,102,255,0.14)", Icon: Megaphone },
+  "Social Media": { color: "#8B5CF6", bg: "rgba(139,92,246,0.08)", border: "rgba(139,92,246,0.25)", glow: "rgba(139,92,246,0.14)", Icon: Instagram },
 };
 
 export const defaultTheme: CategoryTheme = categoryTheme["SEO Strategy"];

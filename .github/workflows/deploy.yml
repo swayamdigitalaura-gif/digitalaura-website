@@ -107,6 +107,14 @@ jobs:
       # writes) so a deploy can never again fail just because some existing file's owner
       # doesn't match the deploy user. Only affects files copied by this workflow; doesn't
       # touch permissions the server admin has already set.
+      #
+      # The very next deploy after the rsync flag fix still failed — but with a *different*
+      # error this time: "Permission denied (publickey,password)" at the SSH handshake
+      # itself, before rsync ever touched a file. The CONTABO_SSH_KEY secret didn't match
+      # the key that was actually working when tested directly against the server — most
+      # likely a corrupted/partial paste into the GitHub secret field. Re-pasted cleanly
+      # 2026-09-09. This comment change is a fresh deploy to confirm the corrected secret
+      # authenticates successfully end-to-end.
       - name: Deploy (overlay onto web root, no delete — preserves admin-panel/, team/, landing assets)
         env:
           H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}

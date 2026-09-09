@@ -94,9 +94,12 @@ jobs:
       # initially had no write permission on public_html/ (owned by a different user,
       # `docker`) — deploy failed at this rsync step even though "Configure SSH" above
       # succeeded. Fixed by granting swayam write access to this directory on the server.
-      # A retry after that fix (2026-09-09, ~09:20 UTC) failed again — likely because that
-      # run started right as the permission grant landed. This comment change is a fresh
-      # deploy to confirm the fix is stable.
+      # A retry after that fix (2026-09-09, ~09:20 UTC) failed again — turned out the write
+      # grant on the directory wasn't enough: rsync -a also tries to chmod every existing
+      # file it touches, and those files were still owned by `docker`, so chmod on them was
+      # rejected ("Operation not permitted") even though creating new files worked fine.
+      # Fixed properly with `chown -R swayam:swayam public_html/` on the existing tree.
+      # This comment change is a fresh deploy to confirm that fix is stable.
       - name: Deploy (overlay onto web root, no delete — preserves admin-panel/, team/, landing assets)
         env:
           H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}

@@ -78,9 +78,11 @@ jobs:
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh
-          printf '%s\n' "${{ secrets.CONTABO_SSH_KEY }}" > ~/.ssh/id_ed25519
+          echo "${{ secrets.CONTABO_SSH_KEY }}" | base64 -d > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H "${{ secrets.CONTABO_SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || true
+      - name: Verify SSH login works
+        run: ssh $SSH_OPTS "${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}" "echo ssh_ok"
       # Case-study images used to live in public/case-studies/, which collided with the
       # /case-studies/<slug> SPA routes (nginx resolved the URL to that real directory,
       # found no index.html inside, and 403'd instead of falling through to the SPA
@@ -110,11 +112,20 @@ jobs:
       #
       # The very next deploy after the rsync flag fix still failed — but with a *different*
       # error this time: "Permission denied (publickey,password)" at the SSH handshake
-      # itself, before rsync ever touched a file. The CONTABO_SSH_KEY secret didn't match
-      # the key that was actually working when tested directly against the server — most
-      # likely a corrupted/partial paste into the GitHub secret field. Re-pasted cleanly
-      # 2026-09-09. This comment change is a fresh deploy to confirm the corrected secret
-      # authenticates successfully end-to-end.
+      # itself, before rsync ever touched a file. The key worked every time when tested
+      # directly, but GitHub's copy of it kept not matching even after two careful re-pastes
+      # into the Secrets UI — "Configure SSH" always reports success regardless, since it
+      # only writes the key to a file and never actually tests the login, so that step being
+      # green never proved the key was correct.
+      #
+      # Root cause: pasting a multi-line private key through a browser textarea is fragile
+      # (trailing whitespace, a dropped newline, smart-quote mangling, etc. all silently
+      # corrupt it). Fixed by encoding the key as base64 first — base64 is a single line
+      # with no whitespace-sensitive characters, so it survives copy/paste intact — and
+      # decoding it back to the real key in CI (`base64 -d`). Added a "Verify SSH login
+      # works" step right after every "Configure SSH" step so a bad key now fails loudly
+      # and immediately with a clear error, instead of surfacing later as a confusing rsync
+      # connection-closed error.
       - name: Deploy (overlay onto web root, no delete — preserves admin-panel/, team/, landing assets)
         env:
           H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
@@ -144,9 +155,11 @@ jobs:
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh
-          printf '%s\n' "${{ secrets.CONTABO_SSH_KEY }}" > ~/.ssh/id_ed25519
+          echo "${{ secrets.CONTABO_SSH_KEY }}" | base64 -d > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H "${{ secrets.CONTABO_SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || true
+      - name: Verify SSH login works
+        run: ssh $SSH_OPTS "${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}" "echo ssh_ok"
       - name: Deploy
         env:
           H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
@@ -164,9 +177,11 @@ jobs:
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh
-          printf '%s\n' "${{ secrets.CONTABO_SSH_KEY }}" > ~/.ssh/id_ed25519
+          echo "${{ secrets.CONTABO_SSH_KEY }}" | base64 -d > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H "${{ secrets.CONTABO_SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || true
+      - name: Verify SSH login works
+        run: ssh $SSH_OPTS "${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}" "echo ssh_ok"
       - name: Deploy source (never touches .env, uploads, node_modules) & restart
         env:
           H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
@@ -224,9 +239,11 @@ jobs:
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh
-          printf '%s\n' "${{ secrets.CONTABO_SSH_KEY }}" > ~/.ssh/id_ed25519
+          echo "${{ secrets.CONTABO_SSH_KEY }}" | base64 -d > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H "${{ secrets.CONTABO_SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || true
+      - name: Verify SSH login works
+        run: ssh $SSH_OPTS "${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}" "echo ssh_ok"
       - name: Deploy + restart + copy assets to web root
         env:
           H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
@@ -252,9 +269,11 @@ jobs:
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh
-          printf '%s\n' "${{ secrets.CONTABO_SSH_KEY }}" > ~/.ssh/id_ed25519
+          echo "${{ secrets.CONTABO_SSH_KEY }}" | base64 -d > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H "${{ secrets.CONTABO_SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || true
+      - name: Verify SSH login works
+        run: ssh $SSH_OPTS "${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}" "echo ssh_ok"
       - name: Deploy + restart + copy assets to web root
         env:
           H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
@@ -279,9 +298,11 @@ jobs:
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh
-          printf '%s\n' "${{ secrets.CONTABO_SSH_KEY }}" > ~/.ssh/id_ed25519
+          echo "${{ secrets.CONTABO_SSH_KEY }}" | base64 -d > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H "${{ secrets.CONTABO_SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || true
+      - name: Verify SSH login works
+        run: ssh $SSH_OPTS "${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}" "echo ssh_ok"
       - name: Add missing `location` blocks to the live nginx config
         env:
           H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}

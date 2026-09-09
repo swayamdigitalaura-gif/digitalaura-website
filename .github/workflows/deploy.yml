@@ -88,6 +88,12 @@ jobs:
       # public_html/case-studies/ image dir on the server was removed by a prior deploy.
       # dist/case-studies/ is now real prerendered content (the listing page and every
       # /case-studies/<slug> page) — do NOT delete this directory on deploy.
+      #
+      # CONTABO_SSH_KEY/USER were rotated 2026-09-09 (old key stopped authenticating —
+      # "Permission denied (publickey,password)"). The new swayam user could log in but
+      # initially had no write permission on public_html/ (owned by a different user,
+      # `docker`) — deploy failed at this rsync step even though "Configure SSH" above
+      # succeeded. Fixed by granting swayam write access to this directory on the server.
       - name: Deploy (overlay onto web root, no delete — preserves admin-panel/, team/, landing assets)
         env:
           H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}

@@ -12,6 +12,14 @@ interface Props {
   accentColor?: string;
 }
 
+// Card width (220px) + flex gap (20px, gap-5). The animation covers one full
+// (un-duplicated) track length per -50% translate, so duration is derived
+// from that width — this keeps scroll speed constant (~148px/s, matching the
+// homepage's 34-logo track over 110s) no matter how many logos a page has.
+const CARD_WIDTH = 220;
+const CARD_GAP = 20;
+const PX_PER_SECOND = 148;
+
 const ClientLogoGrid = ({ clients, accentColor = "#22C55E" }: Props) => {
   const [failedLogos, setFailedLogos] = useState<Set<string>>(new Set());
 
@@ -21,6 +29,8 @@ const ClientLogoGrid = ({ clients, accentColor = "#22C55E" }: Props) => {
 
   // Duplicate the list so the CSS marquee can loop seamlessly at -50%.
   const track = [...clients, ...clients];
+  const trackWidth = clients.length * (CARD_WIDTH + CARD_GAP);
+  const durationSeconds = Math.max(trackWidth / PX_PER_SECOND, 8);
 
   const Card = ({ c, i }: { c: Client; i: number }) => {
     const failed = failedLogos.has(c.logo);
@@ -52,7 +62,7 @@ const ClientLogoGrid = ({ clients, accentColor = "#22C55E" }: Props) => {
 
   return (
     <div className="select-none overflow-hidden" style={{ maskImage: "linear-gradient(90deg, transparent, black 5%, black 95%, transparent)", WebkitMaskImage: "linear-gradient(90deg, transparent, black 5%, black 95%, transparent)" }}>
-      <div className="client-logo-marquee flex gap-5" style={{ width: "max-content" }}>
+      <div className="client-logo-marquee flex gap-5" style={{ width: "max-content", animationDuration: `${durationSeconds}s` }}>
         {track.map((c, i) => (
           <Card key={`${c.name}-${i}`} c={c} i={i} />
         ))}

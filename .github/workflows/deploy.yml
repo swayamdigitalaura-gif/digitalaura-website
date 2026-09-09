@@ -98,13 +98,20 @@ jobs:
       # grant on the directory wasn't enough: rsync -a also tries to chmod every existing
       # file it touches, and those files were still owned by `docker`, so chmod on them was
       # rejected ("Operation not permitted") even though creating new files worked fine.
-      # Fixed properly with `chown -R swayam:swayam public_html/` on the existing tree.
-      # This comment change is a fresh deploy to confirm that fix is stable.
+      # Fixed properly with `chown -R swayam:swayam public_html/` on the existing tree, but
+      # deploys after that STILL failed intermittently at this step — ownership on the
+      # existing tree can drift again in ways that are hard to fully rule out on a shared
+      # server. Switched every `rsync -az` (archive mode, which implies -p/-o/-g: it tries
+      # to set exact permissions/owner/group on every file, including ones it doesn't own)
+      # to `rsync -rltz` (recursive, links, times, compress — no permission/ownership
+      # writes) so a deploy can never again fail just because some existing file's owner
+      # doesn't match the deploy user. Only affects files copied by this workflow; doesn't
+      # touch permissions the server admin has already set.
       - name: Deploy (overlay onto web root, no delete — preserves admin-panel/, team/, landing assets)
         env:
           H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
         run: |
-          rsync -az -e "ssh $SSH_OPTS" digital-aura-project/dist/ "$H:/home/digitalaura.temp/public_html/"
+          rsync -rltz -e "ssh $SSH_OPTS" digital-aura-project/dist/ "$H:/home/digitalaura.temp/public_html/"
 
   # ── 3. Admin panel  →  /home/digitalaura.temp/public_html/aura-desk/ ───────
   admin-panel:
@@ -136,7 +143,7 @@ jobs:
         env:
           H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
         run: |
-          rsync -az --delete -e "ssh $SSH_OPTS" admin-panel/dist/ "$H:/home/digitalaura.temp/public_html/aura-desk/"
+          rsync -rltz --delete -e "ssh $SSH_OPTS" admin-panel/dist/ "$H:/home/digitalaura.temp/public_html/aura-desk/"
           ssh $SSH_OPTS "$H" "rm -rf /home/digitalaura.temp/public_html/admin-panel"
 
   # ── 4. Backend API  →  /home/digitalaura-backend/  (pm2: digitalaura-api) ─
@@ -156,7 +163,7 @@ jobs:
         env:
           H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
         run: |
-          rsync -az --delete \
+          rsync -rltz --delete \
             --exclude='.env' --exclude='node_modules' --exclude='uploads' \
             -e "ssh $SSH_OPTS" \
             admin-backend/ "$H:/home/digitalaura-backend/"
@@ -217,7 +224,7 @@ jobs:
           H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
         run: |
           ssh $SSH_OPTS "$H" "rm -rf /home/landing-seo/server /home/landing-seo/public"
-          rsync -az -e "ssh $SSH_OPTS" landing-pages/.output/ "$H:/home/landing-seo/"
+          rsync -rltz -e "ssh $SSH_OPTS" landing-pages/.output/ "$H:/home/landing-seo/"
           ssh $SSH_OPTS "$H" "pm2 restart seo-landing && cp -r /home/landing-seo/public/* /home/digitalaura.temp/public_html/"
 
   # ── 6. Google Ads landing page → /home/landing-google-ads/ (pm2: google-ads-landing)
@@ -245,7 +252,7 @@ jobs:
           H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
         run: |
           ssh $SSH_OPTS "$H" "rm -rf /home/landing-google-ads/server /home/landing-google-ads/public"
-          rsync -az -e "ssh $SSH_OPTS" google-ads-page/.output/ "$H:/home/landing-google-ads/"
+          rsync -rltz -e "ssh $SSH_OPTS" google-ads-page/.output/ "$H:/home/landing-google-ads/"
           ssh $SSH_OPTS "$H" "pm2 restart google-ads-landing && cp -r /home/landing-google-ads/public/* /home/digitalaura.temp/public_html/"
 
   # ── 7. Live nginx sync — adds any new `location` blocks from

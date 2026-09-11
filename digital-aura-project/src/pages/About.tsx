@@ -35,6 +35,7 @@ const DEFAULT_TEAM = [
   { name: "Satish Prajapati",   role: "Digital Marketing Executive",        color: "#F59E0B",  ai: false, photo: "/team/satish.png" },
   { name: "Swayam Parikh",      role: "AI Full Stack Developer",            color: "#7C3AED",  ai: true,  photo: "/team/swayam.png" },
   { name: "Abhishek Kaushal",   role: "Shopify Developer",                  color: "#7C3AED",  ai: false, photo: "/team/abhishek.png" },
+  { name: "Bhavesh Bhavsar",    role: "SEO Executive",                      color: "#0EA5E9",  ai: false, photo: "/team/bhavesh.png" },
   { name: "Jinali Lodariya",    role: "SEO Executive",                      color: "#22C55E",  ai: false, photo: "/team/jinali.png" },
   { name: "Nidhi Changela",     role: "SEO Executive",                      color: "#1A6FE8",  ai: false, photo: "/team/nidhi.png" },
   { name: "Nitiksha Motivaras", role: "Social Media Manager",               color: "#FF6B2B",  ai: false, photo: "/team/nitiksha.png" },

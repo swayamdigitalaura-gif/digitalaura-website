@@ -56,6 +56,7 @@ const BlogPage = () => {
     title: p.title,
     excerpt: p.metaDescription,
     date: p.dateDisplay,
+    sortDate: p.date,
     readTime: p.readTime,
     slug: p.slug,
   }));
@@ -67,6 +68,7 @@ const BlogPage = () => {
         title: b.title,
         excerpt: b.excerpt || "",
         date: new Date(b.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }),
+        sortDate: b.createdAt,
         readTime: readTimeOf(b.content),
         slug: b.slug,
       }))
@@ -75,7 +77,11 @@ const BlogPage = () => {
   // Real content always wins over the generic CMS placeholders — the 11
   // SEO/AEO/GEO posts are genuinely live, so they replace the 6 fallback
   // defaults entirely rather than only showing when no DB posts exist.
-  const posts = [...staticSeoPosts, ...dbPosts];
+  // Newest first, so freshly published posts surface at the top of the
+  // listing instead of sitting in whatever order they were added to the code.
+  const posts = [...staticSeoPosts, ...dbPosts].sort(
+    (a, b) => new Date(b.sortDate).getTime() - new Date(a.sortDate).getTime()
+  );
 
   // Non-SEO categories present in the data get their own pill; everything
   // else falls under the single grouped "SEO" pill.

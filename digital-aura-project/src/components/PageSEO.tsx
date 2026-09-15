@@ -9,7 +9,7 @@ const DEFAULT_IMAGE = `${SITE_URL}/logos/digital-aura-logo.png`;
 const PAGE_META: Record<string, { title: string; description: string }> = {
   '/': {
     title: 'Digital Marketing Agency in Ahmedabad | Digital Aura',
-    description: 'Digital Aura is a data-driven digital marketing agency in Ahmedabad specializing in SEO, Google Ads, Meta Ads, Social Media Marketing & Web Design. 750+ happy clients.',
+    description: 'Digital Aura is a data-driven digital marketing agency in Ahmedabad specializing in SEO, Google Ads, Meta Ads & Web Design. 750+ happy clients.',
   },
   '/about': {
     title: 'About Digital Aura | Our Story, Vision & Expert Team',
@@ -50,6 +50,10 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   '/case-studies/oblprint': {
     title: 'OBLPrint Google Ads Case Study | Digital Aura',
     description: "How Digital Aura turned OBLPrint's silent Google Ads account into Dubai's busiest WhatsApp inbox — from a 31/100 health score to 79.1%, and 35 WhatsApp chats in a month.",
+  },
+  '/case-studies/grand-palace': {
+    title: 'Grand Palace Restaurant Case Study | Website & Local SEO | Digital Aura',
+    description: 'How Digital Aura gave a decade-old Sydney restaurant a website and local SEO strategy that drove a 45% rise in online reservations and orders.',
   },
   '/blog': {
     title: 'Digital Marketing Blog | Insights & Strategies | Digital Aura',
@@ -378,6 +382,12 @@ const PAGE_SCHEMA: Record<string, object | object[]> = {
     author: { '@type': 'Organization', name: 'Digital Aura' },
     publisher: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/case-studies/oblprint/` } },
+  '/case-studies/grand-palace': { '@context': 'https://schema.org', '@type': 'Article',
+    headline: 'This Sydney Restaurant Survived 10 Years Without a Website. Then New Customers Stopped Walking In.',
+    description: 'How Digital Aura gave a decade-old Sydney restaurant a website and local SEO strategy that drove a 45% rise in online reservations and orders.',
+    author: { '@type': 'Organization', name: 'Digital Aura' },
+    publisher: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/case-studies/grand-palace/` } },
   '/ai-solutions': { '@context': 'https://schema.org', '@type': 'Service', name: 'AI Solutions & Automation',
     provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL },
     description: 'LLM-powered apps, chatbots, workflow automation, predictive analytics, and custom ML models.', url: `${SITE_URL}/ai-solutions/`, areaServed: 'Worldwide' },

@@ -12,6 +12,26 @@ import {
 
 const inputClass = "w-full px-4 py-3 rounded-xl text-sm text-[#0A1628] outline-none focus:ring-2 focus:ring-[#FF6B2B] transition-all placeholder-[#9CA3AF] border border-[#E5E7EB] bg-[#F8FAFF] focus:bg-white";
 const ACCENT = "#FF6B2B";
+const SITE_URL = "https://thedigitalaura.com";
+
+function setTag(selector: string, valueAttr: string, value: string) {
+  let el = document.head.querySelector(selector);
+  if (!el) {
+    const isLink = selector.trimStart().startsWith("link");
+    el = document.createElement(isLink ? "link" : "meta");
+    const m = selector.match(/\[([^\]=]+)="([^"]+)"\]/);
+    if (m) el.setAttribute(m[1], m[2]);
+    document.head.appendChild(el);
+  }
+  el.setAttribute(valueAttr, value);
+}
+
+const EMPLOYMENT_TYPE: Record<string, string> = {
+  "full-time": "FULL_TIME",
+  "part-time": "PART_TIME",
+  contract: "CONTRACTOR",
+  internship: "INTERN",
+};
 
 type Job = Record<string, string>;
 
@@ -197,6 +217,55 @@ const JobDetailPage = () => {
         setLoading(false);
       });
   }, [id]);
+
+  // Dynamic SEO tags — without this, every job page shared the generic
+  // /careers title/description (or whatever the previous route left behind),
+  // and never had its own canonical or JobPosting schema.
+  useEffect(() => {
+    if (!job) return;
+    const slugOrId = job.slug || job.id;
+    const title = `${job.title} | Careers at Digital Aura`;
+    const plainDesc = (job.description || "")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, 150);
+    const desc = plainDesc || `${job.title} — ${job.department} role at Digital Aura, ${job.location}. Apply now.`;
+    const canonicalUrl = `${SITE_URL}/careers/${slugOrId}/`;
+
+    document.title = title;
+    setTag('meta[name="description"]', "content", desc);
+    setTag('meta[property="og:title"]', "content", title);
+    setTag('meta[property="og:description"]', "content", desc);
+    setTag('meta[name="twitter:title"]', "content", title);
+    setTag('meta[name="twitter:description"]', "content", desc);
+    setTag('link[rel="canonical"]', "href", canonicalUrl);
+    setTag('meta[property="og:url"]', "content", canonicalUrl);
+
+    document.head.querySelectorAll('script[type="application/ld+json"][data-job-schema]').forEach((el) => el.remove());
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "JobPosting",
+      title: job.title,
+      description: job.description || desc,
+      datePosted: job.createdAt,
+      validThrough: job.deadline || undefined,
+      employmentType: EMPLOYMENT_TYPE[job.type] || "OTHER",
+      hiringOrganization: { "@type": "Organization", name: "Digital Aura", sameAs: SITE_URL },
+      jobLocation: job.work_mode === "remote" ? undefined : {
+        "@type": "Place",
+        address: { "@type": "PostalAddress", addressLocality: job.location, addressCountry: "IN" },
+      },
+      jobLocationType: job.work_mode === "remote" ? "TELECOMMUTE" : undefined,
+      applicantLocationRequirements: job.work_mode === "remote" ? { "@type": "Country", name: "India" } : undefined,
+    };
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.setAttribute("data-job-schema", "true");
+    script.text = JSON.stringify(schema);
+    document.head.appendChild(script);
+    return () => { script.remove(); };
+  }, [job]);
 
   if (loading) return (
     <PageLayout>

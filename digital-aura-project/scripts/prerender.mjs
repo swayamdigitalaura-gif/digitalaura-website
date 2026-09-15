@@ -129,6 +129,26 @@ async function fetchBlogRoutes() {
   }
 }
 
+// Same idea as fetchBlogRoutes(), for /careers/:id — this route type was
+// never prerendered at all (only the /careers index was), so job pages had
+// no server-rendered title/description/canonical for non-JS clients. The
+// careers API has no `?status=` server-side filter (unlike /api/blogs), so
+// filter to 'open' postings here — a closed listing shouldn't stay indexed.
+async function fetchCareerRoutes() {
+  try {
+    const res = await fetch(`${API_BASE}/api/careers`);
+    const data = await res.json();
+    const slugs = (data?.data || [])
+      .filter((j) => j.status === 'open')
+      .map((j) => j.slug || j.id)
+      .filter(Boolean);
+    return slugs.map((slug) => `/careers/${slug}`);
+  } catch (err) {
+    console.log(`  ⚠  Could not fetch career slugs for prerendering: ${err.message}`);
+    return [];
+  }
+}
+
 function startServer() {
   return new Promise((resolve) => {
     const proc = spawn('npx', ['vite', 'preview', '--port', String(PORT)], {
@@ -153,8 +173,12 @@ const DEFAULT_TITLE = 'Digital Aura — Data-Driven Digital Marketing Agency';
 
 function looksUnrendered(route, html) {
   const isBlogPost = route.startsWith('/blog/');
-  if (!isBlogPost) return false;
-  return html.includes(`<title>${DEFAULT_TITLE}</title>`) || html.includes('Blog post not found');
+  const isJobPost  = route.startsWith('/careers/');
+  if (!isBlogPost && !isJobPost) return false;
+  if (html.includes(`<title>${DEFAULT_TITLE}</title>`)) return true;
+  if (isBlogPost && html.includes('Blog post not found')) return true;
+  if (isJobPost && html.includes('Job not found')) return true;
+  return false;
 }
 
 // These are real live URLs on this domain, but nginx proxies each one to a
@@ -175,7 +199,7 @@ const EXTRA_LIVE_ROUTES = [
 function writeSitemap(succeededRoutes) {
   const urls = [...succeededRoutes, ...EXTRA_LIVE_ROUTES].map((route) => {
     const loc = route === '/' ? `${SITE_URL}/` : `${SITE_URL}${route}/`;
-    const priority = route === '/' ? '1.0' : route.startsWith('/blog/') ? '0.6' : '0.8';
+    const priority = route === '/' ? '1.0' : (route.startsWith('/blog/') || route.startsWith('/careers/')) ? '0.6' : '0.8';
     return `  <url>\n    <loc>${loc}</loc>\n    <changefreq>weekly</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
   });
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`;
@@ -186,8 +210,9 @@ function writeSitemap(succeededRoutes) {
 async function main() {
   const staticSeoBlogRoutes = getStaticSeoBlogRoutes();
   const blogRoutes = await fetchBlogRoutes();
-  const allRoutes = [...ROUTES, ...staticSeoBlogRoutes, ...blogRoutes];
-  console.log(`\n🚀  Prerendering ${allRoutes.length} routes (${ROUTES.length} static + ${staticSeoBlogRoutes.length} static SEO posts + ${blogRoutes.length} DB blog posts) (API → https://thedigitalaura.com/api/)...\n`);
+  const careerRoutes = await fetchCareerRoutes();
+  const allRoutes = [...ROUTES, ...staticSeoBlogRoutes, ...blogRoutes, ...careerRoutes];
+  console.log(`\n🚀  Prerendering ${allRoutes.length} routes (${ROUTES.length} static + ${staticSeoBlogRoutes.length} static SEO posts + ${blogRoutes.length} DB blog posts + ${careerRoutes.length} open job posts) (API → https://thedigitalaura.com/api/)...\n`);
 
   const server = await startServer();
 
@@ -225,10 +250,11 @@ async function main() {
             timeout: 30000,
           });
 
-          // extra wait so React fully settles; blog posts get longer since
-          // their SEO tags land in a *second* effect that only fires after
-          // the fetch resolves, not on first paint.
-          await page.waitForTimeout(route.startsWith('/blog/') ? 1500 : 1000);
+          // extra wait so React fully settles; blog posts and job pages get
+          // longer since their SEO tags land in a *second* effect that only
+          // fires after the fetch resolves, not on first paint.
+          const isDynamicDetail = route.startsWith('/blog/') || route.startsWith('/careers/');
+          await page.waitForTimeout(isDynamicDetail ? 1500 : 1000);
 
           let html = await page.content();
 

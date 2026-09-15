@@ -15,6 +15,21 @@ const GOLD_LIGHT = "#e8b95a";
 const CREAM = "#faf6ee";
 const RED = "#b8362a";
 
+// Real pixel dimensions of each screenshot, so <img width/height> can be set
+// and the browser reserves the correct space before the image loads instead
+// of collapsing to 0 height and shifting the page (Core Web Vitals CLS).
+const SHOT_DIMS: Record<string, [number, number]> = {
+  "site-header.jpg": [900, 411],
+  "homepage-top.jpg": [900, 1641],
+  "homepage-mid.jpg": [900, 1641],
+  "homepage-bottom.jpg": [900, 1642],
+  "results-chart.jpg": [1536, 1024],
+};
+const shotDims = (src: string) => {
+  const dims = SHOT_DIMS[src.split('/').pop() ?? ''];
+  return dims ? { width: dims[0], height: dims[1] } : {};
+};
+
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
@@ -79,7 +94,7 @@ const Screenshot = ({
       {tag}
     </span>
     <div className="rounded-sm overflow-hidden border-2" style={{ borderColor: GOLD_LIGHT, boxShadow: "0 12px 30px rgba(28,18,8,0.15)" }}>
-      <img src={src} alt={alt} loading="lazy" className="w-full h-auto block" />
+      <img src={src} alt={alt} loading="lazy" className="w-full h-auto block" {...shotDims(src)} />
     </div>
     <p data-cms-key={captionKey} data-cms-label="Screenshot Caption" data-cms-attr="text" className="text-center text-sm italic mt-3" style={{ color: "#8a7256" }}>
       {caption}

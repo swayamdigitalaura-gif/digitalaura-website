@@ -14,6 +14,30 @@ const RED = "#DC2626";
 const PURPLE = "#7C3AED";
 const MUTED = "#4B5563";
 
+// Real pixel dimensions of each screenshot, so <img width/height> can be set
+// and the browser reserves the correct space before the image loads instead
+// of collapsing to 0 height and shifting the page (Core Web Vitals CLS).
+const SHOT_DIMS: Record<string, [number, number]> = {
+  "homepage-services-menu.jpg": [1400, 745],
+  "industries-menu.jpg": [1400, 745],
+  "ecosystem-menu.jpg": [1400, 745],
+  "traffic-acquisition-dashboard.jpg": [1344, 896],
+  "inquiries-dashboard.png": [754, 880],
+  "google-ai-overview.jpg": [664, 344],
+  "claude-ai-response.png": [1620, 922],
+  "chatgpt-gas-detector-map.png": [1625, 922],
+  "chatgpt-pressure-gauge.jpg": [1400, 882],
+  "chatgpt-multimeter.jpg": [1400, 882],
+  "gemini-thermometer.jpg": [1400, 882],
+  "gemini-rtd.jpg": [1400, 882],
+  "gemini-temperature-sensor.jpg": [1400, 882],
+  "gemini-vatva-lab.jpg": [1400, 882],
+};
+const shotDims = (src: string) => {
+  const dims = SHOT_DIMS[src.split('/').pop() ?? ''];
+  return dims ? { width: dims[0], height: dims[1] } : {};
+};
+
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
@@ -99,7 +123,7 @@ const Screenshot = ({
       className="rounded-xl overflow-hidden border"
       style={{ borderColor: "#E5E7EB", boxShadow: "0 8px 24px rgba(10,22,40,0.08)" }}
     >
-      <img src={src} alt={alt} loading="lazy" className="w-full h-auto block" />
+      <img src={src} alt={alt} loading="lazy" className="w-full h-auto block" {...shotDims(src)} />
     </div>
     <p data-cms-key={captionKey} data-cms-label="Screenshot Caption" data-cms-attr="text" className="text-center text-sm italic mt-3" style={{ color: MUTED }}>
       {caption}
@@ -508,7 +532,7 @@ const CaseStudyPrismCalibration = () => {
           {siteShowcase.map((shot, i) => (
             <motion.div key={shot.src} {...fadeUp} className="mb-8">
               <div className="rounded-xl overflow-hidden border" style={{ borderColor: "#E5E7EB", boxShadow: "0 8px 24px rgba(10,22,40,0.08)" }}>
-                <img src={`${IMG}/${shot.src}`} alt={shot.alt} loading="lazy" className="w-full h-auto block" />
+                <img src={`${IMG}/${shot.src}`} alt={shot.alt} loading="lazy" className="w-full h-auto block" {...shotDims(shot.src)} />
               </div>
               <p data-cms-key={shot.captionKey} data-cms-label={`Showcase Caption ${i + 1}`} data-cms-attr="text" className="text-sm mt-3" style={{ color: MUTED }}>
                 {t(shot.captionKey, shot.caption)}

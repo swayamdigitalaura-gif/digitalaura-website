@@ -15,6 +15,23 @@ const GREEN = "#22C55E";
 const RED = "#DC2626";
 const MUTED = "#4B5563";
 
+// Real pixel dimensions of each screenshot, so <img width/height> can be set
+// and the browser reserves the correct space before the image loads instead
+// of collapsing to 0 height and shifting the page (Core Web Vitals CLS).
+const SHOT_DIMS: Record<string, [number, number]> = {
+  "booking-dashboard.png": [1000, 1049],
+  "fleet-management.png": [1000, 1049],
+  "dynamic-pricing.png": [1000, 802],
+  "owner-dashboard.png": [1000, 704],
+  "customer-database.png": [1000, 166],
+  "cash-collection.png": [1000, 1049],
+  "google-review.png": [771, 362],
+};
+const shotDims = (src: string) => {
+  const dims = SHOT_DIMS[src.split('/').pop() ?? ''];
+  return dims ? { width: dims[0], height: dims[1] } : {};
+};
+
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
@@ -100,7 +117,7 @@ const Screenshot = ({
       className="rounded-xl overflow-hidden border"
       style={{ borderColor: "#E5E7EB", boxShadow: "0 8px 24px rgba(10,22,40,0.08)" }}
     >
-      <img src={src} alt={alt} loading="lazy" className="w-full h-auto block" />
+      <img src={src} alt={alt} loading="lazy" className="w-full h-auto block" {...shotDims(src)} />
     </div>
     <p data-cms-key={captionKey} data-cms-label="Screenshot Caption" data-cms-attr="text" className="text-center text-sm italic mt-3" style={{ color: MUTED }}>
       {caption}
@@ -595,6 +612,7 @@ const CaseStudyRiantBikes = () => {
                   loading="lazy"
                   className="w-full max-w-[440px] mx-auto block rounded-lg border"
                   style={{ borderColor: "#E5E7EB", boxShadow: "0 8px 24px rgba(10,22,40,0.08)" }}
+                  {...shotDims(`${IMG}/google-review.png`)}
                 />
               </div>
 

@@ -12,6 +12,26 @@ const BLUE = "#1A6FE8";
 const ORANGE = "#FF6B2B";
 const MUTED = "#4B5563";
 
+// Real pixel dimensions of each screenshot, so <img width/height> can be set
+// and the browser reserves the correct space before the image loads instead
+// of collapsing to 0 height and shifting the page (Core Web Vitals CLS).
+const SHOT_DIMS: Record<string, [number, number]> = {
+  "services-menu.jpg": [1400, 641],
+  "brands-menu-dishwasher.jpg": [1400, 641],
+  "locations-page-melbourne-suburbs.jpg": [1400, 641],
+  "ga4-traffic-acquisition-july-2026.jpg": [1400, 802],
+  "chatgpt-map-appliance-repair-melbourne.jpg": [1400, 605],
+  "chatgpt-same-day-appliance-repair.jpg": [1400, 556],
+  "gemini-best-appliance-repair-service.jpg": [1400, 535],
+  "gemini-dishwasher-repair-melbourne.jpg": [1400, 535],
+  "gemini-washing-machine-repair-melbourne.jpg": [1400, 535],
+  "gemini-fridge-repair-melbourne.jpg": [1400, 535],
+};
+const shotDims = (src: string) => {
+  const dims = SHOT_DIMS[src.split('/').pop() ?? ''];
+  return dims ? { width: dims[0], height: dims[1] } : {};
+};
+
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
@@ -90,7 +110,7 @@ const Screenshot = ({
       className="rounded-xl overflow-hidden border"
       style={{ borderColor: "#E5E7EB", boxShadow: "0 8px 24px rgba(10,22,40,0.08)" }}
     >
-      <img src={src} alt={alt} loading="lazy" className="w-full h-auto block" />
+      <img src={src} alt={alt} loading="lazy" className="w-full h-auto block" {...shotDims(src)} />
     </div>
     <p data-cms-key={captionKey} data-cms-label="Screenshot Caption" data-cms-attr="text" className="text-center text-sm italic mt-3" style={{ color: MUTED }}>
       {caption}

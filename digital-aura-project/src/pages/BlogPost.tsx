@@ -121,7 +121,9 @@ const BlogPost = () => {
       image: blog.cover_image || undefined,
       datePublished: blog.createdAt,
       dateModified: blog.updatedAt || blog.createdAt,
-      author: { "@type": "Organization", name: blog.author?.name || "Digital Aura" },
+      author: blog.author?.name
+        ? { "@type": "Person", name: blog.author.name }
+        : { "@type": "Organization", name: "Digital Aura" },
       publisher: { "@type": "Organization", name: "Digital Aura", url: SITE_URL },
       mainEntityOfPage: canonicalUrl,
     });

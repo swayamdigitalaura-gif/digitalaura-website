@@ -8,12 +8,16 @@ const WEB_ROOT = '/home/digitalaura.temp/public_html';
 // Inject or replace schema_code inside a prerendered HTML file on disk
 function injectSchemaIntoPrerendered(slug, schemaCode) {
   try {
-    // Find the prerendered index.html for this slug (search up to 3 levels deep)
-    const result = execSync(
-      `find ${WEB_ROOT} -maxdepth 4 -type f -name "index.html" -path "*/${slug}/index.html" 2>/dev/null | head -1`,
-      { encoding: 'utf8' }
-    ).trim();
-    if (!result) return;
+    // The homepage's prerendered file is WEB_ROOT/index.html itself — there's no
+    // "/home/" URL segment, so the slug-path find below never matches it.
+    const result = slug === 'home'
+      ? path.join(WEB_ROOT, 'index.html')
+      : execSync(
+          // Find the prerendered index.html for this slug (search up to 3 levels deep)
+          `find ${WEB_ROOT} -maxdepth 4 -type f -name "index.html" -path "*/${slug}/index.html" 2>/dev/null | head -1`,
+          { encoding: 'utf8' }
+        ).trim();
+    if (!result || !fs.existsSync(result)) return;
 
     let html = fs.readFileSync(result, 'utf8');
 

@@ -221,6 +221,16 @@ jobs:
           fi
           REMOTE_CMD='ID=$(base64 -d); ENV_FILE=/home/digitalaura-backend/.env; if ! grep -q "^GOOGLE_PLACE_ID=" "$ENV_FILE" 2>/dev/null; then printf "GOOGLE_PLACE_ID=%s\n" "$ID" >> "$ENV_FILE"; sudo pm2 restart digitalaura-api; fi'
           printf '%s' "$GOOGLE_PLACE_ID" | base64 -w0 | ssh $SSH_OPTS "$H" "$REMOTE_CMD"
+      # One-time idempotent seed: inserts the "HR Manager" row into the live
+      # `careers` MySQL table if it isn't already there (checked by slug).
+      # Careers data lives in the DB, not in git, so a normal file deploy can
+      # never add a job listing — this runs the seed script against the
+      # already-deployed backend code on every run; a no-op once the row exists.
+      - name: Seed HR Manager careers listing (idempotent)
+        env:
+          H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
+        run: |
+          ssh $SSH_OPTS "$H" "cd /home/digitalaura-backend && node scripts/seed-hr-manager-job.js"
 
   # ── 5. SEO landing page  →  /home/landing-seo/  (pm2: seo-landing) ────────
   seo-landing:

@@ -50,8 +50,8 @@ app.listen(PORT, () => console.log(`Backend running on http://localhost:${PORT}`
 // Connect DB with retry — server stays up even if DB is not yet configured
 async function connectDB(retryDelay = 10000) {
   try {
-    await sequelize.sync({ alter: true });
-    console.log('✅ Database connected and synced');
+    await sequelize.authenticate();
+    console.log('✅ Database connected');
   } catch (err) {
     console.error('DB connection failed:', err.message, '— retrying in', retryDelay / 1000, 's');
     setTimeout(() => connectDB(Math.min(retryDelay * 1.5, 60000)), retryDelay);

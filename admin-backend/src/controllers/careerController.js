@@ -46,6 +46,7 @@ exports.getOne = async (req, res) => {
 exports.create = async (req, res) => {
   try {
     const slug = await uniqueSlug(req.body.title);
+    if (req.body.deadline === '') req.body.deadline = null;
     const item = await Career.create({ ...req.body, slug });
     res.status(201).json({ success: true, data: item });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
@@ -59,6 +60,7 @@ exports.update = async (req, res) => {
     if (req.body.title && (req.body.title !== item.title || !item.slug)) {
       req.body.slug = await uniqueSlug(req.body.title, item.id);
     }
+    if (req.body.deadline === '') req.body.deadline = null;
     await item.update(req.body);
     res.json({ success: true, data: item });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }

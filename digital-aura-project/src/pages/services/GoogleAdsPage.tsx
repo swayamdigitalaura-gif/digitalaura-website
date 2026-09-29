@@ -300,12 +300,6 @@ const AdsCardTabs = () => {
                     </span>
                   ))}
                 </div>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-1.5 text-[12.5px] font-semibold transition-all hover:gap-2.5"
-                  style={{ color: tab.color }}>
-              <span data-cms-key="gads_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">Learn More</span> <ArrowRight size={13} />
-                </Link>
               </motion.div>
             ))}
           </motion.div>

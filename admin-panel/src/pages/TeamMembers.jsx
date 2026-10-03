@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import api from '../api';
 import toast from 'react-hot-toast';
-import { Plus, Edit2, Trash2, Eye, EyeOff, X, Save, GripVertical } from 'lucide-react';
+import { Plus, Edit2, Trash2, Eye, EyeOff, X, Save, GripVertical, Upload } from 'lucide-react';
 
 const COLOR_OPTIONS = [
   { label: 'Orange', value: '#FF6B2B' },
@@ -36,6 +36,8 @@ export default function TeamMembers() {
   const [form, setForm] = useState(EMPTY_FORM);
   const [saving, setSaving] = useState(false);
   const [deleting, setDeleting] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const fileInputRef = useRef(null);
 
   const load = async () => {
     setLoading(true);
@@ -86,6 +88,26 @@ export default function TeamMembers() {
       toast.success(m.is_visible ? 'Hidden from website' : 'Now visible on website');
       load();
     } catch { toast.error('Error updating visibility'); }
+  };
+
+  const handlePhotoUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    try {
+      const fd = new FormData();
+      fd.append('file', file);
+      fd.append('alt_text', form.name || file.name.replace(/\.[^.]+$/, ''));
+      const r = await api.post('/media', fd, { headers: { 'Content-Type': 'multipart/form-data' } });
+      const fullUrl = `${import.meta.env.VITE_API_BASE || 'http://localhost:5000'}${r.data.data.url}`;
+      setForm(f => ({ ...f, photo: fullUrl }));
+      toast.success('Photo uploaded');
+    } catch (err) {
+      toast.error(err.response?.data?.message || 'Upload failed');
+    } finally {
+      setUploading(false);
+      if (fileInputRef.current) fileInputRef.current.value = '';
+    }
   };
 
   const set = (k, v) => setForm(p => ({ ...p, [k]: v }));
@@ -233,8 +255,15 @@ export default function TeamMembers() {
                 {/* Photo URL */}
                 <div>
                   <label style={labelStyle}>Photo URL</label>
-                  <input value={form.photo} onChange={e => set('photo', e.target.value)} placeholder="https://example.com/photo.jpg" style={inputStyle} />
-                  <div style={{ fontSize: 11, color: '#94A3B8', marginTop: 4 }}>Leave empty to show initials avatar. Use Media Library to upload photos.</div>
+                  <div style={{ display: 'flex', gap: 8 }}>
+                    <input value={form.photo || ''} onChange={e => set('photo', e.target.value)} placeholder="https://... or upload a file" style={{ ...inputStyle, flex: 1, width: 'auto' }} />
+                    <input ref={fileInputRef} type="file" accept="image/*" style={{ display: 'none' }} onChange={handlePhotoUpload} />
+                    <button type="button" onClick={() => fileInputRef.current?.click()} disabled={uploading}
+                      style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 14px', borderRadius: 8, border: '1px solid #E5E7EB', background: '#F8FAFC', color: '#374151', fontSize: 13, fontWeight: 600, cursor: uploading ? 'default' : 'pointer', whiteSpace: 'nowrap' }}>
+                      <Upload size={13} /> {uploading ? 'Uploading...' : 'Upload'}
+                    </button>
+                  </div>
+                  <div style={{ fontSize: 11, color: '#94A3B8', marginTop: 4 }}>Paste a URL or upload a photo (image, max 10MB). Leave empty to show initials avatar.</div>
                 </div>
 
                 {/* LinkedIn */}

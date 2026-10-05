@@ -19,7 +19,7 @@ import { useCMSEditor } from "@/hooks/useCMSEditor";
 const PAGE_TITLE = "Website Development Services | Custom Business Websites | Digital Aura";
 const PAGE_DESCRIPTION =
   "Get custom website development services in Ahmedabad with fast, mobile-friendly, SEO-ready websites built to generate more leads, sales, and business growth. Contact Digital Aura today.";
-const PAGE_URL = "https://thedigitalaura.com/website-development-services-ahmedabad";
+const PAGE_URL = "https://thedigitalaura.com/website-development-services-ahmedabad/";
 
 function useBasicSEO() {
   useEffect(() => {

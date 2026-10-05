@@ -57,7 +57,7 @@ const FAQItem = ({ q, a, color }: { q: string; a: string; color: string }) => {
 const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
   const theme = getTheme(post.category);
   const CategoryIcon = theme.Icon;
-  const canonicalUrl = `${SITE}/blog/${post.slug}`;
+  const canonicalUrl = `${SITE}/blog/${post.slug}/`;
   const related = posts.filter(p => p.slug !== post.slug && p.category === post.category).slice(0, 3);
   const relatedFallback = posts.filter(p => p.slug !== post.slug).slice(0, 3);
   const relatedPosts = related.length ? related : relatedFallback;

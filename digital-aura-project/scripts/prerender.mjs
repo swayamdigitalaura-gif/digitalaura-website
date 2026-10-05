@@ -189,7 +189,6 @@ function looksUnrendered(route, html) {
 // Keep in sync with the `location` blocks in nginx-updated.conf.
 const EXTRA_LIVE_ROUTES = [
   '/seo-services-ahmedabad',
-  '/google-ads-agency-ahmedabad',
   '/digital-marketing-company-ahmedabad',
 ];
 

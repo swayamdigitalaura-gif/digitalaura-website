@@ -1,0 +1,49 @@
+# Digital Aura
+
+> Digital Aura is a data-driven digital marketing agency based in Ahmedabad, Gujarat, India, offering SEO, Google Ads, Meta Ads, website/app development, and AI automation. 750+ client projects delivered.
+
+## Company
+
+- [About Digital Aura](https://thedigitalaura.com/about/): Story, vision, and the team behind the agency
+- [Engagement Models](https://thedigitalaura.com/engagement-models/): Dedicated resource, project-based, hourly, and retainer pricing models
+- [Awards & Recognition](https://thedigitalaura.com/awards/)
+- [Testimonials](https://thedigitalaura.com/testimonials/)
+- [Contact](https://thedigitalaura.com/contact/)
+
+## Services
+
+- [All Services](https://thedigitalaura.com/services/): Full service overview
+- [SEO & Content Marketing](https://thedigitalaura.com/services/seo-content-marketing/): Technical SEO, content strategy, link building
+- [Google Ads](https://thedigitalaura.com/services/google-ads/)
+- [Meta Ads](https://thedigitalaura.com/services/meta-ads/)
+- [Social Media Marketing](https://thedigitalaura.com/services/social-media-marketing/)
+- [Web App Development](https://thedigitalaura.com/services/web-app-development/)
+- [Full Stack Development](https://thedigitalaura.com/services/full-stack-development/)
+- [WordPress Development](https://thedigitalaura.com/services/wordpress-development/)
+- [Shopify Development](https://thedigitalaura.com/services/shopify-development/)
+- [WooCommerce Development](https://thedigitalaura.com/services/woocommerce-development/)
+- [AI Automation](https://thedigitalaura.com/services/ai-automation/)
+- [AI Chatbots & Assistants](https://thedigitalaura.com/services/ai-chatbot-assistant/)
+- [Mobile App Development](https://thedigitalaura.com/services/mobile-app-development/)
+
+## Service Areas
+
+- [All Service Areas](https://thedigitalaura.com/service-areas/): Ahmedabad, Gujarat-wide, and international coverage
+- [Digital Marketing Agency in Ahmedabad](https://thedigitalaura.com/digital-marketing-agency-ahmedabad/)
+- [SEO Agency in Ahmedabad](https://thedigitalaura.com/seo-agency-ahmedabad/)
+
+## Case Studies
+
+- [All Case Studies](https://thedigitalaura.com/case-studies/)
+- [Riant Bikes](https://thedigitalaura.com/case-studies/riant-bikes/)
+- [Prism Calibration Centre](https://thedigitalaura.com/case-studies/prism-calibration/)
+- [IVF Clinic](https://thedigitalaura.com/case-studies/ivf-clinic/)
+
+## Blog
+
+- [Blog](https://thedigitalaura.com/blog/): SEO, AI, and digital marketing insights
+
+## Optional
+
+- [Privacy Policy](https://thedigitalaura.com/privacy-policy/)
+- [Terms and Conditions](https://thedigitalaura.com/terms-and-conditions/)

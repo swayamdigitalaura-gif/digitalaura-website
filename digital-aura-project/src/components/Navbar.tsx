@@ -164,7 +164,7 @@ const MegaMenu = ({ onClose }: { onClose: () => void }) => (
 const Navbar = () => {
   const logoUrl = useSetting('site_logo', '');
   const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
-  const logoSrc = logoUrl ? `${API_BASE}${logoUrl}` : logo;
+  const logoSrc = logoUrl ? (/^https?:\/\//i.test(logoUrl) ? logoUrl : `${API_BASE}${logoUrl}`) : logo;
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);

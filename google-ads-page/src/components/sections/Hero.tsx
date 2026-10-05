@@ -66,7 +66,7 @@ export function Hero() {
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
           >
             <img
-              src="/hero-section-image.png"
+              src="/hero-section-image.webp"
               alt="Google Ads campaign dashboard, GA4 analytics, and Google Search result preview for Digital Aura"
               className="w-full h-auto drop-shadow-[0_40px_90px_rgba(26,29,54,0.18)]"
             />

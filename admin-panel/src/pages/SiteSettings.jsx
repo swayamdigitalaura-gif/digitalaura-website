@@ -7,6 +7,7 @@ const GROUPS = [
   { key: 'general', label: 'General', fields: [
     { key: 'site_name', label: 'Site Name', type: 'text' },
     { key: 'site_tagline', label: 'Site Tagline', type: 'text' },
+    { key: 'site_logo', label: 'Logo URL (upload via Media Library, then paste the Copy URL value here)', type: 'text' },
   ]},
   { key: 'contact', label: 'Contact Info', fields: [
     { key: 'contact_email', label: 'Email', type: 'text' },

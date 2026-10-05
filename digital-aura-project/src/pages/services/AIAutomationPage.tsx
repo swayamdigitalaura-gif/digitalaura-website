@@ -200,7 +200,7 @@ const AIAutomationPage = () => {
       <div className="absolute inset-0 pointer-events-none dot-pattern opacity-30" />
       <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative z-10 pt-20 pb-20">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
-          <Link to="/services" className="inline-flex items-center gap-1 text-xs font-semibold mb-4 hover:underline" style={{ color: accent }}>← Back to All Services</Link>
+          <Link to="/services/" className="inline-flex items-center gap-1 text-xs font-semibold mb-4 hover:underline" style={{ color: accent }}>← Back to All Services</Link>
           <span className="flex justify-center">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold mb-6 tracking-widest uppercase"
               style={{ background: "rgba(124,58,237,0.1)", color: accent, border: "1px solid rgba(124,58,237,0.3)" }}>
@@ -216,7 +216,7 @@ const AIAutomationPage = () => {
             <span data-cms-key="aiauto_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.aiauto_hero_sub || "We build real time AI automation systems — not zaps, not templates, not basic triggers. Custom-engineered pipelines that process data, make decisions, and take action the moment something happens in your business."}</span>
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2">
+            <Link to="/contact/" className="btn-orange px-8 py-4 text-base gap-2">
               <span data-cms-key="aiauto_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.aiauto_cta_btn || "Book a Free Automation Architecture Call"}</span> <ArrowRight size={18} />
             </Link>
             <a href="#services-list" className="btn-outline-dark px-8 py-4 text-base">Our Automation Services</a>
@@ -437,7 +437,7 @@ const AIAutomationPage = () => {
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4"><span data-cms-key="aiauto_cta_h2" data-cms-label="CTA Heading" data-cms-attr="text">Let's Find Your First <span data-cms-key="aiauto_hl_149" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-orange-gradient">Automation</span> in <span data-cms-key="aiauto_hl_150" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-purple-gradient">60 Minutes</span>.</span></h2>
           <p className="text-[#E2E8F0] mb-8 leading-relaxed"><span data-cms-key="aiauto_cta_sub" data-cms-label="CTA Subtext" data-cms-attr="text">Book a free Automation Architecture Call. We'll map your top workflows, identify what's automatable, and show you the projected impact before any commitment is made.</span></p>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
+          <Link to="/contact/" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
             style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 4px 20px rgba(255,107,43,0.4)" }}>
             Book My Architecture Call <ArrowRight size={16} />
           </Link>

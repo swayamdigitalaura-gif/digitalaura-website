@@ -88,7 +88,7 @@ const CROModal = ({ open, onClose }: Props) => {
                     <div className="flex items-center gap-2 mb-1"><Zap size={14} style={{ color: ACCENT }} /><span className="text-[11px] font-bold uppercase tracking-wider" style={{ color: ACCENT }}>Ready to Convert More?</span></div>
                     <p className="text-[13px] text-[#94A3B8] leading-relaxed"><span data-cms-key="cromodal_p_2" data-cms-label="Body Text" data-cms-attr="text">{s.cromodal_p_2 || "Let's audit your funnel and turn your existing traffic into more leads, sales, and revenue."}</span></p>
                   </div>
-                  <Link to="/contact" onClick={onClose} className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-bold text-white whitespace-nowrap transition-all hover:gap-3" style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 6px 20px rgba(255,107,43,0.4)" }}>
+                  <Link to="/contact/" onClick={onClose} className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-bold text-white whitespace-nowrap transition-all hover:gap-3" style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 6px 20px rgba(255,107,43,0.4)" }}>
                     Optimise My Funnel <ArrowRight size={14} />
                   </Link>
                 </div>

@@ -88,7 +88,7 @@ const LinkedInYouTubeModal = ({ open, onClose }: Props) => {
                     <div className="flex items-center gap-2 mb-1"><Zap size={14} style={{ color: ACCENT }} /><span className="text-[11px] font-bold uppercase tracking-wider" style={{ color: ACCENT }}>Ready to Reach Professionals?</span></div>
                     <p className="text-[13px] text-[#94A3B8] leading-relaxed"><span data-cms-key="limodal_p_2" data-cms-label="Body Text" data-cms-attr="text">{s.limodal_p_2 || "Let's build LinkedIn and YouTube campaigns that put your brand in front of the right decision makers."}</span></p>
                   </div>
-                  <Link to="/contact" onClick={onClose} className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-bold text-white whitespace-nowrap transition-all hover:gap-3" style={{ background: "linear-gradient(135deg, #0A66C2, #084d94)", boxShadow: "0 6px 20px rgba(10,102,194,0.4)" }}>
+                  <Link to="/contact/" onClick={onClose} className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-bold text-white whitespace-nowrap transition-all hover:gap-3" style={{ background: "linear-gradient(135deg, #0A66C2, #084d94)", boxShadow: "0 6px 20px rgba(10,102,194,0.4)" }}>
                     Launch My Campaign <ArrowRight size={14} />
                   </Link>
                 </div>

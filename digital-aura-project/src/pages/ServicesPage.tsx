@@ -285,7 +285,7 @@ const ServicesPage = () => {
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2"
+            <Link to="/contact/" className="btn-orange px-8 py-4 text-base gap-2"
               data-cms-key="svc_hero_cta1" data-cms-label="Services Hero CTA 1" data-cms-attr="text">
               {s.svc_hero_cta1 || 'Start Your Project'} <ArrowRight size={18} />
             </Link>
@@ -460,7 +460,7 @@ const ServicesPage = () => {
         </div>
 
         <div className="text-center mt-10">
-          <Link to="/case-studies" className="btn-outline-orange px-8 py-3.5 text-sm gap-2 inline-flex">
+          <Link to="/case-studies/" className="btn-outline-orange px-8 py-3.5 text-sm gap-2 inline-flex">
             View Full Case Studies <ArrowRight size={16} />
           </Link>
         </div>
@@ -529,7 +529,7 @@ const ServicesPage = () => {
         </div>
         <div className="text-center mt-10">
           <p className="text-[#6B7280] text-sm mb-4"><span data-cms-key="svc_pg_p_38" data-cms-label="Body Text" data-cms-attr="text">Still have questions?</span></p>
-          <Link to="/contact" className="btn-orange px-8 py-3.5 text-sm gap-2 inline-flex">
+          <Link to="/contact/" className="btn-orange px-8 py-3.5 text-sm gap-2 inline-flex">
             Talk to Our Team <ArrowRight size={16} />
           </Link>
         </div>
@@ -548,7 +548,7 @@ const ServicesPage = () => {
             data-cms-key="svc_cta_subtext" data-cms-label="Services CTA Subtext" data-cms-attr="text">
             {s.svc_cta_subtext || 'Book a 30 minute strategy call. No sales. Just clarity on what to build and how.'}
           </p>
-          <Link to="/contact" className="btn-orange px-10 py-4 text-lg gap-2 inline-flex">
+          <Link to="/contact/" className="btn-orange px-10 py-4 text-lg gap-2 inline-flex">
             <span data-cms-key="svc_cta_button" data-cms-label="Services CTA Button" data-cms-attr="text">
               {s.svc_cta_button || 'Book a Strategy Call'}
             </span>

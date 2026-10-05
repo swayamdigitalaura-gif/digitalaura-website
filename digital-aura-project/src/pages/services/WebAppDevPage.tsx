@@ -85,7 +85,7 @@ const WebAppDevPage = () => {
       <div className="absolute inset-0 pointer-events-none dot-pattern opacity-30" />
       <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative z-10 pt-20 pb-20">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
-          <Link to="/services" className="inline-flex items-center gap-1 text-xs font-semibold mb-4 hover:underline" style={{ color: accent }}>← Back to All Services</Link>
+          <Link to="/services/" className="inline-flex items-center gap-1 text-xs font-semibold mb-4 hover:underline" style={{ color: accent }}>← Back to All Services</Link>
           <span className="flex justify-center">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold mb-6 tracking-widest uppercase"
               style={{ background: "rgba(26,111,232,0.1)", color: accent, border: "1px solid rgba(26,111,232,0.3)" }}>
@@ -101,7 +101,7 @@ const WebAppDevPage = () => {
             <span data-cms-key="webapp_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.webapp_hero_sub || "From MVP to full-scale platform — we ship clean, tested, production-ready web and mobile applications built with AI baked in from day one. Not handed off. Engineered to last."}</span>
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2">
+            <Link to="/contact/" className="btn-orange px-8 py-4 text-base gap-2">
               <span data-cms-key="webapp_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.webapp_cta_btn || "Book a Free Technical Discovery Call"}</span> <ArrowRight size={18} />
             </Link>
             <a href="#services-list" className="btn-outline-dark px-8 py-4 text-base">What We Build</a>
@@ -323,7 +323,7 @@ const WebAppDevPage = () => {
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4"><span data-cms-key="webapp_cta_h2" data-cms-label="CTA Heading" data-cms-attr="text">Let's Build a <span className="text-orange-gradient">Product</span> That <span className="text-purple-gradient">Scales</span>.</span></h2>
           <p className="text-[#E2E8F0] mb-8 leading-relaxed"><span data-cms-key="webapp_cta_sub" data-cms-label="CTA Subtext" data-cms-attr="text">Book a free Technical Discovery Call. We'll review your requirements, define the right architecture approach, and give you a clear picture of what a web or mobile build with Digital Aura looks like — before any commitment is made.</span></p>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
+          <Link to="/contact/" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
             style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 4px 20px rgba(255,107,43,0.4)" }}>
             Book My Technical Discovery Call <ArrowRight size={16} />
           </Link>

@@ -14,7 +14,7 @@ const AUTHOR_PHOTOS: Record<string, string> = {
   "Sambhav Shah": sambhavPhoto,
   "Jinali Lodariya": "/team/jinali.png",
   "Swayam Parikh": "/team/swayam.png",
-  "Deepak Nagar": "/team/deepak.png",
+  "Deepak Nagar": "/team/deepak.webp",
   "Satish Prajapati": "/team/satish.png",
 };
 
@@ -57,7 +57,7 @@ const FAQItem = ({ q, a, color }: { q: string; a: string; color: string }) => {
 const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
   const theme = getTheme(post.category);
   const CategoryIcon = theme.Icon;
-  const canonicalUrl = `${SITE}/blog/${post.slug}`;
+  const canonicalUrl = `${SITE}/blog/${post.slug}/`;
   const related = posts.filter(p => p.slug !== post.slug && p.category === post.category).slice(0, 3);
   const relatedFallback = posts.filter(p => p.slug !== post.slug).slice(0, 3);
   const relatedPosts = related.length ? related : relatedFallback;
@@ -133,7 +133,7 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
           <div className="absolute inset-0 dot-pattern opacity-20" />
         </div>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="max-w-3xl mx-auto relative z-10 py-10 text-center">
-          <Link to="/blog" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: theme.color }}>
+          <Link to="/blog/" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: theme.color }}>
             ← Back to All Articles
           </Link>
           <div className="flex justify-center mb-6">
@@ -232,7 +232,7 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
             </div>
 
             <div className="pt-8 mt-8 border-t" style={{ borderColor: "#E5E7EB" }}>
-              <Link to="/blog" className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.color }}>
+              <Link to="/blog/" className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.color }}>
                 <ArrowLeft size={14} /> Back to all posts
               </Link>
             </div>
@@ -250,7 +250,7 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
               </div>
               <h3 className="font-black text-base mb-2" style={{ color: "#0A1628" }}>Want results like this?</h3>
               <p className="text-xs mb-4 leading-relaxed" style={{ color: "#6B7280" }}>Talk to Digital Aura about your SEO.</p>
-              <Link to="/contact" className="btn-orange w-full py-3 text-sm">
+              <Link to="/contact/" className="btn-orange w-full py-3 text-sm">
                 Get in Touch <ArrowRight size={14} />
               </Link>
             </div>
@@ -289,7 +289,7 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4">{post.ctaHeading}</h2>
           <p className="text-[#E2E8F0] mb-8 leading-relaxed">{post.ctaText}</p>
-          <Link to="/contact" className="btn-orange" style={{ padding: "1rem 2rem", fontSize: ".95rem" }}>
+          <Link to="/contact/" className="btn-orange" style={{ padding: "1rem 2rem", fontSize: ".95rem" }}>
             {post.ctaButton} <ArrowRight size={16} />
           </Link>
         </div>

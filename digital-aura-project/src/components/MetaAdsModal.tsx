@@ -182,7 +182,7 @@ const MetaAdsModal = ({ open, onClose }: Props) => {
                     </div>
                     <p className="text-[13px] text-[#94A3B8] leading-relaxed"><span data-cms-key="metamodal_p_2" data-cms-label="Body Text" data-cms-attr="text">{s.metamodal_p_2 || "Let's build Meta ad campaigns that reach your ideal audience and turn clicks into paying customers."}</span></p>
                   </div>
-                  <Link to="/contact" onClick={onClose}
+                  <Link to="/contact/" onClick={onClose}
                     className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-bold text-white whitespace-nowrap transition-all hover:gap-3"
                     style={{ background: "linear-gradient(135deg, #1877F2, #0c5bcc)", boxShadow: "0 6px 20px rgba(24,119,242,0.4)" }}>
                     Launch My Meta Ads <ArrowRight size={14} />

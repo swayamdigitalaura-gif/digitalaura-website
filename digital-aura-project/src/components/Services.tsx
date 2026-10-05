@@ -39,28 +39,28 @@ const content: Record<TabKey, { icon: React.ElementType; iconName: string; title
       title: "AI Powered Web Apps",
       desc: "Smart, scalable applications built with AI at the core, from intelligent dashboards to real time data systems.",
       points: ["Custom AI features", "API integrations", "Scalable architecture"],
-      route: "/services/ai-powered-web-apps",
+      route: "/services/ai-powered-web-apps/",
     },
     {
       icon: Brain, iconName: "Brain",
       title: "AI Automation Systems",
       desc: "Eliminate repetitive tasks with intelligent workflows that save your team hours every single day.",
       points: ["Custom workflows", "CRM & tool sync", "Error reduction"],
-      route: "/services/ai-automation",
+      route: "/services/ai-automation/",
     },
     {
       icon: Workflow, iconName: "Workflow",
       title: "AI Chatbots & Assistants",
       desc: "Deploy 24/7 conversational AI that handles queries, qualifies leads, and books appointments automatically.",
       points: ["Lead qualification", "WhatsApp & web", "Human handoff"],
-      route: "/services/ai-chatbot-assistant",
+      route: "/services/ai-chatbot-assistant/",
     },
     {
       icon: Film, iconName: "Film",
       title: "AI Filmmaking",
       desc: "AI-produced Reels, Shorts, and ad creatives in days, not weeks, backed by real strategy and paid promotion.",
       points: ["AI video production", "Reels & Shorts", "Strategy + promotion"],
-      route: "/services/ai-filmmaking",
+      route: "/services/ai-filmmaking/",
     },
   ],
   web: [
@@ -69,21 +69,21 @@ const content: Record<TabKey, { icon: React.ElementType; iconName: string; title
       title: "Custom Web Development",
       desc: "High performance, SEO ready websites built to convert visitors into leads and sales from day one.",
       points: ["Fast load times", "Mobile first", "SEO optimised"],
-      route: "/services/web-app-development",
+      route: "/services/web-app-development/",
     },
     {
       icon: Code2, iconName: "Code2",
       title: "Full Stack Development",
       desc: "End to end web applications with robust backends, clean APIs, and pixel perfect frontends.",
       points: ["React / Next.js", "Node & Python", "Cloud deployment"],
-      route: "/services/full-stack-development",
+      route: "/services/full-stack-development/",
     },
     {
       icon: PenTool, iconName: "PenTool",
       title: "WordPress Development",
       desc: "Custom WordPress websites built for speed, SEO, and ease of management, tailored to your brand and business needs.",
       points: ["Custom themes", "Plugin development", "Speed optimisation"],
-      route: "/services/wordpress-development",
+      route: "/services/wordpress-development/",
     },
   ],
   ecommerce: [
@@ -92,21 +92,21 @@ const content: Record<TabKey, { icon: React.ElementType; iconName: string; title
       title: "Shopify Development",
       desc: "High converting Shopify stores built with custom themes, apps, and checkout optimisation for maximum revenue.",
       points: ["Custom themes", "App integrations", "Checkout optimisation"],
-      route: "/services/shopify-development",
+      route: "/services/shopify-development/",
     },
     {
       icon: Store, iconName: "Store",
       title: "WooCommerce Development",
       desc: "Powerful, flexible WooCommerce stores built for businesses that need full control and custom eCommerce functionality.",
       points: ["Custom plugins", "Multi currency", "Inventory management"],
-      route: "/services/woocommerce-development",
+      route: "/services/woocommerce-development/",
     },
     {
       icon: CreditCard, iconName: "CreditCard",
       title: "BigCommerce Development",
       desc: "Enterprise grade eCommerce on BigCommerce, built for high volume stores that need speed, scale, and flexibility.",
       points: ["Custom themes", "B2B and B2C support", "Multi channel selling"],
-      route: "/services/bigcommerce-development",
+      route: "/services/bigcommerce-development/",
     },
   ],
   marketing: [
@@ -115,28 +115,28 @@ const content: Record<TabKey, { icon: React.ElementType; iconName: string; title
       title: "SEO & Content Marketing",
       desc: "Rank on page 1 of Google with technical SEO, content strategy, and authoritative link building.",
       points: ["Technical SEO", "Content strategy", "Link building"],
-      route: "/services/seo-content-marketing",
+      route: "/services/seo-content-marketing/",
     },
     {
       icon: Target, iconName: "Target",
       title: "Google Ads",
       desc: "Data driven Google campaigns, Search, Display, and Shopping ads that deliver high quality leads at the lowest possible cost.",
       points: ["Search & Display ads", "Shopping campaigns", "ROI focused bidding"],
-      route: "/services/google-ads",
+      route: "/services/google-ads/",
     },
     {
       icon: Share2, iconName: "Share2",
       title: "Meta Ads",
       desc: "High converting Facebook & Instagram ad campaigns targeting the right audience to generate consistent leads and sales.",
       points: ["Facebook & Instagram", "Audience targeting", "Creative A/B testing"],
-      route: "/services/meta-ads",
+      route: "/services/meta-ads/",
     },
     {
       icon: Hash, iconName: "Hash",
       title: "Social Media Marketing",
       desc: "Strategic content, daily publishing, and community management that builds a genuinely engaged audience across every platform.",
       points: ["Content strategy", "Community management", "Organic growth"],
-      route: "/services/social-media-marketing",
+      route: "/services/social-media-marketing/",
     },
   ],
   mobile: [
@@ -145,7 +145,7 @@ const content: Record<TabKey, { icon: React.ElementType; iconName: string; title
       title: "Android Development",
       desc: "Native Android apps built with Kotlin and Jetpack Compose, optimised for the Google ecosystem and every Android device.",
       points: ["Kotlin & Jetpack Compose", "Google Play Store launch", "Material Design UI"],
-      route: "/services/mobile-app-development?type=android",
+      route: "/services/mobile-app-development/?type=android",
     },
     {
       icon: AppWindow,
@@ -153,14 +153,14 @@ const content: Record<TabKey, { icon: React.ElementType; iconName: string; title
       title: "Flutter Apps",
       desc: "One codebase, two platforms. Flutter delivers pixel perfect iOS and Android apps with 60fps performance and fast release cycles.",
       points: ["iOS & Android from one codebase", "60fps smooth performance", "Faster time to market"],
-      route: "/services/mobile-app-development?type=flutter",
+      route: "/services/mobile-app-development/?type=flutter",
     },
     {
       icon: Layers, iconName: "Layers",
       title: "React Native Apps",
       desc: "JavaScript powered native apps used by Facebook, Shopify and Airbnb. Share logic across platforms while preserving a truly native feel.",
       points: ["Shared JS codebase", "Native UI components", "Large ecosystem support"],
-      route: "/services/mobile-app-development?type=reactnative",
+      route: "/services/mobile-app-development/?type=reactnative",
     },
   ],
 };
@@ -273,7 +273,7 @@ const Services = () => {
         {/* CTAs */}
         <div className="flex flex-wrap justify-center gap-3">
           <Link
-            to="/services"
+            to="/services/"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
             style={{ background: activeTab.gradient, boxShadow: `0 4px 16px ${activeTab.color}35` }}
           >
@@ -297,7 +297,7 @@ const Services = () => {
               transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
             />
             <Link
-              to="/contact#contact-form"
+              to="/contact/#contact-form"
               className="relative inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all animate-gradient-shift"
               style={{
                 background: "linear-gradient(135deg, #7C3AED, #FF6B2B, #1A6FE8, #7C3AED)",

@@ -16,7 +16,7 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     description: "A decade of digital growth. Learn about Digital Aura's vision, mission, values, and the expert team behind 750+ successful client projects.",
   },
   '/services': {
-    title: 'Digital Marketing Services | SEO, Ads, Web Dev & AI | Digital Aura',
+    title: 'SEO, Ads, Web Dev & AI Services | Digital Aura',
     description: "Explore Digital Aura's full suite: SEO, Google Ads, Meta Ads, Web Development, AI Automation, Mobile Apps, Shopify, WooCommerce, and more.",
   },
   '/ai-solutions': {
@@ -32,32 +32,32 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     description: "Explore Digital Aura's case studies — measurable results in SEO, PPC, web development, and digital marketing across multiple industries.",
   },
   '/case-studies/riant-bikes': {
-    title: 'Riant Bikes Case Study: How Digital Aura Saved a Bike Rental Business From Going Extinct',
-    description: 'Riant Bikes was losing customers to competitors with a stronger online presence. See how Digital Aura rebuilt their website, booking system, and Google Ads to bring back daily bookings and grow revenue.',
+    title: 'Riant Bikes Case Study: Bike Rental Business Turnaround',
+    description: "Riant Bikes was losing customers to competitors online. See how Digital Aura rebuilt their website, booking, and Google Ads to grow bookings and revenue.",
   },
   '/case-studies/prism-calibration': {
-    title: 'From Being Known to Being Found — Prism Calibration Centre | Digital Aura Case Study',
-    description: "How Digital Aura took a 20-year NABL-accredited calibration company in Ahmedabad from referral-only to 70–100 qualified search leads a month — and into Google's AI Overview.",
+    title: 'Prism Calibration Case Study | Digital Aura',
+    description: "How Digital Aura took a 20-year NABL-accredited calibration company from referral-only to 70-100 qualified search leads a month.",
   },
   '/case-studies/ivf-clinic': {
     title: 'IVF Clinic SEO & YouTube Case Study | Digital Aura',
-    description: 'How an IVF hospital turned quiet authority into measurable demand: 76.7% organic traffic growth, 85.9% YouTube views growth, and 25–30 qualified leads a day in six months.',
+    description: "How an IVF hospital grew organic traffic 76.7%, YouTube views 85.9%, and reached 25-30 qualified leads a day in six months.",
   },
   '/case-studies/dp-electrical-repairs': {
     title: 'DP Electrical Repairs SEO & AEO Case Study | Digital Aura',
-    description: 'How a Melbourne appliance repair business went from invisible to 10–15 qualified leads a day with a local SEO structure built around service, brand, and suburb pages.',
+    description: "How a Melbourne appliance repair business went from invisible to 10-15 qualified leads a day with a local SEO structure.",
   },
   '/case-studies/oblprint': {
     title: 'OBLPrint Google Ads Case Study | Digital Aura',
-    description: "How Digital Aura turned OBLPrint's silent Google Ads account into Dubai's busiest WhatsApp inbox — from a 31/100 health score to 79.1%, and 35 WhatsApp chats in a month.",
+    description: "How Digital Aura turned OBLPrint's silent Google Ads account into Dubai's busiest WhatsApp inbox — 31/100 health score to 79.1%.",
   },
   '/case-studies/grand-palace': {
-    title: 'Grand Palace Restaurant Case Study | Website & Local SEO | Digital Aura',
-    description: 'How Digital Aura gave a decade-old Sydney restaurant a website and local SEO strategy that drove a 45% rise in online reservations and orders.',
+    title: 'Grand Palace Restaurant Case Study | Digital Aura',
+    description: "How Digital Aura gave a decade-old Sydney restaurant a website and local SEO strategy that drove a 45% rise in online reservations and orders.",
   },
   '/blog': {
-    title: 'Digital Marketing Blog | Insights & Strategies | Digital Aura',
-    description: 'Stay updated with the latest digital marketing trends, SEO tips, Google Ads strategies, and AI insights from the Digital Aura team.',
+    title: 'Digital Marketing Blog | Digital Aura',
+    description: "Stay updated with the latest digital marketing trends, SEO tips, Google Ads strategies, and AI insights from the Digital Aura team.",
   },
   '/contact': {
     title: 'Contact Digital Aura | Get a Free Consultation',
@@ -88,7 +88,7 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     description: "Understand Digital Aura's cancellation and refund policy for all services.",
   },
   '/services/ai-automation': {
-    title: 'AI Automation Services | Automate Business Workflows | Digital Aura',
+    title: 'AI Automation Services | Digital Aura',
     description: "Automate repetitive tasks and scale operations with Digital Aura's AI automation. Custom workflows, integrations, and intelligent process automation.",
   },
   '/services/ai-chatbot-assistant': {
@@ -108,7 +108,7 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     description: 'Build scalable, high-performance web applications with Digital Aura. React, Node.js, full-stack development for startups and enterprises.',
   },
   '/services/digital-marketing': {
-    title: 'Digital Marketing Services | SEO, Ads & Social Media | Digital Aura',
+    title: 'Digital Marketing Services | Digital Aura',
     description: "Comprehensive digital marketing by Digital Aura: SEO, Google Ads, Meta Ads, social media, email marketing, and content strategy.",
   },
   '/services/design-branding': {
@@ -116,8 +116,8 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     description: "Elevate your brand with Digital Aura's design and branding: logo design, brand identity, UI/UX design, and visual strategy.",
   },
   '/services/shopify-development': {
-    title: 'Shopify Development Services | E-Commerce Experts | Digital Aura',
-    description: 'Expert Shopify development by Digital Aura. Custom themes, app integrations, Shopify Plus, and e-commerce optimization for growing brands.',
+    title: 'Shopify Development Services | Digital Aura',
+    description: "Expert Shopify development by Digital Aura. Custom themes, app integrations, Shopify Plus, and e-commerce optimization for growing brands.",
   },
   '/services/woocommerce-development': {
     title: 'WooCommerce Development Services | Digital Aura',
@@ -132,7 +132,7 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     description: 'Custom WordPress development by Digital Aura. Bespoke themes, plugin development, WooCommerce, and WordPress optimization.',
   },
   '/services/seo-content-marketing': {
-    title: 'SEO & Content Marketing Services | Drive Organic Growth | Digital Aura',
+    title: 'SEO & Content Marketing Services | Digital Aura',
     description: "Drive organic growth with Digital Aura's data-driven SEO and content marketing. Technical SEO, keyword strategy, link building, and content creation.",
   },
   '/services/google-ads': {
@@ -145,7 +145,7 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   },
   '/services/social-media-marketing': {
     title: 'Social Media Marketing Services | Digital Aura',
-    description: "Build a genuinely engaged social media presence with Digital Aura. Content strategy, daily publishing, community management, and growth across every platform that matters.",
+    description: "Build a genuinely engaged social media presence with Digital Aura — content strategy, daily publishing, and community management.",
   },
   '/services/email-whatsapp-marketing': {
     title: 'Email & WhatsApp Marketing Services | Digital Aura',
@@ -176,8 +176,8 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     description: 'Build cross-platform mobile apps with React Native. Digital Aura delivers high-performance iOS and Android apps with a shared codebase.',
   },
   '/services/ai/llm-powered-apps': {
-    title: 'LLM-Powered App Development | GPT & Claude Integration | Digital Aura',
-    description: 'Build applications powered by Large Language Models (GPT-4, Claude, Gemini). Digital Aura develops custom LLM integrations for enterprise and startups.',
+    title: 'LLM-Powered App Development | Digital Aura',
+    description: "Build applications powered by Large Language Models (GPT-4, Claude, Gemini). Digital Aura develops custom LLM integrations for enterprise and startups.",
   },
   '/services/ai/chatbots-assistants': {
     title: 'AI Chatbots & Virtual Assistants Development | Digital Aura',
@@ -188,34 +188,39 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     description: 'Streamline operations with AI workflow automation by Digital Aura. n8n, Zapier, Make, and custom automation pipelines for modern businesses.',
   },
   '/services/ai/predictive-analytics': {
-    title: 'Predictive Analytics Services | AI-Driven Insights | Digital Aura',
+    title: 'Predictive Analytics Services | Digital Aura',
     description: "Make smarter decisions with Digital Aura's predictive analytics. AI-driven forecasting, customer behavior analysis, and data-driven strategy.",
   },
   '/services/ai/api-integration': {
-    title: 'AI API Integration Services | OpenAI & Anthropic | Digital Aura',
-    description: 'Seamlessly integrate AI APIs into your systems. Digital Aura connects OpenAI, Anthropic, Google AI, and custom models to your tech stack.',
+    title: 'AI API Integration Services | Digital Aura',
+    description: "Seamlessly integrate AI APIs into your systems. Digital Aura connects OpenAI, Anthropic, Google AI, and custom models to your tech stack.",
   },
   '/services/ai/custom-ml-models': {
-    title: 'Custom ML Model Development | Machine Learning | Digital Aura',
-    description: 'Build bespoke machine learning models with Digital Aura. Image recognition, NLP, recommendation engines, and custom AI solutions for your business.',
+    title: 'Custom ML Model Development | Digital Aura',
+    description: "Build bespoke machine learning models with Digital Aura. Image recognition, NLP, recommendation engines, and custom AI solutions for your business.",
+  },
+
+  '/service-areas': {
+    title: 'Service Areas | Digital Aura',
+    description: "Digital Aura serves businesses in Ahmedabad, across Gujarat, and internationally with SEO, web development, AI automation, and digital marketing.",
   },
 
   // ── Previously missing pages (were falling back to homepage title/description) ──
   '/awards': {
     title: 'Awards & Recognition | Digital Aura',
-    description: "From an Emerging Business Award in 2017 to Growth Partner of the Year in 2025 — Digital Aura's work has been recognized by national and global business councils every step of the way.",
+    description: "From an Emerging Business Award in 2017 to Growth Partner of the Year in 2025 — Digital Aura's recognition by national and global councils.",
   },
   '/services/ai-filmmaking': {
-    title: 'AI Video & Film Making for Social Media Marketing | Digital Aura',
-    description: 'Get scroll-stopping Reels, Shorts and video ads made with AI — no camera crew, no studio. Strategy, production and paid promotion in one team.',
+    title: 'AI Video & Filmmaking Services | Digital Aura',
+    description: "Get scroll-stopping Reels, Shorts and video ads made with AI — no camera crew, no studio. Strategy, production and paid promotion in one team.",
   },
   '/services/seo-content-marketing/ecommerce-seo': {
-    title: 'eCommerce SEO Services | Shopify & WooCommerce SEO | Digital Aura',
-    description: 'eCommerce SEO for Shopify and WooCommerce stores — product page optimisation, Product schema, and Google Shopping visibility to turn traffic into sales.',
+    title: 'eCommerce SEO Services | Digital Aura',
+    description: "eCommerce SEO for Shopify and WooCommerce stores — product page optimisation, Product schema, and Google Shopping visibility to turn traffic into sales.",
   },
   '/services/seo-content-marketing/local-seo': {
-    title: 'Local SEO Services | Google Business Profile & Maps Ranking | Digital Aura',
-    description: 'Local SEO services to rank higher on Google Maps and the local pack — Google Business Profile optimisation, citations, and location page strategy.',
+    title: 'Local SEO Services | Digital Aura',
+    description: "Local SEO services to rank higher on Google Maps and the local pack — Google Business Profile optimisation, citations, and location page strategy.",
   },
   '/services/seo-content-marketing/off-page-seo': {
     title: 'Off-Page SEO & Link Building Services | Digital Aura',
@@ -223,101 +228,101 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   },
   '/services/seo-content-marketing/on-page-seo': {
     title: 'On-Page SEO Services | Digital Aura',
-    description: 'On-page SEO services — title tags, headings, content, internal links, and images optimised so search engines understand and rank your pages for the right searches.',
+    description: "On-page SEO services — title tags, headings, content, internal links, and images optimised so search engines rank your pages correctly.",
   },
   '/services/seo-content-marketing/seo-audit-strategy': {
     title: 'SEO Audit & Strategy Services | Digital Aura',
     description: 'A full SEO audit and strategy — site crawl, keyword gap analysis, competitor benchmarking, and a prioritised action roadmap tied to your business goals.',
   },
   '/services/seo-content-marketing/technical-seo': {
-    title: 'Technical SEO Services | Core Web Vitals & Site Health | Digital Aura',
-    description: 'Technical SEO services covering site speed, Core Web Vitals, crawlability, structured data, and site health so search engines can properly index your pages.',
+    title: 'Technical SEO Services | Digital Aura',
+    description: "Technical SEO services covering site speed, Core Web Vitals, crawlability, structured data, and site health for proper indexing.",
   },
 
   // ── Local / city landing pages ──
   '/website-design-development-ahmedabad': {
-    title: "Website Design & Development Company in Ahmedabad, Gujarat | Digital Aura",
-    description: "Digital Aura is a website design and development company based in Ahmedabad, Gujarat, building custom-coded websites and web applications for local businesses that have outgrown template builders.",
+    title: 'Website Design & Development Company in Ahmedabad',
+    description: "Digital Aura is a website design and development company in Ahmedabad, building custom-coded websites for businesses that have outgrown template builders.",
   },
   '/website-design-development-gujarat': {
-    title: "Website Design & Development Company in Gujarat | Digital Aura",
-    description: "Digital Aura is a Gujarat-based website design and development company serving businesses across Ahmedabad, Surat, Vadodara, Rajkot, and Gandhinagar with custom-coded websites and web applications.",
+    title: 'Website Design & Development Company in Gujarat',
+    description: "Digital Aura is a Gujarat-based website design company serving Ahmedabad, Surat, Vadodara, and Rajkot with custom-coded websites and web applications.",
   },
   '/shopify-website-design-ahmedabad': {
-    title: "Shopify Website Design Company in Ahmedabad | Digital Aura",
-    description: "Digital Aura is a Shopify website design company in Ahmedabad, building custom-themed Shopify stores for local D2C and retail brands that need more than a stock template.",
+    title: 'Shopify Website Design Company in Ahmedabad | Digital Aura',
+    description: "Digital Aura is a Shopify website design company in Ahmedabad, building custom-themed stores for local D2C and retail brands.",
   },
   '/shopify-development-international': {
-    title: "Shopify Development Agency for International Brands | Digital Aura",
-    description: "Digital Aura is a Shopify development agency working with D2C brands across the US, UK, Australia, and Canada, building custom-themed stores at a fraction of typical Western agency rates.",
+    title: 'Shopify Development Agency for International Brands',
+    description: "Digital Aura is a Shopify development agency working with D2C brands across the US, UK, and Australia at a fraction of typical Western agency rates.",
   },
   '/full-stack-development-ahmedabad': {
-    title: "Full Stack Development Company in Ahmedabad, Gujarat | Digital Aura",
-    description: "Digital Aura is a full stack development company in Ahmedabad, Gujarat, building web applications, SaaS platforms, and internal tools end-to-end — front end, back end, database, and deployment.",
+    title: 'Full Stack Development Company in Ahmedabad',
+    description: "Digital Aura is a full stack development company in Ahmedabad, building web applications and SaaS platforms end-to-end — frontend, backend, and deployment.",
   },
   '/full-stack-development-gujarat': {
-    title: "Full Stack Development Company in Gujarat | Digital Aura",
-    description: "Digital Aura is a Gujarat-based full stack development company serving startups and businesses across Ahmedabad, Surat, Vadodara, and Rajkot with end-to-end web application development.",
+    title: 'Full Stack Development Company in Gujarat | Digital Aura',
+    description: "Digital Aura is a Gujarat-based full stack development company serving startups across Ahmedabad, Surat, Vadodara, and Rajkot.",
   },
   '/ai-automation-ahmedabad': {
-    title: "AI Automation Company in Ahmedabad, Gujarat | Digital Aura",
-    description: "Digital Aura is an AI automation company in Ahmedabad, Gujarat, building AI agents, workflow automation, and intelligent systems that replace manual, repetitive work for local businesses.",
+    title: 'AI Automation Company in Ahmedabad, Gujarat | Digital Aura',
+    description: "Digital Aura is an AI automation company in Ahmedabad building AI agents and workflow automation that replace manual, repetitive work.",
   },
   '/ai-automation-gujarat': {
-    title: "AI Automation Company in Gujarat | Digital Aura",
-    description: "Digital Aura is a Gujarat-based AI automation company serving manufacturers, retailers, and service businesses across Ahmedabad, Surat, Vadodara, and Rajkot with custom AI agents and workflow automation.",
+    title: 'AI Automation Company in Gujarat | Digital Aura',
+    description: "Digital Aura is a Gujarat-based AI automation company building AI agents and workflow automation for businesses across Ahmedabad, Surat, and Rajkot.",
   },
   '/seo-agency-ahmedabad': {
-    title: "SEO Agency in Ahmedabad | Digital Aura",
-    description: "Digital Aura is an SEO agency in Ahmedabad helping local businesses rank higher on Google through technical SEO, content strategy, and local search optimisation.",
+    title: 'SEO Agency in Ahmedabad | Digital Aura',
+    description: "Digital Aura is an SEO agency in Ahmedabad helping businesses rank higher on Google through technical SEO and local search optimisation.",
   },
   '/seo-company-gujarat': {
-    title: "SEO Company in Gujarat | Digital Aura",
-    description: "Digital Aura is a Gujarat-based SEO company serving businesses across Ahmedabad, Surat, Vadodara, and Rajkot — often searched for as the best SEO agency in Gujarat by businesses comparing options statewide.",
+    title: 'SEO Company in Gujarat | Digital Aura',
+    description: "Digital Aura is a Gujarat-based SEO company serving Ahmedabad, Surat, Vadodara, and Rajkot — the SEO agency businesses compare when searching statewide.",
   },
   '/seo-agency-international': {
-    title: "SEO Agency for International Clients | Digital Aura",
-    description: "Digital Aura is an SEO agency working with businesses across the US, UK, and Australia, delivering the same data-driven SEO, AIO, and GEO strategy at a fraction of typical Western agency rates.",
+    title: 'SEO Agency for International Clients | Digital Aura',
+    description: "Digital Aura is an SEO agency working with businesses across the US, UK, and Australia, delivering data-driven SEO at a fraction of Western agency rates.",
   },
   '/ai-filmmaking-ahmedabad': {
-    title: "AI Filmmaking & Video Production Company in Ahmedabad | Digital Aura",
-    description: "Digital Aura is an AI filmmaking and video production company in Ahmedabad, producing Reels, Shorts, and ad creatives in days rather than weeks, without a traditional camera crew or studio shoot.",
+    title: 'AI Filmmaking & Video Production Company in Ahmedabad',
+    description: "Digital Aura is an AI filmmaking company in Ahmedabad producing Reels, Shorts, and ad creatives in days, without a camera crew or studio shoot.",
   },
   '/ai-filmmaking-gujarat': {
-    title: "AI Filmmaking Company in Gujarat | Digital Aura",
-    description: "Digital Aura is a Gujarat-based AI filmmaking company producing Reels, Shorts, and video ads for brands across Ahmedabad, Surat, Vadodara, and Rajkot, delivered remotely with the same speed as our Ahmedabad clients.",
+    title: 'AI Filmmaking Company in Gujarat | Digital Aura',
+    description: "Digital Aura is a Gujarat-based AI filmmaking company producing Reels, Shorts, and video ads for brands across Ahmedabad, Surat, and Rajkot.",
   },
   '/woocommerce-website-design-ahmedabad': {
-    title: "WooCommerce Website Design Company in Ahmedabad | Digital Aura",
-    description: "Digital Aura is a WooCommerce website design company in Ahmedabad, building custom WordPress and WooCommerce stores for local retailers who want full ownership of their platform.",
+    title: 'WooCommerce Website Design Company in Ahmedabad',
+    description: "Digital Aura is a WooCommerce website design company in Ahmedabad, building custom stores for retailers who want full platform ownership.",
   },
   '/woocommerce-development-gujarat': {
-    title: "WooCommerce Development Company in Gujarat | Digital Aura",
-    description: "Digital Aura is a Gujarat-based WooCommerce development company serving retailers across Ahmedabad, Surat, Vadodara, and Rajkot with custom WordPress and WooCommerce stores.",
+    title: 'WooCommerce Development Company in Gujarat | Digital Aura',
+    description: "Digital Aura is a Gujarat-based WooCommerce development company serving retailers across Ahmedabad, Surat, Vadodara, and Rajkot.",
   },
   '/mobile-app-development-ahmedabad': {
     title: "Mobile App Development Company in Ahmedabad | Digital Aura",
     description: "Digital Aura is a mobile app development company in Ahmedabad, building Android, iOS, Flutter, and React Native apps for local startups and businesses.",
   },
   '/mobile-app-development-gujarat': {
-    title: "Mobile App Development Company in Gujarat | Digital Aura",
-    description: "Digital Aura is a Gujarat-based mobile app development company serving startups and businesses across Ahmedabad, Surat, Vadodara, and Rajkot with Android, iOS, Flutter, and React Native apps.",
+    title: 'Mobile App Development Company in Gujarat | Digital Aura',
+    description: "Digital Aura is a Gujarat-based mobile app development company serving Ahmedabad, Surat, Vadodara, and Rajkot with Android, iOS, and Flutter apps.",
   },
   '/google-ads-agency-ahmedabad': {
-    title: "Google Ads Agency in Ahmedabad | Digital Aura",
-    description: "Digital Aura is a Google Ads agency in Ahmedabad, running Search, Display, and Shopping campaigns for local businesses focused on lowering cost-per-lead, not just increasing clicks.",
+    title: 'Google Ads Agency in Ahmedabad | Digital Aura',
+    description: "Digital Aura is a Google Ads agency in Ahmedabad running Search, Display, and Shopping campaigns focused on lowering cost-per-lead.",
   },
   '/meta-ads-agency-ahmedabad': {
-    title: "Meta Ads Agency in Ahmedabad | Digital Aura",
-    description: "Digital Aura is a Meta Ads agency in Ahmedabad, running Facebook and Instagram ad campaigns for local businesses focused on lead generation, remarketing, and eCommerce sales.",
+    title: 'Meta Ads Agency in Ahmedabad | Digital Aura',
+    description: "Digital Aura is a Meta Ads agency in Ahmedabad running Facebook and Instagram campaigns focused on lead generation and eCommerce sales.",
   },
   '/digital-marketing-agency-ahmedabad': {
     title: "Digital Marketing Agency in Ahmedabad | Digital Aura",
     description: "Digital Aura is a digital marketing agency in Ahmedabad offering SEO, Google Ads, Meta Ads, website development, and AI automation under one in-house team.",
   },
   '/digital-marketing-agency-gujarat': {
-    title: "Digital Marketing Agency in Gujarat | Digital Aura",
-    description: "Digital Aura is a Gujarat-based digital marketing agency serving businesses across Ahmedabad, Surat, Vadodara, and Rajkot with SEO, paid ads, web development, and AI automation.",
+    title: 'Digital Marketing Agency in Gujarat | Digital Aura',
+    description: "Digital Aura is a Gujarat-based digital marketing agency serving Ahmedabad, Surat, Vadodara, and Rajkot with SEO, paid ads, and web development.",
   },
 };
 
@@ -352,6 +357,7 @@ const PAGE_SCHEMA: Record<string, object | object[]> = {
     url: `${SITE_URL}/blog/`, description: 'Digital marketing trends, SEO tips, and AI insights.',
     publisher: { '@type': 'Organization', name: 'Digital Aura', logo: DEFAULT_IMAGE } },
   '/case-studies': { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Case Studies | Digital Aura', url: `${SITE_URL}/case-studies/` },
+  '/service-areas': { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Service Areas | Digital Aura', url: `${SITE_URL}/service-areas/` },
   '/case-studies/riant-bikes': { '@context': 'https://schema.org', '@type': 'Article',
     headline: 'Riant Bikes Case Study: How Digital Aura Saved a Bike Rental Business From Going Extinct',
     description: 'Riant Bikes was losing customers to competitors with a stronger online presence. See how Digital Aura rebuilt their website, booking system, and Google Ads to bring back daily bookings and grow revenue.',

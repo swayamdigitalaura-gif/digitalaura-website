@@ -34,7 +34,7 @@ const DesignBrandingPage = () => {
       <div className="absolute inset-0 pointer-events-none dot-pattern opacity-30" />
       <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative z-10 pt-20 pb-20">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
-          <Link to="/services" className="inline-flex items-center gap-1 text-xs font-semibold text-[#F59E0B] mb-4 hover:underline">← Back to All Services</Link>
+          <Link to="/services/" className="inline-flex items-center gap-1 text-xs font-semibold text-[#F59E0B] mb-4 hover:underline">← Back to All Services</Link>
           <span className="flex justify-center">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold mb-6 tracking-widest uppercase"
               style={{ background: "rgba(245,158,11,0.1)", color: "#F59E0B", border: "1px solid rgba(245,158,11,0.3)" }}>
@@ -49,7 +49,7 @@ const DesignBrandingPage = () => {
             <span data-cms-key="design_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.design_hero_sub || "Strategic brand identity and conversion first UI/UX design: every pixel intentional, every decision tied to a business outcome."}</span>
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2" style={{ background: "linear-gradient(135deg,#F59E0B,#d97706)", boxShadow: "0 4px 18px rgba(245,158,11,0.35)" }}>
+            <Link to="/contact/" className="btn-orange px-8 py-4 text-base gap-2" style={{ background: "linear-gradient(135deg,#F59E0B,#d97706)", boxShadow: "0 4px 18px rgba(245,158,11,0.35)" }}>
               <span data-cms-key="design_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.design_cta_btn || "Start a Design Project"}</span> <ArrowRight size={18} />
             </Link>
             <a href="#services-list" className="btn-outline-dark px-8 py-4 text-base">See What We Design</a>
@@ -104,7 +104,7 @@ const DesignBrandingPage = () => {
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <h2 className="text-3xl font-bold text-[#0A1628] mb-4"><span data-cms-key="design_s10_h2" data-cms-label="Section Heading" data-cms-attr="text">Ready to Look Like the Brand You Are?</span></h2>
           <p className="text-[#4B5563] mb-8"><span data-cms-key="design_x7" data-cms-label="Body Text" data-cms-attr="text">Free 30-min design consultation. We'll review your current brand and show you where design is costing you conversions.</span></p>
-          <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2 inline-flex"
+          <Link to="/contact/" className="btn-orange px-8 py-4 text-base gap-2 inline-flex"
             style={{ background: "linear-gradient(135deg,#F59E0B,#d97706)", boxShadow: "0 4px 18px rgba(245,158,11,0.35)" }}>
             Book Design Consultation <ArrowRight size={18} />
           </Link>
@@ -125,7 +125,7 @@ const DesignBrandingPage = () => {
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4"><span data-cms-key="design_cta_h2" data-cms-label="CTA Heading" data-cms-attr="text">Ready to Build a <span data-cms-key="design_hl_114" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-orange-gradient">Brand</span> That <span data-cms-key="design_hl_115" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-purple-gradient">Stands Out</span>?</span></h2>
           <p className="text-[#E2E8F0] mb-8 leading-relaxed"><span data-cms-key="design_cta_sub" data-cms-label="CTA Subtext" data-cms-attr="text">Book a free Brand Discovery Call. We'll review your current positioning, identify the opportunities, and show you what a custom design and branding engagement looks like.</span></p>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
+          <Link to="/contact/" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
             style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 4px 20px rgba(255,107,43,0.4)" }}>
             Book My Brand Discovery Call <ArrowRight size={16} />
           </Link>

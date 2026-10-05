@@ -272,7 +272,7 @@ const CaseStudyRiantBikes = () => {
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
             <div className="flex flex-col items-center gap-4 mb-6">
               <Link
-                to="/case-studies"
+                to="/case-studies/"
                 className="inline-flex items-center gap-1.5 text-sm font-medium"
                 style={{ color: "#C7D2FE" }}
               >
@@ -638,7 +638,7 @@ const CaseStudyRiantBikes = () => {
             <p data-cms-key="riantbikes_cta_text" data-cms-label="CTA Text" data-cms-attr="text" className="text-[15px] md:text-base max-w-xl mx-auto mb-6" style={{ color: "#C7D2FE" }}>
               {t("riantbikes_cta_text", "Every day without a real digital presence is a day a competitor books the customer that should've been yours. Riant Bikes waited. You don't have to.")}
             </p>
-            <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2 inline-flex">
+            <Link to="/contact/" className="btn-orange px-8 py-4 text-base gap-2 inline-flex">
               <span data-cms-key="riantbikes_cta_button" data-cms-label="CTA Button" data-cms-attr="text">{t("riantbikes_cta_button", "Talk to Digital Aura Today")}</span> <ArrowRight size={18} />
             </Link>
           </motion.div>

@@ -144,7 +144,7 @@ const AIApiIntegrationPage = () => {
       </div>
       <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative z-10 pt-20 pb-14">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
-          <Link to="/services" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: accent }}>
+          <Link to="/services/" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: accent }}>
             ← Back to All Services
           </Link>
           <div className="flex justify-center mb-6">
@@ -169,7 +169,7 @@ const AIApiIntegrationPage = () => {
             ))}
           </div>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
+            <Link to="/contact/" className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
               style={{ background: gradient, boxShadow: "0 8px 24px rgba(124,58,237,0.4)" }}>
               <span data-cms-key="aiapi_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.aiapi_cta_btn || "Integrate AI Into My Product"}</span> <ArrowRight size={16} />
             </Link>
@@ -387,7 +387,7 @@ const AIApiIntegrationPage = () => {
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <h2 className="text-3xl md:text-4xl font-black text-white mb-4"><span data-cms-key="aiapi_s11_h2" data-cms-label="Section Heading" data-cms-attr="text">Ready to Add AI to Your Product?</span></h2>
           <p className="text-white/80 mb-8 text-lg"><span data-cms-key="aiapi_x14" data-cms-label="Body Text" data-cms-attr="text">Book a free technical discovery call. We'll review your existing architecture and propose exactly how to integrate the right AI features without disrupting what's working.</span></p>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-bold bg-white transition-all hover:gap-3 hover:shadow-xl"
+          <Link to="/contact/" className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-bold bg-white transition-all hover:gap-3 hover:shadow-xl"
             style={{ color: accent }}>
             Discuss My Integration <ArrowRight size={16} />
           </Link>
@@ -408,7 +408,7 @@ const AIApiIntegrationPage = () => {
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4"><span data-cms-key="aiapi_cta_h2" data-cms-label="CTA Heading" data-cms-attr="text">Ready to Connect Your Stack <span data-cms-key="aiapi_hl_127" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-orange-gradient">With AI</span>?</span></h2>
           <p className="text-[#E2E8F0] mb-8 leading-relaxed"><span data-cms-key="aiapi_cta_sub" data-cms-label="CTA Subtext" data-cms-attr="text">Book a free Integration Discovery Call. We'll map your current tools, identify the AI integration opportunities, and show you what's possible before any commitment is made.</span></p>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
+          <Link to="/contact/" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
             style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 4px 20px rgba(255,107,43,0.4)" }}>
             Book My Integration Call <ArrowRight size={16} />
           </Link>

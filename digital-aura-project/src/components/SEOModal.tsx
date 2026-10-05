@@ -179,7 +179,7 @@ const SEOModal = ({ open, onClose }: Props) => {
                     </div>
                     <p className="text-[13px] text-[#94A3B8] leading-relaxed"><span data-cms-key="seomodal_p_2" data-cms-label="Body Text" data-cms-attr="text">{s.seomodal_p_2 || "Let's build an SEO strategy that brings consistent, high quality traffic to your business every month."}</span></p>
                   </div>
-                  <Link to="/contact" onClick={onClose}
+                  <Link to="/contact/" onClick={onClose}
                     className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-bold text-white whitespace-nowrap transition-all hover:gap-3"
                     style={{ background: "linear-gradient(135deg, #22C55E, #16a34a)", boxShadow: "0 6px 20px rgba(34,197,94,0.4)" }}>
                     Start Growing Organically <ArrowRight size={14} />

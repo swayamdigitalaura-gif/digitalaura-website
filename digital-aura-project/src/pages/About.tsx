@@ -35,7 +35,7 @@ const DEFAULT_TEAM = [
   { name: "Satish Prajapati",   role: "Digital Marketing Executive",        color: "#F59E0B",  ai: false, photo: "/team/satish.png" },
   { name: "Swayam Parikh",      role: "AI Full Stack Developer",            color: "#7C3AED",  ai: true,  photo: "/team/swayam.png" },
   { name: "Abhishek Kaushal",   role: "Shopify Developer",                  color: "#7C3AED",  ai: false, photo: "/team/abhishek.png" },
-  { name: "Bhavesh Bhavsar",    role: "SEO Executive",                      color: "#0EA5E9",  ai: false, photo: "/team/bhavesh.png" },
+  { name: "Bhavesh Bhavsar",    role: "SEO Executive",                      color: "#0EA5E9",  ai: false, photo: "/team/bhavesh.webp" },
   { name: "Jinali Lodariya",    role: "SEO Executive",                      color: "#22C55E",  ai: false, photo: "/team/jinali.png" },
   { name: "Nidhi Changela",     role: "SEO Executive",                      color: "#1A6FE8",  ai: false, photo: "/team/nidhi.png" },
   { name: "Nitiksha Motivaras", role: "Social Media Manager",               color: "#FF6B2B",  ai: false, photo: "/team/nitiksha.png" },
@@ -498,7 +498,7 @@ const About = () => {
               <span data-cms-key="about_cs_heading" data-cms-label="Case Studies Heading" data-cms-attr="text">{s.about_cs_heading || "What We've Delivered"}</span>
             </h2>
           </div>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-white font-bold text-xs shrink-0 self-start md:self-auto transition-all hover:gap-3"
+          <Link to="/contact/" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-white font-bold text-xs shrink-0 self-start md:self-auto transition-all hover:gap-3"
             style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 4px 14px rgba(255,107,43,0.3)" }}>
             Get Similar Results <ArrowRight size={13} />
           </Link>
@@ -635,7 +635,7 @@ const About = () => {
             className="text-[#E2E8F0] mb-8 leading-relaxed">
             {s.about_cta_subtext || "Partner with Digital Aura and let our dedicated team drive measurable results for your business."}
           </p>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
+          <Link to="/contact/" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
             style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 4px 20px rgba(255,107,43,0.4)" }}>
             <span data-cms-key="about_cta_button" data-cms-label="CTA Button Text" data-cms-attr="text">
               {s.about_cta_button || "Get In Touch"}

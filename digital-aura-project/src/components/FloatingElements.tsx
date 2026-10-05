@@ -35,7 +35,7 @@ const CookieBar = () => {
     >
       <p className="text-xs text-[#374151] mb-3 leading-relaxed">
         We use cookies to improve your experience. See our{" "}
-        <Link to="/privacy-policy" className="text-[#FF6B2B] font-semibold hover:underline">Privacy Policy</Link>.
+        <Link to="/privacy-policy/" className="text-[#FF6B2B] font-semibold hover:underline">Privacy Policy</Link>.
       </p>
       <div className="flex gap-2">
         <button onClick={accept} className="btn-orange px-4 py-1.5 text-xs">Accept</button>

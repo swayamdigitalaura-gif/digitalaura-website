@@ -213,7 +213,7 @@ const CaseStudyGrandPalace = () => {
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative z-10 pt-16 pb-14 md:pt-20 md:pb-16">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
             <div className="flex flex-col items-center gap-4 mb-6">
-              <Link to="/case-studies" className="inline-flex items-center gap-1.5 text-sm font-medium" style={{ color: GOLD_LIGHT }}>
+              <Link to="/case-studies/" className="inline-flex items-center gap-1.5 text-sm font-medium" style={{ color: GOLD_LIGHT }}>
                 <ArrowLeft size={15} /> All Case Studies
               </Link>
               <span
@@ -465,7 +465,7 @@ const CaseStudyGrandPalace = () => {
               {t("gp_cta_text", "A strong reputation doesn't defend itself online. If your business is running the way The Grand Palace was — great in person, invisible on Google — let's fix the second part.")}
             </p>
             <Link
-              to="/contact"
+              to="/contact/"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-bold transition-all hover:gap-3"
               style={{ background: GOLD, color: INK }}
             >

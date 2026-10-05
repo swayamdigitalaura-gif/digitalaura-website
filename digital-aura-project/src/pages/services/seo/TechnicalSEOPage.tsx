@@ -60,11 +60,11 @@ const faqs = [
 ];
 
 const relatedServices = [
-  { label: "SEO Audit & Strategy", href: "/services/seo-content-marketing/seo-audit-strategy" },
-  { label: "On Page SEO",          href: "/services/seo-content-marketing/on-page-seo" },
-  { label: "Local SEO",            href: "/services/seo-content-marketing/local-seo" },
-  { label: "Off Page SEO",         href: "/services/seo-content-marketing/off-page-seo" },
-  { label: "eCommerce SEO",        href: "/services/seo-content-marketing/ecommerce-seo" },
+  { label: "SEO Audit & Strategy", href: "/services/seo-content-marketing/seo-audit-strategy/" },
+  { label: "On Page SEO",          href: "/services/seo-content-marketing/on-page-seo/" },
+  { label: "Local SEO",            href: "/services/seo-content-marketing/local-seo/" },
+  { label: "Off Page SEO",         href: "/services/seo-content-marketing/off-page-seo/" },
+  { label: "eCommerce SEO",        href: "/services/seo-content-marketing/ecommerce-seo/" },
 ];
 
 const FAQItem = ({ q, a, idx = 0 }: { q: string; a: string; idx?: number }) => {
@@ -337,7 +337,7 @@ const TechnicalSEOPage = () => {
       </div>
       <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative z-10 pt-20 pb-8">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <Link to="/services/seo-content-marketing" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: accentColor }}>← Back to SEO &amp; Content Marketing</Link>
+          <Link to="/services/seo-content-marketing/" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: accentColor }}>← Back to SEO &amp; Content Marketing</Link>
           <div className="flex justify-center mb-6">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase" style={{ background: `${accentColor}12`, color: accentColor, border: `1px solid ${accentColor}30` }}>
               <Gauge size={12} /> <span data-cms-key="techseo_hero_badge" data-cms-label="Hero Badge" data-cms-attr="text">{heroBadge}</span>
@@ -355,7 +355,7 @@ const TechnicalSEOPage = () => {
             ))}
           </div>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link to="/contact#contact-form" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3" style={{ background: "linear-gradient(135deg, #22C55E, #16a34a)", boxShadow: `0 8px 24px ${accentColor}40` }}>
+            <Link to="/contact/#contact-form" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3" style={{ background: "linear-gradient(135deg, #22C55E, #16a34a)", boxShadow: `0 8px 24px ${accentColor}40` }}>
               <span data-cms-key="techseo_hero_cta1" data-cms-label="Hero CTA 1" data-cms-attr="text">{heroCta1}</span> <Gauge size={15} />
             </Link>
             <a href="#included" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold border-2 text-[#0A1628] hover:bg-[#0A1628] hover:text-white transition-all" style={{ borderColor: "#0A1628" }}><span data-cms-key="techseo_hero_cta2" data-cms-label="Hero CTA 2" data-cms-attr="text">{heroCta2}</span></a>
@@ -581,7 +581,7 @@ const TechnicalSEOPage = () => {
           <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mb-6 tracking-widest uppercase" style={{ background: `${accentColor}15`, border: `1px solid ${accentColor}40`, color: accentColor }} data-cms-key="techseo_cta_badge" data-cms-label="Final CTA Badge" data-cms-attr="text">{ctaBadge}</span>
           <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4" data-cms-key="techseo_cta_h2" data-cms-label="Final CTA Heading" data-cms-attr="text">{ctaH2}</h2>
           <p className="text-[#E2E8F0] mb-8 leading-relaxed" data-cms-key="techseo_cta_text" data-cms-label="Final CTA Text" data-cms-attr="text">{ctaText}</p>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3" style={{ background: "linear-gradient(135deg, #22C55E, #16a34a)", boxShadow: "0 4px 20px rgba(34,197,94,0.4)" }}>
+          <Link to="/contact/" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3" style={{ background: "linear-gradient(135deg, #22C55E, #16a34a)", boxShadow: "0 4px 20px rgba(34,197,94,0.4)" }}>
             <span data-cms-key="techseo_cta_button" data-cms-label="Final CTA Button" data-cms-attr="text">{ctaButton}</span> <ArrowRight size={16} />
           </Link>
         </motion.div>

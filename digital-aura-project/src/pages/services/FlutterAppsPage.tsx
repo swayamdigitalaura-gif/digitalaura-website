@@ -73,7 +73,7 @@ const FlutterAppsPage = () => (
       </div>
       <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative z-10 pt-20 pb-20">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <Link to="/services" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: accent }}>← Back to All Services</Link>
+          <Link to="/services/" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: accent }}>← Back to All Services</Link>
           <div className="flex justify-center mb-6">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase" style={{ background: accentBg, color: accent, border: `1px solid ${accentBorder}` }}>
               <Layers size={12} /> Flutter Development
@@ -91,7 +91,7 @@ const FlutterAppsPage = () => (
             ))}
           </div>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-white transition-all hover:gap-3 hover:opacity-90"
+            <Link to="/contact/" className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-white transition-all hover:gap-3 hover:opacity-90"
               style={{ background: `linear-gradient(135deg,${accent},#2ea8d8)`, boxShadow: `0 8px 24px rgba(84,197,248,0.35)` }}>
               Start My Flutter App <ArrowRight size={15} />
             </Link>
@@ -251,7 +251,7 @@ const FlutterAppsPage = () => (
             Ready to Launch Your <span style={{ color: accent }}>Flutter App</span>?
           </h2>
           <p className="text-[#E2E8F0] mb-8 leading-relaxed">Book a free discovery call. We'll map your requirements, choose the right Flutter architecture, and give you a clear build plan with timeline and cost.</p>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
+          <Link to="/contact/" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
             style={{ background: "linear-gradient(135deg,#FF6B2B,#e85a1a)", boxShadow: "0 4px 20px rgba(255,107,43,0.4)" }}>
             Book My App Discovery Call <ArrowRight size={16} />
           </Link>

@@ -36,7 +36,7 @@ const CtaBanner = () => {
           {s.cta_subtext || "From your first app to your 100th lead, Digital Aura is your all in one AI powered digital partner."}
         </p>
 
-        <a href="/contact" data-cms-key="cta_button" data-cms-label="CTA Button" data-cms-attr="text"
+        <a href="/contact/" data-cms-key="cta_button" data-cms-label="CTA Button" data-cms-attr="text"
           className="btn-orange px-10 py-4 text-lg gap-2 mb-6 inline-flex">
           {s.cta_button || "Start Your Project Today"} <ArrowRight size={20} />
         </a>

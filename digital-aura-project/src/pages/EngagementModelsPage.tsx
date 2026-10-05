@@ -217,7 +217,7 @@ const EngagementModelsPage = () => {
             <h1 className="text-4xl md:text-5xl lg:text-[56px] font-black leading-[1.1] text-[#0A1628] mb-5 tracking-tight"><span data-cms-key="engage_hero_h1" data-cms-label="Hero Heading" data-cms-attr="text">{heroH1}</span> <span data-cms-key="engage_hero_h1b" data-cms-label="Hero Heading (Highlight)" data-cms-attr="text" className="text-orange-gradient">{heroH1b}</span></h1>
             <p className="text-[#4B5563] text-lg max-w-xl mx-auto leading-relaxed mb-8"><span data-cms-key="engage_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{heroSub}</span></p>
             <div className="flex flex-wrap gap-3 justify-center">
-              <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-bold text-sm transition-all hover:gap-3"
+              <Link to="/contact/" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-bold text-sm transition-all hover:gap-3"
                 style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 8px 24px rgba(255,107,43,0.3)" }}><span data-cms-key="engage_hero_cta" data-cms-label="Hero CTA Button" data-cms-attr="text">{heroCta}</span> <ArrowRight size={15} />
               </Link>
               <a href="#models" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm border transition-all"
@@ -279,7 +279,7 @@ const EngagementModelsPage = () => {
                     <h3 className="text-2xl md:text-3xl font-black text-[#0A1628]"><span data-cms-key={`engage_model_${current.id}_title`} data-cms-label="Model Title" data-cms-attr="text">{current.titleField}</span></h3>
                     <p className="font-semibold mt-1 text-sm" style={{ color: current.color }}><span data-cms-key={`engage_model_${current.id}_tagline`} data-cms-label="Model Tagline" data-cms-attr="text">{current.tagline}</span></p>
                   </div>
-                  <Link to="/contact"
+                  <Link to="/contact/"
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold text-sm shrink-0 transition-all hover:gap-3"
                     style={{ background: `linear-gradient(135deg, ${current.color}, ${current.color}cc)`, boxShadow: `0 4px 16px ${current.color}35` }}>
                     Get Started <ArrowRight size={15} />
@@ -434,7 +434,7 @@ const EngagementModelsPage = () => {
           </div>
           <div className="text-center">
             <p className="text-[#6B7280] text-sm mb-5"><span data-cms-key="engage_p_6" data-cms-label="Body Text" data-cms-attr="text">{p6}</span></p>
-            <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
+            <Link to="/contact/" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
               style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 8px 24px rgba(255,107,43,0.35)" }}>
               <span data-cms-key="engage_guide_cta" data-cms-label="Guide CTA Button" data-cms-attr="text">{guideCta}</span> <ArrowRight size={16} />
             </Link>
@@ -455,7 +455,7 @@ const EngagementModelsPage = () => {
               style={{ background: "rgba(255,107,43,0.12)", border: "1px solid rgba(255,107,43,0.3)" }}><span data-cms-key="engage_cta_badge" data-cms-label="CTA Badge" data-cms-attr="text">{ctaBadge}</span></span>
             <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4"><span data-cms-key="engage_cta_h2" data-cms-label="CTA Heading" data-cms-attr="text">{ctaH2}</span> <span data-cms-key="engage_cta_h2b" data-cms-label="CTA Heading (Highlight)" data-cms-attr="text" className="text-orange-gradient">{ctaH2b}</span>?</h2>
             <p className="text-[#94a3b8] mb-8 leading-relaxed"><span data-cms-key="engage_p_7" data-cms-label="Body Text" data-cms-attr="text">{p7}</span></p>
-            <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
+            <Link to="/contact/" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
               style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 4px 20px rgba(255,107,43,0.4)" }}>
               <span data-cms-key="engage_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{ctaBtn}</span> <ArrowRight size={16} />
             </Link>

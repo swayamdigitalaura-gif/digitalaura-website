@@ -178,7 +178,7 @@ const LinkedInYouTubePage = () => {
       </div>
       <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative z-10 pt-20 pb-20">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <Link to="/services" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: accentColor }}>
+          <Link to="/services/" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: accentColor }}>
             ← Back to All Services
           </Link>
           <div className="flex justify-center mb-6">
@@ -195,7 +195,7 @@ const LinkedInYouTubePage = () => {
             <span data-cms-key="linkedin_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.linkedin_hero_sub || "We help businesses connect with decision makers and engaged audiences through strategic LinkedIn and YouTube ad campaigns: from B2B targeting to video-driven storytelling: designed to generate high quality leads and build strong brand visibility."}</span>
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link to="/contact"
+            <Link to="/contact/"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
               style={{ background: "linear-gradient(135deg, #0A66C2, #084d94)", boxShadow: `0 8px 24px ${accentColor}40` }}>
               <span data-cms-key="linkedin_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.linkedin_cta_btn || "Launch My Campaign"}</span> <Linkedin size={15} />
@@ -382,7 +382,7 @@ const LinkedInYouTubePage = () => {
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4"><span data-cms-key="linkedin_cta_h2" data-cms-label="CTA Heading" data-cms-attr="text">Ready to Build an <span data-cms-key="linkedin_hl_123" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-orange-gradient">Audience</span> That <span data-cms-key="linkedin_hl_124" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-purple-gradient">Converts</span>?</span></h2>
           <p className="text-[#E2E8F0] mb-8 leading-relaxed"><span data-cms-key="linkedin_cta_sub" data-cms-label="CTA Subtext" data-cms-attr="text">Book a free LinkedIn and YouTube Strategy Call. We'll map your content approach, define your targeting, and show you how to build a pipeline of qualified leads from organic and paid.</span></p>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
+          <Link to="/contact/" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
             style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 4px 20px rgba(255,107,43,0.4)" }}>
             Book My Free Strategy Call <ArrowRight size={16} />
           </Link>

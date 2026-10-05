@@ -213,7 +213,7 @@ const AIChatbotAssistantPage = () => {
       <div className="absolute inset-0 pointer-events-none dot-pattern opacity-30" />
       <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative z-10 pt-20 pb-20">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
-          <Link to="/services" className="inline-flex items-center gap-1 text-xs font-semibold mb-4 hover:underline" style={{ color: accent }}>← Back to All Services</Link>
+          <Link to="/services/" className="inline-flex items-center gap-1 text-xs font-semibold mb-4 hover:underline" style={{ color: accent }}>← Back to All Services</Link>
           <span className="flex justify-center">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold mb-6 tracking-widest uppercase"
               style={{ background: "rgba(26,111,232,0.1)", color: accent, border: "1px solid rgba(26,111,232,0.3)" }}>
@@ -229,7 +229,7 @@ const AIChatbotAssistantPage = () => {
             <span data-cms-key="aichatbot_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.aichatbot_hero_sub || "We build AI powered chatbots and intelligent assistants that don't just respond — they understand context, remember conversations, take actions, and resolve problems end to end. Built on your data, trained on your business logic, deployed where your customers and teams actually are."}</span>
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2">
+            <Link to="/contact/" className="btn-orange px-8 py-4 text-base gap-2">
               <span data-cms-key="aichatbot_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.aichatbot_cta_btn || "Book a Free Chatbot Strategy Call"}</span> <ArrowRight size={18} />
             </Link>
             <a href="#services-list" className="btn-outline-dark px-8 py-4 text-base">Our Assistant Services</a>
@@ -461,7 +461,7 @@ const AIChatbotAssistantPage = () => {
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4"><span data-cms-key="aichatbot_cta_h2" data-cms-label="CTA Heading" data-cms-attr="text">Let's Build an <span data-cms-key="aichatbot_hl_149" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-orange-gradient">Assistant</span> That Actually <span data-cms-key="aichatbot_hl_150" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-purple-gradient">Resolves Things</span>.</span></h2>
           <p className="text-[#E2E8F0] mb-8 leading-relaxed"><span data-cms-key="aichatbot_cta_sub" data-cms-label="CTA Subtext" data-cms-attr="text">Book a free Chatbot Strategy Call. We'll map your highest volume conversations, define what an AI assistant can handle autonomously, and show you what real resolution rates look like for your business.</span></p>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
+          <Link to="/contact/" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
             style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 4px 20px rgba(255,107,43,0.4)" }}>
             Book My Strategy Call <ArrowRight size={16} />
           </Link>

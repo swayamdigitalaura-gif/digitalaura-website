@@ -205,7 +205,7 @@ const BlogPage = () => {
           <p className="text-[#6B7280] mb-6" data-cms-key="blog_cta_text" data-cms-label="Blog CTA Text" data-cms-attr="text">
             {s.blog_cta_text || 'Want strategies like these implemented for your business?'}
           </p>
-          <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2 inline-flex">
+          <Link to="/contact/" className="btn-orange px-8 py-4 text-base gap-2 inline-flex">
             <span data-cms-key="blog_cta_button" data-cms-label="Blog CTA Button" data-cms-attr="text">
               {s.blog_cta_button || 'Talk to Our Team'}
             </span>

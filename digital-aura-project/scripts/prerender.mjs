@@ -31,6 +31,7 @@ const ROUTES = [
   '/awards',
   '/website-development-services-ahmedabad',
   '/mobile-apps',
+  '/service-areas',
   '/privacy-policy',
   '/terms-and-conditions',
   '/cancellation-refund-policy',

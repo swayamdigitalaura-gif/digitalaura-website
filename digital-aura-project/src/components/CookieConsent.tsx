@@ -56,7 +56,7 @@ const CookieConsent = () => {
                 <p className="text-[#6B7280] text-xs leading-relaxed">
                   We use cookies to enhance your browsing experience, analyse site traffic, and personalise content.
                   By clicking <strong className="text-[#0A1628]">Accept All</strong>, you consent to our use of cookies.{" "}
-                  <Link to="/privacy-policy" className="underline font-semibold" style={{ color: "#FF6B2B" }}>
+                  <Link to="/privacy-policy/" className="underline font-semibold" style={{ color: "#FF6B2B" }}>
                     Privacy Policy
                   </Link>
                 </p>

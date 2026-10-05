@@ -83,7 +83,7 @@ export const posts: BlogPost[] = [
 <h3>1. Google answers a growing share of queries before anyone clicks anything</h3>
 <p>AI Overviews sit above the traditional blue links for a large and growing portion of informational searches. For queries like "what is technical SEO" or "how long does SEO take," Google increasingly generates a synthesized answer directly on the results page, sourced from a handful of pages it trusts — Google documents how these AI-powered results work and what makes a page eligible in its own <a href="https://developers.google.com/search/docs/appearance/ai-features" target="_blank" rel="noopener noreferrer">Search Central guidance on AI features</a>. If your content isn't structured to be quotable, you're invisible for that query even if you'd otherwise rank #1 in the traditional list below.</p>
 <h3>2. AI chat tools are a real, growing discovery channel</h3>
-<p>People are asking ChatGPT, Perplexity, and Gemini questions they used to type into Google — "who's a good SEO agency in Ahmedabad," "what's the difference between Shopify and WooCommerce." These tools generate answers from their training data and, increasingly, live web retrieval. If your site isn't structured for an AI model to read, understand, and trust, you don't exist in that conversation. We go deeper on exactly what separates these two channels in our <a href="/blog/aeo-vs-geo-vs-llmo-explained">AEO vs GEO vs LLMO breakdown</a>.</p>
+<p>People are asking ChatGPT, Perplexity, and Gemini questions they used to type into Google — "who's a good SEO agency in Ahmedabad," "what's the difference between Shopify and WooCommerce." These tools generate answers from their training data and, increasingly, live web retrieval. If your site isn't structured for an AI model to read, understand, and trust, you don't exist in that conversation. We go deeper on exactly what separates these two channels in our <a href="/blog/aeo-vs-geo-vs-llmo-explained/">AEO vs GEO vs LLMO breakdown</a>.</p>
 
 <h2>SEO, AEO, and GEO: how they actually relate</h2>
 <p>These aren't three separate disciplines competing for your budget — they're three outcomes of largely the same underlying work, done properly.</p>
@@ -99,9 +99,9 @@ export const posts: BlogPost[] = [
 
 <h2>What actually moves rankings in 2026</h2>
 <h3>Technical health, still non-negotiable</h3>
-<p>Core Web Vitals, mobile usability, crawlability, and clean site architecture remain baseline requirements — see <a href="https://web.dev/articles/vitals" target="_blank" rel="noopener noreferrer">web.dev's Core Web Vitals documentation</a> for the current thresholds. A slow, broken site doesn't get a pass because your content is good — Google can't rank what it can't properly crawl and render. We cover this in full in our <a href="/blog/technical-seo-practices-2026">9 technical SEO practices for 2026</a>.</p>
+<p>Core Web Vitals, mobile usability, crawlability, and clean site architecture remain baseline requirements — see <a href="https://web.dev/articles/vitals" target="_blank" rel="noopener noreferrer">web.dev's Core Web Vitals documentation</a> for the current thresholds. A slow, broken site doesn't get a pass because your content is good — Google can't rank what it can't properly crawl and render. We cover this in full in our <a href="/blog/technical-seo-practices-2026/">9 technical SEO practices for 2026</a>.</p>
 <h3>Content that answers the actual question, immediately</h3>
-<p>The single highest-leverage change most sites can make: open every page with a direct, complete answer to its core question in the first 2-3 sentences, then elaborate below. This is what gets lifted into AI Overviews and quoted by AI chat tools — and, not coincidentally, it's also what keeps human readers from bouncing. Our <a href="/blog/on-page-seo-checklist-2026">on-page SEO checklist</a> walks through exactly how to structure this page by page.</p>
+<p>The single highest-leverage change most sites can make: open every page with a direct, complete answer to its core question in the first 2-3 sentences, then elaborate below. This is what gets lifted into AI Overviews and quoted by AI chat tools — and, not coincidentally, it's also what keeps human readers from bouncing. Our <a href="/blog/on-page-seo-checklist-2026/">on-page SEO checklist</a> walks through exactly how to structure this page by page.</p>
 <h3>E-E-A-T signals that are actually verifiable</h3>
 <p>Real author bylines with real credentials, dates, and named specifics beat generic "our team" content. Google and AI models both increasingly weight whether a claim can be traced to a real, accountable source.</p>
 <h3>Structured data across the board</h3>
@@ -117,7 +117,7 @@ export const posts: BlogPost[] = [
 </div>
 
 <h2>What doesn't work anymore (and mostly never did)</h2>
-<p>Keyword-stuffed content written purely for algorithms, private blog network links, and AI-generated filler content with no real expertise behind it were always weak strategies — they're simply easier for both Google and AI models to detect and discount now. If your 2026 SEO plan is "publish more AI-written posts faster," you're optimising for the wrong metric. For marketers specifically figuring out where AI tools genuinely help versus where they hurt, we break this down in <a href="/blog/ai-seo-skills-for-marketers-2026">6 AI SEO skills every marketer needs</a>.</p>
+<p>Keyword-stuffed content written purely for algorithms, private blog network links, and AI-generated filler content with no real expertise behind it were always weak strategies — they're simply easier for both Google and AI models to detect and discount now. If your 2026 SEO plan is "publish more AI-written posts faster," you're optimising for the wrong metric. For marketers specifically figuring out where AI tools genuinely help versus where they hurt, we break this down in <a href="/blog/ai-seo-skills-for-marketers-2026/">6 AI SEO skills every marketer needs</a>.</p>
 
 <h2>Conclusion</h2>
 <p>SEO in 2026 isn't a different discipline from the SEO you already know — it's the same fundamentals with two new layers of visibility stacked on top. Fix your technical foundation, write content that answers the question immediately, and build the structured data and authority signals that let both Google and AI models trust what you're saying. Do that consistently and you're positioned for traditional rankings, AI Overviews, and AI chat citations at once — not chasing three separate strategies.</p>
@@ -173,24 +173,24 @@ export const posts: BlogPost[] = [
 </div>
 
 <h2>1. Get your primary category right</h2>
-<p>Your primary GBP category is one of the strongest relevance signals Google uses to decide which searches you show up for — pick the most specific category that matches what customers search for, not the broadest one that sounds impressive. We cover category selection, plus the full profile-completeness picture, in our <a href="/blog/google-business-profile-seo-checklist">complete GBP SEO checklist</a>.</p>
+<p>Your primary GBP category is one of the strongest relevance signals Google uses to decide which searches you show up for — pick the most specific category that matches what customers search for, not the broadest one that sounds impressive. We cover category selection, plus the full profile-completeness picture, in our <a href="/blog/google-business-profile-seo-checklist/">complete GBP SEO checklist</a>.</p>
 
 <h2>2. Prioritise review velocity, not just review count</h2>
-<p>A business with 40 reviews, five of them from the last month, often outranks a business with 150 reviews and none in the last six months. Recent review activity signals to Google that the business is currently operating and currently trusted. Our <a href="/blog/local-seo-strategies-2026">local SEO strategies guide</a> covers the full review system, citation building, and multi-location approach beyond GBP alone.</p>
+<p>A business with 40 reviews, five of them from the last month, often outranks a business with 150 reviews and none in the last six months. Recent review activity signals to Google that the business is currently operating and currently trusted. Our <a href="/blog/local-seo-strategies-2026/">local SEO strategies guide</a> covers the full review system, citation building, and multi-location approach beyond GBP alone.</p>
 
 <div class="da-stat-callout">A home appliance repair client of ours saw a 174.5% traffic surge and 200% more service bookings after we rebuilt their GBP profile around exactly this kind of review and category discipline, combined with Meta Ads and conversion-focused landing pages.</div>
 
 <h2>3. Upload photos with descriptive, geotagged file names</h2>
-<p>Rename image files from "IMG_2481.jpg" to something like "seo-agency-ahmedabad-office.jpg" before uploading, and add fresh photos at least twice a month. We cover the full photo strategy, section by section, in our <a href="/blog/google-business-profile-seo-checklist">complete GBP SEO checklist</a>.</p>
+<p>Rename image files from "IMG_2481.jpg" to something like "seo-agency-ahmedabad-office.jpg" before uploading, and add fresh photos at least twice a month. We cover the full photo strategy, section by section, in our <a href="/blog/google-business-profile-seo-checklist/">complete GBP SEO checklist</a>.</p>
 
 <h2>4. Answer your own Q&A section before customers do</h2>
-<p>Proactively add and answer 8-10 questions yourself — the ones you get asked on every sales call — instead of waiting for the Q&A feature to fill up with customer questions first. Our <a href="/blog/google-business-profile-seo-checklist">GBP SEO checklist</a> covers the full Q&A approach alongside every other profile section.</p>
+<p>Proactively add and answer 8-10 questions yourself — the ones you get asked on every sales call — instead of waiting for the Q&A feature to fill up with customer questions first. Our <a href="/blog/google-business-profile-seo-checklist/">GBP SEO checklist</a> covers the full Q&A approach alongside every other profile section.</p>
 
 <h2>5. Post to GBP weekly, not sporadically</h2>
-<p>GBP Posts expire after seven days, and consistent weekly posting reads as an active-management signal to Google. Full posting cadence and content rotation is covered in our <a href="/blog/google-business-profile-seo-checklist">GBP SEO checklist</a>.</p>
+<p>GBP Posts expire after seven days, and consistent weekly posting reads as an active-management signal to Google. Full posting cadence and content rotation is covered in our <a href="/blog/google-business-profile-seo-checklist/">GBP SEO checklist</a>.</p>
 
 <h2>6. Keep NAP identical everywhere</h2>
-<p>Any mismatch between your GBP listing and your website footer, Facebook page, or directory listings — even "St." versus "Street" — creates confusion Google has to resolve, usually by trusting you less. This is one part of a much broader citation strategy; see our <a href="/blog/local-seo-strategies-2026">local SEO strategies guide</a> for the full citation-building approach.</p>
+<p>Any mismatch between your GBP listing and your website footer, Facebook page, or directory listings — even "St." versus "Street" — creates confusion Google has to resolve, usually by trusting you less. This is one part of a much broader citation strategy; see our <a href="/blog/local-seo-strategies-2026/">local SEO strategies guide</a> for the full citation-building approach.</p>
 
 <h2>7. Respond to every review within 48 hours</h2>
 <p>Response rate and response speed are both read as engagement signals. A simple, specific reply — mentioning the service, not a copy-pasted "Thank you!" — does more for both ranking and conversion than most businesses realise.</p>
@@ -199,7 +199,7 @@ export const posts: BlogPost[] = [
 <p>None of these seven tactics work in isolation if your actual physical address or service area doesn't match what you've listed, or if you're using a P.O. box or virtual office where Google's guidelines don't allow it — see Google's own <a href="https://support.google.com/business/answer/9887260" target="_blank" rel="noopener noreferrer">guidance on ranking with Business Profile</a> for the eligibility rules. Get the fundamentals right first, then layer these tactics on top.</p>
 
 <h2>Conclusion</h2>
-<p>None of these seven tricks require a developer, a budget, or special access — they're all things a business owner can action directly inside Google Business Profile this week. The businesses that consistently rank in the local pack aren't doing anything secret; they're just doing all seven of these, consistently, while their competitors do two or three of them once and stop. For the full checklist including messaging, booking, and business-information accuracy, see our <a href="/blog/google-business-profile-seo-checklist">complete GBP SEO checklist</a>.</p>
+<p>None of these seven tricks require a developer, a budget, or special access — they're all things a business owner can action directly inside Google Business Profile this week. The businesses that consistently rank in the local pack aren't doing anything secret; they're just doing all seven of these, consistently, while their competitors do two or three of them once and stop. For the full checklist including messaging, booking, and business-information accuracy, see our <a href="/blog/google-business-profile-seo-checklist/">complete GBP SEO checklist</a>.</p>
 
 <p class="text-xs" style="color:#9CA3AF">Sources: <a href="https://support.google.com/business/answer/7091" target="_blank" rel="noopener noreferrer">Google Business Profile Help — business information</a>, <a href="https://support.google.com/business/answer/9887260" target="_blank" rel="noopener noreferrer">Google — ranking on Google with Business Profile</a>.</p>
 `,
@@ -262,7 +262,7 @@ export const posts: BlogPost[] = [
 <li>Include your primary keyword naturally, ideally near the beginning</li>
 <li>Keep it under roughly 60 characters so it doesn't get cut off in search results — see Google's own guidance on <a href="https://developers.google.com/search/docs/appearance/title-link" target="_blank" rel="noopener noreferrer">how title links are generated and truncated</a></li>
 <li>Make every title unique across your site — duplicate titles confuse both users and search engines</li>
-<li>Write for the click, not just the keyword: "Shopify SEO Tutorial 2026: Step-by-Step Guide" outperforms "Shopify SEO," and we apply this exact rule in our own <a href="/blog/shopify-seo-tutorial-2026">Shopify SEO tutorial</a></li>
+<li>Write for the click, not just the keyword: "Shopify SEO Tutorial 2026: Step-by-Step Guide" outperforms "Shopify SEO," and we apply this exact rule in our own <a href="/blog/shopify-seo-tutorial-2026/">Shopify SEO tutorial</a></li>
 </ul>
 
 <h2>2. Meta description</h2>
@@ -287,7 +287,7 @@ export const posts: BlogPost[] = [
 </ul>
 
 <h2>5. Opening paragraph — the highest-leverage fix</h2>
-<p>The first 2-3 sentences under your H1 should directly and completely answer the question implied by your title. This is the single change most likely to improve both traditional readability and eligibility for Google's AI Overviews — we go deeper on exactly why in <a href="/blog/seo-in-2026-ai-era">SEO in 2026: the complete AI search strategy guide</a>.</p>
+<p>The first 2-3 sentences under your H1 should directly and completely answer the question implied by your title. This is the single change most likely to improve both traditional readability and eligibility for Google's AI Overviews — we go deeper on exactly why in <a href="/blog/seo-in-2026-ai-era/">SEO in 2026: the complete AI search strategy guide</a>.</p>
 
 <div class="da-stat-callout">When we restructured an IVF hospital client's pages this way — leading with direct answers to real patient questions instead of generic service descriptions — organic traffic grew 76.7% in 6 months and appointment leads tripled.</div>
 
@@ -302,7 +302,7 @@ export const posts: BlogPost[] = [
 <ul>
 <li>Link to 3-5 relevant pages within your own site from every piece of content</li>
 <li>Use descriptive anchor text ("read our Shopify SEO guide") instead of generic text ("click here")</li>
-<li>Make sure your most important pages receive the most internal links from across the site — this is how you signal priority to Google, and it compounds with the topic-cluster approach in our <a href="/blog/increase-organic-website-traffic-10x">10x organic traffic framework</a></li>
+<li>Make sure your most important pages receive the most internal links from across the site — this is how you signal priority to Google, and it compounds with the topic-cluster approach in our <a href="/blog/increase-organic-website-traffic-10x/">10x organic traffic framework</a></li>
 </ul>
 
 <h2>8. Image optimisation</h2>
@@ -313,7 +313,7 @@ export const posts: BlogPost[] = [
 </ul>
 
 <h2>9. Schema markup</h2>
-<p>Add Article, FAQPage, or Product schema depending on the page type — see Google's <a href="https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data" target="_blank" rel="noopener noreferrer">structured data documentation</a> for the full reference. This doesn't change what users see, but it gives search engines and AI models an unambiguous, structured description of your content. We cover schema in more technical depth in our <a href="/blog/technical-seo-practices-2026">technical SEO practices guide</a>.</p>
+<p>Add Article, FAQPage, or Product schema depending on the page type — see Google's <a href="https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data" target="_blank" rel="noopener noreferrer">structured data documentation</a> for the full reference. This doesn't change what users see, but it gives search engines and AI models an unambiguous, structured description of your content. We cover schema in more technical depth in our <a href="/blog/technical-seo-practices-2026/">technical SEO practices guide</a>.</p>
 
 <h2>10. Mobile and page speed check</h2>
 <p>Run the page through Google's PageSpeed Insights and check it renders cleanly on an actual phone, not just a resized browser window. Google indexes and ranks based on the mobile version of your site — see Google's own <a href="https://developers.google.com/search/docs/crawling-indexing/mobile/mobile-sites-mobile-first-indexing" target="_blank" rel="noopener noreferrer">mobile-first indexing documentation</a> — desktop-only optimisation is an incomplete job.</p>
@@ -379,18 +379,18 @@ export const posts: BlogPost[] = [
 <h3>Keyword strategy for a zero-authority site</h3>
 <p>This is where most new sites go wrong: targeting the same competitive head terms as established competitors. A brand new site has no chance of outranking a 5-year-old domain for "digital marketing agency" in month one. Instead, target long-tail, lower-competition variations — "digital marketing agency for dental clinics in Ahmedabad" instead of "digital marketing agency." You can win these faster, and they compound into topical authority that helps you eventually compete for the harder terms.</p>
 <h3>On-page basics on every core page</h3>
-<p>Title tags, meta descriptions, one clear H1 per page, and a direct-answer opening paragraph — get every page structurally sound before you start publishing volume. Our <a href="/blog/on-page-seo-checklist-2026">on-page SEO checklist</a> covers this in full, element by element.</p>
+<p>Title tags, meta descriptions, one clear H1 per page, and a direct-answer opening paragraph — get every page structurally sound before you start publishing volume. Our <a href="/blog/on-page-seo-checklist-2026/">on-page SEO checklist</a> covers this in full, element by element.</p>
 
 <h2>Month 2: Content depth and initial authority signals</h2>
 <ul>
 <li>Publish 2-4 genuinely comprehensive pieces of content targeting your long-tail keyword list — depth beats frequency at this stage</li>
 <li>Start outreach for your first few backlinks: guest posts, directory listings relevant to your industry, partner mentions</li>
-<li>Claim and fully optimise your Google Business Profile if you serve a local market — see our <a href="/blog/local-seo-strategies-2026">local SEO strategies guide</a></li>
+<li>Claim and fully optimise your Google Business Profile if you serve a local market — see our <a href="/blog/local-seo-strategies-2026/">local SEO strategies guide</a></li>
 <li>Begin internal linking between your pages as content volume grows — this is often forgotten until later, which wastes early momentum</li>
 </ul>
 
 <h2>Month 3-4: Watch for first movement, then double down</h2>
-<p>This is typically when a new site starts seeing its first meaningful rankings — usually for the long-tail terms targeted in months one and two. Use Search Console data at this stage to see which pages are getting impressions but low clicks (often a title/meta problem) and which keywords you're ranking positions 11-20 for (quick-win opportunities to push into page one with targeted improvements). This is the same leading-indicator approach we use in our <a href="/blog/increase-organic-website-traffic-10x">10x organic traffic framework</a>.</p>
+<p>This is typically when a new site starts seeing its first meaningful rankings — usually for the long-tail terms targeted in months one and two. Use Search Console data at this stage to see which pages are getting impressions but low clicks (often a title/meta problem) and which keywords you're ranking positions 11-20 for (quick-win opportunities to push into page one with targeted improvements). This is the same leading-indicator approach we use in our <a href="/blog/increase-organic-website-traffic-10x/">10x organic traffic framework</a>.</p>
 
 <h2>Month 5-6 and beyond: Compete for harder terms</h2>
 <p>With 4-6 months of accumulated content, links, and technical trust, a well-executed new site can start realistically competing for moderately competitive terms. Highly competitive, high-volume head terms in crowded industries can take longer — sometimes 9-12 months — and that's a realistic expectation, not a failure of the strategy.</p>
@@ -400,7 +400,7 @@ export const posts: BlogPost[] = [
 <h2>The three mistakes that slow this down the most</h2>
 <ol>
 <li><strong>Targeting keywords too competitive for a new domain.</strong> Ego-driven keyword selection wastes the first several months.</li>
-<li><strong>Publishing thin content fast instead of comprehensive content steadily.</strong> Ten shallow posts rarely outperform three genuinely thorough ones — our <a href="/blog/technical-seo-practices-2026">technical SEO practices guide</a> covers the crawl-budget side of this mistake too.</li>
+<li><strong>Publishing thin content fast instead of comprehensive content steadily.</strong> Ten shallow posts rarely outperform three genuinely thorough ones — our <a href="/blog/technical-seo-practices-2026/">technical SEO practices guide</a> covers the crawl-budget side of this mistake too.</li>
 <li><strong>Ignoring technical issues because "the content is what matters."</strong> A page Google can't properly crawl or render doesn't get to compete on content quality at all.</li>
 </ol>
 
@@ -445,7 +445,7 @@ export const posts: BlogPost[] = [
       "Measuring AEO/GEO success requires manually checking AI Overviews and prompting AI tools directly — there isn't yet a mature analytics dashboard equivalent to Search Console for this.",
     ],
     contentHtml: `
-<p>These three acronyms get thrown around interchangeably, which causes real confusion. Here's what each one actually means, where they overlap, and — more usefully — what to actually do about them. For the fuller picture of how all this fits into a working SEO strategy, see <a href="/blog/seo-in-2026-ai-era">SEO in 2026: the complete AI search strategy guide</a>.</p>
+<p>These three acronyms get thrown around interchangeably, which causes real confusion. Here's what each one actually means, where they overlap, and — more usefully — what to actually do about them. For the fuller picture of how all this fits into a working SEO strategy, see <a href="/blog/seo-in-2026-ai-era/">SEO in 2026: the complete AI search strategy guide</a>.</p>
 
 <table class="da-comparison-table">
 <thead><tr><th>Term</th><th>Targets</th><th>Primary channel</th><th>Earned by</th></tr></thead>
@@ -469,7 +469,7 @@ export const posts: BlogPost[] = [
 
 <div class="da-stat-callout">We're not just writing about AI systems — we build them. One ecommerce client's AI chatbot now handles 70% of customer queries automatically, cutting support tickets 68% and saving the team 25 hours a week. That's a different system than AEO/GEO, but the same underlying discipline: structured, verifiable, consistently accurate information is what makes any AI system — a chatbot or a search model — trust and use what you've published.</div>
 
-<p>None of these three replace traditional SEO or the E-E-A-T and structured-data fundamentals — they're additional outcomes of the same underlying work, covered in full in our <a href="/blog/seo-in-2026-ai-era">SEO in 2026 guide</a> and, for the practitioner skill-building side of this, in <a href="/blog/ai-seo-skills-for-marketers-2026">6 AI SEO skills every marketer needs</a>.</p>
+<p>None of these three replace traditional SEO or the E-E-A-T and structured-data fundamentals — they're additional outcomes of the same underlying work, covered in full in our <a href="/blog/seo-in-2026-ai-era/">SEO in 2026 guide</a> and, for the practitioner skill-building side of this, in <a href="/blog/ai-seo-skills-for-marketers-2026/">6 AI SEO skills every marketer needs</a>.</p>
 
 <div class="da-info-card">
 <h4>Which one should you prioritise first?</h4>
@@ -528,18 +528,18 @@ export const posts: BlogPost[] = [
 <p>"10x your traffic" gets thrown around as a headline a lot. Here's the actual framework, and an honest account of what it takes and how long it realistically runs.</p>
 
 <h2>Step 1: Find your quick wins first (weeks 1-4)</h2>
-<p>Before writing a single new page, open Google Search Console and look at your Performance report filtered by average position 5-20. These are pages Google already trusts enough to rank on page one or near it, but something is holding them back — thin content, a weak title, missing internal links, or a slow load time. Fixing these pages is almost always the fastest traffic win available, because you're not waiting for a new page to earn trust from scratch. Our full <a href="/blog/on-page-seo-checklist-2026">on-page SEO checklist</a> is the fastest way to work through each one.</p>
+<p>Before writing a single new page, open Google Search Console and look at your Performance report filtered by average position 5-20. These are pages Google already trusts enough to rank on page one or near it, but something is holding them back — thin content, a weak title, missing internal links, or a slow load time. Fixing these pages is almost always the fastest traffic win available, because you're not waiting for a new page to earn trust from scratch. Our full <a href="/blog/on-page-seo-checklist-2026/">on-page SEO checklist</a> is the fastest way to work through each one.</p>
 <p>Also check pages with high impressions but low click-through rate — often a sign your title tag or meta description isn't compelling enough relative to your ranking position.</p>
 
 <h2>Step 2: Fix the technical ceiling (weeks 2-6, in parallel)</h2>
-<p>Run a full technical audit: Core Web Vitals, mobile usability, crawl errors, broken internal links, and indexation gaps — see <a href="https://web.dev/articles/vitals" target="_blank" rel="noopener noreferrer">web.dev's Core Web Vitals reference</a> for current thresholds. A site with strong content but poor Core Web Vitals is competing with one hand tied — Google has confirmed page experience as a ranking factor, and slow sites lose users before they even get a chance to convert. We cover this in full in <a href="/blog/technical-seo-practices-2026">9 technical SEO practices for 2026</a>.</p>
+<p>Run a full technical audit: Core Web Vitals, mobile usability, crawl errors, broken internal links, and indexation gaps — see <a href="https://web.dev/articles/vitals" target="_blank" rel="noopener noreferrer">web.dev's Core Web Vitals reference</a> for current thresholds. A site with strong content but poor Core Web Vitals is competing with one hand tied — Google has confirmed page experience as a ranking factor, and slow sites lose users before they even get a chance to convert. We cover this in full in <a href="/blog/technical-seo-practices-2026/">9 technical SEO practices for 2026</a>.</p>
 
 <h2>Step 3: Build genuine topic clusters, not isolated posts (ongoing)</h2>
 <p>This is where the real compounding happens. Instead of publishing 20 disconnected blog posts across unrelated topics, pick 2-3 core topics central to your business and build a genuine cluster: one comprehensive pillar page, and 6-10 supporting articles that each cover a specific sub-topic and link back to the pillar and to each other. This structure signals topical authority to Google far more effectively than the same number of disconnected posts, and it multiplies the value of every internal link you add.</p>
 
 <div class="da-callout-section">
 <h4>What a topic cluster actually looks like</h4>
-<p style="margin-bottom:1.25rem">One pillar page owns the broad topic; supporting articles each own one specific sub-topic and link back to it. This is the exact structure we used across this SEO knowledge base — the <a href="/blog/seo-in-2026-ai-era">SEO in 2026 guide</a> is the pillar, and posts like this one are the supporting spokes.</p>
+<p style="margin-bottom:1.25rem">One pillar page owns the broad topic; supporting articles each own one specific sub-topic and link back to it. This is the exact structure we used across this SEO knowledge base — the <a href="/blog/seo-in-2026-ai-era/">SEO in 2026 guide</a> is the pillar, and posts like this one are the supporting spokes.</p>
 <div style="display:flex;flex-direction:column;align-items:center;gap:.6rem">
 <div style="padding:.85rem 1.5rem;border-radius:.75rem;background:#0A1628;color:#fff;font-weight:700;font-size:.85rem;text-align:center">Pillar Page — broad topic</div>
 <div style="width:2px;height:18px;background:#E5E7EB"></div>
@@ -620,10 +620,10 @@ export const posts: BlogPost[] = [
 <p>Google indexes and ranks based on the mobile version of your site, per Google's own <a href="https://developers.google.com/search/docs/crawling-indexing/mobile/mobile-sites-mobile-first-indexing" target="_blank" rel="noopener noreferrer">mobile-first indexing documentation</a>. Check that your mobile site has the same content, structured data, and internal links as desktop — a common mistake is a stripped-down mobile experience that's missing content the desktop version has.</p>
 
 <h2>3. Crawl budget management</h2>
-<p>Large sites with thousands of pages — especially eCommerce sites with faceted navigation — can accidentally generate tens of thousands of low-value URLs (filter combinations, sort orders, search result pages) that consume Google's crawl budget and starve genuinely important pages of attention. Use robots.txt, canonical tags, and noindex directives deliberately to manage this. Our <a href="/blog/shopify-seo-tutorial-2026">Shopify SEO tutorial</a> covers the eCommerce-specific version of this problem in detail.</p>
+<p>Large sites with thousands of pages — especially eCommerce sites with faceted navigation — can accidentally generate tens of thousands of low-value URLs (filter combinations, sort orders, search result pages) that consume Google's crawl budget and starve genuinely important pages of attention. Use robots.txt, canonical tags, and noindex directives deliberately to manage this. Our <a href="/blog/shopify-seo-tutorial-2026/">Shopify SEO tutorial</a> covers the eCommerce-specific version of this problem in detail.</p>
 
 <h2>4. Clean, logical site architecture</h2>
-<p>Every important page should be reachable within 3-4 clicks from the homepage. A flat, logical structure with clear category hierarchies helps both crawlers and users understand how your content relates — the same internal-linking discipline covered in our <a href="/blog/on-page-seo-checklist-2026">on-page SEO checklist</a>.</p>
+<p>Every important page should be reachable within 3-4 clicks from the homepage. A flat, logical structure with clear category hierarchies helps both crawlers and users understand how your content relates — the same internal-linking discipline covered in our <a href="/blog/on-page-seo-checklist-2026/">on-page SEO checklist</a>.</p>
 
 <h2>5. Structured data (schema markup)</h2>
 <p>This has grown in importance specifically because of AI Overviews and GEO — schema is the clearest, most unambiguous way to tell both Google's AI and third-party language models what a page actually contains, per Google's <a href="https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data" target="_blank" rel="noopener noreferrer">structured data documentation</a>. Article, FAQPage, Product, LocalBusiness, and BreadcrumbList schema should be implemented wherever relevant, not just on a handful of flagship pages. A minimal FAQPage block looks like this:</p>
@@ -659,7 +659,7 @@ Allow: /
 
 User-agent: ClaudeBot
 Allow: /</code></pre>
-<p>Some sites block these deliberately for content-protection reasons — a legitimate choice, but make sure it's a deliberate one, not an oversight inherited from a default configuration. We explain the AEO/GEO reasoning behind this in <a href="/blog/aeo-vs-geo-vs-llmo-explained">AEO vs GEO vs LLMO explained</a>.</p>
+<p>Some sites block these deliberately for content-protection reasons — a legitimate choice, but make sure it's a deliberate one, not an oversight inherited from a default configuration. We explain the AEO/GEO reasoning behind this in <a href="/blog/aeo-vs-geo-vs-llmo-explained/">AEO vs GEO vs LLMO explained</a>.</p>
 
 <div class="da-stat-callout">Technical SEO fixes were one third of the engagement behind an IVF hospital client's 76.7% organic traffic increase in 6 months — alongside content strategy and local SEO, none of it worked without the technical foundation being solid first.</div>
 
@@ -740,7 +740,7 @@ Allow: /</code></pre>
 <p>Shopify can generate separate URLs for product variants (different colours, sizes) that are essentially the same product page with a parameter appended. Left unmanaged, this creates duplicate content that dilutes ranking signals. Ensure canonical tags point variant URLs back to the main product page — see Google's <a href="https://developers.google.com/search/docs/crawling-indexing/canonicalization" target="_blank" rel="noopener noreferrer">canonicalization documentation</a> — and avoid linking internally to variant-specific URLs where the base product URL would do.</p>
 
 <h2>Step 2: Rewrite product titles for both users and search</h2>
-<p>Shopify's default title tag structure is usually "Product Name – Store Name," which wastes valuable character space. Rewrite manually: include the product name, a key differentiator or benefit, and your brand — in that order — while staying under roughly 60 characters, per our full <a href="/blog/on-page-seo-checklist-2026">on-page SEO checklist</a>.</p>
+<p>Shopify's default title tag structure is usually "Product Name – Store Name," which wastes valuable character space. Rewrite manually: include the product name, a key differentiator or benefit, and your brand — in that order — while staying under roughly 60 characters, per our full <a href="/blog/on-page-seo-checklist-2026/">on-page SEO checklist</a>.</p>
 
 <h2>Step 3: Write unique product descriptions — this is the highest-impact fix</h2>
 <p>If ten other stores are selling the identical product with the identical manufacturer description, Google has no reason to rank your listing above theirs. Rewrite descriptions in your own voice, addressing your specific customer's questions and use case. This single change consistently produces the biggest ranking improvement we see on Shopify audits.</p>
@@ -757,13 +757,13 @@ Allow: /</code></pre>
 <p>An out-of-stock product returning a normal 200 status with no clear signal confuses both users and Google. Either keep the page live with a clear "back in stock" notice and related product suggestions (if you'll restock), or set up a proper 301 redirect to a relevant category or replacement product (if discontinued permanently).</p>
 
 <h2>Step 7: Control crawl budget on filtered/faceted navigation</h2>
-<p>Filter combinations (size + colour + price range) can generate enormous numbers of near-duplicate URLs. Use canonical tags and, where appropriate, noindex on deep filter combinations so Google's crawl budget goes to pages that actually convert, not infinite filter permutations — the same crawl-budget principle we cover for any large site in <a href="/blog/technical-seo-practices-2026">9 technical SEO practices for 2026</a>.</p>
+<p>Filter combinations (size + colour + price range) can generate enormous numbers of near-duplicate URLs. Use canonical tags and, where appropriate, noindex on deep filter combinations so Google's crawl budget goes to pages that actually convert, not infinite filter permutations — the same crawl-budget principle we cover for any large site in <a href="/blog/technical-seo-practices-2026/">9 technical SEO practices for 2026</a>.</p>
 
 <h2>Step 8: Optimise product images properly</h2>
 <p>Compress images without losing quality (page speed directly affects both rankings and conversion), use descriptive file names before upload, and write specific alt text for every product image — this also opens up Google Image search as an additional traffic source.</p>
 
 <h2>Step 9: Build internal links between related products and collections</h2>
-<p>Shopify doesn't do this automatically beyond basic "related products" widgets. Manually link between genuinely related products, from blog content to relevant product pages, and from collection pages to relevant sub-collections — this distributes ranking authority across your catalogue instead of concentrating it only on the homepage, the same principle behind our <a href="/blog/increase-organic-website-traffic-10x">10x organic traffic framework</a>.</p>
+<p>Shopify doesn't do this automatically beyond basic "related products" widgets. Manually link between genuinely related products, from blog content to relevant product pages, and from collection pages to relevant sub-collections — this distributes ranking authority across your catalogue instead of concentrating it only on the homepage, the same principle behind our <a href="/blog/increase-organic-website-traffic-10x/">10x organic traffic framework</a>.</p>
 
 <h2>Conclusion</h2>
 <p>Shopify SEO is mostly about closing the gaps the platform leaves open by default — duplicate content, thin collections, and generic titles. None of these nine steps require leaving Shopify's ecosystem or migrating platforms; they just require going beyond what the default theme and settings do for you. Work through them store-wide once, then apply the same checklist to every new product you add.</p>
@@ -806,7 +806,7 @@ Allow: /</code></pre>
       "Local schema markup (LocalBusiness, with accurate service area and hours data) is increasingly important as AI tools also use it to answer local intent questions.",
     ],
     contentHtml: `
-<p>Local SEO strategy hasn't changed as dramatically as broader SEO, but the businesses that win their local market in 2026 execute a specific set of fundamentals more thoroughly than their competitors — not through secret tactics. This guide is the broad strategy map; for the tactic-by-tactic Google Business Profile playbook, see our <a href="/blog/google-business-profile-tricks-google-maps">7 GBP tricks to rank #1 in Google Maps</a> and <a href="/blog/google-business-profile-seo-checklist">complete GBP SEO checklist</a>.</p>
+<p>Local SEO strategy hasn't changed as dramatically as broader SEO, but the businesses that win their local market in 2026 execute a specific set of fundamentals more thoroughly than their competitors — not through secret tactics. This guide is the broad strategy map; for the tactic-by-tactic Google Business Profile playbook, see our <a href="/blog/google-business-profile-tricks-google-maps/">7 GBP tricks to rank #1 in Google Maps</a> and <a href="/blog/google-business-profile-seo-checklist/">complete GBP SEO checklist</a>.</p>
 
 <h2>1. Fully optimise and actively manage Google Business Profile</h2>
 <p>This remains the highest-leverage local SEO activity available. A complete profile — correct primary category, full service list, 10+ recent photos, weekly posts, and active Q&A management — consistently outperforms a "claimed but forgotten" listing, regardless of how good the underlying business is. Google documents the ranking factors behind this in its own <a href="https://support.google.com/business/answer/9887260" target="_blank" rel="noopener noreferrer">guidance on ranking with Business Profile</a>; our two dedicated GBP guides above walk through the full checklist.</p>
@@ -841,7 +841,7 @@ Allow: /</code></pre>
 </div>
 
 <h2>Conclusion</h2>
-<p>Local SEO rewards businesses that treat it as ongoing operations rather than a one-time setup task. Of the seven strategies above, Google Business Profile optimisation and genuinely unique location pages deliver the most visible results fastest — start there, then layer in citations, reviews, schema, and local backlinks as an ongoing monthly rhythm. For the day-to-day GBP tactics referenced throughout this guide, see our <a href="/blog/google-business-profile-tricks-google-maps">GBP tricks</a> and <a href="/blog/google-business-profile-seo-checklist">GBP checklist</a> posts.</p>
+<p>Local SEO rewards businesses that treat it as ongoing operations rather than a one-time setup task. Of the seven strategies above, Google Business Profile optimisation and genuinely unique location pages deliver the most visible results fastest — start there, then layer in citations, reviews, schema, and local backlinks as an ongoing monthly rhythm. For the day-to-day GBP tactics referenced throughout this guide, see our <a href="/blog/google-business-profile-tricks-google-maps/">GBP tricks</a> and <a href="/blog/google-business-profile-seo-checklist/">GBP checklist</a> posts.</p>
 
 <p class="text-xs" style="color:#9CA3AF">Sources: <a href="https://support.google.com/business/answer/9887260" target="_blank" rel="noopener noreferrer">Google — ranking on Google with Business Profile</a>, <a href="https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data" target="_blank" rel="noopener noreferrer">Google — structured data</a>.</p>
 `,
@@ -881,7 +881,7 @@ Allow: /</code></pre>
       "This checklist should be revisited quarterly, not completed once and forgotten — profiles that go stale lose the ranking momentum they built.",
     ],
     contentHtml: `
-<p>Use this as a working checklist, not just a read-through — this is the single, canonical GBP checklist we point clients to whenever they ask "did I miss anything?" after reading our <a href="/blog/google-business-profile-tricks-google-maps">7 GBP tricks</a> post or our broader <a href="/blog/local-seo-strategies-2026">local SEO strategies guide</a>. Go section by section and action every item — partial completion is where most businesses leave ranking potential on the table.</p>
+<p>Use this as a working checklist, not just a read-through — this is the single, canonical GBP checklist we point clients to whenever they ask "did I miss anything?" after reading our <a href="/blog/google-business-profile-tricks-google-maps/">7 GBP tricks</a> post or our broader <a href="/blog/local-seo-strategies-2026/">local SEO strategies guide</a>. Go section by section and action every item — partial completion is where most businesses leave ranking potential on the table.</p>
 
 <div class="da-stat-grid">
 <div class="da-stat-item"><span class="da-stat-value">8</span><span class="da-stat-label">Checklist sections</span></div>
@@ -973,7 +973,7 @@ Allow: /</code></pre>
 <p>A full pass through this checklist quarterly, with the Posts, Reviews, and Q&A sections monitored weekly in between, keeps a profile performing at its ceiling rather than slowly going stale — see Google's own <a href="https://support.google.com/business/answer/9887260" target="_blank" rel="noopener noreferrer">guidance on ranking with Business Profile</a> for how these signals compound. This is exactly what separates consistent local pack rankings from ones that fade after an initial burst of optimisation effort.</p>
 
 <h2>Conclusion</h2>
-<p>A Google Business Profile is never really "finished" — it's a live surface that rewards ongoing attention. Work through this checklist fully once, then keep the Posts, Reviews, and Q&A sections active every week. That consistency is what separates businesses that dominate their local pack from the ones that set up their profile once in 2023 and never touched it again. For the broader strategy this checklist sits inside, see our <a href="/blog/local-seo-strategies-2026">local SEO strategies guide</a>.</p>
+<p>A Google Business Profile is never really "finished" — it's a live surface that rewards ongoing attention. Work through this checklist fully once, then keep the Posts, Reviews, and Q&A sections active every week. That consistency is what separates businesses that dominate their local pack from the ones that set up their profile once in 2023 and never touched it again. For the broader strategy this checklist sits inside, see our <a href="/blog/local-seo-strategies-2026/">local SEO strategies guide</a>.</p>
 
 <p class="text-xs" style="color:#9CA3AF">Sources: <a href="https://support.google.com/business/answer/7091" target="_blank" rel="noopener noreferrer">Google Business Profile Help — business information</a>, <a href="https://support.google.com/business/answer/9887260" target="_blank" rel="noopener noreferrer">Google — ranking on Google with Business Profile</a>.</p>
 `,
@@ -1013,7 +1013,7 @@ Allow: /</code></pre>
       "Knowing when to avoid AI-generated content is as important as knowing how to use AI tools — over-reliance produces exactly the generic content AI models are trained to deprioritise.",
     ],
     contentHtml: `
-<p>Marketers don't need to become engineers to stay relevant as search shifts toward AI Overviews and AI chat tools. These six skills are the practical, learnable ones that actually matter. We cover the strategic "why" behind these in <a href="/blog/seo-in-2026-ai-era">SEO in 2026</a> and the terminology in <a href="/blog/aeo-vs-geo-vs-llmo-explained">AEO vs GEO vs LLMO explained</a> — this post is about the day-to-day practitioner habits, not the theory.</p>
+<p>Marketers don't need to become engineers to stay relevant as search shifts toward AI Overviews and AI chat tools. These six skills are the practical, learnable ones that actually matter. We cover the strategic "why" behind these in <a href="/blog/seo-in-2026-ai-era/">SEO in 2026</a> and the terminology in <a href="/blog/aeo-vs-geo-vs-llmo-explained/">AEO vs GEO vs LLMO explained</a> — this post is about the day-to-day practitioner habits, not the theory.</p>
 
 <div class="da-number-cards">
 <div class="da-number-item"><span class="da-number-n">1</span><h4>Answer-first writing</h4><p>Direct answer in the first 2-3 sentences.</p></div>
@@ -1025,13 +1025,13 @@ Allow: /</code></pre>
 </div>
 
 <h2>1. Writing answer-first content</h2>
-<p>This is a habit, not a technical skill, and it's the single highest-leverage one on this list: open every page with a direct, complete answer to the core question in the first 2-3 sentences. We go deep on why this specific habit matters in <a href="/blog/seo-in-2026-ai-era">SEO in 2026</a> — here, the skill is just building the habit into your actual writing workflow until it's automatic.</p>
+<p>This is a habit, not a technical skill, and it's the single highest-leverage one on this list: open every page with a direct, complete answer to the core question in the first 2-3 sentences. We go deep on why this specific habit matters in <a href="/blog/seo-in-2026-ai-era/">SEO in 2026</a> — here, the skill is just building the habit into your actual writing workflow until it's automatic.</p>
 
 <h2>2. Implementing and validating structured data</h2>
-<p>You don't need to write schema markup by hand, but you need to know which pages need which schema type and be able to validate the output using Google's Rich Results Test — the practical reference is our <a href="/blog/technical-seo-practices-2026">technical SEO practices guide</a>. This has shifted from a pure developer task to something marketers need working knowledge of.</p>
+<p>You don't need to write schema markup by hand, but you need to know which pages need which schema type and be able to validate the output using Google's Rich Results Test — the practical reference is our <a href="/blog/technical-seo-practices-2026/">technical SEO practices guide</a>. This has shifted from a pure developer task to something marketers need working knowledge of.</p>
 
 <h2>3. Auditing AI-crawler accessibility</h2>
-<p>A skill most SEO checklists still miss: checking whether your robots.txt file is accidentally blocking AI crawlers like GPTBot, PerplexityBot, or ClaudeBot. If you want your content eligible for citation in AI chat tools, this needs to be a deliberate configuration choice — see the full checklist in <a href="/blog/aeo-vs-geo-vs-llmo-explained">AEO vs GEO vs LLMO explained</a>.</p>
+<p>A skill most SEO checklists still miss: checking whether your robots.txt file is accidentally blocking AI crawlers like GPTBot, PerplexityBot, or ClaudeBot. If you want your content eligible for citation in AI chat tools, this needs to be a deliberate configuration choice — see the full checklist in <a href="/blog/aeo-vs-geo-vs-llmo-explained/">AEO vs GEO vs LLMO explained</a>.</p>
 
 <h2>4. Manually tracking AI Overview and AI chat citation visibility</h2>
 <p>There isn't yet a mature analytics dashboard for this the way Search Console handles traditional rankings. The practical skill: regularly search your target queries to check for AI Overview appearances, and directly prompt ChatGPT, Perplexity, and Gemini with questions relevant to your business and industry to see whether and how you're being cited. This needs to become a routine check, not a one-time curiosity.</p>
@@ -1112,7 +1112,7 @@ Allow: /</code></pre>
 
 <h2>Structure your page so an AI system can safely quote it</h2>
 
-<p>The most reliable improvement we've made across client sites is moving the direct answer to the top of the page. Beyond that opening, three structural habits consistently help extraction: See <a href="/services/seo-content-marketing">our SEO content marketing service</a>.</p>
+<p>The most reliable improvement we've made across client sites is moving the direct answer to the top of the page. Beyond that opening, three structural habits consistently help extraction: See <a href="/services/seo-content-marketing/">our SEO content marketing service</a>.</p>
 
 <ul>
 
@@ -1126,7 +1126,7 @@ Allow: /</code></pre>
 
 <h2>Give the model a reason to trust the source</h2>
 
-<p>E-E-A-T (experience, expertise, authoritativeness, trust) is effectively a citation filter for AI systems too. Signals that make content safe to repeat include: See <a href="/case-studies/ivf-clinic">IVF clinic case study</a>.</p>
+<p>E-E-A-T (experience, expertise, authoritativeness, trust) is effectively a citation filter for AI systems too. Signals that make content safe to repeat include: See <a href="/case-studies/ivf-clinic/">IVF clinic case study</a>.</p>
 
 <ul>
 
@@ -1140,11 +1140,11 @@ Allow: /</code></pre>
 
 <h2>Where to add structured data first</h2>
 
-<p>Schema markup doesn't force a citation, but it removes ambiguity that can quietly disqualify a page from one. FAQPage schema should only be added when the visible answer text is genuinely present in the page's HTML — adding schema for content that only appears after a click is worse than not adding it. After FAQPage, Article schema (with a real author and publish date) and homepage Organization schema give the clearest signal for the least effort. See <a href="/seo-agency-ahmedabad">our Ahmedabad SEO team</a>.</p>
+<p>Schema markup doesn't force a citation, but it removes ambiguity that can quietly disqualify a page from one. FAQPage schema should only be added when the visible answer text is genuinely present in the page's HTML — adding schema for content that only appears after a click is worse than not adding it. After FAQPage, Article schema (with a real author and publish date) and homepage Organization schema give the clearest signal for the least effort. See <a href="/seo-agency-ahmedabad/">our Ahmedabad SEO team</a>.</p>
 
 <h2>What we tested that made no measurable difference</h2>
 
-<p>Stuffing a page with AI-related keywords (“AEO optimized,” “GEO-ready content”) produced no visible change in citation frequency. Submitting URLs directly to AI chat tools isn't a real mechanism most of them offer either — the honest path is the same one that's always worked for organic search: clear content, real authorship, and enough authority to be worth repeating. See <a href="/blog/aeo-vs-geo-vs-llmo-explained">AEO vs GEO vs LLMO Explained</a>.</p>
+<p>Stuffing a page with AI-related keywords (“AEO optimized,” “GEO-ready content”) produced no visible change in citation frequency. Submitting URLs directly to AI chat tools isn't a real mechanism most of them offer either — the honest path is the same one that's always worked for organic search: clear content, real authorship, and enough authority to be worth repeating. See <a href="/blog/aeo-vs-geo-vs-llmo-explained/">AEO vs GEO vs LLMO Explained</a>.</p>
 
 <div class="da-stat-callout">The clearest evidence we have that this approach works: a fertility/IVF clinic client saw a 76.7% increase in organic traffic after a rebuild focused on exactly these fundamentals. See the full case study linked below.</div>
 
@@ -1213,7 +1213,7 @@ Allow: /</code></pre>
 
 <h2>Mistake #1: broken or missing conversion tracking</h2>
 
-<p>Before touching a bid, we check conversion tracking on every new account — and it's broken, missing, or double-counting more often than not. The three most common causes: See <a href="/services/google-ads">our Google Ads management service</a>.</p>
+<p>Before touching a bid, we check conversion tracking on every new account — and it's broken, missing, or double-counting more often than not. The three most common causes: See <a href="/services/google-ads/">our Google Ads management service</a>.</p>
 
 <ul>
 
@@ -1227,11 +1227,11 @@ Allow: /</code></pre>
 
 <h2>Mistake #2: over-segmented campaigns starving the algorithm</h2>
 
-<p>The old best practice of dozens of tightly themed ad groups made sense under manual bidding. With automation, that same structure fragments conversion data across too many small buckets. We regularly find accounts with 40+ ad groups for a business that realistically needs five or six — consolidating into fewer, broader campaigns gives Google's systems a larger, cleaner dataset to work with. See <a href="/case-studies/riant-bikes">Riant Bikes case study</a>.</p>
+<p>The old best practice of dozens of tightly themed ad groups made sense under manual bidding. With automation, that same structure fragments conversion data across too many small buckets. We regularly find accounts with 40+ ad groups for a business that realistically needs five or six — consolidating into fewer, broader campaigns gives Google's systems a larger, cleaner dataset to work with. See <a href="/case-studies/riant-bikes/">Riant Bikes case study</a>.</p>
 
 <h2>Mistakes #3–4: rigid match types and ignoring Google Maps</h2>
 
-<p>Two structural gaps that compound each other: See <a href="/blog/google-ads-strategy-checklist-2026">our complete Google Ads checklist</a>.</p>
+<p>Two structural gaps that compound each other: See <a href="/blog/google-ads-strategy-checklist-2026/">our complete Google Ads checklist</a>.</p>
 
 <ul>
 
@@ -1243,7 +1243,7 @@ Allow: /</code></pre>
 
 <h2>Mistakes #5–7: stale creative, an untouched negative list, and rushing Smart Bidding</h2>
 
-<p>The final three are maintenance failures more than setup errors: See <a href="/contact">get a free audit</a>.</p>
+<p>The final three are maintenance failures more than setup errors: See <a href="/contact/">get a free audit</a>.</p>
 
 <ul>
 
@@ -1304,15 +1304,15 @@ Allow: /</code></pre>
 
 <h2>Trusting broader, automated structures</h2>
 
-<p>Consolidating into fewer, broader campaigns organized around business goals — rather than granular keyword themes — gives Google's bidding systems a larger, cleaner dataset to optimize against. In practice this has produced lower cost-per-conversion for most accounts we've restructured this way. See <a href="/services/google-ads">our Google Ads team</a>.</p>
+<p>Consolidating into fewer, broader campaigns organized around business goals — rather than granular keyword themes — gives Google's bidding systems a larger, cleaner dataset to optimize against. In practice this has produced lower cost-per-conversion for most accounts we've restructured this way. See <a href="/services/google-ads/">our Google Ads team</a>.</p>
 
 <h2>AI Max and automated expansion features</h2>
 
-<p>Newer automated-expansion features that broaden keyword matching and creative combinations automatically can genuinely extend reach, but they need clean conversion tracking in place first — turning them on before tracking is verified just means the automation optimizes toward the wrong signal, faster and at greater scale. See <a href="/blog/7-google-ads-mistakes-2026">fix the fundamentals first</a>.</p>
+<p>Newer automated-expansion features that broaden keyword matching and creative combinations automatically can genuinely extend reach, but they need clean conversion tracking in place first — turning them on before tracking is verified just means the automation optimizes toward the wrong signal, faster and at greater scale. See <a href="/blog/7-google-ads-mistakes-2026/">fix the fundamentals first</a>.</p>
 
 <h2>Test new formats on a separate, small budget first</h2>
 
-<p>The safest way to try Demand Gen or newer automated strategies is on a modest, separate budget alongside a proven Search campaign, not as a wholesale replacement — a test that underperforms then doesn't put existing lead flow at risk. See <a href="/services/meta-ads">our Meta Ads work</a>.</p>
+<p>The safest way to try Demand Gen or newer automated strategies is on a modest, separate budget alongside a proven Search campaign, not as a wholesale replacement — a test that underperforms then doesn't put existing lead flow at risk. See <a href="/services/meta-ads/">our Meta Ads work</a>.</p>
 
 <h2>Reusing creative across channels to move faster</h2>
 
@@ -1377,15 +1377,15 @@ Allow: /</code></pre>
 
 <h2>Exact-match-only account structures</h2>
 
-<p>This used to be the standard way to guarantee tight relevance between a keyword and its ad. With automated bidding now handling much of that relevance-matching itself, broad match combined with strong negative keywords and clean tracking is outperforming exact-match-heavy accounts in most of what we've audited this year. See <a href="/case-studies/riant-bikes">Riant Bikes case study</a>.</p>
+<p>This used to be the standard way to guarantee tight relevance between a keyword and its ad. With automated bidding now handling much of that relevance-matching itself, broad match combined with strong negative keywords and clean tracking is outperforming exact-match-heavy accounts in most of what we've audited this year. See <a href="/case-studies/riant-bikes/">Riant Bikes case study</a>.</p>
 
 <h2>Manual CPC once an account has real history</h2>
 
-<p>Manual bidding made sense when advertisers had better intuition about auction dynamics than any algorithm did. That's no longer reliably true once an account has ~20–30 conversions — past that point, Maximize Conversions or Target CPA consistently outperforms manual bids. See <a href="/blog/google-ads-strategy-checklist-2026">our complete step-by-step checklist</a>.</p>
+<p>Manual bidding made sense when advertisers had better intuition about auction dynamics than any algorithm did. That's no longer reliably true once an account has ~20–30 conversions — past that point, Maximize Conversions or Target CPA consistently outperforms manual bids. See <a href="/blog/google-ads-strategy-checklist-2026/">our complete step-by-step checklist</a>.</p>
 
 <h2>Why these habits felt safe for so long</h2>
 
-<p>All three tactics gave the advertiser direct, visible control, which felt safer than trusting an algorithm with a business's ad budget. That's a harder habit to unlearn than a technical mistake, because it's rooted in reasonable caution rather than an error. See <a href="/services/google-ads">our Google Ads audits</a>.</p>
+<p>All three tactics gave the advertiser direct, visible control, which felt safer than trusting an algorithm with a business's ad budget. That's a harder habit to unlearn than a technical mistake, because it's rooted in reasonable caution rather than an error. See <a href="/services/google-ads/">our Google Ads audits</a>.</p>
 
 <h2>What to do if your account still relies on all three</h2>
 
@@ -1462,19 +1462,19 @@ Allow: /</code></pre>
 
 <h2>Step 1: verify tracking before anything else</h2>
 
-<p>No structure or bidding change matters if the account is optimizing toward a broken or missing conversion signal. Re-check this after any site redesign, cookie-consent update, or URL change — the events that most commonly break tracking silently. See our mistakes post for the specific tracking failures we catch most often. See <a href="/case-studies/riant-bikes">Riant Bikes case study</a>.</p>
+<p>No structure or bidding change matters if the account is optimizing toward a broken or missing conversion signal. Re-check this after any site redesign, cookie-consent update, or URL change — the events that most commonly break tracking silently. See our mistakes post for the specific tracking failures we catch most often. See <a href="/case-studies/riant-bikes/">Riant Bikes case study</a>.</p>
 
 <h2>Step 2: consolidate structure around business goals</h2>
 
-<p>Once tracking is confirmed clean, fewer, broader groupings organized around what the business actually wants (leads, bookings, sales) often produce a visible cost-per-conversion improvement within the first few weeks. See <a href="/blog/7-google-ads-mistakes-2026">the 7 mistakes we see most</a>.</p>
+<p>Once tracking is confirmed clean, fewer, broader groupings organized around what the business actually wants (leads, bookings, sales) often produce a visible cost-per-conversion improvement within the first few weeks. See <a href="/blog/7-google-ads-mistakes-2026/">the 7 mistakes we see most</a>.</p>
 
 <h2>Step 3: build in real creative variety</h2>
 
-<p>Most accounts under-invest here relative to how much it affects Performance Max and Search performance — a handful of well-written headline variations tested against each other consistently outperforms one “good enough” version left unchanged for months. See <a href="/blog/google-ads-2026-new-strategies">newer formats worth testing</a>.</p>
+<p>Most accounts under-invest here relative to how much it affects Performance Max and Search performance — a handful of well-written headline variations tested against each other consistently outperforms one “good enough” version left unchanged for months. See <a href="/blog/google-ads-2026-new-strategies/">newer formats worth testing</a>.</p>
 
 <h2>Steps 4 and a realistic timeline</h2>
 
-<p>Only once tracking, structure, and creative are solid does it make sense to test newer formats, on a separate budget. A realistic pace: tracking fixed in a day or two, restructuring over one to two weeks, creative variety built out within the first month — compressing this into an afternoon is the most common reason a rebuild underperforms. See <a href="/contact">get this checklist run against your account</a>.</p>
+<p>Only once tracking, structure, and creative are solid does it make sense to test newer formats, on a separate budget. A realistic pace: tracking fixed in a day or two, restructuring over one to two weeks, creative variety built out within the first month — compressing this into an afternoon is the most common reason a rebuild underperforms. See <a href="/contact/">get this checklist run against your account</a>.</p>
 
 <div class="da-stat-callout">This exact sequence — tracking, then structure, then creative — is what we followed on the Riant Bikes account (the same account referenced elsewhere in this series), and it's now our standard first-30-days checklist for every new Google Ads client.</div>
 
@@ -1525,7 +1525,7 @@ Allow: /</code></pre>
 
 <h2>What actually shows up in Maps, and why accuracy matters</h2>
 
-<p>The details pulled into a Maps-based ad come directly from the linked GBP listing, not from the ad itself: See <a href="/google-ads-agency-ahmedabad">Google Ads agency in Ahmedabad</a>.</p>
+<p>The details pulled into a Maps-based ad come directly from the linked GBP listing, not from the ad itself: See <a href="/google-ads-agency-ahmedabad/">Google Ads agency in Ahmedabad</a>.</p>
 
 <ul>
 
@@ -1541,15 +1541,15 @@ Allow: /</code></pre>
 
 <h2>Pairing Local campaigns with standard Search</h2>
 
-<p>Local campaigns are strongest for nearby, ready-to-visit intent, while standard Search still matters for brand terms and research queries that don't include “near me.” Running both together covers a meaningfully wider slice of how local customers actually search. See <a href="/digital-marketing-agency-ahmedabad">our full digital marketing services in Ahmedabad</a>.</p>
+<p>Local campaigns are strongest for nearby, ready-to-visit intent, while standard Search still matters for brand terms and research queries that don't include “near me.” Running both together covers a meaningfully wider slice of how local customers actually search. See <a href="/digital-marketing-agency-ahmedabad/">our full digital marketing services in Ahmedabad</a>.</p>
 
 <h2>Service-area businesses without a storefront</h2>
 
-<p>Plumbers, electricians, and mobile repair services can still access Local campaigns and Maps visibility by defining a service area on GBP instead of a physical address — frequently overlooked by businesses without a public shopfront. See <a href="/services/google-ads">our Google Ads management service</a>.</p>
+<p>Plumbers, electricians, and mobile repair services can still access Local campaigns and Maps visibility by defining a service area on GBP instead of a physical address — frequently overlooked by businesses without a public shopfront. See <a href="/services/google-ads/">our Google Ads management service</a>.</p>
 
 <h2>Measuring what a Local campaign is actually contributing</h2>
 
-<p>Local campaign conversions often include phone calls, direction requests, and store visits alongside standard website conversions. Relying only on website tracking undercounts what these campaigns actually drive — call tracking and store-visit conversion tracking close that gap. See <a href="/contact">get a free local ads audit</a>.</p>
+<p>Local campaign conversions often include phone calls, direction requests, and store visits alongside standard website conversions. Relying only on website tracking undercounts what these campaigns actually drive — call tracking and store-visit conversion tracking close that gap. See <a href="/contact/">get a free local ads audit</a>.</p>
 
 <div class="da-stat-callout">A taxi service client's Google Ads cost per lead dropped from ₹210 to ₹38 after a campaign rebuild that combined Local-campaign visibility with tighter conversion tracking — a separate piece of work from the Meta lead-gen fix for the same client covered elsewhere in this series.</div>
 
@@ -1616,19 +1616,19 @@ Allow: /</code></pre>
 
 <h2>Update 1: AI-content labeling</h2>
 
-<p>Since mid-2026, Meta uses automated detection to identify ad media created or edited with generative AI tools, showing an “AI Info” label in the ad details when detected. This doesn't restrict AI-assisted ads from running, but production-method transparency is now built into the platform. See <a href="/services/meta-ads">our Meta Ads management service</a>.</p>
+<p>Since mid-2026, Meta uses automated detection to identify ad media created or edited with generative AI tools, showing an “AI Info” label in the ad details when detected. This doesn't restrict AI-assisted ads from running, but production-method transparency is now built into the platform. See <a href="/services/meta-ads/">our Meta Ads management service</a>.</p>
 
 <h2>Update 2: delivery favors broad targeting more than before</h2>
 
-<p>Meta's delivery system continues to perform better with broad, interest-light targeting and a real budget to learn from — a trend that's only strengthened in 2026. Accounts still running heavily interest-stacked targeting are increasingly leaving performance on the table. See <a href="/meta-ads-agency-ahmedabad">Meta Ads agency in Ahmedabad</a>.</p>
+<p>Meta's delivery system continues to perform better with broad, interest-light targeting and a real budget to learn from — a trend that's only strengthened in 2026. Accounts still running heavily interest-stacked targeting are increasingly leaving performance on the table. See <a href="/meta-ads-agency-ahmedabad/">Meta Ads agency in Ahmedabad</a>.</p>
 
 <h2>Update 3: stricter, more automated account-health checks</h2>
 
-<p>Account-health monitoring has become more sensitive to login-location changes, payment issues, and sudden spend spikes on previously dormant accounts. Keeping payment methods current and ramping spend gradually matters more than it used to. See <a href="/blog/meta-ads-targeting-2026">the full targeting breakdown</a>.</p>
+<p>Account-health monitoring has become more sensitive to login-location changes, payment issues, and sudden spend spikes on previously dormant accounts. Keeping payment methods current and ramping spend gradually matters more than it used to. See <a href="/blog/meta-ads-targeting-2026/">the full targeting breakdown</a>.</p>
 
 <h2>Updates 4–6: creative tools and native formats maturing</h2>
 
-<p>Dynamic Creative has matured to the point where not using it is now a real competitive disadvantage. Meanwhile, native lead forms and click-to-message ads keep shortening the path from ad click to real conversation — pre-filled fields, faster load times, and tighter CRM integration. See <a href="/blog/why-meta-disables-ad-accounts-2026">why accounts actually get disabled</a>.</p>
+<p>Dynamic Creative has matured to the point where not using it is now a real competitive disadvantage. Meanwhile, native lead forms and click-to-message ads keep shortening the path from ad click to real conversation — pre-filled fields, faster load times, and tighter CRM integration. See <a href="/blog/why-meta-disables-ad-accounts-2026/">why accounts actually get disabled</a>.</p>
 
 <div class="da-stat-callout">A Sydney restaurant client's account, rebuilt with broader targeting, a steady creative refresh cadence, and Dynamic Creative testing, delivered a 3.8x return on ad spend — part of adjusting the whole account to how delivery now favors broad reach, alongside the other fixes covered elsewhere in this series.</div>
 
@@ -1679,15 +1679,15 @@ Allow: /</code></pre>
 
 <h2>Account health compounds over time</h2>
 
-<p>An account with a clean history — no disables, no payment failures, gradual spend increases — can genuinely get smoother delivery than one with health flags, independent of creative quality. This can't be copied quickly; it has to be built. See <a href="/blog/5-meta-ads-features-2026">under-used Ads Manager features</a>.</p>
+<p>An account with a clean history — no disables, no payment failures, gradual spend increases — can genuinely get smoother delivery than one with health flags, independent of creative quality. This can't be copied quickly; it has to be built. See <a href="/blog/5-meta-ads-features-2026/">under-used Ads Manager features</a>.</p>
 
 <h2>Don't copy their targeting — diagnose your own account instead</h2>
 
-<p>Audience performance is account-specific; a targeting approach that works for a competitor's account history won't necessarily transfer to yours. See <a href="/blog/meta-ads-targeting-2026">our full targeting breakdown</a>.</p>
+<p>Audience performance is account-specific; a targeting approach that works for a competitor's account history won't necessarily transfer to yours. See <a href="/blog/meta-ads-targeting-2026/">our full targeting breakdown</a>.</p>
 
 <h2>What competitor ad libraries are actually useful for</h2>
 
-<p>Meta's public ad library is a legitimate research tool, but its real value is creative inspiration — the angles, formats, and offers being tested — not reverse-engineering targeting or spend, neither of which it reveals. See <a href="/services/meta-ads">a free account diagnostic</a>.</p>
+<p>Meta's public ad library is a legitimate research tool, but its real value is creative inspiration — the angles, formats, and offers being tested — not reverse-engineering targeting or spend, neither of which it reveals. See <a href="/services/meta-ads/">a free account diagnostic</a>.</p>
 
 <h2>When it actually is the budget</h2>
 
@@ -1742,15 +1742,15 @@ Allow: /</code></pre>
 
 <h2>Connect the form directly to a notification system</h2>
 
-<p>Manually checking a leads spreadsheet once or twice a day is the single most common reason fast follow-up doesn't happen. A direct CRM or instant notification (SMS, Slack, email) removes that delay almost entirely. See <a href="/services/meta-ads">our Meta Ads lead generation service</a>.</p>
+<p>Manually checking a leads spreadsheet once or twice a day is the single most common reason fast follow-up doesn't happen. A direct CRM or instant notification (SMS, Slack, email) removes that delay almost entirely. See <a href="/services/meta-ads/">our Meta Ads lead generation service</a>.</p>
 
 <h2>Keep the form short</h2>
 
-<p>Every additional required field reduces completion rate. Keep forms to name and phone or email, and gather qualifying details on the follow-up call instead. See <a href="/google-ads-agency-ahmedabad">the same client's Google Ads work</a>.</p>
+<p>Every additional required field reduces completion rate. Keep forms to name and phone or email, and gather qualifying details on the follow-up call instead. See <a href="/google-ads-agency-ahmedabad/">the same client's Google Ads work</a>.</p>
 
 <h2>Qualifying without lengthening the form</h2>
 
-<p>One well-chosen qualifying question (budget range, timeline, specific need) filters meaningfully without adding the friction of three or four extra fields. See <a href="/contact">connect your lead forms to instant follow-up</a>.</p>
+<p>One well-chosen qualifying question (budget range, timeline, specific need) filters meaningfully without adding the friction of three or four extra fields. See <a href="/contact/">connect your lead forms to instant follow-up</a>.</p>
 
 <h2>Measuring lead quality, not just lead volume</h2>
 
@@ -1819,15 +1819,15 @@ Allow: /</code></pre>
 
 <h2>Feature 1: Dynamic Creative</h2>
 
-<p>Dynamic Creative allows uploading multiple headlines, images, and body text variations, letting Meta automatically test and serve the best-performing combinations. Most advertisers instead upload one fixed ad per ad set. See <a href="/services/meta-ads">our Meta Ads audits</a>.</p>
+<p>Dynamic Creative allows uploading multiple headlines, images, and body text variations, letting Meta automatically test and serve the best-performing combinations. Most advertisers instead upload one fixed ad per ad set. See <a href="/services/meta-ads/">our Meta Ads audits</a>.</p>
 
 <h2>Features 2–3: cost-cap and minimum-ROAS bidding</h2>
 
-<p>Between fully manual and fully automatic bidding: cost-cap (cap average cost per result while maximizing volume) and minimum-ROAS (don't spend below a set return threshold). Which to use depends on whether volume or guaranteed return is the priority. See <a href="/blog/meta-ads-targeting-2026">combine this with the right targeting approach</a>.</p>
+<p>Between fully manual and fully automatic bidding: cost-cap (cap average cost per result while maximizing volume) and minimum-ROAS (don't spend below a set return threshold). Which to use depends on whether volume or guaranteed return is the priority. See <a href="/blog/meta-ads-targeting-2026/">combine this with the right targeting approach</a>.</p>
 
 <h2>Feature 4: placement asset customization</h2>
 
-<p>Customizing image crops per placement (Feed, Stories, Reels each have different aspect ratios) noticeably improves how an ad actually looks, versus Meta's automatic cropping which can cut off text or key visuals. See <a href="/contact">get a free features audit</a>.</p>
+<p>Customizing image crops per placement (Feed, Stories, Reels each have different aspect ratios) noticeably improves how an ad actually looks, versus Meta's automatic cropping which can cut off text or key visuals. See <a href="/contact/">get a free features audit</a>.</p>
 
 <h2>Feature 5 and checking the frequency report</h2>
 
@@ -1890,15 +1890,15 @@ Allow: /</code></pre>
 
 <h2>What we've changed instead: creative and offer, not audience</h2>
 
-<p>For most client accounts, broadening targeting while tightening the creative and offer has produced a lower cost per result than further audience narrowing did. See <a href="/services/meta-ads">our Meta Ads targeting audits</a>.</p>
+<p>For most client accounts, broadening targeting while tightening the creative and offer has produced a lower cost per result than further audience narrowing did. See <a href="/services/meta-ads/">our Meta Ads targeting audits</a>.</p>
 
 <h2>When narrow targeting still makes sense</h2>
 
-<p>Narrow targeting isn't obsolete — it still fits genuinely niche, high-value audiences where the addressable market is small enough that broad targeting would waste budget on people who could never be customers. See <a href="/blog/why-competitors-outperform-meta-ads-2026">before assuming a competitor has an edge</a>.</p>
+<p>Narrow targeting isn't obsolete — it still fits genuinely niche, high-value audiences where the addressable market is small enough that broad targeting would waste budget on people who could never be customers. See <a href="/blog/why-competitors-outperform-meta-ads-2026/">before assuming a competitor has an edge</a>.</p>
 
 <h2>Lookalike audiences: still useful, differently</h2>
 
-<p>Lookalikes built from a high-quality source — actual purchasers, not just anyone who clicked — remain genuinely useful, giving the algorithm a real pattern to extend rather than a guess based on interest labels. See <a href="/blog/5-meta-ads-features-2026">pairing this with the right Ads Manager settings</a>.</p>
+<p>Lookalikes built from a high-quality source — actual purchasers, not just anyone who clicked — remain genuinely useful, giving the algorithm a real pattern to extend rather than a guess based on interest labels. See <a href="/blog/5-meta-ads-features-2026/">pairing this with the right Ads Manager settings</a>.</p>
 
 <h2>A simple way to test broad vs. narrow yourself</h2>
 
@@ -1963,15 +1963,15 @@ Allow: /</code></pre>
 
 <h2>Payment and login patterns, in detail</h2>
 
-<p>Repeatedly declined cards and unverified payment methods are frequent triggers. Separately, a login from a different city or through a VPN resembles a compromised account closely enough that Meta's systems often act on it automatically. See <a href="/services/meta-ads">our Meta Ads account management</a>.</p>
+<p>Repeatedly declined cards and unverified payment methods are frequent triggers. Separately, a login from a different city or through a VPN resembles a compromised account closely enough that Meta's systems often act on it automatically. See <a href="/services/meta-ads/">our Meta Ads account management</a>.</p>
 
 <h2>Sudden spend changes on dormant accounts</h2>
 
-<p>An account inactive for months that suddenly launches a high-budget campaign looks like the pattern common among hackers who've gained access to a dormant account. Ramping budget gradually avoids this flag. See <a href="/blog/6-meta-ads-updates-2026">the broader set of 2026 platform changes</a>.</p>
+<p>An account inactive for months that suddenly launches a high-budget campaign looks like the pattern common among hackers who've gained access to a dormant account. Ramping budget gradually avoids this flag. See <a href="/blog/6-meta-ads-updates-2026/">the broader set of 2026 platform changes</a>.</p>
 
 <h2>The appeal process, done correctly</h2>
 
-<p>Go to Business Support Home, select the restricted account, choose “Request Review,” and provide a clear, specific explanation. Most legitimate cases resolve within about 48 hours; accounts disabled for 180 days without a successful appeal generally can't be reinstated. See <a href="/contact">we've helped recover accounts before — happy to help with yours</a>.</p>
+<p>Go to Business Support Home, select the restricted account, choose “Request Review,” and provide a clear, specific explanation. Most legitimate cases resolve within about 48 hours; accounts disabled for 180 days without a successful appeal generally can't be reinstated. See <a href="/contact/">we've helped recover accounts before — happy to help with yours</a>.</p>
 
 <h2>Preventing disables, and what to do while waiting</h2>
 
@@ -2036,19 +2036,19 @@ Allow: /</code></pre>
 
 <h2>The first-hour test</h2>
 
-<p>Every new piece of content is shown to a relatively small slice of an account's audience first; Instagram evaluates that group's response before expanding reach further — described as similar to an audition. This gives real influence in the first hour: posting time, prompting close contacts to engage early, replying to first comments quickly. See <a href="/services/digital-marketing">our social media and digital marketing service</a>.</p>
+<p>Every new piece of content is shown to a relatively small slice of an account's audience first; Instagram evaluates that group's response before expanding reach further — described as similar to an audition. This gives real influence in the first hour: posting time, prompting close contacts to engage early, replying to first comments quickly. See <a href="/services/digital-marketing/">our social media and digital marketing service</a>.</p>
 
 <h2>Why consistent, original posting beats frequent reposting</h2>
 
-<p>Instagram has stated that original content gets more distribution than reposted content, and accounts posting heavily from reposts in a short window can be excluded from recommendations entirely. See <a href="/blog/video-hooks-viral-2026">the video hooks that actually hold attention</a>.</p>
+<p>Instagram has stated that original content gets more distribution than reposted content, and accounts posting heavily from reposts in a short window can be excluded from recommendations entirely. See <a href="/blog/video-hooks-viral-2026/">the video hooks that actually hold attention</a>.</p>
 
 <h2>Stories, Explore, and Feed: why one strategy doesn't fit all surfaces</h2>
 
-<p>Feed, Stories, Explore, and Reels each use their own ranking logic. Content optimized purely for Reels watch time won't necessarily perform the same in Feed, where saves and comments carry relatively more weight. See <a href="/blog/ai-tools-ugc-ads-2026">AI tools for UGC-style ads</a>.</p>
+<p>Feed, Stories, Explore, and Reels each use their own ranking logic. Content optimized purely for Reels watch time won't necessarily perform the same in Feed, where saves and comments carry relatively more weight. See <a href="/blog/ai-tools-ugc-ads-2026/">AI tools for UGC-style ads</a>.</p>
 
 <h2>A realistic posting cadence that doesn't burn out a small team</h2>
 
-<p>Chasing a high posting frequency to satisfy a perceived algorithm preference is a common way small teams burn out without a proportional return, since frequency isn't the deciding factor Instagram has confirmed. Fewer, better original posts, posted consistently, beats sheer volume. See <a href="/contact">talk to our social team</a>.</p>
+<p>Chasing a high posting frequency to satisfy a perceived algorithm preference is a common way small teams burn out without a proportional return, since frequency isn't the deciding factor Instagram has confirmed. Fewer, better original posts, posted consistently, beats sheer volume. See <a href="/contact/">talk to our social team</a>.</p>
 
 <h2>Conclusion</h2>
 
@@ -2097,15 +2097,15 @@ Allow: /</code></pre>
 
 <h2>What Meta requires you to disclose</h2>
 
-<p>Since mid-2026, Meta automatically detects and labels ad media created or edited with generative AI tools with an “AI Info” tag — not a restriction, but a transparency requirement now built into the platform. See <a href="/ai-filmmaking-ahmedabad">our AI filmmaking service in Ahmedabad</a>.</p>
+<p>Since mid-2026, Meta automatically detects and labels ad media created or edited with generative AI tools with an “AI Info” tag — not a restriction, but a transparency requirement now built into the platform. See <a href="/ai-filmmaking-ahmedabad/">our AI filmmaking service in Ahmedabad</a>.</p>
 
 <h2>Where AI-UGC fits in a creative mix</h2>
 
-<p>The advertisers getting the most value use AI-UGC tools as one format in a broader rotation alongside genuine testimonials, tested against each other rather than treated as a wholesale replacement. See <a href="/services/meta-ads">our Meta Ads creative testing</a>.</p>
+<p>The advertisers getting the most value use AI-UGC tools as one format in a broader rotation alongside genuine testimonials, tested against each other rather than treated as a wholesale replacement. See <a href="/services/meta-ads/">our Meta Ads creative testing</a>.</p>
 
 <h2>Picking the right AI tool for the job</h2>
 
-<p>Different tools specialize in different tasks: See <a href="/blog/video-hooks-viral-2026">pairing this with a strong hook</a>.</p>
+<p>Different tools specialize in different tasks: See <a href="/blog/video-hooks-viral-2026/">pairing this with a strong hook</a>.</p>
 
 <ul>
 
@@ -2168,7 +2168,7 @@ Allow: /</code></pre>
 
 <h2>The 2 hook patterns that consistently work</h2>
 
-<p>Across the hooks that hold attention most reliably, two patterns repeat: See <a href="/blog/instagram-growth-2026">the full picture of how Instagram ranks content</a>.</p>
+<p>Across the hooks that hold attention most reliably, two patterns repeat: See <a href="/blog/instagram-growth-2026/">the full picture of how Instagram ranks content</a>.</p>
 
 <ul>
 
@@ -2180,11 +2180,11 @@ Allow: /</code></pre>
 
 <h2>Testing hooks systematically instead of guessing</h2>
 
-<p>Posting two or three versions of the same core content with different opening lines and comparing watch-time drop-off gives an objective, account-specific answer rather than relying on instinct for which hook “feels” strongest. See <a href="/ai-filmmaking-ahmedabad">our AI filmmaking and video production service</a>.</p>
+<p>Posting two or three versions of the same core content with different opening lines and comparing watch-time drop-off gives an objective, account-specific answer rather than relying on instinct for which hook “feels” strongest. See <a href="/ai-filmmaking-ahmedabad/">our AI filmmaking and video production service</a>.</p>
 
 <h2>Hooks that look good on paper but don't actually work</h2>
 
-<p>An extended cold open with dramatic music before any spoken content, or a hook that requires several seconds to understand what the video is even about, tend to underperform — both still ask for patience before delivering value. See <a href="/contact">get your video hooks tested against real data</a>.</p>
+<p>An extended cold open with dramatic music before any spoken content, or a hook that requires several seconds to understand what the video is even about, tend to underperform — both still ask for patience before delivering value. See <a href="/contact/">get your video hooks tested against real data</a>.</p>
 
 <h2>What the strongest hooks have in common</h2>
 

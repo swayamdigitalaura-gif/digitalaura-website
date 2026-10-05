@@ -17,7 +17,7 @@ const cases = [
     statDesc: "bookings processed through the new website, online booking system and fleet management we built.",
     accent: "#1A6FE8",
     topBg: "linear-gradient(135deg, rgba(26,111,232,0.08) 0%, rgba(26,111,232,0.02) 100%)",
-    href: "/case-studies/riant-bikes",
+    href: "/case-studies/riant-bikes/",
   },
   {
     tag: "Industrial B2B · SEO & AEO/GEO",
@@ -30,7 +30,7 @@ const cases = [
     statDesc: "qualified leads generated every month after we rebuilt their site into a search & AI-visibility engine.",
     accent: "#22C55E",
     topBg: "linear-gradient(135deg, rgba(34,197,94,0.08) 0%, rgba(34,197,94,0.02) 100%)",
-    href: "/case-studies/prism-calibration",
+    href: "/case-studies/prism-calibration/",
   },
   {
     tag: "Healthcare & Fertility · SEO + YouTube",
@@ -43,7 +43,7 @@ const cases = [
     statDesc: "organic traffic growth in 6 months, turning a strong offline reputation into daily online demand.",
     accent: "#7C3AED",
     topBg: "linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(124,58,237,0.02) 100%)",
-    href: "/case-studies/ivf-clinic",
+    href: "/case-studies/ivf-clinic/",
   },
   {
     tag: "Home Services · Local SEO & AEO",
@@ -56,7 +56,7 @@ const cases = [
     statDesc: "qualified leads generated every day from the website — from invisible to local search leader in 4 months.",
     accent: "#FF6B2B",
     topBg: "linear-gradient(135deg, rgba(255,107,43,0.08) 0%, rgba(255,107,43,0.02) 100%)",
-    href: "/case-studies/dp-electrical-repairs",
+    href: "/case-studies/dp-electrical-repairs/",
   },
   {
     tag: "Hospitality & Restaurant · SEO & Social",
@@ -69,7 +69,7 @@ const cases = [
     statDesc: "organic search sessions in 90 days, from a standing start — a decade-old restaurant's first real digital front door.",
     accent: "#c8952f",
     topBg: "linear-gradient(135deg, rgba(200,149,47,0.08) 0%, rgba(200,149,47,0.02) 100%)",
-    href: "/case-studies/grand-palace",
+    href: "/case-studies/grand-palace/",
   },
 ];
 
@@ -189,7 +189,7 @@ const CaseStudies = () => {
           </div>
 
         <div className="text-center mt-8">
-          <Link to="/case-studies" className="btn-outline-orange px-6 md:px-8 py-3 md:py-3.5 text-sm gap-2 inline-flex items-center">
+          <Link to="/case-studies/" className="btn-outline-orange px-6 md:px-8 py-3 md:py-3.5 text-sm gap-2 inline-flex items-center">
             View All Case Studies <ArrowRight size={16} />
           </Link>
         </div>

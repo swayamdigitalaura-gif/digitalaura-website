@@ -13,7 +13,7 @@ const FEATURED_CASE = {
   desc: "A bike rental business built on word of mouth was slowly losing to competitors with a stronger online presence. We rebuilt their website, booking system, fleet management, and Google Ads — bringing back daily bookings and full visibility into the business.",
   services: ["Web Design", "Online Booking System", "Google Ads", "Fleet Management"],
   color: "#1A6FE8",
-  href: "/case-studies/riant-bikes",
+  href: "/case-studies/riant-bikes/",
   quad: [
     { n: "230", l: "Customers managed" },
     { n: "30", l: "Vehicles tracked live" },
@@ -31,7 +31,7 @@ const FEATURED_CASE_2 = {
   desc: "A 20-year NABL-accredited calibration lab had grown entirely on referrals — and was losing visibility to newer, more digital competitors. We rebuilt their site into a structured search & AI-visibility engine, and got them featured in Google's AI Overview.",
   services: ["SEO", "Technical SEO", "AEO/GEO", "Local SEO", "Website Development"],
   color: "#22C55E",
-  href: "/case-studies/prism-calibration",
+  href: "/case-studies/prism-calibration/",
   quad: [
     { n: "Top 3", l: "Keyword rankings" },
     { n: "20 Yrs", l: "NABL-accredited expertise" },
@@ -49,7 +49,7 @@ const FEATURED_CASE_3 = {
   desc: "This IVF clinic had the reputation and the results — but not the visibility. We ran SEO and YouTube growth in parallel, turning a strong offline reputation into daily online demand in just six months.",
   services: ["SEO", "Content Strategy", "YouTube Growth", "AEO/GEO", "Conversion Optimization"],
   color: "#22C55E",
-  href: "/case-studies/ivf-clinic",
+  href: "/case-studies/ivf-clinic/",
   quad: [
     { n: "76.7%", l: "Organic traffic growth" },
     { n: "85.9%", l: "YouTube views growth" },
@@ -67,7 +67,7 @@ const FEATURED_CASE_4 = {
   desc: "A Melbourne appliance repair business stuck relying on word-of-mouth and shared-lead platforms rebuilt its online presence with Digital Aura — becoming the local search leader for appliance repair in just four months.",
   services: ["Local SEO", "Service Pages", "AEO/GEO", "Conversion Optimization"],
   color: "#1A6FE8",
-  href: "/case-studies/dp-electrical-repairs",
+  href: "/case-studies/dp-electrical-repairs/",
   quad: [
     { n: "3,000+", l: "Monthly website visitors" },
     { n: "200+", l: "Suburb pages built" },
@@ -85,7 +85,7 @@ const FEATURED_CASE_5 = {
   desc: "A 4.9-star Dubai printing business had every ingredient for online success — except a Google Ads account that could be found. We rebuilt the account from the ground up, turning silence into a steady stream of real buyer conversations.",
   services: ["Google Ads", "Google Shopping", "Conversion Tracking", "Campaign Restructuring"],
   color: "#1A6FE8",
-  href: "/case-studies/oblprint",
+  href: "/case-studies/oblprint/",
   quad: [
     { n: "38,295", l: "Impressions in July" },
     { n: "595", l: "Clicks generated" },
@@ -103,7 +103,7 @@ const FEATURED_CASE_6 = {
   desc: "A decade-old Sydney CBD restaurant ran on reputation alone — no website, no search presence, no way for new customers to find them. We built their site, SEO, and social presence from zero, and it started paying off within 90 days.",
   services: ["Website Development", "Local SEO", "Content Strategy", "Social Media Marketing"],
   color: "#c8952f",
-  href: "/case-studies/grand-palace",
+  href: "/case-studies/grand-palace/",
   quad: [
     { n: "2.4K+", l: "Total website sessions" },
     { n: "21", l: "Keywords ranking #1–#3" },
@@ -211,7 +211,7 @@ const CaseStudiesPage = () => {
             data-cms-key="cs_cta_text" data-cms-label="Case Studies CTA Text" data-cms-attr="text">
             {s.cs_cta_text || 'Want results like these for your business?'}
           </p>
-          <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2 inline-flex">
+          <Link to="/contact/" className="btn-orange px-8 py-4 text-base gap-2 inline-flex">
             <span data-cms-key="cs_cta_button" data-cms-label="Case Studies CTA Button" data-cms-attr="text">
               {s.cs_cta_button || 'Start Your Project'}
             </span>

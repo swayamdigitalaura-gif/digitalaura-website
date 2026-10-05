@@ -90,11 +90,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:url", content: SITE_URL },
       { property: "og:site_name", content: "Digital Aura" },
-      { property: "og:image", content: `${ASSET_BASE}/hero-section-image.png` },
+      { property: "og:image", content: `${ASSET_BASE}/hero-section-image.webp` },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: SITE_TITLE },
       { name: "twitter:description", content: SITE_DESCRIPTION },
-      { name: "twitter:image", content: `${ASSET_BASE}/hero-section-image.png` },
+      { name: "twitter:image", content: `${ASSET_BASE}/hero-section-image.webp` },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

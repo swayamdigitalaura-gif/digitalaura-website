@@ -21,11 +21,11 @@ import { StickyMobileCTA } from "../components/sections/StickyMobileCTA";
 export const Route = createFileRoute("/google-ads-agency-ahmedabad")({
   head: () => ({
     meta: [
-      { title: "Google Ads Agency Ahmedabad | Performance Marketing Agency | Digital Aura" },
-      { name: "description", content: "Digital Aura is a Google Ads agency and performance marketing agency in Ahmedabad. 3-7x ROAS, 40%+ lower CPL via Google Ads management, SEM, SEO, and CRO. Claim your free Google Ads audit." },
-      { property: "og:title", content: "Google Ads Agency Ahmedabad | Performance Marketing Agency | Digital Aura" },
+      { title: "Google Ads Agency Ahmedabad | Digital Aura" },
+      { name: "description", content: "Google Ads agency in Ahmedabad delivering 3-7x ROAS and 40%+ lower CPL via expert campaign management, SEM, SEO, and CRO. Claim your free audit." },
+      { property: "og:title", content: "Google Ads Agency Ahmedabad | Digital Aura" },
       { property: "og:description", content: "Ahmedabad's Google Ads management company. 500+ audits delivered. 3-7x average ROAS. Claim your free Google Ads audit today." },
-      { name: "twitter:title", content: "Google Ads Agency Ahmedabad | Performance Marketing Agency | Digital Aura" },
+      { name: "twitter:title", content: "Google Ads Agency Ahmedabad | Digital Aura" },
       { name: "twitter:description", content: "Ahmedabad's Google Ads management company. 500+ audits delivered. 3-7x average ROAS. Claim your free Google Ads audit today." },
     ],
   }),

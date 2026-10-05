@@ -8,9 +8,9 @@ import {
 } from "@/components/ui/carousel";
 
 const SNAPSHOTS = [
-  { src: "/performance/snapshot-1.png", alt: "Google Ads campaign performance — clicks, impressions, CPC, cost, conversions and conversion value" },
-  { src: "/performance/snapshot-2.png", alt: "Google Ads campaign performance — clicks, impressions, CPC, cost and conversions" },
-  { src: "/performance/snapshot-3.png", alt: "Google Ads campaign performance — clicks, conversions, cost per conversion and cost" },
+  { src: "/performance/snapshot-1.webp", alt: "Google Ads campaign performance — clicks, impressions, CPC, cost, conversions and conversion value" },
+  { src: "/performance/snapshot-2.webp", alt: "Google Ads campaign performance — clicks, impressions, CPC, cost and conversions" },
+  { src: "/performance/snapshot-3.webp", alt: "Google Ads campaign performance — clicks, conversions, cost per conversion and cost" },
 ];
 
 export function DashboardGallery() {

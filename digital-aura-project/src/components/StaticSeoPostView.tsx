@@ -14,7 +14,7 @@ const AUTHOR_PHOTOS: Record<string, string> = {
   "Sambhav Shah": sambhavPhoto,
   "Jinali Lodariya": "/team/jinali.png",
   "Swayam Parikh": "/team/swayam.png",
-  "Deepak Nagar": "/team/deepak.png",
+  "Deepak Nagar": "/team/deepak.webp",
   "Satish Prajapati": "/team/satish.png",
 };
 

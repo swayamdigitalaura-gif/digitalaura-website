@@ -108,7 +108,7 @@ export function Hero() {
           <div className="relative w-full max-w-3xl lg:scale-[1.09]">
             <div className="pointer-events-none absolute inset-x-6 top-10 h-[85%] rounded-[2rem] bg-primary/15 blur-3xl" />
             <img
-              src="/wds/hero-showcase.png"
+              src="/wds/hero-showcase.webp"
               alt="Digital Aura website showcase — browser and mobile preview with performance and SEO badges"
               className="relative h-auto w-full drop-shadow-[0_35px_60px_-15px_rgba(15,23,42,0.35)]"
             />

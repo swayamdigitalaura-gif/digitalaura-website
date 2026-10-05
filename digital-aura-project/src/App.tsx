@@ -72,6 +72,7 @@ import EcommerceSEOPage from "./pages/services/seo/EcommerceSEOPage.tsx";
 import LocalServicePage from "./components/LocalServicePage.tsx";
 import { localPages } from "./data/localPagesData.ts";
 import AIFilmmakingPage from "./pages/services/AIFilmmakingPage.tsx";
+import ServiceAreasPage from "./pages/ServiceAreasPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -183,6 +184,9 @@ const App = () => (
           <Route path="/meta-ads-agency-ahmedabad" element={<LocalServicePage config={localPages.metaAdsAhmedabad} />} />
           <Route path="/digital-marketing-agency-ahmedabad" element={<LocalServicePage config={localPages.digitalMarketingAhmedabad} />} />
           <Route path="/digital-marketing-agency-gujarat" element={<LocalServicePage config={localPages.digitalMarketingGujarat} />} />
+
+          {/* Service areas hub — links out to all local/regional landing pages */}
+          <Route path="/service-areas" element={<ServiceAreasPage />} />
 
           {/* Legal */}
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

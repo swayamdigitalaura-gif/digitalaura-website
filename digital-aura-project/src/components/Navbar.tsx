@@ -17,6 +17,7 @@ const companyLinks = [
   { label: "Our Engagement Models", href: "/engagement-models", color: "#7C3AED", bg: "rgba(124,58,237,0.08)" },
   { label: "Testimonials", href: "/testimonials", color: "#22C55E", bg: "rgba(34,197,94,0.08)" },
   { label: "Careers", href: "/careers", color: "#1A6FE8", bg: "rgba(26,111,232,0.08)" },
+  { label: "Service Areas", href: "/service-areas", color: "#EC4899", bg: "rgba(236,72,153,0.08)" },
 ];
 
 const navLinks = [

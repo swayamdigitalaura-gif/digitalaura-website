@@ -200,6 +200,11 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     description: 'Build bespoke machine learning models with Digital Aura. Image recognition, NLP, recommendation engines, and custom AI solutions for your business.',
   },
 
+  '/service-areas': {
+    title: 'Service Areas | Ahmedabad, Gujarat & International | Digital Aura',
+    description: 'Digital Aura serves businesses in Ahmedabad, across Gujarat (Surat, Vadodara, Rajkot, Gandhinagar), and internationally (US, UK, Australia) with SEO, web development, AI automation, and digital marketing.',
+  },
+
   // ── Previously missing pages (were falling back to homepage title/description) ──
   '/awards': {
     title: 'Awards & Recognition | Digital Aura',
@@ -352,6 +357,7 @@ const PAGE_SCHEMA: Record<string, object | object[]> = {
     url: `${SITE_URL}/blog/`, description: 'Digital marketing trends, SEO tips, and AI insights.',
     publisher: { '@type': 'Organization', name: 'Digital Aura', logo: DEFAULT_IMAGE } },
   '/case-studies': { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Case Studies | Digital Aura', url: `${SITE_URL}/case-studies/` },
+  '/service-areas': { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Service Areas | Digital Aura', url: `${SITE_URL}/service-areas/` },
   '/case-studies/riant-bikes': { '@context': 'https://schema.org', '@type': 'Article',
     headline: 'Riant Bikes Case Study: How Digital Aura Saved a Bike Rental Business From Going Extinct',
     description: 'Riant Bikes was losing customers to competitors with a stronger online presence. See how Digital Aura rebuilt their website, booking system, and Google Ads to bring back daily bookings and grow revenue.',

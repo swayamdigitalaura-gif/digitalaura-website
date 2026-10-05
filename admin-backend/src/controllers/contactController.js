@@ -1,5 +1,6 @@
 const { ContactInquiry } = require('../models');
 const { sendMail, NOTIFY_EMAIL } = require('../utils/mailer');
+const { pushLeadToCRM } = require('../services/crmService');
 
 exports.submit = async (req, res) => {
   try {
@@ -8,6 +9,9 @@ exports.submit = async (req, res) => {
     if (!name || !email) return res.status(400).json({ success: false, message: 'Name and email are required' });
 
     const inquiry = await ContactInquiry.create({ name, email, phone, company, project, budget, message: message || '', source: source || 'website' });
+
+    // Forward to CRM (fire-and-forget; failures are logged, never surfaced to the visitor)
+    pushLeadToCRM({ name, email, phone, company, project, budget, message: message || '', source: source || 'website' });
 
     // Notify team
     sendMail({

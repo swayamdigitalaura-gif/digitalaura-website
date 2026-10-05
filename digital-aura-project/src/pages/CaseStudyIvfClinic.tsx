@@ -216,7 +216,7 @@ const CaseStudyIvfClinic = () => {
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
             <div className="flex flex-col items-center gap-4 mb-6">
               <Link
-                to="/case-studies"
+                to="/case-studies/"
                 className="inline-flex items-center gap-1.5 text-sm font-medium self-center"
                 style={{ color: "#BBF7D0" }}
               >
@@ -515,7 +515,7 @@ const CaseStudyIvfClinic = () => {
             <p data-cms-key="ivfclinic_cta_text" data-cms-label="CTA Text" data-cms-attr="text" className="text-[15px] md:text-base max-w-xl mx-auto mb-6" style={{ color: "#BBF7D0" }}>
               {t("ivfclinic_cta_text", "Let Digital Aura build the search and content engine that turns your existing authority into steady, measurable demand.")}
             </p>
-            <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2 inline-flex">
+            <Link to="/contact/" className="btn-orange px-8 py-4 text-base gap-2 inline-flex">
               <span data-cms-key="ivfclinic_cta_button" data-cms-label="CTA Button" data-cms-attr="text">{t("ivfclinic_cta_button", "Talk to Digital Aura Today")}</span> <ArrowRight size={18} />
             </Link>
           </motion.div>

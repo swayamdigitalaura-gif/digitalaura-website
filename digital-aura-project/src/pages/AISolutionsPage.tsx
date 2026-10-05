@@ -19,14 +19,14 @@ const accentGradient = "linear-gradient(135deg, #7C3AED, #5b21b6)";
 
 /* ─── DATA ─── */
 const servicesList = [
-  { title: "AI Automation", icon: Network, iconName: "Network", href: "/services/ai-automation", desc: "Agentic workflows & autonomous operations" },
-  { title: "AI Chatbots & Assistants", icon: Bot, iconName: "Bot", href: "/services/ai-chatbot-assistant", desc: "Deploy 24/7 conversational agents" },
-  { title: "AI Powered Web Apps", icon: WorkflowIcon, iconName: "Workflow", href: "/services/ai-powered-web-apps", desc: "Generative interfaces & real time data" },
-  { title: "Custom AI Solutions", icon: Cpu, iconName: "Cpu", href: "/services/custom-ai-web-solutions", desc: "Bespoke SaaS & Vertical platforms" },
-  { title: "LLM Powered Apps", icon: Brain, iconName: "Brain", href: "/services/llm-powered-apps", desc: "RAG systems & enterprise knowledge bases" },
-  { title: "Predictive Analytics", icon: LineChart, iconName: "LineChart", href: "/services/predictive-analytics", desc: "Demand forecasting & churn prediction ML" },
-  { title: "Custom ML Models", icon: Blocks, iconName: "Blocks", href: "/services/custom-ml-models", desc: "Bespoke algorithms trained on your local data" },
-  { title: "AI API Integrations", icon: Code2, iconName: "Code2", href: "/services/ai-api-integration", desc: "Seamlessly embed OpenAI, Anthropic & Gemini" }
+  { title: "AI Automation", icon: Network, iconName: "Network", href: "/services/ai-automation/", desc: "Agentic workflows & autonomous operations" },
+  { title: "AI Chatbots & Assistants", icon: Bot, iconName: "Bot", href: "/services/ai-chatbot-assistant/", desc: "Deploy 24/7 conversational agents" },
+  { title: "AI Powered Web Apps", icon: WorkflowIcon, iconName: "Workflow", href: "/services/ai-powered-web-apps/", desc: "Generative interfaces & real time data" },
+  { title: "Custom AI Solutions", icon: Cpu, iconName: "Cpu", href: "/services/custom-ai-web-solutions/", desc: "Bespoke SaaS & Vertical platforms" },
+  { title: "LLM Powered Apps", icon: Brain, iconName: "Brain", href: "/services/llm-powered-apps/", desc: "RAG systems & enterprise knowledge bases" },
+  { title: "Predictive Analytics", icon: LineChart, iconName: "LineChart", href: "/services/predictive-analytics/", desc: "Demand forecasting & churn prediction ML" },
+  { title: "Custom ML Models", icon: Blocks, iconName: "Blocks", href: "/services/custom-ml-models/", desc: "Bespoke algorithms trained on your local data" },
+  { title: "AI API Integrations", icon: Code2, iconName: "Code2", href: "/services/ai-api-integration/", desc: "Seamlessly embed OpenAI, Anthropic & Gemini" }
 ];
 
 const engagementModels = [
@@ -184,7 +184,7 @@ const AISolutionsPage = () => {
             ))}
           </div>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link to="/contact"
+            <Link to="/contact/"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-white transition-all hover:gap-3 hover:shadow-lg"
               style={{ background: accentGradient }}>
               Request AI Feasibility Audit <ArrowRight size={15} />
@@ -389,7 +389,7 @@ const AISolutionsPage = () => {
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <h2 className="text-3xl md:text-4xl font-black text-white mb-4"><span data-cms-key="aisol_h2_1" data-cms-label="Section Heading" data-cms-attr="text">{h2_1}</span></h2>
           <p className="text-white/80 mb-8 text-lg"><span data-cms-key="aisol_p_11" data-cms-label="Body Text" data-cms-attr="text">{p_11}</span></p>
-          <Link to="/contact"
+          <Link to="/contact/"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-bold bg-white transition-all hover:gap-3 hover:shadow-xl"
             style={{ color: accentColor }}>
             Book Discovery Session <Target size={16} />

@@ -163,7 +163,7 @@ const BigCommercePage = () => {
       </div>
       <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative z-10 pt-20 pb-20">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <Link to="/services" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: "#1A6FE8" }}>← Back to All Services</Link>
+          <Link to="/services/" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: "#1A6FE8" }}>← Back to All Services</Link>
           <div className="flex justify-center mb-6">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase"
               style={{ background: "rgba(26,111,232,0.08)", color: "#1A6FE8", border: "1px solid rgba(26,111,232,0.2)" }}>
@@ -177,7 +177,7 @@ const BigCommercePage = () => {
             <span data-cms-key="bigcommerce_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.bigcommerce_hero_sub || "We build enterprise grade BigCommerce stores for high volume businesses: with custom themes, B2B capabilities, multi channel selling, and deep integrations."}</span>
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
+            <Link to="/contact/" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
               style={{ background: "linear-gradient(135deg, #1A6FE8, #1558c0)", boxShadow: "0 8px 24px rgba(26,111,232,0.4)" }}>
               <span data-cms-key="bigcommerce_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.bigcommerce_cta_btn || "Build My BigCommerce Store"}</span> <CreditCard size={15} />
             </Link>
@@ -329,7 +329,7 @@ const BigCommercePage = () => {
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4"><span data-cms-key="bigcommerce_cta_h2" data-cms-label="CTA Heading" data-cms-attr="text">Ready to <span data-cms-key="bigcommerce_hl_122" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-orange-gradient">Scale</span> on <span data-cms-key="bigcommerce_hl_123" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-purple-gradient">BigCommerce</span>?</span></h2>
           <p className="text-[#E2E8F0] mb-8 leading-relaxed"><span data-cms-key="bigcommerce_cta_sub" data-cms-label="CTA Subtext" data-cms-attr="text">Book a free consultation. We'll assess your current setup, define the migration or build approach, and show you what enterprise grade eCommerce looks like for your business.</span></p>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
+          <Link to="/contact/" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
             style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 4px 20px rgba(255,107,43,0.4)" }}>
             Start My BigCommerce Project <ArrowRight size={16} />
           </Link>

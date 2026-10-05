@@ -167,7 +167,7 @@ const WooCommercePage = () => {
       </div>
       <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative z-10 pt-20 pb-20">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <Link to="/services" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: accentColor }}>← Back to All Services</Link>
+          <Link to="/services/" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: accentColor }}>← Back to All Services</Link>
           <div className="flex justify-center mb-6">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase"
               style={{ background: `${accentColor}12`, color: accentColor, border: `1px solid ${accentColor}30` }}>
@@ -181,7 +181,7 @@ const WooCommercePage = () => {
             <span data-cms-key="woo_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.woo_hero_sub || "We build flexible, scalable WooCommerce stores on WordPress: giving you complete ownership, custom functionality, and zero platform lock-in."}</span>
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
+            <Link to="/contact/" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
               style={{ background: "linear-gradient(135deg, #7F54B3, #6a3fa0)", boxShadow: `0 8px 24px ${accentColor}40` }}>
               <span data-cms-key="woo_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.woo_cta_btn || "Build My WooCommerce Store"}</span> <Store size={15} />
             </Link>
@@ -374,7 +374,7 @@ const WooCommercePage = () => {
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4"><span data-cms-key="woo_cta_h2" data-cms-label="CTA Heading" data-cms-attr="text">Ready to Build Your <span data-cms-key="woo_hl_122" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-orange-gradient">WooCommerce</span> <span data-cms-key="woo_hl_123" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-purple-gradient">Store</span>?</span></h2>
           <p className="text-[#E2E8F0] mb-8 leading-relaxed"><span data-cms-key="woo_cta_sub" data-cms-label="CTA Subtext" data-cms-attr="text">Book a free consultation. We'll review your requirements, recommend the right approach, and give you a clear picture of what a WooCommerce build with Digital Aura looks like.</span></p>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
+          <Link to="/contact/" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
             style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 4px 20px rgba(255,107,43,0.4)" }}>
             Start My WooCommerce Project <ArrowRight size={16} />
           </Link>

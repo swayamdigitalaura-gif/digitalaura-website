@@ -75,7 +75,7 @@ const ProcessSection = () => {
       </div>
 
       <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.5 }} className="text-center mt-10">
-        <a href="/contact" className="btn-orange px-8 py-4 text-base gap-2 inline-flex">
+        <a href="/contact/" className="btn-orange px-8 py-4 text-base gap-2 inline-flex">
           <span data-cms-key="process_cta" data-cms-label="Process CTA Button" data-cms-attr="text">{s.process_cta || 'Start Your Project'}</span>
         </a>
       </motion.div>

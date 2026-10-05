@@ -84,7 +84,7 @@ const ApplyForm = ({ job, color }: { job: Job; color: string }) => {
       <p className="text-[#6B7280] max-w-sm mx-auto leading-relaxed">
         Thanks {form.name.split(" ")[0]}! We'll review your application and get back to you within 2–3 business days.
       </p>
-      <Link to="/careers" className="inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-xl text-white font-bold text-sm"
+      <Link to="/careers/" className="inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-xl text-white font-bold text-sm"
         style={{ background: `linear-gradient(135deg, ${color}, ${color}cc)` }}>
         <ArrowLeft size={14} /> Back to Careers
       </Link>
@@ -279,7 +279,7 @@ const JobDetailPage = () => {
     <PageLayout>
       <div className="min-h-screen flex flex-col items-center justify-center pt-[72px] gap-4">
         <h2 className="text-2xl font-black text-[#0A1628]">Job not found</h2>
-        <Link to="/careers" className="btn-orange px-6 py-3 text-sm gap-2 inline-flex items-center">
+        <Link to="/careers/" className="btn-orange px-6 py-3 text-sm gap-2 inline-flex items-center">
           <ArrowLeft size={14} /> Back to Careers
         </Link>
       </div>
@@ -306,7 +306,7 @@ const JobDetailPage = () => {
           <nav className="flex items-center gap-2 text-xs text-[#9CA3AF] mb-8">
             <Link to="/" className="hover:text-[#FF6B2B] transition-colors">Home</Link>
             <ChevronRight size={12} />
-            <Link to="/careers" className="hover:text-[#FF6B2B] transition-colors">Careers</Link>
+            <Link to="/careers/" className="hover:text-[#FF6B2B] transition-colors">Careers</Link>
             <ChevronRight size={12} />
             <span className="text-[#0A1628] font-semibold truncate">{job.title}</span>
           </nav>
@@ -462,7 +462,7 @@ const JobDetailPage = () => {
                 style={{ background: `linear-gradient(135deg, ${color}, ${color}cc)`, boxShadow: `0 4px 20px ${color}35` }}>
                 Apply Now <ArrowRight size={14} />
               </a>
-              <Link to="/careers"
+              <Link to="/careers/"
                 className="w-full flex items-center justify-center gap-2 py-3 mt-3 rounded-xl font-semibold text-sm border transition-all hover:border-[#FF6B2B] hover:text-[#FF6B2B]"
                 style={{ borderColor: "#E5E7EB", color: "#6B7280" }}>
                 <ArrowLeft size={13} /> All Openings

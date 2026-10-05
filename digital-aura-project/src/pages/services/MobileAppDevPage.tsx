@@ -97,12 +97,12 @@ const typeWhyChoose: Record<string, { title: string; icon: React.ElementType; ic
 
 /* ─── DATA ─── */
 const servicesList = [
-  { title: "Android App Development", icon: Smartphone, iconName: "Smartphone", href: "/contact", desc: "Native Android apps built with Kotlin and Jetpack Compose, optimised for performance, security, and every Android device on the market." },
-  { title: "iOS App Development", icon: MonitorSmartphone, iconName: "MonitorSmartphone", href: "/contact", desc: "Polished, App Store ready iOS apps built with Swift and SwiftUI, designed to Apple HIG standards with smooth, native interactions." },
-  { title: "Flutter Apps", icon: Layers, iconName: "Layers", href: "/contact", desc: "One codebase, two platforms. Flutter delivers pixel perfect iOS and Android apps with 60fps performance and fast release cycles." },
-  { title: "React Native Apps", icon: Code2, iconName: "Code2", href: "/contact", desc: "JavaScript powered native apps trusted by Facebook, Shopify and Airbnb. Share logic across platforms while preserving a truly native feel." },
-  { title: "App UI/UX Design", icon: Palette, iconName: "Palette", href: "/contact", desc: "Figma first prototyping and design systems mapped to Apple HIG and Google Material guidelines, built for retention and usability." },
-  { title: "App Modernization", icon: Globe2, iconName: "Globe2", href: "/contact", desc: "Transform legacy mobile apps into modern, scalable products with clean architecture, updated tech stacks, and zero disruption to production." }
+  { title: "Android App Development", icon: Smartphone, iconName: "Smartphone", href: "/contact/", desc: "Native Android apps built with Kotlin and Jetpack Compose, optimised for performance, security, and every Android device on the market." },
+  { title: "iOS App Development", icon: MonitorSmartphone, iconName: "MonitorSmartphone", href: "/contact/", desc: "Polished, App Store ready iOS apps built with Swift and SwiftUI, designed to Apple HIG standards with smooth, native interactions." },
+  { title: "Flutter Apps", icon: Layers, iconName: "Layers", href: "/contact/", desc: "One codebase, two platforms. Flutter delivers pixel perfect iOS and Android apps with 60fps performance and fast release cycles." },
+  { title: "React Native Apps", icon: Code2, iconName: "Code2", href: "/contact/", desc: "JavaScript powered native apps trusted by Facebook, Shopify and Airbnb. Share logic across platforms while preserving a truly native feel." },
+  { title: "App UI/UX Design", icon: Palette, iconName: "Palette", href: "/contact/", desc: "Figma first prototyping and design systems mapped to Apple HIG and Google Material guidelines, built for retention and usability." },
+  { title: "App Modernization", icon: Globe2, iconName: "Globe2", href: "/contact/", desc: "Transform legacy mobile apps into modern, scalable products with clean architecture, updated tech stacks, and zero disruption to production." }
 ];
 
 const industries = [
@@ -251,7 +251,7 @@ const MobileAppDevPage = () => {
       </div>
       <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative z-10 pt-20 pb-16">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <Link to="/services" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: accentColor }}>← Back to All Services</Link>
+          <Link to="/services/" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: accentColor }}>← Back to All Services</Link>
           <div className="flex justify-center mb-6">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase"
               style={{ background: accentBg, color: accentColor, border: `1px solid ${accentColor}30` }}>
@@ -275,7 +275,7 @@ const MobileAppDevPage = () => {
             ))}
           </div>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link to="/contact"
+            <Link to="/contact/"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-white transition-all hover:gap-3 hover:shadow-lg"
               style={{ background: accentGradient }}>
               <span data-cms-key="mobileapp_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.mobileapp_cta_btn || "Request App Architecture Audit"}</span> <ArrowRight size={15} />
@@ -503,7 +503,7 @@ const MobileAppDevPage = () => {
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <h2 className="text-3xl md:text-4xl font-black text-white mb-4"><span data-cms-key="mobileapp_s10_h2" data-cms-label="Section Heading" data-cms-attr="text">Ready to Build Your Application?</span></h2>
           <p className="text-white/80 mb-8 text-lg"><span data-cms-key="mobileapp_p_29" data-cms-label="Body Text" data-cms-attr="text">Schedule a technical discovery session with our Lead Mobile Developers. We'll map out precisely how to bring your product to life.</span></p>
-          <Link to="/contact"
+          <Link to="/contact/"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-bold bg-white transition-all hover:gap-3 hover:shadow-xl"
             style={{ color: accentColor }}>
             Book Discovery Session <Target size={16} />
@@ -525,7 +525,7 @@ const MobileAppDevPage = () => {
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4"><span data-cms-key="mobileapp_cta_h2" data-cms-label="CTA Heading" data-cms-attr="text">Ready to <span data-cms-key="mobileapp_hl_136" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-orange-gradient">Launch</span> Your <span data-cms-key="mobileapp_hl_137" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-purple-gradient">Mobile App</span>?</span></h2>
           <p className="text-[#E2E8F0] mb-8 leading-relaxed"><span data-cms-key="mobileapp_cta_sub" data-cms-label="CTA Subtext" data-cms-attr="text">Book a free App Discovery Call. We'll map your app requirements, recommend the right platform approach, and give you a clear picture of what a mobile build with Digital Aura looks like.</span></p>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
+          <Link to="/contact/" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
             style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 4px 20px rgba(255,107,43,0.4)" }}>
             Book My App Discovery Call <ArrowRight size={16} />
           </Link>

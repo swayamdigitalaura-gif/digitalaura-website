@@ -146,7 +146,7 @@ const BlogPost = () => {
     <PageLayout>
       <div className="min-h-screen flex flex-col items-center justify-center pt-[72px] gap-4">
         <h2 className="text-2xl font-black text-[#0A1628]">Blog post not found</h2>
-        <Link to="/blog" className="btn-orange px-6 py-3 text-sm gap-2 inline-flex items-center">
+        <Link to="/blog/" className="btn-orange px-6 py-3 text-sm gap-2 inline-flex items-center">
           <ArrowLeft size={14} /> Back to Blog
         </Link>
       </div>
@@ -171,7 +171,7 @@ const BlogPost = () => {
             <div className="absolute inset-0 dot-pattern opacity-20" />
           </div>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="max-w-3xl mx-auto relative z-10 py-10 text-center px-5">
-            <Link to="/blog" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: theme.color }}>
+            <Link to="/blog/" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: theme.color }}>
               ← Back to All Articles
             </Link>
             {blog.category && (
@@ -243,7 +243,7 @@ const BlogPost = () => {
               </div>
 
               <div className="pt-8 mt-8 border-t flex items-center justify-between flex-wrap gap-4" style={{ borderColor: "#E5E7EB" }}>
-                <Link to="/blog" className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.color }}>
+                <Link to="/blog/" className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.color }}>
                   <ArrowLeft size={14} /> Back to all posts
                 </Link>
                 <div className="flex items-center gap-2">
@@ -265,7 +265,7 @@ const BlogPost = () => {
                 </div>
                 <h3 className="font-black text-base mb-2" style={{ color: HEADING }}>Want results like this?</h3>
                 <p className="text-xs mb-4 leading-relaxed text-[#6B7280]">Talk to Digital Aura about your growth.</p>
-                <Link to="/contact" className="btn-orange w-full py-3 text-sm inline-flex items-center justify-center gap-2">
+                <Link to="/contact/" className="btn-orange w-full py-3 text-sm inline-flex items-center justify-center gap-2">
                   Get in Touch <ArrowRight size={14} />
                 </Link>
               </div>
@@ -353,10 +353,10 @@ function FinalCTA() {
           Book a free strategy session with our senior team — we'll audit your funnel and hand you a 30-day action plan.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-3">
-          <Link to="/contact" className="btn-orange px-7 py-3.5 text-[15px] gap-2 inline-flex items-center">
+          <Link to="/contact/" className="btn-orange px-7 py-3.5 text-[15px] gap-2 inline-flex items-center">
             Book a free strategy session <ArrowRight size={16} />
           </Link>
-          <Link to="/case-studies" className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-white/10">
+          <Link to="/case-studies/" className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-white/10">
             View our work
           </Link>
         </div>

@@ -317,12 +317,12 @@ const TestimonialsPage = () => {
               Partner with Digital Aura and experience the growth that 750+ businesses already trust us for.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link to="/contact"
+              <Link to="/contact/"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
                 style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 4px 20px rgba(255,107,43,0.4)" }}>
                 Get a Free Consultation <ArrowRight size={15} />
               </Link>
-              <Link to="/case-studies"
+              <Link to="/case-studies/"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm border transition-all"
                 style={{ color: "#fff", borderColor: "rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.05)" }}>
                 View Case Studies <ArrowRight size={15} />

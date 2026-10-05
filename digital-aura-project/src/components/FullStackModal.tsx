@@ -236,7 +236,7 @@ const FullStackModal = ({ open, onClose }: Props) => {
                     </p>
                   </div>
                   <Link
-                    to="/contact"
+                    to="/contact/"
                     onClick={onClose}
                     className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-bold text-white whitespace-nowrap transition-all hover:gap-3"
                     style={{ background: "linear-gradient(135deg, #378ADD, #2563eb)", boxShadow: "0 6px 20px rgba(55,138,221,0.4)" }}

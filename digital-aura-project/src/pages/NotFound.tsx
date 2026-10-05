@@ -118,7 +118,7 @@ const NotFound = () => {
           transition={{ delay: 0.75 }}
           className="mt-12 pt-8 border-t" style={{ borderColor: "#E5E7EB" }}>
           <p className="text-xs mb-3" style={{ color: "#9CA3AF" }}>Looking for something specific?</p>
-          <Link to="/contact"
+          <Link to="/contact/"
             className="inline-flex items-center gap-1.5 text-sm font-semibold hover:underline"
             style={{ color: "#7C3AED" }}>
             <Search size={13} /> Contact our team — we'll help you find it <ArrowRight size={13} />

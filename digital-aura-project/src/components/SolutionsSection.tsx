@@ -9,28 +9,28 @@ const SOLUTION_DEFAULTS = [
     tag: "AI Automation", title: "Automate Your Business",
     desc: "Cut manual work, reduce errors, and save thousands of hours per year with intelligent AI automation and smart workflow systems.",
     outcomes: ["Custom AI workflows", "Chatbot & assistants", "System integration"],
-    href: "/services/ai-automation",
+    href: "/services/ai-automation/",
   },
   {
     icon: Rocket, iconName: "Rocket", color: "#FF6B2B", bg: "rgba(255,107,43,0.08)", border: "rgba(255,107,43,0.2)",
     tag: "Web & App Development", title: "Build Your Web & Mobile App",
     desc: "From concept to live product in weeks. We build high performance websites, web apps, and mobile apps tailored to your business goals.",
     outcomes: ["Custom Web Apps", "iOS & Android Apps", "UI/UX Design"],
-    href: "/services/web-app-development",
+    href: "/services/web-app-development/",
   },
   {
     icon: TrendingUp, iconName: "TrendingUp", color: "#1A6FE8", bg: "rgba(26,111,232,0.08)", border: "rgba(26,111,232,0.2)",
     tag: "Digital Growth", title: "Scale Digitally",
     desc: "Dominate search, paid ads, and social media with data driven campaigns managed by AI assisted marketing experts.",
     outcomes: ["SEO & Google Ads", "Meta & Social", "Analytics dashboards"],
-    href: "/services/digital-marketing",
+    href: "/services/digital-marketing/",
   },
   {
     icon: Layers, iconName: "Layers", color: "#22C55E", bg: "rgba(34,197,94,0.08)", border: "rgba(34,197,94,0.2)",
     tag: "eCommerce & Platforms", title: "Launch Your eCommerce Store",
     desc: "Build conversion optimised online stores on Shopify, WooCommerce, or custom platforms, built to sell and scale.",
     outcomes: ["Shopify & WooCommerce", "Custom eCommerce", "Payment integration"],
-    href: "/services/web-app-development",
+    href: "/services/web-app-development/",
   },
 ];
 

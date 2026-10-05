@@ -522,7 +522,7 @@ const Careers = () => {
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4"><span data-cms-key="careers_cta_h2" data-cms-label="CTA Heading" data-cms-attr="text">{ctaH2}</span> <span data-cms-key="careers_hl_120" data-cms-label="CTA Heading Highlight" data-cms-attr="text" className="text-orange-gradient">{heroHl120}</span> <span data-cms-key="careers_cta_h2b" data-cms-label="CTA Heading End" data-cms-attr="text">{ctaH2b}</span></h2>
           <p className="text-[#94a3b8] mb-8 text-sm leading-relaxed max-w-lg mx-auto"><span data-cms-key="careers_pg_p_13" data-cms-label="Body Text" data-cms-attr="text">{pgP13}</span></p>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
+          <Link to="/contact/" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
             style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 4px 20px rgba(255,107,43,0.4)" }}>
             <span data-cms-key="careers_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{ctaBtn}</span> <ArrowRight size={16} />
           </Link>

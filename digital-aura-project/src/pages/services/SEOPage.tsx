@@ -79,7 +79,7 @@ const aiSeoCards = [
     color: "#22C55E",
     bg: "rgba(34,197,94,0.08)",
     title: "SEO Audit & Strategy",
-    href: "/services/seo-content-marketing/seo-audit-strategy",
+    href: "/services/seo-content-marketing/seo-audit-strategy/",
     desc: "We start with a full site audit covering rankings, keyword gaps, content quality, backlinks, and competitor positioning. Every finding is prioritised and mapped into a clear, actionable SEO roadmap tailored to your business goals.",
     tags: ["Full site audit", "Competitor analysis", "SEO roadmap"],
   },
@@ -90,7 +90,7 @@ const aiSeoCards = [
     color: "#22C55E",
     bg: "rgba(34,197,94,0.08)",
     title: "On Page SEO",
-    href: "/services/seo-content-marketing/on-page-seo",
+    href: "/services/seo-content-marketing/on-page-seo/",
     desc: "We optimise every page with targeted keywords, title tags, meta descriptions, H1 to H6 headings, image alt text, and internal linking. All content is aligned to search intent so Google ranks your pages and users stay engaged.",
     tags: ["Keyword research", "Meta optimisation", "Content structure"],
   },
@@ -101,7 +101,7 @@ const aiSeoCards = [
     color: "#22C55E",
     bg: "rgba(34,197,94,0.08)",
     title: "Technical SEO",
-    href: "/services/seo-content-marketing/technical-seo",
+    href: "/services/seo-content-marketing/technical-seo/",
     desc: "We fix crawlability, indexation errors, page speed, Core Web Vitals, mobile usability, canonical tags, and XML sitemaps. A clean technical foundation ensures search engines can access and rank every important page on your site.",
     tags: ["Core Web Vitals", "Site speed", "Crawl & index fixes"],
   },
@@ -112,7 +112,7 @@ const aiSeoCards = [
     color: "#22C55E",
     bg: "rgba(34,197,94,0.08)",
     title: "Local SEO",
-    href: "/services/seo-content-marketing/local-seo",
+    href: "/services/seo-content-marketing/local-seo/",
     desc: "We optimise your Google Business Profile, build consistent local citations, and create geo targeted landing pages. Our local SEO strategies put your business at the top of Google Maps and the local pack for high intent searches.",
     tags: ["Google Business Profile", "Local citations", "Geo targeting"],
   },
@@ -123,7 +123,7 @@ const aiSeoCards = [
     color: "#22C55E",
     bg: "rgba(34,197,94,0.08)",
     title: "Off Page SEO",
-    href: "/services/seo-content-marketing/off-page-seo",
+    href: "/services/seo-content-marketing/off-page-seo/",
     desc: "We earn high quality backlinks from authoritative, niche relevant websites through guest posting, digital PR, and brand mention outreach. Every link is manually vetted to grow your domain authority and protect against algorithm updates.",
     tags: ["Link building", "Digital PR", "Domain authority"],
   },
@@ -134,7 +134,7 @@ const aiSeoCards = [
     color: "#22C55E",
     bg: "rgba(34,197,94,0.08)",
     title: "eCommerce SEO",
-    href: "/services/seo-content-marketing/ecommerce-seo",
+    href: "/services/seo-content-marketing/ecommerce-seo/",
     desc: "We optimise product pages, category structures, and product schema so your listings rank in Google Shopping and organic results. Crawl budget is managed efficiently so every product page gets indexed and drives targeted buyer traffic.",
     tags: ["Product page SEO", "Category structure", "eCommerce schema"],
   },
@@ -672,7 +672,7 @@ const SEOPage = () => {
       </div>
       <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative z-10 pt-20 pb-8">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <Link to="/services" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: accentColor }}>
+          <Link to="/services/" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: accentColor }}>
             ← Back to All Services
           </Link>
           <div className="flex justify-center mb-6">
@@ -698,7 +698,7 @@ const SEOPage = () => {
             ))}
           </div>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link to="/contact"
+            <Link to="/contact/"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
               style={{ background: "linear-gradient(135deg, #22C55E, #16a34a)", boxShadow: `0 8px 24px ${accentColor}40` }}>
               Start Growing Organically <Search size={15} />
@@ -945,7 +945,7 @@ const SEOPage = () => {
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4"><span data-cms-key="seo_cta_h2" data-cms-label="CTA Heading" data-cms-attr="text">Ready to <span data-cms-key="seo_hl_131" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-orange-gradient">Rank</span> on <span data-cms-key="seo_hl_132" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-purple-gradient">Page 1</span>?</span></h2>
           <p className="text-[#E2E8F0] mb-8 leading-relaxed"><span data-cms-key="seo_cta_sub" data-cms-label="CTA Subtext" data-cms-attr="text">Book a free SEO Audit Call. We'll review your current rankings, identify your biggest growth opportunities, and show you exactly what it will take to get to page 1 for your target keywords.</span></p>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
+          <Link to="/contact/" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
             style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 4px 20px rgba(255,107,43,0.4)" }}>
             Book My Free SEO Audit <ArrowRight size={16} />
           </Link>

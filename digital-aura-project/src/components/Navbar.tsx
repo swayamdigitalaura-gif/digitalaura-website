@@ -13,21 +13,21 @@ import logo from "@/assets/logo.png";
 import { useSetting } from "@/hooks/useSettings";
 
 const companyLinks = [
-  { label: "About Us", href: "/about", color: "#FF6B2B", bg: "rgba(255,107,43,0.08)" },
-  { label: "Our Engagement Models", href: "/engagement-models", color: "#7C3AED", bg: "rgba(124,58,237,0.08)" },
-  { label: "Testimonials", href: "/testimonials", color: "#22C55E", bg: "rgba(34,197,94,0.08)" },
-  { label: "Careers", href: "/careers", color: "#1A6FE8", bg: "rgba(26,111,232,0.08)" },
-  { label: "Service Areas", href: "/service-areas", color: "#EC4899", bg: "rgba(236,72,153,0.08)" },
+  { label: "About Us", href: "/about/", color: "#FF6B2B", bg: "rgba(255,107,43,0.08)" },
+  { label: "Our Engagement Models", href: "/engagement-models/", color: "#7C3AED", bg: "rgba(124,58,237,0.08)" },
+  { label: "Testimonials", href: "/testimonials/", color: "#22C55E", bg: "rgba(34,197,94,0.08)" },
+  { label: "Careers", href: "/careers/", color: "#1A6FE8", bg: "rgba(26,111,232,0.08)" },
+  { label: "Service Areas", href: "/service-areas/", color: "#EC4899", bg: "rgba(236,72,153,0.08)" },
 ];
 
 const navLinks = [
   { label: "Home", href: "/", isPage: true },
-  { label: "Company", href: "/about", isPage: true, hasCompany: true },
-  { label: "Services", href: "/services", isPage: true, hasMega: true },
-  { label: "Case Studies", href: "/case-studies", isPage: true },
-  { label: "Awards", href: "/awards", isPage: true },
-  { label: "Blogs", href: "/blog", isPage: true },
-  { label: "Contact", href: "/contact", isPage: true },
+  { label: "Company", href: "/about/", isPage: true, hasCompany: true },
+  { label: "Services", href: "/services/", isPage: true, hasMega: true },
+  { label: "Case Studies", href: "/case-studies/", isPage: true },
+  { label: "Awards", href: "/awards/", isPage: true },
+  { label: "Blogs", href: "/blog/", isPage: true },
+  { label: "Contact", href: "/contact/", isPage: true },
 ];
 
 const megaCategories = [
@@ -37,10 +37,10 @@ const megaCategories = [
     color: "#7C3AED",
     bg: "rgba(124,58,237,0.07)",
     items: [
-      { icon: Bot,      title: "AI Powered Web Apps",       desc: "Smart, scalable apps with AI at the core",          route: "/services/ai-powered-web-apps" },
-      { icon: Brain,    title: "AI Automation Systems",     desc: "Intelligent workflows that save hours daily",         route: "/services/ai-automation" },
-      { icon: Workflow, title: "AI Chatbots & Assistants",  desc: "24/7 conversational AI for leads & support",         route: "/services/ai-chatbot-assistant" },
-      { icon: Film,     title: "AI Filmmaking",             desc: "AI-produced Reels, Shorts & ad creatives",           route: "/services/ai-filmmaking" },
+      { icon: Bot,      title: "AI Powered Web Apps",       desc: "Smart, scalable apps with AI at the core",          route: "/services/ai-powered-web-apps/" },
+      { icon: Brain,    title: "AI Automation Systems",     desc: "Intelligent workflows that save hours daily",         route: "/services/ai-automation/" },
+      { icon: Workflow, title: "AI Chatbots & Assistants",  desc: "24/7 conversational AI for leads & support",         route: "/services/ai-chatbot-assistant/" },
+      { icon: Film,     title: "AI Filmmaking",             desc: "AI-produced Reels, Shorts & ad creatives",           route: "/services/ai-filmmaking/" },
     ],
   },
   {
@@ -49,9 +49,9 @@ const megaCategories = [
     color: "#1A6FE8",
     bg: "rgba(26,111,232,0.07)",
     items: [
-      { icon: Globe2, title: "Custom Web Development",  desc: "High performance, SEO ready websites",           route: "/services/web-app-development" },
-      { icon: Code2,  title: "Full Stack Development",  desc: "End to end apps with robust backends & APIs",    route: "/services/full-stack-development" },
-      { icon: PenTool,title: "WordPress Development",   desc: "Fast, SEO driven WordPress sites",               route: "/services/wordpress-development" },
+      { icon: Globe2, title: "Custom Web Development",  desc: "High performance, SEO ready websites",           route: "/services/web-app-development/" },
+      { icon: Code2,  title: "Full Stack Development",  desc: "End to end apps with robust backends & APIs",    route: "/services/full-stack-development/" },
+      { icon: PenTool,title: "WordPress Development",   desc: "Fast, SEO driven WordPress sites",               route: "/services/wordpress-development/" },
     ],
   },
   {
@@ -60,8 +60,8 @@ const megaCategories = [
     color: "#FF6B2B",
     bg: "rgba(255,107,43,0.07)",
     items: [
-      { icon: ShoppingCart, title: "Shopify Development",     desc: "High converting custom Shopify stores",          route: "/services/shopify-development" },
-      { icon: Store,        title: "WooCommerce Development", desc: "Flexible WooCommerce with full control",          route: "/services/woocommerce-development" },
+      { icon: ShoppingCart, title: "Shopify Development",     desc: "High converting custom Shopify stores",          route: "/services/shopify-development/" },
+      { icon: Store,        title: "WooCommerce Development", desc: "Flexible WooCommerce with full control",          route: "/services/woocommerce-development/" },
     ],
   },
   {
@@ -70,10 +70,10 @@ const megaCategories = [
     color: "#22C55E",
     bg: "rgba(34,197,94,0.07)",
     items: [
-      { icon: Search, title: "SEO & Content Marketing", desc: "Rank on page 1 with technical SEO & content",  route: "/services/seo-content-marketing" },
-      { icon: Target, title: "Google Ads",              desc: "Data driven Search, Display & Shopping ads",    route: "/services/google-ads" },
-      { icon: Share2, title: "Meta Ads",                desc: "Facebook & Instagram campaigns that convert",   route: "/services/meta-ads" },
-      { icon: Hash,   title: "Social Media Marketing",  desc: "Content, community & organic growth",           route: "/services/social-media-marketing" },
+      { icon: Search, title: "SEO & Content Marketing", desc: "Rank on page 1 with technical SEO & content",  route: "/services/seo-content-marketing/" },
+      { icon: Target, title: "Google Ads",              desc: "Data driven Search, Display & Shopping ads",    route: "/services/google-ads/" },
+      { icon: Share2, title: "Meta Ads",                desc: "Facebook & Instagram campaigns that convert",   route: "/services/meta-ads/" },
+      { icon: Hash,   title: "Social Media Marketing",  desc: "Content, community & organic growth",           route: "/services/social-media-marketing/" },
     ],
   },
   {
@@ -82,9 +82,9 @@ const megaCategories = [
     color: "#EC4899",
     bg: "rgba(236,72,153,0.07)",
     items: [
-      { icon: Smartphone, title: "Android Development",  desc: "Native Kotlin apps for every Android device",   route: "/services/android-development" },
-      { icon: AppWindow,  title: "Flutter Apps",         desc: "iOS & Android, one codebase, native feel",      route: "/services/flutter-apps" },
-      { icon: Layers,     title: "React Native Apps",    desc: "Cross platform apps with native UX",             route: "/services/react-native-apps" },
+      { icon: Smartphone, title: "Android Development",  desc: "Native Kotlin apps for every Android device",   route: "/services/android-development/" },
+      { icon: AppWindow,  title: "Flutter Apps",         desc: "iOS & Android, one codebase, native feel",      route: "/services/flutter-apps/" },
+      { icon: Layers,     title: "React Native Apps",    desc: "Cross platform apps with native UX",             route: "/services/react-native-apps/" },
     ],
   },
 ];
@@ -150,7 +150,7 @@ const MegaMenu = ({ onClose }: { onClose: () => void }) => (
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
         <span className="text-[12px] font-semibold text-[#374151]">15+ services &nbsp;|&nbsp; Results guaranteed</span>
         <Link
-          to="/services"
+          to="/services/"
           onClick={onClose}
           className="inline-flex items-center gap-1.5 text-[12px] font-bold text-[#FF6B2B] hover:gap-2.5 transition-all"
         >
@@ -257,7 +257,7 @@ const Navbar = () => {
                     onMouseEnter={() => setMegaOpen(true)}
                   >
                     <Link
-                      to="/services"
+                      to="/services/"
                       className={`text-[14px] font-medium transition-colors relative group whitespace-nowrap ${
                         active ? "text-[#FF6B2B]" : "text-[#374151] hover:text-[#FF6B2B]"
                       }`}
@@ -297,7 +297,7 @@ const Navbar = () => {
             <a href="tel:+918141200284" className="flex items-center gap-1.5 text-[15px] font-medium text-[#374151] hover:text-[#FF6B2B] transition-colors">
               <Phone size={14} className="text-[#FF6B2B]" /> +91 81412 00284
             </a>
-            <Link to="/contact#contact-form" className="btn-orange px-5 py-2.5 text-[15px]">Get Growth Plan</Link>
+            <Link to="/contact/#contact-form" className="btn-orange px-5 py-2.5 text-[15px]">Get Growth Plan</Link>
           </div>
 
           {/* Mobile hamburger */}
@@ -359,7 +359,7 @@ const Navbar = () => {
                     <motion.div key={link.label} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.06 }}>
                       <div className="flex items-center justify-between border-b border-gray-100 py-4">
                         <Link
-                          to="/services"
+                          to="/services/"
                           onClick={() => setMobileOpen(false)}
                           className="text-2xl font-bold text-[#0A1628]"
                         >
@@ -404,7 +404,7 @@ const Navbar = () => {
                               </div>
                             ))}
                             <Link
-                              to="/services"
+                              to="/services/"
                               onClick={() => setMobileOpen(false)}
                               className="inline-flex items-center gap-1.5 text-[13px] font-bold text-[#FF6B2B] mb-4"
                             >
@@ -435,7 +435,7 @@ const Navbar = () => {
               <a href="tel:+918141200284" className="flex items-center gap-2 text-sm text-[#6B7280]">
                 <Phone size={14} className="text-[#FF6B2B]" /> +91 81412 00284
               </a>
-              <Link to="/contact#contact-form" className="btn-orange px-6 py-4 text-base w-full block text-center">
+              <Link to="/contact/#contact-form" className="btn-orange px-6 py-4 text-base w-full block text-center">
                 Get Growth Plan →
               </Link>
             </div>

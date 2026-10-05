@@ -159,7 +159,7 @@ const AIFilmmakingPage = () => {
       <div className="absolute inset-0 pointer-events-none dot-pattern opacity-30" />
       <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative z-10 pt-20 pb-20">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
-          <Link to="/services" className="inline-flex items-center gap-1 text-xs font-semibold mb-4 hover:underline" style={{ color: accent }}>← Back to All Services</Link>
+          <Link to="/services/" className="inline-flex items-center gap-1 text-xs font-semibold mb-4 hover:underline" style={{ color: accent }}>← Back to All Services</Link>
           <span className="flex justify-center">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold mb-6 tracking-widest uppercase"
               style={{ background: "rgba(236,72,153,0.1)", color: accent, border: "1px solid rgba(236,72,153,0.3)" }}>
@@ -173,7 +173,7 @@ const AIFilmmakingPage = () => {
             <span data-cms-key="aifilm_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{g("aifilm_hero_sub", "AI-produced Reels, Shorts, and ad creatives in days, not weeks — plus the strategy and paid promotion to back them.")}</span>
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2">
+            <Link to="/contact/" className="btn-orange px-8 py-4 text-base gap-2">
               <span data-cms-key="aifilm_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{g("aifilm_cta_btn", "Book a Free Content Strategy Call")}</span> <ArrowRight size={18} />
             </Link>
             <a href="#services-list" className="btn-outline-dark px-8 py-4 text-base">See What We Create</a>
@@ -397,7 +397,7 @@ const AIFilmmakingPage = () => {
             <span data-cms-key="aifilm_cta_h2" data-cms-label="CTA Heading" data-cms-attr="text">{g("aifilm_cta_h2", "Let's Turn Your Brand Into Scroll-Stopping Content")}</span>
           </h2>
           <p className="text-[#E2E8F0] mb-8 leading-relaxed"><span data-cms-key="aifilm_cta_sub" data-cms-label="CTA Subtext" data-cms-attr="text">{g("aifilm_cta_sub", "Book a free content strategy call. We'll look at your current social presence and show you exactly which AI video formats would move the needle first — no generic proposal.")}</span></p>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
+          <Link to="/contact/" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
             style={{ background: `linear-gradient(135deg, ${accent}, #be185d)`, boxShadow: `0 4px 20px ${accent}40` }}>
             <span data-cms-key="aifilm_cta_final_btn" data-cms-label="CTA Final Button" data-cms-attr="text">{g("aifilm_cta_final_btn", "Book My Free Content Strategy Call")}</span> <ArrowRight size={16} />
           </Link>

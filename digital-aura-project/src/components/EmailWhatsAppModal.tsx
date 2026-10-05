@@ -88,7 +88,7 @@ const EmailWhatsAppModal = ({ open, onClose }: Props) => {
                     <div className="flex items-center gap-2 mb-1"><Zap size={14} style={{ color: ACCENT }} /><span className="text-[11px] font-bold uppercase tracking-wider" style={{ color: ACCENT }}>Ready to Engage?</span></div>
                     <p className="text-[13px] text-[#94A3B8] leading-relaxed"><span data-cms-key="emailmodal_p_2" data-cms-label="Body Text" data-cms-attr="text">{s.emailmodal_p_2 || "Let's build automated email and WhatsApp campaigns that keep your audience engaged and coming back."}</span></p>
                   </div>
-                  <Link to="/contact" onClick={onClose} className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-bold text-white whitespace-nowrap transition-all hover:gap-3" style={{ background: "linear-gradient(135deg, #25D366, #128C7E)", boxShadow: "0 6px 20px rgba(37,211,102,0.4)" }}>
+                  <Link to="/contact/" onClick={onClose} className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-bold text-white whitespace-nowrap transition-all hover:gap-3" style={{ background: "linear-gradient(135deg, #25D366, #128C7E)", boxShadow: "0 6px 20px rgba(37,211,102,0.4)" }}>
                     Start My Campaign <ArrowRight size={14} />
                   </Link>
                 </div>

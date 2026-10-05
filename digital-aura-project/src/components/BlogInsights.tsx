@@ -114,7 +114,7 @@ const BlogInsights = ({ categories, heading, badge }: BlogInsightsProps) => {
       </div>
 
       <div className="text-center mt-8">
-        <Link to="/blog" className="btn-outline-orange px-8 py-3.5 text-sm gap-2 inline-flex">
+        <Link to="/blog/" className="btn-outline-orange px-8 py-3.5 text-sm gap-2 inline-flex">
           View All Insights <ArrowRight size={16} />
         </Link>
       </div>

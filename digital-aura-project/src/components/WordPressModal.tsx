@@ -234,7 +234,7 @@ const WordPressModal = ({ open, onClose }: Props) => {
                     </p>
                   </div>
                   <Link
-                    to="/contact"
+                    to="/contact/"
                     onClick={onClose}
                     className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-bold text-white whitespace-nowrap transition-all hover:gap-3"
                     style={{ background: `linear-gradient(135deg, ${ACCENT}, #1a5f7a)`, boxShadow: `0 6px 20px rgba(33,117,155,0.4)` }}

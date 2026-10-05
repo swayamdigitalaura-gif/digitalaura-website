@@ -185,7 +185,7 @@ const GoogleAdsModal = ({ open, onClose }: Props) => {
                     </div>
                     <p className="text-[13px] text-[#94A3B8] leading-relaxed"><span data-cms-key="gadsmodal_p_2" data-cms-label="Body Text" data-cms-attr="text">{s.gadsmodal_p_2 || "Let's launch Google Ads campaigns that bring you qualified leads and measurable ROI from day one."}</span></p>
                   </div>
-                  <Link to="/contact" onClick={onClose}
+                  <Link to="/contact/" onClick={onClose}
                     className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-bold text-white whitespace-nowrap transition-all hover:gap-3"
                     style={{ background: "linear-gradient(135deg, #4285F4, #1a56db)", boxShadow: "0 6px 20px rgba(66,133,244,0.4)" }}>
                     Launch My Google Ads <ArrowRight size={14} />

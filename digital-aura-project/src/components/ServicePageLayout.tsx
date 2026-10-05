@@ -45,7 +45,7 @@ const ServicePageLayout = ({
       </div>
       <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative z-10 pt-20 pb-20">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <Link to="/services" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: accentColor }}>
+          <Link to="/services/" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: accentColor }}>
             ← Back to All Services
           </Link>
           <div className="flex justify-center mb-6">
@@ -57,7 +57,7 @@ const ServicePageLayout = ({
           <h1 className="text-4xl md:text-5xl lg:text-[54px] font-black leading-[1.1] text-[#0A1628] mb-5 tracking-tight"><span data-cms-key={`${cmsPrefix}_hero_h1`} data-cms-label="Hero H1" data-cms-attr="text">{title}</span></h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-8 leading-relaxed"><span data-cms-key={`${cmsPrefix}_hero_sub`} data-cms-label="Hero Subtitle" data-cms-attr="text">{subtitle}</span></p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
+            <Link to="/contact/" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
               style={{ background: ctaGradient, boxShadow: `0 8px 24px ${accentColor}40` }}>
               {ctaLabel} <ArrowRight size={15} />
             </Link>
@@ -196,7 +196,7 @@ const ServicePageLayout = ({
             Ready to <span className="text-orange-gradient">Get Started</span>?
           </h2>
           <p className="text-[#E2E8F0] mb-8 leading-relaxed">Let's build a strategy tailored to your business goals. Book a free consultation today.</p>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
+          <Link to="/contact/" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
             style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 4px 20px rgba(255,107,43,0.4)" }}>
             {ctaLabel} <ArrowRight size={16} />
           </Link>

@@ -33,7 +33,7 @@ const DigitalMarketingPage = () => {
       <div className="absolute inset-0 pointer-events-none dot-pattern opacity-30" />
       <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative z-10 pt-20 pb-20">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
-          <Link to="/services" className="inline-flex items-center gap-1 text-xs font-semibold text-[#FF6B2B] mb-4 hover:underline">← Back to All Services</Link>
+          <Link to="/services/" className="inline-flex items-center gap-1 text-xs font-semibold text-[#FF6B2B] mb-4 hover:underline">← Back to All Services</Link>
           <span className="flex justify-center">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold mb-6 tracking-widest uppercase"
               style={{ background: "rgba(255,107,43,0.1)", color: "#FF6B2B", border: "1px solid rgba(255,107,43,0.3)" }}>
@@ -48,7 +48,7 @@ const DigitalMarketingPage = () => {
             <span data-cms-key="digmkt_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.digmkt_hero_sub || "SEO, paid ads, and social campaigns measured against revenue: not vanity metrics. Built on AI analysis, optimised by expert hands."}</span>
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2">
+            <Link to="/contact/" className="btn-orange px-8 py-4 text-base gap-2">
               <span data-cms-key="digmkt_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.digmkt_cta_btn || "Get a Free Audit"}</span> <ArrowRight size={18} /></Link>
             <a href="#services-list" className="btn-outline-dark px-8 py-4 text-base">Our Services</a>
           </div>
@@ -100,7 +100,7 @@ const DigitalMarketingPage = () => {
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <h2 className="text-3xl font-bold text-[#0A1628] mb-4"><span data-cms-key="digmkt_s10_h2" data-cms-label="Section Heading" data-cms-attr="text">Free Marketing Audit: Worth ₹15,000</span></h2>
           <p className="text-[#4B5563] mb-8"><span data-cms-key="digmkt_x7" data-cms-label="Body Text" data-cms-attr="text">We'll audit your SEO, ads, and website: and show you exactly where revenue is being left on the table.</span></p>
-          <Link to="/contact" className="btn-orange px-8 py-4 text-base gap-2 inline-flex">Claim Free Audit <ArrowRight size={18} /></Link>
+          <Link to="/contact/" className="btn-orange px-8 py-4 text-base gap-2 inline-flex">Claim Free Audit <ArrowRight size={18} /></Link>
         </motion.div>
       </div>
     </section>
@@ -118,7 +118,7 @@ const DigitalMarketingPage = () => {
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4"><span data-cms-key="digmkt_cta_h2" data-cms-label="CTA Heading" data-cms-attr="text">Ready to <span data-cms-key="digmkt_hl_113" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-orange-gradient">Grow</span> Your Business <span data-cms-key="digmkt_hl_114" data-cms-label="Heading Highlight" data-cms-attr="text" className="text-purple-gradient">Online</span>?</span></h2>
           <p className="text-[#E2E8F0] mb-8 leading-relaxed"><span data-cms-key="digmkt_cta_sub" data-cms-label="CTA Subtext" data-cms-attr="text">Book a free Digital Marketing Strategy Call. We'll review your current performance, identify your biggest growth opportunities, and show you exactly what a results-driven campaign looks like.</span></p>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
+          <Link to="/contact/" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
             style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 4px 20px rgba(255,107,43,0.4)" }}>
             Book My Strategy Call <ArrowRight size={16} />
           </Link>

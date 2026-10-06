@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { submitLead } from "@/lib/submitLead";
 import { motion, AnimatePresence } from "framer-motion";
 import MathCaptcha from "@/components/MathCaptcha";
 import { Link } from "react-router-dom";
@@ -102,6 +103,22 @@ const LeadForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [captchaOk, setCaptchaOk] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", idea: "" });
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    setSubmitting(true);
+    setError("");
+    const r = await submitLead({
+      name: form.name, email: form.email, phone: form.phone,
+      project: selected || undefined, message: form.idea,
+      honeypot: String(fd.get("company_site") || ""),
+    }, "services-page-lead-form");
+    setSubmitting(false);
+    if (r.ok) setSubmitted(true);
+    else setError(r.error ?? "Something went wrong. Please try again.");
+  };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm(p => ({ ...p, [e.target.name]: e.target.value }));
 
@@ -114,7 +131,7 @@ const LeadForm = () => {
       <p className="text-[#6B7280]"><span data-cms-key="svc_pg_p_33" data-cms-label="Body Text" data-cms-attr="text">One of our solution architects will review your brief and reach out with a tailored proposal.</span></p>
     </div>
   ) : (
-    <form onSubmit={e => { e.preventDefault(); setSubmitted(true); }} className="space-y-5">
+    <form onSubmit={handleSubmit} className="space-y-5">
       <div>
         <label className="text-xs font-bold text-[#374151] uppercase tracking-wider mb-3 block">What do you want to build? *</label>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -167,7 +184,9 @@ const LeadForm = () => {
       </div>
 
       <MathCaptcha onVerify={setCaptchaOk} inputClass={inputClass} />
-      <button type="submit" disabled={!captchaOk} className="btn-orange w-full py-4 text-base gap-2 disabled:opacity-50 disabled:cursor-not-allowed" style={{ background: "linear-gradient(135deg,#7C3AED,#6d28d9)", boxShadow: "0 4px 18px rgba(124,58,237,0.35)" }}>
+      <input name="company_site" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
+      {error && <p className="text-sm text-red-600">{error}</p>}
+      <button type="submit" disabled={!captchaOk || submitting} className="btn-orange w-full py-4 text-base gap-2 disabled:opacity-50 disabled:cursor-not-allowed" style={{ background: "linear-gradient(135deg,#7C3AED,#6d28d9)", boxShadow: "0 4px 18px rgba(124,58,237,0.35)" }}>
         Send My Project Brief <ArrowRight size={18} />
       </button>
       <p className="text-center text-xs text-[#6B7280]"><span data-cms-key="svc_pg_p_34" data-cms-label="Body Text" data-cms-attr="text">No commitment. We'll respond with a tailored proposal within 2 hours.</span></p>

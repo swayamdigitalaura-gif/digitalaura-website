@@ -5,6 +5,8 @@ const { pushLeadToCRM } = require('../services/crmService');
 exports.submit = async (req, res) => {
   try {
     const body = req.body || {};
+    // Honeypot: bots fill this hidden field, humans never see it. Pretend success.
+    if (typeof body.company_site === 'string' && body.company_site.trim()) return res.status(201).json({ success: true, message: 'Inquiry submitted!' });
     const { name, email, phone, company, project, budget, message, source } = body;
     if (!name || !email) return res.status(400).json({ success: false, message: 'Name and email are required' });
 

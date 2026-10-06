@@ -1,5 +1,6 @@
 ﻿import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import { submitLead } from "@/lib/submitLead";
 import { useState } from "react";
 import MathCaptcha from "@/components/MathCaptcha";
 import PageLayout from "@/components/PageLayout";
@@ -85,7 +86,22 @@ const inputClass = "w-full px-4 py-3 rounded-xl text-sm text-[#0A1628] outline-n
 const AIAuditForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [captchaOk, setCaptchaOk] = useState(false);
-  const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); setSubmitted(true); };
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    setSubmitting(true);
+    setError("");
+    const r = await submitLead({
+      name: String(fd.get("name") || ""), email: String(fd.get("email") || ""),
+      project: "AI Solutions", message: `Primary challenge: ${fd.get("challenge")}`,
+      honeypot: String(fd.get("company_site") || ""),
+    }, "audit-form-ai-solutions");
+    setSubmitting(false);
+    if (r.ok) setSubmitted(true);
+    else setError(r.error ?? "Something went wrong. Please try again.");
+  };
 
   return (
     <div className="rounded-2xl p-8 bg-white" style={{ boxShadow: "0 24px 64px rgba(0,0,0,0.15)" }}>
@@ -104,16 +120,16 @@ const AIAuditForm = () => {
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
               <label className="text-xs font-semibold text-[#374151] mb-1.5 block">First Name *</label>
-              <input required placeholder="John" className={inputClass} />
+              <input name="name" required placeholder="John" className={inputClass} />
             </div>
             <div>
               <label className="text-xs font-semibold text-[#374151] mb-1.5 block">Email Address *</label>
-              <input type="email" required placeholder="john@company.com" className={inputClass} />
+              <input type="email" name="email" required placeholder="john@company.com" className={inputClass} />
             </div>
           </div>
           <div>
             <label className="text-xs font-semibold text-[#374151] mb-1.5 block">Primary Business Challenge *</label>
-            <select required defaultValue="" className={inputClass + " cursor-pointer text-[#4B5563]"}>
+            <select name="challenge" required defaultValue="" className={inputClass + " cursor-pointer text-[#4B5563]"}>
               <option value="" disabled>Select your core challenge...</option>
               <option>Customer Support Volume</option>
               <option>Internal Data Retrieval</option>
@@ -123,7 +139,9 @@ const AIAuditForm = () => {
             </select>
           </div>
           <MathCaptcha onVerify={setCaptchaOk} inputClass={inputClass} />
-          <button type="submit" disabled={!captchaOk} className="w-full py-4 rounded-xl text-base font-bold text-white flex items-center justify-center gap-2 transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed" style={{ background: accentGradient }}>
+          <input name="company_site" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
+          {error && <p className="text-sm text-red-600">{error}</p>}
+          <button type="submit" disabled={!captchaOk || submitting} className="w-full py-4 rounded-xl text-base font-bold text-white flex items-center justify-center gap-2 transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed" style={{ background: accentGradient }}>
             Request Full Report <ArrowRight size={18} />
           </button>
           <p className="text-center text-xs text-[#6B7280] flex items-center justify-center gap-1.5 mt-2">

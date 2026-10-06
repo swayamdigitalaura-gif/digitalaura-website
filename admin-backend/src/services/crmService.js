@@ -2,20 +2,21 @@
 // Configured via server env (never hard-code — the secret grants write access to the CRM):
 //   CRM_WEBHOOK_URL    e.g. https://leadgenie.tech/api/webhooks/website_form/<form-id>
 //   CRM_WEBHOOK_SECRET sent in the X-LeadHive-Secret header (NOT in the URL)
-// If either is missing this is a no-op, so local dev and un-configured servers keep working.
+// CRM_WEBHOOK_SECRET is optional (only needed if Lead Genie -> Integrations -> Website Form shows one).
+// If the URL is missing this is a no-op, so local dev and un-configured servers keep working.
 
 async function pushLeadToCRM(lead) {
   const url = process.env.CRM_WEBHOOK_URL;
   const secret = process.env.CRM_WEBHOOK_SECRET;
-  if (!url || !secret) {
-    console.error('[crm] CRM_WEBHOOK_URL / CRM_WEBHOOK_SECRET not set — lead not forwarded');
+  if (!url) {
+    console.error('[crm] CRM_WEBHOOK_URL not set — lead not forwarded');
     return false;
   }
 
   try {
     const res = await fetch(url, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-LeadHive-Secret': secret },
+      headers: { 'Content-Type': 'application/json', ...(secret ? { 'X-LeadHive-Secret': secret } : {}) },
       body: JSON.stringify({
         name: lead.name,
         email: lead.email,

@@ -7,6 +7,7 @@
  * checklist, on page seo company, on page seo elements, title tag optimization
  */
 import { motion } from "framer-motion";
+import { submitLead } from "@/lib/submitLead";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
@@ -144,7 +145,23 @@ const AuditForm = () => {
   const [form, setForm] = useState({ name: "", business: "", email: "", phone: "", website: "", goal: "" });
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
     setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
-  const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); setSubmitted(true); };
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    setSubmitting(true);
+    setError("");
+    const r = await submitLead({
+      name: form.name, email: form.email, phone: form.phone, company: form.business,
+      project: form.goal, message: `Website: ${form.website}
+Goal: ${form.goal}`,
+      honeypot: String(fd.get("company_site") || ""),
+    }, "audit-form-onpageseo");
+    setSubmitting(false);
+    if (r.ok) setSubmitted(true);
+    else setError(r.error ?? "Something went wrong. Please try again.");
+  };
 
   return (
     <div className="rounded-2xl p-8 bg-white" style={{ boxShadow: "0 24px 64px rgba(0,0,0,0.18)" }}>
@@ -197,7 +214,9 @@ const AuditForm = () => {
             </select>
           </div>
           <MathCaptcha onVerify={setCaptchaOk} inputClass={inputClass} />
-          <button type="submit" disabled={!captchaOk} className="w-full py-4 rounded-xl text-base font-bold text-white flex items-center justify-center gap-2 transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+          <input name="company_site" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
+          {error && <p className="text-sm text-red-600">{error}</p>}
+          <button type="submit" disabled={!captchaOk || submitting} className="w-full py-4 rounded-xl text-base font-bold text-white flex items-center justify-center gap-2 transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
             style={{ background: "linear-gradient(135deg, #22C55E, #16a34a)" }}>
             Get My Free Review <ArrowRight size={18} />
           </button>

@@ -44,6 +44,7 @@ const ROUTES = [
   '/services/design-branding',
   '/services/shopify-development',
   '/services/woocommerce-development',
+  '/services/bigcommerce-development',
   '/services/full-stack-development',
   '/services/wordpress-development',
   '/services/seo-content-marketing',

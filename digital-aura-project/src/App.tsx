@@ -18,6 +18,7 @@ import DigitalMarketingPage from "./pages/services/DigitalMarketingPage.tsx";
 import DesignBrandingPage from "./pages/services/DesignBrandingPage.tsx";
 import ShopifyPage from "./pages/services/ShopifyPage.tsx";
 import WooCommercePage from "./pages/services/WooCommercePage.tsx";
+import BigCommercePage from "./pages/services/BigCommercePage.tsx";
 import FullStackDevelopmentPage from "./pages/services/FullStackDevelopmentPage.tsx";
 import WordPressPage from "./pages/services/WordPressPage.tsx";
 import SEOPage from "./pages/services/SEOPage.tsx";
@@ -121,6 +122,7 @@ const App = () => (
           <Route path="/services/design-branding" element={<DesignBrandingPage />} />
           <Route path="/services/shopify-development" element={<ShopifyPage />} />
           <Route path="/services/woocommerce-development" element={<WooCommercePage />} />
+          <Route path="/services/bigcommerce-development" element={<BigCommercePage />} />
           <Route path="/services/full-stack-development" element={<FullStackDevelopmentPage />} />
           <Route path="/services/wordpress-development" element={<WordPressPage />} />
           <Route path="/services/seo-content-marketing" element={<SEOPage />} />

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { localPages } from '../data/localPagesData';
+import { phase1Pages } from '../data/localPagesPhase1';
 
 const API_BASE  = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
 const SITE_URL  = 'https://thedigitalaura.com';
@@ -317,6 +318,22 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: 'Google Ads Agency in Ahmedabad | Digital Aura',
     description: "Digital Aura is a Google Ads agency in Ahmedabad running Search, Display, and Shopping campaigns focused on lowering cost-per-lead.",
   },
+  '/seo/free-audit': {
+    title: 'Free SEO Audit in Ahmedabad | Digital Aura',
+    description: 'Get a free SEO audit for your website: technical, on-page, local and AI-search checks with a prioritised list of fixes.',
+  },
+  '/google-ads-audit-ahmedabad': {
+    title: 'Free Google Ads Audit in Ahmedabad | Digital Aura',
+    description: 'Get a Google Ads account audit from a team in Ahmedabad. We check tracking, search terms and structure to find wasted spend. Read-only access.',
+  },
+  '/website-redesign-services-ahmedabad': {
+    title: 'Website Redesign Services in Ahmedabad | SEO-Safe Process',
+    description: 'Redesign your Ahmedabad website without losing Google rankings. Redirect map, staging checks and post-launch monitoring. Get a free review.',
+  },
+  '/website-maintenance-amc-ahmedabad': {
+    title: 'Website Maintenance & AMC in Ahmedabad | Digital Aura',
+    description: 'Website maintenance and AMC in Ahmedabad: updates, backups, security and monitoring. We take over sites built by others. Free health check.',
+  },
   '/meta-ads-agency-ahmedabad': {
     title: 'Meta Ads Agency in Ahmedabad | Facebook & Instagram Ads',
     description: "Ahmedabad Meta ads agency for Facebook, Instagram and WhatsApp lead generation. Clear process, lead tracking and a free account review.",
@@ -352,6 +369,7 @@ function faqPageSchema(faqs: { q: string; a: string }[]) {
 }
 
 const PAGE_SCHEMA: Record<string, object | object[]> = {
+  // FAQ markup for the Phase 1 cluster pages is added below, from their visible FAQ lists.
   '/': [
     { '@context': 'https://schema.org', ...ORG },
     { '@context': 'https://schema.org', '@type': 'WebSite', name: 'Digital Aura', url: SITE_URL,
@@ -610,6 +628,11 @@ const PAGE_SCHEMA: Record<string, object | object[]> = {
 const CANONICAL_OVERRIDE: Record<string, string> = {
   '/seo-agency-ahmedabad': `${SITE_URL}/seo-services-ahmedabad`,
 };
+
+PAGE_SCHEMA['/seo/free-audit'] = faqPageSchema(phase1Pages.seoFreeAudit.faqs);
+PAGE_SCHEMA['/google-ads-audit-ahmedabad'] = faqPageSchema(phase1Pages.googleAdsAudit.faqs);
+PAGE_SCHEMA['/website-redesign-services-ahmedabad'] = faqPageSchema(phase1Pages.websiteRedesign.faqs);
+PAGE_SCHEMA['/website-maintenance-amc-ahmedabad'] = faqPageSchema(phase1Pages.websiteMaintenance.faqs);
 
 function setTag(selector: string, valueAttr: string, value: string) {
   let el = document.head.querySelector(selector);

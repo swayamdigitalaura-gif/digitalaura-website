@@ -71,6 +71,7 @@ import LocalSEOPage from "./pages/services/seo/LocalSEOPage.tsx";
 import OffPageSEOPage from "./pages/services/seo/OffPageSEOPage.tsx";
 import EcommerceSEOPage from "./pages/services/seo/EcommerceSEOPage.tsx";
 import LocalServicePage from "./components/LocalServicePage.tsx";
+import { phase1Pages } from "./data/localPagesPhase1.ts";
 import { localPages } from "./data/localPagesData.ts";
 import AIFilmmakingPage from "./pages/services/AIFilmmakingPage.tsx";
 import ServiceAreasPage from "./pages/ServiceAreasPage.tsx";
@@ -161,6 +162,10 @@ const App = () => (
           <Route path="/testimonials" element={<TestimonialsPage />} />
           <Route path="/awards" element={<AwardsPage />} />
           <Route path="/website-development-services-ahmedabad" element={<WebsiteDevelopmentServicesPage />} />
+          <Route path="/seo/free-audit" element={<LocalServicePage config={phase1Pages.seoFreeAudit} />} />
+          <Route path="/google-ads-audit-ahmedabad" element={<LocalServicePage config={phase1Pages.googleAdsAudit} />} />
+          <Route path="/website-redesign-services-ahmedabad" element={<LocalServicePage config={phase1Pages.websiteRedesign} />} />
+          <Route path="/website-maintenance-amc-ahmedabad" element={<LocalServicePage config={phase1Pages.websiteMaintenance} />} />
 
           <Route path="/services/ai-filmmaking" element={<AIFilmmakingPage />} />
 

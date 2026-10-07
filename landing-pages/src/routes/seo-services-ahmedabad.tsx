@@ -1703,6 +1703,7 @@ function AreasAndServices() {
     { t: "Off-Page SEO", href: "/services/seo-content-marketing/off-page-seo/" },
     { t: "Ecommerce SEO", href: "/services/seo-content-marketing/ecommerce-seo/" },
     { t: "SEO Audit & Strategy", href: "/services/seo-content-marketing/seo-audit-strategy/" },
+    { t: "Free SEO Audit", href: "/seo/free-audit/" },
   ];
   return (
     <section id="areas" className="bg-white">

@@ -19,6 +19,13 @@ export interface IncludedItem { title: string; desc: string; }
 export interface FaqItem { q: string; a: string; }
 export interface PainPoint { pain: string; detail: string; }
 export interface ProcessStep { title: string; desc: string; }
+export interface ExtraCard { title: string; desc: string; tag?: string; }
+export interface ExtraList { title: string; items: string[]; tone: "good" | "bad"; }
+/** Optional long-form blocks rendered between "related services" and the FAQ. Static copy (not click-to-edit). */
+export type ExtraSection =
+  | { kind: "text"; id: string; title: string; paragraphs: string[]; links?: { label: string; href: string }[] }
+  | { kind: "cards"; id: string; title: string; subtext?: string; items: ExtraCard[]; footnote?: string }
+  | { kind: "compare"; id: string; title: string; subtext?: string; left: ExtraList; right: ExtraList; footnote?: string };
 export interface RelatedService { title: string; desc: string; points: string[]; href: string; }
 
 export interface LocalServiceConfig {
@@ -54,11 +61,79 @@ export interface LocalServiceConfig {
   relatedCategoryColor: string;
   relatedServices: RelatedService[];
 
+  extraSections?: ExtraSection[];
   faqs: FaqItem[];
   ctaHeading: string;
   ctaText: string;
   ctaButton: string;
 }
+
+const ExtraBlock = ({ section, accent }: { section: ExtraSection; accent: string }) => {
+  const heading = (
+    <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8 max-w-3xl">
+      <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] tracking-tight leading-tight">{section.title}</h2>
+      {"subtext" in section && section.subtext && <p className="mt-3 text-[#4B5563] leading-relaxed">{section.subtext}</p>}
+    </motion.div>
+  );
+  const note = (t?: string) => (t ? <p className="mt-6 text-sm text-[#6B7280] max-w-3xl">{t}</p> : null);
+  if (section.kind === "text") {
+    return (
+      <div className="max-w-3xl">
+        {heading}
+        <div className="space-y-4 text-[#4B5563] leading-relaxed">
+          {section.paragraphs.map((p) => <p key={p}>{p}</p>)}
+        </div>
+        {section.links && (
+          <div className="mt-6 flex flex-wrap gap-3">
+            {section.links.map((l) => (
+              <a key={l.href} href={l.href} className="inline-flex items-center gap-1.5 text-sm font-bold px-4 py-2 rounded-full border" style={{ color: accent, borderColor: `${accent}40` }}>
+                {l.label} <ArrowRight className="w-4 h-4" />
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  }
+  if (section.kind === "cards") {
+    return (
+      <div>
+        {heading}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {section.items.map((it) => (
+            <div key={it.title} className="p-5 rounded-2xl bg-white border" style={{ borderColor: "#E5E7EB" }}>
+              {it.tag && <span className="text-[11px] font-black uppercase tracking-[0.14em]" style={{ color: accent }}>{it.tag}</span>}
+              <h3 className="mt-1 font-bold text-[#0A1628]">{it.title}</h3>
+              <p className="mt-2 text-sm text-[#4B5563] leading-relaxed">{it.desc}</p>
+            </div>
+          ))}
+        </div>
+        {note(section.footnote)}
+      </div>
+    );
+  }
+  return (
+    <div>
+      {heading}
+      <div className="grid md:grid-cols-2 gap-4">
+        {[section.left, section.right].map((col) => (
+          <div key={col.title} className="p-6 rounded-2xl bg-white border" style={{ borderColor: col.tone === "good" ? `${accent}40` : "rgba(239,68,68,0.25)" }}>
+            <h3 className="font-bold text-[#0A1628]">{col.title}</h3>
+            <ul className="mt-4 space-y-3">
+              {col.items.map((t) => (
+                <li key={t} className="flex gap-3 text-sm text-[#4B5563] leading-relaxed">
+                  <span className="mt-0.5 shrink-0 font-black" style={{ color: col.tone === "good" ? accent : "#EF4444" }}>{col.tone === "good" ? "✓" : "✕"}</span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      {note(section.footnote)}
+    </div>
+  );
+};
 
 const FAQItem = ({ q, a, cmsKey, accentColor }: { q: string; a: string; cmsKey: (field: string) => string; accentColor: string }) => {
   const [open, setOpen] = useState(false);
@@ -319,6 +394,15 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
           </div>
         </div>
       </section>
+
+      {/* Optional long-form sections (config.extraSections) */}
+      {c.extraSections?.map((sec, i) => (
+        <section key={sec.id} id={sec.id} className="py-16 px-4 md:px-8" style={{ background: i % 2 === 0 ? "#fff" : "#F8FAFF" }}>
+          <div className="max-w-5xl mx-auto">
+            <ExtraBlock section={sec} accent={c.accentColor} />
+          </div>
+        </section>
+      ))}
 
       {/* FAQ */}
       <section className="py-16 px-4 md:px-8" style={{ background: "#F8FAFF" }}>

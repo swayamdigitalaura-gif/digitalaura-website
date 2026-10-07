@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
+import { localPages } from '../data/localPagesData';
 
 const API_BASE  = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
 const SITE_URL  = 'https://thedigitalaura.com';
@@ -317,8 +318,8 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     description: "Digital Aura is a Google Ads agency in Ahmedabad running Search, Display, and Shopping campaigns focused on lowering cost-per-lead.",
   },
   '/meta-ads-agency-ahmedabad': {
-    title: 'Meta Ads Agency in Ahmedabad | Digital Aura',
-    description: "Digital Aura is a Meta Ads agency in Ahmedabad running Facebook and Instagram campaigns focused on lead generation and eCommerce sales.",
+    title: 'Meta Ads Agency in Ahmedabad | Facebook & Instagram Ads',
+    description: "Ahmedabad Meta ads agency for Facebook, Instagram and WhatsApp lead generation. Clear process, lead tracking and a free account review.",
   },
   '/digital-marketing-agency-ahmedabad': {
     title: "Digital Marketing Agency in Ahmedabad | Digital Aura",
@@ -341,6 +342,15 @@ const ORG = {
 };
 
 // Per-page JSON-LD schema — overridden by DB schema_code if set via admin panel
+// Built from the same list the page renders, so the markup always matches the visible FAQs.
+function faqPageSchema(faqs: { q: string; a: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  };
+}
+
 const PAGE_SCHEMA: Record<string, object | object[]> = {
   '/': [
     { '@context': 'https://schema.org', ...ORG },
@@ -509,7 +519,7 @@ const PAGE_SCHEMA: Record<string, object | object[]> = {
   ],
   '/meta-ads-agency-ahmedabad': [
     {"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Meta Ads Agency in Ahmedabad", "description": "Digital Aura is a Meta Ads agency in Ahmedabad, running Facebook and Instagram ad campaigns for local businesses focused on lead generation, remarketing, and eCommerce sales.", "url": "https://thedigitalaura.com/meta-ads-agency-ahmedabad/", "areaServed": "Ahmedabad, Gujarat, India", "address": {"@type": "PostalAddress", "streetAddress": "713, Shilp Arcade, Sardar Patel Ring Rd, Hanspura", "addressLocality": "Ahmedabad", "addressRegion": "Gujarat", "postalCode": "382330", "addressCountry": "IN"}},
-    {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is there a good Meta Ads agency in Ahmedabad?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — Digital Aura is an Ahmedabad-based Meta Ads agency running Facebook and Instagram campaigns for local businesses, with in-house paid media specialists managing every account."}}, {"@type": "Question", "name": "How much should I budget for Meta Ads in Ahmedabad?", "acceptedAnswer": {"@type": "Answer", "text": "Budget depends on your industry and campaign goal. Most local businesses start testing with a modest monthly budget before scaling what works."}}, {"@type": "Question", "name": "What's a good ROAS for Meta Ads?", "acceptedAnswer": {"@type": "Answer", "text": "It varies by industry and margin — a realistic benchmark is set during your account audit based on your specific business economics."}}, {"@type": "Question", "name": "Do you handle both lead generation and eCommerce campaigns?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — lead generation ads for service businesses and catalogue/conversion campaigns for eCommerce brands are both core parts of our Meta Ads service."}}, {"@type": "Question", "name": "How long before Meta Ads start delivering results?", "acceptedAnswer": {"@type": "Answer", "text": "Campaigns typically need 1-2 weeks of data and creative testing to optimise properly; meaningful improvements are usually visible within the first month."}}]},
+    faqPageSchema(localPages.metaAdsAhmedabad.faqs),
   ],
   '/digital-marketing-agency-ahmedabad': [
     {"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Digital Marketing Agency in Ahmedabad", "description": "Digital Aura is a digital marketing agency in Ahmedabad offering SEO, Google Ads, Meta Ads, website development, and AI automation under one in-house team.", "url": "https://thedigitalaura.com/digital-marketing-agency-ahmedabad/", "areaServed": "Ahmedabad, Gujarat, India", "address": {"@type": "PostalAddress", "streetAddress": "713, Shilp Arcade, Sardar Patel Ring Rd, Hanspura", "addressLocality": "Ahmedabad", "addressRegion": "Gujarat", "postalCode": "382330", "addressCountry": "IN"}},

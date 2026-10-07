@@ -107,18 +107,18 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/seo-services-ahmedabad")({
   head: () => ({
     meta: [
-      { title: "Best SEO Company in Ahmedabad | Digital Aura — Google + AI Search SEO Agency" },
+      { title: "SEO Company in Ahmedabad | Digital Aura" },
       {
         name: "description",
         content:
-          "Digital Aura is the best SEO company in Ahmedabad — a full-service SEO services agency ranking businesses on Google and getting them cited on ChatGPT, Gemini & Perplexity. Technical SEO, Local SEO, AIO & GEO. Get your free SEO + AI Search audit.",
+          "Ahmedabad SEO company for local, technical and AI search. A clear 90-day plan, monthly lead reporting and a free SEO audit. Get yours today.",
       },
       {
         name: "keywords",
         content:
           "Best SEO Company in Ahmedabad, SEO Expert in Ahmedabad, SEO Services Agency in Ahmedabad, SEO Companies in Ahmedabad, Leading SEO Company in Ahmedabad, AI Powered SEO Services in Ahmedabad, AEO SEO Services in Ahmedabad, Search Engine Optimization Company Ahmedabad, Technical SEO Company Ahmedabad, Local SEO Company Ahmedabad, Enterprise SEO Services Ahmedabad",
       },
-      { property: "og:title", content: "Best SEO Company in Ahmedabad | Digital Aura — Google + AI Search SEO Agency" },
+      { property: "og:title", content: "SEO Company in Ahmedabad | Digital Aura" },
       {
         property: "og:description",
         content:
@@ -128,7 +128,7 @@ export const Route = createFileRoute("/seo-services-ahmedabad")({
       { property: "og:url", content: "https://thedigitalaura.com/seo-services-ahmedabad" },
       { property: "og:locale", content: "en_IN" },
       { name: "robots", content: "index,follow" },
-      { name: "twitter:title", content: "Best SEO Company in Ahmedabad | Digital Aura — Google + AI Search SEO Agency" },
+      { name: "twitter:title", content: "SEO Company in Ahmedabad | Digital Aura" },
       {
         name: "twitter:description",
         content:
@@ -545,16 +545,12 @@ function Hero() {
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-brand-navy/10 bg-white/70 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-brand-navy backdrop-blur">
             <span className="h-2 w-2 rounded-full bg-brand-orange" />
-            Best SEO Company in Ahmedabad
+            SEO Company in Ahmedabad
           </div>
 
-          <h1 className="mt-6 text-[38px] font-extrabold leading-[1.12] tracking-tight text-brand-navy sm:text-5xl md:text-[54px] md:leading-[1.1]">
-            No{" "}
-            <span className="relative inline-block">
-              <span className="relative z-10 text-brand-orange">#1</span>
-              <span className="absolute inset-x-0 bottom-1 -z-0 h-3 bg-brand-orange/15" />
-            </span>{" "}
-            SEO Services in Ahmedabad.
+          <h1 className="mt-6 text-[34px] font-extrabold leading-[1.12] tracking-tight text-brand-navy sm:text-5xl md:text-[50px] md:leading-[1.1]">
+            SEO Company in Ahmedabad Built Around{" "}
+            <span className="text-brand-orange">Leads</span>, Not Rankings Reports
           </h1>
 
           <p className="mt-6 max-w-md text-lg leading-relaxed text-ink-muted">
@@ -1538,8 +1534,7 @@ function Compare() {
 
 /* ---------------- FAQ ---------------- */
 
-function FAQ() {
-  const faqs = [
+const FAQS = [
     {
       q: "How much does SEO cost in Ahmedabad?",
       a: "SEO pricing depends on your competition, current site health and how fast you want to move. After the free audit, we give you a fixed monthly scope and price — no hidden add-ons, no surprise invoices mid-engagement.",
@@ -1588,7 +1583,45 @@ function FAQ() {
       q: "Which industries do you work with?",
       a: "We've scaled brands in manufacturing, healthcare, education, professional services, SaaS and local SMBs across Ahmedabad and India.",
     },
+    {
+      q: "What is the difference between an SEO company, an SEO agency and SEO services?",
+      a: "Mostly the name. What actually matters is what is included each month, who does the work, and how results are measured. Ask every provider for a written scope, a sample report and the name of the person who will run your account.",
+    },
+    {
+      q: "Local SEO or national SEO: which do I need in Ahmedabad?",
+      a: "If most of your customers come from Ahmedabad or nearby, start with local SEO: Google Business Profile, reviews, local pages and citations. If you sell across India or abroad, you need national SEO with deeper content and technical work. Many businesses need both, and the audit shows which one to start with.",
+    },
+    {
+      q: "Can you take over SEO from my current agency?",
+      a: "Yes. We begin with an access and history check: Search Console, Analytics, existing backlinks and any past penalties. Then we keep what is working and fix what is not, without disrupting the rankings you already have.",
+    },
+    {
+      q: "How do you measure SEO success?",
+      a: "By leads, not just rankings: calls, form fills and qualified enquiries, tracked through Google Search Console and Google Analytics. Rankings and traffic are reported too, but only as a means to the enquiries.",
+    },
   ];
+
+function FAQSchema() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQS.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+  return (
+    <script
+      type="application/ld+json"
+      // Static, hard-coded content only (the FAQ list above) - no user input.
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+function FAQ() {
+  const faqs = FAQS;
   return (
     <section id="faq" className="bg-surface-2">
       <div className="mx-auto max-w-4xl px-5 py-16 md:px-8 md:py-24">
@@ -1612,6 +1645,215 @@ function FAQ() {
             </AccordionItem>
           ))}
         </Accordion>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- What to expect (honest timeline) ---------------- */
+
+function Timeline() {
+  const steps = [
+    { m: "Month 1", t: "Foundation", d: "Audit finished, tracking set up for calls and forms, technical problems fixed and the pages that matter most to your revenue chosen. Rankings usually have not moved yet, and that is normal." },
+    { m: "Month 3", t: "First movement", d: "Fixed pages get re-crawled, impressions and clicks start to rise, and the first new content is live. Early enquiries tend to come from local and long-tail searches." },
+    { m: "Month 6", t: "Compounding", d: "Pages sitting just below page one start to climb. We review which pages bring paying enquiries and put more effort there." },
+    { m: "Month 12", t: "Steady growth", d: "More pages ranking, a steadier flow of leads and a lower cost per lead than paid ads alone. We plan the next year from real data." },
+  ];
+  return (
+    <section id="timeline" className="bg-white">
+      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
+        <SectionHeading
+          eyebrow="What to expect"
+          title={<>SEO results, <span className="text-brand-orange">month by month</span></>}
+          sub="SEO is not instant, and we will not pretend it is. This is the honest shape of a typical engagement."
+        />
+        <Reveal className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {steps.map((x) => (
+            <div key={x.m} className="da-shadow-card da-card-hover flex h-full flex-col rounded-2xl border border-brand-navy/12 bg-white p-7">
+              <span className="text-xs font-bold uppercase tracking-[0.14em] text-brand-orange">{x.m}</span>
+              <h3 className="mt-2 text-lg font-bold text-brand-navy">{x.t}</h3>
+              <p className="mt-2 text-sm text-ink-muted">{x.d}</p>
+            </div>
+          ))}
+        </Reveal>
+        <p className="mx-auto mt-8 max-w-3xl text-center text-sm text-ink-muted">
+          Timelines vary with your competition, your website&apos;s age and where you are starting from. We do not promise specific rankings or dates.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- Areas + service links ---------------- */
+
+function AreasAndServices() {
+  const areas = [
+    "SG Highway & Bodakdev",
+    "Satellite & Prahlad Nagar",
+    "Navrangpura & CG Road",
+    "Maninagar & Vastral",
+    "Naroda & Vatva industrial areas",
+    "Hanspura & SP Ring Road",
+    "Gandhinagar & wider Gujarat",
+  ];
+  const services = [
+    { t: "Technical SEO", href: "/services/seo-content-marketing/technical-seo/" },
+    { t: "On-Page SEO", href: "/services/seo-content-marketing/on-page-seo/" },
+    { t: "Local SEO", href: "/services/seo-content-marketing/local-seo/" },
+    { t: "Off-Page SEO", href: "/services/seo-content-marketing/off-page-seo/" },
+    { t: "Ecommerce SEO", href: "/services/seo-content-marketing/ecommerce-seo/" },
+    { t: "SEO Audit & Strategy", href: "/services/seo-content-marketing/seo-audit-strategy/" },
+    { t: "Free SEO Audit", href: "/seo/free-audit/" },
+  ];
+  return (
+    <section id="areas" className="bg-white">
+      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
+        <div className="grid gap-10 lg:grid-cols-2">
+          <div>
+            <SectionLabel>Where we work</SectionLabel>
+            <h2 className="mt-4 text-3xl font-extrabold leading-[1.1] text-brand-navy sm:text-4xl">
+              SEO for businesses across Ahmedabad
+            </h2>
+            <p className="mt-4 text-lg text-ink-muted">
+              Customers in Ahmedabad search by area, so your pages, Google Business Profile and reviews should too. We work with businesses in:
+            </p>
+            <ul className="mt-5 flex flex-wrap gap-2">
+              {areas.map((a) => (
+                <li key={a} className="inline-flex items-center gap-1.5 rounded-full border border-brand-navy/12 bg-surface-2 px-3.5 py-1.5 text-sm font-semibold text-brand-navy">
+                  <MapPin className="h-3.5 w-3.5 text-brand-orange" />
+                  {a}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-5 text-sm text-ink-muted">
+              See every city we cover on our <a className="font-semibold text-brand-orange underline" href="/service-areas/">service areas page</a>.
+            </p>
+          </div>
+          <div>
+            <SectionLabel>SEO in detail</SectionLabel>
+            <h2 className="mt-4 text-3xl font-extrabold leading-[1.1] text-brand-navy sm:text-4xl">
+              Explore each SEO service
+            </h2>
+            <p className="mt-4 text-lg text-ink-muted">
+              Want to see exactly what is included? Each service has its own page.
+            </p>
+            <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+              {services.map((x) => (
+                <li key={x.href}>
+                  <a href={x.href} className="da-card-hover flex items-center justify-between rounded-xl border border-brand-navy/12 bg-white px-4 py-3 text-sm font-bold text-brand-navy">
+                    {x.t}
+                    <ArrowRight className="h-4 w-4 text-brand-orange" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- How to choose an SEO company ---------------- */
+
+function ChooseSEO() {
+  const flags = [
+    "Guarantees page-one or #1 rankings, or promises results in a fixed number of days",
+    "Will not give you access to your own Google Search Console, Analytics or Business Profile",
+    "Sells backlink packages or talks about buying links",
+    "Reports only keyword rankings, with no calls, forms or leads",
+    "Cannot tell you who will actually work on your account",
+    "Quotes a standard package before looking at your website",
+  ];
+  const questions = [
+    "Who will work on my account, and are they in-house?",
+    "Will I own the accounts, the content and the data if I leave?",
+    "How do you report leads, not just rankings?",
+    "What will you fix in the first 30 days?",
+    "Can I see a sample monthly report?",
+    "What are the contract and notice terms?",
+  ];
+  return (
+    <section id="choose" className="bg-surface-2">
+      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
+        <SectionHeading
+          eyebrow="Choosing an agency"
+          title={<>How to choose an <span className="text-brand-orange">SEO company</span> in Ahmedabad</>}
+          sub="Whether you pick us or someone else, use this checklist. It will save you months and money."
+        />
+        <Reveal className="mt-12 grid gap-6 md:grid-cols-2">
+          <div className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-7">
+            <h3 className="text-lg font-bold text-brand-navy">Red flags to walk away from</h3>
+            <ul className="mt-4 space-y-3">
+              {flags.map((x) => (
+                <li key={x} className="flex gap-3 text-sm text-ink-muted">
+                  <X className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />
+                  {x}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-7">
+            <h3 className="text-lg font-bold text-brand-navy">Questions to ask any SEO company</h3>
+            <ul className="mt-4 space-y-3">
+              {questions.map((x) => (
+                <li key={x} className="flex gap-3 text-sm text-ink-muted">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" />
+                  {x}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
+        <p className="mx-auto mt-8 max-w-3xl text-center text-sm text-ink-muted">
+          We may not be the right fit if you need guaranteed rankings within weeks, cannot change anything on your website, or have no plan to publish useful content.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- SEO vs Google Ads ---------------- */
+
+function SEOvsAds() {
+  const rows = [
+    ["Time to first leads", "Days", "Usually 3 to 6 months"],
+    ["When you stop paying", "Leads stop", "Pages can keep ranking"],
+    ["Cost per lead over time", "Stays roughly the same", "Tends to fall as pages rank"],
+    ["Best for", "Urgent leads and testing demand", "Steady, long-term lead flow"],
+  ];
+  return (
+    <section id="seo-vs-ads" className="bg-white">
+      <div className="mx-auto max-w-4xl px-5 py-16 md:px-8 md:py-24">
+        <SectionHeading
+          eyebrow="SEO or ads?"
+          title={<>SEO vs Google Ads for Ahmedabad businesses</>}
+          sub="They solve different problems. Most growing businesses end up using both."
+        />
+        <Reveal className="da-shadow-card mt-10 overflow-x-auto rounded-2xl border border-brand-navy/12 bg-white">
+          <table className="w-full text-left text-[13px] sm:text-sm">
+            <thead className="bg-surface-2 text-brand-navy">
+              <tr>
+                <th className="px-3 py-3 sm:px-5 font-bold"> </th>
+                <th className="px-3 py-3 sm:px-5 font-bold">Google Ads</th>
+                <th className="px-3 py-3 sm:px-5 font-bold">SEO</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map(([k, a, b]) => (
+                <tr key={k} className="border-t border-brand-navy/10">
+                  <td className="px-3 py-3 sm:px-5 font-semibold text-brand-navy">{k}</td>
+                  <td className="px-3 py-3 sm:px-5 text-ink-muted">{a}</td>
+                  <td className="px-3 py-3 sm:px-5 text-ink-muted">{b}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Reveal>
+        <p className="mt-6 text-center text-ink-muted">
+          Need leads this month while SEO builds? See our{" "}
+          <a className="font-semibold text-brand-orange underline" href="/google-ads-agency-ahmedabad">Google Ads agency in Ahmedabad</a>.
+        </p>
       </div>
     </section>
   );
@@ -1800,6 +2042,7 @@ function Index() {
   return (
     <div className="min-h-screen bg-white pb-20 md:pb-0">
       <LocalBusinessSchema />
+      <FAQSchema />
       <Toaster position="top-center" richColors />
       <MainSiteNavbar />
       <main className="pt-[72px]">
@@ -1810,6 +2053,7 @@ function Index() {
         <SEOChallenges />
         <Framework />
         <Process />
+        <Timeline />
         <SEOToolsWeUse />
         <Results />
         <GSCSnapshots />
@@ -1820,7 +2064,10 @@ function Index() {
         <GAReporting />
         <CertifiedTrusted />
         <Industries />
+        <AreasAndServices />
         <Compare />
+        <ChooseSEO />
+        <SEOvsAds />
         <FAQ />
         <FinalCTA />
       </main>

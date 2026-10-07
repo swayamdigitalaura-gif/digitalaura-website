@@ -26,7 +26,7 @@ const groups: AreaGroup[] = [
     links: [
       { label: "Digital Marketing Agency in Ahmedabad", href: "/digital-marketing-agency-ahmedabad/" },
       { label: "SEO Agency in Ahmedabad", href: "/seo-agency-ahmedabad/" },
-      { label: "Google Ads Agency in Ahmedabad", href: "/google-ads-agency-ahmedabad/" },
+      { label: "Google Ads Agency in Ahmedabad", href: "/google-ads-agency-ahmedabad" },
       { label: "Meta Ads Agency in Ahmedabad", href: "/meta-ads-agency-ahmedabad/" },
       { label: "Website Design & Development in Ahmedabad", href: "/website-design-development-ahmedabad/" },
       { label: "Website Development Services in Ahmedabad", href: "/website-development-services-ahmedabad/" },

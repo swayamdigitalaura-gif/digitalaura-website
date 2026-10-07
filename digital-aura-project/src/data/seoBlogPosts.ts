@@ -1525,7 +1525,7 @@ Allow: /</code></pre>
 
 <h2>What actually shows up in Maps, and why accuracy matters</h2>
 
-<p>The details pulled into a Maps-based ad come directly from the linked GBP listing, not from the ad itself: See <a href="/google-ads-agency-ahmedabad/">Google Ads agency in Ahmedabad</a>.</p>
+<p>The details pulled into a Maps-based ad come directly from the linked GBP listing, not from the ad itself: See <a href="/google-ads-agency-ahmedabad">Google Ads agency in Ahmedabad</a>.</p>
 
 <ul>
 
@@ -1746,7 +1746,7 @@ Allow: /</code></pre>
 
 <h2>Keep the form short</h2>
 
-<p>Every additional required field reduces completion rate. Keep forms to name and phone or email, and gather qualifying details on the follow-up call instead. See <a href="/google-ads-agency-ahmedabad/">the same client's Google Ads work</a>.</p>
+<p>Every additional required field reduces completion rate. Keep forms to name and phone or email, and gather qualifying details on the follow-up call instead. See <a href="/google-ads-agency-ahmedabad">the same client's Google Ads work</a>.</p>
 
 <h2>Qualifying without lengthening the form</h2>
 

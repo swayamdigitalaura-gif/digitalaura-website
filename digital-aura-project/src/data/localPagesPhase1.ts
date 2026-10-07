@@ -293,8 +293,8 @@ export const phase1Pages: Record<string, LocalServiceConfig> = {
     relatedCategoryLabel: "Web Development",
     relatedCategoryColor: BLUE,
     relatedServices: [
-      { title: "Website Development Services", desc: "Custom websites built to bring in enquiries.", points: ["Custom design", "SEO-ready"], href: "/website-development-services-ahmedabad" },
-      { title: "Website Maintenance and AMC", desc: "Keep the new site secure, fast and updated.", points: ["Updates", "Backups"], href: "/website-maintenance-amc-ahmedabad" },
+      { title: "Website Development Services", desc: "Custom websites built to bring in enquiries.", points: ["Custom design", "SEO-ready"], href: "/website-development-services-ahmedabad/" },
+      { title: "Website Maintenance and AMC", desc: "Keep the new site secure, fast and updated.", points: ["Updates", "Backups"], href: "/website-maintenance-amc-ahmedabad/" },
       { title: "SEO Company in Ahmedabad", desc: "Grow the traffic your new site can capture.", points: ["Technical SEO", "Local SEO"], href: "/seo-services-ahmedabad" },
     ],
     extraSections: [
@@ -416,8 +416,8 @@ export const phase1Pages: Record<string, LocalServiceConfig> = {
     relatedCategoryLabel: "Web Development",
     relatedCategoryColor: BLUE,
     relatedServices: [
-      { title: "Website Development Services", desc: "Custom websites built for enquiries and growth.", points: ["Custom design", "SEO-ready"], href: "/website-development-services-ahmedabad" },
-      { title: "Website Redesign Services", desc: "Redesign without losing Google rankings.", points: ["Redirect map", "Staging QA"], href: "/website-redesign-services-ahmedabad" },
+      { title: "Website Development Services", desc: "Custom websites built for enquiries and growth.", points: ["Custom design", "SEO-ready"], href: "/website-development-services-ahmedabad/" },
+      { title: "Website Redesign Services", desc: "Redesign without losing Google rankings.", points: ["Redirect map", "Staging QA"], href: "/website-redesign-services-ahmedabad/" },
       { title: "WordPress Development", desc: "Custom WordPress builds and fixes.", points: ["Themes", "Plugins"], href: "/services/wordpress-development/" },
     ],
     extraSections: [

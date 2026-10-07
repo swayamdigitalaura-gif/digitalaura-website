@@ -15,7 +15,7 @@ const quickLinks = [
 ];
 
 const servicesLeft = [
-  { heading: "AI Solutions", headingHref: "/ai-solutions", color: "#7C3AED", items: [
+  { heading: "AI Solutions", headingHref: "/ai-solutions/", color: "#7C3AED", items: [
     { label: "AI Powered Web Apps",    href: "/services/ai-powered-web-apps/" },
     { label: "AI Automation Systems",  href: "/services/ai-automation/" },
     { label: "AI Chatbot & Assistants",href: "/services/ai-chatbot-assistant/" },
@@ -48,7 +48,7 @@ const servicesRight = [
     { label: "Email & WhatsApp Marketing", href: "/services/email-whatsapp-marketing/" },
     { label: "LinkedIn & YouTube Ads", href: "/services/linkedin-youtube-ads/" },
   ]},
-  { heading: "Mobile App Development", headingHref: "/mobile-apps", color: "#EC4899", items: [
+  { heading: "Mobile App Development", headingHref: "/mobile-apps/", color: "#EC4899", items: [
     { label: "Android Development",           href: "/services/mobile-app-development/?type=android" },
     { label: "Flutter App Development",       href: "/services/mobile-app-development/?type=flutter" },
     { label: "React Native App Development",  href: "/services/mobile-app-development/?type=reactnative" },

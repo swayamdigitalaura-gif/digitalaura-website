@@ -23,6 +23,9 @@ export function QuickAnswer() {
           </Lead>
           <div className="mt-8">
             <PrimaryCTA>Get My Free Google Ads Audit</PrimaryCTA>
+            <p className="mt-4 text-[14px] text-muted-foreground">
+              Curious what the audit covers? <a className="font-semibold text-primary underline" href="/google-ads-audit-ahmedabad/">See how our Google Ads audit works</a>.
+            </p>
           </div>
         </div>
         <div className="grid gap-4">

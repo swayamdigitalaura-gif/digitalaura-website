@@ -44,6 +44,7 @@ const ROUTES = [
   '/services/design-branding',
   '/services/shopify-development',
   '/services/woocommerce-development',
+  '/services/bigcommerce-development',
   '/services/full-stack-development',
   '/services/wordpress-development',
   '/services/seo-content-marketing',
@@ -201,7 +202,10 @@ function writeSitemap(succeededRoutes) {
   // is the one that returns 200 and matches their canonical tags. Listing the
   // slash form here recreates a canonical/redirect loop.
   const noSlash = new Set([...EXTRA_LIVE_ROUTES, '/google-ads-agency-ahmedabad']);
-  const urls = [...new Set([...succeededRoutes, ...EXTRA_LIVE_ROUTES])].map((route) => {
+  // Routes whose canonical points at another URL (see CANONICAL_OVERRIDE in
+  // src/components/PageSEO.tsx) don't belong in the sitemap.
+  const CANONICALISED_ROUTES = new Set(['/seo-agency-ahmedabad']);
+  const urls = [...new Set([...succeededRoutes, ...EXTRA_LIVE_ROUTES])].filter((route) => !CANONICALISED_ROUTES.has(route)).map((route) => {
     const loc = route === '/' ? `${SITE_URL}/` : noSlash.has(route) ? `${SITE_URL}${route}` : `${SITE_URL}${route}/`;
     const priority = route === '/' ? '1.0' : (route.startsWith('/blog/') || route.startsWith('/careers/')) ? '0.6' : '0.8';
     return `  <url>\n    <loc>${loc}</loc>\n    <changefreq>weekly</changefreq>\n    <priority>${priority}</priority>\n  </url>`;

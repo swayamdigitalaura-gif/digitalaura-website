@@ -123,6 +123,10 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: 'WooCommerce Development Services | Digital Aura',
     description: 'Professional WooCommerce development by Digital Aura. Custom store builds, plugin development, performance optimization, and ongoing support.',
   },
+  '/services/bigcommerce-development': {
+    title: 'BigCommerce Development Services | Digital Aura',
+    description: 'BigCommerce development by Digital Aura. Custom Stencil themes, headless commerce, B2B and B2C stores, migrations, and performance optimization.',
+  },
   '/services/full-stack-development': {
     title: 'Full-Stack Development Services | Digital Aura',
     description: 'End-to-end full-stack development by Digital Aura. React, Node.js, databases, APIs, and cloud deployment for modern web applications.',
@@ -405,6 +409,7 @@ const PAGE_SCHEMA: Record<string, object | object[]> = {
   '/services/meta-ads':                 { '@context': 'https://schema.org', '@type': 'Service', name: 'Meta Ads (Facebook & Instagram)', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Social Media Advertising', areaServed: 'Worldwide', url: `${SITE_URL}/services/meta-ads/` },
   '/services/social-media-marketing':   { '@context': 'https://schema.org', '@type': 'Service', name: 'Social Media Marketing', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Social Media Marketing', areaServed: 'Worldwide', url: `${SITE_URL}/services/social-media-marketing/` },
   '/services/shopify-development':      { '@context': 'https://schema.org', '@type': 'Service', name: 'Shopify Development', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'E-Commerce Development', areaServed: 'Worldwide', url: `${SITE_URL}/services/shopify-development/` },
+  '/services/bigcommerce-development':  { '@context': 'https://schema.org', '@type': 'Service', name: 'BigCommerce Development', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'E-Commerce Development', areaServed: 'Worldwide', url: `${SITE_URL}/services/bigcommerce-development/` },
   '/services/woocommerce-development':  { '@context': 'https://schema.org', '@type': 'Service', name: 'WooCommerce Development', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'E-Commerce Development', areaServed: 'Worldwide', url: `${SITE_URL}/services/woocommerce-development/` },
   '/services/full-stack-development':   { '@context': 'https://schema.org', '@type': 'Service', name: 'Full-Stack Development', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Web Development', areaServed: 'Worldwide', url: `${SITE_URL}/services/full-stack-development/` },
   '/services/wordpress-development':    { '@context': 'https://schema.org', '@type': 'Service', name: 'WordPress Development', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Web Development', areaServed: 'Worldwide', url: `${SITE_URL}/services/wordpress-development/` },
@@ -588,6 +593,14 @@ const PAGE_SCHEMA: Record<string, object | object[]> = {
   ],
 };
 
+// Pages that compete with a stronger page for the same keyword. They stay live
+// for visitors but tell Google which URL is the main one. Keep in sync with
+// CANONICALISED_ROUTES in scripts/prerender.mjs (those are left out of the sitemap).
+// /seo-services-ahmedabad is served by the landing-pages app (no trailing slash).
+const CANONICAL_OVERRIDE: Record<string, string> = {
+  '/seo-agency-ahmedabad': `${SITE_URL}/seo-services-ahmedabad`,
+};
+
 function setTag(selector: string, valueAttr: string, value: string) {
   let el = document.head.querySelector(selector);
   if (!el) {
@@ -652,7 +665,8 @@ export default function PageSEO() {
     setTag('meta[name="twitter:image"]',       'content', DEFAULT_IMAGE);
 
     // ── Canonical (with trailing slash to match server behaviour) ─────
-    const canonicalUrl = normalPath === '/' ? `${SITE_URL}/` : `${SITE_URL}${normalPath}/`;
+    const canonicalUrl = CANONICAL_OVERRIDE[normalPath]
+      ?? (normalPath === '/' ? `${SITE_URL}/` : `${SITE_URL}${normalPath}/`);
     setTag('link[rel="canonical"]', 'href', canonicalUrl);
     setTag('meta[property="og:url"]', 'content', canonicalUrl);
 

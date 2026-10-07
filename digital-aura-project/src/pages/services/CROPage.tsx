@@ -258,7 +258,7 @@ const CROPage = () => {
             <motion.div key={s.label} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: si * 0.08 }}
               className="rounded-2xl p-6 text-center" style={{ background: "#fff", border: `1px solid ${s.color}20`, boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
               <div className="text-3xl font-black mb-2" style={{ color: s.color }}>{s.stat}</div>
-              <p className="text-[12.5px] text-[#6B7280] leading-snug"><span data-cms-key={`cro_s_${i}_label`} data-cms-label="Step Label" data-cms-attr="text">{s.label}</span></p>
+              <p className="text-[12.5px] text-[#6B7280] leading-snug"><span data-cms-key={`cro_s_${si}_label`} data-cms-label="Step Label" data-cms-attr="text">{s.label}</span></p>
             </motion.div>
           ))}
         </div>

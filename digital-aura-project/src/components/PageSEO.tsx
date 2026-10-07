@@ -593,6 +593,14 @@ const PAGE_SCHEMA: Record<string, object | object[]> = {
   ],
 };
 
+// Pages that compete with a stronger page for the same keyword. They stay live
+// for visitors but tell Google which URL is the main one. Keep in sync with
+// CANONICALISED_ROUTES in scripts/prerender.mjs (those are left out of the sitemap).
+// /seo-services-ahmedabad is served by the landing-pages app (no trailing slash).
+const CANONICAL_OVERRIDE: Record<string, string> = {
+  '/seo-agency-ahmedabad': `${SITE_URL}/seo-services-ahmedabad`,
+};
+
 function setTag(selector: string, valueAttr: string, value: string) {
   let el = document.head.querySelector(selector);
   if (!el) {
@@ -657,7 +665,8 @@ export default function PageSEO() {
     setTag('meta[name="twitter:image"]',       'content', DEFAULT_IMAGE);
 
     // ── Canonical (with trailing slash to match server behaviour) ─────
-    const canonicalUrl = normalPath === '/' ? `${SITE_URL}/` : `${SITE_URL}${normalPath}/`;
+    const canonicalUrl = CANONICAL_OVERRIDE[normalPath]
+      ?? (normalPath === '/' ? `${SITE_URL}/` : `${SITE_URL}${normalPath}/`);
     setTag('link[rel="canonical"]', 'href', canonicalUrl);
     setTag('meta[property="og:url"]', 'content', canonicalUrl);
 

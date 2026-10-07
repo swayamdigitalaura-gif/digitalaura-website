@@ -16,17 +16,18 @@ import { Certifications } from "../components/sections/Certifications";
 import { FAQ } from "../components/sections/FAQ";
 import { FinalCTA } from "../components/sections/FinalCTA";
 import { Footer } from "../components/sections/Footer";
+import { QuickAnswer, AhmedabadMarket, CostBreakdown, AgencyComparison } from "../components/sections/PillarExtras";
 import { StickyMobileCTA } from "../components/sections/StickyMobileCTA";
 
 export const Route = createFileRoute("/google-ads-agency-ahmedabad")({
   head: () => ({
     meta: [
-      { title: "Google Ads Agency Ahmedabad | Digital Aura" },
-      { name: "description", content: "Google Ads agency in Ahmedabad delivering 3-7x ROAS and 40%+ lower CPL via expert campaign management, SEM, SEO, and CRO. Claim your free audit." },
-      { property: "og:title", content: "Google Ads Agency Ahmedabad | Digital Aura" },
-      { property: "og:description", content: "Ahmedabad's Google Ads management company. 500+ audits delivered. 3-7x average ROAS. Claim your free Google Ads audit today." },
-      { name: "twitter:title", content: "Google Ads Agency Ahmedabad | Digital Aura" },
-      { name: "twitter:description", content: "Ahmedabad's Google Ads management company. 500+ audits delivered. 3-7x average ROAS. Claim your free Google Ads audit today." },
+      { title: "Google Ads Agency in Ahmedabad | Digital Aura" },
+      { name: "description", content: "Google Ads management in Ahmedabad by a team based at Hanspura, SP Ring Road. Month-to-month, run in your own account, with tracked leads. Get a free audit." },
+      { property: "og:title", content: "Google Ads Agency in Ahmedabad | Digital Aura" },
+      { property: "og:description", content: "Google Ads management in Ahmedabad by a team based at Hanspura, SP Ring Road. Month-to-month, run in your own account, with tracked leads. Get a free audit." },
+      { name: "twitter:title", content: "Google Ads Agency in Ahmedabad | Digital Aura" },
+      { name: "twitter:description", content: "Google Ads management in Ahmedabad by a team based at Hanspura, SP Ring Road. Month-to-month, run in your own account, with tracked leads. Get a free audit." },
     ],
   }),
   component: LandingPage,
@@ -37,6 +38,7 @@ function LandingPage() {
     <main className="min-h-screen bg-background font-sans text-foreground pt-[72px]">
       <Header />
       <Hero />
+      <QuickAnswer />
       <ChallengesWeSolve />
       <PlatformsWeManage />
       <ConversionTracking />
@@ -45,10 +47,13 @@ function LandingPage() {
       <DashboardGallery />
       <ProcessTimeline />
       <IndustrySolutions />
+      <AhmedabadMarket />
       <CaseStudies />
       <ClientLogoMarquee />
       <Testimonials />
       <Certifications />
+      <CostBreakdown />
+      <AgencyComparison />
       <FAQ />
       <FinalCTA />
       <Footer />

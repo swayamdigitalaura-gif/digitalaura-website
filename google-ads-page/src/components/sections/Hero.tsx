@@ -30,7 +30,7 @@ export function Hero() {
             className="mt-8 max-w-[600px] font-display font-bold leading-[1.22] tracking-[-0.02em] text-navy"
             style={{ fontSize: "clamp(30px, 4.1vw, 50px)" }}
           >
-            Google Ads Management Company in Ahmedabad
+            Google Ads Agency in Ahmedabad Focused on Leads You Can Track
           </motion.h1>
 
           <motion.p

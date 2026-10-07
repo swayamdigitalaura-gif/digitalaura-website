@@ -12,12 +12,37 @@ const FAQS = [
   { q: "Do I need to sign a long-term contract?", a: "No. We work month-to-month with a 15-day cancellation notice. If the results aren't there, you're not locked in." },
   { q: "Who actually manages my Google Ads account?", a: "A senior strategist with at least 5 years of hands-on campaign experience. No interns, no account handoffs." },
   { q: "Will I own my Google Ads account and data?", a: "Yes, 100%. We run all campaigns inside your own Google Ads and Google Analytics accounts. Everything stays yours if you ever leave." },
+  { q: "Do you guarantee leads or a fixed ROAS?", a: "No. Nobody can honestly guarantee leads or a return on ad spend, because results depend on your market, your offer, your website and your budget. What we commit to is a clear plan, proper tracking, regular optimisation and reports that show leads and cost per lead." },
+  { q: "Performance Max, Search or Shopping: which should my business use?", a: "Search suits businesses where people look for a service, such as clinics, agencies and repair services. Shopping and Performance Max suit stores with product feeds. Many accounts use a mix. We recommend the starting setup after reviewing your business, your tracking and your budget." },
+  { q: "Can you take over my existing Google Ads account?", a: "Yes. We start with an audit of the account: structure, search terms, conversion tracking and landing pages. Then we keep what works, stop what wastes budget and rebuild what is broken, all inside your existing account so your history is preserved." },
+  { q: "How do you count phone call and WhatsApp leads?", a: "We set up conversion tracking for form submissions, click-to-call, calls from ads and WhatsApp clicks, so each one is counted as a lead and tied back to the campaign and keyword. We also tell you where tracking has limits, for example a WhatsApp click shows interest but not a completed chat." },
+  { q: "Do you work with businesses outside Ahmedabad?", a: "Yes. Our team is based in Ahmedabad and we run campaigns for businesses across Gujarat, India and overseas, with location targeting set to wherever your customers are." },
 ];
+
+function FAQSchema() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQS.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+  return (
+    <script
+      type="application/ld+json"
+      // Static content from the FAQS list above - no user input.
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
 
 export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
     <Section id="faq" className="bg-white">
+      <FAQSchema />
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
         <div className="lg:sticky lg:top-32 lg:self-start">
           <Eyebrow>Common Questions</Eyebrow>

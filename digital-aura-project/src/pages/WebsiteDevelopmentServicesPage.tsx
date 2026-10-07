@@ -16,7 +16,7 @@ import { CtaBand, CtaBanner, QuickEnquiry } from "@/components/website-dev/Cta";
 import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
 
-const PAGE_TITLE = "Website Development Services | Custom Business Websites | Digital Aura";
+const PAGE_TITLE = "Website Development Services in Ahmedabad | Digital Aura";
 const PAGE_DESCRIPTION =
   "Get custom website development services in Ahmedabad with fast, mobile-friendly, SEO-ready websites built to generate more leads, sales, and business growth. Contact Digital Aura today.";
 const PAGE_URL = "https://thedigitalaura.com/website-development-services-ahmedabad/";
@@ -150,6 +150,21 @@ const WebsiteDevelopmentServicesPage = () => {
           buttonText={s.wds_ctaband2_button || "Get Expert Advice"}
           href="#strategy"
         />
+        <section className="bg-background py-14">
+          <div className="mx-auto max-w-5xl px-5 md:px-8">
+            <h2 className="text-2xl font-extrabold md:text-3xl">More website services in Ahmedabad</h2>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <a href="/website-redesign-services-ahmedabad/" className="rounded-2xl border p-6 transition hover:shadow-md">
+                <h3 className="text-lg font-bold">Website redesign services</h3>
+                <p className="mt-2 text-sm opacity-80">Redesign your site without losing the Google rankings you already have.</p>
+              </a>
+              <a href="/website-maintenance-amc-ahmedabad/" className="rounded-2xl border p-6 transition hover:shadow-md">
+                <h3 className="text-lg font-bold">Website maintenance and AMC</h3>
+                <p className="mt-2 text-sm opacity-80">Updates, backups, security and monitoring for your website, built by us or by others.</p>
+              </a>
+            </div>
+          </div>
+        </section>
         <Faq />
         <FinalCta />
         <Toaster />

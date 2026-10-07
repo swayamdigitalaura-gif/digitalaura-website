@@ -1,7 +1,8 @@
 // Forwards website form submissions to the Lead Genie CRM "website_form" webhook.
 // Configured via server env (never hard-code — the secret grants write access to the CRM):
 //   CRM_WEBHOOK_URL    e.g. https://leadgenie.tech/api/webhooks/website_form/<form-id>
-//   CRM_WEBHOOK_SECRET sent in the X-LeadHive-Secret header (NOT in the URL)
+//   CRM_WEBHOOK_SECRET sent in the X-LeadGenie-Secret header (NOT in the URL).
+//                      X-LeadHive-Secret is sent too, as an older spec named it that.
 // CRM_WEBHOOK_SECRET is optional (only needed if Lead Genie -> Integrations -> Website Form shows one).
 // If the URL is missing this is a no-op, so local dev and un-configured servers keep working.
 
@@ -13,10 +14,16 @@ async function pushLeadToCRM(lead) {
     return false;
   }
 
+  const headers = { 'Content-Type': 'application/json' };
+  if (secret) {
+    headers['X-LeadGenie-Secret'] = secret;
+    headers['X-LeadHive-Secret'] = secret;
+  }
+
   try {
     const res = await fetch(url, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', ...(secret ? { 'X-LeadHive-Secret': secret } : {}) },
+      headers,
       body: JSON.stringify({
         name: lead.name,
         email: lead.email,

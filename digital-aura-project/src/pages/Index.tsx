@@ -56,7 +56,7 @@ const HOME_LOGOS_FALLBACK: ClientLogoItem[] = [
   { name: "Karm Digital", tag: "Digital Agency", logo: "https://karm.digital/wp-content/uploads/2025/05/karm-logo.png", logoBg: "#f5f0ff" },
   { name: "Dr Ronak Patel", tag: "Healthcare", logo: "/logos/dr-ronak-patel.webp", logoBg: "#f0f7ff" },
   { name: "Dreamfoot", tag: "Sports & Footwear", logo: "https://dreamfoot.in/wp-content/uploads/2025/04/logo-light-4-1.png", logoBg: "#1a1a2e" },
-  { name: "AMVI Hospitals", tag: "Healthcare", logo: "https://amvihospitals.com/wp-content/uploads/2025/04/amvi-new-logo-1536x219-1.png", logoBg: "#f5f0ff" },
+  { name: "AMVI Hospitals", tag: "Healthcare", logo: "/logos/amvi-hospitals.png", logoBg: "#f5f0ff" },
   { name: "Krisha Hospital", tag: "Healthcare", logo: "https://www.krishahospital.in/wp-content/uploads/2025/01/newlogo.png", logoBg: "#fff0f5" },
   { name: "Shukan Hospital", tag: "Healthcare", logo: "https://shukanhospital.com/wp-content/uploads/2025/11/Frame-16-removebg-preview.png", logoBg: "#f0fff8" },
   { name: "The Grand Palace", tag: "Hospitality", logo: "https://www.thegrandpalace.com.au/wp-content/uploads/2025/04/Logo-removebg-preview.png", logoBg: "#fffbf0" },

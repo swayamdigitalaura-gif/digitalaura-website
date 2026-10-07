@@ -197,8 +197,12 @@ const EXTRA_LIVE_ROUTES = [
 // a URL to Google that's either 404ing or still serving a stale previous
 // build, both worse than just leaving it out until the next successful run.
 function writeSitemap(succeededRoutes) {
-  const urls = [...succeededRoutes, ...EXTRA_LIVE_ROUTES].map((route) => {
-    const loc = route === '/' ? `${SITE_URL}/` : `${SITE_URL}${route}/`;
+  // Those proxied apps 307-redirect "/path/" to "/path", so the no-slash URL
+  // is the one that returns 200 and matches their canonical tags. Listing the
+  // slash form here recreates a canonical/redirect loop.
+  const noSlash = new Set([...EXTRA_LIVE_ROUTES, '/google-ads-agency-ahmedabad']);
+  const urls = [...new Set([...succeededRoutes, ...EXTRA_LIVE_ROUTES])].map((route) => {
+    const loc = route === '/' ? `${SITE_URL}/` : noSlash.has(route) ? `${SITE_URL}${route}` : `${SITE_URL}${route}/`;
     const priority = route === '/' ? '1.0' : (route.startsWith('/blog/') || route.startsWith('/careers/')) ? '0.6' : '0.8';
     return `  <url>\n    <loc>${loc}</loc>\n    <changefreq>weekly</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
   });

@@ -675,6 +675,10 @@ export default function PageSEO() {
     // Clean up previous injections
     if (schemaRef.current)   { schemaRef.current.remove();   schemaRef.current   = null; }
     if (headTagsRef.current) { headTagsRef.current.remove(); headTagsRef.current = null; }
+    // The prerendered HTML already contains the scripts this effect injected last time
+    // (marked with data-pageseo). createRoot does not adopt them, so without this the
+    // page ends up with every JSON-LD block twice (e.g. two FAQPage objects).
+    document.head.querySelectorAll('script[data-pageseo], [data-page-head-tags]').forEach(el => el.remove());
 
     const normalPath = pathname === '/' ? '/' : pathname.replace(/\/$/, '');
     const meta = PAGE_META[normalPath];
@@ -708,6 +712,7 @@ export default function PageSEO() {
     if (pageSchema) {
       const script = document.createElement('script');
       script.type = 'application/ld+json';
+      script.setAttribute('data-pageseo', '1');
       script.text = JSON.stringify(pageSchema);
       document.head.appendChild(script);
       schemaRef.current = script;
@@ -747,6 +752,7 @@ export default function PageSEO() {
           if (schemaRef.current) { schemaRef.current.remove(); schemaRef.current = null; }
           const script = document.createElement('script');
           script.type = 'application/ld+json';
+          script.setAttribute('data-pageseo', '1');
           script.text = stripScriptWrapper(page.schema_code);
           document.head.appendChild(script);
           schemaRef.current = script;

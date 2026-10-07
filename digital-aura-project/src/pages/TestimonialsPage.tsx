@@ -49,6 +49,8 @@ const VIDEO_TESTIMONIALS = [
   { id: "LVKs_qFTVAk", name: "Sachin Salunkhe", role: "Co-Founder · IntegsCloud Technologies", quote: "3 agencies failed to deliver this. Digital Aura completed the Shopify Plus + NetSuite integration in just 6 weeks — seamlessly." },
   { id: "oniJ5OOaXHY", name: "Nikhil Parasher", role: "Founder · Parasher Academy", quote: "Every agency gave me a standard pitch. Only Digital Aura listened. 6 months later — 200+ leads and I cannot keep up." },
   { id: "3ZXgamYo_Us", name: "Maya Pillai", role: "Local Business Owner", quote: "The results were beyond our expectations — highly professional team." },
+  { reel: "DeJ5YkAlC3I", thumb: "/testimonials/riddhi-shah-adroit-hr.webp", name: "Riddhi Shah", role: "Founder & CEO · ADROIT HR Services", quote: "7 years in business. Multiple agencies. One partner they can truly trust." },
+  { reel: "DdnoxJXD6oL", thumb: "/testimonials/hardik-bhatt-riant-bikes.webp", name: "Hardik Bhatt", role: "Founder · Riant Bikes", quote: "They don't just focus on profits—they truly care about your growth." },
 ];
 
 const GoogleIcon = () => (
@@ -121,12 +123,22 @@ const TestimonialCard = ({ t, color, index }: { t: Record<string, string>; color
 
 const VIDEO_COLORS = ["#FF6B2B", "#7C3AED", "#1A6FE8", "#22C55E"];
 
-interface VideoItem { id: string; name: string; role: string; quote: string; }
+// Exactly one of `id` (YouTube video id) or `reel` (Instagram reel shortcode) is set.
+interface VideoItem { id?: string; reel?: string; thumb?: string; name: string; role: string; quote: string; }
+
+const InstagramIcon = ({ size = 14 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <rect x="3" y="3" width="18" height="18" rx="5" />
+    <circle cx="12" cy="12" r="4" />
+    <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+  </svg>
+);
 
 const VideoCard = ({ video, index }: { video: VideoItem; index: number }) => {
   const [playing, setPlaying] = useState(false);
   const color = VIDEO_COLORS[index % VIDEO_COLORS.length];
   const initials = video.name.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase();
+  const reelUrl = video.reel ? `https://www.instagram.com/reel/${video.reel}/` : "";
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -138,6 +150,25 @@ const VideoCard = ({ video, index }: { video: VideoItem; index: number }) => {
       {/* top color bar */}
       <div className="h-1 w-full" style={{ background: color }} />
       {/* video */}
+      {video.reel ? (
+        <a href={reelUrl} target="_blank" rel="noopener noreferrer"
+          aria-label={`Watch ${video.name}'s video testimonial on Instagram`}
+          className="relative block w-full aspect-[333/540] bg-[#0A1628] group overflow-hidden">
+          <img src={video.thumb} alt={`${video.name}, ${video.role} — video testimonial`}
+            loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-all" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-14 h-14 rounded-full flex items-center justify-center transition-transform group-hover:scale-110"
+              style={{ background: "#fff", boxShadow: "0 6px 24px rgba(0,0,0,0.25)" }}>
+              <Play size={20} fill={color} color={color} className="ml-1" />
+            </div>
+          </div>
+          <span className="absolute top-3 right-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold text-white"
+            style={{ background: "rgba(10,22,40,0.75)" }}>
+            <InstagramIcon size={11} /> Instagram
+          </span>
+        </a>
+      ) : (
       <div className="relative w-full aspect-video cursor-pointer group" onClick={() => !playing && setPlaying(true)}>
         {playing ? (
           <iframe
@@ -163,6 +194,7 @@ const VideoCard = ({ video, index }: { video: VideoItem; index: number }) => {
           </>
         )}
       </div>
+      )}
       {/* quote section */}
       <div className="p-5 flex flex-col gap-3">
         <div className="flex gap-0.5">
@@ -275,7 +307,7 @@ const TestimonialsPage = () => {
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {VIDEO_TESTIMONIALS.map((v, i) => (
-              <VideoCard key={v.id} video={v} index={i} />
+              <VideoCard key={v.id || v.reel} video={v} index={i} />
             ))}
           </div>
         </div>

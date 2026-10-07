@@ -8,6 +8,29 @@ const NotFound = () => {
 
   useEffect(() => {
     console.error("404:", location.pathname);
+
+    // The server answers unknown URLs with the SPA shell (HTTP 200), so Google
+    // sees a soft 404 unless the page marks itself noindex. PageSEO runs in the
+    // same commit and re-sets the canonical, so apply this after it (timeout 0).
+    const markNoindex = () => {
+      let robots = document.head.querySelector('meta[name="robots"]');
+      if (!robots) {
+        robots = document.createElement("meta");
+        robots.setAttribute("name", "robots");
+        document.head.appendChild(robots);
+      }
+      robots.setAttribute("content", "noindex, follow");
+      document.head.querySelector('link[rel="canonical"]')?.remove();
+    };
+    markNoindex();
+    const timer = window.setTimeout(markNoindex, 0);
+
+    return () => {
+      window.clearTimeout(timer);
+      document.head
+        .querySelector('meta[name="robots"]')
+        ?.setAttribute("content", "index, follow");
+    };
   }, [location.pathname]);
 
   const quickLinks = [

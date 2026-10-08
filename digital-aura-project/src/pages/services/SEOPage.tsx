@@ -432,7 +432,7 @@ const SeoCardTabs = () => {
                   ))}
                 </div>
                 <Link to={card.href || "/contact"} className="inline-flex items-center gap-1.5 text-[12.5px] font-semibold transition-all hover:gap-2.5" style={{ color: tab.color }}>
-                  Learn More <ArrowRight size={13} />
+                  Learn More<span className="sr-only"> about {card.title}</span> <ArrowRight size={13} />
                 </Link>
               </motion.div>
             ))}

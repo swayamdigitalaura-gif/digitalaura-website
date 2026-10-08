@@ -198,13 +198,13 @@ const topStats = [
 const siteShowcase = [
   {
     src: "homepage-services-menu.jpg",
-    alt: "Prism Group of Company homepage showing the structured services mega-menu: Calibration & Testing, Validation, EHS & Audit and Consulting",
+    alt: "Prism homepage services mega-menu: Calibration & Testing, Validation, EHS & Audit, Consulting",
     captionKey: "prism_showcase_1_caption",
     caption: "Every service organised into a structured menu — Calibration & Testing, Validation, EHS & Audit, Consulting — instead of one flat list.",
   },
   {
     src: "industries-menu.jpg",
-    alt: "Prism website industries mega-menu showing Pharmaceutical, Oil & Gas, Chemical, Food & Beverage, Manufacturing, Healthcare and Government/Labs",
+    alt: "Prism website industries mega-menu: Pharma, Oil & Gas, Chemical, Food, Manufacturing, Healthcare",
     captionKey: "prism_showcase_2_caption",
     caption: "The industry architecture in action — Pharmaceutical, Oil & Gas, Chemical, Manufacturing, Healthcare and more, each with its own path in.",
   },
@@ -228,7 +228,7 @@ const aeoScanShots = [
   {
     query: "multimeter calibration in Ahmedabad",
     src: "chatgpt-multimeter.jpg",
-    alt: "ChatGPT result for multimeter calibration in Ahmedabad, naming Prism Calibration Centre as a strong option",
+    alt: "ChatGPT result for multimeter calibration in Ahmedabad naming Prism Calibration Centre",
     source: "ChatGPT",
     textKey: "prism_aeo_2_text",
     text: "Named as \"a strong option\" with a full profile — NABL number, location, phone and calibration scope pulled straight from the site.",
@@ -244,7 +244,7 @@ const aeoScanShots = [
   {
     query: "RTD calibration in Ahmedabad",
     src: "gemini-rtd.jpg",
-    alt: "Gemini result for RTD calibration in Ahmedabad, listing Prism Calibration Centre first with temperature range",
+    alt: "Gemini result for RTD calibration in Ahmedabad listing Prism Calibration Centre first",
     source: "Gemini",
     textKey: "prism_aeo_4_text",
     text: "Named first, with the exact temperature range (−200°C to +600°C) and calibration method cited from Prism's own page.",
@@ -252,7 +252,7 @@ const aeoScanShots = [
   {
     query: "Temperature sensor calibration Ahmedabad",
     src: "gemini-temperature-sensor.jpg",
-    alt: "Gemini result for temperature sensor calibration in Ahmedabad, listing Prism Calibration Centre first",
+    alt: "Gemini result for temperature sensor calibration listing Prism Calibration Centre first",
     source: "Gemini",
     textKey: "prism_aeo_5_text",
     text: "First result again — this time with the full sensor range covered (RTDs, thermocouples, IR pyrometers) quoted directly.",
@@ -260,7 +260,7 @@ const aeoScanShots = [
   {
     query: "Calibration laboratory in Vatva Ahmedabad",
     src: "gemini-vatva-lab.jpg",
-    alt: "Gemini result for calibration laboratory in Vatva Ahmedabad, featuring Prism Calibration Centre with an image card",
+    alt: "Gemini result for calibration laboratory in Vatva featuring Prism Calibration Centre",
     source: "Gemini",
     textKey: "prism_aeo_6_text",
     text: "For a hyper-local query, Prism doesn't just get listed — it gets an image card of its own, ahead of the text results.",
@@ -581,7 +581,7 @@ const CaseStudyPrismCalibration = () => {
           <Screenshot
             tag="Organic Traffic, Climbing"
             src={`${IMG}/traffic-acquisition-dashboard.jpg`}
-            alt="Traffic acquisition dashboard showing 4,280 total sessions for July 2026, with Organic Search leading at 1,860 sessions (43.5%), followed by Direct, AI Assistant, Referral and Unassigned channels"
+            alt="Traffic dashboard: 4,280 sessions in July 2026, Organic Search leading at 1,860 (43.5%)"
             caption="Source: Analytics · Traffic acquisition overview, July 2026"
           />
 
@@ -593,7 +593,7 @@ const CaseStudyPrismCalibration = () => {
           <Screenshot
             tag="Real Enquiries, Landing"
             src={`${IMG}/inquiries-dashboard.png`}
-            alt="Dashboard list of website inquiries showing service requested, source page, date received and status, with contact details blurred for privacy"
+            alt="Website inquiries dashboard with service, source page, date and status; contact details blurred"
             caption="Source: Enquiry dashboard · Contact column blurred for privacy"
           />
 
@@ -604,7 +604,7 @@ const CaseStudyPrismCalibration = () => {
           <Screenshot
             tag="The AI Moment"
             src={`${IMG}/google-ai-overview.jpg`}
-            alt="Google search results showing an AI Overview naming Prism Calibration Centre for the query 'which is the best NABL accredited lab in ahmedabad'"
+            alt="Google AI Overview naming Prism Calibration Centre for 'best NABL accredited lab in ahmedabad'"
             caption="Source: Google Search, AI Overview"
           />
           <P k="prism_reading3_followup">
@@ -620,7 +620,7 @@ const CaseStudyPrismCalibration = () => {
           <Screenshot
             tag="Visibility Across AI Assistants"
             src={`${IMG}/claude-ai-response.png`}
-            alt="Claude AI response to 'Best calibration lab in Ahmedabad' listing Prism Calibration Centre first among NABL-accredited labs"
+            alt="Claude response to 'Best calibration lab in Ahmedabad' listing Prism Calibration Centre first"
             caption="Source: Claude"
           />
           <P k="prism_reading4a_text">
@@ -630,7 +630,7 @@ const CaseStudyPrismCalibration = () => {
           <Screenshot
             tag="Even the Narrow Queries"
             src={`${IMG}/chatgpt-gas-detector-map.png`}
-            alt="ChatGPT response to 'Gas detector calibration in Ahmedabad' showing Prism Calibration Centre on the map with strong visibility for the specific service"
+            alt="ChatGPT answer for 'Gas detector calibration in Ahmedabad' showing Prism Calibration Centre on map"
             caption="Source: ChatGPT"
           />
           <P k="prism_reading4b_text">

@@ -420,7 +420,7 @@ const CaseStudyRiantBikes = () => {
             tag={t("riantbikes_shot_2_tag", "Fleet Management") as string}
             tagKey="riantbikes_shot_2_tag"
             src={`${IMG}/fleet-management.png`}
-            alt="Riant Bikes fleet management dashboard showing vehicles across branches with live availability status"
+            alt="Riant Bikes fleet dashboard showing vehicles across branches with live availability"
             caption={t("riantbikes_shot_2_caption", "30 vehicles, 3 branches, one screen — every bike tracked as available or occupied in real time.") as string}
             captionKey="riantbikes_shot_2_caption"
           />
@@ -457,7 +457,7 @@ const CaseStudyRiantBikes = () => {
             tag={t("riantbikes_shot_4_tag", "The Owner's Morning View") as string}
             tagKey="riantbikes_shot_4_tag"
             src={`${IMG}/owner-dashboard.png`}
-            alt="Riant Bikes owner dashboard showing total bookings, revenue, top vehicles, busiest days and branch performance"
+            alt="Riant Bikes owner dashboard: bookings, revenue, top vehicles, busiest days, branch performance"
             caption={t("riantbikes_shot_4_caption", "The exact screen Riant Bikes checks every morning — bookings, revenue, top-performing vehicles, and busiest days, all in one place.") as string}
             captionKey="riantbikes_shot_4_caption"
           />
@@ -608,7 +608,7 @@ const CaseStudyRiantBikes = () => {
               <div className="mt-6">
                 <img
                   src={`${IMG}/google-review.png`}
-                  alt="Google review screenshot from Hardik Bhatt, owner of Riant Bikes, giving Digital Aura a 5-star rating"
+                  alt="Google review from Hardik Bhatt, owner of Riant Bikes, giving Digital Aura 5 stars"
                   loading="lazy"
                   className="w-full max-w-[440px] mx-auto block rounded-lg border"
                   style={{ borderColor: "#E5E7EB", boxShadow: "0 8px 24px rgba(10,22,40,0.08)" }}

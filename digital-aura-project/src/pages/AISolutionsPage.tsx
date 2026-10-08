@@ -232,7 +232,7 @@ const AISolutionsPage = () => {
               <h3 className="text-lg font-bold text-[#0A1628] mb-2">{service.title}</h3>
               <p className="text-[13.5px] text-[#6B7280] mb-5 leading-relaxed flex-grow">{service.desc}</p>
               <Link to={service.href} className="flex items-center gap-2 text-[12.5px] font-bold group-hover:gap-3 transition-all" style={{ color: accentColor }}>
-                 Learn More <ArrowRight size={14} />
+                 Learn More<span className="sr-only"> about {service.title}</span> <ArrowRight size={14} />
               </Link>
             </motion.div>
           ))}

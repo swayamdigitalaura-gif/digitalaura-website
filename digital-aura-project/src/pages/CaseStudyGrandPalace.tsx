@@ -372,7 +372,7 @@ const CaseStudyGrandPalace = () => {
             tag={t("gp_shot_mid_tag", "Homepage — Middle") as string}
             tagKey="gp_shot_mid_tag"
             src={`${IMG}/homepage-mid.jpg`}
-            alt="The Grand Palace website homepage, middle section: venue for hire, events, office catering, and offers"
+            alt="Grand Palace homepage, middle section: venue hire, events, office catering and offers"
             caption={t("gp_shot_mid_caption", "Venue hire, corporate events, office catering, and current offers — the parts of the business most customers never knew existed.") as string}
             captionKey="gp_shot_mid_caption"
           />
@@ -380,7 +380,7 @@ const CaseStudyGrandPalace = () => {
             tag={t("gp_shot_bottom_tag", "Homepage — Bottom") as string}
             tagKey="gp_shot_bottom_tag"
             src={`${IMG}/homepage-bottom.jpg`}
-            alt="The Grand Palace website homepage, bottom section: gallery, testimonials, and footer with contact details"
+            alt="Grand Palace homepage, bottom section: gallery, testimonials and footer with contact details"
             caption={t("gp_shot_bottom_caption", "Gallery, testimonials, and full contact details in the footer — everything a new customer needs before they book.") as string}
             captionKey="gp_shot_bottom_caption"
           />
@@ -393,7 +393,7 @@ const CaseStudyGrandPalace = () => {
             tag={t("gp_shot_chart_tag", "Results That Matter") as string}
             tagKey="gp_shot_chart_tag"
             src={`${IMG}/results-chart.jpg`}
-            alt="Google Analytics chart showing sessions by channel over 90 days, with organic search reaching 1.26K+ sessions"
+            alt="Google Analytics sessions by channel over 90 days, organic search reaching 1.26K+ sessions"
             caption={t("gp_shot_chart_caption", "1.26K+ organic sessions from a standing start — significantly exceeding the expected baseline for a business this size.") as string}
             captionKey="gp_shot_chart_caption"
           />

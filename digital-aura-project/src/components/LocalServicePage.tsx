@@ -398,7 +398,7 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
                   ))}
                 </ul>
                 <Link to={s.href} className="inline-flex items-center gap-1 text-sm font-semibold hover:gap-2 transition-all" style={{ color: c.relatedCategoryColor }}>
-                  Learn more <ArrowRight size={14} />
+                  Learn more<span className="sr-only"> about {s.title}</span> <ArrowRight size={14} />
                 </Link>
               </motion.div>
             ))}

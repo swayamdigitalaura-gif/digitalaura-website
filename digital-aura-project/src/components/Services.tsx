@@ -255,7 +255,7 @@ const Services = () => {
                 {s.route && (
                   <div className="mt-4 flex items-center gap-1 text-sm font-semibold transition-all duration-200 group-hover:gap-2"
                     style={{ color: activeTab.color }}>
-                    Learn more <ArrowRight size={14} />
+                    Learn more<span className="sr-only"> about {s.title}</span> <ArrowRight size={14} />
                   </div>
                 )}
               </motion.div>

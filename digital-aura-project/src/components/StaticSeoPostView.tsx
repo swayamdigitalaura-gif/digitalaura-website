@@ -205,13 +205,13 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
                     <img src={AUTHOR_PHOTOS[post.author] || sambhavPhoto} alt={post.author} className="w-full h-full object-cover object-top scale-110" />
                   </div>
                   <div className="sm:hidden">
-                    <p className="font-black text-lg leading-tight" style={{ color: "#0A1628" }}>{post.author}</p>
+                    <p className="font-black text-lg leading-tight" style={{ color: "#0A1628" }}><a href="/about/" className="hover:underline">{post.author}</a></p>
                     <p className="text-sm font-semibold" style={{ color: theme.color }}>{post.authorRole}</p>
                   </div>
                 </div>
                 <div className="flex-1">
                   <div className="hidden sm:block mb-3">
-                    <p className="font-black text-xl leading-tight" style={{ color: "#0A1628" }}>{post.author}</p>
+                    <p className="font-black text-xl leading-tight" style={{ color: "#0A1628" }}><a href="/about/" className="hover:underline">{post.author}</a></p>
                     <p className="text-sm font-semibold" style={{ color: theme.color }}>{post.authorRole}</p>
                   </div>
                   {post.authorBio.split("\n\n").map((para, i) => (

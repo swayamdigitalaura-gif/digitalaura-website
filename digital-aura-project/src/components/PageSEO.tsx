@@ -2,6 +2,8 @@ import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { localPages } from '../data/localPagesData';
 import { phase1Pages } from '../data/localPagesPhase1';
+import { phase2Pages } from '../data/localPagesPhase2';
+import { phase2WebPages } from '../data/localPagesPhase2Web';
 
 const API_BASE  = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
 const SITE_URL  = 'https://thedigitalaura.com';
@@ -334,6 +336,54 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: 'Website Maintenance & AMC in Ahmedabad | Digital Aura',
     description: 'Website maintenance and AMC in Ahmedabad: updates, backups, security and monitoring. We take over sites built by others. Free health check.',
   },
+  '/seo/pricing': {
+    title: "SEO Packages in Ahmedabad: Plans & What's Included",
+    description: "See how SEO packages are scoped in Ahmedabad: what is included, what is not, contract terms and how to get a written quote after a free audit.",
+  },
+  '/seo/doctors-hospitals-ahmedabad': {
+    title: "SEO for Doctors & Hospitals in Ahmedabad",
+    description: "Healthcare SEO for Ahmedabad doctors, clinics and hospitals: treatment pages, local SEO, careful content and appointment tracking. Free audit.",
+  },
+  '/seo/manufacturers-b2b-gujarat': {
+    title: "SEO for Manufacturers & B2B in Gujarat",
+    description: "B2B SEO for Gujarat manufacturers and exporters: product-spec pages, RFQ funnels, export keywords and AI search. Get a free audit.",
+  },
+  '/google-ads-pricing-ahmedabad': {
+    title: "Google Ads Pricing in Ahmedabad: Fees & Ad Spend",
+    description: "How Google Ads pricing works in Ahmedabad: ad spend, management fee and GST, fee models, break-even test and red flags in agency quotes.",
+  },
+  '/google-ads-for-doctors-ahmedabad': {
+    title: "Google Ads for Doctors & Hospitals in Ahmedabad",
+    description: "Google Ads for clinics and hospitals in Ahmedabad: careful ad copy, service-line campaigns, tracked appointments and a free healthcare review.",
+  },
+  '/meta-ads-agency-ahmedabad/pricing': {
+    title: "Meta Ads Pricing in Ahmedabad: Fees & Packages",
+    description: "What Meta ads cost in Ahmedabad: agency fee vs ad spend, what is included, contract terms and red flags. Get a written quote.",
+  },
+  '/meta-ads-agency-ahmedabad/clinics-doctors': {
+    title: "Meta Ads for Doctors & Clinics in Ahmedabad",
+    description: "Meta ads for Ahmedabad clinics and hospitals: health ad policy limits, WhatsApp lead handling and booked appointments. Free ad review.",
+  },
+  '/website-development-cost-ahmedabad': {
+    title: "Website Development Cost in Ahmedabad: Price Guide",
+    description: "What decides the cost of a website in Ahmedabad: site types, cost drivers, platform choice, running costs and how to compare quotes.",
+  },
+  '/website-design-cost-ahmedabad': {
+    title: "Website Design Cost in Ahmedabad: Price Guide",
+    description: "What website design costs in Ahmedabad: template vs custom, what a design fee covers, revisions, ownership and design vs development.",
+  },
+  '/website-packages-ahmedabad': {
+    title: "Website Packages in Ahmedabad | Digital Aura",
+    description: "Compare website packages in Ahmedabad: Starter, Business, Growth and Custom. See what is included, what is not and what you pay after year one.",
+  },
+  '/website-design-for-doctors-ahmedabad': {
+    title: "Website Design for Doctors & Hospitals in Ahmedabad",
+    description: "Patient-first websites for doctors, clinics and hospitals in Ahmedabad: appointment booking, doctor profiles, local SEO and fast mobile pages.",
+  },
+  '/website-design-for-manufacturers-ahmedabad': {
+    title: "Website Design for Manufacturers & Exporters, Ahmedabad",
+    description: "B2B websites for Gujarat manufacturers and exporters: product catalogue, RFQ flow, certificates and multilingual SEO. Own your buyer enquiries.",
+  },
   '/meta-ads-agency-ahmedabad': {
     title: 'Meta Ads Agency in Ahmedabad | Facebook & Instagram Ads',
     description: "Ahmedabad Meta ads agency for Facebook, Instagram and WhatsApp lead generation. Clear process, lead tracking and a free account review.",
@@ -633,6 +683,18 @@ PAGE_SCHEMA['/seo/free-audit'] = faqPageSchema(phase1Pages.seoFreeAudit.faqs);
 PAGE_SCHEMA['/google-ads-audit-ahmedabad'] = faqPageSchema(phase1Pages.googleAdsAudit.faqs);
 PAGE_SCHEMA['/website-redesign-services-ahmedabad'] = faqPageSchema(phase1Pages.websiteRedesign.faqs);
 PAGE_SCHEMA['/website-maintenance-amc-ahmedabad'] = faqPageSchema(phase1Pages.websiteMaintenance.faqs);
+PAGE_SCHEMA['/seo/pricing'] = faqPageSchema(phase2Pages.seoPricing.faqs);
+PAGE_SCHEMA['/seo/doctors-hospitals-ahmedabad'] = faqPageSchema(phase2Pages.seoDoctors.faqs);
+PAGE_SCHEMA['/seo/manufacturers-b2b-gujarat'] = faqPageSchema(phase2Pages.seoManufacturers.faqs);
+PAGE_SCHEMA['/google-ads-pricing-ahmedabad'] = faqPageSchema(phase2Pages.googleAdsPricing.faqs);
+PAGE_SCHEMA['/google-ads-for-doctors-ahmedabad'] = faqPageSchema(phase2Pages.googleAdsDoctors.faqs);
+PAGE_SCHEMA['/meta-ads-agency-ahmedabad/pricing'] = faqPageSchema(phase2Pages.metaAdsPricing.faqs);
+PAGE_SCHEMA['/meta-ads-agency-ahmedabad/clinics-doctors'] = faqPageSchema(phase2Pages.metaAdsClinics.faqs);
+PAGE_SCHEMA['/website-development-cost-ahmedabad'] = faqPageSchema(phase2WebPages.websiteDevCost.faqs);
+PAGE_SCHEMA['/website-design-cost-ahmedabad'] = faqPageSchema(phase2WebPages.websiteDesignCost.faqs);
+PAGE_SCHEMA['/website-packages-ahmedabad'] = faqPageSchema(phase2WebPages.websitePackages.faqs);
+PAGE_SCHEMA['/website-design-for-doctors-ahmedabad'] = faqPageSchema(phase2WebPages.websiteDoctors.faqs);
+PAGE_SCHEMA['/website-design-for-manufacturers-ahmedabad'] = faqPageSchema(phase2WebPages.websiteManufacturers.faqs);
 
 function setTag(selector: string, valueAttr: string, value: string) {
   let el = document.head.querySelector(selector);

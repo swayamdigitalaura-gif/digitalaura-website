@@ -26,6 +26,9 @@ export function QuickAnswer() {
             <p className="mt-4 text-[14px] text-muted-foreground">
               Curious what the audit covers? <a className="font-semibold text-primary underline" href="/google-ads-audit-ahmedabad/">See how our Google Ads audit works</a>.
             </p>
+            <p className="mt-2 text-[14px] text-muted-foreground">
+              Planning a budget? <a className="font-semibold text-primary underline" href="/google-ads-pricing-ahmedabad/">How Google Ads pricing works</a>. Running a clinic? <a className="font-semibold text-primary underline" href="/google-ads-for-doctors-ahmedabad/">Google Ads for doctors and hospitals</a>.
+            </p>
           </div>
         </div>
         <div className="grid gap-4">

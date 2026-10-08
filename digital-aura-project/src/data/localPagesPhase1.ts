@@ -15,6 +15,7 @@ const relatedSeo = [
   { title: "SEO Services in Ahmedabad", desc: "Our SEO company page: services, process and what to expect month by month.", points: ["Technical SEO", "Local SEO", "AI search"], href: "/seo-services-ahmedabad" },
   { title: "Google Ads Agency", desc: "Paid search to bring leads while SEO builds.", points: ["Search campaigns", "Call and WhatsApp tracking"], href: "/google-ads-agency-ahmedabad" },
   { title: "SEO Audit & Strategy", desc: "The full audit and strategy service.", points: ["Technical audit", "Keyword map"], href: "/services/seo-content-marketing/seo-audit-strategy/" },
+  { title: "SEO Packages and Pricing", desc: "How our SEO plans are scoped, what is included and what is not.", points: ["Scope-based", "Written quote"], href: "/seo/pricing/" },
 ];
 
 export const phase1Pages: Record<string, LocalServiceConfig> = {
@@ -168,6 +169,7 @@ export const phase1Pages: Record<string, LocalServiceConfig> = {
       { title: "Google Ads Agency in Ahmedabad", desc: "Ongoing management focused on leads you can track.", points: ["Search and PMax", "Lead tracking"], href: "/google-ads-agency-ahmedabad" },
       { title: "Conversion Rate Optimisation", desc: "Fix the page after the click.", points: ["Landing page testing", "Form and call flow"], href: "/services/cro/" },
       { title: "Meta Ads Agency in Ahmedabad", desc: "Facebook and Instagram campaigns for leads.", points: ["Lead and WhatsApp ads"], href: "/meta-ads-agency-ahmedabad/" },
+      { title: "Google Ads Pricing", desc: "Ad spend, management fee and GST explained.", points: ["Fee models", "Red flags"], href: "/google-ads-pricing-ahmedabad/" },
     ],
     extraSections: [
       {

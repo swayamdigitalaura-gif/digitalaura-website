@@ -162,6 +162,26 @@ const WebsiteDevelopmentServicesPage = () => {
                 <h3 className="text-lg font-bold">Website maintenance and AMC</h3>
                 <p className="mt-2 text-sm opacity-80">Updates, backups, security and monitoring for your website, built by us or by others.</p>
               </a>
+              <a href="/website-development-cost-ahmedabad/" className="rounded-2xl border p-6 transition hover:shadow-md">
+                <h3 className="text-lg font-bold">Website development cost</h3>
+                <p className="mt-2 text-sm opacity-80">What decides the price of a website in Ahmedabad and how to compare quotes.</p>
+              </a>
+              <a href="/website-design-cost-ahmedabad/" className="rounded-2xl border p-6 transition hover:shadow-md">
+                <h3 className="text-lg font-bold">Website design cost</h3>
+                <p className="mt-2 text-sm opacity-80">What a design fee covers and how design differs from development.</p>
+              </a>
+              <a href="/website-packages-ahmedabad/" className="rounded-2xl border p-6 transition hover:shadow-md">
+                <h3 className="text-lg font-bold">Website packages</h3>
+                <p className="mt-2 text-sm opacity-80">Starter, Business, Growth and Custom packages, and what each includes.</p>
+              </a>
+              <a href="/website-design-for-doctors-ahmedabad/" className="rounded-2xl border p-6 transition hover:shadow-md">
+                <h3 className="text-lg font-bold">Websites for doctors and hospitals</h3>
+                <p className="mt-2 text-sm opacity-80">Patient-first sites with doctor profiles and appointment booking.</p>
+              </a>
+              <a href="/website-design-for-manufacturers-ahmedabad/" className="rounded-2xl border p-6 transition hover:shadow-md">
+                <h3 className="text-lg font-bold">Websites for manufacturers and exporters</h3>
+                <p className="mt-2 text-sm opacity-80">Catalogue, RFQ flow and certificates for B2B buyers.</p>
+              </a>
             </div>
           </div>
         </section>

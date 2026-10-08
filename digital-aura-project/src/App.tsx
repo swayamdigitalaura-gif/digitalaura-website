@@ -72,6 +72,8 @@ import OffPageSEOPage from "./pages/services/seo/OffPageSEOPage.tsx";
 import EcommerceSEOPage from "./pages/services/seo/EcommerceSEOPage.tsx";
 import LocalServicePage from "./components/LocalServicePage.tsx";
 import { phase1Pages } from "./data/localPagesPhase1.ts";
+import { phase2Pages } from "./data/localPagesPhase2.ts";
+import { phase2WebPages } from "./data/localPagesPhase2Web.ts";
 import { localPages } from "./data/localPagesData.ts";
 import AIFilmmakingPage from "./pages/services/AIFilmmakingPage.tsx";
 import ServiceAreasPage from "./pages/ServiceAreasPage.tsx";
@@ -166,6 +168,18 @@ const App = () => (
           <Route path="/google-ads-audit-ahmedabad" element={<LocalServicePage config={phase1Pages.googleAdsAudit} />} />
           <Route path="/website-redesign-services-ahmedabad" element={<LocalServicePage config={phase1Pages.websiteRedesign} />} />
           <Route path="/website-maintenance-amc-ahmedabad" element={<LocalServicePage config={phase1Pages.websiteMaintenance} />} />
+          <Route path="/seo/pricing" element={<LocalServicePage config={phase2Pages.seoPricing} />} />
+          <Route path="/seo/doctors-hospitals-ahmedabad" element={<LocalServicePage config={phase2Pages.seoDoctors} />} />
+          <Route path="/seo/manufacturers-b2b-gujarat" element={<LocalServicePage config={phase2Pages.seoManufacturers} />} />
+          <Route path="/google-ads-pricing-ahmedabad" element={<LocalServicePage config={phase2Pages.googleAdsPricing} />} />
+          <Route path="/google-ads-for-doctors-ahmedabad" element={<LocalServicePage config={phase2Pages.googleAdsDoctors} />} />
+          <Route path="/meta-ads-agency-ahmedabad/pricing" element={<LocalServicePage config={phase2Pages.metaAdsPricing} />} />
+          <Route path="/meta-ads-agency-ahmedabad/clinics-doctors" element={<LocalServicePage config={phase2Pages.metaAdsClinics} />} />
+          <Route path="/website-development-cost-ahmedabad" element={<LocalServicePage config={phase2WebPages.websiteDevCost} />} />
+          <Route path="/website-design-cost-ahmedabad" element={<LocalServicePage config={phase2WebPages.websiteDesignCost} />} />
+          <Route path="/website-packages-ahmedabad" element={<LocalServicePage config={phase2WebPages.websitePackages} />} />
+          <Route path="/website-design-for-doctors-ahmedabad" element={<LocalServicePage config={phase2WebPages.websiteDoctors} />} />
+          <Route path="/website-design-for-manufacturers-ahmedabad" element={<LocalServicePage config={phase2WebPages.websiteManufacturers} />} />
 
           <Route path="/services/ai-filmmaking" element={<AIFilmmakingPage />} />
 

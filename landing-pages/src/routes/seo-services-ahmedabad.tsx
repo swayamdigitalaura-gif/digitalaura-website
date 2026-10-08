@@ -1704,6 +1704,9 @@ function AreasAndServices() {
     { t: "Ecommerce SEO", href: "/services/seo-content-marketing/ecommerce-seo/" },
     { t: "SEO Audit & Strategy", href: "/services/seo-content-marketing/seo-audit-strategy/" },
     { t: "Free SEO Audit", href: "/seo/free-audit/" },
+    { t: "SEO Packages & Pricing", href: "/seo/pricing/" },
+    { t: "SEO for Doctors & Hospitals", href: "/seo/doctors-hospitals-ahmedabad/" },
+    { t: "SEO for Manufacturers & B2B", href: "/seo/manufacturers-b2b-gujarat/" },
   ];
   return (
     <section id="areas" className="bg-white">

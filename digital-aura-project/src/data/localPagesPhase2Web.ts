@@ -400,6 +400,13 @@ export const phase2WebPages: Record<string, LocalServiceConfig> = {
         ],
       },
       {
+        kind: "calculator",
+        id: "package-picker",
+        title: "Which package is right for you? A 1-minute picker",
+        subtext: "Answer five questions to see which package usually fits. Nothing you choose is sent to us.",
+        variant: "package-picker",
+      },
+      {
         kind: "compare",
         id: "exclusions",
         title: "What is not included, and what to plan for",

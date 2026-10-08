@@ -418,6 +418,14 @@ function faqPageSchema(faqs: { q: string; a: string }[]) {
   };
 }
 
+function breadcrumbSchema(trail: [string, string][]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: trail.map(([name, path], i) => ({ '@type': 'ListItem', position: i + 1, name, item: `${SITE_URL}${path}` })),
+  };
+}
+
 const PAGE_SCHEMA: Record<string, object | object[]> = {
   // FAQ markup for the Phase 1 cluster pages is added below, from their visible FAQ lists.
   '/': [
@@ -679,22 +687,72 @@ const CANONICAL_OVERRIDE: Record<string, string> = {
   '/seo-agency-ahmedabad': `${SITE_URL}/seo-services-ahmedabad`,
 };
 
-PAGE_SCHEMA['/seo/free-audit'] = faqPageSchema(phase1Pages.seoFreeAudit.faqs);
-PAGE_SCHEMA['/google-ads-audit-ahmedabad'] = faqPageSchema(phase1Pages.googleAdsAudit.faqs);
-PAGE_SCHEMA['/website-redesign-services-ahmedabad'] = faqPageSchema(phase1Pages.websiteRedesign.faqs);
-PAGE_SCHEMA['/website-maintenance-amc-ahmedabad'] = faqPageSchema(phase1Pages.websiteMaintenance.faqs);
-PAGE_SCHEMA['/seo/pricing'] = faqPageSchema(phase2Pages.seoPricing.faqs);
-PAGE_SCHEMA['/seo/doctors-hospitals-ahmedabad'] = faqPageSchema(phase2Pages.seoDoctors.faqs);
-PAGE_SCHEMA['/seo/manufacturers-b2b-gujarat'] = faqPageSchema(phase2Pages.seoManufacturers.faqs);
-PAGE_SCHEMA['/google-ads-pricing-ahmedabad'] = faqPageSchema(phase2Pages.googleAdsPricing.faqs);
-PAGE_SCHEMA['/google-ads-for-doctors-ahmedabad'] = faqPageSchema(phase2Pages.googleAdsDoctors.faqs);
-PAGE_SCHEMA['/meta-ads-agency-ahmedabad/pricing'] = faqPageSchema(phase2Pages.metaAdsPricing.faqs);
-PAGE_SCHEMA['/meta-ads-agency-ahmedabad/clinics-doctors'] = faqPageSchema(phase2Pages.metaAdsClinics.faqs);
-PAGE_SCHEMA['/website-development-cost-ahmedabad'] = faqPageSchema(phase2WebPages.websiteDevCost.faqs);
-PAGE_SCHEMA['/website-design-cost-ahmedabad'] = faqPageSchema(phase2WebPages.websiteDesignCost.faqs);
-PAGE_SCHEMA['/website-packages-ahmedabad'] = faqPageSchema(phase2WebPages.websitePackages.faqs);
-PAGE_SCHEMA['/website-design-for-doctors-ahmedabad'] = faqPageSchema(phase2WebPages.websiteDoctors.faqs);
-PAGE_SCHEMA['/website-design-for-manufacturers-ahmedabad'] = faqPageSchema(phase2WebPages.websiteManufacturers.faqs);
+PAGE_SCHEMA['/seo/free-audit'] = [
+  faqPageSchema(phase1Pages.seoFreeAudit.faqs),
+  breadcrumbSchema([['Home', '/'], ["SEO Services in Ahmedabad", '/seo-services-ahmedabad'], ["Free SEO Audit", '/seo/free-audit/']]),
+];
+PAGE_SCHEMA['/google-ads-audit-ahmedabad'] = [
+  faqPageSchema(phase1Pages.googleAdsAudit.faqs),
+  breadcrumbSchema([['Home', '/'], ["Google Ads Agency in Ahmedabad", '/google-ads-agency-ahmedabad'], ["Google Ads Audit", '/google-ads-audit-ahmedabad/']]),
+];
+PAGE_SCHEMA['/website-redesign-services-ahmedabad'] = [
+  faqPageSchema(phase1Pages.websiteRedesign.faqs),
+  breadcrumbSchema([['Home', '/'], ["Website Development in Ahmedabad", '/website-development-services-ahmedabad/'], ["Website Redesign Services", '/website-redesign-services-ahmedabad/']]),
+];
+PAGE_SCHEMA['/website-maintenance-amc-ahmedabad'] = [
+  faqPageSchema(phase1Pages.websiteMaintenance.faqs),
+  breadcrumbSchema([['Home', '/'], ["Website Development in Ahmedabad", '/website-development-services-ahmedabad/'], ["Website Maintenance and AMC", '/website-maintenance-amc-ahmedabad/']]),
+];
+PAGE_SCHEMA['/seo/pricing'] = [
+  faqPageSchema(phase2Pages.seoPricing.faqs),
+  breadcrumbSchema([['Home', '/'], ["SEO Services in Ahmedabad", '/seo-services-ahmedabad'], ["SEO Packages and Pricing", '/seo/pricing/']]),
+];
+PAGE_SCHEMA['/seo/doctors-hospitals-ahmedabad'] = [
+  faqPageSchema(phase2Pages.seoDoctors.faqs),
+  breadcrumbSchema([['Home', '/'], ["SEO Services in Ahmedabad", '/seo-services-ahmedabad'], ["SEO for Doctors and Hospitals", '/seo/doctors-hospitals-ahmedabad/']]),
+];
+PAGE_SCHEMA['/seo/manufacturers-b2b-gujarat'] = [
+  faqPageSchema(phase2Pages.seoManufacturers.faqs),
+  breadcrumbSchema([['Home', '/'], ["SEO Services in Ahmedabad", '/seo-services-ahmedabad'], ["SEO for Manufacturers and B2B", '/seo/manufacturers-b2b-gujarat/']]),
+];
+PAGE_SCHEMA['/google-ads-pricing-ahmedabad'] = [
+  faqPageSchema(phase2Pages.googleAdsPricing.faqs),
+  breadcrumbSchema([['Home', '/'], ["Google Ads Agency in Ahmedabad", '/google-ads-agency-ahmedabad'], ["Google Ads Pricing", '/google-ads-pricing-ahmedabad/']]),
+  { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Google Ads budget and break-even calculator', url: `${SITE_URL}/google-ads-pricing-ahmedabad/`, applicationCategory: 'BusinessApplication', operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' } },
+];
+PAGE_SCHEMA['/google-ads-for-doctors-ahmedabad'] = [
+  faqPageSchema(phase2Pages.googleAdsDoctors.faqs),
+  breadcrumbSchema([['Home', '/'], ["Google Ads Agency in Ahmedabad", '/google-ads-agency-ahmedabad'], ["Google Ads for Doctors and Hospitals", '/google-ads-for-doctors-ahmedabad/']]),
+];
+PAGE_SCHEMA['/meta-ads-agency-ahmedabad/pricing'] = [
+  faqPageSchema(phase2Pages.metaAdsPricing.faqs),
+  breadcrumbSchema([['Home', '/'], ["Meta Ads Agency in Ahmedabad", '/meta-ads-agency-ahmedabad/'], ["Meta Ads Pricing", '/meta-ads-agency-ahmedabad/pricing/']]),
+];
+PAGE_SCHEMA['/meta-ads-agency-ahmedabad/clinics-doctors'] = [
+  faqPageSchema(phase2Pages.metaAdsClinics.faqs),
+  breadcrumbSchema([['Home', '/'], ["Meta Ads Agency in Ahmedabad", '/meta-ads-agency-ahmedabad/'], ["Meta Ads for Doctors and Clinics", '/meta-ads-agency-ahmedabad/clinics-doctors/']]),
+];
+PAGE_SCHEMA['/website-development-cost-ahmedabad'] = [
+  faqPageSchema(phase2WebPages.websiteDevCost.faqs),
+  breadcrumbSchema([['Home', '/'], ["Website Development in Ahmedabad", '/website-development-services-ahmedabad/'], ["Website Development Cost", '/website-development-cost-ahmedabad/']]),
+];
+PAGE_SCHEMA['/website-design-cost-ahmedabad'] = [
+  faqPageSchema(phase2WebPages.websiteDesignCost.faqs),
+  breadcrumbSchema([['Home', '/'], ["Website Development in Ahmedabad", '/website-development-services-ahmedabad/'], ["Website Design Cost", '/website-design-cost-ahmedabad/']]),
+];
+PAGE_SCHEMA['/website-packages-ahmedabad'] = [
+  faqPageSchema(phase2WebPages.websitePackages.faqs),
+  breadcrumbSchema([['Home', '/'], ["Website Development in Ahmedabad", '/website-development-services-ahmedabad/'], ["Website Packages", '/website-packages-ahmedabad/']]),
+  { '@context': 'https://schema.org', '@type': 'ItemList', name: 'Website packages', itemListElement: ['Starter', 'Business', 'Growth', 'Custom'].map((n, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'Service', name: `${n} website package`, provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, areaServed: 'Ahmedabad' } })) },
+];
+PAGE_SCHEMA['/website-design-for-doctors-ahmedabad'] = [
+  faqPageSchema(phase2WebPages.websiteDoctors.faqs),
+  breadcrumbSchema([['Home', '/'], ["Website Development in Ahmedabad", '/website-development-services-ahmedabad/'], ["Website Design for Doctors and Hospitals", '/website-design-for-doctors-ahmedabad/']]),
+];
+PAGE_SCHEMA['/website-design-for-manufacturers-ahmedabad'] = [
+  faqPageSchema(phase2WebPages.websiteManufacturers.faqs),
+  breadcrumbSchema([['Home', '/'], ["Website Development in Ahmedabad", '/website-development-services-ahmedabad/'], ["Website Design for Manufacturers and Exporters", '/website-design-for-manufacturers-ahmedabad/']]),
+];
 
 function setTag(selector: string, valueAttr: string, value: string) {
   let el = document.head.querySelector(selector);

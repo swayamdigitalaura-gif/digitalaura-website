@@ -5,7 +5,7 @@
  */
 import { useState } from "react";
 
-export type CalculatorVariant = "ads-budget" | "break-even";
+export type CalculatorVariant = "ads-budget" | "break-even" | "package-picker";
 
 const inr = (n: number) =>
   Number.isFinite(n) ? "₹" + Math.round(n).toLocaleString("en-IN") : "–";
@@ -137,7 +137,76 @@ const BreakEven = ({ accent }: { accent: string }) => {
   );
 };
 
+type Tier = "Starter" | "Business" | "Growth" | "Custom";
+
+interface SelectProps { id: string; label: string; value: string; onChange: (v: string) => void; options: [string, string][]; }
+const Select = ({ id, label, value, onChange, options }: SelectProps) => (
+  <div>
+    <label htmlFor={id} className="block text-sm font-semibold text-[#0A1628]">{label}</label>
+    <select id={id} value={value} onChange={(e) => onChange(e.target.value)} className="mt-1 w-full rounded-xl border bg-white px-3 py-2.5 text-[15px] text-[#0A1628]" style={{ borderColor: "#D1D5DB" }}>
+      {options.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
+    </select>
+  </div>
+);
+
+const TIER_TEXT: Record<Tier, string> = {
+  Starter: "A small, focused site that gets you found: key pages, a lead form, WhatsApp button and basic on-page SEO.",
+  Business: "A complete lead-generating website: service pages, blog, FAQ, forms routed to email and WhatsApp, and an editable CMS.",
+  Growth: "A site built to win search and convert paid traffic: dedicated service and location pages, SEO architecture and CRM or WhatsApp integration.",
+  Custom: "A custom build for logins, bookings, payments, dashboards or integrations. We scope and quote it separately.",
+};
+
+const PackagePicker = ({ accent }: { accent: string }) => {
+  const [goal, setGoal] = useState("enquiries");
+  const [sell, setSell] = useState("no");
+  const [size, setSize] = useState("mid");
+  const [needs, setNeeds] = useState("none");
+  const [content, setContent] = useState("ready");
+
+  let tier: Tier = "Business";
+  const why: string[] = [];
+  if (goal === "bookings" || needs === "systems" || sell === "large") {
+    tier = "Custom";
+    if (goal === "bookings") why.push("Bookings or a portal usually need custom development.");
+    if (needs === "systems") why.push("Logins, dashboards or integrations are outside a standard package.");
+    if (sell === "large") why.push("A large catalogue needs a more advanced build.");
+  } else if (goal === "sales" || sell === "small" || size === "large" || needs === "multi") {
+    tier = "Growth";
+    if (goal === "sales" || sell === "small") why.push("Selling online needs product pages, payments and conversion-focused layouts.");
+    if (size === "large") why.push("Many services or locations need dedicated pages and a clear structure.");
+    if (needs === "multi") why.push("Several languages or locations need extra planning.");
+  } else if (goal === "credibility" && size === "small") {
+    tier = "Starter";
+    why.push("A credible online presence with a handful of pages is what you need.");
+  } else {
+    why.push("You want enquiries from a set of services, which a complete site with an editable CMS supports.");
+  }
+  if (content === "help") why.push("You need help with writing or photos, which is quoted as an add-on.");
+
+  return (
+    <div className="rounded-2xl border p-5 md:p-7" style={{ borderColor: `${accent}40`, background: "#F8FAFF" }}>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <Select id="pp-goal" label="Main goal of the website" value={goal} onChange={setGoal} options={[["credibility", "Look credible online"], ["enquiries", "Get enquiries and calls"], ["sales", "Sell products online"], ["bookings", "Take bookings or run a portal"]]} />
+        <Select id="pp-sell" label="Do you need to sell online?" value={sell} onChange={setSell} options={[["no", "No"], ["small", "Yes, a small catalogue"], ["large", "Yes, a large catalogue"]]} />
+        <Select id="pp-size" label="How many services or products?" value={size} onChange={setSize} options={[["small", "A few (up to 3)"], ["mid", "A handful (4 to 10)"], ["large", "Many (10 or more) or several locations"]]} />
+        <Select id="pp-needs" label="Any special needs?" value={needs} onChange={setNeeds} options={[["none", "None"], ["multi", "More than one language"], ["systems", "Logins, dashboards or integrations"]]} />
+        <Select id="pp-content" label="Is your content ready?" value={content} onChange={setContent} options={[["ready", "Yes, text and photos are ready"], ["help", "No, we need help"]]} />
+      </div>
+      <div className="mt-6 rounded-xl bg-white p-5 border" style={{ borderColor: "#E5E7EB" }} aria-live="polite">
+        <p className="text-xs font-semibold uppercase tracking-wide text-[#6B7280]">Recommended package</p>
+        <p className="mt-1 text-2xl font-black text-[#0A1628]">{tier}</p>
+        <p className="mt-2 text-sm text-[#4B5563] leading-relaxed">{TIER_TEXT[tier]}</p>
+        <ul className="mt-3 space-y-1 text-sm text-[#4B5563]">
+          {why.map((w) => <li key={w} className="flex gap-2"><span style={{ color: accent }}>✓</span>{w}</li>)}
+        </ul>
+        <a href="/contact/#contact-form" className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold px-4 py-2 rounded-full border" style={{ color: accent, borderColor: `${accent}40` }}>Get a written quote for {tier}</a>
+      </div>
+      <p className="mt-4 text-xs text-[#6B7280] leading-relaxed">This is a guide, not a quote. Nothing you choose here is sent to us. The final scope and fee are confirmed in writing.</p>
+    </div>
+  );
+};
+
 const AdsCalculator = ({ variant, accent }: { variant: CalculatorVariant; accent: string }) =>
-  variant === "ads-budget" ? <AdsBudget accent={accent} /> : <BreakEven accent={accent} />;
+  variant === "ads-budget" ? <AdsBudget accent={accent} /> : variant === "package-picker" ? <PackagePicker accent={accent} /> : <BreakEven accent={accent} />;
 
 export default AdsCalculator;

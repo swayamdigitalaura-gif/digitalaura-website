@@ -29,6 +29,9 @@ export function QuickAnswer() {
             <p className="mt-2 text-[14px] text-muted-foreground">
               Planning a budget? <a className="font-semibold text-primary underline" href="/google-ads-pricing-ahmedabad/">How Google Ads pricing works</a>. Running a clinic? <a className="font-semibold text-primary underline" href="/google-ads-for-doctors-ahmedabad/">Google Ads for doctors and hospitals</a>.
             </p>
+            <p className="mt-2 text-[14px] text-muted-foreground">
+              Comparing channels? See our <a className="font-semibold text-primary underline" href="/advertising-agency-ahmedabad/">advertising agency in Ahmedabad</a> page for Google, Meta, YouTube and LinkedIn ads.
+            </p>
           </div>
         </div>
         <div className="grid gap-4">

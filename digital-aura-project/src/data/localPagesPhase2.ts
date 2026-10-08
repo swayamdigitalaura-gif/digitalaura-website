@@ -1,5 +1,6 @@
 import type { LocalServiceConfig } from "@/components/LocalServicePage";
 import { enhance, phase2Enhancements } from "@/data/pageEnhancements";
+import { pageExtras } from "@/data/pageExtras";
 
 /**
  * Phase 2 pages from "Digital Aura Page Blueprints": seo-02, seo-05, seo-06, gads-02, gads-04, meta-02, meta-03.
@@ -151,8 +152,8 @@ const phase2Raw: Record<string, LocalServiceConfig> = {
         id: "by-industry",
         title: "Plans for specific industries",
         items: [
-          { title: "Doctors and hospitals", desc: "Treatment and doctor pages, local listings and careful wording. See SEO for doctors and hospitals.", tag: "Healthcare" },
-          { title: "Manufacturers and B2B", desc: "Product and specification pages and RFQ funnels. See SEO for manufacturers in Gujarat.", tag: "B2B" },
+          { title: "Doctors and hospitals", desc: "Treatment and doctor pages, local listings and careful wording.", tag: "Healthcare", href: "/seo/doctors-hospitals-ahmedabad/" },
+          { title: "Manufacturers and B2B", desc: "Product and specification pages and RFQ funnels.", tag: "B2B", href: "/seo/manufacturers-b2b-gujarat/" },
           { title: "Online stores", desc: "Category and product pages, duplicate URLs from filters and product schema.", tag: "Ecommerce" },
         ],
       },
@@ -218,7 +219,7 @@ const phase2Raw: Record<string, LocalServiceConfig> = {
       { title: "Google Business Profile", desc: "Set-up and upkeep per location: categories, services, hours, photos and appointment link." },
       { title: "Treatment and department pages", desc: "One focused page per treatment or specialty, written in clear language." },
       { title: "Doctor profile pages", desc: "Qualifications, experience, languages, timings and the conditions each doctor treats." },
-      { title: "Local listings and reviews", desc: "Consistent name, address and phone across listings, and a safe process for asking for reviews." },
+      { title: "Local listings and reviews", desc: "Consistent name, address and phone across listings such as Google, Practo and Justdial, and a safe process for asking for reviews." },
       { title: "Technical SEO and speed", desc: "Fast mobile pages, clean structure and schema for clinics, doctors and FAQs." },
       { title: "Appointment tracking", desc: "Call, WhatsApp and form tracking that measures enquiries, not just visits." },
     ],
@@ -988,4 +989,4 @@ const phase2Raw: Record<string, LocalServiceConfig> = {
   },
 };
 
-export const phase2Pages: Record<string, LocalServiceConfig> = enhance(phase2Raw, phase2Enhancements);
+export const phase2Pages: Record<string, LocalServiceConfig> = enhance(phase2Raw, phase2Enhancements, pageExtras);

@@ -74,6 +74,7 @@ import LocalServicePage from "./components/LocalServicePage.tsx";
 import { phase1Pages } from "./data/localPagesPhase1.ts";
 import { phase2Pages } from "./data/localPagesPhase2.ts";
 import { phase2WebPages } from "./data/localPagesPhase2Web.ts";
+import { phase3Pages } from "./data/localPagesPhase3.ts";
 import { localPages } from "./data/localPagesData.ts";
 import AIFilmmakingPage from "./pages/services/AIFilmmakingPage.tsx";
 import ServiceAreasPage from "./pages/ServiceAreasPage.tsx";
@@ -180,6 +181,8 @@ const App = () => (
           <Route path="/website-packages-ahmedabad" element={<LocalServicePage config={phase2WebPages.websitePackages} />} />
           <Route path="/website-design-for-doctors-ahmedabad" element={<LocalServicePage config={phase2WebPages.websiteDoctors} />} />
           <Route path="/website-design-for-manufacturers-ahmedabad" element={<LocalServicePage config={phase2WebPages.websiteManufacturers} />} />
+          <Route path="/social-media-marketing-agency-ahmedabad" element={<LocalServicePage config={phase3Pages.socialMediaAgency} />} />
+          <Route path="/advertising-agency-ahmedabad" element={<LocalServicePage config={phase3Pages.advertisingAgency} />} />
 
           <Route path="/services/ai-filmmaking" element={<AIFilmmakingPage />} />
 

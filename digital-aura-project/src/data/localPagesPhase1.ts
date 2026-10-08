@@ -1,5 +1,6 @@
 import type { LocalServiceConfig } from "@/components/LocalServicePage";
 import { enhance, phase1Enhancements } from "@/data/pageEnhancements";
+import { pageExtras } from "@/data/pageExtras";
 import { LAST_UPDATED, SEO_AUDIT_SEQUENCE, SEO_AUDIT_CHECKLIST, AUDIT_SOURCES } from "@/data/auditContent";
 
 /**
@@ -147,8 +148,8 @@ const phase1Raw: Record<string, LocalServiceConfig> = {
         id: "audit-by-sector",
         title: "Extra checks for some sectors",
         items: [
-          { title: "Doctors and hospitals", desc: "Treatment and doctor pages, local listings, patient reviews and careful, compliant wording. See SEO for doctors and hospitals.", tag: "Healthcare" },
-          { title: "Manufacturers and B2B", desc: "Product pages, specifications, certificates and how easily a buyer can send an enquiry. See SEO for manufacturers.", tag: "B2B" },
+          { title: "Doctors and hospitals", desc: "Treatment and doctor pages, local listings, patient reviews and careful, compliant wording.", tag: "Healthcare", href: "/seo/doctors-hospitals-ahmedabad/" },
+          { title: "Manufacturers and B2B", desc: "Product pages, specifications, certificates and how easily a buyer can send an enquiry.", tag: "B2B", href: "/seo/manufacturers-b2b-gujarat/" },
           { title: "Online stores", desc: "Category and product pages, duplicate URLs from filters, and product schema.", tag: "Ecommerce" },
         ],
       },
@@ -593,4 +594,4 @@ const phase1Raw: Record<string, LocalServiceConfig> = {
   },
 };
 
-export const phase1Pages: Record<string, LocalServiceConfig> = enhance(phase1Raw, phase1Enhancements);
+export const phase1Pages: Record<string, LocalServiceConfig> = enhance(phase1Raw, phase1Enhancements, pageExtras);

@@ -2256,6 +2256,8 @@ Allow: /</code></pre>
       "Ask for a written scope that lists monthly deliverables, exclusions and exit terms"
     ],
     contentHtml: `
+<p><em>Last updated 8 October 2026. We update this guide when prices or our approach change.</em></p>
+
 <h2>Short answer: what SEO costs in Ahmedabad</h2>
 
 <p>There is no single price for SEO in Ahmedabad. Agencies publish monthly plans from a few thousand rupees to figures many times higher, and the difference usually comes down to what is actually delivered: how many pages are optimised, how much content is written, what link work is done and how much strategic attention the account gets. The honest way to budget is to decide what outcome you need, then compare written scopes. See <a href="/seo/pricing/">how our SEO plans are scoped</a>.</p>
@@ -2335,6 +2337,8 @@ Allow: /</code></pre>
       { q: "How long before I see ROI from SEO?", a: "Early movement can show in a few months, with stronger results over six months or more. It depends on competition and the condition of your site." },
       { q: "Do I pay extra for content and links?", a: "Sometimes. Ask whether content and link building are in the monthly fee, how many pieces are included and what extras cost." },
       { q: "Are there GST and setup charges?", a: "Ask for GST treatment and any set-up fee in writing before you sign." },
+      { q: "Is local SEO cheaper than national SEO?", a: "Often, yes. Local SEO targets a smaller area and fewer competitors, so it usually needs less content and link work. National campaigns need more pages, content and authority. The difference depends on your market." },
+      { q: "What does a one-time SEO audit cost?", a: "We offer a free SEO audit with no obligation. A deeper, paid audit with a full strategy roadmap is scoped after a short call." },
       { q: "Can I do SEO myself to save money?", a: "You can handle basics such as a Google Business Profile and clear service pages. Technical fixes, content at scale and link work are harder to do without experience." }
     ],
     ctaHeading: "Want a Written SEO Scope and Quote?",

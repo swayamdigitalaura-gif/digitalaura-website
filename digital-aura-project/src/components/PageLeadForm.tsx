@@ -7,6 +7,7 @@ import { useState, useCallback } from "react";
 import { CheckCircle2, Lock } from "lucide-react";
 import MathCaptcha from "@/components/MathCaptcha";
 import { submitLead } from "@/lib/submitLead";
+import { track, PHONE_DISPLAY, PHONE_TEL, whatsappLink } from "@/lib/track";
 
 export interface LeadFormConfig {
   /** Short id used as the CRM `source`, e.g. "free-seo-audit". */
@@ -32,6 +33,8 @@ export interface LeadFormConfig {
   successText?: string;
   /** DOM id so hero buttons can link to #id (default "audit-form"). */
   id?: string;
+  /** "What happens next" steps shown beside the form (default: send, we review, you decide). */
+  steps?: string[];
 }
 
 const inputClass =
@@ -58,6 +61,8 @@ const PageLeadForm = ({ cfg, accent }: { cfg: LeadFormConfig; accent: string }) 
   const [done, setDone] = useState(false);
   const [error, setError] = useState("");
   const onVerify = useCallback((v: boolean) => setCaptchaOk(v), []);
+  const [started, setStarted] = useState(false);
+  const onStart = () => { if (!started) { setStarted(true); track("lead_form_start", { form_name: cfg.formName }); } };
 
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm((p) => ({ ...p, [k]: e.target.value }));
@@ -86,17 +91,22 @@ const PageLeadForm = ({ cfg, accent }: { cfg: LeadFormConfig; accent: string }) 
       cfg.formName,
     );
     setBusy(false);
-    if (res.ok) setDone(true);
+    if (res.ok) {
+      setDone(true);
+      track("lead_form_submit", { form_name: cfg.formName });
+      track("generate_lead", { form_name: cfg.formName, value: 1 });
+    }
     else setError(res.error || "Something went wrong. Please try again.");
   };
 
   return (
     <section id={cfg.id || "audit-form"} className="py-16 px-4 md:px-8 bg-white scroll-mt-24">
-      <div className="max-w-3xl mx-auto">
-        <div className="mb-8 text-center">
+      <div className="max-w-5xl mx-auto">
+        <div className="mb-8 text-center max-w-3xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] tracking-tight leading-tight">{cfg.heading}</h2>
           {cfg.text && <p className="mt-3 text-[#4B5563] leading-relaxed">{cfg.text}</p>}
         </div>
+        <div className="grid lg:grid-cols-[1fr_300px] gap-6 items-start">
         <div className="rounded-2xl border p-6 md:p-8 shadow-sm" style={{ borderColor: `${accent}40`, background: "#F8FAFF" }}>
           {done ? (
             <div className="text-center py-6" role="status">
@@ -105,7 +115,7 @@ const PageLeadForm = ({ cfg, accent }: { cfg: LeadFormConfig; accent: string }) 
               <p className="mt-2 text-[#4B5563]">{cfg.successText || "Thank you. We have your details and will reply by email."}</p>
             </div>
           ) : (
-            <form onSubmit={submit} noValidate className="space-y-4">
+            <form onSubmit={submit} onFocusCapture={onStart} noValidate className="space-y-4">
               {cfg.website !== "none" && (
                 <div>
                   <label htmlFor="plf-website" className="block text-sm font-semibold text-[#0A1628] mb-1.5">
@@ -177,6 +187,24 @@ const PageLeadForm = ({ cfg, accent }: { cfg: LeadFormConfig; accent: string }) 
               <p className="flex items-center gap-1.5 text-xs text-[#6B7280]"><Lock size={12} /> We use your details only to reply to this request. See our <a href="/privacy-policy/" className="underline">privacy policy</a>.</p>
             </form>
           )}
+        </div>
+        <aside className="rounded-2xl border bg-white p-6" style={{ borderColor: "#E5E7EB" }} aria-label="What happens next">
+          <p className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628]">What happens next</p>
+          <ol className="mt-4 space-y-4">
+            {(cfg.steps || ["You send your details", "We review them and reply by email", "You decide what to do next. No obligation."]).map((st, i) => (
+              <li key={st} className="flex gap-3 text-sm text-[#4B5563] leading-relaxed">
+                <span className="shrink-0 w-6 h-6 rounded-full text-xs font-black text-white flex items-center justify-center" style={{ background: accent }}>{i + 1}</span>
+                {st}
+              </li>
+            ))}
+          </ol>
+          <div className="mt-6 pt-5 border-t text-sm text-[#4B5563] space-y-2" style={{ borderColor: "#E5E7EB" }}>
+            <p className="font-semibold text-[#0A1628]">Prefer to talk?</p>
+            <a href={PHONE_TEL} onClick={() => track("phone_click", { cta_location: "form_aside" })} className="block font-semibold" style={{ color: accent }}>Call {PHONE_DISPLAY}</a>
+            <a href={whatsappLink(`Hello, I have a question about: ${cfg.service}`)} target="_blank" rel="noopener noreferrer" onClick={() => track("whatsapp_click", { cta_location: "form_aside" })} className="block font-semibold" style={{ color: accent }}>Message us on WhatsApp</a>
+            <p className="text-xs text-[#6B7280] pt-1">713 Shilp Arcade, SP Ring Road, Hanspura, Ahmedabad. Monday to Saturday, 10 am to 7 pm.</p>
+          </div>
+        </aside>
         </div>
       </div>
     </section>

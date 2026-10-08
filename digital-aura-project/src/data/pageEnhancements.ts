@@ -1,4 +1,4 @@
-import type { ExtraSection, LocalServiceConfig } from "@/components/LocalServicePage";
+import type { ExtraSection, FaqItem, LocalServiceConfig } from "@/components/LocalServicePage";
 import type { LeadFormConfig } from "@/components/PageLeadForm";
 import { LAST_UPDATED } from "@/data/auditContent";
 
@@ -8,15 +8,31 @@ import { LAST_UPDATED } from "@/data/auditContent";
  * No prices, stats, client results or legal claims (owner has not confirmed any).
  */
 
-export type Enhancement = Partial<LocalServiceConfig> & { extraAdd?: ExtraSection[] };
+export type Enhancement = Partial<LocalServiceConfig> & { extraAdd?: ExtraSection[]; faqAdd?: FaqItem[] };
 
-export function enhance<T extends Record<string, LocalServiceConfig>>(pages: T, map: Partial<Record<keyof T, Enhancement>>): T {
+/** Merge several enhancement maps (later maps add to earlier ones: extra sections and FAQs are appended). */
+export function enhance<T extends Record<string, LocalServiceConfig>>(pages: T, ...maps: Partial<Record<string, Enhancement>>[]): T {
   const out: Record<string, LocalServiceConfig> = { ...pages };
-  for (const [key, e] of Object.entries(map) as [string, Enhancement][]) {
+  const keys = new Set(maps.flatMap((m) => Object.keys(m)));
+  for (const key of keys) {
     const base = out[key];
-    if (!base) throw new Error(`pageEnhancements: unknown page ${key}`);
-    const { extraAdd, ...rest } = e;
-    out[key] = { ...base, lastUpdated: LAST_UPDATED, ...rest, extraSections: [...(base.extraSections || []), ...(extraAdd || [])] };
+    if (!base) {
+      // The first map is the page file's own enhancements (strict). Shared maps may list pages from other files.
+      if (key in (maps[0] || {})) throw new Error(`pageEnhancements: unknown page ${key}`);
+      continue;
+    }
+    let merged: LocalServiceConfig = { ...base, lastUpdated: LAST_UPDATED };
+    let extraSections = [...(base.extraSections || [])];
+    let faqs = [...base.faqs];
+    for (const m of maps) {
+      const e = m[key];
+      if (!e) continue;
+      const { extraAdd, faqAdd, ...rest } = e;
+      merged = { ...merged, ...rest };
+      if (extraAdd) extraSections = [...extraSections, ...extraAdd];
+      if (faqAdd) faqs = [...faqs, ...faqAdd];
+    }
+    out[key] = { ...merged, extraSections, faqs };
   }
   return out as T;
 }

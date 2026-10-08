@@ -4,6 +4,7 @@ import { localPages } from '../data/localPagesData';
 import { phase1Pages } from '../data/localPagesPhase1';
 import { phase2Pages } from '../data/localPagesPhase2';
 import { phase2WebPages } from '../data/localPagesPhase2Web';
+import { phase3Pages } from '../data/localPagesPhase3';
 
 const API_BASE  = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
 const SITE_URL  = 'https://thedigitalaura.com';
@@ -384,6 +385,14 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: "Website Design for Manufacturers & Exporters, Ahmedabad",
     description: "Website design for manufacturers and exporters in Ahmedabad and Gujarat: product catalogue, RFQ flow, certificates and multilingual SEO.",
   },
+  '/social-media-marketing-agency-ahmedabad': {
+    title: 'Social Media Marketing Agency in Ahmedabad',
+    description: 'Social media marketing agency in Ahmedabad: content plans, Reels, community management and paid social, measured on enquiries. Free review.',
+  },
+  '/advertising-agency-ahmedabad': {
+    title: 'Advertising Agency in Ahmedabad | Google & Meta Ads',
+    description: 'Advertising agency in Ahmedabad for Google PPC, Meta, YouTube and LinkedIn ads, with tracking for calls, forms and WhatsApp. Free ad plan review.',
+  },
   '/meta-ads-agency-ahmedabad': {
     title: 'Meta Ads Agency in Ahmedabad | Facebook & Instagram Ads',
     description: "Ahmedabad Meta ads agency for Facebook, Instagram and WhatsApp lead generation. Clear process, lead tracking and a free account review.",
@@ -455,6 +464,19 @@ function serviceSchema(path: string, name: string, serviceType: string, descript
     provider: ORG_REF,
     areaServed: { '@type': 'City', name: 'Ahmedabad' },
     ...(free ? { offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR', description: 'Free, no obligation' } } : {}),
+  };
+}
+
+function appSchema(path: string, name: string, description: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name,
+    description,
+    url: `${SITE_URL}${path}/`,
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Any',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },
   };
 }
 
@@ -740,6 +762,7 @@ PAGE_SCHEMA['/google-ads-audit-ahmedabad'] = [
   webPageSchema('/google-ads-audit-ahmedabad', PAGE_META['/google-ads-audit-ahmedabad'].title, PAGE_META['/google-ads-audit-ahmedabad'].description, phase1Pages.googleAdsAudit.lastUpdated),
   serviceSchema('/google-ads-audit-ahmedabad', PAGE_META['/google-ads-audit-ahmedabad'].title, "Google Ads audit", PAGE_META['/google-ads-audit-ahmedabad'].description, true),
   howToSchema("Google Ads audit process", phase1Pages.googleAdsAudit.process),
+  appSchema('/google-ads-audit-ahmedabad', 'Google Ads budget leak self-check', 'Twelve yes/no questions that show which areas of a Google Ads account may be wasting budget. Runs in the browser.'),
   breadcrumbSchema([['Home', '/'], ["Google Ads Agency in Ahmedabad", '/google-ads-agency-ahmedabad'], ["Google Ads Audit", '/google-ads-audit-ahmedabad/']]),
 ];
 PAGE_SCHEMA['/website-redesign-services-ahmedabad'] = [
@@ -750,6 +773,7 @@ PAGE_SCHEMA['/website-redesign-services-ahmedabad'] = [
 ];
 PAGE_SCHEMA['/website-maintenance-amc-ahmedabad'] = [
   faqPageSchema(phase1Pages.websiteMaintenance.faqs),
+  appSchema('/website-maintenance-amc-ahmedabad', 'Website downtime cost calculator', 'Estimates the value of enquiries at risk when a website is down, from numbers you enter. Runs in the browser.'),
   webPageSchema('/website-maintenance-amc-ahmedabad', PAGE_META['/website-maintenance-amc-ahmedabad'].title, PAGE_META['/website-maintenance-amc-ahmedabad'].description, phase1Pages.websiteMaintenance.lastUpdated),
   serviceSchema('/website-maintenance-amc-ahmedabad', PAGE_META['/website-maintenance-amc-ahmedabad'].title, "Website maintenance", PAGE_META['/website-maintenance-amc-ahmedabad'].description),
   breadcrumbSchema([['Home', '/'], ["Website Development in Ahmedabad", '/website-development-services-ahmedabad/'], ["Website Maintenance and AMC", '/website-maintenance-amc-ahmedabad/']]),
@@ -806,6 +830,7 @@ PAGE_SCHEMA['/website-design-cost-ahmedabad'] = [
 ];
 PAGE_SCHEMA['/website-packages-ahmedabad'] = [
   faqPageSchema(phase2WebPages.websitePackages.faqs),
+  appSchema('/website-packages-ahmedabad', 'Website package picker', 'Five questions that suggest a Starter, Business, Growth or Custom website package. Runs in the browser.'),
   webPageSchema('/website-packages-ahmedabad', PAGE_META['/website-packages-ahmedabad'].title, PAGE_META['/website-packages-ahmedabad'].description, phase2WebPages.websitePackages.lastUpdated),
   breadcrumbSchema([['Home', '/'], ["Website Development in Ahmedabad", '/website-development-services-ahmedabad/'], ["Website Packages", '/website-packages-ahmedabad/']]),
   { '@context': 'https://schema.org', '@type': 'ItemList', name: 'Website packages', itemListElement: ['Starter', 'Business', 'Growth', 'Custom'].map((n, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'Service', name: `${n} website package`, provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, areaServed: 'Ahmedabad' } })) },
@@ -821,6 +846,18 @@ PAGE_SCHEMA['/website-design-for-manufacturers-ahmedabad'] = [
   webPageSchema('/website-design-for-manufacturers-ahmedabad', PAGE_META['/website-design-for-manufacturers-ahmedabad'].title, PAGE_META['/website-design-for-manufacturers-ahmedabad'].description, phase2WebPages.websiteManufacturers.lastUpdated),
   serviceSchema('/website-design-for-manufacturers-ahmedabad', PAGE_META['/website-design-for-manufacturers-ahmedabad'].title, "Manufacturer and exporter website design", PAGE_META['/website-design-for-manufacturers-ahmedabad'].description),
   breadcrumbSchema([['Home', '/'], ["Website Development in Ahmedabad", '/website-development-services-ahmedabad/'], ["Website Design for Manufacturers and Exporters", '/website-design-for-manufacturers-ahmedabad/']]),
+];
+PAGE_SCHEMA['/social-media-marketing-agency-ahmedabad'] = [
+  faqPageSchema(phase3Pages.socialMediaAgency.faqs),
+  breadcrumbSchema([['Home', '/'], ["Social Media Marketing","/services/social-media-marketing/"], ["Social media marketing", '/social-media-marketing-agency-ahmedabad/']]),
+  webPageSchema('/social-media-marketing-agency-ahmedabad', PAGE_META['/social-media-marketing-agency-ahmedabad'].title, PAGE_META['/social-media-marketing-agency-ahmedabad'].description, phase3Pages.socialMediaAgency.lastUpdated),
+  serviceSchema('/social-media-marketing-agency-ahmedabad', PAGE_META['/social-media-marketing-agency-ahmedabad'].title, "Social media marketing", PAGE_META['/social-media-marketing-agency-ahmedabad'].description),
+];
+PAGE_SCHEMA['/advertising-agency-ahmedabad'] = [
+  faqPageSchema(phase3Pages.advertisingAgency.faqs),
+  breadcrumbSchema([['Home', '/'], ["Digital Marketing Agency in Ahmedabad","/digital-marketing-agency-ahmedabad/"], ["Digital advertising", '/advertising-agency-ahmedabad/']]),
+  webPageSchema('/advertising-agency-ahmedabad', PAGE_META['/advertising-agency-ahmedabad'].title, PAGE_META['/advertising-agency-ahmedabad'].description, phase3Pages.advertisingAgency.lastUpdated),
+  serviceSchema('/advertising-agency-ahmedabad', PAGE_META['/advertising-agency-ahmedabad'].title, "Digital advertising", PAGE_META['/advertising-agency-ahmedabad'].description),
 ];
 
 function setTag(selector: string, valueAttr: string, value: string) {

@@ -9,6 +9,7 @@
     "build:dev": "vite build --mode development",
     "build:live": "vite build --mode contabo && node scripts/prerender.mjs",
     "prerender": "node scripts/prerender.mjs",
+    "audit:live": "node scripts/audit-live-seo.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",

@@ -1,4 +1,5 @@
 import type { LocalServiceConfig } from "@/components/LocalServicePage";
+import { enhance, phase2Enhancements } from "@/data/pageEnhancements";
 
 /**
  * Phase 2 pages from "Digital Aura Page Blueprints": seo-02, seo-05, seo-06, gads-02, gads-04, meta-02, meta-03.
@@ -35,7 +36,7 @@ const metaRelated = [
   { title: "Google Ads Agency", desc: "Capture people who are already searching.", points: ["Search campaigns", "Call tracking"], href: "/google-ads-agency-ahmedabad" },
 ];
 
-export const phase2Pages: Record<string, LocalServiceConfig> = {
+const phase2Raw: Record<string, LocalServiceConfig> = {
   /* ───────────────────────── seo-02: SEO packages and pricing ───────────────────────── */
   seoPricing: {
     slug: "seo-pricing",
@@ -986,3 +987,5 @@ export const phase2Pages: Record<string, LocalServiceConfig> = {
     ctaButton: "Book My Free Review",
   },
 };
+
+export const phase2Pages: Record<string, LocalServiceConfig> = enhance(phase2Raw, phase2Enhancements);

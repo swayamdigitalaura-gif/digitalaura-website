@@ -595,6 +595,32 @@ function Hero() {
 
 /* ---------------- Stats ---------------- */
 
+function QuickAnswer() {
+  return (
+    <section id="quick-answer" className="bg-white">
+      <div className="mx-auto max-w-4xl px-5 py-10 md:px-8">
+        <Reveal>
+          <div className="rounded-2xl border border-brand-orange/30 bg-brand-orange-soft p-6 md:p-8">
+            <h2 className="text-xs font-bold uppercase tracking-[0.14em] text-brand-orange">What does an SEO company in Ahmedabad do?</h2>
+            <p className="mt-3 text-lg leading-relaxed text-ink md:text-xl">
+              An SEO company in Ahmedabad helps your business appear in Google, Google Maps and AI search when customers look for what you sell. At Digital Aura that means fixing technical problems, building pages around real search intent, improving your Google Business Profile and earning relevant links, then reporting on calls, forms and enquiries, not only rankings.
+            </p>
+            <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
+              <li><a className="underline" href="/seo/free-audit/">Free SEO audit</a></li>
+              <li><a className="underline" href="/seo/pricing/">SEO packages and pricing</a></li>
+              <li><a className="underline" href="/seo/doctors-hospitals-ahmedabad/">SEO for doctors and hospitals</a></li>
+              <li><a className="underline" href="/seo/manufacturers-b2b-gujarat/">SEO for manufacturers</a></li>
+            </ul>
+            <p className="mt-4 text-xs text-ink-muted">
+              Published by <a className="underline" href="/about/">Digital Aura</a>, 713 Shilp Arcade, SP Ring Road, Hanspura, Ahmedabad. Last updated <time dateTime="2026-10-08">8 October 2026</time>.
+            </p>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 function Stats() {
   const items = [
     { k: "10×", v: "Average organic growth in 6 months" },
@@ -2050,6 +2076,7 @@ function Index() {
       <MainSiteNavbar />
       <main className="pt-[72px]">
         <Hero />
+        <QuickAnswer />
         <Stats />
         <Problem />
         <AIShift />

@@ -1,4 +1,5 @@
 import type { LocalServiceConfig } from "@/components/LocalServicePage";
+import { LAST_UPDATED } from "@/data/auditContent";
 
 const BLUE = "#1A6FE8";
 const SHOPIFY_GREEN = "#96BF48";
@@ -1176,6 +1177,20 @@ export const localPages: Record<string, LocalServiceConfig> = {
   // ─────────────────────────────────────── Meta Ads ───────────────────────────────────────
   metaAdsAhmedabad: {
     slug: "meta-ads-agency-ahmedabad",
+    lastUpdated: LAST_UPDATED,
+    heroCta: { label: "Get a Free Meta Ads Account Review", href: "#audit-form" },
+    leadForm: {
+      id: "audit-form",
+      formName: "meta-ads-account-review",
+      service: "Free Meta Ads account review",
+      heading: "Get a free Meta ads account review",
+      text: "Tell us about your business and current ads. We will review your set-up and reply by email.",
+      website: "optional",
+      businessTypes: ["Doctor, clinic or hospital", "Manufacturer or exporter", "Online store", "Local service business", "Education or coaching", "Real estate", "Professional services", "Other"],
+      notesLabel: "Current monthly ad spend and goal (optional)",
+      submitLabel: "Get My Free Account Review",
+      successText: "Thank you. We will review your details and reply by email.",
+    },
     accentColor: META_BLUE,
     eyebrow: "Meta Ads Agency · Ahmedabad",
     h1: "Meta Ads Agency in Ahmedabad",

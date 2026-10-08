@@ -11,7 +11,7 @@ const PORT    = 5050;
 const BASE    = `http://localhost:${PORT}`;
 
 // All static routes — skip dynamic ones like /careers/:id
-const ROUTES = [
+const HARDCODED_ROUTES = [
   '/',
   '/about',
   '/careers',
@@ -110,6 +110,18 @@ const ROUTES = [
   '/digital-marketing-agency-gujarat',
 ];
 
+// Every static <Route path="..."> in src/App.tsx is prerendered, so adding a page to the router is
+// enough: it gets its own server-rendered HTML, canonical, schema and a sitemap entry automatically.
+// (Dynamic routes such as /blog/:slug and /careers/:id are expanded separately below.)
+function routesFromApp() {
+  const app = readFileSync(join(ROOT, 'src', 'App.tsx'), 'utf-8');
+  return [...app.matchAll(/<Route\s+path="([^"]+)"/g)]
+    .map((m) => m[1])
+    .filter((p) => p.startsWith('/') && !p.includes(':') && !p.includes('*'));
+}
+const ROUTES = [...new Set([...HARDCODED_ROUTES, ...routesFromApp()])];
+const AUTO_ADDED = ROUTES.filter((r) => !HARDCODED_ROUTES.includes(r));
+
 const SITE_URL = 'https://thedigitalaura.com';
 const API_BASE = SITE_URL;
 
@@ -187,6 +199,37 @@ function startServer() {
 // HOMEPAGE's title/description/canonical baked into its raw HTML, which is
 // exactly the SSR bug this script exists to prevent (it happened for real,
 // silently, on 2026-07-28).
+// Routes whose canonical deliberately points elsewhere (see CANONICAL_OVERRIDE in src/components/PageSEO.tsx).
+const CANONICALISED_ROUTES = new Set(['/seo-agency-ahmedabad']);
+
+/**
+ * SSR quality gate. Throws if the prerendered HTML is missing what a crawler (or an AI crawler that
+ * does not run JavaScript) needs: exactly one h1, a unique title, a meta description, a self-referencing
+ * canonical, parseable JSON-LD and real body text. A page that fails is NOT written, so the last good
+ * version keeps serving, and the build fails loudly instead of shipping a thin shell.
+ */
+function assertSsrQuality(route, html) {
+  const problems = [];
+  const h1s = (html.match(/<h1[\s>]/g) || []).length;
+  if (h1s !== 1) problems.push(`${h1s} h1 tags (need exactly 1)`);
+  const title = (html.match(/<title[^>]*>([\s\S]*?)<\/title>/) || [])[1] || '';
+  if (title.trim().length < 15) problems.push('missing or very short <title>');
+  const desc = (html.match(/<meta name="description" content="([^"]*)"/) || [])[1] || '';
+  if (desc.length < 50) problems.push('missing or very short meta description');
+  const canon = (html.match(/<link rel="canonical" href="([^"]*)"/) || [])[1] || '';
+  if (!canon) problems.push('missing canonical');
+  else if (!CANONICALISED_ROUTES.has(route)) {
+    const expected = route === '/' ? `${SITE_URL}/` : `${SITE_URL}${route}/`;
+    if (canon !== expected) problems.push(`canonical ${canon} does not match ${expected}`);
+  }
+  for (const m of html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)) {
+    try { JSON.parse(m[1]); } catch { problems.push('invalid JSON-LD'); break; }
+  }
+  const text = html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+  if (text < 150) problems.push(`only ${text} words of body text`);
+  if (problems.length) throw new Error('SSR quality gate: ' + problems.join('; '));
+}
+
 const DEFAULT_TITLE = 'Digital Aura — Data-Driven Digital Marketing Agency';
 
 function looksUnrendered(route, html) {
@@ -220,7 +263,6 @@ function writeSitemap(succeededRoutes) {
   const noSlash = new Set([...EXTRA_LIVE_ROUTES, '/google-ads-agency-ahmedabad']);
   // Routes whose canonical points at another URL (see CANONICAL_OVERRIDE in
   // src/components/PageSEO.tsx) don't belong in the sitemap.
-  const CANONICALISED_ROUTES = new Set(['/seo-agency-ahmedabad']);
   const urls = [...new Set([...succeededRoutes, ...EXTRA_LIVE_ROUTES])].filter((route) => !CANONICALISED_ROUTES.has(route)).map((route) => {
     const loc = route === '/' ? `${SITE_URL}/` : noSlash.has(route) ? `${SITE_URL}${route}` : `${SITE_URL}${route}/`;
     const priority = route === '/' ? '1.0' : (route.startsWith('/blog/') || route.startsWith('/careers/')) ? '0.6' : '0.8';
@@ -236,6 +278,7 @@ async function main() {
   const blogRoutes = await fetchBlogRoutes();
   const careerRoutes = await fetchCareerRoutes();
   const allRoutes = [...ROUTES, ...staticSeoBlogRoutes, ...blogRoutes, ...careerRoutes];
+  if (AUTO_ADDED.length) console.log(`  ➕  ${AUTO_ADDED.length} route(s) taken from App.tsx: ${AUTO_ADDED.join(', ')}`);
   console.log(`\n🚀  Prerendering ${allRoutes.length} routes (${ROUTES.length} static + ${staticSeoBlogRoutes.length} static SEO posts + ${blogRoutes.length} DB blog posts + ${careerRoutes.length} open job posts) (API → https://thedigitalaura.com/api/)...\n`);
 
   const server = await startServer();
@@ -285,6 +328,8 @@ async function main() {
           if (looksUnrendered(route, html)) {
             throw new Error('page loaded but blog data never rendered (still showing the default shell) — likely a slow/failed API fetch inside the page');
           }
+
+          assertSsrQuality(route, html);
 
           // build the output file path
           const parts  = route === '/' ? [] : route.slice(1).split('/');

@@ -1,5 +1,7 @@
 import type { LocalServiceConfig } from "@/components/LocalServicePage";
 import { LAST_UPDATED } from "@/data/auditContent";
+import { enhance } from "@/data/pageEnhancements";
+import { pillarExtras } from "@/data/pageExtras";
 
 const BLUE = "#1A6FE8";
 const SHOPIFY_GREEN = "#96BF48";
@@ -11,7 +13,7 @@ const GOOGLE_BLUE = "#4285F4";
 const META_BLUE = "#1877F2";
 const ORANGE = "#FF6B2B";
 
-export const localPages: Record<string, LocalServiceConfig> = {
+const localPagesRaw: Record<string, LocalServiceConfig> = {
 
   // ─────────────────────────── Website Design & Development ───────────────────────────
   websiteDevAhmedabad: {
@@ -1588,3 +1590,5 @@ export const localPages: Record<string, LocalServiceConfig> = {
   },
 
 };
+
+export const localPages: Record<string, LocalServiceConfig> = enhance(localPagesRaw, pillarExtras);

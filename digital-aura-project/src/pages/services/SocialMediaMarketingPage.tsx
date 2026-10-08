@@ -673,6 +673,7 @@ const SocialMediaMarketingPage = () => {
             </Link>
             <a href="#services-list" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold border-2 text-[#0A1628] hover:bg-[#0A1628] hover:text-white transition-all" style={{ borderColor: "#0A1628" }}>Our Services</a>
           </div>
+          <p className="mt-4 text-sm text-[#4B5563]">Based in Ahmedabad? See our <a href="/social-media-marketing-agency-ahmedabad/" className="font-semibold underline" style={{ color: "#7C3AED" }}>social media marketing agency in Ahmedabad</a> page.</p>
         </motion.div>
       </div>
     </section>

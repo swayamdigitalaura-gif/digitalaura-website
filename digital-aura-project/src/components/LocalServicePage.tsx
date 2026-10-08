@@ -11,7 +11,9 @@ import PageLayout from "@/components/PageLayout";
 import CaseStudies from "@/components/CaseStudies";
 import BlogInsights from "@/components/BlogInsights";
 import Testimonials from "@/components/Testimonials";
-import { ArrowRight, ChevronDown, Check, MapPin } from "lucide-react";
+import { ArrowRight, ChevronDown, Check, MapPin, Phone, MessageCircle } from "lucide-react";
+import { StickyCtaBar, CtaBand, JumpLinks } from "@/components/PageCta";
+import { track, PHONE_DISPLAY, PHONE_TEL, whatsappLink } from "@/lib/track";
 import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
 import AdsCalculator, { type CalculatorVariant } from "@/components/AdsCalculators";
@@ -21,7 +23,8 @@ export interface IncludedItem { title: string; desc: string; }
 export interface FaqItem { q: string; a: string; }
 export interface PainPoint { pain: string; detail: string; }
 export interface ProcessStep { title: string; desc: string; }
-export interface ExtraCard { title: string; desc: string; tag?: string; }
+/** `href` turns the title into a link; `cta` adds a button-style link at the bottom of the card. */
+export interface ExtraCard { title: string; desc: string; tag?: string; href?: string; cta?: string; }
 export interface ExtraList { title: string; items: string[]; tone: "good" | "bad"; }
 /** Optional long-form blocks rendered between "related services" and the FAQ. Static copy (not click-to-edit). */
 export type ExtraSection =
@@ -143,6 +146,10 @@ const ExtraBlock = ({ section, accent }: { section: ExtraSection; accent: string
         {heading}
         <AdsCalculator variant={section.variant} accent={accent} />
         {note(section.footnote)}
+        <a href="#audit-form" onClick={() => track("cta_click", { cta_label: "calculator_cta", cta_location: "calculator" })}
+          className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold px-5 py-2.5 rounded-full text-white" style={{ background: accent }}>
+          Want this checked for your business? Get a written quote <ArrowRight className="w-4 h-4" />
+        </a>
       </div>
     );
   }
@@ -154,8 +161,16 @@ const ExtraBlock = ({ section, accent }: { section: ExtraSection; accent: string
           {section.items.map((it) => (
             <div key={it.title} className="p-5 rounded-2xl bg-white border" style={{ borderColor: "#E5E7EB" }}>
               {it.tag && <span className="text-[11px] font-black uppercase tracking-[0.14em]" style={{ color: accent }}>{it.tag}</span>}
-              <h3 className="mt-1 font-bold text-[#0A1628]">{it.title}</h3>
+              <h3 className="mt-1 font-bold text-[#0A1628]">
+                {it.href && !it.cta ? <a href={it.href} className="underline decoration-1 underline-offset-2 hover:opacity-80" style={{ color: accent }}>{it.title}</a> : it.title}
+              </h3>
               <p className="mt-2 text-sm text-[#4B5563] leading-relaxed">{it.desc}</p>
+              {it.href && it.cta && (
+                <a href={it.href} onClick={() => track("cta_click", { cta_label: it.cta, cta_location: "card" })}
+                  className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold px-4 py-2 rounded-full border" style={{ color: accent, borderColor: `${accent}40` }}>
+                  {it.cta} <ArrowRight className="w-4 h-4" />
+                </a>
+              )}
             </div>
           ))}
         </div>
@@ -275,6 +290,15 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
     })),
   };
   const glow = `${c.accentColor}1f`;
+  const shortTitle = (t: string) => { const x = t.split(/[:?]/)[0].trim(); return x.length > 34 ? x.slice(0, 32).trimEnd() + "…" : x; };
+  const jumpItems = [
+    ...(c.earlySections || []).slice(0, 2).map((sec) => ({ id: sec.id, label: shortTitle(sec.title) })),
+    ...(c.extraSections || []).slice(0, 3).map((sec) => ({ id: sec.id, label: shortTitle(sec.title) })),
+    ...(config.leadForm ? [{ id: config.leadForm.id || "audit-form", label: "Get started" }] : []),
+    { id: "faqs", label: "FAQs" },
+  ];
+  const ctaLabel = config.heroCta?.label || config.leadForm?.submitLabel || "Get started";
+  const ctaHref = "#" + (config.leadForm?.id || "audit-form");
   return (
     <PageLayout>
       {/* Hero */}
@@ -305,7 +329,7 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
               ))}
             </div>
             {config.heroCta ? (
-              <a href={config.heroCta.href} className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
+              <a href={config.heroCta.href} onClick={() => track("cta_click", { cta_label: config.heroCta!.label, cta_location: "hero" })} className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
                 style={{ background: c.accentColor, boxShadow: `0 8px 24px ${c.accentColor}40` }}>
                 {config.heroCta.label} <ArrowRight size={15} />
               </a>
@@ -315,6 +339,15 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
                 Book a Free Consultation <ArrowRight size={15} />
               </Link>
             )}
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm font-semibold">
+              <a href={PHONE_TEL} onClick={() => track("phone_click", { cta_location: "hero" })} className="inline-flex items-center gap-1.5" style={{ color: c.accentColor }}>
+                <Phone size={15} /> Call {PHONE_DISPLAY}
+              </a>
+              <a href={whatsappLink(`Hello, I have a question about: ${config.h1}`)} target="_blank" rel="noopener noreferrer" onClick={() => track("whatsapp_click", { cta_location: "hero" })} className="inline-flex items-center gap-1.5" style={{ color: c.accentColor }}>
+                <MessageCircle size={15} /> WhatsApp us
+              </a>
+            </div>
+            {config.leadForm && <p className="mt-3 text-xs text-[#6B7280]">Free to ask. No obligation. We reply by email.</p>}
           </motion.div>
         </div>
       </section>
@@ -336,6 +369,7 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
                 )}
               </div>
             )}
+            {jumpItems.length >= 4 && <JumpLinks accent={c.accentColor} items={jumpItems} />}
             {config.lastUpdated && (
               <p className="mt-4 text-xs text-[#6B7280] text-center leading-relaxed">
                 Published by <a href="/about/" className="underline">Digital Aura</a>, 713 Shilp Arcade, SP Ring Road, Hanspura, Ahmedabad. Last updated{" "}
@@ -434,6 +468,10 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
         </section>
       ))}
 
+      {config.leadForm && (
+        <CtaBand accent={c.accentColor} label={ctaLabel} href={ctaHref} topic={config.h1} heading="Want this done properly for your business?" text="Send your details. It is free to ask, and we reply by email." />
+      )}
+
       {/* Proof */}
       <div style={{ marginBottom: "-60px" }}>
         <CaseStudies />
@@ -504,11 +542,15 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
         </section>
       ))}
 
+      {config.leadForm && config.leadFormTop && (
+        <CtaBand accent={c.accentColor} label={ctaLabel} href={ctaHref} topic={config.h1} heading="Ready to see what we find?" text="Enter your website at the top of the page. It is free, with no obligation." />
+      )}
+
       {/* Inline lead form (config.leadForm) */}
       {config.leadForm && !config.leadFormTop && <PageLeadForm cfg={config.leadForm} accent={c.accentColor} />}
 
       {/* FAQ */}
-      <section className="py-16 px-4 md:px-8" style={{ background: "#F8FAFF" }}>
+      <section id="faqs" className="py-16 px-4 md:px-8 scroll-mt-24" style={{ background: "#F8FAFF" }}>
         <div className="max-w-3xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8 text-center">
             <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center justify-center gap-2">
@@ -559,6 +601,12 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
           </motion.div>
         </div>
       </section>
+      {config.leadForm && (
+        <>
+          <div className="h-16 md:hidden" aria-hidden="true" />
+          <StickyCtaBar accent={c.accentColor} label={ctaLabel} href={ctaHref} topic={config.h1} />
+        </>
+      )}
     </PageLayout>
   );
 };

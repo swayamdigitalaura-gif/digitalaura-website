@@ -322,6 +322,9 @@ async function main() {
           // fires after the fetch resolves, not on first paint.
           const isDynamicDetail = route.startsWith('/blog/') || route.startsWith('/careers/');
           await page.waitForTimeout(isDynamicDetail ? 1500 : 1000);
+          // Wait for the page's own h1: detail pages render it only after their API fetch resolves,
+          // so a slow API would otherwise be captured as a page with no content.
+          await page.waitForSelector('h1', { timeout: isDynamicDetail ? 15000 : 8000 }).catch(() => {});
 
           let html = await page.content();
 

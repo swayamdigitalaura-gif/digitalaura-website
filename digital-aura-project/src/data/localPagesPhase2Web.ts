@@ -1,5 +1,6 @@
 import type { LocalServiceConfig } from "@/components/LocalServicePage";
 import { enhance, phase2WebEnhancements } from "@/data/pageEnhancements";
+import { pageExtras } from "@/data/pageExtras";
 
 /**
  * Phase 2 web pages from "Digital Aura Page Blueprints": web-01, web-02, web-03, web-06, web-07.
@@ -382,10 +383,10 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
         title: "Compare the four packages",
         subtext: "Your quote lists the exact pages, layouts and price for the tier you choose.",
         items: [
-          { tag: "Starter", title: "A fast, focused site that gets you found", desc: "For a small business that needs a credible online presence: key pages, lead form, WhatsApp button, Google Business Profile link, basic on-page SEO and analytics." },
-          { tag: "Business", title: "A complete lead-generating website", desc: "For a business with several services: service pages, blog, FAQ, testimonials, forms routed to email and WhatsApp, an editable CMS, schema basics and analytics." },
-          { tag: "Growth", title: "A website built to win search and convert paid traffic", desc: "For competitive markets and multi-service or multi-location businesses: dedicated service and location pages, SEO architecture, conversion-focused layouts and CRM or WhatsApp integration." },
-          { tag: "Custom", title: "Web apps, booking systems and portals", desc: "For logins, bookings, payments, dashboards, ERP or CRM integrations and other complex needs." },
+          { href: "#audit-form", cta: "Choose Starter", tag: "Starter", title: "A fast, focused site that gets you found", desc: "For a small business that needs a credible online presence: key pages, lead form, WhatsApp button, Google Business Profile link, basic on-page SEO and analytics." },
+          { href: "#audit-form", cta: "Choose Business", tag: "Business", title: "A complete lead-generating website", desc: "For a business with several services: service pages, blog, FAQ, testimonials, forms routed to email and WhatsApp, an editable CMS, schema basics and analytics." },
+          { href: "#audit-form", cta: "Choose Growth", tag: "Growth", title: "A website built to win search and convert paid traffic", desc: "For competitive markets and multi-service or multi-location businesses: dedicated service and location pages, SEO architecture, conversion-focused layouts and CRM or WhatsApp integration." },
+          { href: "#audit-form", cta: "Choose Custom", tag: "Custom", title: "Web apps, booking systems and portals", desc: "For logins, bookings, payments, dashboards, ERP or CRM integrations and other complex needs." },
         ],
         footnote: "We do not publish package prices on this page yet. Tell us which tier fits and we will send a written quote.",
       },
@@ -793,4 +794,4 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
   },
 };
 
-export const phase2WebPages: Record<string, LocalServiceConfig> = enhance(phase2WebRaw, phase2WebEnhancements);
+export const phase2WebPages: Record<string, LocalServiceConfig> = enhance(phase2WebRaw, phase2WebEnhancements, pageExtras);

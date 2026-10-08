@@ -3,9 +3,18 @@
  * Pure arithmetic on numbers the visitor types in: nothing is sent anywhere or stored,
  * and the defaults are illustrative examples, not Digital Aura benchmarks.
  */
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { track } from "@/lib/track";
 
-export type CalculatorVariant = "ads-budget" | "break-even" | "package-picker";
+export type CalculatorVariant = "ads-budget" | "break-even" | "package-picker" | "ads-selfcheck" | "downtime";
+
+/** Fires one calculator_use event the first time a visitor changes any input. */
+const useUseTracking = (name: string) => {
+  const done = useRef(false);
+  return () => {
+    if (!done.current) { done.current = true; track("calculator_use", { calculator: name }); }
+  };
+};
 
 const inr = (n: number) =>
   Number.isFinite(n) ? "₹" + Math.round(n).toLocaleString("en-IN") : "–";
@@ -50,6 +59,7 @@ const Result = ({ label, value, strong }: { label: string; value: string; strong
 );
 
 const AdsBudget = ({ accent }: { accent: string }) => {
+  const mark = useUseTracking("google_ads_budget");
   const [spend, setSpend] = useState("30000");
   const [cpc, setCpc] = useState("20");
   const [conv, setConv] = useState("5");
@@ -72,7 +82,7 @@ const AdsBudget = ({ accent }: { accent: string }) => {
   const breakEvenCpl = pr * cl;
 
   return (
-    <div className="rounded-2xl border p-5 md:p-7" style={{ borderColor: `${accent}40`, background: "#F8FAFF" }}>
+    <div onChangeCapture={mark} className="rounded-2xl border p-5 md:p-7" style={{ borderColor: `${accent}40`, background: "#F8FAFF" }}>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <Field id="ab-spend" label="Monthly ad spend" value={spend} onChange={setSpend} suffix="₹" />
         <Field id="ab-cpc" label="Average cost per click" value={cpc} onChange={setCpc} suffix="₹" hint="Check your own account or keyword planner." />
@@ -107,6 +117,7 @@ const AdsBudget = ({ accent }: { accent: string }) => {
 };
 
 const BreakEven = ({ accent }: { accent: string }) => {
+  const mark = useUseTracking("break_even");
   const [value, setValue] = useState("10000");
   const [margin, setMargin] = useState("40");
   const [close, setClose] = useState("20");
@@ -118,7 +129,7 @@ const BreakEven = ({ accent }: { accent: string }) => {
   const breakEvenRoas = m > 0 ? 1 / m : NaN;
 
   return (
-    <div className="rounded-2xl border p-5 md:p-7" style={{ borderColor: `${accent}40`, background: "#F8FAFF" }}>
+    <div onChangeCapture={mark} className="rounded-2xl border p-5 md:p-7" style={{ borderColor: `${accent}40`, background: "#F8FAFF" }}>
       <div className="grid sm:grid-cols-3 gap-4">
         <Field id="be-value" label="Average sale value" value={value} onChange={setValue} suffix="₹" />
         <Field id="be-margin" label="Gross margin" value={margin} onChange={setMargin} suffix="%" hint="What remains after the cost of delivering it." />
@@ -157,6 +168,7 @@ const TIER_TEXT: Record<Tier, string> = {
 };
 
 const PackagePicker = ({ accent }: { accent: string }) => {
+  const mark = useUseTracking("package_picker");
   const [goal, setGoal] = useState("enquiries");
   const [sell, setSell] = useState("no");
   const [size, setSize] = useState("mid");
@@ -184,7 +196,7 @@ const PackagePicker = ({ accent }: { accent: string }) => {
   if (content === "help") why.push("You need help with writing or photos, which is quoted as an add-on.");
 
   return (
-    <div className="rounded-2xl border p-5 md:p-7" style={{ borderColor: `${accent}40`, background: "#F8FAFF" }}>
+    <div onChangeCapture={mark} className="rounded-2xl border p-5 md:p-7" style={{ borderColor: `${accent}40`, background: "#F8FAFF" }}>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <Select id="pp-goal" label="Main goal of the website" value={goal} onChange={setGoal} options={[["credibility", "Look credible online"], ["enquiries", "Get enquiries and calls"], ["sales", "Sell products online"], ["bookings", "Take bookings or run a portal"]]} />
         <Select id="pp-sell" label="Do you need to sell online?" value={sell} onChange={setSell} options={[["no", "No"], ["small", "Yes, a small catalogue"], ["large", "Yes, a large catalogue"]]} />
@@ -206,7 +218,99 @@ const PackagePicker = ({ accent }: { accent: string }) => {
   );
 };
 
-const AdsCalculator = ({ variant, accent }: { variant: CalculatorVariant; accent: string }) =>
-  variant === "ads-budget" ? <AdsBudget accent={accent} /> : variant === "package-picker" ? <PackagePicker accent={accent} /> : <BreakEven accent={accent} />;
+/* ───────── Google Ads self-check (blueprint gads-03): 12 yes/no questions, no account access ───────── */
+const SELF_CHECK: { q: string; area: string; tip: string }[] = [
+  { q: "Are phone calls and WhatsApp clicks counted as conversions?", area: "Conversion tracking", tip: "Calls and WhatsApp clicks are often your best leads. If they are not counted, the account cannot learn from them." },
+  { q: "Is only a real enquiry (not a page view or button click) set as the main conversion?", area: "Conversion tracking", tip: "If page views count as conversions, the account optimises for the wrong thing." },
+  { q: "Do you read the search terms report at least once a month?", area: "Search terms", tip: "The report shows what people typed before they saw your ad. It is where wasted spend hides." },
+  { q: "Do you keep a negative keyword list and add to it?", area: "Negative keywords", tip: "Negatives block searches that will never buy, such as jobs, free, or unrelated products." },
+  { q: "Are campaigns split by service or intent, rather than one catch-all campaign?", area: "Account structure", tip: "Separate campaigns let you control budget and message for each service." },
+  { q: "Do you target people physically in your area, not just 'interested in' it?", area: "Location settings", tip: "The wider location option can show ads to people who are not nearby." },
+  { q: "Do your ads run only when someone can answer calls or messages?", area: "Ad schedule", tip: "An unanswered call or message is a wasted click." },
+  { q: "Does each ad match the offer on the page it opens?", area: "Message match", tip: "If the ad promises one thing and the page shows another, visitors leave." },
+  { q: "Does your landing page load fast on mobile and show a call or WhatsApp button?", area: "Landing page", tip: "Most clicks come from phones. Slow pages and hidden contact buttons lose enquiries." },
+  { q: "Do you know your cost per enquiry and cost per customer?", area: "Measurement", tip: "Without these two numbers you cannot tell whether the ads pay back." },
+  { q: "Do you reply to enquiries within about 15 minutes?", area: "Response speed", tip: "Fast replies convert more enquiries than slow ones." },
+  { q: "Do you own the ad account and have admin access?", area: "Account ownership", tip: "The account, its history and data should belong to you, not to an agency." },
+];
+
+const AdsSelfCheck = ({ accent }: { accent: string }) => {
+  const mark = useUseTracking("ads_selfcheck");
+  const [ans, setAns] = useState<Record<number, "yes" | "no">>({});
+  const answered = Object.keys(ans).length;
+  const flagged = SELF_CHECK.map((x, i) => ({ ...x, i })).filter((x) => ans[x.i] === "no");
+  const areas = Array.from(new Set(flagged.map((x) => x.area)));
+  return (
+    <div onChangeCapture={mark} className="rounded-2xl border p-5 md:p-7" style={{ borderColor: `${accent}40`, background: "#F8FAFF" }}>
+      <ol className="space-y-4">
+        {SELF_CHECK.map((x, i) => (
+          <li key={x.q} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <span id={`sc-q-${i}`} className="text-sm font-semibold text-[#0A1628]">{i + 1}. {x.q}</span>
+            <span role="radiogroup" aria-labelledby={`sc-q-${i}`} className="flex gap-2 shrink-0">
+              {(["yes", "no"] as const).map((v) => (
+                <label key={v} className="cursor-pointer">
+                  <input type="radio" name={`sc-${i}`} value={v} checked={ans[i] === v} onChange={() => setAns((p) => ({ ...p, [i]: v }))} className="sr-only peer" />
+                  <span className="inline-block px-4 py-1.5 rounded-full border text-sm font-semibold bg-white text-[#4B5563] peer-focus-visible:ring-2" style={ans[i] === v ? { background: v === "yes" ? accent : "#EF4444", borderColor: v === "yes" ? accent : "#EF4444", color: "#fff" } : { borderColor: "#D1D5DB" }}>{v === "yes" ? "Yes" : "No"}</span>
+                </label>
+              ))}
+            </span>
+          </li>
+        ))}
+      </ol>
+      <div className="mt-6 rounded-xl bg-white p-5 border" style={{ borderColor: "#E5E7EB" }} aria-live="polite">
+        {answered < SELF_CHECK.length ? (
+          <p className="text-sm text-[#4B5563]">Answered {answered} of {SELF_CHECK.length}. Answer all questions to see your result.</p>
+        ) : flagged.length === 0 ? (
+          <p className="text-sm text-[#0A1628] font-semibold">No obvious gaps from these questions. An audit can still find less visible issues, such as budget split and search terms.</p>
+        ) : (
+          <>
+            <p className="text-lg font-black text-[#0A1628]">{flagged.length} of {SELF_CHECK.length} areas may be leaking budget</p>
+            <ul className="mt-3 space-y-2">
+              {flagged.map((x) => (
+                <li key={x.q} className="text-sm text-[#4B5563] leading-relaxed"><span className="font-bold text-[#0A1628]">{x.area}.</span> {x.tip}</li>
+              ))}
+            </ul>
+            <p className="mt-3 text-xs text-[#6B7280]">Areas to look at first: {areas.join(", ")}.</p>
+          </>
+        )}
+      </div>
+      <p className="mt-4 text-xs text-[#6B7280] leading-relaxed">This is a quick self-check, not an audit. It runs in your browser and nothing is sent to us. Results depend on your account, so an audit confirms what is really happening.</p>
+    </div>
+  );
+};
+
+/* ───────── Website downtime cost (blueprint web-05): visitor-entered numbers only ───────── */
+const Downtime = ({ accent }: { accent: string }) => {
+  const mark = useUseTracking("downtime_cost");
+  const [perDay, setPerDay] = useState("5");
+  const [value, setValue] = useState("3000");
+  const [hours, setHours] = useState("24");
+  const [open, setOpen] = useState("10");
+  const lostEnquiries = (num(perDay) * num(hours)) / Math.max(1, num(open) || 24);
+  const lostValue = lostEnquiries * num(value);
+  return (
+    <div onChangeCapture={mark} className="rounded-2xl border p-5 md:p-7" style={{ borderColor: `${accent}40`, background: "#F8FAFF" }}>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <Field id="dt-perday" label="Website enquiries per day" value={perDay} onChange={setPerDay} />
+        <Field id="dt-value" label="Value of one enquiry" value={value} onChange={setValue} suffix="₹" hint="Average profit per enquiry, after your close rate." />
+        <Field id="dt-hours" label="Hours the site is down" value={hours} onChange={setHours} suffix="hours" />
+        <Field id="dt-open" label="Hours per day enquiries arrive" value={open} onChange={setOpen} suffix="hours" hint="For example 10 for a business that gets enquiries during the day." />
+      </div>
+      <div className="mt-6 grid sm:grid-cols-2 gap-4" aria-live="polite">
+        <Result label="Enquiries you could lose" value={(Math.round(lostEnquiries * 10) / 10).toLocaleString("en-IN")} />
+        <Result label="Value at risk" value={inr(lostValue)} strong />
+      </div>
+      <p className="mt-4 text-xs text-[#6B7280] leading-relaxed">A simple estimate from the numbers you enter. The starting values are examples only. It runs in your browser and nothing is sent to us.</p>
+    </div>
+  );
+};
+
+const AdsCalculator = ({ variant, accent }: { variant: CalculatorVariant; accent: string }) => {
+  if (variant === "ads-budget") return <AdsBudget accent={accent} />;
+  if (variant === "package-picker") return <PackagePicker accent={accent} />;
+  if (variant === "ads-selfcheck") return <AdsSelfCheck accent={accent} />;
+  if (variant === "downtime") return <Downtime accent={accent} />;
+  return <BreakEven accent={accent} />;
+};
 
 export default AdsCalculator;

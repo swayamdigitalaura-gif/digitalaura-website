@@ -323,7 +323,7 @@ const Careers = () => {
             <a href="#openings" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-bold text-sm transition-all hover:gap-3"
               style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 8px 24px rgba(255,107,43,0.35)" }}><span data-cms-key="careers_hero_cta" data-cms-label="Primary CTA" data-cms-attr="text">{heroCta}</span> <ArrowRight size={15} />
             </a>
-            <a href="mailto:info@thedigitalaura.com?subject=Open Application"
+            <a href="mailto:hr@thedigitalaura.com?subject=Open Application"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm border transition-all"
               style={{ color: "#7C3AED", borderColor: "rgba(124,58,237,0.25)", background: "rgba(124,58,237,0.05)" }}>
               <Mail size={15} /> <span data-cms-key="careers_hero_btn2" data-cms-label="Secondary Button" data-cms-attr="text">{heroBtn2}</span>
@@ -490,9 +490,12 @@ const Careers = () => {
           <div className="relative z-10">
             <h3 className="font-black text-[#0A1628] text-2xl mb-3"><span data-cms-key="careers_pg_2" data-cms-label="H3 Text" data-cms-attr="text">{pg2}</span></h3>
             <p className="text-[#6B7280] text-sm leading-relaxed max-w-md"><span data-cms-key="careers_pg_p_12" data-cms-label="Body Text" data-cms-attr="text">{pgP12}</span></p>
+            <a href="mailto:hr@thedigitalaura.com" className="inline-flex items-center gap-2 mt-3 text-sm font-semibold" style={{ color: "#7C3AED" }}>
+              <Mail size={14} /> hr@thedigitalaura.com
+            </a>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0 relative z-10">
-            <a href="mailto:info@thedigitalaura.com?subject=Open Application"
+            <a href="mailto:hr@thedigitalaura.com?subject=Open Application"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
               style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 4px 20px rgba(255,107,43,0.3)" }}>
               <Mail size={15} /> <span data-cms-key="careers_resume_btn" data-cms-label="Send Resume Button" data-cms-attr="text">{resumeBtn}</span>

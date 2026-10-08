@@ -1,6 +1,6 @@
 const { Op } = require('sequelize');
 const { Career, Application } = require('../models');
-const { sendMail, NOTIFY_EMAIL } = require('../utils/mailer');
+const { sendMail, NOTIFY_EMAIL, HR_EMAIL } = require('../utils/mailer');
 
 function makeSlug(title) {
   return title.toLowerCase()
@@ -94,7 +94,8 @@ exports.applyPublic = async (req, res) => {
 
     // Notify HR
     sendMail({
-      to: process.env.HR_EMAIL || NOTIFY_EMAIL,
+      to: HR_EMAIL,
+      cc: HR_EMAIL.toLowerCase() === NOTIFY_EMAIL.toLowerCase() ? undefined : NOTIFY_EMAIL,
       subject: `💼 New Application — ${career.title} (${name})`,
       html: `
         <h2 style="color:#7C3AED">New Job Application</h2>

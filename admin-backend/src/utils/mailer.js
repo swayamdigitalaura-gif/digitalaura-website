@@ -13,17 +13,19 @@ const transporter = nodemailer.createTransport({
 const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL || 'info@thedigitalaura.com';
 const FROM_EMAIL   = process.env.FROM_EMAIL   || `"Digital Aura Website" <${process.env.SMTP_USER || 'noreply@thedigitalaura.com'}>`;
 
-async function sendMail({ to, subject, html }) {
+const HR_EMAIL = process.env.HR_EMAIL || 'hr@thedigitalaura.com';
+
+async function sendMail({ to, cc, subject, html }) {
   if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
     console.log('[mailer] SMTP not configured — skipping email:', subject);
     return;
   }
   try {
-    await transporter.sendMail({ from: FROM_EMAIL, to, subject, html });
+    await transporter.sendMail({ from: FROM_EMAIL, to, cc, subject, html });
     console.log('[mailer] Sent:', subject, '→', to);
   } catch (err) {
     console.error('[mailer] Failed:', err.message);
   }
 }
 
-module.exports = { sendMail, NOTIFY_EMAIL };
+module.exports = { sendMail, NOTIFY_EMAIL, HR_EMAIL };

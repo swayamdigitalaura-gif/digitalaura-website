@@ -21,6 +21,7 @@ import BlogInsights from "@/components/BlogInsights";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 import MathCaptcha from "@/components/MathCaptcha";
 import { useSettings } from "@/hooks/useSettings";
+import { SEO_AUDIT_CHECKLIST, SEO_AUDIT_SEQUENCE } from "@/data/auditContent";
 import {
   ArrowRight, ChevronDown, Check, Search, FileSearch,
   Users, BarChart3, Link2, ClipboardList, Phone,
@@ -39,12 +40,11 @@ const INCLUDED = [
   { Icon: ClipboardList,title: "Prioritised Action Roadmap",      desc: "Every finding ranked by effort vs. impact, so you know exactly what to fix first, second, and third." },
 ];
 
-const PROCESS_STEPS = [
-  { num: "01", title: "Crawl & Data Collection",        desc: "We crawl your full site and pull data from Google Search Console, Analytics, and your current rankings." },
-  { num: "02", title: "Technical & On-Page Analysis",   desc: "Every page is checked against 80+ technical and on-page factors that affect how Google can find, read, and rank it." },
-  { num: "03", title: "Competitor & Keyword Gap Study",  desc: "We map what's winning in your niche right now and where the realistic opportunities are for your specific site." },
-  { num: "04", title: "Roadmap Delivery & Walkthrough",  desc: "You get the full report plus a call where we walk through the findings in plain English and answer questions." },
-];
+const PROCESS_STEPS = SEO_AUDIT_SEQUENCE.map((step, i) => ({
+  num: String(i + 1).padStart(2, "0"),
+  title: step.title.replace(/^d+.s*/, ""),
+  desc: step.desc,
+}));
 
 const COMMON_ISSUES = [
   "Pages that took months to rank quietly losing position because nobody noticed a technical error",
@@ -265,7 +265,7 @@ const SEOAuditStrategyPage = () => {
   const heroSub = g("seoaudit_hero_sub", "An SEO audit is a full review of your site's technical health, on-page optimisation, content, and backlinks, benchmarked against real competitors, so every recommendation is prioritised by actual impact, not guesswork.");
   const includedH2 = g("seoaudit_included_h2", "What's Included in Every Audit");
   const includedSub = g("seoaudit_included_sub", "Six areas covered in full depth, not a surface-level checklist.");
-  const processH2 = g("seoaudit_process_h2", "How the Audit Process Works");
+  const processH2 = g("seoaudit_process_h2", "How We Audit: Business Understanding to Report");
   const issuesH2 = g("seoaudit_issues_h2", "What Audits Actually Find");
   const issuesSub = g("seoaudit_issues_sub", "Real, recurring issues we uncover across the sites we audit — the kind that stay invisible until someone looks.");
   const toolsH2 = g("seoaudit_tools_h2", "Tools & Technologies We Use");
@@ -395,6 +395,31 @@ const SEOAuditStrategyPage = () => {
             </motion.div>
           ))}
         </div>
+      </div>
+    </section>
+
+    {/* Audit checklist: the check points of step 2 */}
+    <section id="audit-checklist" className="py-16 px-4 md:px-8 bg-white">
+      <div className="max-w-5xl mx-auto">
+        <div className="mb-8 max-w-3xl">
+          <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] tracking-tight leading-tight">The SEO audit checklist: {SEO_AUDIT_CHECKLIST.length} areas we check</h2>
+          <p className="mt-3 text-[#4B5563] leading-relaxed">These are the check points in step 2, covering on-page, off-page, spam backlinks, conversion, content, search intent, technical SEO, AEO, GEO, user search behaviour and internal links.</p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-4">
+          {SEO_AUDIT_CHECKLIST.map((grp) => (
+            <div key={grp.title} className="p-5 rounded-2xl border" style={{ borderColor: "#E5E7EB", background: "#F8FAFF" }}>
+              <h3 className="font-bold text-[#0A1628]">{grp.title}</h3>
+              <ul className="mt-3 space-y-2">
+                {grp.items.map((t) => (
+                  <li key={t} className="flex gap-2.5 text-sm text-[#4B5563] leading-relaxed">
+                    <Check size={15} className="mt-0.5 shrink-0" style={{ color: accentColor }} />{t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <p className="mt-6 text-sm text-[#6B7280]">Want to see it on your own site? <a href="/seo/free-audit/" className="font-semibold underline" style={{ color: accentColor }}>Enter your website for a free SEO audit</a>.</p>
       </div>
     </section>
 

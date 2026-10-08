@@ -1,4 +1,5 @@
 import type { LocalServiceConfig } from "@/components/LocalServicePage";
+import { enhance, phase2WebEnhancements } from "@/data/pageEnhancements";
 
 /**
  * Phase 2 web pages from "Digital Aura Page Blueprints": web-01, web-02, web-03, web-06, web-07.
@@ -20,7 +21,7 @@ const webRelated = [
   { title: "Website Maintenance & AMC", desc: "Keep your website updated, backed up and secure after launch.", points: ["Updates", "Backups", "Security"], href: "/website-maintenance-amc-ahmedabad/" },
 ];
 
-export const phase2WebPages: Record<string, LocalServiceConfig> = {
+const phase2WebRaw: Record<string, LocalServiceConfig> = {
   /* ─────────────────────── web-01: website development cost ─────────────────────── */
   websiteDevCost: {
     slug: "website-development-cost-ahmedabad",
@@ -791,3 +792,5 @@ export const phase2WebPages: Record<string, LocalServiceConfig> = {
     ctaButton: "Get My Catalogue Plan",
   },
 };
+
+export const phase2WebPages: Record<string, LocalServiceConfig> = enhance(phase2WebRaw, phase2WebEnhancements);

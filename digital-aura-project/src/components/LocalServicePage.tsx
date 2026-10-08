@@ -15,6 +15,7 @@ import { ArrowRight, ChevronDown, Check, MapPin } from "lucide-react";
 import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
 import AdsCalculator, { type CalculatorVariant } from "@/components/AdsCalculators";
+import PageLeadForm, { type LeadFormConfig } from "@/components/PageLeadForm";
 
 export interface IncludedItem { title: string; desc: string; }
 export interface FaqItem { q: string; a: string; }
@@ -27,7 +28,8 @@ export type ExtraSection =
   | { kind: "text"; id: string; title: string; paragraphs: string[]; links?: { label: string; href: string }[] }
   | { kind: "cards"; id: string; title: string; subtext?: string; items: ExtraCard[]; footnote?: string }
   | { kind: "compare"; id: string; title: string; subtext?: string; left: ExtraList; right: ExtraList; footnote?: string }
-  | { kind: "calculator"; id: string; title: string; subtext?: string; variant: CalculatorVariant; footnote?: string };
+  | { kind: "calculator"; id: string; title: string; subtext?: string; variant: CalculatorVariant; footnote?: string }
+  | { kind: "checklist"; id: string; title: string; subtext?: string; groups: { title: string; items: string[] }[]; footnote?: string };
 export interface RelatedService { title: string; desc: string; points: string[]; href: string; }
 
 export interface LocalServiceConfig {
@@ -63,7 +65,22 @@ export interface LocalServiceConfig {
   relatedCategoryColor: string;
   relatedServices: RelatedService[];
 
+  /** Rendered right after the "process" section (use for step-by-step content that must follow it). */
+  earlySections?: ExtraSection[];
   extraSections?: ExtraSection[];
+  /** Answer-first box under the hero (AEO/GEO): a direct 40-60 word answer plus optional bullets. */
+  quickAnswer?: { heading?: string; answer: string; points?: string[] };
+  /** ISO date (YYYY-MM-DD). Shows the "published by / last updated" trust line and feeds schema dateModified. */
+  lastUpdated?: string;
+  /** Overrides the default hero button (label + href). Hash hrefs scroll to the on-page form. */
+  heroCta?: { label: string; href: string };
+  /** Inline lead form rendered before the FAQ (or right under the quick answer when leadFormTop is set). */
+  leadForm?: LeadFormConfig;
+  leadFormTop?: boolean;
+  /** Heading for the FAQ block, e.g. "Pricing FAQs". */
+  faqTitle?: string;
+  /** Authoritative sources the page relies on (shown under the FAQ). */
+  sources?: { label: string; href: string }[];
   faqs: FaqItem[];
   ctaHeading: string;
   ctaText: string;
@@ -94,6 +111,29 @@ const ExtraBlock = ({ section, accent }: { section: ExtraSection; accent: string
             ))}
           </div>
         )}
+      </div>
+    );
+  }
+  if (section.kind === "checklist") {
+    return (
+      <div>
+        {heading}
+        <div className="grid md:grid-cols-2 gap-4">
+          {section.groups.map((g) => (
+            <div key={g.title} className="p-5 rounded-2xl bg-white border" style={{ borderColor: "#E5E7EB" }}>
+              <h3 className="font-bold text-[#0A1628]">{g.title}</h3>
+              <ul className="mt-3 space-y-2">
+                {g.items.map((t) => (
+                  <li key={t} className="flex gap-2.5 text-sm text-[#4B5563] leading-relaxed">
+                    <span className="mt-0.5 shrink-0 font-black" style={{ color: accent }}>✓</span>
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        {note(section.footnote)}
       </div>
     );
   }
@@ -145,6 +185,9 @@ const ExtraBlock = ({ section, accent }: { section: ExtraSection; accent: string
     </div>
   );
 };
+
+const formatDate = (iso: string) =>
+  new Date(iso + "T00:00:00Z").toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 
 const FAQItem = ({ q, a, cmsKey, accentColor }: { q: string; a: string; cmsKey: (field: string) => string; accentColor: string }) => {
   const [open, setOpen] = useState(false);
@@ -261,13 +304,50 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
                 <span key={tag} className="text-[11px] font-bold px-3 py-1 rounded-full" style={{ background: `${c.accentColor}10`, color: c.accentColor, border: `1px solid ${c.accentColor}25` }}>{tag}</span>
               ))}
             </div>
-            <Link to="/contact/#contact-form" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
-              style={{ background: c.accentColor, boxShadow: `0 8px 24px ${c.accentColor}40` }}>
-              Book a Free Consultation <ArrowRight size={15} />
-            </Link>
+            {config.heroCta ? (
+              <a href={config.heroCta.href} className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
+                style={{ background: c.accentColor, boxShadow: `0 8px 24px ${c.accentColor}40` }}>
+                {config.heroCta.label} <ArrowRight size={15} />
+              </a>
+            ) : (
+              <Link to="/contact/#contact-form" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
+                style={{ background: c.accentColor, boxShadow: `0 8px 24px ${c.accentColor}40` }}>
+                Book a Free Consultation <ArrowRight size={15} />
+              </Link>
+            )}
           </motion.div>
         </div>
       </section>
+
+      {/* Quick answer (AEO/GEO) + publisher / last-updated trust line (E-E-A-T) */}
+      {(config.quickAnswer || config.lastUpdated) && (
+        <section className="px-4 md:px-8 pb-10 bg-white">
+          <div className="max-w-4xl mx-auto">
+            {config.quickAnswer && (
+              <div id="quick-answer" className="rounded-2xl border p-6 text-left" style={{ borderColor: `${c.accentColor}40`, background: `${c.accentColor}0d` }}>
+                <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628]">{config.quickAnswer.heading || "Quick answer"}</h2>
+                <p className="mt-2 text-[17px] text-[#0A1628] leading-relaxed">{config.quickAnswer.answer}</p>
+                {config.quickAnswer.points && (
+                  <ul className="mt-3 space-y-1.5">
+                    {config.quickAnswer.points.map((p) => (
+                      <li key={p} className="flex gap-2.5 text-[15px] text-[#4B5563]"><span className="font-black" style={{ color: c.accentColor }}>✓</span>{p}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
+            {config.lastUpdated && (
+              <p className="mt-4 text-xs text-[#6B7280] text-center leading-relaxed">
+                Published by <a href="/about/" className="underline">Digital Aura</a>, 713 Shilp Arcade, SP Ring Road, Hanspura, Ahmedabad. Last updated{" "}
+                <time dateTime={config.lastUpdated}>{formatDate(config.lastUpdated)}</time>. <a href="/contact/" className="underline">Contact us</a>.
+              </p>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* Lead form at the top (audit pages: the form is the first thing after the answer box) */}
+      {config.leadForm && config.leadFormTop && <PageLeadForm cfg={config.leadForm} accent={c.accentColor} />}
 
       {/* Differentiator */}
       <section className="py-16 px-4 md:px-8 bg-white">
@@ -345,6 +425,15 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
         </div>
       </section>
 
+      {/* Sections that must follow the process steps (config.earlySections) */}
+      {c.earlySections?.map((sec, i) => (
+        <section key={sec.id} id={sec.id} className="py-16 px-4 md:px-8" style={{ background: i % 2 === 0 ? "#F8FAFF" : "#fff" }}>
+          <div className="max-w-5xl mx-auto">
+            <ExtraBlock section={sec} accent={c.accentColor} />
+          </div>
+        </section>
+      ))}
+
       {/* Proof */}
       <div style={{ marginBottom: "-60px" }}>
         <CaseStudies />
@@ -415,12 +504,15 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
         </section>
       ))}
 
+      {/* Inline lead form (config.leadForm) */}
+      {config.leadForm && !config.leadFormTop && <PageLeadForm cfg={config.leadForm} accent={c.accentColor} />}
+
       {/* FAQ */}
       <section className="py-16 px-4 md:px-8" style={{ background: "#F8FAFF" }}>
         <div className="max-w-3xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8 text-center">
             <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center justify-center gap-2">
-              <span className="w-4 h-0.5 rounded-full" style={{ background: c.accentColor }} /> Frequently Asked Questions
+              <span className="w-4 h-0.5 rounded-full" style={{ background: c.accentColor }} /> {config.faqTitle || "Frequently Asked Questions"}
             </h2>
           </motion.div>
           <div className="space-y-3">
@@ -432,6 +524,20 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
           </div>
         </div>
       </section>
+
+      {/* Sources (E-E-A-T / GEO) */}
+      {config.sources && config.sources.length > 0 && (
+        <section className="py-10 px-4 md:px-8 bg-white">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628]">Sources and further reading</h2>
+            <ul className="mt-3 space-y-1.5 text-sm">
+              {config.sources.map((src) => (
+                <li key={src.href}><a href={src.href} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: c.accentColor }}>{src.label}</a></li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       {/* Final CTA */}
       <section className="py-16 px-4 md:px-8 relative overflow-hidden text-center" style={{ background: "#0A1628" }}>

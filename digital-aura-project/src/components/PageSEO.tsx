@@ -322,7 +322,7 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   },
   '/seo/free-audit': {
     title: 'Free SEO Audit in Ahmedabad | Digital Aura',
-    description: 'Get a free SEO audit for your website: technical, on-page, local and AI-search checks with a prioritised list of fixes.',
+    description: 'Free SEO audit in Ahmedabad: enter your website and get technical, on-page, off-page, spam-link, local and AI-search checks with a prioritised fix list.',
   },
   '/google-ads-audit-ahmedabad': {
     title: 'Free Google Ads Audit in Ahmedabad | Digital Aura',
@@ -330,7 +330,7 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   },
   '/website-redesign-services-ahmedabad': {
     title: 'Website Redesign Services in Ahmedabad | SEO-Safe Process',
-    description: 'Redesign your Ahmedabad website without losing Google rankings. Redirect map, staging checks and post-launch monitoring. Get a free review.',
+    description: "Website redesign services in Ahmedabad that protect your Google rankings: redirect map, staging checks and post-launch monitoring. Free review.",
   },
   '/website-maintenance-amc-ahmedabad': {
     title: 'Website Maintenance & AMC in Ahmedabad | Digital Aura',
@@ -354,23 +354,23 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   },
   '/google-ads-for-doctors-ahmedabad': {
     title: "Google Ads for Doctors & Hospitals in Ahmedabad",
-    description: "Google Ads for clinics and hospitals in Ahmedabad: careful ad copy, service-line campaigns, tracked appointments and a free healthcare review.",
+    description: "Google Ads for doctors in Ahmedabad: careful ad copy, service-line campaigns, tracked appointments and a free healthcare review.",
   },
   '/meta-ads-agency-ahmedabad/pricing': {
     title: "Meta Ads Pricing in Ahmedabad: Fees & Packages",
-    description: "What Meta ads cost in Ahmedabad: agency fee vs ad spend, what is included, contract terms and red flags. Get a written quote.",
+    description: "Meta ads pricing in Ahmedabad: agency fee vs ad spend, what is included, contract terms and red flags. Get a written quote.",
   },
   '/meta-ads-agency-ahmedabad/clinics-doctors': {
     title: "Meta Ads for Doctors & Clinics in Ahmedabad",
-    description: "Meta ads for Ahmedabad clinics and hospitals: health ad policy limits, WhatsApp lead handling and booked appointments. Free ad review.",
+    description: "Meta ads for doctors and clinics in Ahmedabad: health ad policy limits, WhatsApp lead handling and booked appointments. Free ad review.",
   },
   '/website-development-cost-ahmedabad': {
     title: "Website Development Cost in Ahmedabad: Price Guide",
-    description: "What decides the cost of a website in Ahmedabad: site types, cost drivers, platform choice, running costs and how to compare quotes.",
+    description: "Website development cost in Ahmedabad: what decides the price, site types, platform choice, running costs and how to compare quotes.",
   },
   '/website-design-cost-ahmedabad': {
     title: "Website Design Cost in Ahmedabad: Price Guide",
-    description: "What website design costs in Ahmedabad: template vs custom, what a design fee covers, revisions, ownership and design vs development.",
+    description: "Website design cost in Ahmedabad: template vs custom, what a design fee covers, revisions, ownership and design vs development.",
   },
   '/website-packages-ahmedabad': {
     title: "Website Packages in Ahmedabad | Digital Aura",
@@ -378,11 +378,11 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   },
   '/website-design-for-doctors-ahmedabad': {
     title: "Website Design for Doctors & Hospitals in Ahmedabad",
-    description: "Patient-first websites for doctors, clinics and hospitals in Ahmedabad: appointment booking, doctor profiles, local SEO and fast mobile pages.",
+    description: "Website design for doctors and hospitals in Ahmedabad: patient-first sites with booking, doctor profiles, local SEO and fast mobile pages.",
   },
   '/website-design-for-manufacturers-ahmedabad': {
     title: "Website Design for Manufacturers & Exporters, Ahmedabad",
-    description: "B2B websites for Gujarat manufacturers and exporters: product catalogue, RFQ flow, certificates and multilingual SEO. Own your buyer enquiries.",
+    description: "Website design for manufacturers and exporters in Ahmedabad and Gujarat: product catalogue, RFQ flow, certificates and multilingual SEO.",
   },
   '/meta-ads-agency-ahmedabad': {
     title: 'Meta Ads Agency in Ahmedabad | Facebook & Instagram Ads',
@@ -423,6 +423,47 @@ function breadcrumbSchema(trail: [string, string][]) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: trail.map(([name, path], i) => ({ '@type': 'ListItem', position: i + 1, name, item: `${SITE_URL}${path}` })),
+  };
+}
+
+const ORG_REF = { '@id': `${SITE_URL}/#organization` };
+
+function webPageSchema(path: string, name: string, description: string, dateModified?: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${SITE_URL}${path}/#webpage`,
+    url: `${SITE_URL}${path}/`,
+    name,
+    description,
+    inLanguage: 'en-IN',
+    isPartOf: { '@type': 'WebSite', name: 'Digital Aura', url: SITE_URL },
+    publisher: ORG_REF,
+    ...(dateModified ? { dateModified } : {}),
+  };
+}
+
+function serviceSchema(path: string, name: string, serviceType: string, description: string, free = false) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${SITE_URL}${path}/#service`,
+    name,
+    serviceType,
+    description,
+    url: `${SITE_URL}${path}/`,
+    provider: ORG_REF,
+    areaServed: { '@type': 'City', name: 'Ahmedabad' },
+    ...(free ? { offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR', description: 'Free, no obligation' } } : {}),
+  };
+}
+
+function howToSchema(name: string, steps: { title: string; desc: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name,
+    step: steps.map((st, i) => ({ '@type': 'HowToStep', position: i + 1, name: st.title.replace(/^\d+\.\s*/, ''), text: st.desc })),
   };
 }
 
@@ -689,68 +730,96 @@ const CANONICAL_OVERRIDE: Record<string, string> = {
 
 PAGE_SCHEMA['/seo/free-audit'] = [
   faqPageSchema(phase1Pages.seoFreeAudit.faqs),
+  webPageSchema('/seo/free-audit', PAGE_META['/seo/free-audit'].title, PAGE_META['/seo/free-audit'].description, phase1Pages.seoFreeAudit.lastUpdated),
+  serviceSchema('/seo/free-audit', PAGE_META['/seo/free-audit'].title, "SEO audit", PAGE_META['/seo/free-audit'].description, true),
+  howToSchema("SEO audit process", phase1Pages.seoFreeAudit.process),
   breadcrumbSchema([['Home', '/'], ["SEO Services in Ahmedabad", '/seo-services-ahmedabad'], ["Free SEO Audit", '/seo/free-audit/']]),
 ];
 PAGE_SCHEMA['/google-ads-audit-ahmedabad'] = [
   faqPageSchema(phase1Pages.googleAdsAudit.faqs),
+  webPageSchema('/google-ads-audit-ahmedabad', PAGE_META['/google-ads-audit-ahmedabad'].title, PAGE_META['/google-ads-audit-ahmedabad'].description, phase1Pages.googleAdsAudit.lastUpdated),
+  serviceSchema('/google-ads-audit-ahmedabad', PAGE_META['/google-ads-audit-ahmedabad'].title, "Google Ads audit", PAGE_META['/google-ads-audit-ahmedabad'].description, true),
+  howToSchema("Google Ads audit process", phase1Pages.googleAdsAudit.process),
   breadcrumbSchema([['Home', '/'], ["Google Ads Agency in Ahmedabad", '/google-ads-agency-ahmedabad'], ["Google Ads Audit", '/google-ads-audit-ahmedabad/']]),
 ];
 PAGE_SCHEMA['/website-redesign-services-ahmedabad'] = [
   faqPageSchema(phase1Pages.websiteRedesign.faqs),
+  webPageSchema('/website-redesign-services-ahmedabad', PAGE_META['/website-redesign-services-ahmedabad'].title, PAGE_META['/website-redesign-services-ahmedabad'].description, phase1Pages.websiteRedesign.lastUpdated),
+  serviceSchema('/website-redesign-services-ahmedabad', PAGE_META['/website-redesign-services-ahmedabad'].title, "Website redesign", PAGE_META['/website-redesign-services-ahmedabad'].description),
   breadcrumbSchema([['Home', '/'], ["Website Development in Ahmedabad", '/website-development-services-ahmedabad/'], ["Website Redesign Services", '/website-redesign-services-ahmedabad/']]),
 ];
 PAGE_SCHEMA['/website-maintenance-amc-ahmedabad'] = [
   faqPageSchema(phase1Pages.websiteMaintenance.faqs),
+  webPageSchema('/website-maintenance-amc-ahmedabad', PAGE_META['/website-maintenance-amc-ahmedabad'].title, PAGE_META['/website-maintenance-amc-ahmedabad'].description, phase1Pages.websiteMaintenance.lastUpdated),
+  serviceSchema('/website-maintenance-amc-ahmedabad', PAGE_META['/website-maintenance-amc-ahmedabad'].title, "Website maintenance", PAGE_META['/website-maintenance-amc-ahmedabad'].description),
   breadcrumbSchema([['Home', '/'], ["Website Development in Ahmedabad", '/website-development-services-ahmedabad/'], ["Website Maintenance and AMC", '/website-maintenance-amc-ahmedabad/']]),
 ];
 PAGE_SCHEMA['/seo/pricing'] = [
   faqPageSchema(phase2Pages.seoPricing.faqs),
+  webPageSchema('/seo/pricing', PAGE_META['/seo/pricing'].title, PAGE_META['/seo/pricing'].description, phase2Pages.seoPricing.lastUpdated),
   breadcrumbSchema([['Home', '/'], ["SEO Services in Ahmedabad", '/seo-services-ahmedabad'], ["SEO Packages and Pricing", '/seo/pricing/']]),
 ];
 PAGE_SCHEMA['/seo/doctors-hospitals-ahmedabad'] = [
   faqPageSchema(phase2Pages.seoDoctors.faqs),
+  webPageSchema('/seo/doctors-hospitals-ahmedabad', PAGE_META['/seo/doctors-hospitals-ahmedabad'].title, PAGE_META['/seo/doctors-hospitals-ahmedabad'].description, phase2Pages.seoDoctors.lastUpdated),
+  serviceSchema('/seo/doctors-hospitals-ahmedabad', PAGE_META['/seo/doctors-hospitals-ahmedabad'].title, "Healthcare SEO", PAGE_META['/seo/doctors-hospitals-ahmedabad'].description),
   breadcrumbSchema([['Home', '/'], ["SEO Services in Ahmedabad", '/seo-services-ahmedabad'], ["SEO for Doctors and Hospitals", '/seo/doctors-hospitals-ahmedabad/']]),
 ];
 PAGE_SCHEMA['/seo/manufacturers-b2b-gujarat'] = [
   faqPageSchema(phase2Pages.seoManufacturers.faqs),
+  webPageSchema('/seo/manufacturers-b2b-gujarat', PAGE_META['/seo/manufacturers-b2b-gujarat'].title, PAGE_META['/seo/manufacturers-b2b-gujarat'].description, phase2Pages.seoManufacturers.lastUpdated),
+  serviceSchema('/seo/manufacturers-b2b-gujarat', PAGE_META['/seo/manufacturers-b2b-gujarat'].title, "B2B SEO", PAGE_META['/seo/manufacturers-b2b-gujarat'].description),
   breadcrumbSchema([['Home', '/'], ["SEO Services in Ahmedabad", '/seo-services-ahmedabad'], ["SEO for Manufacturers and B2B", '/seo/manufacturers-b2b-gujarat/']]),
 ];
 PAGE_SCHEMA['/google-ads-pricing-ahmedabad'] = [
   faqPageSchema(phase2Pages.googleAdsPricing.faqs),
+  webPageSchema('/google-ads-pricing-ahmedabad', PAGE_META['/google-ads-pricing-ahmedabad'].title, PAGE_META['/google-ads-pricing-ahmedabad'].description, phase2Pages.googleAdsPricing.lastUpdated),
   breadcrumbSchema([['Home', '/'], ["Google Ads Agency in Ahmedabad", '/google-ads-agency-ahmedabad'], ["Google Ads Pricing", '/google-ads-pricing-ahmedabad/']]),
   { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Google Ads budget and break-even calculator', url: `${SITE_URL}/google-ads-pricing-ahmedabad/`, applicationCategory: 'BusinessApplication', operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' } },
 ];
 PAGE_SCHEMA['/google-ads-for-doctors-ahmedabad'] = [
   faqPageSchema(phase2Pages.googleAdsDoctors.faqs),
+  webPageSchema('/google-ads-for-doctors-ahmedabad', PAGE_META['/google-ads-for-doctors-ahmedabad'].title, PAGE_META['/google-ads-for-doctors-ahmedabad'].description, phase2Pages.googleAdsDoctors.lastUpdated),
+  serviceSchema('/google-ads-for-doctors-ahmedabad', PAGE_META['/google-ads-for-doctors-ahmedabad'].title, "Google Ads management for healthcare providers", PAGE_META['/google-ads-for-doctors-ahmedabad'].description),
   breadcrumbSchema([['Home', '/'], ["Google Ads Agency in Ahmedabad", '/google-ads-agency-ahmedabad'], ["Google Ads for Doctors and Hospitals", '/google-ads-for-doctors-ahmedabad/']]),
 ];
 PAGE_SCHEMA['/meta-ads-agency-ahmedabad/pricing'] = [
   faqPageSchema(phase2Pages.metaAdsPricing.faqs),
+  webPageSchema('/meta-ads-agency-ahmedabad/pricing', PAGE_META['/meta-ads-agency-ahmedabad/pricing'].title, PAGE_META['/meta-ads-agency-ahmedabad/pricing'].description, phase2Pages.metaAdsPricing.lastUpdated),
   breadcrumbSchema([['Home', '/'], ["Meta Ads Agency in Ahmedabad", '/meta-ads-agency-ahmedabad/'], ["Meta Ads Pricing", '/meta-ads-agency-ahmedabad/pricing/']]),
 ];
 PAGE_SCHEMA['/meta-ads-agency-ahmedabad/clinics-doctors'] = [
   faqPageSchema(phase2Pages.metaAdsClinics.faqs),
+  webPageSchema('/meta-ads-agency-ahmedabad/clinics-doctors', PAGE_META['/meta-ads-agency-ahmedabad/clinics-doctors'].title, PAGE_META['/meta-ads-agency-ahmedabad/clinics-doctors'].description, phase2Pages.metaAdsClinics.lastUpdated),
+  serviceSchema('/meta-ads-agency-ahmedabad/clinics-doctors', PAGE_META['/meta-ads-agency-ahmedabad/clinics-doctors'].title, "Meta Ads management for healthcare providers", PAGE_META['/meta-ads-agency-ahmedabad/clinics-doctors'].description),
   breadcrumbSchema([['Home', '/'], ["Meta Ads Agency in Ahmedabad", '/meta-ads-agency-ahmedabad/'], ["Meta Ads for Doctors and Clinics", '/meta-ads-agency-ahmedabad/clinics-doctors/']]),
 ];
 PAGE_SCHEMA['/website-development-cost-ahmedabad'] = [
   faqPageSchema(phase2WebPages.websiteDevCost.faqs),
+  webPageSchema('/website-development-cost-ahmedabad', PAGE_META['/website-development-cost-ahmedabad'].title, PAGE_META['/website-development-cost-ahmedabad'].description, phase2WebPages.websiteDevCost.lastUpdated),
   breadcrumbSchema([['Home', '/'], ["Website Development in Ahmedabad", '/website-development-services-ahmedabad/'], ["Website Development Cost", '/website-development-cost-ahmedabad/']]),
 ];
 PAGE_SCHEMA['/website-design-cost-ahmedabad'] = [
   faqPageSchema(phase2WebPages.websiteDesignCost.faqs),
+  webPageSchema('/website-design-cost-ahmedabad', PAGE_META['/website-design-cost-ahmedabad'].title, PAGE_META['/website-design-cost-ahmedabad'].description, phase2WebPages.websiteDesignCost.lastUpdated),
   breadcrumbSchema([['Home', '/'], ["Website Development in Ahmedabad", '/website-development-services-ahmedabad/'], ["Website Design Cost", '/website-design-cost-ahmedabad/']]),
 ];
 PAGE_SCHEMA['/website-packages-ahmedabad'] = [
   faqPageSchema(phase2WebPages.websitePackages.faqs),
+  webPageSchema('/website-packages-ahmedabad', PAGE_META['/website-packages-ahmedabad'].title, PAGE_META['/website-packages-ahmedabad'].description, phase2WebPages.websitePackages.lastUpdated),
   breadcrumbSchema([['Home', '/'], ["Website Development in Ahmedabad", '/website-development-services-ahmedabad/'], ["Website Packages", '/website-packages-ahmedabad/']]),
   { '@context': 'https://schema.org', '@type': 'ItemList', name: 'Website packages', itemListElement: ['Starter', 'Business', 'Growth', 'Custom'].map((n, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'Service', name: `${n} website package`, provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, areaServed: 'Ahmedabad' } })) },
 ];
 PAGE_SCHEMA['/website-design-for-doctors-ahmedabad'] = [
   faqPageSchema(phase2WebPages.websiteDoctors.faqs),
+  webPageSchema('/website-design-for-doctors-ahmedabad', PAGE_META['/website-design-for-doctors-ahmedabad'].title, PAGE_META['/website-design-for-doctors-ahmedabad'].description, phase2WebPages.websiteDoctors.lastUpdated),
+  serviceSchema('/website-design-for-doctors-ahmedabad', PAGE_META['/website-design-for-doctors-ahmedabad'].title, "Healthcare website design", PAGE_META['/website-design-for-doctors-ahmedabad'].description),
   breadcrumbSchema([['Home', '/'], ["Website Development in Ahmedabad", '/website-development-services-ahmedabad/'], ["Website Design for Doctors and Hospitals", '/website-design-for-doctors-ahmedabad/']]),
 ];
 PAGE_SCHEMA['/website-design-for-manufacturers-ahmedabad'] = [
   faqPageSchema(phase2WebPages.websiteManufacturers.faqs),
+  webPageSchema('/website-design-for-manufacturers-ahmedabad', PAGE_META['/website-design-for-manufacturers-ahmedabad'].title, PAGE_META['/website-design-for-manufacturers-ahmedabad'].description, phase2WebPages.websiteManufacturers.lastUpdated),
+  serviceSchema('/website-design-for-manufacturers-ahmedabad', PAGE_META['/website-design-for-manufacturers-ahmedabad'].title, "Manufacturer and exporter website design", PAGE_META['/website-design-for-manufacturers-ahmedabad'].description),
   breadcrumbSchema([['Home', '/'], ["Website Development in Ahmedabad", '/website-development-services-ahmedabad/'], ["Website Design for Manufacturers and Exporters", '/website-design-for-manufacturers-ahmedabad/']]),
 ];
 

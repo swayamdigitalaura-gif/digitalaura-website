@@ -389,7 +389,7 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     description: "Ahmedabad Meta ads agency for Facebook, Instagram and WhatsApp lead generation. Clear process, lead tracking and a free account review.",
   },
   '/digital-marketing-agency-ahmedabad': {
-    title: "Digital Marketing Agency in Ahmedabad | Digital Aura",
+    title: "Digital Marketing Services in Ahmedabad | Digital Aura",
     description: "Digital Aura is a digital marketing agency in Ahmedabad offering SEO, Google Ads, Meta Ads, website development, and AI automation under one in-house team.",
   },
   '/digital-marketing-agency-gujarat': {

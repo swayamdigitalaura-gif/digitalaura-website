@@ -496,6 +496,13 @@ export const phase2Pages: Record<string, LocalServiceConfig> = {
         ],
       },
       {
+        kind: "calculator",
+        id: "budget-calculator",
+        title: "Google Ads budget calculator",
+        subtext: "Type in your own numbers to see what a monthly budget could produce. It runs in your browser and nothing is sent to us.",
+        variant: "ads-budget",
+      },
+      {
         kind: "cards",
         id: "fee-models",
         title: "Flat fee, percentage of spend or performance pricing",
@@ -529,6 +536,13 @@ export const phase2Pages: Record<string, LocalServiceConfig> = {
           { title: "Break-even ROAS for stores", desc: "For online stores, divide 1 by your gross margin to find the minimum return on ad spend." },
           { title: "When to wait", desc: "If search demand is tiny, margins are thin or nobody can answer enquiries quickly, fix those first or consider Meta Ads or SEO." },
         ],
+      },
+      {
+        kind: "calculator",
+        id: "break-even-calculator",
+        title: "Break-even calculator: how much can you pay per enquiry?",
+        subtext: "Find the most you can spend to win an enquiry or a customer before ads start losing money.",
+        variant: "break-even",
       },
       {
         kind: "compare",
@@ -795,6 +809,13 @@ export const phase2Pages: Record<string, LocalServiceConfig> = {
           { title: "Reporting", desc: "Report frequency, dashboard access and review calls are agreed upfront." },
           { title: "Ownership", desc: "Your ad account, Pixel, creatives and data stay yours. See our cancellation and refund policy." },
         ],
+      },
+      {
+        kind: "calculator",
+        id: "break-even-calculator",
+        title: "Break-even calculator: how much can you pay per lead?",
+        subtext: "Enter your sale value, margin and close rate to see the most you can pay per enquiry. It runs in your browser and nothing is sent to us.",
+        variant: "break-even",
       },
       {
         kind: "compare",

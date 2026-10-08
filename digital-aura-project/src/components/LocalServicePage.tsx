@@ -14,6 +14,7 @@ import Testimonials from "@/components/Testimonials";
 import { ArrowRight, ChevronDown, Check, MapPin } from "lucide-react";
 import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
+import AdsCalculator, { type CalculatorVariant } from "@/components/AdsCalculators";
 
 export interface IncludedItem { title: string; desc: string; }
 export interface FaqItem { q: string; a: string; }
@@ -25,7 +26,8 @@ export interface ExtraList { title: string; items: string[]; tone: "good" | "bad
 export type ExtraSection =
   | { kind: "text"; id: string; title: string; paragraphs: string[]; links?: { label: string; href: string }[] }
   | { kind: "cards"; id: string; title: string; subtext?: string; items: ExtraCard[]; footnote?: string }
-  | { kind: "compare"; id: string; title: string; subtext?: string; left: ExtraList; right: ExtraList; footnote?: string };
+  | { kind: "compare"; id: string; title: string; subtext?: string; left: ExtraList; right: ExtraList; footnote?: string }
+  | { kind: "calculator"; id: string; title: string; subtext?: string; variant: CalculatorVariant; footnote?: string };
 export interface RelatedService { title: string; desc: string; points: string[]; href: string; }
 
 export interface LocalServiceConfig {
@@ -92,6 +94,15 @@ const ExtraBlock = ({ section, accent }: { section: ExtraSection; accent: string
             ))}
           </div>
         )}
+      </div>
+    );
+  }
+  if (section.kind === "calculator") {
+    return (
+      <div>
+        {heading}
+        <AdsCalculator variant={section.variant} accent={accent} />
+        {note(section.footnote)}
       </div>
     );
   }

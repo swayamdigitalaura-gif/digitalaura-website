@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Instagram, Linkedin } from "lucide-react";
 
 export interface TeamMember { name: string; role: string; bio: string; photo: string; }
@@ -26,18 +26,36 @@ const instagramEmbedHtml = (id: string) =>
 
 export const ReelCard = ({ id, label, accent }: { id: string; label: string; accent: string }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const [failed, setFailed] = useState(false);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    if (!("IntersectionObserver" in window)) { processInstagram(); return; }
-    const io = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { processInstagram(); io.disconnect(); } }, { rootMargin: "400px" });
+    let timer: number | undefined;
+    const start = () => {
+      processInstagram();
+      // If Instagram does not answer (privacy mode, blockers, restricted account), show a plain link card instead of an empty box.
+      timer = window.setTimeout(() => {
+        const f = el.querySelector("iframe.instagram-media");
+        if (!f || f.getBoundingClientRect().height < 100) setFailed(true);
+      }, 10000);
+    };
+    if (!("IntersectionObserver" in window)) { start(); return () => window.clearTimeout(timer); }
+    const io = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { start(); io.disconnect(); } }, { rootMargin: "400px" });
     io.observe(el);
-    return () => io.disconnect();
+    return () => { io.disconnect(); window.clearTimeout(timer); };
   }, []);
   const url = `https://www.instagram.com/reel/${id}/`;
   return (
     <div className="rounded-2xl overflow-hidden border bg-white" style={{ borderColor: "#E5E7EB" }}>
-      <div ref={ref} className="da-ig" style={{ minHeight: 480 }} aria-label={label} dangerouslySetInnerHTML={{ __html: instagramEmbedHtml(id) }} />
+      {failed ? (
+        <a href={url} target="_blank" rel="noopener noreferrer" className="flex w-full flex-col items-center justify-center gap-3 px-5 text-center text-white" style={{ minHeight: 360, background: "linear-gradient(160deg, #0A1628, #FF6B2B)" }}>
+          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/15 text-2xl">&#9654;</span>
+          <span className="text-base font-bold">Watch this reel on Instagram</span>
+          <span className="text-sm opacity-80">@sambhavshah2</span>
+        </a>
+      ) : (
+        <div ref={ref} className="da-ig" style={{ minHeight: 480 }} aria-label={label} dangerouslySetInnerHTML={{ __html: instagramEmbedHtml(id) }} />
+      )}
       <div className="px-4 py-3 flex items-center justify-between gap-3 text-sm border-t" style={{ borderColor: "#E5E7EB" }}>
         <span className="text-[#4B5563]">Reel by Sambhav Shah</span>
         <a href={url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-bold underline" style={{ color: accent }}>

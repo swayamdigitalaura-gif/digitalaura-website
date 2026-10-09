@@ -246,18 +246,6 @@ export const phase2WebEnhancements: Record<string, Enhancement> = {
     faqTitle: "Website Cost FAQs",
     sources: [WEB_VITALS, GOOGLE_SEO_GUIDE],
     extraAdd: [
-      {
-        kind: "cards",
-        id: "example-briefs",
-        title: "Four example briefs and what each needs",
-        subtext: "Scope examples, not price quotes. Your own brief is quoted in writing.",
-        items: [
-          { title: "A clinic website", desc: "Doctor profiles, treatment pages, a WhatsApp or request-form booking route, Google Business Profile and careful, doctor-reviewed content." },
-          { title: "A manufacturer catalogue", desc: "A structured product catalogue, specification tables, certificate downloads and an RFQ form that captures product and quantity." },
-          { title: "A D2C online store", desc: "Catalogue, payments, shipping, order emails and product schema on Shopify or WooCommerce." },
-          { title: "A booking system", desc: "Logins, calendars, payments and reminders. This usually needs a custom build and is scoped separately." },
-        ],
-      },
     ],
   },
   websiteDesignCost: {

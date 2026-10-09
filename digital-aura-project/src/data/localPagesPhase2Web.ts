@@ -77,6 +77,8 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "cards",
         id: "by-site-type",
+        eyebrow: "Cost by site type",
+        slot: "early",
         title: "Website cost by type of site",
         subtext: "Cost direction only. Your written quote has the real figure.",
         items: [
@@ -91,7 +93,53 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
       },
       {
         kind: "cards",
+        id: "example-briefs",
+        eyebrow: "Example briefs",
+        slot: "early",
+        title: "Four example briefs and what each needs",
+        subtext: "Scope examples, not price quotes. Your own brief is quoted in writing.",
+        items: [
+          { title: "A clinic website", desc: "Doctor profiles, treatment pages, a WhatsApp or request-form booking route, Google Business Profile and careful, doctor-reviewed content." },
+          { title: "A manufacturer catalogue", desc: "A structured product catalogue, specification tables, certificate downloads and an RFQ form that captures product and quantity." },
+          { title: "A D2C online store", desc: "Catalogue, payments, shipping, order emails and product schema on Shopify or WooCommerce." },
+          { title: "A booking system", desc: "Logins, calendars, payments and reminders. This usually needs a custom build and is scoped separately." },
+        ],
+      },
+      {
+        kind: "text",
+        id: "small-business",
+        eyebrow: "Small businesses",
+        slot: "early",
+        title: "How much should a small business spend on a website?",
+        paragraphs: [
+          "Start from the job the website has to do, not from a number. A site that only has to look credible and take WhatsApp enquiries is a smaller project than one that has to rank for competitive searches, take payments or handle bookings.",
+          "A useful way to decide: work out what one new customer is worth to you, then think about how many extra enquiries a good website could bring. Nobody can promise a number of enquiries, but this shows whether a bigger or smaller site makes sense for you.",
+          "If your budget is tight, start with a focused site that does the basics well and can grow, rather than a large site with thin pages. Our packages show how a small site can be extended later.",
+        ],
+        links: [{ label: "Website packages", href: "/website-packages-ahmedabad/" }, { label: "Website design cost", href: "/website-design-cost-ahmedabad/" }, { label: "Website redesign services", href: "/website-redesign-services-ahmedabad/" }],
+      },
+      {
+        kind: "cards",
+        id: "ecommerce-cost",
+        eyebrow: "Online stores",
+        slot: "early",
+        title: "Ecommerce website cost in Ahmedabad: what changes",
+        subtext: "An online store costs more than a business website because it has to take orders, not just enquiries. These are the parts that change the scope.",
+        items: [
+          { title: "Catalogue size and product data", desc: "Ten products and five hundred products are different projects. Product data, variants, images and categories have to be prepared, imported and checked, and that work grows with the catalogue." },
+          { title: "Shopify store", desc: "Quick to launch, with a monthly platform fee and app costs. A good fit when you want to sell fast and keep the technical side simple.", href: "/services/shopify-development/", cta: "Shopify development" },
+          { title: "WooCommerce store", desc: "More control and flexibility on WordPress, with hosting, updates and security that need regular care.", href: "/services/woocommerce-development/", cta: "WooCommerce development" },
+          { title: "Payments, shipping and tax set-up", desc: "Payment gateways, shipping rules, GST and order emails all need to be set up and tested, and gateway fees are charged by the provider." },
+          { title: "Product pages and SEO", desc: "Category and product pages need clear structure, product schema and speed to be found in search.", href: "/seo-services-ahmedabad", cta: "SEO services in Ahmedabad" },
+          { title: "After launch", desc: "Plugins or apps, payment fees, updates, backups and support continue after launch, so ask for the yearly cost, not only the build quote." },
+        ],
+        footnote: "Cost direction only. Your written quote has the real figure, and it lists what is in and out of scope.",
+      },
+      {
+        kind: "cards",
         id: "drivers",
+        eyebrow: "Cost drivers",
+        slot: "early",
         title: "What actually moves the price",
         items: [
           { title: "Unique layouts, not page count", desc: "Ten blog posts share one layout, but ten service pages might need three. Layouts drive design and build effort." },
@@ -106,6 +154,8 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "cards",
         id: "platforms",
+        eyebrow: "Platforms",
+        slot: "early",
         title: "Platform choice and what it does to the price",
         items: [
           { title: "WordPress and WooCommerce", desc: "A flexible, widely supported choice, usually lower to start. Needs regular updates and security care." },
@@ -116,7 +166,25 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
       },
       {
         kind: "cards",
+        id: "project-stages",
+        eyebrow: "How a project runs",
+        slot: "early",
+        title: "The stages of a website project, and what you approve at each",
+        subtext: "Knowing the stages makes quotes easier to compare, because each stage should be in the scope.",
+        items: [
+          { tag: "Stage 1", title: "Discovery and sitemap", desc: "We learn about your business, customers and goals, then agree the list of pages. You approve the sitemap." },
+          { tag: "Stage 2", title: "Design", desc: "Wireframes and visual design for each unique layout, for mobile and desktop. You approve the design before building starts." },
+          { tag: "Stage 3", title: "Build", desc: "Pages are built on the chosen platform with forms, integrations and a content system you can edit yourself." },
+          { tag: "Stage 4", title: "Content", desc: "Text and images are placed. Late content is the most common cause of delay, so we agree who provides what and by when." },
+          { tag: "Stage 5", title: "Testing", desc: "We check phones, browsers, forms, speed and tracking before the site goes live." },
+          { tag: "Stage 6", title: "Launch and handover", desc: "The site goes live, redirects from any old site are checked, and you get access to everything you own, with a short training." },
+        ],
+      },
+      {
+        kind: "cards",
         id: "after-launch",
+        eyebrow: "After launch",
+        slot: "early",
         title: "What it costs after launch",
         subtext: "Ask about these before you sign.",
         items: [
@@ -131,6 +199,7 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "compare",
         id: "compare-quotes",
+        eyebrow: "Compare quotes",
         title: "How to compare website quotes",
         left: { title: "Red flags", tone: "bad", items: ["No list of pages or layouts", "No mention of mobile design, speed or SEO set-up", "100 percent payment upfront", "Domain or hosting registered in the vendor's name", "No support period or ownership terms"] },
         right: { title: "Ask every vendor", tone: "good", items: ["How many unique layouts are included?", "Who writes and who photographs?", "What platform and why?", "What do I own at launch?", "What happens if scope changes?"] },
@@ -138,6 +207,7 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "cards",
         id: "who-to-hire",
+        eyebrow: "Who to hire",
         title: "Freelancer, agency or DIY builder: who fits which budget",
         items: [
           { title: "DIY builders and freelancers", desc: "Can be enough for a very simple site. Risk is continuity, support and depth." },
@@ -148,11 +218,38 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "cards",
         id: "payments",
+        eyebrow: "Timeline and payments",
         title: "Timeline and payment terms",
         items: [
           { title: "Timeline", desc: "Depends on size and complexity. The usual cause of delay is slow content and feedback." },
           { title: "Milestone payments", desc: "Payment stages are stated in your proposal." },
           { title: "Scope changes", desc: "Changes after approval are quoted before work starts." },
+        ],
+      },
+      {
+        kind: "cards",
+        id: "scoped-projects",
+        eyebrow: "Proof",
+        title: "Ahmedabad projects: what they were and what they needed",
+        subtext: "Real client work. Open the case study to see the brief and the result.",
+        items: [
+          { title: "Prism Calibration Centre", desc: "A B2B website rebuilt for search and AI visibility.", href: "/case-studies/prism-calibration/", cta: "Read the case study" },
+          { title: "IVF Clinic", desc: "Search-led work for a fertility clinic. Open it for the brief and the result.", href: "/case-studies/ivf-clinic/", cta: "Read the case study" },
+          { title: "Riant Bikes", desc: "A website with an online booking system and fleet management.", href: "/case-studies/riant-bikes/", cta: "Read the case study" },
+          { title: "DP Electrical Repairs", desc: "A local service business website and local search work.", href: "/case-studies/dp-electrical-repairs/", cta: "Read the case study" },
+        ],
+        footnote: "Results vary by business. Each case study states what was done.",
+      },
+      {
+        kind: "checklist",
+        id: "what-we-need",
+        eyebrow: "Get a quote",
+        title: "What to send us so your quote is accurate",
+        subtext: "The more of this you can share, the closer the first quote will be. A short WhatsApp message is enough to start.",
+        groups: [
+          { title: "About the site", items: ["What the website must do: enquiries, sales, bookings or credibility", "The pages you think you need, or two or three sites you like", "Anything it must connect to, such as WhatsApp, a CRM, a payment gateway or a booking tool"] },
+          { title: "Content and brand", items: ["Who will write the text and supply the photos", "Your logo and brand colours, if you have them", "Whether you need Gujarati or Hindi pages"] },
+          { title: "Practical", items: ["Your current website address, if you have one", "Your deadline and any launch date", "Who approves the work on your side"] },
         ],
       },
     ],
@@ -234,6 +331,8 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "cards",
         id: "approaches",
+        eyebrow: "Design approaches",
+        slot: "early",
         title: "Design approaches: template, semi-custom, fully custom",
         items: [
           { title: "Template-customised", desc: "A purchased theme styled to your brand. Fastest and lowest cost, but less unique." },
@@ -243,8 +342,23 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
         ],
       },
       {
+        kind: "checklist",
+        id: "deliverables",
+        eyebrow: "What you pay for",
+        slot: "early",
+        title: "What a website design fee actually covers",
+        subtext: "Ask for this list from any designer. If a quote does not name these items, ask what is missing.",
+        groups: [
+          { title: "Planning", items: ["Sitemap and page list", "Wireframes for each unique layout", "A plan for what visitors should do on each page"] },
+          { title: "Visual design", items: ["Home page and key page designs", "Mobile layouts, not only desktop", "Typography, colours and image style", "Gujarati or Hindi typography, if needed"] },
+          { title: "Handover", items: ["Design files and a style guide", "Licences for any images used", "Layouts ready for a developer to build"] },
+        ],
+      },
+      {
         kind: "compare",
         id: "design-vs-dev",
+        eyebrow: "Design vs development",
+        slot: "early",
         title: "Design cost vs development cost",
         subtext: "Design decides how the site looks and works. Development builds it.",
         left: { title: "Design", tone: "good", items: ["Structure and wireframes", "Visual design and mobile layouts", "Typography and imagery", "Design files"] },
@@ -254,6 +368,8 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "cards",
         id: "factors",
+        eyebrow: "Cost drivers",
+        slot: "early",
         title: "What drives design cost",
         items: [
           { title: "Unique layouts", desc: "Not total pages. Ten blog posts share one layout." },
@@ -265,7 +381,26 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
       },
       {
         kind: "cards",
+        id: "price-reality",
+        eyebrow: "Price reality",
+        slot: "early",
+        title: "Why design prices in Ahmedabad vary so much",
+        subtext: "Two quotes for \"a website design\" can describe very different work.",
+        items: [
+          { title: "Original or resold", desc: "Some designs are a purchased template with your logo added. Others are drawn from wireframes up for your business. The work, and the price, are very different." },
+          { title: "Who designs it", desc: "Experience, process and review all affect quality. Ask who will design your site and open their earlier work on your phone." },
+          { title: "What is included", desc: "Mobile layouts, revision rounds, file handover and image licences are sometimes left out of low quotes." },
+          { title: "How many layouts", desc: "A site with many unique page types needs more design time than one with a few repeated layouts." },
+          { title: "Ownership", desc: "A low price can come with design files held by the vendor, which makes it harder to move or extend the site later." },
+          { title: "What happens after handover", desc: "Ask what is covered afterwards, such as small fixes and questions from the developer." },
+        ],
+        footnote: "We do not quote from a rate card. Your written quote lists the deliverables, number of layouts and review rounds.",
+      },
+      {
+        kind: "cards",
         id: "by-industry",
+        eyebrow: "Industries",
+        slot: "early",
         title: "Design by industry",
         items: [
           { title: "Clinics and hospitals", desc: "Doctor and department layouts, trust signals and appointment flow." },
@@ -278,6 +413,8 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "cards",
         id: "around-design",
+        eyebrow: "Around the design",
+        slot: "early",
         title: "Costs around the design",
         subtext: "These are often separate from the design fee.",
         items: [
@@ -289,7 +426,23 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
       },
       {
         kind: "cards",
+        id: "design-stages",
+        eyebrow: "Process",
+        title: "Our design process and timeline",
+        subtext: "Each stage ends with your approval, so nothing is built on a guess.",
+        items: [
+          { tag: "Stage 1", title: "Brief and references", desc: "You share what the site must do, sites you like and your brand assets." },
+          { tag: "Stage 2", title: "Sitemap and wireframes", desc: "We agree the page list and sketch each unique layout before any colour or image is chosen." },
+          { tag: "Stage 3", title: "Visual design", desc: "Home page and key layouts for desktop and mobile, with typography and imagery." },
+          { tag: "Stage 4", title: "Review rounds", desc: "You send one consolidated list of changes per round. The number of rounds is in the proposal." },
+          { tag: "Stage 5", title: "Handover", desc: "Design files, style guide and image licences are handed over, and the layouts go to development." },
+        ],
+        footnote: "Timeline depends on the approach and how quickly feedback arrives. We give dates in the proposal.",
+      },
+      {
+        kind: "cards",
         id: "revisions",
+        eyebrow: "Revisions and ownership",
         title: "Revisions, approvals and ownership",
         items: [
           { title: "Revision rounds", desc: "One consolidated list of changes per round. The number of rounds is stated in the proposal." },
@@ -300,9 +453,35 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "compare",
         id: "judge",
+        eyebrow: "Judge a quote",
         title: "How to judge a design quote and portfolio",
         left: { title: "Check", tone: "good", items: ["Open three live sites on your phone: speed, menu and readability", "Check designs are not reused across clients", "Ask who designs: named designer, in-house or outsourced", "Ask what files you receive"] },
         right: { title: "Red flags", tone: "bad", items: ["Only desktop mockups", "No wireframes", "Design files not handed over", "Same layout in every portfolio piece"] },
+      },
+      {
+        kind: "cards",
+        id: "design-proof",
+        eyebrow: "Proof",
+        title: "Design work we have shipped in Ahmedabad",
+        subtext: "Real client work. Open the case study to see the brief and the result.",
+        items: [
+          { title: "Prism Calibration Centre", desc: "A B2B website rebuilt for search and AI visibility.", href: "/case-studies/prism-calibration/", cta: "Read the case study" },
+          { title: "IVF Clinic", desc: "Search-led work for a fertility clinic. Open it for the brief and the result.", href: "/case-studies/ivf-clinic/", cta: "Read the case study" },
+          { title: "Riant Bikes", desc: "A website with an online booking system and fleet management.", href: "/case-studies/riant-bikes/", cta: "Read the case study" },
+          { title: "DP Electrical Repairs", desc: "A local service business website and local search work.", href: "/case-studies/dp-electrical-repairs/", cta: "Read the case study" },
+        ],
+        footnote: "Results vary by business. Each case study states what was done.",
+      },
+      {
+        kind: "text",
+        id: "about-design-guide",
+        eyebrow: "About this guide",
+        title: "Who is behind this guide",
+        paragraphs: [
+          "This guide is published by Digital Aura, a digital marketing and web development agency based at 713, Shilp Arcade, Sardar Patel Ring Road, Hanspura, Ahmedabad. The agency is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing, and has delivered 750+ projects for 120+ clients.",
+          "We write about website design cost in plain terms because most bad website projects start with a quote nobody compared properly. We update this page when our process or terms change, and the date at the top shows when it was last reviewed.",
+        ],
+        links: [{ label: "About Digital Aura", href: "/about/" }, { label: "Founder on LinkedIn", href: "https://www.linkedin.com/in/sambhav-shah/" }, { label: "Contact us", href: "/contact/" }],
       },
     ],
     faqs: [
@@ -380,6 +559,8 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "cards",
         id: "tiers",
+        eyebrow: "The four packages",
+        slot: "early",
         title: "Compare the four packages",
         subtext: "Your quote lists the exact pages, layouts and price for the tier you choose.",
         items: [
@@ -391,8 +572,24 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
         footnote: "We do not publish package prices on this page yet. Tell us which tier fits and we will send a written quote.",
       },
       {
+        kind: "checklist",
+        id: "package-contents",
+        eyebrow: "What each includes",
+        slot: "early",
+        title: "What typically sits in each package",
+        subtext: "A guide to the difference between the tiers. Your written quote lists the exact pages and features for the tier you choose.",
+        groups: [
+          { title: "Starter", items: ["Key pages for your business", "A lead form and WhatsApp button", "Google Business Profile link", "Basic on-page SEO and analytics"] },
+          { title: "Business", items: ["Service pages, blog, FAQ and testimonials", "Forms routed to email and WhatsApp", "A content system you can edit", "Schema basics and analytics"] },
+          { title: "Growth", items: ["Dedicated service and location pages", "SEO architecture and conversion-focused layouts", "CRM or WhatsApp integration", "Built to receive paid traffic"] },
+          { title: "Custom", items: ["Logins, bookings, payments or dashboards", "ERP or CRM integrations", "Scoped separately with a written specification"] },
+        ],
+      },
+      {
         kind: "cards",
         id: "picker",
+        eyebrow: "Quick picker",
+        slot: "early",
         title: "Which package fits you in 20 seconds",
         items: [
           { title: "Choose Starter if", desc: "You need a credible site quickly and have a small number of services." },
@@ -404,6 +601,8 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "calculator",
         id: "package-picker",
+        eyebrow: "1-minute picker",
+        slot: "early",
         title: "Which package is right for you? A 1-minute picker",
         subtext: "Answer five questions to see which package usually fits. Nothing you choose is sent to us.",
         variant: "package-picker",
@@ -411,6 +610,8 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "compare",
         id: "exclusions",
+        eyebrow: "In and out",
+        slot: "early",
         title: "What is not included, and what to plan for",
         left: { title: "Usually extra", tone: "bad", items: ["Content writing and photography", "Logo and brand identity", "Premium plugin or theme licences", "Paid APIs and payment gateway fees", "Additional languages and extra pages", "SEO and ads after launch", "Business email hosting"] },
         right: { title: "Included in every package", tone: "good", items: ["Mobile-first design", "Domain, hosting and SSL set-up", "SSL", "Analytics and Search Console", "Forms, WhatsApp and call buttons", "Launch checklist and handover"] },
@@ -418,6 +619,7 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "cards",
         id: "year-two",
+        eyebrow: "After year one",
         title: "After year one: hosting, domain and care plans",
         items: [
           { title: "Renewals", desc: "Domain, hosting, SSL, email and backups renew each year. Your proposal lists them." },
@@ -428,6 +630,7 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "cards",
         id: "terms",
+        eyebrow: "Terms",
         title: "Timelines, payments and ownership",
         items: [
           { title: "Timeline", desc: "Depends on the package and how quickly you provide content and feedback." },
@@ -438,6 +641,7 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "cards",
         id: "industries",
+        eyebrow: "By industry",
         title: "Which package for which industry",
         items: [
           { title: "Clinics and hospitals", desc: "Usually Business or Growth. See website design for doctors." },
@@ -445,6 +649,53 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
           { title: "Schools and academies", desc: "Business for most, Growth for multi-campus." },
           { title: "Online stores", desc: "Growth or Custom depending on catalogue and features." },
         ],
+      },
+      {
+        kind: "cards",
+        id: "upgrade-path",
+        eyebrow: "Growing later",
+        title: "Start small, upgrade when you need to",
+        subtext: "A package is a starting point, not a ceiling.",
+        items: [
+          { tag: "Starter to Business", title: "More to say", desc: "Add service pages, a blog and testimonials once you have more to tell customers." },
+          { tag: "Business to Growth", title: "More competition", desc: "Add dedicated service and location pages and a stronger SEO structure when you compete for search or run ads." },
+          { tag: "To Custom", title: "More complex needs", desc: "Add logins, bookings or integrations when the business needs them." },
+        ],
+        footnote: "A site built on a platform that can grow avoids rebuilding from scratch.",
+      },
+      {
+        kind: "compare",
+        id: "package-market",
+        eyebrow: "Compare",
+        title: "How to compare package prices in the Ahmedabad market",
+        subtext: "Package lists look similar until you read what sits behind each line.",
+        left: { title: "Check in any package list", tone: "good", items: ["The pages and layouts included", "Whether mobile design, speed and SEO set-up are included", "What renews each year and what it costs", "Who owns the domain, hosting and files", "Revision rounds and the support period"] },
+        right: { title: "Red flags", tone: "bad", items: ["\"Unlimited pages\" with no limit stated", "A very low price with no list of what is included", "Domain or hosting registered in the vendor's name", "No mention of renewals after year one", "A price that changes once you ask for mobile design or content"] },
+      },
+      {
+        kind: "cards",
+        id: "package-proof",
+        eyebrow: "Proof",
+        title: "Websites we have built",
+        subtext: "Real client work. Open the case study to see the brief and the result.",
+        items: [
+          { title: "Prism Calibration Centre", desc: "A B2B website rebuilt for search and AI visibility.", href: "/case-studies/prism-calibration/", cta: "Read the case study" },
+          { title: "IVF Clinic", desc: "Search-led work for a fertility clinic. Open it for the brief and the result.", href: "/case-studies/ivf-clinic/", cta: "Read the case study" },
+          { title: "Riant Bikes", desc: "A website with an online booking system and fleet management.", href: "/case-studies/riant-bikes/", cta: "Read the case study" },
+          { title: "DP Electrical Repairs", desc: "A local service business website and local search work.", href: "/case-studies/dp-electrical-repairs/", cta: "Read the case study" },
+        ],
+        footnote: "Results vary by business. Each case study states what was done.",
+      },
+      {
+        kind: "text",
+        id: "about-package-guide",
+        eyebrow: "About this guide",
+        title: "Who is behind this guide",
+        paragraphs: [
+          "This guide is published by Digital Aura, a digital marketing and web development agency based at 713, Shilp Arcade, Sardar Patel Ring Road, Hanspura, Ahmedabad. The agency is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing, and has delivered 750+ projects for 120+ clients.",
+          "We write about website packages in plain terms because most bad website projects start with a quote nobody compared properly. We update this page when our process or terms change, and the date at the top shows when it was last reviewed.",
+        ],
+        links: [{ label: "About Digital Aura", href: "/about/" }, { label: "Founder on LinkedIn", href: "https://www.linkedin.com/in/sambhav-shah/" }, { label: "Contact us", href: "/contact/" }],
       },
     ],
     faqs: [

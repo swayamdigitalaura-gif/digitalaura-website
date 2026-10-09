@@ -211,6 +211,115 @@ function BreadcrumbAndServiceSchema() {
   );
 }
 
+/* ---------------- Videos and team (owner-supplied, 2026-10-09) ---------------- */
+
+const SEO_REELS = ["DXwAkPRMl9c", "DTktVf7gdFf", "DcoMJiOskzp"];
+
+const TEAM_MEMBERS = [
+  { name: "Jinali Lodariya", role: "SEO Executive", photo: "/team/jinali.png", bio: "Jinali Lodariya specializes in search engine optimization (SEO), focusing on keyword research, on-page optimization, content optimization, and website performance. She works to improve search engine rankings, organic traffic, and overall website visibility." },
+  { name: "Bhavesh Bhavsar", role: "Digital Marketing Executive", photo: "/team/bhavesh.webp", bio: "Bhavesh Bhavsar works on digital marketing activities focused on improving online visibility and business growth. He contributes to SEO, website optimization, content planning, and digital marketing performance to help businesses strengthen their online presence." },
+  { name: "Satish Prajapati", role: "Project Manager & Digital Marketing", photo: "/team/satish.png", bio: "Satish Prajapati leads project management and digital marketing initiatives, ensuring smooth project execution and effective marketing strategies. He focuses on team coordination, campaign planning, and delivering results that support business growth." },
+];
+
+const FOUNDER_SAME_AS = ["https://www.linkedin.com/in/sambhav-shah/", "https://www.instagram.com/sambhavshah2/"];
+
+function ReelCard({ id, n }: { id: string; n: number }) {
+  const [on, setOn] = useState(false);
+  const url = `https://www.instagram.com/reel/${id}/`;
+  const label = `SEO reel ${n}`;
+  return (
+    <div className="overflow-hidden rounded-2xl border border-border bg-white">
+      {on ? (
+        <iframe src={`${url}embed/`} title={label} loading="lazy" allowFullScreen className="block w-full border-0" style={{ height: 560 }} />
+      ) : (
+        <button
+          type="button"
+          onClick={() => setOn(true)}
+          aria-label={`Play: ${label}`}
+          className="flex w-full flex-col items-center justify-center gap-3 text-white"
+          style={{ height: 320, background: "linear-gradient(160deg, #0A1628, #FF6B2B)" }}
+        >
+          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/15">
+            <Zap className="h-6 w-6" />
+          </span>
+          <span className="px-4 text-center text-sm font-bold">{label}: tap to play</span>
+        </button>
+      )}
+      <div className="flex items-center justify-between gap-3 px-4 py-3 text-sm">
+        <span className="text-ink-muted">Reel by Sambhav Shah</span>
+        <a href={url} target="_blank" rel="noopener noreferrer" className="font-bold text-brand-orange underline">Watch on Instagram</a>
+      </div>
+    </div>
+  );
+}
+
+function SEOReels() {
+  return (
+    <section id="seo-videos" className="bg-white">
+      <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-20">
+        <SectionHeading eyebrow="Watch" title="SEO in short videos" sub="Short reels on SEO from our founder, Sambhav Shah." />
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {SEO_REELS.map((id, i) => <ReelCard key={id} id={id} n={i + 1} />)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TeamSection() {
+  return (
+    <section id="team" className="bg-surface-2">
+      <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-20">
+        <SectionHeading
+          eyebrow="Our team"
+          title="The people behind your SEO"
+          sub="Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. Meet the in-house team you will work with at our Hanspura office, Ahmedabad."
+        />
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
+          {TEAM_MEMBERS.map((m) => (
+            <div key={m.name} className="rounded-2xl border border-border bg-white p-5">
+              <div className="flex items-center gap-3">
+                <img src={m.photo} alt={`${m.name}, ${m.role} at Digital Aura`} width={56} height={56} loading="lazy" className="h-14 w-14 shrink-0 rounded-full bg-surface-2 object-cover" />
+                <div>
+                  <h3 className="font-bold leading-tight">{m.name}</h3>
+                  <p className="text-sm font-semibold text-brand-orange">{m.role}</p>
+                </div>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-ink-muted">{m.bio}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-6 text-center text-sm text-ink-muted">
+          Founder Sambhav Shah:{" "}
+          <a className="font-bold text-brand-orange underline" href={FOUNDER_SAME_AS[0]} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          {" · "}
+          <a className="font-bold text-brand-orange underline" href={FOUNDER_SAME_AS[1]} target="_blank" rel="noopener noreferrer">Instagram</a>
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function PeopleSchema() {
+  const org = { "@type": "ProfessionalService", name: "Digital Aura", url: "https://thedigitalaura.com/" };
+  const people = [
+    { "@context": "https://schema.org", "@type": "Person", name: "Sambhav Shah", jobTitle: "Founder", worksFor: org, url: "https://thedigitalaura.com/about/", sameAs: FOUNDER_SAME_AS },
+    ...TEAM_MEMBERS.map((m) => ({ "@context": "https://schema.org", "@type": "Person", name: m.name, jobTitle: m.role, description: m.bio, worksFor: org })),
+  ];
+  return (
+    <>
+      {people.map((p) => (
+        <script
+          key={p.name}
+          type="application/ld+json"
+          // Static, hard-coded JSON, no user input.
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(p) }}
+        />
+      ))}
+    </>
+  );
+}
+
 /* ---------------- Reusable atoms ---------------- */
 
 function Reveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
@@ -2112,6 +2221,7 @@ function Index() {
     <div className="min-h-screen bg-white pb-20 md:pb-0">
       <LocalBusinessSchema />
       <BreadcrumbAndServiceSchema />
+      <PeopleSchema />
       <FAQSchema />
       <Toaster position="top-center" richColors />
       <MainSiteNavbar />
@@ -2139,6 +2249,8 @@ function Index() {
         <Compare />
         <ChooseSEO />
         <SEOvsAds />
+        <SEOReels />
+        <TeamSection />
         <FAQ />
         <FinalCTA />
       </main>

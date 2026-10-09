@@ -18,6 +18,7 @@ import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
 import AdsCalculator, { type CalculatorVariant } from "@/components/AdsCalculators";
 import PageLeadForm, { type LeadFormConfig } from "@/components/PageLeadForm";
+import { ReelGrid, TeamGrid, FounderLinks, type TeamMember } from "@/components/ReelsAndTeam";
 
 export interface IncludedItem { title: string; desc: string; }
 export interface FaqItem { q: string; a: string; }
@@ -32,7 +33,9 @@ export type ExtraSection =
   | { kind: "cards"; id: string; title: string; subtext?: string; items: ExtraCard[]; footnote?: string }
   | { kind: "compare"; id: string; title: string; subtext?: string; left: ExtraList; right: ExtraList; footnote?: string }
   | { kind: "calculator"; id: string; title: string; subtext?: string; variant: CalculatorVariant; footnote?: string }
-  | { kind: "checklist"; id: string; title: string; subtext?: string; groups: { title: string; items: string[] }[]; footnote?: string };
+  | { kind: "checklist"; id: string; title: string; subtext?: string; groups: { title: string; items: string[] }[]; footnote?: string }
+  | { kind: "reels"; id: string; title: string; subtext?: string; ids: string[]; topic: string; footnote?: string }
+  | { kind: "team"; id: string; title: string; subtext?: string; members: TeamMember[]; founderLinks?: boolean; footnote?: string };
 export interface RelatedService { title: string; desc: string; points: string[]; href: string; }
 
 export interface LocalServiceConfig {
@@ -116,6 +119,12 @@ const ExtraBlock = ({ section, accent }: { section: ExtraSection; accent: string
         )}
       </div>
     );
+  }
+  if (section.kind === "reels") {
+    return (<div>{heading}<ReelGrid ids={section.ids} accent={accent} topic={section.topic} />{note(section.footnote)}</div>);
+  }
+  if (section.kind === "team") {
+    return (<div>{heading}<TeamGrid members={section.members} accent={accent} />{section.founderLinks && <FounderLinks accent={accent} />}{note(section.footnote)}</div>);
   }
   if (section.kind === "checklist") {
     return (

@@ -256,10 +256,24 @@ const raw: Record<string, ExtraEntry> = {
   /* ───────────── phase 2: web ───────────── */
   websiteDevCost: {
     relatedKeys: ["webPillar", "webDesignCost", "webPackages", "wordpress", "shopify", "webAmc", "seoPillar"],
+    storyLayout: true,
+    statsBand: [
+      { value: "120+", label: "Clients served" },
+      { value: "750+", label: "Projects delivered" },
+      { value: "10+", label: "Years in digital marketing" },
+      { value: "Free", label: "Written website quote" },
+    ],
+    faqAdd: [
+      { q: "Can you redesign my existing website instead of building a new one?", a: "Yes. A redesign keeps what works, such as your content and search rankings, and rebuilds what does not. We check redirects so you do not lose Google traffic. Our website redesign service explains how we decide between a refresh, a redesign and a rebuild." },
+      { q: "Do you also do SEO and ads after the website is live?", a: "Yes. The same team can run SEO, Google Ads and Meta ads after launch. They are quoted separately from the website, and you can use another provider if you prefer." },
+      { q: "What do I need to send to get an accurate quote?", a: "What the site must do, the pages you need or a few sites you like, who will provide the content, whether you need Gujarati or Hindi, your current website address and your deadline. A short WhatsApp message with these is enough to start." },
+      { q: "Can I start with a small website and add pages later?", a: "Yes. We build the site so it can grow, with a layout and content system that handles new pages. Our packages show how a Starter site can be extended into a Business or Growth site." },
+    ],
     extraAdd: [
       {
         kind: "checklist",
         id: "quote-comparison",
+        eyebrow: "Quote grid",
         title: "A grid for comparing website quotes (copy it)",
         subtext: "Fill one column per vendor. Blank cells are the questions to ask.",
         groups: [
@@ -270,6 +284,8 @@ const raw: Record<string, ExtraEntry> = {
       {
         kind: "cards",
         id: "three-year-cost",
+        eyebrow: "Total cost",
+        slot: "early",
         title: "Three-year cost of ownership: what to add up",
         subtext: "The build quote is only the first line.",
         items: [
@@ -281,14 +297,40 @@ const raw: Record<string, ExtraEntry> = {
           { title: "A redesign reserve", desc: "Most sites need a refresh within a few years." },
         ],
       },
+      {
+        kind: "text",
+        id: "about-guide",
+        eyebrow: "About this guide",
+        title: "Who is behind this guide",
+        paragraphs: [
+          "This guide is published by Digital Aura, a digital marketing and web development agency based at 713, Shilp Arcade, Sardar Patel Ring Road, Hanspura, Ahmedabad. The agency is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing, and has delivered 750+ projects for 120+ clients.",
+          "We write about website cost in plain terms because most bad website projects start with a quote nobody compared properly. We update this page when our process or terms change, and the date at the top shows when it was last reviewed.",
+        ],
+        links: [{ label: "About Digital Aura", href: "/about/" }, { label: "Founder on LinkedIn", href: "https://www.linkedin.com/in/sambhav-shah/" }, { label: "Contact us", href: "/contact/" }],
+      },
     ],
   },
   websiteDesignCost: {
     relatedKeys: ["webPillar", "webCost", "webPackages", "webRedesign", "branding", "seoPillar"],
+    storyLayout: true,
+    statsBand: [
+      { value: "120+", label: "Clients served" },
+      { value: "750+", label: "Projects delivered" },
+      { value: "10+", label: "Years in digital marketing" },
+      { value: "Free", label: "Written website quote" },
+    ],
+    faqAdd: [
+      { q: "Do you also build the website you design?", a: "Yes. Design and development work best together because layouts are planned with the platform in mind. We can also hand over the design files if you want to use another developer." },
+      { q: "Can you refresh the design of my current site without rebuilding it?", a: "Often yes. A design refresh can update layouts, typography and imagery on the existing platform. If the platform itself is the problem, a redesign or rebuild may suit better, and we will say so." },
+      { q: "What is a design system and do I need one?", a: "A design system is a set of reusable components, colours and rules that keep many pages consistent. A small site rarely needs one. A large site with many page types often does." },
+      { q: "How do I know a design will bring enquiries?", a: "Nobody can promise results from design alone. We design around the action visitors should take on each page, test on real phones and check speed, which are the things that help a page convert." },
+    ],
     extraAdd: [
       {
         kind: "cards",
         id: "accessibility-speed",
+        eyebrow: "Quality",
+        slot: "early",
         title: "Accessibility and speed are design deliverables",
         items: [
           { title: "Contrast and readable text", desc: "Colours and type chosen so text is easy to read in daylight on a phone." },
@@ -300,13 +342,30 @@ const raw: Record<string, ExtraEntry> = {
       {
         kind: "text",
         id: "customer-worth",
+        eyebrow: "Value",
+        slot: "early",
         title: "What is one new customer worth to you?",
         paragraphs: ["Before choosing a design budget, work out what one new customer is worth to your business. A design that brings in a few more enquiries a month can pay for itself, but nobody can promise it."],
         links: [{ label: "Use the break-even calculator", href: "/google-ads-pricing-ahmedabad/#break-even-calculator" }],
       },
     ],
   },
-  websitePackages: { relatedKeys: ["webPillar", "webCost", "webDesignCost", "webAmc", "webDoctors", "webManuf", "gadsPillar"] },
+  websitePackages: {
+    relatedKeys: ["webPillar", "webCost", "webDesignCost", "webAmc", "webDoctors", "webManuf", "gadsPillar"],
+    storyLayout: true,
+    statsBand: [
+      { value: "120+", label: "Clients served" },
+      { value: "750+", label: "Projects delivered" },
+      { value: "10+", label: "Years in digital marketing" },
+      { value: "Free", label: "Written website quote" },
+    ],
+    faqAdd: [
+      { q: "Which package do online stores need?", a: "Usually Growth or Custom, depending on the size of the catalogue and the features. Our website development cost guide explains what changes for an online store." },
+      { q: "Do the packages include SEO?", a: "Basic on-page SEO, analytics and Search Console are included. Ongoing SEO, such as new content and link work, is separate, and our SEO team can continue after launch." },
+      { q: "Can I see examples of websites for each package?", a: "Yes. Ask on the form or on WhatsApp and we will share relevant work. You can also read our case studies." },
+      { q: "Can I add Google Ads or Meta ads after the website is live?", a: "Yes. Growth sites are built to receive paid traffic, and the same team can run Google Ads or Meta ads. They are quoted separately." },
+    ],
+  },
   websiteDoctors: {
     relatedKeys: ["webPillar", "webRedesign", "webAmc", "webManuf", "seoDoctors", "gadsDoctors"],
     extraAdd: [

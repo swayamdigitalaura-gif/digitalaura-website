@@ -223,59 +223,21 @@ const TEAM_MEMBERS = [
 
 const FOUNDER_SAME_AS = ["https://www.linkedin.com/in/sambhav-shah/", "https://www.instagram.com/sambhavshah2/"];
 
-/**
- * Official Instagram embed (blockquote + embed.js), as supplied by the owner. The blockquote is in the page
- * HTML (crawlable, and a working link if the script is blocked); embed.js is loaded only when a reel is near the
- * viewport and turns the blockquote into the Instagram player with its own thumbnail.
- */
-type InstgrmWindow = Window & { instgrm?: { Embeds: { process: () => void } } };
-let igLoading = false;
-function processInstagram() {
-  const w = window as InstgrmWindow;
-  if (w.instgrm) { w.instgrm.Embeds.process(); return; }
-  if (igLoading) return;
-  igLoading = true;
-  const s = document.createElement("script");
-  s.async = true;
-  s.src = "https://www.instagram.com/embed.js";
-  s.onload = () => (window as InstgrmWindow).instgrm?.Embeds.process();
-  document.body.appendChild(s);
-}
-const instagramEmbedHtml = (id: string) =>
-  `<style>.da-ig{position:relative;overflow:hidden}.da-ig iframe.instagram-media{max-width:100%!important;min-width:0!important}</style><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/${id}/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:1px;max-width:540px;min-width:300px;padding:0;width:calc(100% - 2px);"><div style="padding:16px;"><a href="https://www.instagram.com/reel/${id}/?utm_source=ig_embed&amp;utm_campaign=loading" style="background:#FFFFFF;line-height:0;padding:0 0;text-align:center;text-decoration:none;width:100%;" target="_blank" rel="noopener"><div style="padding:19% 0;"></div><div style="color:#3897f0;font-family:Arial,sans-serif;font-size:14px;font-weight:550;line-height:18px;">View this post on Instagram</div><div style="padding:19% 0;"></div></a><p style="color:#c9c8cd;font-family:Arial,sans-serif;font-size:14px;line-height:17px;margin:8px 0 0;text-align:center;"><a href="https://www.instagram.com/reel/${id}/?utm_source=ig_embed&amp;utm_campaign=loading" style="color:#c9c8cd;text-decoration:none;" target="_blank" rel="noopener">A post shared by Sambhav Shah - Digital Marketing (@sambhavshah2)</a></p></div></blockquote>`;
-
+/** Reel card in the style of the video testimonials page: thumbnail (/reels/seo-<n>.webp) that opens the reel on Instagram. */
 function ReelCard({ id, n }: { id: string; n: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [failed, setFailed] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    let timer: number | undefined;
-    const start = () => {
-      processInstagram();
-      // If Instagram does not answer (privacy mode, blockers, restricted account), show a plain link card instead of an empty box.
-      timer = window.setTimeout(() => {
-        const f = el.querySelector("iframe.instagram-media");
-        if (!f || f.getBoundingClientRect().height < 100) setFailed(true);
-      }, 10000);
-    };
-    if (!("IntersectionObserver" in window)) { start(); return () => window.clearTimeout(timer); }
-    const io = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { start(); io.disconnect(); } }, { rootMargin: "400px" });
-    io.observe(el);
-    return () => { io.disconnect(); window.clearTimeout(timer); };
-  }, []);
+  const label = `SEO reel ${n}`;
+  const thumb = `/reels/seo-${n}.webp`;
   const url = `https://www.instagram.com/reel/${id}/`;
   return (
     <div className="overflow-hidden rounded-2xl border border-border bg-white">
-      {failed ? (
-        <a href={url} target="_blank" rel="noopener noreferrer" className="flex w-full flex-col items-center justify-center gap-3 px-5 text-center text-white" style={{ minHeight: 360, background: "linear-gradient(160deg, #0A1628, #FF6B2B)" }}>
-          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/15 text-2xl">&#9654;</span>
-          <span className="text-base font-bold">Watch this reel on Instagram</span>
-          <span className="text-sm opacity-80">@sambhavshah2</span>
-        </a>
-      ) : (
-        <div ref={ref} className="da-ig" style={{ minHeight: 480 }} aria-label={`SEO reel ${n}`} dangerouslySetInnerHTML={{ __html: instagramEmbedHtml(id) }} />
-      )}
+      <a href={url} target="_blank" rel="noopener noreferrer" aria-label={`Watch this reel on Instagram: ${label}`} className="group relative block w-full overflow-hidden text-white" style={{ aspectRatio: "333 / 540", background: "linear-gradient(160deg, #0A1628, #FF6B2B)" }}>
+        <img src={thumb} alt={`${label} thumbnail`} loading="lazy" className="absolute inset-0 h-full w-full object-cover" onError={(e) => { e.currentTarget.style.display = "none"; }} />
+        <span className="absolute inset-0 bg-black/20 transition-all group-hover:bg-black/30" />
+        <span className="absolute inset-0 flex items-center justify-center">
+          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-lg transition-transform group-hover:scale-110" style={{ color: "#FF6B2B" }}>&#9654;</span>
+        </span>
+        <span className="absolute right-3 top-3 rounded-full px-2.5 py-1 text-[10px] font-bold" style={{ background: "rgba(10,22,40,0.75)" }}>Instagram</span>
+      </a>
       <div className="flex items-center justify-between gap-3 border-t border-border px-4 py-3 text-sm">
         <span className="text-ink-muted">Reel by Sambhav Shah</span>
         <a href={url} target="_blank" rel="noopener noreferrer" className="font-bold text-brand-orange underline">Watch on Instagram</a>

@@ -359,7 +359,7 @@ export const pillarExtras: Record<string, Enhancement> = {
     },
     relatedServices: rel("metaPricing", "metaClinics", "gadsPillar", "socialAgency", "adAgency", "dmAgency", "seoPillar", "cro"),
     extraAdd: [
-      { kind: "reels", id: "meta-videos", title: "Watch: Meta ads in short videos", subtext: "Short, practical videos from our founder, Sambhav Shah, on how Meta ads work for businesses in Ahmedabad.", ids: REELS.meta, topic: "Meta ads" },
+      { kind: "reels", id: "meta-videos", title: "Watch: Meta ads in short videos", subtext: "Short, practical videos from our founder, Sambhav Shah, on how Meta ads work for businesses in Ahmedabad.", ids: REELS.meta, topic: "Meta ads", slug: "meta" },
       { kind: "team", id: "meta-team", title: "The team behind your Meta ads", subtext: "Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. Meet the in-house team you will work with at our Hanspura office, Ahmedabad.", members: [TEAM.satish, TEAM.bhavesh], founderLinks: true },
     ],
     faqAdd: [

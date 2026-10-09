@@ -645,6 +645,7 @@ function QuickAnswer() {
             </p>
             <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
               <li><a className="underline" href="/seo/free-audit/">Free SEO audit</a></li>
+              <li><a className="underline" href="/downloads/Digital-Aura-Sample-SEO-Audit-Report.pdf" target="_blank" rel="noopener">Sample SEO audit report (PDF)</a></li>
               <li><a className="underline" href="/seo/pricing/">SEO packages and pricing</a></li>
               <li><a className="underline" href="/blog/seo-cost-ahmedabad-2026/">SEO cost in Ahmedabad (2026 guide)</a></li>
               <li><a className="underline" href="/seo/doctors-hospitals-ahmedabad/">SEO for doctors and hospitals</a></li>

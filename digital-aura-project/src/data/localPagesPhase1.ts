@@ -97,6 +97,7 @@ const phase1Raw: Record<string, LocalServiceConfig> = {
           { tag: "Priorities", title: "Fixes ranked by impact and effort", desc: "A single list you can hand to a developer, a writer or us." },
           { tag: "Detail", title: "Findings by area", desc: "Each of the 14 areas with what we found, why it matters and how to fix it." },
           { tag: "Wins", title: "Quick wins", desc: "Changes that are small, safe and worth doing this month." },
+          { tag: "Sample", title: "See a real sample report", desc: "A full SEO audit report (PDF, 31 pages) for a business site, with the client name removed. It shows the format, the level of detail and how fixes are ranked.", href: "/downloads/Digital-Aura-Sample-SEO-Audit-Report.pdf", cta: "Download sample report (PDF)" },
         ],
       },
     ],

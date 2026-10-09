@@ -166,7 +166,8 @@ const ExtraBlock = ({ section, accent }: { section: ExtraSection; accent: string
               </h3>
               <p className="mt-2 text-sm text-[#4B5563] leading-relaxed">{it.desc}</p>
               {it.href && it.cta && (
-                <a href={it.href} onClick={() => track("cta_click", { cta_label: it.cta, cta_location: "card" })}
+                <a href={it.href} onClick={() => track(it.href!.endsWith(".pdf") ? "file_download" : "cta_click", { cta_label: it.cta, cta_location: "card", ...(it.href!.endsWith(".pdf") ? { file_name: it.href!.split("/").pop() } : {}) })}
+                  {...(it.href.endsWith(".pdf") ? { target: "_blank", rel: "noopener" } : {})}
                   className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold px-4 py-2 rounded-full border" style={{ color: accent, borderColor: `${accent}40` }}>
                   {it.cta} <ArrowRight className="w-4 h-4" />
                 </a>

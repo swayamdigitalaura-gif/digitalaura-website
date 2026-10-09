@@ -32,6 +32,7 @@ export const CARDS = {
   webManuf: { title: "Website Design for Manufacturers", desc: "Catalogue, RFQ flow and certificates for B2B buyers.", points: ["Catalogue", "RFQ flow"], href: "/website-design-for-manufacturers-ahmedabad/" },
   wordpress: { title: "WordPress Development", desc: "Custom WordPress themes, plugins and WooCommerce.", points: ["Custom themes", "Speed"], href: "/services/wordpress-development/" },
   shopify: { title: "Shopify Development", desc: "Store set-up, themes and apps for online selling.", points: ["Store build", "Apps"], href: "/services/shopify-development/" },
+  fullstackLocal: { title: "Full Stack Development in Ahmedabad", desc: "Custom portals, catalogues and integrations built in Ahmedabad.", points: ["Custom portals", "Integrations"], href: "/full-stack-development-ahmedabad/" },
   fullstack: { title: "Full Stack Development", desc: "Next.js and custom builds for complex needs.", points: ["Custom portals", "Integrations"], href: "/services/full-stack-development/" },
   branding: { title: "Design and Branding", desc: "Logo and brand identity.", points: ["Logo", "Brand kit"], href: "/services/design-branding/" },
   social: { title: "Social Media Marketing", desc: "Organic content that supports your paid campaigns.", points: ["Content planning", "Reels and posts"], href: "/services/social-media-marketing/" },
@@ -309,7 +310,7 @@ const raw: Record<string, ExtraEntry> = {
       },
     ],
   },
-  websiteManufacturers: { relatedKeys: ["webPillar", "webRedesign", "webAmc", "webDoctors", "seoManuf", "fullstack"] },
+  websiteManufacturers: { relatedKeys: ["webPillar", "webRedesign", "webAmc", "webDoctors", "seoManuf", "fullstackLocal", "fullstack"] },
 };
 
 export const pageExtras: Record<string, Enhancement> = Object.fromEntries(

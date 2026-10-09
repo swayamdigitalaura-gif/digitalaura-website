@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
+import { useNoindexWhen } from "@/hooks/useNoindexWhen";
 import {
   ArrowLeft, ArrowRight, Calendar, Clock,
   Linkedin, Link as LinkIcon,
@@ -66,6 +67,8 @@ const BlogPost = () => {
   const [notFound, setNotFound] = useState(false);
   const [related, setRelated] = useState<Blog[]>([]);
   const [latest, setLatest] = useState<Blog[]>([]);
+  // Unknown slug: the server still answers 200 with the SPA shell, so keep it out of the index.
+  useNoindexWhen(notFound || (!loading && !blog));
 
   useEffect(() => {
     setLoading(true);

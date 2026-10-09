@@ -21,6 +21,8 @@ const FAQS = [
   { q: "Can you run Google Ads for doctors and clinics?", a: "Yes, with care. Health advertising has stricter rules from Google and from medical regulators in India, so we keep claims factual, avoid before-and-after promises, and review every ad and page before it goes live." },
   { q: "What do you need from me to start?", a: "Access to your Google Ads account if you have one (or we set one up in your name), your Google Analytics, your website, your phone and WhatsApp numbers, and a clear idea of what a good lead is for your business." },
   { q: "What if my website is not turning clicks into enquiries?", a: "We start by showing where visitors drop off. Then we suggest page changes or build a focused landing page, so the clicks you pay for are more likely to turn into calls, WhatsApp messages and forms." },
+  { q: "Are you a Google Partner agency?", a: "Yes. Digital Aura is a Google Partner agency. That means we are recognised by Google for managing Google Ads accounts, and our campaigns follow Google's own recommended practices. We always run your campaigns inside your own Google Ads account." },
+  { q: "Can you run Google Ads in Gujarati or Hindi?", a: "Yes. We can write and run ads and target audiences in Gujarati, Hindi and English, so you can reach customers in the language they search in across Ahmedabad and Gujarat." },
 ];
 
 function FAQSchema() {

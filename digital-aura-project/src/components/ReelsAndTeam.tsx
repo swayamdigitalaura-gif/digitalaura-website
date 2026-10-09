@@ -1,74 +1,66 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Instagram, Linkedin } from "lucide-react";
 
 export interface TeamMember { name: string; role: string; bio: string; photo: string; }
 
 /**
- * Official Instagram embed (blockquote + embed.js), as supplied by the owner. The blockquote is in the page
- * HTML (crawlable, and a working link if the script is blocked); embed.js is loaded only when a reel is near the
- * viewport and turns the blockquote into the Instagram player with its own thumbnail.
+ * Reel card styled like an Instagram post (profile header, video, "View more on Instagram"). The thumbnail is
+ * public/reels/<service>-<n>.webp and the video public/reels/<service>-<n>.mp4, both hosted on this site because the Instagram
+ * account restricts embedding. Clicking plays the video in place; if the file is missing the card offers the Instagram link.
  */
-type InstgrmWindow = Window & { instgrm?: { Embeds: { process: () => void } } };
-let igLoading = false;
-function processInstagram() {
-  const w = window as InstgrmWindow;
-  if (w.instgrm) { w.instgrm.Embeds.process(); return; }
-  if (igLoading) return;
-  igLoading = true;
-  const s = document.createElement("script");
-  s.async = true;
-  s.src = "https://www.instagram.com/embed.js";
-  s.onload = () => (window as InstgrmWindow).instgrm?.Embeds.process();
-  document.body.appendChild(s);
-}
-const instagramEmbedHtml = (id: string) =>
-  `<style>.da-ig{position:relative;overflow:hidden}.da-ig iframe.instagram-media{max-width:100%!important;min-width:0!important}</style><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/${id}/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:1px;max-width:540px;min-width:300px;padding:0;width:calc(100% - 2px);"><div style="padding:16px;"><a href="https://www.instagram.com/reel/${id}/?utm_source=ig_embed&amp;utm_campaign=loading" style="background:#FFFFFF;line-height:0;padding:0 0;text-align:center;text-decoration:none;width:100%;" target="_blank" rel="noopener"><div style="padding:19% 0;"></div><div style="color:#3897f0;font-family:Arial,sans-serif;font-size:14px;font-weight:550;line-height:18px;">View this post on Instagram</div><div style="padding:19% 0;"></div></a><p style="color:#c9c8cd;font-family:Arial,sans-serif;font-size:14px;line-height:17px;margin:8px 0 0;text-align:center;"><a href="https://www.instagram.com/reel/${id}/?utm_source=ig_embed&amp;utm_campaign=loading" style="color:#c9c8cd;text-decoration:none;" target="_blank" rel="noopener">A post shared by Sambhav Shah - Digital Marketing (@sambhavshah2)</a></p></div></blockquote>`;
-
-export const ReelCard = ({ id, label, accent }: { id: string; label: string; accent: string }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [failed, setFailed] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    let timer: number | undefined;
-    const start = () => {
-      processInstagram();
-      // If Instagram does not answer (privacy mode, blockers, restricted account), show a plain link card instead of an empty box.
-      timer = window.setTimeout(() => {
-        const f = el.querySelector("iframe.instagram-media");
-        if (!f || f.getBoundingClientRect().height < 100) setFailed(true);
-      }, 10000);
-    };
-    if (!("IntersectionObserver" in window)) { start(); return () => window.clearTimeout(timer); }
-    const io = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { start(); io.disconnect(); } }, { rootMargin: "400px" });
-    io.observe(el);
-    return () => { io.disconnect(); window.clearTimeout(timer); };
-  }, []);
+export const ReelCard = ({ id, label, thumb, video }: { id: string; label: string; thumb: string; video: string; accent: string }) => {
+  const [mode, setMode] = useState<"idle" | "playing" | "error">("idle");
+  const [thumbOk, setThumbOk] = useState(true);
   const url = `https://www.instagram.com/reel/${id}/`;
   return (
-    <div className="rounded-2xl overflow-hidden border bg-white" style={{ borderColor: "#E5E7EB" }}>
-      {failed ? (
-        <a href={url} target="_blank" rel="noopener noreferrer" className="flex w-full flex-col items-center justify-center gap-3 px-5 text-center text-white" style={{ minHeight: 360, background: "linear-gradient(160deg, #0A1628, #FF6B2B)" }}>
-          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/15 text-2xl">&#9654;</span>
-          <span className="text-base font-bold">Watch this reel on Instagram</span>
-          <span className="text-sm opacity-80">@sambhavshah2</span>
-        </a>
-      ) : (
-        <div ref={ref} className="da-ig" style={{ minHeight: 480 }} aria-label={label} dangerouslySetInnerHTML={{ __html: instagramEmbedHtml(id) }} />
-      )}
-      <div className="px-4 py-3 flex items-center justify-between gap-3 text-sm border-t" style={{ borderColor: "#E5E7EB" }}>
-        <span className="text-[#4B5563]">Reel by Sambhav Shah</span>
-        <a href={url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-bold underline" style={{ color: accent }}>
-          <Instagram className="w-4 h-4" /> Watch on Instagram
-        </a>
+    <div className="overflow-hidden rounded-lg border bg-white" style={{ borderColor: "#DBDBDB" }}>
+      <div className="flex items-center gap-2 px-3 py-2.5">
+        <img src="/reels/sambhav-avatar.jpg" alt="Sambhav Shah" width={28} height={28} loading="lazy" className="h-7 w-7 shrink-0 rounded-full bg-[#EFEFEF] object-cover" />
+        <div className="min-w-0 flex-1 leading-tight">
+          <p className="truncate text-[11px] font-semibold text-[#262626]">sambhavshah2</p>
+          <p className="truncate text-[10px] text-[#8E8E8E]">Original audio</p>
+        </div>
+        <a href="https://www.instagram.com/sambhavshah2/" target="_blank" rel="noopener noreferrer" className="rounded px-2.5 py-1 text-[11px] font-semibold text-white" style={{ background: "#4C5FEF" }}>View profile</a>
+      </div>
+      <div className="relative w-full overflow-hidden" style={{ aspectRatio: "4 / 5", background: thumbOk ? "#000" : "linear-gradient(160deg, #0A1628, #3a3a5c)" }}>
+        {mode === "playing" ? (
+          <video src={video} poster={thumb} controls autoPlay playsInline preload="auto" className="absolute inset-0 h-full w-full bg-black object-contain" onError={() => setMode("error")} />
+        ) : mode === "error" ? (
+          <a href={url} target="_blank" rel="noopener noreferrer" className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-5 text-center text-white">
+            <span className="text-sm font-bold">This video could not be loaded here</span>
+            <span className="text-xs underline">Watch it on Instagram</span>
+          </a>
+        ) : (
+          <button type="button" onClick={() => setMode("playing")} aria-label={`Play video: ${label}`} className="group absolute inset-0 block h-full w-full">
+            <img src={thumb} alt={`${label} thumbnail`} loading="lazy" className={`absolute inset-0 h-full w-full object-contain ${thumbOk ? "" : "hidden"}`} onError={() => setThumbOk(false)} />
+            <span className="absolute inset-0 flex items-center justify-center">
+              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-[#262626] shadow-lg transition-transform group-hover:scale-110"><span className="ml-1">&#9654;</span></span>
+            </span>
+          </button>
+        )}
+      </div>
+      <div className="px-3 pb-2 pt-2.5">
+        <a href={url} target="_blank" rel="noopener noreferrer" className="text-[11px] font-medium text-[#3897F0]">View more on Instagram</a>
+      </div>
+      <div className="mx-3 border-t border-[#EFEFEF]" />
+      <div className="flex items-center gap-3 px-3 py-2.5 text-[#262626]" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z" /></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 0 1 3 11.5 8.5 8.5 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z" /></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z" /></svg>
+        <span className="ml-auto"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" /></svg></span>
+      </div>
+      <div className="mx-3 border-t border-[#EFEFEF]" />
+      <div className="flex items-center justify-between px-3 py-2.5 text-[11px] text-[#8E8E8E]" aria-hidden="true">
+        <span>Add a comment...</span>
+        <span className="text-[#262626]"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" /></svg></span>
       </div>
     </div>
   );
 };
 
-export const ReelGrid = ({ ids, accent, topic }: { ids: string[]; accent: string; topic: string }) => (
+export const ReelGrid = ({ ids, accent, topic, slug }: { ids: string[]; accent: string; topic: string; slug: string }) => (
   <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-    {ids.map((id, i) => <ReelCard key={id} id={id} label={`${topic} reel ${i + 1}`} accent={accent} />)}
+    {ids.map((id, i) => <ReelCard key={id} id={id} label={`${topic} reel ${i + 1}`} thumb={`/reels/${slug}-${i + 1}.webp`} video={`/reels/${slug}-${i + 1}.mp4`} accent={accent} />)}
   </div>
 );
 

@@ -34,7 +34,7 @@ export type ExtraSection =
   | { kind: "compare"; id: string; title: string; subtext?: string; left: ExtraList; right: ExtraList; footnote?: string }
   | { kind: "calculator"; id: string; title: string; subtext?: string; variant: CalculatorVariant; footnote?: string }
   | { kind: "checklist"; id: string; title: string; subtext?: string; groups: { title: string; items: string[] }[]; footnote?: string }
-  | { kind: "reels"; id: string; title: string; subtext?: string; ids: string[]; topic: string; footnote?: string }
+  | { kind: "reels"; id: string; title: string; subtext?: string; ids: string[]; topic: string; slug: string; footnote?: string }
   | { kind: "team"; id: string; title: string; subtext?: string; members: TeamMember[]; founderLinks?: boolean; footnote?: string };
 export interface RelatedService { title: string; desc: string; points: string[]; href: string; }
 
@@ -121,7 +121,7 @@ const ExtraBlock = ({ section, accent }: { section: ExtraSection; accent: string
     );
   }
   if (section.kind === "reels") {
-    return (<div>{heading}<ReelGrid ids={section.ids} accent={accent} topic={section.topic} />{note(section.footnote)}</div>);
+    return (<div>{heading}<ReelGrid ids={section.ids} accent={accent} topic={section.topic} slug={section.slug} />{note(section.footnote)}</div>);
   }
   if (section.kind === "team") {
     return (<div>{heading}<TeamGrid members={section.members} accent={accent} />{section.founderLinks && <FounderLinks accent={accent} />}{note(section.footnote)}</div>);

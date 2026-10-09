@@ -33,9 +33,38 @@ export const Route = createFileRoute("/google-ads-agency-ahmedabad")({
   component: LandingPage,
 });
 
+/** Breadcrumb and Service structured data. Static JSON, no user input; no prices or ratings. */
+function PageSchema() {
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://thedigitalaura.com/" },
+      { "@type": "ListItem", position: 2, name: "Google Ads Agency in Ahmedabad", item: "https://thedigitalaura.com/google-ads-agency-ahmedabad" },
+    ],
+  };
+  const service = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Google Ads management in Ahmedabad",
+    serviceType: "Google Ads management",
+    url: "https://thedigitalaura.com/google-ads-agency-ahmedabad",
+    description: "Google Ads management for Ahmedabad businesses, run in the client's own account with tracked calls, WhatsApp and form leads.",
+    provider: { "@type": "LocalBusiness", "@id": "https://thedigitalaura.com/#localbusiness", name: "Digital Aura" },
+    areaServed: { "@type": "City", name: "Ahmedabad" },
+  };
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(service) }} />
+    </>
+  );
+}
+
 function LandingPage() {
   return (
     <main className="min-h-screen bg-background font-sans text-foreground pt-[72px]">
+      <PageSchema />
       <Header />
       <Hero />
       <QuickAnswer />

@@ -1162,7 +1162,7 @@ Allow: /</code></pre>
 
 <h2>Where to add structured data first</h2>
 
-<p>Schema markup doesn't force a citation, but it removes ambiguity that can quietly disqualify a page from one. FAQPage schema should only be added when the visible answer text is genuinely present in the page's HTML — adding schema for content that only appears after a click is worse than not adding it. After FAQPage, Article schema (with a real author and publish date) and homepage Organization schema give the clearest signal for the least effort. See <a href="/seo-agency-ahmedabad/">our Ahmedabad SEO team</a>.</p>
+<p>Schema markup doesn't force a citation, but it removes ambiguity that can quietly disqualify a page from one. FAQPage schema should only be added when the visible answer text is genuinely present in the page's HTML — adding schema for content that only appears after a click is worse than not adding it. After FAQPage, Article schema (with a real author and publish date) and homepage Organization schema give the clearest signal for the least effort. See <a href="/seo-services-ahmedabad">our Ahmedabad SEO team</a>.</p>
 
 <h2>What we tested that made no measurable difference</h2>
 
@@ -2320,7 +2320,7 @@ Allow: /</code></pre>
 
 <h2>How Digital Aura prices SEO</h2>
 
-<p>We scope the work after a free audit, then give a written quote that lists what will be done each month, what is excluded and how to leave. We price on scope, not on a keyword count. Start with a <a href="/seo/free-audit/">free SEO audit</a>, or see <a href="/seo/pricing/">our SEO packages page</a>.</p>
+<p>We scope the work after a free audit, then give a written quote that lists what will be done each month, what is excluded and how to leave. We price on scope, not on a keyword count. Start with a <a href="/seo/free-audit/">free SEO audit</a>, or see <a href="/seo/pricing/">our SEO packages page</a>. For the full picture of how we work, see our <a href="/seo-services-ahmedabad">SEO services in Ahmedabad</a>.</p>
 
 <h2>Conclusion</h2>
 

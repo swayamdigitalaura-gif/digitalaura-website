@@ -659,6 +659,8 @@ const PAGE_SCHEMA: Record<string, object | object[]> = {
   '/meta-ads-agency-ahmedabad': [
     {"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Meta Ads Agency in Ahmedabad", "description": "Digital Aura is a Meta Ads agency in Ahmedabad, running Facebook and Instagram ad campaigns for local businesses focused on lead generation, remarketing, and eCommerce sales.", "url": "https://thedigitalaura.com/meta-ads-agency-ahmedabad/", "areaServed": "Ahmedabad, Gujarat, India", "address": {"@type": "PostalAddress", "streetAddress": "713, Shilp Arcade, Sardar Patel Ring Rd, Hanspura", "addressLocality": "Ahmedabad", "addressRegion": "Gujarat", "postalCode": "382330", "addressCountry": "IN"}},
     faqPageSchema(localPages.metaAdsAhmedabad.faqs),
+    breadcrumbSchema([['Home', '/'], ["Meta Ads Agency in Ahmedabad", '/meta-ads-agency-ahmedabad/']]),
+    serviceSchema('/meta-ads-agency-ahmedabad', 'Meta Ads Agency in Ahmedabad', "Meta Ads management", "Facebook and Instagram ad campaigns for Ahmedabad businesses, with tracking set up before spend and monthly reporting on leads."),
   ],
   '/digital-marketing-agency-ahmedabad': [
     {"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Digital Marketing Agency in Ahmedabad", "description": "Digital Aura is a digital marketing agency in Ahmedabad offering SEO, Google Ads, Meta Ads, website development, and AI automation under one in-house team.", "url": "https://thedigitalaura.com/digital-marketing-agency-ahmedabad/", "areaServed": "Ahmedabad, Gujarat, India", "address": {"@type": "PostalAddress", "streetAddress": "713, Shilp Arcade, Sardar Patel Ring Rd, Hanspura", "addressLocality": "Ahmedabad", "addressRegion": "Gujarat", "postalCode": "382330", "addressCountry": "IN"}},
@@ -781,6 +783,7 @@ PAGE_SCHEMA['/website-maintenance-amc-ahmedabad'] = [
 PAGE_SCHEMA['/seo/pricing'] = [
   faqPageSchema(phase2Pages.seoPricing.faqs),
   webPageSchema('/seo/pricing', PAGE_META['/seo/pricing'].title, PAGE_META['/seo/pricing'].description, phase2Pages.seoPricing.lastUpdated),
+  serviceSchema('/seo/pricing', PAGE_META['/seo/pricing'].title, "SEO packages and pricing", PAGE_META['/seo/pricing'].description),
   breadcrumbSchema([['Home', '/'], ["SEO Services in Ahmedabad", '/seo-services-ahmedabad'], ["SEO Packages and Pricing", '/seo/pricing/']]),
 ];
 PAGE_SCHEMA['/seo/doctors-hospitals-ahmedabad'] = [
@@ -798,6 +801,7 @@ PAGE_SCHEMA['/seo/manufacturers-b2b-gujarat'] = [
 PAGE_SCHEMA['/google-ads-pricing-ahmedabad'] = [
   faqPageSchema(phase2Pages.googleAdsPricing.faqs),
   webPageSchema('/google-ads-pricing-ahmedabad', PAGE_META['/google-ads-pricing-ahmedabad'].title, PAGE_META['/google-ads-pricing-ahmedabad'].description, phase2Pages.googleAdsPricing.lastUpdated),
+  serviceSchema('/google-ads-pricing-ahmedabad', PAGE_META['/google-ads-pricing-ahmedabad'].title, "Google Ads management", PAGE_META['/google-ads-pricing-ahmedabad'].description),
   breadcrumbSchema([['Home', '/'], ["Google Ads Agency in Ahmedabad", '/google-ads-agency-ahmedabad'], ["Google Ads Pricing", '/google-ads-pricing-ahmedabad/']]),
   { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Google Ads budget and break-even calculator', url: `${SITE_URL}/google-ads-pricing-ahmedabad/`, applicationCategory: 'BusinessApplication', operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' } },
 ];
@@ -810,6 +814,7 @@ PAGE_SCHEMA['/google-ads-for-doctors-ahmedabad'] = [
 PAGE_SCHEMA['/meta-ads-agency-ahmedabad/pricing'] = [
   faqPageSchema(phase2Pages.metaAdsPricing.faqs),
   webPageSchema('/meta-ads-agency-ahmedabad/pricing', PAGE_META['/meta-ads-agency-ahmedabad/pricing'].title, PAGE_META['/meta-ads-agency-ahmedabad/pricing'].description, phase2Pages.metaAdsPricing.lastUpdated),
+  serviceSchema('/meta-ads-agency-ahmedabad/pricing', PAGE_META['/meta-ads-agency-ahmedabad/pricing'].title, "Meta Ads management", PAGE_META['/meta-ads-agency-ahmedabad/pricing'].description),
   breadcrumbSchema([['Home', '/'], ["Meta Ads Agency in Ahmedabad", '/meta-ads-agency-ahmedabad/'], ["Meta Ads Pricing", '/meta-ads-agency-ahmedabad/pricing/']]),
 ];
 PAGE_SCHEMA['/meta-ads-agency-ahmedabad/clinics-doctors'] = [
@@ -821,11 +826,13 @@ PAGE_SCHEMA['/meta-ads-agency-ahmedabad/clinics-doctors'] = [
 PAGE_SCHEMA['/website-development-cost-ahmedabad'] = [
   faqPageSchema(phase2WebPages.websiteDevCost.faqs),
   webPageSchema('/website-development-cost-ahmedabad', PAGE_META['/website-development-cost-ahmedabad'].title, PAGE_META['/website-development-cost-ahmedabad'].description, phase2WebPages.websiteDevCost.lastUpdated),
+  serviceSchema('/website-development-cost-ahmedabad', PAGE_META['/website-development-cost-ahmedabad'].title, "Website development", PAGE_META['/website-development-cost-ahmedabad'].description),
   breadcrumbSchema([['Home', '/'], ["Website Development in Ahmedabad", '/website-development-services-ahmedabad/'], ["Website Development Cost", '/website-development-cost-ahmedabad/']]),
 ];
 PAGE_SCHEMA['/website-design-cost-ahmedabad'] = [
   faqPageSchema(phase2WebPages.websiteDesignCost.faqs),
   webPageSchema('/website-design-cost-ahmedabad', PAGE_META['/website-design-cost-ahmedabad'].title, PAGE_META['/website-design-cost-ahmedabad'].description, phase2WebPages.websiteDesignCost.lastUpdated),
+  serviceSchema('/website-design-cost-ahmedabad', PAGE_META['/website-design-cost-ahmedabad'].title, "Website design", PAGE_META['/website-design-cost-ahmedabad'].description),
   breadcrumbSchema([['Home', '/'], ["Website Development in Ahmedabad", '/website-development-services-ahmedabad/'], ["Website Design Cost", '/website-design-cost-ahmedabad/']]),
 ];
 PAGE_SCHEMA['/website-packages-ahmedabad'] = [

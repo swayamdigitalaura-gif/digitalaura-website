@@ -173,6 +173,44 @@ function LocalBusinessSchema() {
   );
 }
 
+/* ---------------- Structured data (Breadcrumb + Service) ---------------- */
+
+function BreadcrumbAndServiceSchema() {
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://thedigitalaura.com/" },
+      { "@type": "ListItem", position: 2, name: "SEO Company in Ahmedabad", item: "https://thedigitalaura.com/seo-services-ahmedabad" },
+    ],
+  };
+  const service = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "SEO services in Ahmedabad",
+    serviceType: "Search engine optimization",
+    url: "https://thedigitalaura.com/seo-services-ahmedabad",
+    description:
+      "Technical SEO, local SEO, content and AI search optimisation for Ahmedabad businesses, with monthly reporting on calls, forms and enquiries.",
+    provider: { "@type": "ProfessionalService", name: "Digital Aura", url: "https://thedigitalaura.com/" },
+    areaServed: { "@type": "City", name: "Ahmedabad" },
+  };
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        // Static, hard-coded JSON, no user input.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
+      <script
+        type="application/ld+json"
+        // Static, hard-coded JSON, no user input.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(service) }}
+      />
+    </>
+  );
+}
+
 /* ---------------- Reusable atoms ---------------- */
 
 function Reveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
@@ -608,6 +646,7 @@ function QuickAnswer() {
             <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
               <li><a className="underline" href="/seo/free-audit/">Free SEO audit</a></li>
               <li><a className="underline" href="/seo/pricing/">SEO packages and pricing</a></li>
+              <li><a className="underline" href="/blog/seo-cost-ahmedabad-2026/">SEO cost in Ahmedabad (2026 guide)</a></li>
               <li><a className="underline" href="/seo/doctors-hospitals-ahmedabad/">SEO for doctors and hospitals</a></li>
               <li><a className="underline" href="/seo/manufacturers-b2b-gujarat/">SEO for manufacturers</a></li>
             </ul>
@@ -1731,6 +1770,7 @@ function AreasAndServices() {
     { t: "SEO Audit & Strategy", href: "/services/seo-content-marketing/seo-audit-strategy/" },
     { t: "Free SEO Audit", href: "/seo/free-audit/" },
     { t: "SEO Packages & Pricing", href: "/seo/pricing/" },
+    { t: "SEO Cost in Ahmedabad (2026 guide)", href: "/blog/seo-cost-ahmedabad-2026/" },
     { t: "SEO for Doctors & Hospitals", href: "/seo/doctors-hospitals-ahmedabad/" },
     { t: "SEO for Manufacturers & B2B", href: "/seo/manufacturers-b2b-gujarat/" },
   ];
@@ -2071,6 +2111,7 @@ function Index() {
   return (
     <div className="min-h-screen bg-white pb-20 md:pb-0">
       <LocalBusinessSchema />
+      <BreadcrumbAndServiceSchema />
       <FAQSchema />
       <Toaster position="top-center" richColors />
       <MainSiteNavbar />

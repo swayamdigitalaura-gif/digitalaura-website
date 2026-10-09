@@ -167,6 +167,12 @@ export function CostBreakdown() {
           <a className="font-semibold text-primary underline" href="/seo-services-ahmedabad">SEO company in Ahmedabad</a> and{" "}
           <a className="font-semibold text-primary underline" href="/meta-ads-agency-ahmedabad/">Meta ads agency</a>.
         </p>
+        <p className="text-[14px] text-muted-foreground">
+          More from us: <a className="font-semibold text-primary underline" href="/digital-marketing-agency-ahmedabad/">digital marketing agency in Ahmedabad</a>,{" "}
+          <a className="font-semibold text-primary underline" href="/services/cro/">conversion rate optimisation</a>,{" "}
+          <a className="font-semibold text-primary underline" href="/awards/">awards and recognition</a> and{" "}
+          <a className="font-semibold text-primary underline" href="/service-areas/">the areas we serve</a>.
+        </p>
       </div>
     </Section>
   );

@@ -6,6 +6,9 @@ import { MapPin, ArrowRight } from "lucide-react";
 const HEADING = "#0A1628";
 const ORANGE = "#FF6B2B";
 
+// Served by a separate landing-pages app, so it needs a normal page load, not a client-side route.
+const HARD_NAV = new Set(["/seo-services-ahmedabad"]);
+
 interface AreaLink {
   label: string;
   href: string;
@@ -25,7 +28,7 @@ const groups: AreaGroup[] = [
     color: "#FF6B2B",
     links: [
       { label: "Digital Marketing Agency in Ahmedabad", href: "/digital-marketing-agency-ahmedabad/" },
-      { label: "SEO Agency in Ahmedabad", href: "/seo-agency-ahmedabad/" },
+      { label: "SEO Company in Ahmedabad", href: "/seo-services-ahmedabad" },
       { label: "Google Ads Agency in Ahmedabad", href: "/google-ads-agency-ahmedabad" },
       { label: "Meta Ads Agency in Ahmedabad", href: "/meta-ads-agency-ahmedabad/" },
       { label: "Website Design & Development in Ahmedabad", href: "/website-design-development-ahmedabad/" },
@@ -93,20 +96,23 @@ const ServiceAreasPage = () => {
               </div>
               <p className="text-[13.5px] mb-5 ml-[22px]" style={{ color: "#6B7280" }}>{group.subtitle}</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {group.links.map((link) => (
+                {group.links.map((link) => {
+                  const LinkTag: any = HARD_NAV.has(link.href) ? "a" : Link;
+                  return (
                   <motion.div key={link.href} whileHover={{ y: -2 }} transition={{ duration: 0.15 }}>
-                    <Link
-                      to={link.href}
+                    <LinkTag
+                      {...(HARD_NAV.has(link.href) ? { href: link.href } : { to: link.href })}
                       className="group flex items-center justify-between gap-3 px-5 py-4 rounded-xl border transition-colors"
                       style={{ borderColor: "#E5E7EB" }}
-                      onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = group.color; }}
-                      onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "#E5E7EB"; }}
+                      onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = group.color; }}
+                      onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = "#E5E7EB"; }}
                     >
                       <span className="text-[13.5px] font-medium" style={{ color: HEADING }}>{link.label}</span>
                       <ArrowRight size={15} className="shrink-0 transition-transform group-hover:translate-x-1" style={{ color: group.color }} />
-                    </Link>
+                    </LinkTag>
                   </motion.div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           ))}

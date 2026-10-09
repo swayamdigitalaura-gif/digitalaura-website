@@ -186,7 +186,7 @@ const raw: Record<string, ExtraEntry> = {
     ],
   },
   googleAdsDoctors: {
-    relatedKeys: ["gadsPillar", "gadsPricing", "gadsAudit", "seoDoctors", "metaPillar", "metaClinics", "webDoctors", "cro"],
+    relatedKeys: ["gadsPillar", "gadsPricing", "gadsAudit", "seoPillar", "seoDoctors", "metaPillar", "metaClinics", "webDoctors", "cro"],
     extraAdd: [
       {
         kind: "cards",
@@ -203,7 +203,7 @@ const raw: Record<string, ExtraEntry> = {
     ],
   },
   metaAdsPricing: {
-    relatedKeys: ["metaPillar", "metaClinics", "gadsPricing", "socialAgency", "adAgency", "seoPillar"],
+    relatedKeys: ["metaPillar", "metaClinics", "gadsPillar", "gadsPricing", "socialAgency", "adAgency", "seoPillar"],
     extraAdd: [
       {
         kind: "cards",
@@ -221,7 +221,7 @@ const raw: Record<string, ExtraEntry> = {
     ],
   },
   metaAdsClinics: {
-    relatedKeys: ["metaPillar", "metaPricing", "gadsDoctors", "seoDoctors", "webDoctors", "metaDisabled"],
+    relatedKeys: ["metaPillar", "metaPricing", "gadsPillar", "gadsDoctors", "seoPillar", "seoDoctors", "webDoctors", "metaDisabled"],
     extraAdd: [
       FOR_CLINICS_AGENCY,
       {
@@ -342,7 +342,7 @@ export const pillarExtras: Record<string, Enhancement> = {
       answer: "A Meta ads agency plans and runs Facebook and Instagram campaigns that bring enquiries: it sets the objective and tracking, builds audiences and creative, tests what works, hands leads to your team through forms or WhatsApp, and reports on leads and cost per lead. Boosting a post alone does none of that.",
       points: ["Lead ads and click-to-WhatsApp campaigns", "Tracking set up before spend, so results are measurable", "Monthly reporting on leads, not likes and reach"],
     },
-    relatedServices: rel("metaPricing", "metaClinics", "gadsPillar", "socialAgency", "adAgency", "seoPillar", "cro"),
+    relatedServices: rel("metaPricing", "metaClinics", "gadsPillar", "socialAgency", "adAgency", "dmAgency", "seoPillar", "cro"),
     faqAdd: [
       { q: "What does a Meta ads agency do that I cannot do by boosting posts?", a: "Boosting a post picks a basic objective and audience in one click. An agency sets the right objective and tracking, tests audiences and creative, handles lead follow-up, and reports on leads and cost per lead, not likes or reach." },
       { q: "Do I own my ad account and data?", a: "Account ownership is stated in your proposal. We recommend the ad account and Pixel are in your business's name, so you keep your data if you ever leave." },

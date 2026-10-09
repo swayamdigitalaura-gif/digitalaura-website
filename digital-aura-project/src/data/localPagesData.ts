@@ -1262,7 +1262,7 @@ const localPagesRaw: Record<string, LocalServiceConfig> = {
           "We judge results by leads and cost per lead, not likes or reach, and you get a monthly report that shows what the ad money produced. Boosting a post is not the same thing: it skips the objective, tracking and testing that decide whether ads pay back.",
         ],
         links: [
-          { label: "Get a free account review", href: "#contact" },
+          { label: "Get a free account review", href: "#audit-form" },
           { label: "Google Ads agency in Ahmedabad", href: "/google-ads-agency-ahmedabad" },
           { label: "Meta ads pricing", href: "/meta-ads-agency-ahmedabad/pricing/" },
           { label: "Meta ads for doctors and clinics", href: "/meta-ads-agency-ahmedabad/clinics-doctors/" },
@@ -1313,6 +1313,23 @@ const localPagesRaw: Record<string, LocalServiceConfig> = {
       },
       {
         kind: "cards",
+        id: "monthly-work",
+        eyebrow: "Monthly work",
+        slot: "early",
+        title: "What we manage for you every month",
+        subtext: "Concrete scope, so you can compare it with any other quote.",
+        items: [
+          { title: "Campaign management", desc: "Budgets, bids, audiences and placements checked and adjusted through the month, not left to run on their own." },
+          { title: "New creative to test", desc: "Fresh ad variations each cycle, so you learn which hook and offer work and ads do not go stale." },
+          { title: "Audience refresh", desc: "Custom and lookalike audiences updated from your leads and site visitors, plus remarketing lists." },
+          { title: "Tracking checks", desc: "Pixel and Conversions API events checked so leads and sales are counted correctly." },
+          { title: "Lead quality review", desc: "We ask which leads were good and use that to tighten forms, targeting and creative." },
+          { title: "Report and call", desc: "A monthly report on leads and cost per lead, and a call to agree what to keep, cut and test next." },
+        ],
+        footnote: "Scope depends on your goal and budget. The exact list for your account is written in your proposal.",
+      },
+      {
+        kind: "cards",
         id: "first-30-days",
         eyebrow: "Getting started",
         slot: "early",
@@ -1348,7 +1365,7 @@ const localPagesRaw: Record<string, LocalServiceConfig> = {
         slot: "early",
         title: "Meta ads for Ahmedabad industries: what changes",
         items: [
-          { title: "Clinics and doctors", desc: "Health ads face stricter rules from Meta and from medical regulators. We keep claims factual and avoid before and after promises." },
+          { title: "Clinics and doctors", desc: "Health ads face stricter rules from Meta and from medical regulators. We keep claims factual and avoid before and after promises.", href: "/meta-ads-agency-ahmedabad/clinics-doctors/", cta: "Meta ads for clinics and doctors" },
           { title: "Education and coaching", desc: "Enquiries cluster around admission windows, so campaigns and follow-up need to be ready before the season opens." },
           { title: "Real estate", desc: "Project launches and site visits drive the goal. Lead quality and fast calling matter more than lead volume." },
           { title: "Restaurants and cafes", desc: "Local reach, offers and Reels work well. The aim is footfall and orders, tracked through offers or WhatsApp." },

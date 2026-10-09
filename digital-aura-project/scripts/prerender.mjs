@@ -200,7 +200,7 @@ function startServer() {
 // exactly the SSR bug this script exists to prevent (it happened for real,
 // silently, on 2026-07-28).
 // Routes whose canonical deliberately points elsewhere (see CANONICAL_OVERRIDE in src/components/PageSEO.tsx).
-const CANONICALISED_ROUTES = new Set(['/seo-agency-ahmedabad']);
+const CANONICALISED_ROUTES = new Set(['/seo-agency-ahmedabad', '/website-design-development-ahmedabad']);
 
 /**
  * SSR quality gate. Throws if the prerendered HTML is missing what a crawler (or an AI crawler that

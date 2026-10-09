@@ -1,6 +1,6 @@
 import { chromium } from 'playwright';
 import { spawn } from 'child_process';
-import { writeFileSync, mkdirSync, readFileSync } from 'fs';
+import { writeFileSync, mkdirSync, readFileSync, copyFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -280,6 +280,12 @@ async function main() {
   const allRoutes = [...ROUTES, ...staticSeoBlogRoutes, ...blogRoutes, ...careerRoutes];
   if (AUTO_ADDED.length) console.log(`  ➕  ${AUTO_ADDED.length} route(s) taken from App.tsx: ${AUTO_ADDED.join(', ')}`);
   console.log(`\n🚀  Prerendering ${allRoutes.length} routes (${ROUTES.length} static + ${staticSeoBlogRoutes.length} static SEO posts + ${blogRoutes.length} DB blog posts + ${careerRoutes.length} open job posts) (API → https://thedigitalaura.com/api/)...\n`);
+
+  // Keep the untouched SPA shell as 404.html BEFORE the "/" route overwrites dist/index.html. Nothing uses it until nginx
+  // is told "error_page 404 /404.html" (see the 404 notes in the PR); at that point unknown URLs get a real HTTP 404 and
+  // this shell loads, and the router then renders the NotFound page for the original URL.
+  const shell = join(DIST, 'index.html');
+  if (existsSync(shell)) copyFileSync(shell, join(DIST, '404.html'));
 
   const server = await startServer();
 

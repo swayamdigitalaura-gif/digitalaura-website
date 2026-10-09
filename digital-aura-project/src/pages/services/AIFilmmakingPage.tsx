@@ -178,7 +178,7 @@ const AIFilmmakingPage = () => {
             </Link>
             <a href="#services-list" className="btn-outline-dark px-8 py-4 text-base">See What We Create</a>
           </div>
-          <p className="text-xs text-[#9CA3AF] mt-6"><span data-cms-key="aifilm_trust_line" data-cms-label="Body Text" data-cms-attr="text">{g("aifilm_trust_line", "Trusted by 750+ brands across healthcare, restaurants, real estate, eCommerce and more")}</span></p>
+          <p className="text-xs text-[#9CA3AF] mt-6"><span data-cms-key="aifilm_trust_line" data-cms-label="Body Text" data-cms-attr="text">{g("aifilm_trust_line", "Trusted by 120+ brands across healthcare, restaurants, real estate, eCommerce and more")}</span></p>
         </motion.div>
       </div>
     </section>

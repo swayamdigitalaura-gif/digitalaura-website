@@ -184,7 +184,7 @@ const Hero = () => {
                 {/* Metric pills */}
                 <div className="flex gap-2 flex-wrap mb-4">
                   {[
-                    { label: "↑ 1000+ Web & Apps Built",  color: "#7C3AED", bg: "rgba(124,58,237,0.08)" },
+                    { label: "↑ 750+ Projects Delivered",  color: "#7C3AED", bg: "rgba(124,58,237,0.08)" },
                     { label: "↑ 174% Traffic",    color: "#FF6B2B", bg: "rgba(255,107,43,0.08)" },
                     { label: "↑ 200% Leads",      color: "#1A6FE8", bg: "rgba(26,111,232,0.08)" },
                   ].map((m) => (
@@ -211,7 +211,7 @@ const Hero = () => {
                   </div>
                   <div className="text-right">
                     <p className="text-xs text-[#6B7280]"><span data-cms-key="hero_p_10" data-cms-label="Body Text" data-cms-attr="text">Happy Clients</span></p>
-                    <p className="text-xl font-bold text-[#FF6B2B]">750+</p>
+                    <p className="text-xl font-bold text-[#FF6B2B]">120+</p>
                   </div>
                 </div>
               </div>

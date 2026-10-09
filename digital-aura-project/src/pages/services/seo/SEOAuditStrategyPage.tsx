@@ -22,6 +22,7 @@ import ClientLogoGrid from "@/components/ClientLogoGrid";
 import MathCaptcha from "@/components/MathCaptcha";
 import { useSettings } from "@/hooks/useSettings";
 import { SEO_AUDIT_CHECKLIST, SEO_AUDIT_SEQUENCE } from "@/data/auditContent";
+import { track } from "@/lib/track";
 import {
   ArrowRight, ChevronDown, Check, Search, FileSearch,
   Users, BarChart3, Link2, ClipboardList, Phone,
@@ -420,6 +421,7 @@ const SEOAuditStrategyPage = () => {
           ))}
         </div>
         <p className="mt-6 text-sm text-[#6B7280]">Want to see it on your own site? <a href="/seo/free-audit/" className="font-semibold underline" style={{ color: accentColor }}>Enter your website for a free SEO audit</a>.</p>
+        <p className="mt-2 text-sm text-[#6B7280]">Want to see a finished report first? <a href="/downloads/Digital-Aura-Sample-SEO-Audit-Report.pdf" target="_blank" rel="noopener" onClick={() => track("file_download", { cta_location: "audit-checklist", file_name: "Digital-Aura-Sample-SEO-Audit-Report.pdf" })} className="font-semibold underline" style={{ color: accentColor }}>Download a sample SEO audit report (PDF, 31 pages)</a>. The client name is removed.</p>
       </div>
     </section>
 

@@ -1,40 +1,44 @@
-import { useState } from "react";
-import { Play, Instagram, Linkedin } from "lucide-react";
-import { track } from "@/lib/track";
+import { useEffect, useRef } from "react";
+import { Instagram, Linkedin } from "lucide-react";
 
 export interface TeamMember { name: string; role: string; bio: string; photo: string; }
 
 /**
- * Instagram reel with a click-to-load facade: the page ships only a link (crawlable, no third-party
- * script) and the Instagram embed is loaded when the visitor presses play.
+ * Official Instagram embed (blockquote + embed.js), as supplied by the owner. The blockquote is in the page
+ * HTML (crawlable, and a working link if the script is blocked); embed.js is loaded only when a reel is near the
+ * viewport and turns the blockquote into the Instagram player with its own thumbnail.
  */
+type InstgrmWindow = Window & { instgrm?: { Embeds: { process: () => void } } };
+let igLoading = false;
+function processInstagram() {
+  const w = window as InstgrmWindow;
+  if (w.instgrm) { w.instgrm.Embeds.process(); return; }
+  if (igLoading) return;
+  igLoading = true;
+  const s = document.createElement("script");
+  s.async = true;
+  s.src = "https://www.instagram.com/embed.js";
+  s.onload = () => (window as InstgrmWindow).instgrm?.Embeds.process();
+  document.body.appendChild(s);
+}
+const instagramEmbedHtml = (id: string) =>
+  `<style>.da-ig{position:relative;overflow:hidden}.da-ig iframe.instagram-media{max-width:100%!important;min-width:0!important}</style><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/${id}/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:1px;max-width:540px;min-width:300px;padding:0;width:calc(100% - 2px);"><div style="padding:16px;"><a href="https://www.instagram.com/reel/${id}/?utm_source=ig_embed&amp;utm_campaign=loading" style="background:#FFFFFF;line-height:0;padding:0 0;text-align:center;text-decoration:none;width:100%;" target="_blank" rel="noopener"><div style="padding:19% 0;"></div><div style="color:#3897f0;font-family:Arial,sans-serif;font-size:14px;font-weight:550;line-height:18px;">View this post on Instagram</div><div style="padding:19% 0;"></div></a><p style="color:#c9c8cd;font-family:Arial,sans-serif;font-size:14px;line-height:17px;margin:8px 0 0;text-align:center;"><a href="https://www.instagram.com/reel/${id}/?utm_source=ig_embed&amp;utm_campaign=loading" style="color:#c9c8cd;text-decoration:none;" target="_blank" rel="noopener">A post shared by Sambhav Shah - Digital Marketing (@sambhavshah2)</a></p></div></blockquote>`;
+
 export const ReelCard = ({ id, label, accent }: { id: string; label: string; accent: string }) => {
-  const [on, setOn] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (!("IntersectionObserver" in window)) { processInstagram(); return; }
+    const io = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { processInstagram(); io.disconnect(); } }, { rootMargin: "400px" });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
   const url = `https://www.instagram.com/reel/${id}/`;
   return (
     <div className="rounded-2xl overflow-hidden border bg-white" style={{ borderColor: "#E5E7EB" }}>
-      {on ? (
-        <iframe
-          src={`${url}embed/`}
-          title={label}
-          loading="lazy"
-          allowFullScreen
-          className="w-full block border-0"
-          style={{ height: 560 }}
-        />
-      ) : (
-        <button
-          type="button"
-          onClick={() => { setOn(true); track("video_play", { video: id }); }}
-          className="w-full flex flex-col items-center justify-center gap-3 text-white"
-          style={{ height: 320, background: `linear-gradient(160deg, #0A1628, ${accent})` }}
-          aria-label={`Play: ${label}`}
-        >
-          <span className="w-14 h-14 rounded-full bg-white/15 flex items-center justify-center"><Play className="w-6 h-6" fill="currentColor" /></span>
-          <span className="font-bold text-sm px-4 text-center">{label}</span>
-        </button>
-      )}
-      <div className="px-4 py-3 flex items-center justify-between gap-3 text-sm">
+      <div ref={ref} className="da-ig" style={{ minHeight: 480 }} aria-label={label} dangerouslySetInnerHTML={{ __html: instagramEmbedHtml(id) }} />
+      <div className="px-4 py-3 flex items-center justify-between gap-3 text-sm border-t" style={{ borderColor: "#E5E7EB" }}>
         <span className="text-[#4B5563]">Reel by Sambhav Shah</span>
         <a href={url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-bold underline" style={{ color: accent }}>
           <Instagram className="w-4 h-4" /> Watch on Instagram
@@ -45,7 +49,7 @@ export const ReelCard = ({ id, label, accent }: { id: string; label: string; acc
 };
 
 export const ReelGrid = ({ ids, accent, topic }: { ids: string[]; accent: string; topic: string }) => (
-  <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+  <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
     {ids.map((id, i) => <ReelCard key={id} id={id} label={`${topic} reel ${i + 1}`} accent={accent} />)}
   </div>
 );

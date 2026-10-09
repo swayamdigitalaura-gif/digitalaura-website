@@ -774,7 +774,7 @@ function Stats() {
   const items = [
     { k: "10×", v: "Average organic growth in 6 months" },
     { k: "85%", v: "Of clients rank in AI search results" },
-    { k: "120+", v: "Websites optimized end-to-end" },
+    { k: "120+", v: "Clients served" },
     { k: "48h", v: "Free audit turnaround time" },
   ];
   return (

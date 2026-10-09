@@ -4,8 +4,8 @@ import { useSettings } from "@/hooks/useSettings";
 import CMSIcon from "@/components/CMSIcon";
 
 const DEFAULT_STATS = [
-  { key: 'stats_apps',      labelKey: 'stats_apps_label',      defTarget: 1000, suffix: "+", defLabel: "Apps & Web Solutions Built", iconName: "AppWindow", color: "#7C3AED", bg: "rgba(124,58,237,0.1)" },
-  { key: 'stats_clients',   labelKey: 'stats_clients_label',   defTarget: 750, suffix: "+", defLabel: "Happy Clients",              iconName: "Users",     color: "#FF6B2B", bg: "rgba(255,107,43,0.1)" },
+  { key: 'stats_apps',      labelKey: 'stats_apps_label',      defTarget: 750, suffix: "+", defLabel: "Projects Delivered", iconName: "AppWindow", color: "#7C3AED", bg: "rgba(124,58,237,0.1)" },
+  { key: 'stats_clients',   labelKey: 'stats_clients_label',   defTarget: 120, suffix: "+", defLabel: "Happy Clients",              iconName: "Users",     color: "#FF6B2B", bg: "rgba(255,107,43,0.1)" },
   { key: 'stats_campaigns', labelKey: 'stats_campaigns_label', defTarget: 218, suffix: "+", defLabel: "Campaigns Delivered",        iconName: "Rocket",    color: "#1A6FE8", bg: "rgba(26,111,232,0.1)" },
   { key: 'stats_rating',    labelKey: 'stats_rating_label',    defTarget: 4.9, suffix: "★", defLabel: "Average Rating",             iconName: "Star",      color: "#FF6B2B", bg: "rgba(255,107,43,0.1)" },
 ];

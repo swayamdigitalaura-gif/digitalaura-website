@@ -15,7 +15,7 @@ const DEFAULT_IMAGE = `${SITE_URL}/logos/digital-aura-logo.png`;
 const PAGE_META: Record<string, { title: string; description: string }> = {
   '/': {
     title: 'Digital Marketing Agency in Ahmedabad | Digital Aura',
-    description: 'Digital Aura is a data-driven digital marketing agency in Ahmedabad specializing in SEO, Google Ads, Meta Ads & Web Design. 750+ happy clients.',
+    description: 'Digital Aura is a data-driven digital marketing agency in Ahmedabad specializing in SEO, Google Ads, Meta Ads & Web Design. 120+ happy clients.',
   },
   '/about': {
     title: 'About Digital Aura | Our Story, Vision & Expert Team',
@@ -31,7 +31,7 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   },
   '/testimonials': {
     title: 'Client Testimonials & Reviews | Digital Aura',
-    description: 'See what 750+ businesses say about Digital Aura. Real client testimonials from healthcare, e-commerce, education, and hospitality.',
+    description: 'See what 120+ businesses say about Digital Aura. Real client testimonials from healthcare, e-commerce, education, and hospitality.',
   },
   '/case-studies': {
     title: 'Case Studies | Real Results for Real Clients | Digital Aura',

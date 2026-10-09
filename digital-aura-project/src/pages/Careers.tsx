@@ -207,11 +207,11 @@ const ApplyModal = ({ job, onClose, color = "#7C3AED" }: { job: Record<string, s
 };
 
 const perks = [
-  { icon: TrendingUp, iconName: "TrendingUp", color: "#FF6B2B", title: "Real Client Work",     desc: "Work on live campaigns with 750+ real clients. Learn more in 6 months here than 2 years elsewhere." },
+  { icon: TrendingUp, iconName: "TrendingUp", color: "#FF6B2B", title: "Real Client Work",     desc: "Work on live campaigns with 120+ real clients. Learn more in 6 months here than 2 years elsewhere." },
   { icon: Users, iconName: "Users",      color: "#7C3AED", title: "Tight-Knit Team",      desc: "Small enough that your work matters. No bureaucracy — just a focused team doing great work together." },
   { icon: Zap, iconName: "Zap",        color: "#1A6FE8", title: "AI-First Mindset",     desc: "From AI-powered SEO to LLM apps — we use the newest tools and we'll make sure you do too." },
   { icon: Heart, iconName: "Heart",      color: "#22C55E", title: "Culture First",         desc: "Equal opportunities, open communication, and a place where dedication is truly recognised." },
-  { icon: Shield, iconName: "Shield",     color: "#F59E0B", title: "Stable & Growing",      desc: "10+ years in business, 750+ clients, 2 offices. A company that's been around and isn't slowing down." },
+  { icon: Shield, iconName: "Shield",     color: "#F59E0B", title: "Stable & Growing",      desc: "10+ years in business, 120+ clients, 2 offices. A company that's been around and isn't slowing down." },
   { icon: Star, iconName: "Star",       color: "#EC4899", title: "Your Voice Matters",    desc: "Flat enough that great ideas from anyone get heard — and actually implemented." },
 ];
 
@@ -228,7 +228,7 @@ const cultureValues = [
 const heroStats = [
   { n: "10+",  l: "Years in Business", color: "#FF6B2B" },
   { n: "10+",  l: "Team Members",       color: "#7C3AED" },
-  { n: "750+", l: "Happy Clients",      color: "#1A6FE8" },
+  { n: "120+", l: "Happy Clients",      color: "#1A6FE8" },
   { n: "2",    l: "Office Locations",   color: "#22C55E" },
 ];
 

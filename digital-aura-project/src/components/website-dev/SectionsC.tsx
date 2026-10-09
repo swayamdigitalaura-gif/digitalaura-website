@@ -57,7 +57,7 @@ export function LogoMarquee() {
             data-cms-attr="text"
             className="mt-3 text-sm font-bold uppercase tracking-[0.2em] text-primary"
           >
-            {s.wds_logos_subtitle || "750+ Businesses We've Helped Grow"}
+            {s.wds_logos_subtitle || "120+ Businesses We've Helped Grow"}
           </p>
         </div>
       </div>

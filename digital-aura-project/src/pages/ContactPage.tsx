@@ -136,13 +136,13 @@ const ContactPage = () => {
   ];
 
   const heroStats = [
-    { nKey: 'contact_stat1_n', lKey: 'contact_stat1_l', defN: '750+', defL: 'Clients served',   color: '#FF6B2B', bg: 'rgba(255,107,43,0.07)' },
+    { nKey: 'contact_stat1_n', lKey: 'contact_stat1_l', defN: '120+', defL: 'Clients served',   color: '#FF6B2B', bg: 'rgba(255,107,43,0.07)' },
     { nKey: 'contact_stat2_n', lKey: 'contact_stat2_l', defN: '10+',  defL: 'Years experience', color: '#7C3AED', bg: 'rgba(124,58,237,0.07)' },
     { nKey: 'contact_stat3_n', lKey: 'contact_stat3_l', defN: 'Free', defL: 'Strategy call',    color: '#22C55E', bg: 'rgba(34,197,94,0.07)'  },
   ];
 
   const stripStats = [
-    { nKey: 'contact_strip_stat1_n', lKey: 'contact_strip_stat1_l', sKey: 'contact_strip_stat1_sub', defN: '750+',  defL: 'Clients Served',   defS: 'Across India & globally', color: '#FF6B2B' },
+    { nKey: 'contact_strip_stat1_n', lKey: 'contact_strip_stat1_l', sKey: 'contact_strip_stat1_sub', defN: '120+',  defL: 'Clients Served',   defS: 'Across India & globally', color: '#FF6B2B' },
     { nKey: 'contact_strip_stat2_n', lKey: 'contact_strip_stat2_l', sKey: 'contact_strip_stat2_sub', defN: '10+',   defL: 'Years Experience',  defS: 'Est. 2015, Ahmedabad',    color: '#7C3AED' },
     { nKey: 'contact_strip_stat3_n', lKey: 'contact_strip_stat3_l', sKey: 'contact_strip_stat3_sub', defN: '15+',   defL: 'Services Offered',  defS: 'From SEO to AI & beyond', color: '#1A6FE8' },
     { nKey: 'contact_strip_stat4_n', lKey: 'contact_strip_stat4_l', sKey: 'contact_strip_stat4_sub', defN: '200%',  defL: 'Best-Case Growth',  defS: 'Ophthalmology client',    color: '#22C55E' },
@@ -237,7 +237,7 @@ const ContactPage = () => {
                   </motion.span>
                 ))}
               </div>
-              <p className="text-sm text-[#6B7280]">750+ clients across India & globally — and counting.</p>
+              <p className="text-sm text-[#6B7280]">120+ clients across India & globally — and counting.</p>
             </motion.div>
 
           </div>
@@ -417,7 +417,7 @@ const ContactPage = () => {
                     </button>
 
                     <p className="text-center text-xs text-[#9CA3AF]">
-                      750+ businesses trust Digital Aura · Est. 2015, Ahmedabad
+                      120+ businesses trust Digital Aura · Est. 2015, Ahmedabad
                     </p>
                   </form>
                 )}

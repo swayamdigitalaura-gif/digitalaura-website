@@ -247,7 +247,7 @@ const TestimonialsPage = () => {
   }, []);
 
   const stats = [
-    { label: "Happy Clients", value: "750+", color: "#FF6B2B" },
+    { label: "Happy Clients", value: "120+", color: "#FF6B2B" },
     { label: "5-Star Reviews", value: "200+", color: "#22C55E" },
     { label: "Average Rating", value: "4.9", color: "#7C3AED" },
     { label: "Years Trusted", value: "10+", color: "#1A6FE8" },
@@ -272,7 +272,7 @@ const TestimonialsPage = () => {
               What Our Clients <span className="text-orange-gradient">Say About Us</span>
             </h1>
             <p className="text-[#4B5563] text-lg max-w-2xl mx-auto leading-relaxed">
-              Real results, real people. Hear from 750+ clients across industries who chose Digital Aura to grow their business online.
+              Real results, real people. Hear from 120+ clients across industries who chose Digital Aura to grow their business online.
             </p>
           </motion.div>
         </div>
@@ -340,13 +340,13 @@ const TestimonialsPage = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mb-6 tracking-widest uppercase text-[#FF6B2B]"
               style={{ background: "rgba(255,107,43,0.12)", border: "1px solid rgba(255,107,43,0.3)" }}>
-              Join 750+ Happy Clients
+              Join 120+ Happy Clients
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4">
               Ready to Be Our Next <span className="text-orange-gradient">Success Story?</span>
             </h2>
             <p className="text-[#94a3b8] mb-8 text-sm leading-relaxed max-w-lg mx-auto">
-              Partner with Digital Aura and experience the growth that 750+ businesses already trust us for.
+              Partner with Digital Aura and experience the growth that 120+ businesses already trust us for.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link to="/contact/"

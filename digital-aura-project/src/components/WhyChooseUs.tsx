@@ -59,7 +59,7 @@ const WhyChooseUs = () => {
           {s.why_badge || 'Why Choose Us'}
         </span>
         <h2 className="text-3xl md:text-[42px] font-bold text-[#0A1628] tracking-tight" data-cms-key="why_heading" data-cms-label="Why Us Heading" data-cms-attr="text">
-          {s.why_heading || 'Why 750+ Businesses Trust Digital Aura'}
+          {s.why_heading || 'Why 120+ Businesses Trust Digital Aura'}
         </h2>
       </motion.div>
 
@@ -82,8 +82,8 @@ const WhyChooseUs = () => {
 
           <div className="flex gap-4 flex-wrap">
             {[
-              { nKey: 'why_stat1_n', lKey: 'why_stat1_l', defN: '1000+', defL: 'Web & Apps Built',  color: '#7C3AED' },
-              { nKey: 'why_stat2_n', lKey: 'why_stat2_l', defN: '750+', defL: 'Clients Served',    color: '#FF6B2B' },
+              { nKey: 'why_stat1_n', lKey: 'why_stat1_l', defN: '750+', defL: 'Projects Delivered',  color: '#7C3AED' },
+              { nKey: 'why_stat2_n', lKey: 'why_stat2_l', defN: '120+', defL: 'Clients Served',    color: '#FF6B2B' },
               { nKey: 'why_stat3_n', lKey: 'why_stat3_l', defN: '50X',  defL: 'ROI Generated for Clients', color: '#1A6FE8' },
             ].map((st) => (
               <div

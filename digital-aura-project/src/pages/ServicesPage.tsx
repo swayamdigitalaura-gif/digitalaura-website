@@ -253,8 +253,8 @@ const ServicesPage = () => {
   }));
 
   const statsData = [
-    { nKey: 'svc_stat1_n', lKey: 'svc_stat1_l', defN: '1000+', defL: 'Products Built',     color: '#7C3AED' },
-    { nKey: 'svc_stat2_n', lKey: 'svc_stat2_l', defN: '750+', defL: 'Happy Clients',       color: '#FF6B2B' },
+    { nKey: 'svc_stat1_n', lKey: 'svc_stat1_l', defN: '750+', defL: 'Projects Delivered',     color: '#7C3AED' },
+    { nKey: 'svc_stat2_n', lKey: 'svc_stat2_l', defN: '120+', defL: 'Happy Clients',       color: '#FF6B2B' },
     { nKey: 'svc_stat3_n', lKey: 'svc_stat3_l', defN: '200+', defL: 'Campaigns Delivered', color: '#1A6FE8' },
     { nKey: 'svc_stat4_n', lKey: 'svc_stat4_l', defN: '4.9★', defL: 'Avg. Rating',         color: '#22C55E' },
   ];

@@ -148,7 +148,7 @@ const About = () => {
   const clientList: string[] = (() => { try { if (s.about_clients) return JSON.parse(s.about_clients); } catch (_e) { void _e; } return DEFAULT_CLIENTS;})();
 
   const heroStats = [
-    { n: s.about_stat1_num || "750+", l: s.about_stat1_label || "Clients Served",   sub: s.about_stat1_sub || "Across India & globally", color: "#FF6B2B", numKey: "about_stat1_num", labelKey: "about_stat1_label" },
+    { n: s.about_stat1_num || "120+", l: s.about_stat1_label || "Clients Served",   sub: s.about_stat1_sub || "Across India & globally", color: "#FF6B2B", numKey: "about_stat1_num", labelKey: "about_stat1_label" },
     { n: s.about_stat2_num || "10+",   l: s.about_stat2_label || "Years in Business", sub: s.about_stat2_sub || "Est. 2015, Ahmedabad",    color: "#7C3AED", numKey: "about_stat2_num", labelKey: "about_stat2_label" },
     { n: s.about_stat3_num || "200%", l: s.about_stat3_label || "Best-Case Growth",  sub: s.about_stat3_sub || "Ophthalmology client",    color: "#1A6FE8", numKey: "about_stat3_num", labelKey: "about_stat3_label" },
     { n: s.about_stat4_num || "15+",  l: s.about_stat4_label || "Services Offered",  sub: s.about_stat4_sub || "From SEO to AI & beyond", color: "#22C55E", numKey: "about_stat4_num", labelKey: "about_stat4_label" },
@@ -175,7 +175,7 @@ const About = () => {
               </span><br />
               <span data-cms-key="about_hero_heading2" data-cms-label="Hero Heading Line 2 (Orange)" data-cms-attr="text"
                 className="text-orange-gradient">
-                {s.about_hero_heading2 || "750+ Success Stories"}
+                {s.about_hero_heading2 || "120+ Success Stories"}
               </span>
             </h1>
             <p
@@ -230,7 +230,7 @@ const About = () => {
             </p>
             <p data-cms-key="about_story_p3" data-cms-label="Story Paragraph 3" data-cms-attr="text"
               className="text-[#4B5563] leading-relaxed text-[15px]">
-              {s.about_story_p3 || "Today, Digital Aura is a future-ready agency trusted by 750+ clients — delivering everything from SEO and paid ads to AI-powered web apps, workflow automation, and custom ML solutions under one roof."}
+              {s.about_story_p3 || "Today, Digital Aura is a future-ready agency trusted by 120+ clients — delivering everything from SEO and paid ads to AI-powered web apps, workflow automation, and custom ML solutions under one roof."}
             </p>
           </motion.div>
           <div className="grid grid-cols-2 gap-4">
@@ -556,7 +556,7 @@ const About = () => {
           <h2 className="text-3xl md:text-[42px] font-black text-[#0A1628] tracking-tight">
             <span data-cms-key="about_serve_heading" data-cms-label="Who We Serve Heading" data-cms-attr="text">{s.about_serve_heading || "Industries We Work With"}</span>
           </h2>
-          <p data-cms-key="about_serve_subtext" data-cms-label="Who We Serve Subtext" data-cms-attr="text" className="text-[#6B7280] mt-4 max-w-xl mx-auto">{s.about_serve_subtext || "750+ businesses across diverse sectors trust us to deliver digital growth that matters."}</p>
+          <p data-cms-key="about_serve_subtext" data-cms-label="Who We Serve Subtext" data-cms-attr="text" className="text-[#6B7280] mt-4 max-w-xl mx-auto">{s.about_serve_subtext || "120+ businesses across diverse sectors trust us to deliver digital growth that matters."}</p>
         </motion.div>
         <div className="flex flex-wrap justify-center gap-3">
           {clientList.map((label, i) => {

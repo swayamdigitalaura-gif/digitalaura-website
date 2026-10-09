@@ -73,7 +73,7 @@ import {
 
 const PAGE_TITLE = "Digital Marketing Company in Ahmedabad | Digital Aura";
 const PAGE_DESCRIPTION =
-  "AI-powered digital marketing agency in Ahmedabad: SEO, Google Ads, Meta Ads and automation as one team. 750+ clients, 10+ years experience.";
+  "AI-powered digital marketing agency in Ahmedabad: SEO, Google Ads, Meta Ads and automation as one team. 120+ clients, 750+ projects, 10+ years experience.";
 const PAGE_URL = "https://thedigitalaura.com/digital-marketing-company-ahmedabad";
 
 export const Route = createFileRoute("/digital-marketing-company-ahmedabad")({
@@ -412,7 +412,7 @@ function Hero() {
         <div>
           <span className={EYEBROW}>
             <TrendingUp className="size-3.5" />
-            750+ Businesses Grown · 10+ Years · 4.9★ Average Rating
+            120+ Businesses Grown · 10+ Years · 4.9★ Average Rating
           </span>
 
           <h1 className="mt-6 text-[2.15rem] leading-[1.08] font-extrabold tracking-tight text-[#0F172A] sm:text-[3.1rem]">
@@ -482,7 +482,7 @@ function TrustedBy() {
     <section aria-label="Clients we have grown" className="bg-[#F8FAFC] py-11 md:py-14">
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
         <h2 className="text-center text-[1.9rem] leading-[1.1] font-extrabold tracking-tight text-[#0F172A] sm:text-[2.4rem]">
-          750+ Businesses We've Helped Grow
+          120+ Businesses We've Helped Grow
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center text-[#475569]">
           From Ahmedabad's hospitals and hospitality brands to eCommerce and home services companies

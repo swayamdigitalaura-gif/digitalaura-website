@@ -87,7 +87,7 @@ const Index = () => {
         <ClientLogos />
         <ClientLogoSection
           servicePage="home"
-          heading="750+ Businesses We've Helped Grow"
+          heading="120+ Businesses We've Helped Grow"
           accentColor="#FF6B2B"
           fallback={HOME_LOGOS_FALLBACK}
         />

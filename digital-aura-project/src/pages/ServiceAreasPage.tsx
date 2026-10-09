@@ -31,7 +31,6 @@ const groups: AreaGroup[] = [
       { label: "SEO Company in Ahmedabad", href: "/seo-services-ahmedabad" },
       { label: "Google Ads Agency in Ahmedabad", href: "/google-ads-agency-ahmedabad" },
       { label: "Meta Ads Agency in Ahmedabad", href: "/meta-ads-agency-ahmedabad/" },
-      { label: "Website Design & Development in Ahmedabad", href: "/website-design-development-ahmedabad/" },
       { label: "Website Development Services in Ahmedabad", href: "/website-development-services-ahmedabad/" },
       { label: "Full Stack Development in Ahmedabad", href: "/full-stack-development-ahmedabad/" },
       { label: "Shopify Website Design in Ahmedabad", href: "/shopify-website-design-ahmedabad/" },

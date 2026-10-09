@@ -761,6 +761,8 @@ const PAGE_SCHEMA: Record<string, object | object[]> = {
 // /seo-services-ahmedabad is served by the landing-pages app (no trailing slash).
 const CANONICAL_OVERRIDE: Record<string, string> = {
   '/seo-agency-ahmedabad': `${SITE_URL}/seo-services-ahmedabad`,
+  // Owner confirmed /website-development-services-ahmedabad/ as the one web development page (2026-10-09).
+  '/website-design-development-ahmedabad': `${SITE_URL}/website-development-services-ahmedabad/`,
 };
 
 PAGE_SCHEMA['/seo/free-audit'] = [

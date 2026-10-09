@@ -785,7 +785,7 @@ function QuickAnswer() {
               <li><a className="underline" href="/seo/manufacturers-b2b-gujarat/">SEO for manufacturers</a></li>
             </ul>
             <p className="mt-4 text-xs text-ink-muted">
-              Published by <a className="underline" href="/about/">Digital Aura</a>, 713 Shilp Arcade, SP Ring Road, Hanspura, Ahmedabad. Last updated <time dateTime="2026-10-08">8 October 2026</time>.
+              Published by <a className="underline" href="/about/">Digital Aura</a>, 713 Shilp Arcade, SP Ring Road, Hanspura, Ahmedabad. Last updated <time dateTime="2026-10-09">9 October 2026</time>.
             </p>
           </div>
         </Reveal>
@@ -1735,6 +1735,18 @@ function Compare() {
 
 const FAQS = [
     {
+      q: "Do you do AI search optimisation (AEO and GEO)?",
+      a: "Yes. It is part of our SEO work. We structure pages with clear answers, add schema and entity details, and build topic coverage so your business is easier for Google AI Overviews, ChatGPT, Gemini and Perplexity to understand. Nobody controls what an AI answer says, so we do not promise citations. We track where your brand shows up and improve from there.",
+    },
+    {
+      q: "Are there long-term SEO contracts?",
+      a: "The contract length and notice period are written in your proposal before you decide, so there is nothing hidden. SEO takes months to build, so we are honest that short trials rarely show the full picture.",
+    },
+    {
+      q: "Who will work on my SEO account?",
+      a: "An in-house team at our Hanspura office, led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. SEO work is done by Jinali Lodariya (SEO Executive) with Bhavesh Bhavsar (Digital Marketing Executive), and Satish Prajapati (Project Manager) coordinates the work. You can meet them on this page.",
+    },
+    {
       q: "How much does SEO cost in Ahmedabad?",
       a: "SEO pricing depends on your competition, current site health and how fast you want to move. After the free audit, we give you a fixed monthly scope and price — no hidden add-ons, no surprise invoices mid-engagement.",
     },
@@ -2016,6 +2028,205 @@ function ChooseSEO() {
   );
 }
 
+/* ---------------- Sections added from the page blueprint (seo-01). No prices, rankings or new numeric claims. ---------------- */
+
+function SEOServicesScope() {
+  const items = [
+    { t: "Technical SEO", d: "Crawling, indexing, site speed, Core Web Vitals and schema. We fix these first because they cap everything that comes after.", h: "/services/seo-content-marketing/technical-seo/" },
+    { t: "On-page SEO and content", d: "Pages built around what buyers actually search, with clear headings, internal links and a next step on every page.", h: "/services/seo-content-marketing/on-page-seo/" },
+    { t: "Local SEO", d: "Google Business Profile, citations, reviews and Map Pack work for searches made in and around Ahmedabad.", h: "/services/seo-content-marketing/local-seo/" },
+    { t: "Off-page SEO", d: "Earning relevant links and mentions from real sites. We do not buy links or use link farms.", h: "/services/seo-content-marketing/off-page-seo/" },
+    { t: "Ecommerce SEO", d: "Category and product page structure, product data and speed, so an online store can be found for what it sells.", h: "/services/seo-content-marketing/ecommerce-seo/" },
+    { t: "SEO audit and strategy", d: "A full review of what holds your site back, with a written priority list you can act on, with us or without us.", h: "/seo/free-audit/" },
+  ];
+  return (
+    <section id="seo-services" className="bg-white">
+      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
+        <SectionHeading
+          eyebrow="SEO services"
+          title={<>SEO services in Ahmedabad: <span className="text-brand-orange">what we actually do</span></>}
+          sub="An SEO company, an SEO agency and SEO services all mean the same job: getting your business found by people who are ready to enquire. This is the work behind it."
+        />
+        <Reveal className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((x) => (
+            <a key={x.h} href={x.h} className="da-shadow-card da-card-hover group flex h-full flex-col rounded-2xl border border-brand-navy/12 bg-white p-7">
+              <h3 className="text-lg font-bold text-brand-navy">{x.t}</h3>
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-muted">{x.d}</p>
+              <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-brand-orange group-hover:gap-2">
+                Learn more<span className="sr-only"> about {x.t}</span> <ArrowRight className="h-4 w-4" />
+              </span>
+            </a>
+          ))}
+        </Reveal>
+        <p className="mx-auto mt-8 max-w-3xl text-center text-ink-muted">
+          Not sure which of these your business needs first? Start with the{" "}
+          <a className="font-semibold text-brand-orange underline" href="/seo/free-audit/">free SEO audit</a>. It shows where you stand and what to fix first, and you can see what it looks like in the{" "}
+          <a className="font-semibold text-brand-orange underline" href="/downloads/Digital-Aura-Sample-SEO-Audit-Report.pdf" target="_blank" rel="noopener">sample audit report (PDF)</a>.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function First90Days() {
+  const phases = [
+    {
+      m: "Days 1 to 30",
+      t: "Audit, tracking and fixes",
+      items: [
+        "We agree what counts as a lead for your business: a call, a form, a WhatsApp message or a booking.",
+        "Google Search Console, Google Analytics and call and form tracking are set up in your own accounts.",
+        "A full crawl and audit finds what is blocking your pages, and the critical technical problems are fixed first.",
+        "We choose the pages and searches that matter most to your revenue, so effort goes where it pays.",
+      ],
+    },
+    {
+      m: "Days 31 to 60",
+      t: "Pages and local presence",
+      items: [
+        "Priority pages are rewritten or built around real search intent, with clear headings and a next step on each one.",
+        "Internal links and schema are added so search engines and AI answers can understand the pages.",
+        "Your Google Business Profile and local listings are cleaned up and made consistent.",
+        "You see a short progress note on what shipped, not just a list of keywords.",
+      ],
+    },
+    {
+      m: "Days 61 to 90",
+      t: "Measure and extend",
+      items: [
+        "The first full report covers impressions, clicks, calls and forms, and which pages are starting to move.",
+        "We review what is working and decide where to put more effort in the next quarter.",
+        "Content, local and link work are planned from real data from your own site.",
+        "We agree the next steps with you in a call.",
+      ],
+    },
+  ];
+  return (
+    <section id="first-90-days" className="bg-surface-2">
+      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
+        <SectionHeading
+          eyebrow="Your first 90 days"
+          title={<>What happens in the <span className="text-brand-orange">first 90 days</span></>}
+          sub="A clear start, so you know what is being done and when. Here is what you can expect from us."
+        />
+        <Reveal className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-3">
+          {phases.map((x) => (
+            <div key={x.m} className="da-shadow-card da-card-hover flex h-full flex-col rounded-2xl border border-brand-navy/12 bg-white p-7">
+              <span className="text-xs font-bold uppercase tracking-[0.14em] text-brand-orange">{x.m}</span>
+              <h3 className="mt-2 text-lg font-bold text-brand-navy">{x.t}</h3>
+              <ul className="mt-4 space-y-3">
+                {x.items.map((i) => (
+                  <li key={i} className="flex gap-3 text-sm text-ink-muted">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" />
+                    {i}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </Reveal>
+        <p className="mx-auto mt-8 max-w-3xl text-center text-sm text-ink-muted">
+          Rankings rarely move in the first weeks. We judge the first 90 days on fixes shipped, tracking in place and early movement in impressions, not on a promised position.
+        </p>
+        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <PrimaryCTA href="#audit">Get my free SEO audit</PrimaryCTA>
+          <SecondaryCTA href="https://wa.me/918141200284">Chat on WhatsApp</SecondaryCTA>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SEOPricing() {
+  const drivers = [
+    { t: "How strong your competition is", d: "A search with many established sites ranking needs more work than a quiet local one." },
+    { t: "The health of your website", d: "A site with technical problems needs fixing before content can do its job." },
+    { t: "How much there is to cover", d: "The number of services, pages, locations and languages changes the scope." },
+    { t: "How fast you want to move", d: "More content, local work and link building in a month means a bigger scope." },
+  ];
+  return (
+    <section id="seo-pricing" className="bg-white">
+      <div className="mx-auto max-w-5xl px-5 py-16 md:px-8 md:py-24">
+        <SectionHeading
+          eyebrow="Pricing"
+          title={<>SEO pricing in Ahmedabad: <span className="text-brand-orange">what to expect</span></>}
+          sub="We do not print a rate card, because two businesses rarely need the same work. SEO is priced as a monthly scope, after we have looked at your site. Four things decide it."
+        />
+        <Reveal className="mt-12 grid gap-5 sm:grid-cols-2">
+          {drivers.map((x, i) => (
+            <div key={x.t} className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-6">
+              <span className="text-xs font-bold uppercase tracking-[0.14em] text-brand-orange">0{i + 1}</span>
+              <h3 className="mt-2 text-base font-bold text-brand-navy">{x.t}</h3>
+              <p className="mt-2 text-sm text-ink-muted">{x.d}</p>
+            </div>
+          ))}
+        </Reveal>
+        <Reveal className="mt-8 grid gap-5 md:grid-cols-2">
+          <div className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-7">
+            <h3 className="text-lg font-bold text-brand-navy">A fair SEO quote should include</h3>
+            <ul className="mt-4 space-y-3">
+              {["A written scope with named deliverables", "Reporting on calls, forms and leads, not just rankings", "Access to your own Search Console, Analytics and Business Profile", "Contract and notice terms you can read before you sign"].map((x) => (
+                <li key={x} className="flex gap-3 text-sm text-ink-muted"><Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" />{x}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-7">
+            <h3 className="text-lg font-bold text-brand-navy">It should not include</h3>
+            <ul className="mt-4 space-y-3">
+              {["A guaranteed ranking or a fixed number of days", "Hidden add-ons that appear in a later invoice", "Bought links or a standard package chosen before anyone looks at your site"].map((x) => (
+                <li key={x} className="flex gap-3 text-sm text-ink-muted"><X className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />{x}</li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
+        <p className="mx-auto mt-8 max-w-3xl text-center text-ink-muted">
+          Want to see how packages are put together? Read{" "}
+          <a className="font-semibold text-brand-orange underline" href="/seo/pricing/">how SEO packages are priced in Ahmedabad</a> or the{" "}
+          <a className="font-semibold text-brand-orange underline" href="/blog/seo-cost-ahmedabad-2026/">SEO cost in Ahmedabad (2026 guide)</a>.
+        </p>
+        <div className="mt-8 flex justify-center">
+          <PrimaryCTA href="#audit">Get a free audit and a written quote</PrimaryCTA>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function VisitUs() {
+  return (
+    <section id="visit-us" className="bg-white">
+      <div className="mx-auto max-w-5xl px-5 py-16 md:px-8 md:py-20">
+        <SectionHeading
+          eyebrow="Visit us"
+          title="Meet the team at our Hanspura office"
+          sub="You can talk to the people who will work on your account before you decide. Call, message or drop in."
+        />
+        <Reveal className="mt-10 grid gap-5 md:grid-cols-2">
+          <div className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-7">
+            <h3 className="text-lg font-bold text-brand-navy">Digital Aura</h3>
+            <address className="mt-3 not-italic text-sm leading-relaxed text-ink-muted">
+              713, Shilp Arcade, Sardar Patel Ring Road,<br />Hanspura, Ahmedabad, Gujarat 382330
+            </address>
+            <p className="mt-3 text-sm text-ink-muted">Monday to Saturday, 10 AM to 7 PM. Closed on Sunday.</p>
+            <a className="mt-4 inline-block text-sm font-bold text-brand-orange underline" href="https://www.google.com/maps/search/?api=1&query=Digital+Aura+713+Shilp+Arcade+Sardar+Patel+Ring+Road+Hanspura+Ahmedabad+382330" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+          </div>
+          <div className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-7">
+            <h3 className="text-lg font-bold text-brand-navy">Talk to us</h3>
+            <ul className="mt-3 space-y-2 text-sm text-ink-muted">
+              <li>Phone: <a className="font-semibold text-brand-orange underline" href="tel:+918141200284">+91 81412 00284</a></li>
+              <li>WhatsApp: <a className="font-semibold text-brand-orange underline" href="https://wa.me/918141200284">message us</a></li>
+              <li>Email: <a className="font-semibold text-brand-orange underline" href="mailto:info@thedigitalaura.com">info@thedigitalaura.com</a></li>
+            </ul>
+            <p className="mt-4 text-sm text-ink-muted">
+              Prefer to start with a review of your site? <a className="font-semibold text-brand-orange underline" href="/seo/free-audit/">Request the free SEO audit</a>.
+            </p>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------- SEO vs Google Ads ---------------- */
 
 function SEOvsAds() {
@@ -2258,7 +2469,9 @@ function Index() {
         <AIShift />
         <SEOChallenges />
         <Framework />
+        <SEOServicesScope />
         <Process />
+        <First90Days />
         <Timeline />
         <SEOToolsWeUse />
         <Results />
@@ -2271,11 +2484,13 @@ function Index() {
         <CertifiedTrusted />
         <Industries />
         <AreasAndServices />
+        <SEOPricing />
         <Compare />
         <ChooseSEO />
         <SEOvsAds />
         <SEOReels />
         <TeamSection />
+        <VisitUs />
         <FAQ />
         <FinalCTA />
       </main>

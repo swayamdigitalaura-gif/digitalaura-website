@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, MapPin, X } from "lucide-react";
-import { Eyebrow, H2, Lead, PrimaryCTA, Section } from "../shared/SectionPrimitives";
+import { Eyebrow, H2, Lead, PrimaryCTA, SecondaryCTA, Section } from "../shared/SectionPrimitives";
 
 /* Sections added from the page blueprint (gads-01). Deliberately free of new
    numeric claims: no prices, ROAS, client counts or budgets are stated here. */
@@ -402,6 +402,111 @@ export function ExploreMore() {
             </span>
           </a>
         ))}
+      </div>
+    </Section>
+  );
+}
+
+/* ---------- What the agency actually does (blueprint gads-01 section 3). No prices or new numeric claims. ---------- */
+
+export function WhatWeDo() {
+  const items = [
+    { t: "Account and campaign structure", d: "Campaigns grouped by what you sell and where, so budget goes to the searches that pay." },
+    { t: "Keywords and search terms", d: "We add what converts and block the searches that waste money, reviewed on a regular schedule." },
+    { t: "Ads that match the search", d: "Ad copy written for the search, tested against alternatives and improved from real results." },
+    { t: "Conversion tracking", d: "Calls, WhatsApp clicks and form leads counted in your own Google Ads and Analytics accounts." },
+    { t: "Landing page advice", d: "Changes, or a focused page, so the click you paid for lands somewhere that makes it easy to enquire.", h: "/services/cro/" },
+    { t: "Reporting and a monthly call", d: "A report on enquiries and cost per enquiry, and a call to agree what happens next." },
+  ];
+  return (
+    <Section id="what-we-do" className="bg-white">
+      <div className="max-w-3xl">
+        <Eyebrow>What you get</Eyebrow>
+        <H2 className="mt-6">What a Google Ads agency in Ahmedabad actually does</H2>
+        <Lead className="mt-6">
+          Call it a Google Ads agency, a PPC agency, a Google Ads company or a Google Ads management service: the job is the same. It runs your paid search so the money you spend turns into enquiries you can count. This is the monthly work.
+        </Lead>
+      </div>
+      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {items.map((x) => (
+          <div key={x.t} className={card}>
+            <h3 className="font-display text-[18px] font-bold text-navy">{x.t}</h3>
+            <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{x.d}</p>
+            {x.h && <a className="mt-3 inline-block text-[14px] font-semibold text-primary underline" href={x.h}>Conversion rate optimisation</a>}
+          </div>
+        ))}
+      </div>
+      <p className="mt-8 max-w-3xl text-[15px] text-muted-foreground">
+        Want to know what this costs before you talk to anyone? See <a className="font-semibold text-primary underline" href="/google-ads-pricing-ahmedabad/">how Google Ads pricing works</a>, or ask for the <a className="font-semibold text-primary underline" href="/google-ads-audit-ahmedabad/">free Google Ads audit</a>.
+      </p>
+    </Section>
+  );
+}
+
+/* ---------- First 90 days (blueprint gads-01 section 5), with a CTA at the end ---------- */
+
+export function First90Days() {
+  const steps = [
+    { w: "Week 1", t: "Access and goals", d: "We agree what counts as a lead, get access to your Google Ads and Analytics, and read the account history." },
+    { w: "Weeks 2 to 3", t: "Audit and tracking", d: "We check structure, search terms and wasted spend, and fix conversion tracking before any budget is scaled." },
+    { w: "Weeks 4 to 6", t: "Rebuild and launch", d: "New campaign structure, ads and negative keywords go live, with landing page fixes where they are needed." },
+    { w: "Weeks 7 to 12", t: "Optimise and report", d: "Regular search term reviews and tests, the first full monthly report, and a call to decide whether to scale, hold or change." },
+  ];
+  return (
+    <Section id="first-90-days" className="bg-surface-muted">
+      <div className="max-w-3xl">
+        <Eyebrow>Your first 90 days</Eyebrow>
+        <H2 className="mt-6">Our first 90 days, step by step</H2>
+        <Lead className="mt-6">A clear start, so you know what is being done and when. Terms for notice and contract are written in your proposal, so you always know where you stand.</Lead>
+      </div>
+      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {steps.map((x) => (
+          <div key={x.w} className={card}>
+            <span className="text-[12px] font-bold uppercase tracking-[0.14em] text-primary">{x.w}</span>
+            <h3 className="mt-2 font-display text-[18px] font-bold text-navy">{x.t}</h3>
+            <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{x.d}</p>
+          </div>
+        ))}
+      </div>
+      <p className="mt-6 max-w-3xl text-[14px] text-muted-foreground">Timelines vary with budget, industry and the state the account is in. Early weeks are for learning, so judge the first month on direction and lead quality, not on a single day.</p>
+      <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+        <PrimaryCTA href="#audit">Get My Free Google Ads Audit</PrimaryCTA>
+        <SecondaryCTA href="https://wa.me/918141200284">Chat on WhatsApp</SecondaryCTA>
+      </div>
+    </Section>
+  );
+}
+
+/* ---------- Visit or contact us (local trust). Details confirmed by the owner. ---------- */
+
+export function VisitUs() {
+  return (
+    <Section id="visit-us" className="bg-white">
+      <div className="max-w-3xl">
+        <Eyebrow>Visit us</Eyebrow>
+        <H2 className="mt-6">Meet the team at our Hanspura office</H2>
+        <Lead className="mt-6">Talk to the people who will run your account before you decide. Call, message or drop in.</Lead>
+      </div>
+      <div className="mt-10 grid gap-5 md:grid-cols-2">
+        <div className={card}>
+          <h3 className="font-display text-[18px] font-bold text-navy">Digital Aura</h3>
+          <address className="mt-3 not-italic text-[15px] leading-relaxed text-muted-foreground">
+            713, Shilp Arcade, Sardar Patel Ring Road,<br />Hanspura, Ahmedabad, Gujarat 382330
+          </address>
+          <p className="mt-3 text-[15px] text-muted-foreground">Monday to Saturday, 10 AM to 7 PM. Closed on Sunday.</p>
+          <a className="mt-4 inline-block text-[14px] font-semibold text-primary underline" href="https://www.google.com/maps/search/?api=1&query=Digital+Aura+713+Shilp+Arcade+Sardar+Patel+Ring+Road+Hanspura+Ahmedabad+382330" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+        </div>
+        <div className={card}>
+          <h3 className="font-display text-[18px] font-bold text-navy">Talk to us</h3>
+          <ul className="mt-3 space-y-2 text-[15px] text-muted-foreground">
+            <li>Phone: <a className="font-semibold text-primary underline" href="tel:+918141200284">+91 81412 00284</a></li>
+            <li>WhatsApp: <a className="font-semibold text-primary underline" href="https://wa.me/918141200284">message us</a></li>
+            <li>Email: <a className="font-semibold text-primary underline" href="mailto:info@thedigitalaura.com">info@thedigitalaura.com</a></li>
+          </ul>
+          <p className="mt-4 text-[15px] text-muted-foreground">
+            Prefer to start with a review? <a className="font-semibold text-primary underline" href="/google-ads-audit-ahmedabad/">Request the free Google Ads audit</a>.
+          </p>
+        </div>
       </div>
     </Section>
   );

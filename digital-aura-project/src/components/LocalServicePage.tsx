@@ -28,14 +28,20 @@ export interface ProcessStep { title: string; desc: string; }
 export interface ExtraCard { title: string; desc: string; tag?: string; href?: string; cta?: string; }
 export interface ExtraList { title: string; items: string[]; tone: "good" | "bad"; }
 /** Optional long-form blocks rendered between "related services" and the FAQ. Static copy (not click-to-edit). */
-export type ExtraSection =
+export type ExtraSection = (
   | { kind: "text"; id: string; title: string; paragraphs: string[]; links?: { label: string; href: string }[] }
   | { kind: "cards"; id: string; title: string; subtext?: string; items: ExtraCard[]; footnote?: string }
   | { kind: "compare"; id: string; title: string; subtext?: string; left: ExtraList; right: ExtraList; footnote?: string }
   | { kind: "calculator"; id: string; title: string; subtext?: string; variant: CalculatorVariant; footnote?: string }
   | { kind: "checklist"; id: string; title: string; subtext?: string; groups: { title: string; items: string[] }[]; footnote?: string }
   | { kind: "reels"; id: string; title: string; subtext?: string; ids: string[]; topic: string; slug: string; footnote?: string }
-  | { kind: "team"; id: string; title: string; subtext?: string; members: TeamMember[]; founderLinks?: boolean; footnote?: string };
+  | { kind: "team"; id: string; title: string; subtext?: string; members: TeamMember[]; founderLinks?: boolean; footnote?: string }
+) & {
+  /** Small label above the heading. When set, the heading block is centred (same look as the SEO page). */
+  eyebrow?: string;
+  /** Only used with storyLayout: "early" sections render before the proof (case studies, testimonials). */
+  slot?: "early";
+};
 export interface RelatedService { title: string; desc: string; points: string[]; href: string; }
 
 export interface LocalServiceConfig {
@@ -74,6 +80,14 @@ export interface LocalServiceConfig {
   /** Rendered right after the "process" section (use for step-by-step content that must follow it). */
   earlySections?: ExtraSection[];
   extraSections?: ExtraSection[];
+  /**
+   * Opt-in page flow for the big pillar pages: overview, problem, what is included, process, how we work (sections with
+   * slot "early"), proof, why us, pricing and decision help (remaining extraSections), related pages, form, FAQ.
+   * Without it the page keeps the original template order.
+   */
+  storyLayout?: boolean;
+  /** Row of confirmed company numbers shown under the quick answer. */
+  statsBand?: { value: string; label: string }[];
   /** Answer-first box under the hero (AEO/GEO): a direct 40-60 word answer plus optional bullets. */
   quickAnswer?: { heading?: string; answer: string; points?: string[] };
   /** ISO date (YYYY-MM-DD). Shows the "published by / last updated" trust line and feeds schema dateModified. */
@@ -94,8 +108,12 @@ export interface LocalServiceConfig {
 }
 
 const ExtraBlock = ({ section, accent }: { section: ExtraSection; accent: string }) => {
+  const centred = !!section.eyebrow;
   const heading = (
-    <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8 max-w-3xl">
+    <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className={centred ? "mb-10 max-w-3xl mx-auto text-center" : "mb-8 max-w-3xl"}>
+      {section.eyebrow && (
+        <span className="inline-block mb-4 px-3 py-1.5 rounded-full text-[11px] font-black uppercase tracking-[0.14em]" style={{ background: `${accent}12`, color: accent, border: `1px solid ${accent}30` }}>{section.eyebrow}</span>
+      )}
       <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] tracking-tight leading-tight">{section.title}</h2>
       {"subtext" in section && section.subtext && <p className="mt-3 text-[#4B5563] leading-relaxed">{section.subtext}</p>}
     </motion.div>
@@ -103,13 +121,13 @@ const ExtraBlock = ({ section, accent }: { section: ExtraSection; accent: string
   const note = (t?: string) => (t ? <p className="mt-6 text-sm text-[#6B7280] max-w-3xl">{t}</p> : null);
   if (section.kind === "text") {
     return (
-      <div className="max-w-3xl">
+      <div className={centred ? "max-w-3xl mx-auto" : "max-w-3xl"}>
         {heading}
         <div className="space-y-4 text-[#4B5563] leading-relaxed">
           {section.paragraphs.map((p) => <p key={p}>{p}</p>)}
         </div>
         {section.links && (
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className={"mt-6 flex flex-wrap gap-3" + (centred ? " justify-center" : "")}>
             {section.links.map((l) => (
               <a key={l.href} href={l.href} className="inline-flex items-center gap-1.5 text-sm font-bold px-4 py-2 rounded-full border" style={{ color: accent, borderColor: `${accent}40` }}>
                 {l.label} <ArrowRight className="w-4 h-4" />
@@ -307,6 +325,38 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
     ...(config.leadForm ? [{ id: config.leadForm.id || "audit-form", label: "Get started" }] : []),
     { id: "faqs", label: "FAQs" },
   ];
+  const relatedBlock = (
+    <section className="py-16 px-4 md:px-8" style={{ background: "#F8FAFF" }}>
+      <div className="max-w-6xl mx-auto">
+        <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8 text-center">
+          <span data-cms-key={k("relatedCategoryLabel")} data-cms-label="Related Category Label" data-cms-attr="text" className="text-[11px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full mb-4 inline-block" style={{ background: `${c.relatedCategoryColor}12`, color: c.relatedCategoryColor }}>
+            {c.relatedCategoryLabel}
+          </span>
+          <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] tracking-tight">More Ways We Can Help</h2>
+        </motion.div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {c.relatedServices.map((s, i) => (
+            <motion.div key={s.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+              className="bg-white rounded-2xl p-6 border" style={{ borderColor: "#E5E7EB", boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
+              <h3 data-cms-key={k(`related_${i}_title`)} data-cms-label={`Related ${i + 1} Title`} data-cms-attr="text" className="font-bold text-[#0A1628] mb-2 text-[16px]">{s.title}</h3>
+              <p data-cms-key={k(`related_${i}_desc`)} data-cms-label={`Related ${i + 1} Desc`} data-cms-attr="text" className="text-sm text-[#6B7280] leading-relaxed mb-4">{s.desc}</p>
+              <ul className="space-y-1.5 mb-4">
+                {s.points.map(p => (
+                  <li key={p} className="flex items-center gap-2 text-sm font-medium text-[#374151]">
+                    <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: c.relatedCategoryColor }} />
+                    {p}
+                  </li>
+                ))}
+              </ul>
+              <Link to={s.href} className="inline-flex items-center gap-1 text-sm font-semibold hover:gap-2 transition-all" style={{ color: c.relatedCategoryColor }}>
+                Learn more<span className="sr-only"> about {s.title}</span> <ArrowRight size={14} />
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
   const ctaLabel = config.heroCta?.label || config.leadForm?.submitLabel || "Get started";
   const ctaHref = "#" + (config.leadForm?.id || "audit-form");
   return (
@@ -390,6 +440,19 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
         </section>
       )}
 
+      {config.statsBand && (
+        <section className="px-4 md:px-8 py-12" style={{ background: "#F8FAFF" }}>
+          <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+            {config.statsBand.map((st) => (
+              <div key={st.label} className="rounded-2xl border bg-white p-6 text-center" style={{ borderColor: "#E5E7EB", boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
+                <div className="text-3xl md:text-4xl font-black text-[#0A1628]">{st.value}</div>
+                <div className="mt-1.5 text-sm text-[#6B7280]">{st.label}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Lead form at the top (audit pages: the form is the first thing after the answer box) */}
       {config.leadForm && config.leadFormTop && <PageLeadForm cfg={config.leadForm} accent={c.accentColor} />}
 
@@ -469,8 +532,8 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
         </div>
       </section>
 
-      {/* Sections that must follow the process steps (config.earlySections) */}
-      {c.earlySections?.map((sec, i) => (
+      {/* Sections that must follow the process steps (config.earlySections; with storyLayout also extraSections marked slot "early") */}
+      {[...(c.earlySections || []), ...(config.storyLayout ? (c.extraSections || []).filter((s) => s.slot === "early") : [])].map((sec, i) => (
         <section key={sec.id} id={sec.id} className="py-16 px-4 md:px-8" style={{ background: i % 2 === 0 ? "#F8FAFF" : "#fff" }}>
           <div className="max-w-5xl mx-auto">
             <ExtraBlock section={sec} accent={c.accentColor} />
@@ -485,7 +548,7 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
       {/* Proof */}
       <div style={{ marginBottom: "-60px" }}>
         <CaseStudies />
-        <BlogInsights />
+        {!config.storyLayout && <BlogInsights />}
       </div>
 
       {/* Testimonials */}
@@ -511,46 +574,18 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
         </div>
       </section>
 
-      {/* Related Services */}
-      <section className="py-16 px-4 md:px-8" style={{ background: "#F8FAFF" }}>
-        <div className="max-w-6xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8 text-center">
-            <span data-cms-key={k("relatedCategoryLabel")} data-cms-label="Related Category Label" data-cms-attr="text" className="text-[11px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full mb-4 inline-block" style={{ background: `${c.relatedCategoryColor}12`, color: c.relatedCategoryColor }}>
-              {c.relatedCategoryLabel}
-            </span>
-            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] tracking-tight">More Ways We Can Help</h2>
-          </motion.div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {c.relatedServices.map((s, i) => (
-              <motion.div key={s.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                className="bg-white rounded-2xl p-6 border" style={{ borderColor: "#E5E7EB", boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
-                <h3 data-cms-key={k(`related_${i}_title`)} data-cms-label={`Related ${i + 1} Title`} data-cms-attr="text" className="font-bold text-[#0A1628] mb-2 text-[16px]">{s.title}</h3>
-                <p data-cms-key={k(`related_${i}_desc`)} data-cms-label={`Related ${i + 1} Desc`} data-cms-attr="text" className="text-sm text-[#6B7280] leading-relaxed mb-4">{s.desc}</p>
-                <ul className="space-y-1.5 mb-4">
-                  {s.points.map(p => (
-                    <li key={p} className="flex items-center gap-2 text-sm font-medium text-[#374151]">
-                      <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: c.relatedCategoryColor }} />
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-                <Link to={s.href} className="inline-flex items-center gap-1 text-sm font-semibold hover:gap-2 transition-all" style={{ color: c.relatedCategoryColor }}>
-                  Learn more<span className="sr-only"> about {s.title}</span> <ArrowRight size={14} />
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {!config.storyLayout && relatedBlock}
 
       {/* Optional long-form sections (config.extraSections) */}
-      {c.extraSections?.map((sec, i) => (
+      {(config.storyLayout ? (c.extraSections || []).filter((s) => s.slot !== "early") : c.extraSections)?.map((sec, i) => (
         <section key={sec.id} id={sec.id} className="py-16 px-4 md:px-8" style={{ background: i % 2 === 0 ? "#fff" : "#F8FAFF" }}>
           <div className="max-w-5xl mx-auto">
             <ExtraBlock section={sec} accent={c.accentColor} />
           </div>
         </section>
       ))}
+
+      {config.storyLayout && relatedBlock}
 
       {config.leadForm && config.leadFormTop && (
         <CtaBand accent={c.accentColor} label={ctaLabel} href={ctaHref} topic={config.h1} heading="Ready to see what we find?" text="Enter your website at the top of the page. It is free, with no obligation." />

@@ -348,3 +348,61 @@ export function PeopleSchema() {
     </>
   );
 }
+
+/* ---------- Trust numbers band (same pattern as the SEO page; only the confirmed company figures) ---------- */
+
+export function StatsBand() {
+  const items = [
+    { k: "120+", v: "Clients served" },
+    { k: "750+", v: "Projects delivered" },
+    { k: "10+", v: "Years in digital marketing" },
+    { k: "Free", v: "Google Ads audit, reply by email" },
+  ];
+  return (
+    <section className="bg-surface-muted">
+      <div className="mx-auto w-full max-w-7xl px-5 py-12 md:px-8 md:py-16">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+          {items.map((s) => (
+            <div key={s.v} className="flex h-full flex-col items-center justify-center rounded-2xl border border-border bg-white p-6 text-center shadow-xs">
+              <div className="font-display text-4xl font-extrabold text-navy md:text-5xl">{s.k}</div>
+              <div className="mt-2 text-[14px] text-muted-foreground">{s.v}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Explore: one card per related page, so the next step is always clear ---------- */
+
+export function ExploreMore() {
+  const items = [
+    { t: "Google Ads pricing", d: "How fees and ad spend are set, and what to budget.", h: "/google-ads-pricing-ahmedabad/" },
+    { t: "Free Google Ads audit", d: "Find where budget is wasted, with a written action list.", h: "/google-ads-audit-ahmedabad/" },
+    { t: "Google Ads for doctors", d: "Compliant campaigns for clinics and hospitals.", h: "/google-ads-for-doctors-ahmedabad/" },
+    { t: "Meta ads agency", d: "Facebook and Instagram campaigns for leads.", h: "/meta-ads-agency-ahmedabad/" },
+    { t: "SEO services", d: "Rank on Google and in AI search over time.", h: "/seo-services-ahmedabad" },
+    { t: "Conversion rate optimisation", d: "Turn more of the clicks you pay for into enquiries.", h: "/services/cro/" },
+  ];
+  return (
+    <Section id="explore" className="bg-white">
+      <div className="max-w-3xl">
+        <Eyebrow>Explore</Eyebrow>
+        <H2 className="mt-6">Explore each Google Ads service</H2>
+        <Lead className="mt-4">One focused page for each question, so you can go straight to what you need.</Lead>
+      </div>
+      <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {items.map((i) => (
+          <a key={i.h} href={i.h} className={card + " group block transition-shadow hover:shadow-md"}>
+            <h3 className="font-display text-[18px] font-bold text-navy">{i.t}</h3>
+            <p className="mt-2 text-[15px] text-muted-foreground">{i.d}</p>
+            <span className="mt-4 inline-flex items-center gap-1 text-[14px] font-semibold text-primary group-hover:gap-2">
+              Learn more <ArrowRight className="size-4" />
+            </span>
+          </a>
+        ))}
+      </div>
+    </Section>
+  );
+}

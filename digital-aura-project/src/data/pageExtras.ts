@@ -359,8 +359,8 @@ export const pillarExtras: Record<string, Enhancement> = {
     },
     relatedServices: rel("metaPricing", "metaClinics", "gadsPillar", "socialAgency", "adAgency", "dmAgency", "seoPillar", "cro"),
     extraAdd: [
-      { kind: "reels", id: "meta-videos", title: "Watch: Meta ads in short videos", subtext: "Short, practical videos from our founder, Sambhav Shah, on how Meta ads work for businesses in Ahmedabad.", ids: REELS.meta, topic: "Meta ads", slug: "meta" },
-      { kind: "team", id: "meta-team", title: "The team behind your Meta ads", subtext: "Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. Meet the in-house team you will work with at our Hanspura office, Ahmedabad.", members: [TEAM.satish, TEAM.bhavesh], founderLinks: true },
+      { kind: "reels", id: "meta-videos", eyebrow: "Videos", title: "Watch: Meta ads in short videos", subtext: "Short, practical videos from our founder, Sambhav Shah, on how Meta ads work for businesses in Ahmedabad.", ids: REELS.meta, topic: "Meta ads", slug: "meta" },
+      { kind: "team", id: "meta-team", eyebrow: "Our team", title: "The team behind your Meta ads", subtext: "Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. Meet the in-house team you will work with at our Hanspura office, Ahmedabad.", members: [TEAM.satish, TEAM.bhavesh], founderLinks: true },
     ],
     faqAdd: [
       { q: "What does a Meta ads agency do that I cannot do by boosting posts?", a: "Boosting a post picks a basic objective and audience in one click. An agency sets the right objective and tracking, tests audiences and creative, handles lead follow-up, and reports on leads and cost per lead, not likes or reach." },

@@ -1,6 +1,7 @@
 import type { LocalServiceConfig } from "@/components/LocalServicePage";
 import { enhance, phase2Enhancements } from "@/data/pageEnhancements";
 import { pageExtras } from "@/data/pageExtras";
+import { clusterExtras } from "@/data/clusterExtras";
 
 /**
  * Phase 2 pages from "Digital Aura Page Blueprints": seo-02, seo-05, seo-06, gads-02, gads-04, meta-02, meta-03.
@@ -989,4 +990,4 @@ const phase2Raw: Record<string, LocalServiceConfig> = {
   },
 };
 
-export const phase2Pages: Record<string, LocalServiceConfig> = enhance(phase2Raw, phase2Enhancements, pageExtras);
+export const phase2Pages: Record<string, LocalServiceConfig> = enhance(phase2Raw, phase2Enhancements, pageExtras, clusterExtras);

@@ -29,7 +29,12 @@ export function enhance<T extends Record<string, LocalServiceConfig>>(pages: T, 
       if (!e) continue;
       const { extraAdd, faqAdd, ...rest } = e;
       merged = { ...merged, ...rest };
-      if (extraAdd) extraSections = [...extraSections, ...extraAdd];
+      if (extraAdd) {
+        for (const s of extraAdd) {
+          const at = s.after ? extraSections.findIndex((x) => x.id === s.after) : -1;
+          if (at >= 0) extraSections.splice(at + 1, 0, s); else extraSections.push(s);
+        }
+      }
       if (faqAdd) faqs = [...faqs, ...faqAdd];
     }
     out[key] = { ...merged, extraSections, faqs };

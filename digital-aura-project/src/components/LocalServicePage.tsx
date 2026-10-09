@@ -41,6 +41,8 @@ export type ExtraSection = (
   eyebrow?: string;
   /** Only used with storyLayout: "early" sections render before the proof (case studies, testimonials). */
   slot?: "early";
+  /** Used by enhance(): insert this section right after the section with this id (default: append). */
+  after?: string;
 };
 export interface RelatedService { title: string; desc: string; points: string[]; href: string; }
 

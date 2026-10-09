@@ -1,6 +1,7 @@
 import type { LocalServiceConfig } from "@/components/LocalServicePage";
 import { enhance, phase1Enhancements } from "@/data/pageEnhancements";
 import { pageExtras } from "@/data/pageExtras";
+import { clusterExtras } from "@/data/clusterExtras";
 import { LAST_UPDATED, SEO_AUDIT_SEQUENCE, SEO_AUDIT_CHECKLIST, AUDIT_SOURCES } from "@/data/auditContent";
 
 /**
@@ -595,4 +596,4 @@ const phase1Raw: Record<string, LocalServiceConfig> = {
   },
 };
 
-export const phase1Pages: Record<string, LocalServiceConfig> = enhance(phase1Raw, phase1Enhancements, pageExtras);
+export const phase1Pages: Record<string, LocalServiceConfig> = enhance(phase1Raw, phase1Enhancements, pageExtras, clusterExtras);

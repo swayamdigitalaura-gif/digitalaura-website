@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, MapPin, X } from "lucide-react";
 import { Eyebrow, H2, Lead, PrimaryCTA, Section } from "../shared/SectionPrimitives";
@@ -254,18 +254,36 @@ const instagramEmbedHtml = (id: string) =>
 
 function ReelCard({ id, n }: { id: string; n: number }) {
   const ref = useRef<HTMLDivElement>(null);
+  const [failed, setFailed] = useState(false);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    if (!("IntersectionObserver" in window)) { processInstagram(); return; }
-    const io = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { processInstagram(); io.disconnect(); } }, { rootMargin: "400px" });
+    let timer: number | undefined;
+    const start = () => {
+      processInstagram();
+      // If Instagram does not answer (privacy mode, blockers, restricted account), show a plain link card instead of an empty box.
+      timer = window.setTimeout(() => {
+        const f = el.querySelector("iframe.instagram-media");
+        if (!f || f.getBoundingClientRect().height < 100) setFailed(true);
+      }, 10000);
+    };
+    if (!("IntersectionObserver" in window)) { start(); return () => window.clearTimeout(timer); }
+    const io = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { start(); io.disconnect(); } }, { rootMargin: "400px" });
     io.observe(el);
-    return () => io.disconnect();
+    return () => { io.disconnect(); window.clearTimeout(timer); };
   }, []);
   const url = `https://www.instagram.com/reel/${id}/`;
   return (
     <div className="overflow-hidden rounded-2xl border border-border bg-white">
-      <div ref={ref} className="da-ig" style={{ minHeight: 480 }} aria-label={`Google Ads reel ${n}`} dangerouslySetInnerHTML={{ __html: instagramEmbedHtml(id) }} />
+      {failed ? (
+        <a href={url} target="_blank" rel="noopener noreferrer" className="flex w-full flex-col items-center justify-center gap-3 px-5 text-center text-white" style={{ minHeight: 360, background: "linear-gradient(160deg, #0A1628, #1A6FE8)" }}>
+          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/15 text-2xl">&#9654;</span>
+          <span className="text-base font-bold">Watch this reel on Instagram</span>
+          <span className="text-sm opacity-80">@sambhavshah2</span>
+        </a>
+      ) : (
+        <div ref={ref} className="da-ig" style={{ minHeight: 480 }} aria-label={`Google Ads reel ${n}`} dangerouslySetInnerHTML={{ __html: instagramEmbedHtml(id) }} />
+      )}
       <div className="flex items-center justify-between gap-3 border-t border-border px-4 py-3 text-sm">
         <span className="text-muted-foreground">Reel by Sambhav Shah</span>
         <a href={url} target="_blank" rel="noopener noreferrer" className="font-semibold text-primary underline">Watch on Instagram</a>
@@ -285,10 +303,6 @@ export function AdsReels() {
       <div className="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-5 md:grid-cols-2">
         {ADS_REELS.map((id, i) => <ReelCard key={id} id={id} n={i + 1} />)}
       </div>
-      <p className="mx-auto mt-8 max-w-3xl text-center text-muted-foreground">
-        These reels are posted on Sambhav&apos;s Instagram, <a className="font-semibold text-primary underline" href="https://www.instagram.com/sambhavshah2/" target="_blank" rel="noopener noreferrer">@sambhavshah2</a>. Follow for new videos, or{" "}
-        <a className="font-semibold text-primary underline" href="/google-ads-audit-ahmedabad/">request a Google Ads audit</a> to see where your own ad budget is going.
-      </p>
     </Section>
   );
 }

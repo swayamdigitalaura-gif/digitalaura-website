@@ -1266,6 +1266,7 @@ const localPagesRaw: Record<string, LocalServiceConfig> = {
           { label: "Google Ads agency in Ahmedabad", href: "/google-ads-agency-ahmedabad" },
           { label: "Meta ads pricing", href: "/meta-ads-agency-ahmedabad/pricing/" },
           { label: "Meta ads for doctors and clinics", href: "/meta-ads-agency-ahmedabad/clinics-doctors/" },
+          { label: "Digital marketing company in Ahmedabad", href: "/digital-marketing-company-ahmedabad" },
         ],
       },
       {

@@ -16,7 +16,7 @@ import { Certifications } from "../components/sections/Certifications";
 import { FAQ } from "../components/sections/FAQ";
 import { FinalCTA } from "../components/sections/FinalCTA";
 import { Footer } from "../components/sections/Footer";
-import { QuickAnswer, AhmedabadMarket, CostBreakdown, AgencyComparison, AdsReels, TeamSection, PeopleSchema } from "../components/sections/PillarExtras";
+import { QuickAnswer, StatsBand, ExploreMore, AhmedabadMarket, CostBreakdown, AgencyComparison, AdsReels, TeamSection, PeopleSchema } from "../components/sections/PillarExtras";
 import { StickyMobileCTA } from "../components/sections/StickyMobileCTA";
 
 export const Route = createFileRoute("/google-ads-agency-ahmedabad")({
@@ -69,19 +69,21 @@ function LandingPage() {
       <Header />
       <Hero />
       <QuickAnswer />
+      <StatsBand />
       <ChallengesWeSolve />
       <PlatformsWeManage />
+      <ProcessTimeline />
       <ConversionTracking />
       <LandingPageOptimization />
       <ToolsWeUse />
       <DashboardGallery />
-      <ProcessTimeline />
       <IndustrySolutions />
       <AhmedabadMarket />
       <CaseStudies />
       <ClientLogoMarquee />
       <Testimonials />
       <Certifications />
+      <ExploreMore />
       <CostBreakdown />
       <AgencyComparison />
       <AdsReels />

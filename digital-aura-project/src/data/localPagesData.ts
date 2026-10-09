@@ -1194,6 +1194,13 @@ const localPagesRaw: Record<string, LocalServiceConfig> = {
       successText: "Thank you. We will review your details and reply by email.",
     },
     accentColor: META_BLUE,
+    storyLayout: true,
+    statsBand: [
+      { value: "120+", label: "Clients served" },
+      { value: "750+", label: "Projects delivered" },
+      { value: "10+", label: "Years in digital marketing" },
+      { value: "Free", label: "Meta ads account review" },
+    ],
     eyebrow: "Meta Ads Agency · Ahmedabad",
     h1: "Meta Ads Agency in Ahmedabad",
     heroParagraph: "Digital Aura is a Meta Ads agency in Ahmedabad, running Facebook and Instagram ad campaigns for local businesses focused on lead generation, remarketing, and eCommerce sales.",
@@ -1247,6 +1254,8 @@ const localPagesRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "text",
         id: "short-answer",
+        eyebrow: "The short answer",
+        slot: "early",
         title: "Meta ads in Ahmedabad: the short answer",
         paragraphs: [
           "Meta Ads means ads on Facebook, Instagram, Messenger and WhatsApp, all bought through one platform. We plan, launch and improve these campaigns for Ahmedabad businesses: lead generation for clinics, classes, real estate and services, click-to-WhatsApp campaigns, and sales campaigns for online stores.",
@@ -1262,6 +1271,8 @@ const localPagesRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "compare",
         id: "who-its-for",
+        eyebrow: "Is it right for you",
+        slot: "early",
         title: "Who Meta ads suit, and when to start elsewhere",
         subtext: "We would rather tell you now than after you have spent a month of budget.",
         left: {
@@ -1286,6 +1297,8 @@ const localPagesRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "cards",
         id: "ad-formats",
+        eyebrow: "Ad formats",
+        slot: "early",
         title: "Facebook ads, Instagram ads or click-to-WhatsApp?",
         subtext: "The right format depends on what you want the person to do next.",
         items: [
@@ -1300,6 +1313,8 @@ const localPagesRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "cards",
         id: "first-30-days",
+        eyebrow: "Getting started",
+        slot: "early",
         title: "What happens in your first 30 days",
         subtext: "A clear start, so you know what is being done and when.",
         items: [
@@ -1314,6 +1329,8 @@ const localPagesRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "cards",
         id: "tracking-lead-quality",
+        eyebrow: "Tracking",
+        slot: "early",
         title: "Tracking and lead quality",
         subtext: "Cheap leads that never answer the phone are not cheap.",
         items: [
@@ -1326,6 +1343,8 @@ const localPagesRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "cards",
         id: "industries",
+        eyebrow: "Industries",
+        slot: "early",
         title: "Meta ads for Ahmedabad industries: what changes",
         items: [
           { title: "Clinics and doctors", desc: "Health ads face stricter rules from Meta and from medical regulators. We keep claims factual and avoid before and after promises." },
@@ -1339,6 +1358,8 @@ const localPagesRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "cards",
         id: "ahmedabad-calendar",
+        eyebrow: "Ahmedabad market",
+        slot: "early",
         title: "Ahmedabad's calendar and your ad plan",
         subtext: "Demand follows the local calendar, so campaigns should too.",
         items: [
@@ -1352,6 +1373,8 @@ const localPagesRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "compare",
         id: "creative",
+        eyebrow: "Creative",
+        slot: "early",
         title: "Creative that works, and what to avoid",
         subtext: "On Meta the creative does most of the targeting. Weak creative cannot be rescued by budget.",
         left: {
@@ -1378,6 +1401,7 @@ const localPagesRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "cards",
         id: "cost",
+        eyebrow: "Pricing",
         title: "What Meta ads cost",
         subtext: "Four things make up the bill. We explain each one in your free review and give you the fee in writing before you commit.",
         items: [
@@ -1390,6 +1414,7 @@ const localPagesRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "compare",
         id: "meta-vs-google",
+        eyebrow: "Compare",
         title: "Meta ads or Google Ads: where should you start?",
         subtext: "They solve different problems, and many businesses end up using both.",
         left: {
@@ -1415,6 +1440,7 @@ const localPagesRaw: Record<string, LocalServiceConfig> = {
       {
         kind: "compare",
         id: "choose-an-agency",
+        eyebrow: "Choosing an agency",
         title: "How to choose a Meta ads agency in Ahmedabad",
         subtext: "Use this checklist with us or anyone else.",
         left: {

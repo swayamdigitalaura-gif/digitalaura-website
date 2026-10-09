@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
+import { useNoindexWhen } from "@/hooks/useNoindexWhen";
 import MathCaptcha from "@/components/MathCaptcha";
 import { STATIC_JOBS } from "@/data/jobs";
 import {
@@ -190,6 +191,8 @@ const JobDetailPage = () => {
   const [job, setJob] = useState<Job | null>(null);
   const [loading, setLoading] = useState(true);
   const [related, setRelated] = useState<Job[]>([]);
+  // Unknown job id: the server still answers 200 with the SPA shell, so keep it out of the index.
+  useNoindexWhen(!loading && !job);
 
   const color = "#FF6B2B";
 

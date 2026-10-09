@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, MapPin, X } from "lucide-react";
+import { ArrowRight, Check, MapPin, Play, X } from "lucide-react";
 import { Eyebrow, H2, Lead, PrimaryCTA, Section } from "../shared/SectionPrimitives";
 
 /* Sections added from the page blueprint (gads-01). Deliberately free of new
@@ -216,5 +217,110 @@ export function AgencyComparison() {
         Not sure which fits? <a className="inline-flex items-center gap-1 font-semibold text-primary underline" href="#audit">Ask for the free audit <ArrowRight className="size-4" /></a>
       </p>
     </Section>
+  );
+}
+
+/* ---------- Videos, team and people schema (owner-supplied, 2026-10-09) ---------- */
+
+const ADS_REELS = ["DbpWKskDuEi", "DXkCXfnDBZE"];
+
+export const TEAM_MEMBERS = [
+  { name: "Satish Prajapati", role: "Project Manager & Digital Marketing", photo: "/team/satish.png", bio: "Satish Prajapati leads project management and digital marketing initiatives, ensuring smooth project execution and effective marketing strategies. He focuses on team coordination, campaign planning, and delivering results that support business growth." },
+  { name: "Bhavesh Bhavsar", role: "Digital Marketing Executive", photo: "/team/bhavesh.webp", bio: "Bhavesh Bhavsar works on digital marketing activities focused on improving online visibility and business growth. He contributes to SEO, website optimization, content planning, and digital marketing performance to help businesses strengthen their online presence." },
+];
+
+export const FOUNDER_SAME_AS = ["https://www.linkedin.com/in/sambhav-shah/", "https://www.instagram.com/sambhavshah2/"];
+
+function ReelCard({ id, n }: { id: string; n: number }) {
+  const [on, setOn] = useState(false);
+  const url = `https://www.instagram.com/reel/${id}/`;
+  const label = `Google Ads reel ${n}`;
+  return (
+    <div className="overflow-hidden rounded-2xl border border-border bg-white">
+      {on ? (
+        <iframe src={`${url}embed/`} title={label} loading="lazy" allowFullScreen className="block w-full border-0" style={{ height: 560 }} />
+      ) : (
+        <button
+          type="button"
+          onClick={() => setOn(true)}
+          aria-label={`Play: ${label}`}
+          className="flex w-full flex-col items-center justify-center gap-3 text-white"
+          style={{ height: 320, background: "linear-gradient(160deg, #0A1628, #1A6FE8)" }}
+        >
+          <span className="flex size-14 items-center justify-center rounded-full bg-white/15">
+            <Play className="size-6" fill="currentColor" />
+          </span>
+          <span className="px-4 text-center text-sm font-bold">{label}: tap to play</span>
+        </button>
+      )}
+      <div className="flex items-center justify-between gap-3 px-4 py-3 text-sm">
+        <span className="text-muted-foreground">Reel by Sambhav Shah</span>
+        <a href={url} target="_blank" rel="noopener noreferrer" className="font-semibold text-primary underline">Watch on Instagram</a>
+      </div>
+    </div>
+  );
+}
+
+export function AdsReels() {
+  return (
+    <Section id="google-ads-videos" className="bg-white">
+      <div className="mx-auto max-w-3xl text-center">
+        <Eyebrow>Watch</Eyebrow>
+        <H2 className="mt-6">Google Ads in short videos</H2>
+        <Lead className="mt-6 mx-auto">Short reels on Google Ads from our founder, Sambhav Shah.</Lead>
+      </div>
+      <div className="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-5 sm:grid-cols-2">
+        {ADS_REELS.map((id, i) => <ReelCard key={id} id={id} n={i + 1} />)}
+      </div>
+    </Section>
+  );
+}
+
+export function TeamSection() {
+  return (
+    <Section id="team" className="bg-surface-cream">
+      <div className="mx-auto max-w-3xl text-center">
+        <Eyebrow>Our team</Eyebrow>
+        <H2 className="mt-6">The team behind your Google Ads</H2>
+        <Lead className="mt-6 mx-auto">
+          Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. Meet the in-house team you will work with at our Hanspura office, Ahmedabad.
+        </Lead>
+      </div>
+      <div className="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-5 md:grid-cols-2">
+        {TEAM_MEMBERS.map((m) => (
+          <div key={m.name} className={card}>
+            <div className="flex items-center gap-3">
+              <img src={m.photo} alt={`${m.name}, ${m.role} at Digital Aura`} width={56} height={56} loading="lazy" className="size-14 shrink-0 rounded-full bg-surface-cream object-cover" />
+              <div>
+                <h3 className="font-bold leading-tight">{m.name}</h3>
+                <p className="text-sm font-semibold text-primary">{m.role}</p>
+              </div>
+            </div>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{m.bio}</p>
+          </div>
+        ))}
+      </div>
+      <p className="mt-6 text-center text-sm text-muted-foreground">
+        Founder Sambhav Shah:{" "}
+        <a className="font-semibold text-primary underline" href={FOUNDER_SAME_AS[0]} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        {" · "}
+        <a className="font-semibold text-primary underline" href={FOUNDER_SAME_AS[1]} target="_blank" rel="noopener noreferrer">Instagram</a>
+      </p>
+    </Section>
+  );
+}
+
+export function PeopleSchema() {
+  const org = { "@type": "LocalBusiness", "@id": "https://thedigitalaura.com/#localbusiness", name: "Digital Aura" };
+  const people = [
+    { "@context": "https://schema.org", "@type": "Person", name: "Sambhav Shah", jobTitle: "Founder", worksFor: org, url: "https://thedigitalaura.com/about/", sameAs: FOUNDER_SAME_AS },
+    ...TEAM_MEMBERS.map((m) => ({ "@context": "https://schema.org", "@type": "Person", name: m.name, jobTitle: m.role, description: m.bio, worksFor: org })),
+  ];
+  return (
+    <>
+      {people.map((p) => (
+        <script key={p.name} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(p) }} />
+      ))}
+    </>
   );
 }

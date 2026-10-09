@@ -5,6 +5,7 @@ import { phase1Pages } from '../data/localPagesPhase1';
 import { phase2Pages } from '../data/localPagesPhase2';
 import { phase2WebPages } from '../data/localPagesPhase2Web';
 import { phase3Pages } from '../data/localPagesPhase3';
+import { TEAM } from '../data/pageExtras';
 
 const API_BASE  = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
 const SITE_URL  = 'https://thedigitalaura.com';
@@ -437,6 +438,13 @@ function breadcrumbSchema(trail: [string, string][]) {
 
 const ORG_REF = { '@id': `${SITE_URL}/#organization` };
 
+function personSchema(name: string, jobTitle: string, extra: Record<string, unknown> = {}) {
+  return { '@context': 'https://schema.org', '@type': 'Person', name, jobTitle, worksFor: ORG_REF, ...extra };
+}
+
+/** Founder profile links supplied by the owner (2026-10-09). */
+const FOUNDER_SAME_AS = ['https://www.linkedin.com/in/sambhav-shah/', 'https://www.instagram.com/sambhavshah2/'];
+
 function webPageSchema(path: string, name: string, description: string, dateModified?: string) {
   return {
     '@context': 'https://schema.org',
@@ -660,6 +668,9 @@ const PAGE_SCHEMA: Record<string, object | object[]> = {
     {"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Meta Ads Agency in Ahmedabad", "description": "Digital Aura is a Meta Ads agency in Ahmedabad, running Facebook and Instagram ad campaigns for local businesses focused on lead generation, remarketing, and eCommerce sales.", "url": "https://thedigitalaura.com/meta-ads-agency-ahmedabad/", "areaServed": "Ahmedabad, Gujarat, India", "address": {"@type": "PostalAddress", "streetAddress": "713, Shilp Arcade, Sardar Patel Ring Rd, Hanspura", "addressLocality": "Ahmedabad", "addressRegion": "Gujarat", "postalCode": "382330", "addressCountry": "IN"}},
     faqPageSchema(localPages.metaAdsAhmedabad.faqs),
     breadcrumbSchema([['Home', '/'], ["Meta Ads Agency in Ahmedabad", '/meta-ads-agency-ahmedabad/']]),
+    personSchema('Sambhav Shah', 'Founder', { sameAs: FOUNDER_SAME_AS, url: `${SITE_URL}/about/` }),
+    personSchema(TEAM.satish.name, TEAM.satish.role, { description: TEAM.satish.bio }),
+    personSchema(TEAM.bhavesh.name, TEAM.bhavesh.role, { description: TEAM.bhavesh.bio }),
     serviceSchema('/meta-ads-agency-ahmedabad', 'Meta Ads Agency in Ahmedabad', "Meta Ads management", "Facebook and Instagram ad campaigns for Ahmedabad businesses, with tracking set up before spend and monthly reporting on leads."),
   ],
   '/digital-marketing-agency-ahmedabad': [

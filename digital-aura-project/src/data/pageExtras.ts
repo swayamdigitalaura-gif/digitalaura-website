@@ -43,6 +43,20 @@ export const CARDS = {
   dmAgency: { title: "Digital Marketing Agency in Ahmedabad", desc: "SEO, ads, web and AI automation under one team.", points: ["SEO", "Ads", "Web"], href: "/digital-marketing-agency-ahmedabad/" },
 } satisfies Record<string, RelatedService>;
 
+/** Team details supplied by the owner (2026-10-09). Roles and bios are used exactly as given. */
+export const TEAM = {
+  satish: { name: "Satish Prajapati", role: "Project Manager & Digital Marketing", photo: "/team/satish.png", bio: "Satish Prajapati leads project management and digital marketing initiatives, ensuring smooth project execution and effective marketing strategies. He focuses on team coordination, campaign planning, and delivering results that support business growth." },
+  bhavesh: { name: "Bhavesh Bhavsar", role: "Digital Marketing Executive", photo: "/team/bhavesh.webp", bio: "Bhavesh Bhavsar works on digital marketing activities focused on improving online visibility and business growth. He contributes to SEO, website optimization, content planning, and digital marketing performance to help businesses strengthen their online presence." },
+  jinali: { name: "Jinali Lodariya", role: "SEO Executive", photo: "/team/jinali.png", bio: "Jinali Lodariya specializes in search engine optimization (SEO), focusing on keyword research, on-page optimization, content optimization, and website performance. She works to improve search engine rankings, organic traffic, and overall website visibility." },
+};
+
+/** Instagram reel ids supplied by the owner (2026-10-09), grouped by service. */
+export const REELS = {
+  seo: ["DXwAkPRMl9c", "DTktVf7gdFf", "DcoMJiOskzp"],
+  googleAds: ["DbpWKskDuEi", "DXkCXfnDBZE"],
+  meta: ["DYAJTR-hkz2", "DSctZZUDCS4", "DRUXMZwgVSL"],
+};
+
 type CardKey = keyof typeof CARDS;
 const rel = (...keys: CardKey[]): RelatedService[] => keys.map((k) => CARDS[k]);
 
@@ -344,6 +358,10 @@ export const pillarExtras: Record<string, Enhancement> = {
       points: ["Lead ads and click-to-WhatsApp campaigns", "Tracking set up before spend, so results are measurable", "Monthly reporting on leads, not likes and reach"],
     },
     relatedServices: rel("metaPricing", "metaClinics", "gadsPillar", "socialAgency", "adAgency", "dmAgency", "seoPillar", "cro"),
+    extraAdd: [
+      { kind: "reels", id: "meta-videos", title: "Watch: Meta ads in short videos", subtext: "Short reels on Meta ads from our founder, Sambhav Shah.", ids: REELS.meta, topic: "Meta ads" },
+      { kind: "team", id: "meta-team", title: "The team behind your Meta ads", subtext: "Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. Meet the in-house team you will work with at our Hanspura office, Ahmedabad.", members: [TEAM.satish, TEAM.bhavesh], founderLinks: true },
+    ],
     faqAdd: [
       { q: "What does a Meta ads agency do that I cannot do by boosting posts?", a: "Boosting a post picks a basic objective and audience in one click. An agency sets the right objective and tracking, tests audiences and creative, handles lead follow-up, and reports on leads and cost per lead, not likes or reach." },
       { q: "Do I own my ad account and data?", a: "Account ownership is stated in your proposal. We recommend the ad account and Pixel are in your business's name, so you keep your data if you ever leave." },

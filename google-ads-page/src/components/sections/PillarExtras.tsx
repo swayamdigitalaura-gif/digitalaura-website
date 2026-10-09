@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, MapPin, X } from "lucide-react";
 import { Eyebrow, H2, Lead, PrimaryCTA, Section } from "../shared/SectionPrimitives";
@@ -230,25 +231,34 @@ export const TEAM_MEMBERS = [
 
 export const FOUNDER_SAME_AS = ["https://www.linkedin.com/in/sambhav-shah/", "https://www.instagram.com/sambhavshah2/"];
 
-/** Reel card in the style of the video testimonials page: thumbnail (/reels/google-ads-<n>.webp) that opens the reel on Instagram. */
+/** Reel card: thumbnail (/reels/google-ads-<n>.webp) that plays /reels/google-ads-<n>.mp4 in place; falls back to an Instagram link if the file is missing. */
 function ReelCard({ id, n }: { id: string; n: number }) {
   const label = `Google Ads reel ${n}`;
   const thumb = `/reels/google-ads-${n}.webp`;
+  const video = `/reels/google-ads-${n}.mp4`;
+  const [mode, setMode] = useState<"idle" | "playing" | "error">("idle");
   const url = `https://www.instagram.com/reel/${id}/`;
   return (
     <div className="overflow-hidden rounded-2xl border border-border bg-white">
-      <a href={url} target="_blank" rel="noopener noreferrer" aria-label={`Watch this reel on Instagram: ${label}`} className="group relative block w-full overflow-hidden text-white" style={{ aspectRatio: "333 / 540", background: "linear-gradient(160deg, #0A1628, #1A6FE8)" }}>
-        <img src={thumb} alt={`${label} thumbnail`} loading="lazy" className="absolute inset-0 h-full w-full object-cover" onError={(e) => { e.currentTarget.style.display = "none"; }} />
-        <span className="absolute inset-0 bg-black/20 transition-all group-hover:bg-black/30" />
-        <span className="absolute inset-0 flex items-center justify-center">
-          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-lg transition-transform group-hover:scale-110" style={{ color: "#1A6FE8" }}>&#9654;</span>
-        </span>
-        <span className="absolute right-3 top-3 rounded-full px-2.5 py-1 text-[10px] font-bold" style={{ background: "rgba(10,22,40,0.75)" }}>Instagram</span>
-      </a>
-      <div className="flex items-center justify-between gap-3 border-t border-border px-4 py-3 text-sm">
-        <span className="text-muted-foreground">Reel by Sambhav Shah</span>
-        <a href={url} target="_blank" rel="noopener noreferrer" className="font-semibold text-primary underline">Watch on Instagram</a>
+      <div className="relative w-full overflow-hidden bg-[#0A1628]" style={{ aspectRatio: "333 / 540" }}>
+        {mode === "playing" ? (
+          <video src={video} poster={thumb} controls autoPlay playsInline preload="auto" className="absolute inset-0 h-full w-full bg-black object-contain" onError={() => setMode("error")} />
+        ) : mode === "error" ? (
+          <a href={url} target="_blank" rel="noopener noreferrer" className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-5 text-center text-white" style={{ background: "linear-gradient(160deg, #0A1628, #1A6FE8)" }}>
+            <span className="font-bold">This video could not be loaded here</span>
+            <span className="text-sm underline">Watch it on Instagram</span>
+          </a>
+        ) : (
+          <button type="button" onClick={() => setMode("playing")} aria-label={`Play video: ${label}`} className="group absolute inset-0 block h-full w-full text-white" style={{ background: "linear-gradient(160deg, #0A1628, #1A6FE8)" }}>
+            <img src={thumb} alt={`${label} thumbnail`} loading="lazy" className="absolute inset-0 h-full w-full object-cover" onError={(e) => { e.currentTarget.style.display = "none"; }} />
+            <span className="absolute inset-0 bg-black/20 transition-all group-hover:bg-black/30" />
+            <span className="absolute inset-0 flex items-center justify-center">
+              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-lg transition-transform group-hover:scale-110" style={{ color: "#1A6FE8" }}>&#9654;</span>
+            </span>
+          </button>
+        )}
       </div>
+      <div className="border-t border-border px-4 py-3 text-sm text-muted-foreground">Reel by Sambhav Shah</div>
     </div>
   );
 }

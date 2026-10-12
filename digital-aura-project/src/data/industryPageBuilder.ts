@@ -80,7 +80,7 @@ const EYEBROWS: Record<string, string> = {
   "treatment-groups": "Services", "skin-policy": "Policy", retention: "Retention",
   calendar: "Calendar", audiences: "Audiences", claims: "Claims", counsellor: "Follow-up",
   goals: "Goals", "food-creative": "Creative", "own-vs-aggregator": "Channels", "restaurant-measure": "Measurement",
-  "tracking-capi": "Tracking", "india-realities": "Indian ecommerce", "break-even": "Margin", "creative-system": "Creative",
+  "tracking-capi": "Tracking", "india-realities": "India reality", "break-even": "Margin", "creative-system": "Creative",
   "ivf-searches": "Searches", "ivf-ad-rules": "Ad rules", "ivf-remarketing": "Audiences", "ivf-pages": "Landing page",
   "dental-campaigns": "Campaigns", calls: "Calls", "dental-ad-copy": "Ad wording", "dental-local": "Local",
   "dental-pages": "Pages", "dental-site-wording": "Wording", "dental-speed": "Speed", "dental-seo": "Search",

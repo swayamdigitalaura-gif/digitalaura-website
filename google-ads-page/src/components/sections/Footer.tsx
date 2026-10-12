@@ -1,42 +1,55 @@
 import { MapPin, Mail, Phone } from "lucide-react";
 
 const quickLinks = [
-  { label: "Home",         href: "/" },
-  { label: "About Us",     href: "/about" },
-  { label: "Testimonials", href: "/testimonials" },
-  { label: "Careers",      href: "/careers" },
-  { label: "Case Studies", href: "/case-studies" },
-  { label: "Blogs",        href: "/blog" },
-  { label: "Contact Us",   href: "/contact" },
+  { label: "Home",          href: "/" },
+  { label: "About Us",      href: "/about/" },
+  { label: "Testimonials",  href: "/testimonials/" },
+  { label: "Awards",        href: "/awards/" },
+  { label: "Careers",       href: "/careers/" },
+  { label: "Case Studies",  href: "/case-studies/" },
+  { label: "Blogs",         href: "/blog/" },
+  { label: "Service Areas", href: "/service-areas/" },
+  { label: "Contact Us",    href: "/contact/" },
 ];
 
 const servicesLeft = [
-  { heading: "AI Solutions", color: "#7C3AED", items: [
-    { label: "AI Powered Web Apps",    href: "/services/ai-powered-web-apps" },
-    { label: "AI Automation Systems",  href: "/services/ai-automation" },
-    { label: "AI Chatbot & Assistants",href: "/services/ai-chatbot-assistant" },
+  { heading: "AI Solutions", headingHref: "/ai-solutions/", color: "#7C3AED", items: [
+    { label: "AI Powered Web Apps",    href: "/services/ai-powered-web-apps/" },
+    { label: "AI Automation Systems",  href: "/services/ai-automation/" },
+    { label: "AI Chatbot & Assistants",href: "/services/ai-chatbot-assistant/" },
+    { label: "AI Filmmaking",          href: "/services/ai-filmmaking/" },
+    { label: "LLM-Powered Apps",       href: "/services/ai/llm-powered-apps/" },
+    { label: "AI Virtual Assistants",  href: "/services/ai/chatbots-assistants/" },
+    { label: "AI Workflow Automation", href: "/services/ai/workflow-automation/" },
+    { label: "Predictive Analytics",   href: "/services/ai/predictive-analytics/" },
+    { label: "AI API Integration",     href: "/services/ai/api-integration/" },
+    { label: "Custom ML Models",       href: "/services/ai/custom-ml-models/" },
   ]},
   { heading: "Web Solutions", color: "#1A6FE8", items: [
-    { label: "Full Stack Development", href: "/services/full-stack-development" },
-    { label: "WordPress Development",  href: "/services/wordpress-development" },
-    { label: "Custom Web Development", href: "/services/web-app-development" },
+    { label: "Full Stack Development", href: "/services/full-stack-development/" },
+    { label: "WordPress Development",  href: "/services/wordpress-development/" },
+    { label: "Custom Web Development", href: "/services/web-app-development/" },
+    { label: "Design & Branding",      href: "/services/design-branding/" },
   ]},
-  { heading: "E-Commerce", color: "#FF6B2B", items: [
-    { label: "Shopify Development",    href: "/services/shopify-development" },
-    { label: "WooCommerce Development",href: "/services/woocommerce-development" },
+  { heading: "E-Commerce Solutions", color: "#FF6B2B", items: [
+    { label: "Shopify Development",    href: "/services/shopify-development/" },
+    { label: "WooCommerce Development",href: "/services/woocommerce-development/" },
   ]},
 ];
 
 const servicesRight = [
   { heading: "Digital Marketing", color: "#22C55E", items: [
-    { label: "SEO, AIO & GEO", href: "/services/seo-content-marketing" },
-    { label: "Google Ads",     href: "/services/google-ads" },
-    { label: "Meta Ads",       href: "/services/meta-ads" },
+    { label: "SEO, AIO & GEO", href: "/services/seo-content-marketing/" },
+    { label: "Google Ads",     href: "/services/google-ads/" },
+    { label: "Meta Ads",       href: "/services/meta-ads/" },
+    { label: "Social Media Marketing", href: "/services/social-media-marketing/" },
+    { label: "Email & WhatsApp Marketing", href: "/services/email-whatsapp-marketing/" },
+    { label: "LinkedIn & YouTube Ads", href: "/services/linkedin-youtube-ads/" },
   ]},
-  { heading: "Mobile Apps", color: "#EC4899", items: [
-    { label: "Android Development",          href: "/services/android-development" },
-    { label: "Flutter App Development",      href: "/services/flutter-apps" },
-    { label: "React Native App Development", href: "/services/react-native-apps" },
+  { heading: "Mobile App Development", headingHref: "/mobile-apps/", color: "#EC4899", items: [
+    { label: "Android Development",           href: "/services/mobile-app-development/?type=android" },
+    { label: "Flutter App Development",       href: "/services/mobile-app-development/?type=flutter" },
+    { label: "React Native App Development",  href: "/services/mobile-app-development/?type=reactnative" },
   ]},
 ];
 
@@ -82,7 +95,11 @@ export function Footer() {
               <div className="space-y-4">
                 {servicesLeft.map(group => (
                   <div key={group.heading}>
-                    <p className="text-[11px] font-bold uppercase tracking-wide mb-2" style={{ color: group.color }}>{group.heading}</p>
+                    {group.headingHref ? (
+                      <a href={group.headingHref} className="block text-[11px] font-bold uppercase tracking-wide mb-2 hover:opacity-80 transition-opacity" style={{ color: group.color }}>{group.heading}</a>
+                    ) : (
+                      <p className="text-[11px] font-bold uppercase tracking-wide mb-2" style={{ color: group.color }}>{group.heading}</p>
+                    )}
                     <ul className="space-y-2">{group.items.map(l => <LinkItem key={l.label} {...l} dot={group.color} />)}</ul>
                   </div>
                 ))}
@@ -90,7 +107,11 @@ export function Footer() {
               <div className="space-y-4">
                 {servicesRight.map(group => (
                   <div key={group.heading}>
-                    <p className="text-[11px] font-bold uppercase tracking-wide mb-2" style={{ color: group.color }}>{group.heading}</p>
+                    {group.headingHref ? (
+                      <a href={group.headingHref} className="block text-[11px] font-bold uppercase tracking-wide mb-2 hover:opacity-80 transition-opacity" style={{ color: group.color }}>{group.heading}</a>
+                    ) : (
+                      <p className="text-[11px] font-bold uppercase tracking-wide mb-2" style={{ color: group.color }}>{group.heading}</p>
+                    )}
                     <ul className="space-y-2">{group.items.map(l => <LinkItem key={l.label} {...l} dot={group.color} />)}</ul>
                   </div>
                 ))}

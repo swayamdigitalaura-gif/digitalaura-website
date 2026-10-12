@@ -57,41 +57,12 @@ const projectTypes = [
 
 /* ── FAQ ITEM ─────────────────────────────────────────── */
 const FAQItem = ({ q, a, i }: { q: string; a: string; i: number }) => {
-  const [open, setOpen] = useState(false);
+  // Plain question and answer, always open (same FAQ look on every page).
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: i * 0.07 }}
-      className="border rounded-2xl overflow-hidden"
-      style={{ borderColor: "#E5E7EB" }}
-    >
-      <button
-        onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between px-6 py-5 text-left bg-white hover:bg-[#F8FAFF] transition-colors"
-      >
-        <span className="font-semibold text-[#0A1628] text-sm md:text-base pr-4">{q}</span>
-        <ChevronDown
-          size={18}
-          className="shrink-0 text-[#6B7280] transition-transform duration-300"
-          style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
-        />
-      </button>
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="overflow-hidden"
-          >
-            <p className="px-6 pb-5 text-sm leading-relaxed text-[#4B5563]">{a}</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
+    <div className="border-b border-[#E5E7EB] py-6 first:pt-0 last:border-b-0">
+      <h3 className="text-[17px] font-bold leading-snug text-[#0A1628] md:text-[18px]">{q}</h3>
+      <p className="mt-2 text-[15.5px] leading-relaxed text-[#4B5563]">{a}</p>
+    </div>
   );
 };
 

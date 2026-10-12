@@ -117,20 +117,11 @@ const faqs = [
 ];
 
 const FAQItem = ({ q, a, idx = 0 }: { q: string; a: string; idx?: number }) => {
-  const [open, setOpen] = useState(false);
+  // Plain question and answer, always open (same FAQ look on every page).
   return (
-    <div className="border-b" style={{ borderColor: "#E5E7EB" }}>
-      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between py-4 text-left gap-4">
-        <span className="font-semibold text-[#0A1628] text-[15px]"><span data-cms-key={`aichatbot_faq_${idx}_q`} data-cms-label="FAQ Question" data-cms-attr="text">{q}</span></span>
-        <ChevronDown size={18} className="shrink-0 transition-transform" style={{ transform: open ? "rotate(180deg)" : "none", color: accent }} />
-      </button>
-      <AnimatePresence>
-        {open && (
-          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }} className="overflow-hidden">
-            <p className="pb-4 text-[#6B7280] text-sm leading-relaxed"><span data-cms-key={`aichatbot_faq_${idx}_a`} data-cms-label="FAQ Answer" data-cms-attr="text">{a}</span></p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+    <div className="border-b border-[#E5E7EB] py-6 first:pt-0 last:border-b-0">
+      <h3 className="text-[17px] font-bold leading-snug text-[#0A1628] md:text-[18px]"><span data-cms-key={`aichatbot_faq_${idx}_q`} data-cms-label="FAQ Question" data-cms-attr="text">{q}</span></h3>
+      <p className="mt-2 text-[15.5px] leading-relaxed text-[#4B5563]"><span data-cms-key={`aichatbot_faq_${idx}_a`} data-cms-label="FAQ Answer" data-cms-attr="text">{a}</span></p>
     </div>
   );
 };

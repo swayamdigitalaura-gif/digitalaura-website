@@ -271,28 +271,23 @@ export function Faq() {
           </Reveal>
         </div>
         <Reveal delay={160} className="mt-14 block">
-          {/* Accordion identity (key/value) stays tied to the original question text so
-              open/close state doesn't break if the CMS overrides the displayed copy. */}
-          <Accordion type="single" collapsible defaultValue={faqs[0].q} className="w-full">
+          {/* Plain question and answer, always open (same FAQ look on every page). */}
+          <div className="w-full divide-y divide-border">
             {faqs.map((f, i) => (
-              <AccordionItem
-                key={f.q}
-                value={f.q}
-                className="mb-3 overflow-hidden rounded-2xl border border-border bg-background px-5 shadow-[var(--shadow-soft)] transition-colors hover:border-primary/40"
-              >
-                <AccordionTrigger className="py-5 text-left text-base font-extrabold tracking-tight hover:no-underline">
+              <div key={f.q} className="py-6 first:pt-0">
+                <h3 className="text-[17px] font-bold leading-snug md:text-[18px]">
                   <span data-cms-key={`wds_faq_${i}_q`} data-cms-label={`FAQ ${i + 1} Question`} data-cms-attr="text">
                     {s[`wds_faq_${i}_q`] || f.q}
                   </span>
-                </AccordionTrigger>
-                <AccordionContent className="pb-5 text-[15px] leading-relaxed text-muted-foreground">
+                </h3>
+                <p className="mt-2 text-[15.5px] leading-relaxed text-muted-foreground">
                   <span data-cms-key={`wds_faq_${i}_a`} data-cms-label={`FAQ ${i + 1} Answer`} data-cms-attr="text">
                     {s[`wds_faq_${i}_a`] || f.a}
                   </span>
-                </AccordionContent>
-              </AccordionItem>
+                </p>
+              </div>
             ))}
-          </Accordion>
+          </div>
         </Reveal>
       </div>
     </section>

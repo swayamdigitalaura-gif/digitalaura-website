@@ -1431,22 +1431,14 @@ function Faq() {
         sub="No sales fog, no hedging — straight answers, the same ones we'd give on the call."
       />
       <div className="mx-auto mt-9 max-w-3xl">
-        <Accordion type="single" collapsible className="space-y-4">
-          {FAQS.map((f, i) => (
-            <AccordionItem
-              key={f.q}
-              value={`item-${i}`}
-              className="overflow-hidden rounded-2xl border border-[#E2E8F0] bg-white px-6 shadow-sm transition-all duration-300 last:border-b hover:border-[#2563EB]/25 data-[state=open]:border-[#2563EB]/40"
-            >
-              <AccordionTrigger className="py-6 text-left text-[1.05rem] font-bold text-[#0F172A] hover:no-underline">
-                {f.q}
-              </AccordionTrigger>
-              <AccordionContent className="pb-6 text-[0.98rem] leading-relaxed text-[#475569]">
-                {f.a}
-              </AccordionContent>
-            </AccordionItem>
+        <div className="mt-10 divide-y divide-brand-navy/12">
+          {FAQS.map((f) => (
+            <div key={f.q} className="py-6 first:pt-0">
+              <h3 className="text-[17px] font-bold leading-snug text-brand-navy md:text-lg">{f.q}</h3>
+              <p className="mt-2 text-[15.5px] leading-relaxed text-ink-muted">{f.a}</p>
+            </div>
           ))}
-        </Accordion>
+        </div>
       </div>
     </Section>
   );

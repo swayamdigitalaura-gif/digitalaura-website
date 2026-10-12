@@ -36,20 +36,11 @@ const TitleWithHighlight = ({ title, highlight }: { title: string; highlight: st
 };
 
 const FAQItem = ({ q, a, color }: { q: string; a: string; color: string }) => {
-  const [open, setOpen] = useState(false);
+  // Plain question and answer, always open (same FAQ look on every page).
   return (
-    <div className="rounded-2xl overflow-hidden border transition-all duration-200" style={{ borderColor: open ? `${color}40` : "#E5E7EB", background: "#fff" }}>
-      <button onClick={() => setOpen(!open)} aria-expanded={open} className="w-full flex items-center justify-between px-6 py-5 text-left">
-        <span className="text-[15px] font-semibold" style={{ color: "#0A1628" }}>{q}</span>
-        <ChevronDown size={18} className="shrink-0 transition-transform" style={{ color, transform: open ? "rotate(180deg)" : "none" }} />
-      </button>
-      {/* Answer stays in the DOM at all times (grid-rows collapse, not conditional mount) so it's
-          present in rendered HTML for Google/AI crawlers regardless of accordion state. */}
-      <div className="grid transition-[grid-template-rows] duration-200 ease-in-out" style={{ gridTemplateRows: open ? "1fr" : "0fr" }}>
-        <div className="overflow-hidden">
-          <p className="px-6 pb-5 text-[14.5px] leading-relaxed" style={{ color: "#6B7280" }}>{a}</p>
-        </div>
-      </div>
+    <div className="border-b border-[#E5E7EB] py-6 first:pt-0 last:border-b-0">
+      <h3 className="text-[17px] font-bold leading-snug text-[#0A1628] md:text-[18px]">{q}</h3>
+      <p className="mt-2 text-[15.5px] leading-relaxed text-[#4B5563]">{a}</p>
     </div>
   );
 };

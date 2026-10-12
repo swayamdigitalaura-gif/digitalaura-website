@@ -71,6 +71,7 @@ import LocalSEOPage from "./pages/services/seo/LocalSEOPage.tsx";
 import OffPageSEOPage from "./pages/services/seo/OffPageSEOPage.tsx";
 import EcommerceSEOPage from "./pages/services/seo/EcommerceSEOPage.tsx";
 import LocalServicePage from "./components/LocalServicePage.tsx";
+import IndustryLandingPage from "./components/IndustryLandingPage";
 import { phase1Pages } from "./data/localPagesPhase1.ts";
 import { phase2Pages } from "./data/localPagesPhase2.ts";
 import { phase2WebPages } from "./data/localPagesPhase2Web.ts";
@@ -218,7 +219,7 @@ const App = () => (
           <Route path="/mobile-app-development-ahmedabad" element={<LocalServicePage config={localPages.mobileAppAhmedabad} />} />
           <Route path="/mobile-app-development-gujarat" element={<LocalServicePage config={localPages.mobileAppGujarat} />} />
           <Route path="/google-ads-agency-ahmedabad" element={<LocalServicePage config={localPages.googleAdsAhmedabad} />} />
-          <Route path="/meta-ads-agency-ahmedabad" element={<LocalServicePage config={localPages.metaAdsAhmedabad} />} />
+          <Route path="/meta-ads-agency-ahmedabad" element={<IndustryLandingPage config={localPages.metaAdsAhmedabad} variant="pillar" />} />
           <Route path="/digital-marketing-agency-ahmedabad" element={<LocalServicePage config={localPages.digitalMarketingAhmedabad} />} />
           <Route path="/digital-marketing-agency-gujarat" element={<LocalServicePage config={localPages.digitalMarketingGujarat} />} />
 

@@ -767,24 +767,38 @@ function Hero() {
 /* ---------------- Stats ---------------- */
 
 function QuickAnswer() {
+  const links = [
+    { href: "/seo/free-audit/", label: "Free SEO audit" },
+    { href: "/downloads/Digital-Aura-Sample-SEO-Audit-Report.pdf", label: "Sample SEO audit report (PDF)", external: true },
+    { href: "/seo/pricing/", label: "SEO packages and pricing" },
+    { href: "/blog/seo-cost-ahmedabad-2026/", label: "SEO cost in Ahmedabad (2026 guide)" },
+    { href: "/seo/doctors-hospitals-ahmedabad/", label: "SEO for doctors and hospitals" },
+    { href: "/seo/manufacturers-b2b-gujarat/", label: "SEO for manufacturers" },
+  ];
   return (
     <section id="quick-answer" className="bg-white">
-      <div className="mx-auto max-w-4xl px-5 py-10 md:px-8">
+      <div className="mx-auto max-w-7xl px-5 py-14 md:px-8 md:py-20">
         <Reveal>
-          <div className="rounded-2xl border border-brand-orange/30 bg-brand-orange-soft p-6 md:p-8">
-            <h2 className="text-xs font-bold uppercase tracking-[0.14em] text-brand-orange">What does an SEO company in Ahmedabad do?</h2>
-            <p className="mt-3 text-lg leading-relaxed text-ink md:text-xl">
+          <div className="mx-auto max-w-4xl text-center">
+            <SectionLabel>Quick answer</SectionLabel>
+            <h2 className="mt-4 text-3xl font-extrabold leading-[1.1] sm:text-4xl md:text-[42px] text-balance">What does an SEO company in Ahmedabad do?</h2>
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-ink-muted md:text-xl">
               An SEO company in Ahmedabad helps your business appear in Google, Google Maps and AI search when customers look for what you sell. At Digital Aura that means fixing technical problems, building pages around real search intent, improving your Google Business Profile and earning relevant links, then reporting on calls, forms and enquiries, not only rankings.
             </p>
-            <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
-              <li><a className="underline" href="/seo/free-audit/">Free SEO audit</a></li>
-              <li><a className="underline" href="/downloads/Digital-Aura-Sample-SEO-Audit-Report.pdf" target="_blank" rel="noopener">Sample SEO audit report (PDF)</a></li>
-              <li><a className="underline" href="/seo/pricing/">SEO packages and pricing</a></li>
-              <li><a className="underline" href="/blog/seo-cost-ahmedabad-2026/">SEO cost in Ahmedabad (2026 guide)</a></li>
-              <li><a className="underline" href="/seo/doctors-hospitals-ahmedabad/">SEO for doctors and hospitals</a></li>
-              <li><a className="underline" href="/seo/manufacturers-b2b-gujarat/">SEO for manufacturers</a></li>
+            <ul className="mt-8 flex flex-wrap justify-center gap-3">
+              {links.map((l) => (
+                <li key={l.href}>
+                  <a
+                    href={l.href}
+                    {...(l.external ? { target: "_blank", rel: "noopener" } : {})}
+                    className="inline-flex items-center rounded-full border border-brand-navy/12 bg-white px-4 py-2 text-sm font-semibold text-brand-navy transition-colors hover:border-brand-orange hover:text-brand-orange"
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
             </ul>
-            <p className="mt-4 text-xs text-ink-muted">
+            <p className="mt-6 text-xs text-ink-muted">
               Published by <a className="underline" href="/about/">Digital Aura</a>, 713 Shilp Arcade, SP Ring Road, Hanspura, Ahmedabad. Last updated <time dateTime="2026-10-09">9 October 2026</time>.
             </p>
           </div>

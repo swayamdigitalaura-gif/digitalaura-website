@@ -54,7 +54,7 @@ export function normaliseWebsite(raw: string): string | null {
   }
 }
 
-const PageLeadForm = ({ cfg, accent }: { cfg: LeadFormConfig; accent: string }) => {
+const PageLeadForm = ({ cfg, accent, embedded = false }: { cfg: LeadFormConfig; accent: string; embedded?: boolean }) => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", website: "", business: "", city: "", competitor: "", businessType: "", notes: "", hp: "" });
   const [captchaOk, setCaptchaOk] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -99,15 +99,18 @@ const PageLeadForm = ({ cfg, accent }: { cfg: LeadFormConfig; accent: string }) 
     else setError(res.error || "Something went wrong. Please try again.");
   };
 
+  const Outer = embedded ? "div" : "section";
   return (
-    <section id={cfg.id || "audit-form"} className="py-16 px-4 md:px-8 bg-white scroll-mt-24">
-      <div className="max-w-5xl mx-auto">
-        <div className="mb-8 text-center max-w-3xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] tracking-tight leading-tight">{cfg.heading}</h2>
-          {cfg.text && <p className="mt-3 text-[#4B5563] leading-relaxed">{cfg.text}</p>}
-        </div>
-        <div className="grid lg:grid-cols-[1fr_300px] gap-6 items-start">
-        <div className="rounded-2xl border p-6 md:p-8 shadow-sm" style={{ borderColor: `${accent}40`, background: "#F8FAFF" }}>
+    <Outer id={cfg.id || "audit-form"} className={embedded ? "scroll-mt-24" : "py-16 px-4 md:px-8 bg-white scroll-mt-24"}>
+      <div className={embedded ? "" : "max-w-5xl mx-auto"}>
+        {!embedded && (
+          <div className="mb-8 text-center max-w-3xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] tracking-tight leading-tight">{cfg.heading}</h2>
+            {cfg.text && <p className="mt-3 text-[#4B5563] leading-relaxed">{cfg.text}</p>}
+          </div>
+        )}
+        <div className={embedded ? "" : "grid lg:grid-cols-[1fr_300px] gap-6 items-start"}>
+        <div className={embedded ? "rounded-3xl bg-white p-6 md:p-8 shadow-lg" : "rounded-2xl border p-6 md:p-8 shadow-sm"} style={embedded ? undefined : { borderColor: `${accent}40`, background: "#F8FAFF" }}>
           {done ? (
             <div className="text-center py-6" role="status">
               <CheckCircle2 className="mx-auto mb-3" size={40} color={accent} />
@@ -188,7 +191,7 @@ const PageLeadForm = ({ cfg, accent }: { cfg: LeadFormConfig; accent: string }) 
             </form>
           )}
         </div>
-        <aside className="rounded-2xl border bg-white p-6" style={{ borderColor: "#E5E7EB" }} aria-label="What happens next">
+        {!embedded && <aside className="rounded-2xl border bg-white p-6" style={{ borderColor: "#E5E7EB" }} aria-label="What happens next">
           <p className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628]">What happens next</p>
           <ol className="mt-4 space-y-4">
             {(cfg.steps || ["You send your details", "We review them and reply by email", "You decide what to do next. No obligation."]).map((st, i) => (
@@ -204,10 +207,10 @@ const PageLeadForm = ({ cfg, accent }: { cfg: LeadFormConfig; accent: string }) 
             <a href={whatsappLink(`Hello, I have a question about: ${cfg.service}`)} target="_blank" rel="noopener noreferrer" onClick={() => track("whatsapp_click", { cta_location: "form_aside" })} className="block font-semibold" style={{ color: accent }}>Message us on WhatsApp</a>
             <p className="text-xs text-[#6B7280] pt-1">713 Shilp Arcade, SP Ring Road, Hanspura, Ahmedabad. Monday to Saturday, 10 am to 7 pm.</p>
           </div>
-        </aside>
+        </aside>}
         </div>
       </div>
-    </section>
+    </Outer>
   );
 };
 

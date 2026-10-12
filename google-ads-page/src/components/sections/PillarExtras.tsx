@@ -511,3 +511,108 @@ export function VisitUs() {
     </Section>
   );
 }
+
+/* ---------- Wave 3: self-check, leak checks and tracking by lead type (blueprint gads-01) ---------- */
+
+export function SelfCheck() {
+  const qs = [
+    { q: "Do people search for what you sell?", d: "If customers type your service or product into Google, ads can meet them at that moment. If nobody searches for it, another channel may do more." },
+    { q: "Is one customer worth more than the cost of the clicks?", d: "Work out what a new customer is worth to you, and how many enquiries it takes to win one. This decides how much you can sensibly pay per enquiry." },
+    { q: "Can you answer calls and WhatsApp quickly?", d: "Paid enquiries cool fast. If nobody replies within the hour, the best campaign still loses the lead." },
+    { q: "Do you have a budget that can run long enough to learn?", d: "Search campaigns need time and data. A budget that stops after a few days cannot show what works." },
+  ];
+  return (
+    <Section id="is-it-right" className="bg-white">
+      <div className="max-w-3xl">
+        <Eyebrow>Is Google Ads right for you?</Eyebrow>
+        <H2 className="mt-6">Four questions to answer before you spend a rupee</H2>
+        <Lead className="mt-6">If you can say yes to all four, Google Ads is likely a good fit. If you cannot, we will tell you what to fix first, or suggest a different channel.</Lead>
+      </div>
+      <div className="mt-12 grid gap-5 sm:grid-cols-2">
+        {qs.map((x, i) => (
+          <div key={x.q} className={card}>
+            <span className="text-[12px] font-bold uppercase tracking-[0.14em] text-primary">Question {i + 1}</span>
+            <h3 className="mt-2 font-display text-[18px] font-bold text-navy">{x.q}</h3>
+            <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{x.d}</p>
+          </div>
+        ))}
+      </div>
+      <p className="mt-6 max-w-3xl text-[14px] text-muted-foreground">
+        Want to see what your budget could buy? Try the <a className="font-semibold text-primary underline" href="/google-ads-pricing-ahmedabad/">budget calculator on our pricing page</a>.
+      </p>
+    </Section>
+  );
+}
+
+export function LeakChecks() {
+  const leaks = [
+    { t: "Search terms", spot: "Open the Search terms report and read what people actually typed. Look for words that have nothing to do with what you sell.", fix: "We add negative keywords, tighten match types and group searches by intent." },
+    { t: "Tracking", spot: "Open the Conversions column. If it is empty, shows clicks only or counts the same lead twice, the account is guessing.", fix: "We count calls, WhatsApp clicks and form leads once each, and check the setup with Tag Assistant." },
+    { t: "Landing page", spot: "Click your own ad on a phone. If it lands on a generic homepage that loads slowly, visitors will leave.", fix: "We send each campaign to a page built for that search, with one clear action." },
+    { t: "Location and schedule", spot: "Open the location report. Check whether clicks come from outside Ahmedabad, and whether ads run when nobody can answer.", fix: "We set location targeting to people in the area and match the ad schedule to office hours." },
+    { t: "Lead follow-up", spot: "Count how many enquiries from the last month were answered the same day. Lost leads are budget lost after the click.", fix: "We set up instant WhatsApp replies and alerts so missed leads are caught." },
+    { t: "Brand mixed with generic", spot: "Check whether searches for your own name sit in the same campaign as new-customer searches. Results look better than they are.", fix: "We separate brand and non-brand campaigns so you can see what is bringing in new customers." },
+  ];
+  return (
+    <Section id="leak-checks" className="bg-surface-cream">
+      <div className="max-w-3xl">
+        <Eyebrow>Check your own account</Eyebrow>
+        <H2 className="mt-6">Six common leaks, and how to spot each in five minutes</H2>
+        <Lead className="mt-6">You do not need us to find these. Open your account and look. If you would rather have a second pair of eyes, our audit covers all six and more.</Lead>
+      </div>
+      <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {leaks.map((l, i) => (
+          <div key={l.t} className={card}>
+            <span className="text-[12px] font-bold uppercase tracking-[0.14em] text-primary">Leak {i + 1}</span>
+            <h3 className="mt-2 font-display text-[18px] font-bold text-navy">{l.t}</h3>
+            <p className="mt-3 text-[14px] font-semibold text-navy">How to spot it</p>
+            <p className="mt-1 text-[15px] leading-relaxed text-muted-foreground">{l.spot}</p>
+            <p className="mt-3 text-[14px] font-semibold text-navy">What we change</p>
+            <p className="mt-1 text-[15px] leading-relaxed text-muted-foreground">{l.fix}</p>
+          </div>
+        ))}
+      </div>
+      <p className="mt-6 max-w-3xl text-[14px] text-muted-foreground">
+        For a fuller list, see the <a className="font-semibold text-primary underline" href="/google-ads-audit-ahmedabad/">Google Ads audit checklist</a>. Settings and report names change as Google updates its interface.
+      </p>
+    </Section>
+  );
+}
+
+export function TrackingByLeadType() {
+  const rows = [
+    { who: "Clinics and hospitals", lead: "Phone call, WhatsApp message, appointment request", how: "Call and WhatsApp click tracking, a short booking form counted as a conversion, no patient details sent to Google" },
+    { who: "Manufacturers and exporters", lead: "Quotation request, call, email", how: "RFQ form with product and quantity fields, click-to-call tracking, and a way to mark which enquiries became orders" },
+    { who: "Online stores", lead: "Purchase, add to cart", how: "Purchase tracking with order value, a clean product feed, and separate counting for new and returning customers" },
+    { who: "Education and coaching", lead: "Enquiry form, call, demo-class booking", how: "Form and call conversions by course, with admission outcome fed back where you keep records" },
+    { who: "Local services", lead: "Call, WhatsApp, directions request", how: "Call assets with duration thresholds, WhatsApp clicks and Google Business Profile actions" },
+  ];
+  return (
+    <Section id="tracking-by-lead" className="bg-white">
+      <div className="max-w-3xl">
+        <Eyebrow>What counts as a lead</Eyebrow>
+        <H2 className="mt-6">What we track, by the kind of business you run</H2>
+        <Lead className="mt-6">Smart bidding optimises for whatever you count. So we agree what a real lead is for your business first, and set tracking to match.</Lead>
+      </div>
+      <div className="mt-10 overflow-x-auto rounded-2xl border border-border">
+        <table className="w-full min-w-[640px] text-left text-[15px]">
+          <thead className="bg-surface-muted text-[13px] uppercase tracking-wider text-navy">
+            <tr><th className="p-4">Business</th><th className="p-4">A lead looks like</th><th className="p-4">How we measure it</th></tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr key={r.who} className="border-t border-border align-top">
+                <td className="p-4 font-semibold text-navy">{r.who}</td>
+                <td className="p-4 text-muted-foreground">{r.lead}</td>
+                <td className="p-4 text-muted-foreground">{r.how}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="mt-6 max-w-3xl text-[14px] text-muted-foreground">
+        Where you keep a CRM, qualified leads and sales can be sent back to Google Ads, so bidding learns from real outcomes and not only from form fills. Consent and privacy wording is set up to follow the data protection rules that apply to your business.
+      </p>
+    </Section>
+  );
+}

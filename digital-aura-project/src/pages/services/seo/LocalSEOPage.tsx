@@ -69,18 +69,11 @@ const relatedServices = [
 ];
 
 const FAQItem = ({ q, a, idx = 0 }: { q: string; a: string; idx?: number }) => {
-  const [open, setOpen] = useState(false);
+  // Plain question and answer, always open (same FAQ look on every page).
   return (
-    <div className="rounded-2xl overflow-hidden border transition-all duration-200" style={{ borderColor: open ? `${accentColor}40` : "#E5E7EB", background: "#fff" }}>
-      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between px-6 py-5 text-left">
-        <span className="text-[15px] font-semibold text-[#0A1628] pr-4"><span data-cms-key={`localseo_faq_${idx}_q`} data-cms-label="FAQ Question" data-cms-attr="text">{q}</span></span>
-        <motion.span animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.2 }}>
-          <ChevronDown size={18} color={accentColor} />
-        </motion.span>
-      </button>
-      <motion.div initial={false} animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }} transition={{ duration: 0.25 }} style={{ overflow: "hidden" }}>
-        <p className="px-6 pb-5 text-[14.5px] text-[#6B7280] leading-relaxed"><span data-cms-key={`localseo_faq_${idx}_a`} data-cms-label="FAQ Answer" data-cms-attr="text">{a}</span></p>
-      </motion.div>
+    <div className="border-b border-[#E5E7EB] py-6 first:pt-0 last:border-b-0">
+      <h3 className="text-[17px] font-bold leading-snug text-[#0A1628] md:text-[18px]"><span data-cms-key={`localseo_faq_${idx}_q`} data-cms-label="FAQ Question" data-cms-attr="text">{q}</span></h3>
+      <p className="mt-2 text-[15.5px] leading-relaxed text-[#4B5563]"><span data-cms-key={`localseo_faq_${idx}_a`} data-cms-label="FAQ Answer" data-cms-attr="text">{a}</span></p>
     </div>
   );
 };

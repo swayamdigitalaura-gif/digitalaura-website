@@ -9,7 +9,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-const LOGO_SRC = "/logo-cropped.png";
+const LOGO_SRC = "/logo-header.png";
 const BASE = "https://thedigitalaura.com";
 
 const companyLinks = [
@@ -17,6 +17,7 @@ const companyLinks = [
   { label: "Our Engagement Models", href: `${BASE}/engagement-models`, color: "#7C3AED", bg: "rgba(124,58,237,0.08)" },
   { label: "Testimonials", href: `${BASE}/testimonials`, color: "#22C55E", bg: "rgba(34,197,94,0.08)" },
   { label: "Careers", href: `${BASE}/careers`, color: "#1A6FE8", bg: "rgba(26,111,232,0.08)" },
+  { label: "Service Areas", href: `${BASE}/service-areas`, color: "#EC4899", bg: "rgba(236,72,153,0.08)" },
 ];
 
 const megaCategories = [
@@ -151,7 +152,7 @@ export function Header() {
         <div className="max-w-7xl mx-auto flex items-center justify-between h-[72px] px-4 md:px-6">
           {/* Logo */}
           <a href={BASE} className="shrink-0 flex items-center">
-            <img src={LOGO_SRC} alt="Digital Aura" className="h-[56px] w-auto object-contain" style={{ mixBlendMode: "multiply" }} />
+            <img src={LOGO_SRC} alt="Digital Aura" className="h-[82px] w-auto object-contain" style={{ mixBlendMode: "multiply" }} />
           </a>
 
           {/* Center nav */}
@@ -196,7 +197,7 @@ export function Header() {
               {megaOpen && <MegaMenu onClose={() => setMegaOpen(false)} />}
             </div>
 
-            {[{ label: "Case Studies", href: `${BASE}/case-studies` }, { label: "Blogs", href: `${BASE}/blog` }, { label: "Contact", href: `${BASE}/contact` }].map(l => (
+            {[{ label: "Case Studies", href: `${BASE}/case-studies` }, { label: "Awards", href: `${BASE}/awards` }, { label: "Blogs", href: `${BASE}/blog` }, { label: "Contact", href: `${BASE}/contact` }].map(l => (
               <a key={l.label} href={l.href} className="text-[14px] font-medium text-[#374151] hover:text-[#FF6B2B] transition-colors relative group whitespace-nowrap">
                 {l.label}
                 <span className="absolute -bottom-0.5 left-0 h-0.5 rounded-full transition-all duration-300 bg-[#FF6B2B] w-0 group-hover:w-full" />
@@ -224,7 +225,7 @@ export function Header() {
       {/* Mobile menu */}
       <div className={`fixed inset-0 z-[100] flex flex-col bg-white overflow-y-auto transition-transform duration-300 ${mobileOpen ? "translate-x-0" : "translate-x-full"}`}>
         <div className="flex items-center justify-between px-6 py-6">
-          <a href={BASE}><img src={LOGO_SRC} alt="Digital Aura" className="h-[56px] w-auto object-contain" style={{ mixBlendMode: "multiply" }} /></a>
+          <a href={BASE}><img src={LOGO_SRC} alt="Digital Aura" className="h-[82px] w-auto object-contain" style={{ mixBlendMode: "multiply" }} /></a>
           <button onClick={() => setMobileOpen(false)} className="p-2 rounded-lg hover:bg-gray-100 text-[#0A1628]"><X size={24} /></button>
         </div>
         <div className="flex flex-col px-6 flex-1">
@@ -276,7 +277,7 @@ export function Header() {
             </div>
           </div>
 
-          {[{ label: "Case Studies", href: `${BASE}/case-studies` }, { label: "Blogs", href: `${BASE}/blog` }, { label: "Contact", href: `${BASE}/contact` }].map(l => (
+          {[{ label: "Case Studies", href: `${BASE}/case-studies` }, { label: "Awards", href: `${BASE}/awards` }, { label: "Blogs", href: `${BASE}/blog` }, { label: "Contact", href: `${BASE}/contact` }].map(l => (
             <a key={l.label} href={l.href} onClick={() => setMobileOpen(false)} className="block text-2xl font-bold border-b border-gray-100 py-4 text-[#0A1628] hover:text-[#FF6B2B] transition-colors">{l.label}</a>
           ))}
         </div>

@@ -45,16 +45,27 @@ function FAQSchema() {
 }
 
 export function FAQ() {
-  const [open, setOpen] = useState<number | null>(0);
   return (
     <Section id="faq" className="bg-white">
       <FAQSchema />
-      <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
-        <div className="lg:sticky lg:top-32 lg:self-start">
+      <div className="mx-auto max-w-4xl">
+        <div className="text-center">
           <Eyebrow>Common Questions</Eyebrow>
           <H2 className="mt-6">Google Ads Management, Explained Simply</H2>
-          <Lead className="mt-6">Straightforward answers about cost, timelines, contracts, and who owns your account.</Lead>
-          <div className="mt-9"><PrimaryCTA>Speak With A Strategist</PrimaryCTA></div>
+          <Lead className="mt-6 mx-auto">Straightforward answers about cost, timelines, contracts, and who owns your account.</Lead>
+        </div>
+
+        <div className="mt-10 divide-y divide-border">
+          {FAQS.map((f) => (
+            <div key={f.q} className="py-6 first:pt-0">
+              <h3 className="font-display text-[17px] font-bold leading-snug text-navy md:text-[18px]">{f.q}</h3>
+              <p className="mt-2 text-[15.5px] leading-[1.75] text-muted-foreground">{f.a}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-10 flex justify-center"><PrimaryCTA>Speak With A Strategist</PrimaryCTA></div>
+        <div>
 
           <div className="mt-10 grid grid-cols-3 gap-3 rounded-2xl border border-border bg-surface-cream p-5 shadow-xs">
             <div className="flex flex-col items-center gap-1.5 text-center">
@@ -75,30 +86,6 @@ export function FAQ() {
           </div>
         </div>
 
-        <div className="space-y-4">
-          {FAQS.map((f, i) => (
-            <div
-              key={f.q}
-              className={`overflow-hidden rounded-2xl border bg-surface-cream transition-all ${open === i ? "border-primary/30 shadow-md" : "border-border shadow-xs"}`}
-            >
-              <button
-                onClick={() => setOpen(open === i ? null : i)}
-                className="flex w-full items-center justify-between gap-4 px-7 py-6 text-left"
-              >
-                <span className="font-display text-[17px] font-bold text-navy md:text-[19px] leading-snug">{f.q}</span>
-                <ChevronDown className={`size-5 shrink-0 text-navy/60 transition-transform ${open === i ? "rotate-180 text-primary" : ""}`} />
-              </button>
-              <motion.div
-                initial={false}
-                animate={{ height: open === i ? "auto" : 0, opacity: open === i ? 1 : 0 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="overflow-hidden"
-              >
-                <p className="px-7 pb-7 text-[16px] leading-[1.82] text-muted-foreground">{f.a}</p>
-              </motion.div>
-            </div>
-          ))}
-        </div>
       </div>
     </Section>
   );

@@ -1406,22 +1406,14 @@ function FAQ() {
           eyebrow="FAQs"
           title="Answers to what serious founders ask first"
         />
-        <Accordion type="multiple" className="mt-10 space-y-3">
-          {faqs.map((f, i) => (
-            <AccordionItem
-              key={f.q}
-              value={`faq-${i}`}
-              className="da-shadow-card overflow-hidden rounded-2xl border border-brand-navy/12 bg-white px-5 transition-colors hover:border-brand-orange/25 data-[state=open]:border-brand-orange/40 md:px-6"
-            >
-              <AccordionTrigger className="da-focus-ring rounded-lg py-5 text-left text-base font-bold text-brand-navy hover:no-underline md:text-lg [&>svg]:h-5 [&>svg]:w-5 [&>svg]:text-brand-orange">
-                {f.q}
-              </AccordionTrigger>
-              <AccordionContent className="pb-5 text-[15px] leading-relaxed text-ink-muted">
-                {f.a}
-              </AccordionContent>
-            </AccordionItem>
+        <div className="mt-10 divide-y divide-brand-navy/12">
+          {faqs.map((f) => (
+            <div key={f.q} className="py-6 first:pt-0">
+              <h3 className="text-[17px] font-bold leading-snug text-brand-navy md:text-lg">{f.q}</h3>
+              <p className="mt-2 text-[15.5px] leading-relaxed text-ink-muted">{f.a}</p>
+            </div>
           ))}
-        </Accordion>
+        </div>
       </div>
     </section>
   );

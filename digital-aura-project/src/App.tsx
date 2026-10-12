@@ -167,61 +167,61 @@ const App = () => (
           <Route path="/testimonials" element={<TestimonialsPage />} />
           <Route path="/awards" element={<AwardsPage />} />
           <Route path="/website-development-services-ahmedabad" element={<WebsiteDevelopmentServicesPage />} />
-          <Route path="/seo/free-audit" element={<LocalServicePage config={phase1Pages.seoFreeAudit} />} />
-          <Route path="/google-ads-audit-ahmedabad" element={<LocalServicePage config={phase1Pages.googleAdsAudit} />} />
-          <Route path="/website-redesign-services-ahmedabad" element={<LocalServicePage config={phase1Pages.websiteRedesign} />} />
-          <Route path="/website-maintenance-amc-ahmedabad" element={<LocalServicePage config={phase1Pages.websiteMaintenance} />} />
-          <Route path="/seo/pricing" element={<LocalServicePage config={phase2Pages.seoPricing} />} />
-          <Route path="/seo/doctors-hospitals-ahmedabad" element={<LocalServicePage config={phase2Pages.seoDoctors} />} />
-          <Route path="/seo/manufacturers-b2b-gujarat" element={<LocalServicePage config={phase2Pages.seoManufacturers} />} />
-          <Route path="/google-ads-pricing-ahmedabad" element={<LocalServicePage config={phase2Pages.googleAdsPricing} />} />
-          <Route path="/google-ads-for-doctors-ahmedabad" element={<LocalServicePage config={phase2Pages.googleAdsDoctors} />} />
-          <Route path="/meta-ads-agency-ahmedabad/pricing" element={<LocalServicePage config={phase2Pages.metaAdsPricing} />} />
-          <Route path="/meta-ads-agency-ahmedabad/clinics-doctors" element={<LocalServicePage config={phase2Pages.metaAdsClinics} />} />
-          <Route path="/meta-ads-agency-ahmedabad/real-estate" element={<LocalServicePage config={phase4Pages.metaRealEstate} />} />
-          <Route path="/meta-ads-agency-ahmedabad/hospitals" element={<LocalServicePage config={phase4Pages.metaHospitals} />} />
-          <Route path="/meta-ads-agency-ahmedabad/dentists" element={<LocalServicePage config={phase4Pages.metaDentists} />} />
-          <Route path="/meta-ads-agency-ahmedabad/ivf-fertility-clinics" element={<LocalServicePage config={phase4Pages.metaIvf} />} />
-          <Route path="/meta-ads-agency-ahmedabad/dermatologists-skin-clinics" element={<LocalServicePage config={phase4Pages.metaDermatology} />} />
-          <Route path="/meta-ads-agency-ahmedabad/education-coaching" element={<LocalServicePage config={phase4Pages.metaEducation} />} />
-          <Route path="/meta-ads-agency-ahmedabad/restaurants" element={<LocalServicePage config={phase4Pages.metaRestaurants} />} />
-          <Route path="/meta-ads-agency-ahmedabad/ecommerce" element={<LocalServicePage config={phase4Pages.metaEcommerce} />} />
-          <Route path="/google-ads-for-ivf-clinics-ahmedabad" element={<LocalServicePage config={phase4Pages.googleIvf} />} />
-          <Route path="/google-ads-for-dentists-ahmedabad" element={<LocalServicePage config={phase4Pages.googleDentists} />} />
-          <Route path="/website-design-for-dentists-ahmedabad" element={<LocalServicePage config={phase4Pages.webDentists} />} />
-          <Route path="/website-design-for-ophthalmologists-ahmedabad" element={<LocalServicePage config={phase4Pages.webOphthalmologists} />} />
-          <Route path="/website-development-cost-ahmedabad" element={<LocalServicePage config={phase2WebPages.websiteDevCost} />} />
-          <Route path="/website-design-cost-ahmedabad" element={<LocalServicePage config={phase2WebPages.websiteDesignCost} />} />
-          <Route path="/website-packages-ahmedabad" element={<LocalServicePage config={phase2WebPages.websitePackages} />} />
-          <Route path="/website-design-for-doctors-ahmedabad" element={<LocalServicePage config={phase2WebPages.websiteDoctors} />} />
-          <Route path="/website-design-for-manufacturers-ahmedabad" element={<LocalServicePage config={phase2WebPages.websiteManufacturers} />} />
-          <Route path="/social-media-marketing-agency-ahmedabad" element={<LocalServicePage config={phase3Pages.socialMediaAgency} />} />
-          <Route path="/advertising-agency-ahmedabad" element={<LocalServicePage config={phase3Pages.advertisingAgency} />} />
+          <Route path="/seo/free-audit" element={<IndustryLandingPage config={phase1Pages.seoFreeAudit} />} />
+          <Route path="/google-ads-audit-ahmedabad" element={<IndustryLandingPage config={phase1Pages.googleAdsAudit} />} />
+          <Route path="/website-redesign-services-ahmedabad" element={<IndustryLandingPage config={phase1Pages.websiteRedesign} />} />
+          <Route path="/website-maintenance-amc-ahmedabad" element={<IndustryLandingPage config={phase1Pages.websiteMaintenance} />} />
+          <Route path="/seo/pricing" element={<IndustryLandingPage config={phase2Pages.seoPricing} />} />
+          <Route path="/seo/doctors-hospitals-ahmedabad" element={<IndustryLandingPage config={phase2Pages.seoDoctors} />} />
+          <Route path="/seo/manufacturers-b2b-gujarat" element={<IndustryLandingPage config={phase2Pages.seoManufacturers} />} />
+          <Route path="/google-ads-pricing-ahmedabad" element={<IndustryLandingPage config={phase2Pages.googleAdsPricing} />} />
+          <Route path="/google-ads-for-doctors-ahmedabad" element={<IndustryLandingPage config={phase2Pages.googleAdsDoctors} />} />
+          <Route path="/meta-ads-agency-ahmedabad/pricing" element={<IndustryLandingPage config={phase2Pages.metaAdsPricing} />} />
+          <Route path="/meta-ads-agency-ahmedabad/clinics-doctors" element={<IndustryLandingPage config={phase2Pages.metaAdsClinics} />} />
+          <Route path="/meta-ads-agency-ahmedabad/real-estate" element={<IndustryLandingPage config={phase4Pages.metaRealEstate} />} />
+          <Route path="/meta-ads-agency-ahmedabad/hospitals" element={<IndustryLandingPage config={phase4Pages.metaHospitals} />} />
+          <Route path="/meta-ads-agency-ahmedabad/dentists" element={<IndustryLandingPage config={phase4Pages.metaDentists} />} />
+          <Route path="/meta-ads-agency-ahmedabad/ivf-fertility-clinics" element={<IndustryLandingPage config={phase4Pages.metaIvf} />} />
+          <Route path="/meta-ads-agency-ahmedabad/dermatologists-skin-clinics" element={<IndustryLandingPage config={phase4Pages.metaDermatology} />} />
+          <Route path="/meta-ads-agency-ahmedabad/education-coaching" element={<IndustryLandingPage config={phase4Pages.metaEducation} />} />
+          <Route path="/meta-ads-agency-ahmedabad/restaurants" element={<IndustryLandingPage config={phase4Pages.metaRestaurants} />} />
+          <Route path="/meta-ads-agency-ahmedabad/ecommerce" element={<IndustryLandingPage config={phase4Pages.metaEcommerce} />} />
+          <Route path="/google-ads-for-ivf-clinics-ahmedabad" element={<IndustryLandingPage config={phase4Pages.googleIvf} />} />
+          <Route path="/google-ads-for-dentists-ahmedabad" element={<IndustryLandingPage config={phase4Pages.googleDentists} />} />
+          <Route path="/website-design-for-dentists-ahmedabad" element={<IndustryLandingPage config={phase4Pages.webDentists} />} />
+          <Route path="/website-design-for-ophthalmologists-ahmedabad" element={<IndustryLandingPage config={phase4Pages.webOphthalmologists} />} />
+          <Route path="/website-development-cost-ahmedabad" element={<IndustryLandingPage config={phase2WebPages.websiteDevCost} />} />
+          <Route path="/website-design-cost-ahmedabad" element={<IndustryLandingPage config={phase2WebPages.websiteDesignCost} />} />
+          <Route path="/website-packages-ahmedabad" element={<IndustryLandingPage config={phase2WebPages.websitePackages} />} />
+          <Route path="/website-design-for-doctors-ahmedabad" element={<IndustryLandingPage config={phase2WebPages.websiteDoctors} />} />
+          <Route path="/website-design-for-manufacturers-ahmedabad" element={<IndustryLandingPage config={phase2WebPages.websiteManufacturers} />} />
+          <Route path="/social-media-marketing-agency-ahmedabad" element={<IndustryLandingPage config={phase3Pages.socialMediaAgency} />} />
+          <Route path="/advertising-agency-ahmedabad" element={<IndustryLandingPage config={phase3Pages.advertisingAgency} />} />
 
           <Route path="/services/ai-filmmaking" element={<AIFilmmakingPage />} />
 
           {/* Local / regional service landing pages */}
-          <Route path="/website-design-development-ahmedabad" element={<LocalServicePage config={localPages.websiteDevAhmedabad} />} />
-          <Route path="/website-design-development-gujarat" element={<LocalServicePage config={localPages.websiteDevGujarat} />} />
-          <Route path="/shopify-website-design-ahmedabad" element={<LocalServicePage config={localPages.shopifyAhmedabad} />} />
-          <Route path="/shopify-development-international" element={<LocalServicePage config={localPages.shopifyInternational} />} />
-          <Route path="/full-stack-development-ahmedabad" element={<LocalServicePage config={localPages.fullStackAhmedabad} />} />
-          <Route path="/full-stack-development-gujarat" element={<LocalServicePage config={localPages.fullStackGujarat} />} />
-          <Route path="/ai-automation-ahmedabad" element={<LocalServicePage config={localPages.aiAutomationAhmedabad} />} />
-          <Route path="/ai-automation-gujarat" element={<LocalServicePage config={localPages.aiAutomationGujarat} />} />
-          <Route path="/seo-agency-ahmedabad" element={<LocalServicePage config={localPages.seoAhmedabad} />} />
-          <Route path="/seo-company-gujarat" element={<LocalServicePage config={localPages.seoGujarat} />} />
-          <Route path="/seo-agency-international" element={<LocalServicePage config={localPages.seoInternational} />} />
-          <Route path="/ai-filmmaking-ahmedabad" element={<LocalServicePage config={localPages.aiFilmmakingAhmedabad} />} />
-          <Route path="/ai-filmmaking-gujarat" element={<LocalServicePage config={localPages.aiFilmmakingGujarat} />} />
-          <Route path="/woocommerce-website-design-ahmedabad" element={<LocalServicePage config={localPages.woocommerceAhmedabad} />} />
-          <Route path="/woocommerce-development-gujarat" element={<LocalServicePage config={localPages.woocommerceGujarat} />} />
-          <Route path="/mobile-app-development-ahmedabad" element={<LocalServicePage config={localPages.mobileAppAhmedabad} />} />
-          <Route path="/mobile-app-development-gujarat" element={<LocalServicePage config={localPages.mobileAppGujarat} />} />
-          <Route path="/google-ads-agency-ahmedabad" element={<LocalServicePage config={localPages.googleAdsAhmedabad} />} />
+          <Route path="/website-design-development-ahmedabad" element={<IndustryLandingPage config={localPages.websiteDevAhmedabad} />} />
+          <Route path="/website-design-development-gujarat" element={<IndustryLandingPage config={localPages.websiteDevGujarat} />} />
+          <Route path="/shopify-website-design-ahmedabad" element={<IndustryLandingPage config={localPages.shopifyAhmedabad} />} />
+          <Route path="/shopify-development-international" element={<IndustryLandingPage config={localPages.shopifyInternational} />} />
+          <Route path="/full-stack-development-ahmedabad" element={<IndustryLandingPage config={localPages.fullStackAhmedabad} />} />
+          <Route path="/full-stack-development-gujarat" element={<IndustryLandingPage config={localPages.fullStackGujarat} />} />
+          <Route path="/ai-automation-ahmedabad" element={<IndustryLandingPage config={localPages.aiAutomationAhmedabad} />} />
+          <Route path="/ai-automation-gujarat" element={<IndustryLandingPage config={localPages.aiAutomationGujarat} />} />
+          <Route path="/seo-agency-ahmedabad" element={<IndustryLandingPage config={localPages.seoAhmedabad} />} />
+          <Route path="/seo-company-gujarat" element={<IndustryLandingPage config={localPages.seoGujarat} />} />
+          <Route path="/seo-agency-international" element={<IndustryLandingPage config={localPages.seoInternational} />} />
+          <Route path="/ai-filmmaking-ahmedabad" element={<IndustryLandingPage config={localPages.aiFilmmakingAhmedabad} />} />
+          <Route path="/ai-filmmaking-gujarat" element={<IndustryLandingPage config={localPages.aiFilmmakingGujarat} />} />
+          <Route path="/woocommerce-website-design-ahmedabad" element={<IndustryLandingPage config={localPages.woocommerceAhmedabad} />} />
+          <Route path="/woocommerce-development-gujarat" element={<IndustryLandingPage config={localPages.woocommerceGujarat} />} />
+          <Route path="/mobile-app-development-ahmedabad" element={<IndustryLandingPage config={localPages.mobileAppAhmedabad} />} />
+          <Route path="/mobile-app-development-gujarat" element={<IndustryLandingPage config={localPages.mobileAppGujarat} />} />
+          <Route path="/google-ads-agency-ahmedabad" element={<IndustryLandingPage config={localPages.googleAdsAhmedabad} variant="pillar" />} />
           <Route path="/meta-ads-agency-ahmedabad" element={<IndustryLandingPage config={localPages.metaAdsAhmedabad} variant="pillar" />} />
-          <Route path="/digital-marketing-agency-ahmedabad" element={<LocalServicePage config={localPages.digitalMarketingAhmedabad} />} />
-          <Route path="/digital-marketing-agency-gujarat" element={<LocalServicePage config={localPages.digitalMarketingGujarat} />} />
+          <Route path="/digital-marketing-agency-ahmedabad" element={<IndustryLandingPage config={localPages.digitalMarketingAhmedabad} variant="pillar" />} />
+          <Route path="/digital-marketing-agency-gujarat" element={<IndustryLandingPage config={localPages.digitalMarketingGujarat} />} />
 
           {/* Service areas hub — links out to all local/regional landing pages */}
           <Route path="/service-areas" element={<ServiceAreasPage />} />

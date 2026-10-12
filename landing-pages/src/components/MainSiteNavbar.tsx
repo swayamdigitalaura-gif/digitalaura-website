@@ -20,7 +20,7 @@ import {
   Layers,
   ArrowRight,
 } from "lucide-react";
-import logo from "@/assets/brand/digital-aura-logo.png";
+import logo from "@/assets/brand/digital-aura-logo-header.png";
 
 const BASE = "https://thedigitalaura.com";
 
@@ -39,6 +39,7 @@ const companyLinks = [
     bg: "rgba(34,197,94,0.08)",
   },
   { label: "Careers", href: `${BASE}/careers`, color: "#1A6FE8", bg: "rgba(26,111,232,0.08)" },
+  { label: "Service Areas", href: `${BASE}/service-areas`, color: "#EC4899", bg: "rgba(236,72,153,0.08)" },
 ];
 
 const megaCategories = [

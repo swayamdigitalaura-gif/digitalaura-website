@@ -109,6 +109,16 @@ export const wave3Extras: Record<string, Enhancement> = {
     extraAdd: [
       {
         kind: "cards",
+        id: "industry-pages",
+        title: "Website guides for specific specialities",
+        subtext: "Different practices need different pages, wording and tools.",
+        items: [
+          { title: "Dentists", desc: "Treatment pages, doctor profiles and easy booking.", href: "/website-design-for-dentists-ahmedabad/" },
+          { title: "Ophthalmologists and eye hospitals", desc: "Accessible design, camps and appointment tools.", href: "/website-design-for-ophthalmologists-ahmedabad/" },
+        ],
+      },
+      {
+        kind: "cards",
         id: "staff-updates",
         after: "cms-security",
         title: "What your staff can update without a developer",
@@ -309,6 +319,18 @@ export const wave3Extras: Record<string, Enhancement> = {
   metaAdsClinics: {
     extraAdd: [
       {
+        kind: "cards",
+        id: "industry-pages",
+        title: "Guides for specific healthcare providers",
+        subtext: "The rules, audience and measurement differ by type of provider.",
+        items: [
+          { title: "Dentists", desc: "Local check-up, aligner and implant campaigns.", href: "/meta-ads-agency-ahmedabad/dentists/" },
+          { title: "Hospitals", desc: "Department-wise campaigns and check-up packages.", href: "/meta-ads-agency-ahmedabad/hospitals/" },
+          { title: "IVF and fertility clinics", desc: "Sensitive, privacy-first campaigns.", href: "/meta-ads-agency-ahmedabad/ivf-fertility-clinics/" },
+          { title: "Dermatologists and skin clinics", desc: "Strict-policy creative and consultation booking.", href: "/meta-ads-agency-ahmedabad/dermatologists-skin-clinics/" },
+        ],
+      },
+      {
         kind: "checklist",
         id: "reception-checklist",
         after: "lead-handling",
@@ -328,6 +350,16 @@ export const wave3Extras: Record<string, Enhancement> = {
   /* ───────────── gads-04: Google Ads for doctors ───────────── */
   googleAdsDoctors: {
     extraAdd: [
+      {
+        kind: "cards",
+        id: "industry-pages",
+        title: "Google Ads guides for specific specialities",
+        subtext: "Search behaviour and policy limits differ by speciality.",
+        items: [
+          { title: "Dentists", desc: "Near-me and treatment campaigns with call tracking.", href: "/google-ads-for-dentists-ahmedabad/" },
+          { title: "IVF and fertility clinics", desc: "Policy-aware search campaigns with privacy-first tracking.", href: "/google-ads-for-ivf-clinics-ahmedabad/" },
+        ],
+      },
       {
         kind: "cards",
         id: "query-themes",
@@ -387,6 +419,24 @@ export const wave3Extras: Record<string, Enhancement> = {
   },
   /* ───────────── meta-01: pillar ───────────── */
   metaAdsAhmedabad: {
+    extraAdd: [
+      {
+        kind: "cards",
+        id: "industry-pages",
+        title: "Meta ads guides by industry",
+        subtext: "Each industry has its own audience, rules and way of measuring a lead. Start with the guide closest to your business.",
+        items: [
+          { title: "Real estate", desc: "Site visits, qualifying forms and RERA-aware ads for builders and brokers.", href: "/meta-ads-agency-ahmedabad/real-estate/" },
+          { title: "Hospitals", desc: "Department-wise campaigns, check-up packages and booked OPDs.", href: "/meta-ads-agency-ahmedabad/hospitals/" },
+          { title: "Dentists", desc: "Local check-up, aligner and implant campaigns with WhatsApp booking.", href: "/meta-ads-agency-ahmedabad/dentists/" },
+          { title: "IVF and fertility clinics", desc: "Sensitive, policy-aware campaigns with privacy-first tracking.", href: "/meta-ads-agency-ahmedabad/ivf-fertility-clinics/" },
+          { title: "Dermatologists and skin clinics", desc: "Strict-policy creative, adult targeting and consultation booking.", href: "/meta-ads-agency-ahmedabad/dermatologists-skin-clinics/" },
+          { title: "Education and coaching", desc: "Admission-season campaigns and counsellor follow-up.", href: "/meta-ads-agency-ahmedabad/education-coaching/" },
+          { title: "Restaurants", desc: "Footfall, bookings and own-channel orders with food reels.", href: "/meta-ads-agency-ahmedabad/restaurants/" },
+          { title: "Ecommerce and D2C", desc: "Pixel, Conversions API, catalogue ads and margin-first scaling.", href: "/meta-ads-agency-ahmedabad/ecommerce/" },
+        ],
+      },
+    ],
     faqAdd: [
       { q: "How quickly will I see leads from Meta ads?", a: "Enquiries can start within days of a campaign going live, because ads are reviewed and served quickly. A steady cost per lead takes longer, because the system and our testing need a few weeks of data. Judge the first month on lead quality and direction, not a single day." },
     ],

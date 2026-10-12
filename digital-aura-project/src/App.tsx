@@ -75,6 +75,7 @@ import { phase1Pages } from "./data/localPagesPhase1.ts";
 import { phase2Pages } from "./data/localPagesPhase2.ts";
 import { phase2WebPages } from "./data/localPagesPhase2Web.ts";
 import { phase3Pages } from "./data/localPagesPhase3.ts";
+import { phase4Pages } from "./data/localPagesPhase4.ts";
 import { localPages } from "./data/localPagesData.ts";
 import AIFilmmakingPage from "./pages/services/AIFilmmakingPage.tsx";
 import ServiceAreasPage from "./pages/ServiceAreasPage.tsx";
@@ -176,6 +177,18 @@ const App = () => (
           <Route path="/google-ads-for-doctors-ahmedabad" element={<LocalServicePage config={phase2Pages.googleAdsDoctors} />} />
           <Route path="/meta-ads-agency-ahmedabad/pricing" element={<LocalServicePage config={phase2Pages.metaAdsPricing} />} />
           <Route path="/meta-ads-agency-ahmedabad/clinics-doctors" element={<LocalServicePage config={phase2Pages.metaAdsClinics} />} />
+          <Route path="/meta-ads-agency-ahmedabad/real-estate" element={<LocalServicePage config={phase4Pages.metaRealEstate} />} />
+          <Route path="/meta-ads-agency-ahmedabad/hospitals" element={<LocalServicePage config={phase4Pages.metaHospitals} />} />
+          <Route path="/meta-ads-agency-ahmedabad/dentists" element={<LocalServicePage config={phase4Pages.metaDentists} />} />
+          <Route path="/meta-ads-agency-ahmedabad/ivf-fertility-clinics" element={<LocalServicePage config={phase4Pages.metaIvf} />} />
+          <Route path="/meta-ads-agency-ahmedabad/dermatologists-skin-clinics" element={<LocalServicePage config={phase4Pages.metaDermatology} />} />
+          <Route path="/meta-ads-agency-ahmedabad/education-coaching" element={<LocalServicePage config={phase4Pages.metaEducation} />} />
+          <Route path="/meta-ads-agency-ahmedabad/restaurants" element={<LocalServicePage config={phase4Pages.metaRestaurants} />} />
+          <Route path="/meta-ads-agency-ahmedabad/ecommerce" element={<LocalServicePage config={phase4Pages.metaEcommerce} />} />
+          <Route path="/google-ads-for-ivf-clinics-ahmedabad" element={<LocalServicePage config={phase4Pages.googleIvf} />} />
+          <Route path="/google-ads-for-dentists-ahmedabad" element={<LocalServicePage config={phase4Pages.googleDentists} />} />
+          <Route path="/website-design-for-dentists-ahmedabad" element={<LocalServicePage config={phase4Pages.webDentists} />} />
+          <Route path="/website-design-for-ophthalmologists-ahmedabad" element={<LocalServicePage config={phase4Pages.webOphthalmologists} />} />
           <Route path="/website-development-cost-ahmedabad" element={<LocalServicePage config={phase2WebPages.websiteDevCost} />} />
           <Route path="/website-design-cost-ahmedabad" element={<LocalServicePage config={phase2WebPages.websiteDesignCost} />} />
           <Route path="/website-packages-ahmedabad" element={<LocalServicePage config={phase2WebPages.websitePackages} />} />

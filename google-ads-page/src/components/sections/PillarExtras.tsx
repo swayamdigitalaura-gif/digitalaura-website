@@ -381,6 +381,8 @@ export function ExploreMore() {
     { t: "Google Ads pricing", d: "How fees and ad spend are set, and what to budget.", h: "/google-ads-pricing-ahmedabad/" },
     { t: "Free Google Ads audit", d: "Find where budget is wasted, with a written action list.", h: "/google-ads-audit-ahmedabad/" },
     { t: "Google Ads for doctors", d: "Compliant campaigns for clinics and hospitals.", h: "/google-ads-for-doctors-ahmedabad/" },
+    { t: "Google Ads for dentists", d: "Near-me and treatment campaigns for dental clinics.", h: "/google-ads-for-dentists-ahmedabad/" },
+    { t: "Google Ads for IVF clinics", d: "Careful, policy-aware search campaigns for fertility clinics.", h: "/google-ads-for-ivf-clinics-ahmedabad/" },
     { t: "Meta ads agency", d: "Facebook and Instagram campaigns for leads.", h: "/meta-ads-agency-ahmedabad/" },
     { t: "SEO services", d: "Rank on Google and in AI search over time.", h: "/seo-services-ahmedabad" },
     { t: "Conversion rate optimisation", d: "Turn more of the clicks you pay for into enquiries.", h: "/services/cro/" },

@@ -5,6 +5,7 @@ import { phase1Pages } from '../data/localPagesPhase1';
 import { phase2Pages } from '../data/localPagesPhase2';
 import { phase2WebPages } from '../data/localPagesPhase2Web';
 import { phase3Pages } from '../data/localPagesPhase3';
+import { phase4Pages, phase4Entries } from '../data/localPagesPhase4';
 import { TEAM } from '../data/pageExtras';
 
 const API_BASE  = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
@@ -879,6 +880,17 @@ PAGE_SCHEMA['/advertising-agency-ahmedabad'] = [
   webPageSchema('/advertising-agency-ahmedabad', PAGE_META['/advertising-agency-ahmedabad'].title, PAGE_META['/advertising-agency-ahmedabad'].description, phase3Pages.advertisingAgency.lastUpdated),
   serviceSchema('/advertising-agency-ahmedabad', PAGE_META['/advertising-agency-ahmedabad'].title, "Digital advertising", PAGE_META['/advertising-agency-ahmedabad'].description),
 ];
+
+// Round 3 industry pages: meta, schema and breadcrumbs are generated from the page specs.
+for (const e of phase4Entries) {
+  PAGE_META[e.path] = { title: e.title, description: e.description };
+  PAGE_SCHEMA[e.path] = [
+    faqPageSchema(phase4Pages[e.key].faqs),
+    webPageSchema(e.path, e.title, e.description, phase4Pages[e.key].lastUpdated),
+    serviceSchema(e.path, e.title, e.serviceType, e.description),
+    breadcrumbSchema([['Home', '/'], [e.parentName, e.parentUrl], [e.name, e.url]]),
+  ];
+}
 
 function setTag(selector: string, valueAttr: string, value: string) {
   let el = document.head.querySelector(selector);

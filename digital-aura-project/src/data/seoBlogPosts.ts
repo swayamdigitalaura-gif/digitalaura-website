@@ -2256,7 +2256,7 @@ Allow: /</code></pre>
       "Ask for a written scope that lists monthly deliverables, exclusions and exit terms"
     ],
     contentHtml: `
-<p><em>Last updated 8 October 2026. We update this guide when prices or our approach change.</em></p>
+<p><em>Last updated 12 October 2026. We update this guide when prices or our approach change.</em></p>
 
 <h2>Short answer: what SEO costs in Ahmedabad</h2>
 
@@ -2272,6 +2272,19 @@ Allow: /</code></pre>
 <li><strong>Audit-only</strong> — a review with a list of fixes that you or your developer implement.</li>
 </ul>
 
+<h3>Pricing models compared</h3>
+
+<table class="da-comparison-table">
+<thead><tr><th>Model</th><th>Works well when</th><th>Watch out for</th></tr></thead>
+<tbody>
+<tr><td>Monthly retainer</td><td>You want steady, ongoing improvement and reporting</td><td>A vague scope. Ask for named monthly deliverables.</td></tr>
+<tr><td>Project-based</td><td>You have one clear job: an audit, a migration, a set of pages</td><td>The work ends, but SEO does not. Plan who maintains it.</td></tr>
+<tr><td>Hourly consulting</td><td>Your team can do the work and needs direction</td><td>Hours add up quickly without a defined outcome.</td></tr>
+<tr><td>Performance-based</td><td>The result is easy to define and measure, such as qualified calls</td><td>Unclear definitions, and results that depend on your own sales follow-up.</td></tr>
+<tr><td>Audit-only</td><td>You want a prioritised list before committing to a budget</td><td>An audit is only worth it if someone acts on it.</td></tr>
+</tbody>
+</table>
+
 <h2>What published agency prices look like</h2>
 
 <p>Some agencies publish their plans. The figures below were published on those agencies' own pages when we checked on 7 October 2026. They are the agencies' claims, they can change, and we do not endorse them. Always check the live page and read what each plan includes.</p>
@@ -2286,6 +2299,18 @@ Allow: /</code></pre>
 </table>
 
 <p>Notice how much the same label can mean different things: a plan counted in 10 keywords, another counted in 50, another not counted in keywords at all. This is why a lower headline price does not mean better value.</p>
+
+<h3>Why published prices disagree</h3>
+
+<ul>
+<li><strong>Scope:</strong> one plan may include content writing and link work, another only on-page fixes.</li>
+<li><strong>Keyword counting:</strong> counting keywords is easy to sell and says little about effort, because a hard keyword can take more work than ten easy ones.</li>
+<li><strong>Competition:</strong> the same plan is a very different job in a crowded market than in a quiet one.</li>
+<li><strong>Who does the work:</strong> a senior strategist's time and a templated checklist are not the same product.</li>
+<li><strong>Age of the figure:</strong> prices on a page can be years old. Check the date and ask for a current quote.</li>
+</ul>
+
+<p>Figures that appear only in a search snippet, or that we could not confirm on the agency's own page, are not in the table above. Treat any number you cannot trace to a live page as unverified.</p>
 
 <h2>What drives the cost of SEO</h2>
 
@@ -2303,6 +2328,34 @@ Allow: /</code></pre>
 
 <p>A local clinic or shop in one city needs technical basics, key service pages, Google Business Profile and local citations. A manufacturer needs product and specification pages and an enquiry funnel, covered in <a href="/seo/manufacturers-b2b-gujarat/">SEO for manufacturers in Gujarat</a>. A healthcare provider needs careful, trust-led content, covered in <a href="/seo/doctors-hospitals-ahmedabad/">SEO for doctors and hospitals</a>. An online store needs category and product optimisation across a large catalogue. Each shape has a different scope, so each has a different cost.</p>
 
+<table class="da-comparison-table">
+<thead><tr><th>Business</th><th>What the work centres on</th><th>What tends to push the scope up</th></tr></thead>
+<tbody>
+<tr><td>Local shop or service business</td><td>Google Business Profile, service pages, reviews, local listings</td><td>Several service areas, strong local competitors</td></tr>
+<tr><td>Doctor, clinic or hospital</td><td>Treatment and doctor pages, careful wording, tracked appointments</td><td>Many departments, doctors and locations; doctor review of content</td></tr>
+<tr><td>Manufacturer or exporter</td><td>Product and specification pages, application content, RFQ funnel</td><td>Large catalogues, several languages and export markets</td></tr>
+<tr><td>Online store</td><td>Category and product optimisation, technical health, content</td><td>Catalogue size, filters creating duplicate URLs, product feeds</td></tr>
+<tr><td>Real estate and professional services</td><td>Location and service pages, trust content, local visibility</td><td>Many project or location pages, competitive local terms</td></tr>
+</tbody>
+</table>
+
+<h2>SEO cost by service</h2>
+
+<p>Most SEO plans are a mix of the services below. Knowing what each one is helps you see why a plan costs what it does, and which parts you could do without.</p>
+
+<table class="da-comparison-table">
+<thead><tr><th>Service</th><th>What it involves</th><th>Why it can cost more</th></tr></thead>
+<tbody>
+<tr><td>SEO audit</td><td>Reviewing technical health, content, links and local presence, then ranking the fixes</td><td>Large sites, several locations, or a request for a full strategy roadmap</td></tr>
+<tr><td>Technical SEO</td><td>Speed, crawling, indexing, redirects, structured data</td><td>Heavy themes, poor hosting, large catalogues, migrations</td></tr>
+<tr><td>On-page SEO</td><td>Titles, headings, copy, internal links and images for each target page</td><td>A high number of pages to optimise</td></tr>
+<tr><td>Content</td><td>Researching, writing and editing pages and articles</td><td>Subject-matter review, such as doctors or engineers checking text</td></tr>
+<tr><td>Local SEO</td><td>Google Business Profile, citations, reviews, location pages</td><td>Multiple branches or service areas</td></tr>
+<tr><td>Link building</td><td>Earning relevant mentions through outreach and quality content</td><td>Competitive niches where a few strong links decide the result</td></tr>
+<tr><td>AI search (AEO and GEO)</td><td>Answer-first content, entity clean-up and structured data so AI tools can use your pages</td><td>Wide topic coverage that needs many answer pages</td></tr>
+</tbody>
+</table>
+
 <h2>Hidden costs and red flags</h2>
 
 <ul>
@@ -2314,13 +2367,57 @@ Allow: /</code></pre>
 <li>Reports that show only rankings and traffic, with no link to enquiries</li>
 </ul>
 
+<h3>What to ask when you see a red flag</h3>
+
+<table class="da-comparison-table">
+<thead><tr><th>If you hear</th><th>Ask</th></tr></thead>
+<tbody>
+<tr><td>"We guarantee first page in 30 days"</td><td>What exactly is guaranteed, for which keywords, and what do I get if it does not happen?</td></tr>
+<tr><td>"Cheap plan with 100 backlinks a month"</td><td>Where will the links come from, and can I see examples before they go live?</td></tr>
+<tr><td>"12-month minimum contract"</td><td>What are the deliverables each month, and can I leave if they are not met?</td></tr>
+<tr><td>"We handle everything, no access needed"</td><td>Will the Search Console, Analytics and Google Business Profile accounts be in my name?</td></tr>
+<tr><td>"Rankings report every month"</td><td>Can the report also show calls, forms and enquiries from search?</td></tr>
+</tbody>
+</table>
+
 <h2>What results to expect for your budget</h2>
 
 <p>SEO compounds over months. In the first weeks, the work is audits, tracking and fixes. Around the third month, fixes and new pages are usually indexed and early movement appears in impressions and rankings. From about six months, content, links and authority build, and enquiries should grow if the plan is working. These timelines depend on competition and on how healthy your site is, so treat them as a rough guide, not a promise.</p>
 
+<h2>A simple payback worksheet</h2>
+
+<p>You do not need a forecast to judge whether SEO is worth a budget. You need three numbers from your own business:</p>
+
+<ol>
+<li><strong>What one new customer is worth to you</strong> (the profit from a first job or sale, or the lifetime value if people come back).</li>
+<li><strong>How many enquiries become customers</strong> (your own close rate, from calls and forms).</li>
+<li><strong>How many extra enquiries per month you realistically need</strong> for the plan to pay for itself.</li>
+</ol>
+
+<p>For example, suppose a customer is worth Rs 10,000 to you and one in five enquiries turns into a customer. Each enquiry is then worth about Rs 2,000. If a plan costs Rs 20,000 a month, it needs to bring roughly ten extra enquiries a month to break even. These figures only show the method. Replace them with your own, and be honest about your close rate.</p>
+
+<p>Two cautions. First, SEO takes months to build, so early months are an investment, not a return. Second, a plan is only as good as your follow-up: enquiries that nobody answers do not become customers.</p>
+
 <h2>How Digital Aura prices SEO</h2>
 
 <p>We scope the work after a free audit, then give a written quote that lists what will be done each month, what is excluded and how to leave. We price on scope, not on a keyword count. Start with a <a href="/seo/free-audit/">free SEO audit</a>, or see <a href="/seo/pricing/">our SEO packages page</a>. For the full picture of how we work, see our <a href="/seo-services-ahmedabad">SEO services in Ahmedabad</a>.</p>
+
+<h2>Questions to ask before you pay any SEO agency</h2>
+
+<ol>
+<li>What exactly will be delivered each month, in writing?</li>
+<li>What is not included, and what would it cost?</li>
+<li>Who will work on my account, and what is their experience?</li>
+<li>Will the Search Console, Analytics and Google Business Profile accounts be in my name?</li>
+<li>How will you report: rankings only, or calls, forms and enquiries as well?</li>
+<li>What happens to the work and the content if I stop?</li>
+<li>How do you build links, and can you show me what you have built for others?</li>
+<li>What are the contract length and notice terms?</li>
+<li>Do you charge a setup fee, and how is GST shown?</li>
+<li>What would you do in the first 90 days?</li>
+</ol>
+
+<p>You can ask us the same ten questions. See <a href="/seo/pricing/">how our plans are scoped</a> or start with a <a href="/seo/free-audit/">free SEO audit</a>.</p>
 
 <h2>Conclusion</h2>
 

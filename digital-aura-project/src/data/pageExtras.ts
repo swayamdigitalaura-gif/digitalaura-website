@@ -137,18 +137,6 @@ const raw: Record<string, ExtraEntry> = {
       { q: "Do I get a report every month?", a: "Reporting frequency is stated in your plan. We recommend a short monthly summary of updates, backups, security checks and uptime." },
     ],
     extraAdd: [
-      {
-        kind: "cards",
-        id: "platform-tasks",
-        title: "Maintenance by platform",
-        subtext: "The work differs by platform, so the checks do too.",
-        items: [
-          { title: "WordPress", desc: "Core, theme and plugin updates, backups, security hardening and spam control." },
-          { title: "WooCommerce", desc: "All of the above plus checkout, payment and order-email tests after updates." },
-          { title: "Shopify", desc: "App audit, theme updates, speed checks and checkout testing." },
-          { title: "Next.js and custom builds", desc: "Dependency patching, build and deploy checks, monitoring and error logs." },
-        ],
-      },
       { kind: "calculator", id: "downtime-cost", title: "What could downtime cost you?", subtext: "Enter your own numbers to see the value of enquiries at risk when a site is down.", variant: "downtime" },
     ],
   },

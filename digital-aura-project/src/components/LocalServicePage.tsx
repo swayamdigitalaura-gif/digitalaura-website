@@ -43,6 +43,8 @@ export type ExtraSection = (
   slot?: "early";
   /** Used by enhance(): insert this section right after the section with this id (default: append). */
   after?: string;
+  /** Short label for the "Jump to" chips (default: the heading, shortened). */
+  jumpLabel?: string;
 };
 export interface RelatedService { title: string; desc: string; points: string[]; href: string; }
 
@@ -322,8 +324,8 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
   const glow = `${c.accentColor}1f`;
   const shortTitle = (t: string) => { const x = t.split(/[:?]/)[0].trim(); return x.length > 34 ? x.slice(0, 32).trimEnd() + "…" : x; };
   const jumpItems = [
-    ...(c.earlySections || []).slice(0, 2).map((sec) => ({ id: sec.id, label: shortTitle(sec.title) })),
-    ...(c.extraSections || []).slice(0, 3).map((sec) => ({ id: sec.id, label: shortTitle(sec.title) })),
+    ...(c.earlySections || []).slice(0, 2).map((sec) => ({ id: sec.id, label: sec.jumpLabel ?? shortTitle(sec.title) })),
+    ...(c.extraSections || []).slice(0, 3).map((sec) => ({ id: sec.id, label: sec.jumpLabel ?? shortTitle(sec.title) })),
     ...(config.leadForm ? [{ id: config.leadForm.id || "audit-form", label: "Get started" }] : []),
     { id: "faqs", label: "FAQs" },
   ];

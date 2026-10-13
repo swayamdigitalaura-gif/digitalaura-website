@@ -369,7 +369,7 @@ export function FinalCta() {
       <div className="pointer-events-none absolute inset-0 grid-dark opacity-40" />
       <div className="pointer-events-none absolute -left-24 bottom-0 h-96 w-96 rounded-full bg-primary/18 blur-[120px]" />
 
-      <div className="relative mx-auto grid max-w-7xl gap-16 px-5 sm:px-8 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-16 px-5 sm:px-8 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
         <div className="lg:py-4">
           <Reveal>
             <SectionLabelDark>
@@ -430,7 +430,7 @@ export function FinalCta() {
           </Reveal>
         </div>
 
-        <Reveal delay={180}>
+        <Reveal delay={180} className="min-w-0">
           <form
             onSubmit={handleSubmit}
             className="glass-dark rounded-[1.75rem] p-7 shadow-[var(--shadow-mock)] sm:p-10"

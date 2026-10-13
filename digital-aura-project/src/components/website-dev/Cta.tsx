@@ -157,7 +157,7 @@ export function QuickEnquiry() {
 
   return (
     <section id="enquiry" className="bg-background">
-      <div className="mx-auto grid max-w-7xl gap-14 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-14 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div>
           <Reveal>
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary-soft/60 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-primary">
@@ -190,10 +190,10 @@ export function QuickEnquiry() {
           </Reveal>
         </div>
 
-        <Reveal delay={180}>
+        <Reveal delay={180} className="min-w-0">
           <form
             onSubmit={handleSubmit}
-            className="rounded-[1.75rem] border border-border bg-card p-6 shadow-[var(--shadow-soft)] sm:p-8"
+            className="min-w-0 max-w-full rounded-[1.75rem] border border-border bg-card p-6 shadow-[var(--shadow-soft)] sm:p-8"
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="grid gap-2">

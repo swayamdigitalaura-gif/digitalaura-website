@@ -101,7 +101,7 @@ const Card = ({ children, className = "", style }: { children: React.ReactNode; 
 };
 
 const Pill = ({ href, children, variant = "solid", onClick, external = false }: { href: string; children: React.ReactNode; variant?: "solid" | "outline" | "ghost"; onClick?: () => void; external?: boolean }) => {
-  const base = "inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full px-5 py-2.5 text-[13.5px] font-bold transition-all hover:gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2";
+  const base = "inline-flex max-w-full shrink-0 items-center justify-center gap-2 whitespace-normal text-center rounded-full px-5 py-2.5 text-[13.5px] font-bold transition-all hover:gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2";
   const style: React.CSSProperties =
     variant === "solid" ? { background: ORANGE, color: "#fff", boxShadow: `0 8px 22px ${ORANGE}40` }
     : variant === "outline" ? { border: `2px solid ${NAVY}`, color: NAVY, background: "#fff" }
@@ -162,7 +162,7 @@ function GuideSection({ sec, index }: { sec: ExtraSection; index: number }) {
                 </h3>
                 <p className="mt-2 flex-1 text-[14.5px] leading-relaxed text-[#4B5563]">{it.desc}</p>
                 {it.href && it.cta && (
-                  <div className="mt-5">
+                  <div className="mt-5 max-w-full">
                     <Pill href={it.href} variant="outline" external={/^https?:/.test(it.href)} onClick={() => track("cta_click", { cta_label: it.cta!, cta_location: sec.id })}>
                       {it.cta} <ArrowRight size={15} />
                     </Pill>
@@ -275,7 +275,7 @@ function GuideSection({ sec, index }: { sec: ExtraSection; index: number }) {
         <Head eyebrow={eyebrow} title={sec.title} />
         <div className="space-y-4 text-[16px] leading-relaxed text-[#4B5563]">{sec.paragraphs.map((p) => <p key={p}>{p}</p>)}</div>
         {sec.links && (
-          <div className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:flex-nowrap">
+          <div className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
             {sec.links.map((l) => (
               <Pill key={l.href} href={l.href} variant="outline" external={/^https?:/.test(l.href)}>{l.label} <ArrowRight size={15} /></Pill>
             ))}
@@ -321,6 +321,12 @@ export default function IndustryLandingPage({ config, variant = "industry" }: { 
   const g = (field: string, fallback: string) => s[k(field)] || fallback;
   const c: LocalServiceConfig = {
     ...config,
+    // Pages that shipped without an inline form still get one, so every page can capture a lead (and gets the mobile sticky CTA).
+    leadForm: config.leadForm ?? {
+      id: "audit-form", formName: config.slug, service: config.h1, heading: "Talk to us about this",
+      text: "Send your details. It is free to ask, and we reply by email.", website: "optional",
+      notesLabel: "What do you need help with?", submitLabel: "Send my details",
+    },
     eyebrow: g("eyebrow", config.eyebrow),
     h1: g("h1", config.h1),
     heroParagraph: g("heroParagraph", config.heroParagraph),
@@ -412,7 +418,7 @@ export default function IndustryLandingPage({ config, variant = "industry" }: { 
                 <Info size={16} className="mt-0.5 shrink-0" style={{ color: ORANGE }} />{c.heroParagraph2}
               </p>
             )}
-            <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-nowrap sm:items-center">
+            <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               <Pill href={c.heroCta?.href || ctaHref} onClick={() => track("cta_click", { cta_label: ctaLabel, cta_location: "hero" })}>{ctaLabel} <ArrowRight size={16} /></Pill>
               <Pill href={whatsappLink(`Hello, I have a question about: ${c.h1}`)} variant="outline" external onClick={() => track("whatsapp_click", { cta_location: "hero" })}>
                 <MessageCircle size={16} /> WhatsApp us
@@ -617,12 +623,12 @@ export default function IndustryLandingPage({ config, variant = "industry" }: { 
       {c.leadForm && !c.leadFormTop && (
         <section className="relative overflow-hidden px-4 py-14 md:px-8" style={{ background: NAVY }}>
           <div className="pointer-events-none absolute -left-20 top-0 h-72 w-72 rounded-full" style={{ background: `radial-gradient(circle, ${ORANGE}33, transparent 70%)` }} />
-          <div className="relative mx-auto flex max-w-5xl flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+          <div className="relative mx-auto flex max-w-5xl flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
             <div>
               <h2 className="text-2xl font-black leading-tight text-white md:text-3xl">Want this done properly for your business?</h2>
               <p className="mt-2 max-w-xl text-[15.5px] text-[#CBD5E1]">Send your details. It is free to ask, and we reply by email.</p>
             </div>
-            <div className="flex flex-col gap-3 sm:flex-row sm:flex-nowrap">
+            <div className="flex shrink-0 flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Pill href={ctaHref} onClick={() => track("cta_click", { cta_label: ctaLabel, cta_location: "mid_band" })}>{ctaLabel} <ArrowRight size={16} /></Pill>
               <a href={whatsappLink(`Hello, I have a question about: ${c.h1}`)} target="_blank" rel="noopener noreferrer" onClick={() => track("whatsapp_click", { cta_location: "mid_band" })}
                 className="inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full border-2 border-white/40 px-5 py-2.5 text-[13.5px] font-bold text-white transition-colors hover:bg-white/10">
@@ -688,7 +694,7 @@ export default function IndustryLandingPage({ config, variant = "industry" }: { 
                   <h3 className="mt-4 text-[17px] font-bold" style={{ color: NAVY }}>{it.title}</h3>
                   <p className="mt-1.5 flex-1 text-[14.5px] leading-relaxed text-[#4B5563]">{it.desc}</p>
                   {it.href && it.cta && (
-                    <div className="mt-5">
+                    <div className="mt-5 max-w-full">
                       <Pill href={it.href} variant={i === 0 ? "solid" : "outline"} external={/^https?:/.test(it.href)} onClick={() => track("cta_click", { cta_label: it.cta!, cta_location: "get_started" })}>
                         {it.cta} <ArrowRight size={15} />
                       </Pill>
@@ -711,7 +717,7 @@ export default function IndustryLandingPage({ config, variant = "industry" }: { 
                 <h2 className="mt-4 text-xl font-black md:text-2xl" style={{ color: NAVY }}>{about.title}</h2>
                 <div className="mt-3 space-y-3 text-[15px] leading-relaxed text-[#4B5563]">{about.paragraphs.map((p) => <p key={p}>{p}</p>)}</div>
                 {about.links && (
-                  <div className="mt-5 flex flex-col gap-2.5 sm:flex-row sm:flex-nowrap">
+                  <div className="mt-5 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
                     {about.links.map((l) => <Pill key={l.href} href={l.href} variant="outline" external={/^https?:/.test(l.href)}>{l.label}</Pill>)}
                   </div>
                 )}
@@ -723,7 +729,7 @@ export default function IndustryLandingPage({ config, variant = "industry" }: { 
                 <h2 className="mt-4 text-xl font-black md:text-2xl" style={{ color: NAVY }}>{visit.title}</h2>
                 <div className="mt-3 space-y-3 text-[15px] leading-relaxed text-[#4B5563]">{visit.paragraphs.map((p) => <p key={p}>{p}</p>)}</div>
                 {visit.links && (
-                  <div className="mt-5 flex flex-col gap-2.5 sm:flex-row sm:flex-nowrap">
+                  <div className="mt-5 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
                     {visit.links.map((l, i) => (
                       <Pill key={l.href} href={l.href} variant={i === 0 ? "solid" : "outline"} external={/^https?:/.test(l.href)}>
                         {l.label}
@@ -803,7 +809,7 @@ export default function IndustryLandingPage({ config, variant = "industry" }: { 
                     ))}
                   </ul>
                   <p className="mt-8 text-[15px] font-semibold text-white">Prefer to talk?</p>
-                  <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-nowrap">
+                  <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                     <a href={PHONE_TEL} onClick={() => track("phone_click", { cta_location: "final" })}
                       className="inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full border-2 border-white/40 px-5 py-2.5 text-[13.5px] font-bold text-white transition-colors hover:bg-white/10">
                       <Phone size={16} /> {PHONE_DISPLAY}
@@ -821,7 +827,7 @@ export default function IndustryLandingPage({ config, variant = "industry" }: { 
             <div className="relative mx-auto max-w-3xl">
               <h2 className="text-[32px] font-bold leading-[1.1] tracking-[-0.02em] text-white md:text-[48px]"><span data-cms-key={k("ctaHeading")} data-cms-label="CTA Heading" data-cms-attr="text">{c.ctaHeading}</span></h2>
               <p className="mx-auto mt-5 max-w-2xl text-[17px] leading-[1.75] text-white/80 md:text-[19px]"><span data-cms-key={k("ctaText")} data-cms-label="CTA Text" data-cms-attr="text">{c.ctaText}</span></p>
-              <div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-nowrap sm:items-center">
+              <div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                 <Pill href={ctaHref} onClick={() => track("cta_click", { cta_label: c.ctaButton, cta_location: "final" })}>{c.ctaButton} <ArrowRight size={16} /></Pill>
                 <a href={PHONE_TEL} onClick={() => track("phone_click", { cta_location: "final" })}
                   className="inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full border-2 border-white/40 px-5 py-2.5 text-[13.5px] font-bold text-white transition-colors hover:bg-white/10">
@@ -836,7 +842,7 @@ export default function IndustryLandingPage({ config, variant = "industry" }: { 
         <div className="relative mx-auto max-w-3xl">
           <h2 className="text-3xl font-black leading-tight tracking-tight text-white md:text-4xl"><span data-cms-key={k("ctaHeading")} data-cms-label="CTA Heading" data-cms-attr="text">{c.ctaHeading}</span></h2>
           <p className="mx-auto mt-4 max-w-2xl text-[16px] leading-relaxed text-[#CBD5E1]"><span data-cms-key={k("ctaText")} data-cms-label="CTA Text" data-cms-attr="text">{c.ctaText}</span></p>
-          <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-nowrap sm:items-center">
+          <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <Pill href={ctaHref} onClick={() => track("cta_click", { cta_label: c.ctaButton, cta_location: "final" })}>{c.ctaButton} <ArrowRight size={16} /></Pill>
             <a href={PHONE_TEL} onClick={() => track("phone_click", { cta_location: "final" })}
               className="inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full border-2 border-white/40 px-5 py-2.5 text-[13.5px] font-bold text-white transition-colors hover:bg-white/10">

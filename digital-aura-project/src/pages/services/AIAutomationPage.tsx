@@ -207,7 +207,7 @@ const AIAutomationPage = () => {
             <span data-cms-key="aiauto_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{sp.aiauto_hero_sub || "We build real time AI automation systems — not zaps, not templates, not basic triggers. Custom-engineered pipelines that process data, make decisions, and take action the moment something happens in your business."}</span>
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link to="/contact/" className="btn-orange px-8 py-4 text-base gap-2">
+            <Link to="/contact/" className="btn-orange px-6 sm:px-8 py-4 text-base gap-2 max-w-full whitespace-normal text-center">
               <span data-cms-key="aiauto_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.aiauto_cta_btn || "Book a Free Automation Architecture Call"}</span> <ArrowRight size={18} />
             </Link>
             <a href="#services-list" className="btn-outline-dark px-8 py-4 text-base">Our Automation Services</a>

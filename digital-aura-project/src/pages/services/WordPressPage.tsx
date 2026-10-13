@@ -1,4 +1,5 @@
 import { Globe2, PenTool, Zap, ShieldCheck, RefreshCw, Layout, TrendingUp, Gauge, DollarSign, Star } from "lucide-react";
+import ServiceLeadCapture from "@/components/ServiceLeadCapture";
 import { motion } from "framer-motion";
 import ServicePageLayout from "@/components/ServicePageLayout";
 import ClientLogoSection from "@/components/ClientLogoSection";
@@ -113,6 +114,7 @@ const WordPressPage = () => {
       { name: "Game Zone Events",        tag: "Events",               logo: "https://gamezoneevents.ca/wp-content/uploads/2025/07/Game-Zone-Events-02-1024x717.png",                                                                   logoBg: "#f5fff5" },
       { name: "Track My Ads",            tag: "AdTech",               logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 130 44'%3E%3Crect width='130' height='44' rx='8' fill='%232B4FD8'/%3E%3Crect x='8' y='7' width='30' height='30' rx='6' fill='white'/%3E%3Ctext x='23' y='27' font-family='Arial,sans-serif' font-size='17' font-weight='900' fill='%232B4FD8' text-anchor='middle'%3ET%3C/text%3E%3Ctext x='88' y='27' font-family='Arial,sans-serif' font-size='12' font-weight='700' fill='white' text-anchor='middle'%3Erackmyads%3C/text%3E%3C/svg%3E", logoBg: "#f0f8ff" },
     ]} />
+  <ServiceLeadCapture service="WordPress development" slug="wordpress-development" />
   </ServicePageLayout>
   );
 };

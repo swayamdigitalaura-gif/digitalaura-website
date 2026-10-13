@@ -1,5 +1,6 @@
 ﻿import CaseStudies from "@/components/CaseStudies";
 import BlogInsights from "@/components/BlogInsights";
+import ServiceLeadCapture from "@/components/ServiceLeadCapture";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -506,6 +507,7 @@ const AIWebAppsPage = () => {
         </motion.div>
       </div>
     </section>
+  <ServiceLeadCapture service="AI-powered web apps" slug="ai-powered-web-apps" />
   </PageLayout>
 );
 };

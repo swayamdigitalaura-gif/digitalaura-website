@@ -1,5 +1,6 @@
 ﻿import { useState } from "react";
 import { motion } from "framer-motion";
+import ServiceLeadCapture from "@/components/ServiceLeadCapture";
 import { Link } from "react-router-dom";
 import {
   Zap, ArrowRight, ChevronDown, Check,
@@ -407,6 +408,7 @@ const WorkflowAutomationPage = () => {
         </motion.div>
       </div>
     </section>
+  <ServiceLeadCapture service="workflow automation" slug="workflow-automation" />
   </PageLayout>
 );
 };

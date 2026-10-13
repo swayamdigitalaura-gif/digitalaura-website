@@ -1,4 +1,5 @@
 import CaseStudies from "@/components/CaseStudies";
+import ServiceLeadCapture from "@/components/ServiceLeadCapture";
 import BlogInsights from "@/components/BlogInsights";
 import ClientLogoSection from "@/components/ClientLogoSection";
 import { motion, AnimatePresence } from "framer-motion";
@@ -323,6 +324,7 @@ const WebAppDevPage = () => {
       </div>
     </section>
 
+  <ServiceLeadCapture service="web app development" slug="web-app-development" />
   </PageLayout>
 );
 };

@@ -1,5 +1,6 @@
 ﻿import CaseStudies from "@/components/CaseStudies";
 import BlogInsights from "@/components/BlogInsights";
+import ServiceLeadCapture from "@/components/ServiceLeadCapture";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -472,6 +473,7 @@ const FullStackDevelopmentPage = () => {
         </motion.div>
       </div>
     </section>
+  <ServiceLeadCapture service="full-stack development" slug="full-stack-development" />
   </PageLayout>
 );
 };

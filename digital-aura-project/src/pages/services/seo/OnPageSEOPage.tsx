@@ -7,6 +7,7 @@
  * checklist, on page seo company, on page seo elements, title tag optimization
  */
 import { motion } from "framer-motion";
+import { StickyCtaBar } from "@/components/PageCta";
 import { submitLead } from "@/lib/submitLead";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -559,6 +560,8 @@ const OnPageSEOPage = () => {
         </motion.div>
       </div>
     </section>
+  <div className="h-16 md:hidden" aria-hidden="true" />
+    <StickyCtaBar accent="#FF6B2B" label="Get a free on-page SEO audit" href="#free-audit" topic="on-page SEO" />
   </PageLayout>
 );
 };

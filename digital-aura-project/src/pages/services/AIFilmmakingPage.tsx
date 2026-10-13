@@ -13,6 +13,7 @@
  *   no camera crew, no studio. Strategy, production and paid promotion in one team."
  */
 import ClientLogoGrid from "@/components/ClientLogoGrid";
+import ServiceLeadCapture from "@/components/ServiceLeadCapture";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -395,6 +396,7 @@ const AIFilmmakingPage = () => {
         </motion.div>
       </div>
     </section>
+  <ServiceLeadCapture service="AI filmmaking" slug="ai-filmmaking" />
   </PageLayout>
 );
 };

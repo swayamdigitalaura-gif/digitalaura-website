@@ -1182,6 +1182,7 @@ const localPagesRaw: Record<string, LocalServiceConfig> = {
     slug: "meta-ads-agency-ahmedabad",
     lastUpdated: LAST_UPDATED,
     heroCta: { label: "Get a Free Meta Ads Account Review", href: "#audit-form" },
+    leadFormTop: true,
     leadForm: {
       id: "audit-form",
       formName: "meta-ads-account-review",

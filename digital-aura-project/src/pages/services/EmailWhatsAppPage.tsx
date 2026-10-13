@@ -1,5 +1,6 @@
 ﻿import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import ServiceLeadCapture from "@/components/ServiceLeadCapture";
 import { ArrowRight, Mail, MessageCircle, Send, RefreshCw, Users, BarChart2, TrendingUp, Gauge, DollarSign, ShieldCheck, ChevronDown, Check, Zap, Bot, Layers, Settings } from "lucide-react";
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
@@ -360,6 +361,7 @@ const EmailWhatsAppPage = () => {
         </motion.div>
       </div>
     </section>
+  <ServiceLeadCapture service="email and WhatsApp marketing" slug="email-whatsapp-marketing" />
   </PageLayout>
 );
 };

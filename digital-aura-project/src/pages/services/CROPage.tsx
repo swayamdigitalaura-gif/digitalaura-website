@@ -1,5 +1,6 @@
 ﻿import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import ServiceLeadCapture from "@/components/ServiceLeadCapture";
 import { ArrowRight, FlaskConical, MousePointer, BarChart2, Layout, Target, TrendingUp, Gauge, DollarSign, ShieldCheck, ChevronDown, Check, Zap, Eye, FileSearch, Layers, RefreshCw, Users } from "lucide-react";
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
@@ -465,6 +466,7 @@ const CROPage = () => {
         </motion.div>
       </div>
     </section>
+  <ServiceLeadCapture service="conversion rate optimisation" slug="cro" />
   </PageLayout>
 );
 };

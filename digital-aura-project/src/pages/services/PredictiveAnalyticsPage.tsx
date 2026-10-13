@@ -1,5 +1,6 @@
 ﻿import { useState } from "react";
 import { motion } from "framer-motion";
+import ServiceLeadCapture from "@/components/ServiceLeadCapture";
 import { Link } from "react-router-dom";
 import {
   BarChart3, ArrowRight, ChevronDown, Check,
@@ -407,6 +408,7 @@ const PredictiveAnalyticsPage = () => {
         </motion.div>
       </div>
     </section>
+  <ServiceLeadCapture service="predictive analytics" slug="predictive-analytics" />
   </PageLayout>
 );
 };

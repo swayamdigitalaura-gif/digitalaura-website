@@ -1,5 +1,6 @@
 ﻿import React from "react";
 import ClientLogoSection from "@/components/ClientLogoSection";
+import { StickyCtaBar } from "@/components/PageCta";
 import { submitLead } from "@/lib/submitLead";
 import { motion, AnimatePresence } from "framer-motion";
 import MathCaptcha from "@/components/MathCaptcha";
@@ -546,6 +547,8 @@ const MobileAppDevPage = () => {
       </div>
     </section>
 
+  <div className="h-16 md:hidden" aria-hidden="true" />
+    <StickyCtaBar accent="#FF6B2B" label="Get a free app consultation" href="#app-audit" topic="mobile app development" />
   </PageLayout>
   );
 };

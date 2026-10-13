@@ -1,5 +1,6 @@
 ﻿import { useState } from "react";
 import { motion } from "framer-motion";
+import ServiceLeadCapture from "@/components/ServiceLeadCapture";
 import { Link } from "react-router-dom";
 import {
   Brain, ArrowRight, CheckCircle2, ChevronDown, Check,
@@ -392,6 +393,7 @@ const LLMPoweredAppsPage = () => {
         </motion.div>
       </div>
     </section>
+  <ServiceLeadCapture service="LLM-powered apps" slug="llm-powered-apps" />
   </PageLayout>
 );
 };

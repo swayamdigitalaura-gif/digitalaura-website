@@ -1,5 +1,6 @@
 ﻿import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import ServiceLeadCapture from "@/components/ServiceLeadCapture";
 import { ArrowRight, CreditCard, Globe2, Settings, Zap, ShieldCheck, RefreshCw, TrendingUp, Gauge, DollarSign, Layers, ChevronDown, Check, Package, BarChart2, Users, Building2 } from "lucide-react";
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
@@ -328,6 +329,7 @@ const BigCommercePage = () => {
         </motion.div>
       </div>
     </section>
+  <ServiceLeadCapture service="BigCommerce development" slug="bigcommerce-development" />
   </PageLayout>
 );
 };

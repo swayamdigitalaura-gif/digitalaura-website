@@ -1,5 +1,6 @@
 ﻿import CaseStudies from "@/components/CaseStudies";
 import BlogInsights from "@/components/BlogInsights";
+import ServiceLeadCapture from "@/components/ServiceLeadCapture";
 import ClientLogoSection from "@/components/ClientLogoSection";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 import { motion, AnimatePresence } from "framer-motion";
@@ -460,6 +461,7 @@ const AIChatbotAssistantPage = () => {
         </motion.div>
       </div>
     </section>
+  <ServiceLeadCapture service="AI chatbots and assistants" slug="ai-chatbot-assistant" />
   </PageLayout>
 );
 };

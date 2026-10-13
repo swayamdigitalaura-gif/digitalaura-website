@@ -1,5 +1,6 @@
 ﻿import CaseStudies from "@/components/CaseStudies";
 import BlogInsights from "@/components/BlogInsights";
+import ServiceLeadCapture from "@/components/ServiceLeadCapture";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -423,6 +424,7 @@ const CustomAIWebSolutionsPage = () => {
         </motion.div>
       </div>
     </section>
+  <ServiceLeadCapture service="custom AI web solutions" slug="custom-ai-web-solutions" />
   </PageLayout>
 );
 };

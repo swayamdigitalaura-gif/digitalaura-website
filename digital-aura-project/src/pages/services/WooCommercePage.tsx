@@ -1,5 +1,6 @@
 ﻿import { motion } from "framer-motion";
 import ClientLogoSection from "@/components/ClientLogoSection";
+import ServiceLeadCapture from "@/components/ServiceLeadCapture";
 import { Link } from "react-router-dom";
 import { ArrowRight, Store, Globe2, Settings, Zap, ShieldCheck, RefreshCw, TrendingUp, Gauge, DollarSign, Star, ChevronDown, Check, Package, CreditCard, BarChart2, Layers } from "lucide-react";
 import { useState } from "react";
@@ -373,6 +374,7 @@ const WooCommercePage = () => {
         </motion.div>
       </div>
     </section>
+  <ServiceLeadCapture service="WooCommerce development" slug="woocommerce-development" />
   </PageLayout>
 );
 };

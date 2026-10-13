@@ -1,5 +1,6 @@
 ﻿import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import ServiceLeadCapture from "@/components/ServiceLeadCapture";
 import { ArrowRight, ShoppingCart, Palette, Zap, RefreshCw, BarChart2, ShieldCheck, TrendingUp, Gauge, DollarSign, Star, ChevronDown, Check, Globe2, Settings, Package, CreditCard, ChevronLeft } from "lucide-react";
 import { useState, useEffect } from "react";
 import PageLayout from "@/components/PageLayout";
@@ -497,6 +498,7 @@ const ShopifyPage = () => {
         </motion.div>
       </div>
     </section>
+  <ServiceLeadCapture service="Shopify development" slug="shopify-development" />
   </PageLayout>
 );
 };

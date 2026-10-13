@@ -1,5 +1,6 @@
 ﻿import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import ServiceLeadCapture from "@/components/ServiceLeadCapture";
 import PageLayout from "@/components/PageLayout";
 import { useSettings } from "@/hooks/useSettings";
 import { Palette, Figma, Layout, PenTool, Monitor, Layers, CheckCircle2, ArrowRight } from "lucide-react";
@@ -133,6 +134,7 @@ const DesignBrandingPage = () => {
         </motion.div>
       </div>
     </section>
+  <ServiceLeadCapture service="design and branding" slug="design-branding" />
   </PageLayout>
 );
 };

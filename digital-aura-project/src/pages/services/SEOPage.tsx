@@ -1,5 +1,6 @@
 ﻿import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import { StickyCtaBar } from "@/components/PageCta";
 import { submitLead } from "@/lib/submitLead";
 import {
   Search, FileText, Link2, BarChart2, Globe2, PenTool,
@@ -954,6 +955,8 @@ const SEOPage = () => {
         </motion.div>
       </div>
     </section>
+  <div className="h-16 md:hidden" aria-hidden="true" />
+    <StickyCtaBar accent="#FF6B2B" label="Get a free SEO audit" href="#seo-audit" topic="SEO" />
   </PageLayout>
 );
 };

@@ -1,5 +1,6 @@
 ﻿import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import ServiceLeadCapture from "@/components/ServiceLeadCapture";
 import PageLayout from "@/components/PageLayout";
 import { useSettings } from "@/hooks/useSettings";
 import { Search, Share2, Target, BookOpen, Mail, BarChart3, CheckCircle2, ArrowRight, TrendingUp } from "lucide-react";
@@ -126,6 +127,7 @@ const DigitalMarketingPage = () => {
         </motion.div>
       </div>
     </section>
+  <ServiceLeadCapture service="digital marketing" slug="digital-marketing" />
   </PageLayout>
 );
 };

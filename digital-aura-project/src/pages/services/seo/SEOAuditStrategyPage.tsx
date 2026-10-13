@@ -11,6 +11,7 @@
  *   2. PageSEO.tsx → add PAGE_META + Service/FAQPage JSON-LD entry
  */
 import { motion, AnimatePresence } from "framer-motion";
+import { StickyCtaBar } from "@/components/PageCta";
 import { submitLead } from "@/lib/submitLead";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -596,6 +597,8 @@ const SEOAuditStrategyPage = () => {
         </motion.div>
       </div>
     </section>
+  <div className="h-16 md:hidden" aria-hidden="true" />
+    <StickyCtaBar accent="#FF6B2B" label="Get a free SEO audit" href="#free-audit" topic="SEO audit and strategy" />
   </PageLayout>
 );
 };

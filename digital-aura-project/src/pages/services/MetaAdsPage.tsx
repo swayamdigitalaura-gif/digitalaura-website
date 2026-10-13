@@ -1,5 +1,6 @@
 ﻿import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import { StickyCtaBar } from "@/components/PageCta";
 import { submitLead } from "@/lib/submitLead";
 import {
   Target, Users, RefreshCw, BarChart2, TrendingUp, Gauge,
@@ -870,6 +871,8 @@ const MetaAdsPage = () => {
         </motion.div>
       </div>
     </section>
+  <div className="h-16 md:hidden" aria-hidden="true" />
+    <StickyCtaBar accent="#FF6B2B" label="Get a free Meta Ads audit" href="#meta-ads-audit" topic="Meta Ads" />
   </PageLayout>
 );
 };

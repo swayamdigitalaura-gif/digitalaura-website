@@ -1,5 +1,6 @@
 ﻿import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import ServiceLeadCapture from "@/components/ServiceLeadCapture";
 import { ArrowRight, Linkedin, Video, Users, Target, RefreshCw, BarChart2, TrendingUp, Gauge, DollarSign, ShieldCheck, ChevronDown, Check, Zap, Megaphone, Play, Building2 } from "lucide-react";
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
@@ -372,6 +373,7 @@ const LinkedInYouTubePage = () => {
         </motion.div>
       </div>
     </section>
+  <ServiceLeadCapture service="LinkedIn and YouTube ads" slug="linkedin-youtube-ads" />
   </PageLayout>
 );
 };

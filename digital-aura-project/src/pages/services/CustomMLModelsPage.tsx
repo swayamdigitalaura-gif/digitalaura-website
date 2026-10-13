@@ -1,5 +1,6 @@
 ﻿import { useState } from "react";
 import { motion } from "framer-motion";
+import ServiceLeadCapture from "@/components/ServiceLeadCapture";
 import { Link } from "react-router-dom";
 import {
   Cpu, ArrowRight, ChevronDown, Check,
@@ -407,6 +408,7 @@ const CustomMLModelsPage = () => {
         </motion.div>
       </div>
     </section>
+  <ServiceLeadCapture service="custom ML models" slug="custom-ml-models" />
   </PageLayout>
 );
 };

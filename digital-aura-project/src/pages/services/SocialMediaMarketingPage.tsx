@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
+import { StickyCtaBar } from "@/components/PageCta";
 import { submitLead } from "@/lib/submitLead";
 import { Link } from "react-router-dom";
 import {
@@ -914,6 +915,8 @@ const SocialMediaMarketingPage = () => {
         </motion.div>
       </div>
     </section>
+  <div className="h-16 md:hidden" aria-hidden="true" />
+    <StickyCtaBar accent="#FF6B2B" label="Get a free social media audit" href="#smm-audit" topic="social media marketing" />
   </PageLayout>
 );
 };

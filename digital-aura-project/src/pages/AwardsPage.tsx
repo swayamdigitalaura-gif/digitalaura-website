@@ -165,13 +165,13 @@ const AwardRow = ({ a, index }: { a: AwardItem; index: number }) => {
         className={`max-w-6xl mx-auto px-4 md:px-8 grid gap-8 items-center ${
           hasReel
             ? reversed
-              ? "md:grid-cols-[1fr_220px_340px] md:gap-6"
-              : "md:grid-cols-[220px_340px_1fr] md:gap-6"
+              ? "lg:grid-cols-[1fr_220px_340px] lg:gap-6"
+              : "lg:grid-cols-[220px_340px_1fr] lg:gap-6"
             : "md:grid-cols-2 md:gap-12"
         }`}
       >
         {/* Trophy image */}
-        <div className={`flex justify-center ${reversed ? "md:order-2" : "md:order-1"}`}>
+        <div className={`flex justify-center ${hasReel ? (reversed ? "lg:order-2" : "lg:order-1") : reversed ? "md:order-2" : "md:order-1"}`}>
           <div
             className="relative w-full rounded-[2rem] flex items-center justify-center"
             style={{
@@ -203,13 +203,13 @@ const AwardRow = ({ a, index }: { a: AwardItem; index: number }) => {
 
         {/* Award reel — beside the trophy */}
         {hasReel && (
-          <div className={`flex justify-center ${reversed ? "md:order-3" : "md:order-2"}`}>
+          <div className={`flex justify-center ${reversed ? "lg:order-3" : "lg:order-2"}`}>
             <ReelVideo src={a.reelVideo as string} />
           </div>
         )}
 
         {/* Text side */}
-        <div className={hasReel ? (reversed ? "md:order-1" : "md:order-3") : reversed ? "md:order-1 md:text-right" : "md:order-2"}>
+        <div className={hasReel ? (reversed ? "lg:order-1" : "lg:order-3") : reversed ? "md:order-1 md:text-right" : "md:order-2"}>
           <span className="inline-block text-[13px] font-black tracking-widest uppercase mb-3" style={{ color: a.color }}>
             {String(index + 1).padStart(2, "0")} — <span data-cms-key={k("event")} data-cms-label="Award Card Event" data-cms-attr="text">{a.event}</span>
           </span>

@@ -16,7 +16,14 @@ export default function Blogs() {
   const [tab, setTab] = useState('content');
   const [search, setSearch] = useState('');
 
-  const load = () => api.get('/blogs').then(r => setBlogs(r.data.data));
+  const [hidden, setHidden] = useState([]); // deactivated code-published slugs (site setting)
+
+  const load = () => {
+    api.get('/blogs').then(r => setBlogs(r.data.data));
+    api.get('/settings').then(r => {
+      try { setHidden(JSON.parse(r.data.data?.hidden_blog_slugs || '[]')); } catch { setHidden([]); }
+    }).catch(() => {});
+  };
   useEffect(() => { load(); }, []);
 
   const open = (b = null) => {
@@ -44,8 +51,28 @@ export default function Blogs() {
     toast.success('Deleted'); load();
   };
 
+  // Code-published posts can't be edited here, but they can be switched off: the slug goes into
+  // the `hidden_blog_slugs` site setting, which the website reads to hide the post (shows 404).
+  const toggleCode = async (slug, makeActive) => {
+    const next = makeActive ? hidden.filter(s => s !== slug) : [...new Set([...hidden, slug])];
+    try {
+      await api.put('/settings/hidden_blog_slugs', { value: JSON.stringify(next) });
+      setHidden(next);
+      toast.success(makeActive ? 'Activated - live on the website' : 'Deactivated - hidden from the website');
+    } catch (err) { toast.error(err.response?.data?.message || 'Error'); }
+  };
+
+  const toggleDb = async (b) => {
+    const status = b.status === 'published' ? 'draft' : 'published';
+    try {
+      await api.put(`/blogs/${b.id}`, { status });
+      toast.success(status === 'published' ? 'Activated' : 'Deactivated (draft)');
+      load();
+    } catch (err) { toast.error(err.response?.data?.message || 'Error'); }
+  };
+
   const statusBadge = (s) => (
-    <span style={{ fontSize: 11, fontWeight: 700, padding: '3px 10px', borderRadius: 20, background: s === 'published' ? '#DCFCE7' : '#FEF9C3', color: s === 'published' ? '#15803D' : '#92400E' }}>{s}</span>
+    <span style={{ fontSize: 11, fontWeight: 700, padding: '3px 10px', borderRadius: 20, background: s === 'published' ? '#DCFCE7' : s === 'inactive' ? '#F1F5F9' : '#FEF9C3', color: s === 'published' ? '#15803D' : s === 'inactive' ? '#64748B' : '#92400E' }}>{s}</span>
   );
 
   const Field = ({ name, label, type = 'text', rows = 3, placeholder = '', hint = '' }) => (
@@ -67,7 +94,7 @@ export default function Blogs() {
   // so list them here too (read-only) — otherwise the live blog looks empty in admin.
   const staticRows = codePosts
     .filter(p => !blogs.some(b => b.slug === p.slug))
-    .map(p => ({ id: `code-${p.slug}`, isCode: true, title: p.title, slug: p.slug, category: p.category, status: 'published', createdAt: p.date, meta_title: p.metaTitle, schema_code: '1', keywords: '1' }));
+    .map(p => ({ id: `code-${p.slug}`, isCode: true, title: p.title, slug: p.slug, category: p.category, status: hidden.includes(p.slug) ? 'inactive' : 'published', createdAt: p.date, meta_title: p.metaTitle, schema_code: '1', keywords: '1' }));
   const allRows = [...blogs, ...staticRows].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   const filtered = allRows.filter(b => !search || b.title.toLowerCase().includes(search.toLowerCase()));
 
@@ -231,11 +258,15 @@ export default function Blogs() {
                 <td style={{ padding: '14px 20px' }}>{statusBadge(b.status)}</td>
                 <td style={{ padding: '14px 20px', fontSize: 12, color: '#94A3B8' }}>{new Date(b.createdAt).toLocaleDateString('en-IN')}</td>
                 <td style={{ padding: '14px 20px' }}>
-                  <div style={{ display: 'flex', gap: 8 }}>
+                  <div style={{ display: 'flex', gap: 8, whiteSpace: 'nowrap' }}>
                     {b.isCode ? (
-                      <a href={`/blog/${b.slug}/`} target="_blank" rel="noreferrer" title="Published from website code — edit via developer" style={{ padding: '6px 12px', background: '#F1F5F9', borderRadius: 6, color: '#475569', fontWeight: 600, fontSize: 12, display: 'flex', alignItems: 'center', gap: 4, textDecoration: 'none' }}><ExternalLink size={12} /> View live</a>
+                      <>
+                        <a href={`/blog/${b.slug}/`} target="_blank" rel="noreferrer" title="Published from website code - edit via developer" style={{ padding: '6px 12px', background: '#F1F5F9', borderRadius: 6, color: '#475569', fontWeight: 600, fontSize: 12, display: 'flex', alignItems: 'center', gap: 4, textDecoration: 'none' }}><ExternalLink size={12} /> View live</a>
+                        <button onClick={() => toggleCode(b.slug, b.status === 'inactive')} style={{ padding: '6px 12px', background: b.status === 'inactive' ? '#F0FDF4' : '#FFF7ED', border: 'none', borderRadius: 6, color: b.status === 'inactive' ? '#15803D' : '#C2410C', cursor: 'pointer', fontWeight: 600, fontSize: 12 }}>{b.status === 'inactive' ? 'Activate' : 'Deactivate'}</button>
+                      </>
                     ) : (<>
                       <button onClick={() => open(b)} style={{ padding: '6px 12px', background: '#EFF6FF', border: 'none', borderRadius: 6, color: '#1A6FE8', cursor: 'pointer', fontWeight: 600, fontSize: 12, display: 'flex', alignItems: 'center', gap: 4 }}><Edit2 size={12} /> Edit</button>
+                      <button onClick={() => toggleDb(b)} style={{ padding: '6px 12px', background: b.status === 'published' ? '#FFF7ED' : '#F0FDF4', border: 'none', borderRadius: 6, color: b.status === 'published' ? '#C2410C' : '#15803D', cursor: 'pointer', fontWeight: 600, fontSize: 12 }}>{b.status === 'published' ? 'Deactivate' : 'Activate'}</button>
                       <button onClick={() => handleDelete(b.id)} style={{ padding: '6px 10px', background: '#FEF2F2', border: 'none', borderRadius: 6, color: '#EF4444', cursor: 'pointer' }}><Trash2 size={13} /></button>
                     </>)}
                   </div>

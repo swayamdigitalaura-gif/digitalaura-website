@@ -37,7 +37,6 @@ const groups: AreaGroup[] = [
       { label: "WooCommerce Website Design in Ahmedabad", href: "/woocommerce-website-design-ahmedabad/" },
       { label: "Mobile App Development in Ahmedabad", href: "/mobile-app-development-ahmedabad/" },
       { label: "AI Automation Company in Ahmedabad", href: "/ai-automation-ahmedabad/" },
-      { label: "AI Filmmaking in Ahmedabad", href: "/ai-filmmaking-ahmedabad/" },
     ],
   },
   {
@@ -52,7 +51,6 @@ const groups: AreaGroup[] = [
       { label: "WooCommerce Development in Gujarat", href: "/woocommerce-development-gujarat/" },
       { label: "Mobile App Development in Gujarat", href: "/mobile-app-development-gujarat/" },
       { label: "AI Automation Company in Gujarat", href: "/ai-automation-gujarat/" },
-      { label: "AI Filmmaking Company in Gujarat", href: "/ai-filmmaking-gujarat/" },
     ],
   },
   {

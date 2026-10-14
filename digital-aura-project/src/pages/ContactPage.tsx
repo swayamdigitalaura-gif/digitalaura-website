@@ -1,3 +1,4 @@
+import { getAttribution } from "@/lib/leadTracking";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
@@ -84,7 +85,7 @@ const ContactPage = () => {
       const res = await fetch(`${API}/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, ...getAttribution() }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Submission failed");

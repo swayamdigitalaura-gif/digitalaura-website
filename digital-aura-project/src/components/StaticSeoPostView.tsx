@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import { Calendar, Clock, ChevronDown, ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
 import type { BlogPost } from "@/data/seoBlogPosts";
-import { posts } from "@/data/seoBlogPosts";
+import { posts as allPosts } from "@/data/seoBlogPosts";
+import { useHiddenBlogSlugs } from "@/hooks/useHiddenBlogs";
 import { getTheme } from "@/data/seoBlogCategoryTheme";
 import { relatedServiceFor } from "@/data/relatedService";
 import sambhavPhoto from "@/assets/sambhav.jpg";
@@ -51,6 +52,8 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
   const CategoryIcon = theme.Icon;
   const canonicalUrl = `${SITE}/blog/${post.slug}/`;
   const relatedService = relatedServiceFor(post.slug, post.category);
+  const hiddenSlugs = useHiddenBlogSlugs();
+  const posts = allPosts.filter(p => !hiddenSlugs.has(p.slug));
   const related = posts.filter(p => p.slug !== post.slug && p.category === post.category).slice(0, 3);
   const relatedFallback = posts.filter(p => p.slug !== post.slug).slice(0, 3);
   const relatedPosts = related.length ? related : relatedFallback;

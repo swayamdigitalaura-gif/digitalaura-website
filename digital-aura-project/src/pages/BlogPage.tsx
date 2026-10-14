@@ -6,6 +6,7 @@ import { Calendar, ArrowRight, Zap } from "lucide-react";
 import { useSettings } from "@/hooks/useSettings";
 import { getBlogTheme } from "@/data/blogCategoryTheme";
 import { posts as seoBlogPosts } from "@/data/seoBlogPosts";
+import { useHiddenBlogSlugs } from "@/hooks/useHiddenBlogs";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
 
@@ -50,7 +51,8 @@ const BlogPage = () => {
       .catch(() => setRealBlogs(null));
   }, []);
 
-  const staticSeoPosts = seoBlogPosts.map((p) => ({
+  const hiddenSlugs = useHiddenBlogSlugs();
+  const staticSeoPosts = seoBlogPosts.filter((p) => !hiddenSlugs.has(p.slug)).map((p) => ({
     n: p.slug,
     category: p.category,
     title: p.title,

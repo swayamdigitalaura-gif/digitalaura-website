@@ -1,3 +1,4 @@
+import { getAttribution } from "@/lib/leadTracking";
 import { useState, type FormEvent } from "react";
 import { ArrowRight, MessageSquareText } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -142,6 +143,7 @@ export function QuickEnquiry() {
           message: fd.get("site") || "",
           project: fd.get("type") || "Website Development",
           source: "website-development-services-ahmedabad",
+          ...getAttribution(),
         }),
       });
       if (!res.ok) throw new Error("Server error");

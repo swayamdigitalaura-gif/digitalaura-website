@@ -45,7 +45,7 @@ import CaseStudyOblprint from "./pages/CaseStudyOblprint.tsx";
 import CaseStudyGrandPalace from "./pages/CaseStudyGrandPalace.tsx";
 import BlogPage from "./pages/BlogPage.tsx";
 import BlogPost from "./pages/BlogPost.tsx";
-import StaticSeoPostView from "./components/StaticSeoPostView.tsx";
+import GuardedSeoPost from "./components/GuardedSeoPost.tsx";
 import { posts as seoBlogPosts } from "./data/seoBlogPosts.ts";
 import ContactPage from "./pages/ContactPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
@@ -78,7 +78,6 @@ import { phase2WebPages } from "./data/localPagesPhase2Web.ts";
 import { phase3Pages } from "./data/localPagesPhase3.ts";
 import { phase4Pages } from "./data/localPagesPhase4.ts";
 import { localPages } from "./data/localPagesData.ts";
-import AIFilmmakingPage from "./pages/services/AIFilmmakingPage.tsx";
 import ServiceAreasPage from "./pages/ServiceAreasPage.tsx";
 
 const queryClient = new QueryClient();
@@ -110,7 +109,7 @@ const App = () => (
           <Route path="/case-studies/grand-palace" element={<CaseStudyGrandPalace />} />
           <Route path="/blog" element={<BlogPage />} />
           {seoBlogPosts.map(p => (
-            <Route key={p.slug} path={`/blog/${p.slug}`} element={<StaticSeoPostView post={p} />} />
+            <Route key={p.slug} path={`/blog/${p.slug}`} element={<GuardedSeoPost post={p} />} />
           ))}
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/contact" element={<ContactPage />} />
@@ -198,7 +197,6 @@ const App = () => (
           <Route path="/social-media-marketing-agency-ahmedabad" element={<IndustryLandingPage config={phase3Pages.socialMediaAgency} />} />
           <Route path="/advertising-agency-ahmedabad" element={<IndustryLandingPage config={phase3Pages.advertisingAgency} />} />
 
-          <Route path="/services/ai-filmmaking" element={<AIFilmmakingPage />} />
 
           {/* Local / regional service landing pages */}
           <Route path="/website-design-development-ahmedabad" element={<IndustryLandingPage config={localPages.websiteDevAhmedabad} />} />
@@ -212,8 +210,6 @@ const App = () => (
           <Route path="/seo-agency-ahmedabad" element={<IndustryLandingPage config={localPages.seoAhmedabad} />} />
           <Route path="/seo-company-gujarat" element={<IndustryLandingPage config={localPages.seoGujarat} />} />
           <Route path="/seo-agency-international" element={<IndustryLandingPage config={localPages.seoInternational} />} />
-          <Route path="/ai-filmmaking-ahmedabad" element={<IndustryLandingPage config={localPages.aiFilmmakingAhmedabad} />} />
-          <Route path="/ai-filmmaking-gujarat" element={<IndustryLandingPage config={localPages.aiFilmmakingGujarat} />} />
           <Route path="/woocommerce-website-design-ahmedabad" element={<IndustryLandingPage config={localPages.woocommerceAhmedabad} />} />
           <Route path="/woocommerce-development-gujarat" element={<IndustryLandingPage config={localPages.woocommerceGujarat} />} />
           <Route path="/mobile-app-development-ahmedabad" element={<IndustryLandingPage config={localPages.mobileAppAhmedabad} />} />

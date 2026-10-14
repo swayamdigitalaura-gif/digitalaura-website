@@ -32,6 +32,11 @@ declare -A NEW_LOCATIONS=(
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
     }'
+  [REMOVED_AI_FILMMAKING]='    # Removed AI Filmmaking pages: real HTTP 404 (renders the SPA 404 page).
+    location ~ ^/(services/ai-filmmaking|ai-filmmaking-ahmedabad|ai-filmmaking-gujarat)(/.*)?$ {
+        error_page 404 /index.html;
+        return 404;
+    }'
 )
 
 # Literal substring (no regex metacharacters) — the insertion point.
@@ -74,7 +79,7 @@ cp "$LIVE" "$WORK"
 CHANGED=0
 
 for path in "${!NEW_LOCATIONS[@]}"; do
-  if grep -qF "location $path {" "$WORK"; then
+  if grep -qF "location $path {" "$WORK" || { [ "$path" = "REMOVED_AI_FILMMAKING" ] && grep -qF "ai-filmmaking|ai-filmmaking-ahmedabad" "$WORK"; }; then
     echo "Already live, skipping: $path"
     continue
   fi

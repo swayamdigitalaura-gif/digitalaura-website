@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useSettings } from "@/hooks/useSettings";
 import {
   Bot, Brain, Workflow,
-  Globe2, Code2, PenTool,
+  Globe2, Code2, PenTool, MonitorSmartphone,
   ShoppingCart, Store, CreditCard,
   Search, Share2, Target, Megaphone, BarChart3, Hash,
   Smartphone, AppWindow, Layers,
@@ -32,7 +32,7 @@ const tabs: { key: TabKey; label: string; color: string; gradient: string }[] = 
   { key: "mobile",    label: "Mobile Apps",         color: "#EC4899", gradient: "linear-gradient(135deg,#EC4899,#db2777)" },
 ];
 
-const content: Record<TabKey, { icon: React.ElementType; iconName: string; title: string; desc: string; points: string[]; route?: string }[]> = {
+const content: Record<TabKey, { icon: React.ElementType; iconName: string; title: string; desc: string; points: string[]; route?: string; pillar?: boolean; hard?: boolean }[]> = {
   ai: [
     {
       icon: Bot, iconName: "Bot",
@@ -78,6 +78,13 @@ const content: Record<TabKey, { icon: React.ElementType; iconName: string; title
       points: ["Custom themes", "Plugin development", "Speed optimisation"],
       route: "/services/wordpress-development/",
     },
+    {
+      icon: MonitorSmartphone, iconName: "MonitorSmartphone",
+      title: "Website Development in Ahmedabad",
+      desc: "Business websites planned around your customers, built to load fast, rank on Google and turn visitors into enquiries.",
+      points: ["Strategy first", "Built to rank", "Conversion focused"],
+      route: "/website-development-services-ahmedabad/", pillar: true,
+    },
   ],
   ecommerce: [
     {
@@ -108,21 +115,21 @@ const content: Record<TabKey, { icon: React.ElementType; iconName: string; title
       title: "SEO & Content Marketing",
       desc: "Rank on page 1 of Google with technical SEO, content strategy, and authoritative link building.",
       points: ["Technical SEO", "Content strategy", "Link building"],
-      route: "/services/seo-content-marketing/",
+      route: "/seo-services-ahmedabad", pillar: true, hard: true,
     },
     {
       icon: Target, iconName: "Target",
       title: "Google Ads",
       desc: "Data driven Google campaigns, Search, Display, and Shopping ads that deliver high quality leads at the lowest possible cost.",
       points: ["Search & Display ads", "Shopping campaigns", "ROI focused bidding"],
-      route: "/services/google-ads/",
+      route: "/google-ads-agency-ahmedabad", pillar: true, hard: true,
     },
     {
       icon: Share2, iconName: "Share2",
       title: "Meta Ads",
       desc: "High converting Facebook & Instagram ad campaigns targeting the right audience to generate consistent leads and sales.",
       points: ["Facebook & Instagram", "Audience targeting", "Creative A/B testing"],
-      route: "/services/meta-ads/",
+      route: "/meta-ads-agency-ahmedabad/", pillar: true,
     },
     {
       icon: Hash, iconName: "Hash",
@@ -220,7 +227,7 @@ const Services = () => {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.06 }}
-                onClick={() => s.route && navigate(s.route)}
+                onClick={() => { if (!s.route) return; if (s.hard) window.location.assign(s.route); else navigate(s.route); }}
                 className="group bg-white rounded-2xl p-6 border hover:-translate-y-1 transition-all duration-200"
                 style={{
                   borderColor: "#E5E7EB",
@@ -252,7 +259,19 @@ const Services = () => {
                     </li>
                   ))}
                 </ul>
-                {s.route && (
+                {s.route && s.pillar && s.hard && (
+                  <a href={s.route} onClick={e => e.stopPropagation()} className="mt-4 flex items-center gap-1 text-sm font-semibold transition-all duration-200 group-hover:gap-2"
+                    style={{ color: activeTab.color }}>
+                    Learn more<span className="sr-only"> about {s.title}</span> <ArrowRight size={14} />
+                  </a>
+                )}
+                {s.route && s.pillar && !s.hard && (
+                  <Link to={s.route} onClick={e => e.stopPropagation()} className="mt-4 flex items-center gap-1 text-sm font-semibold transition-all duration-200 group-hover:gap-2"
+                    style={{ color: activeTab.color }}>
+                    Learn more<span className="sr-only"> about {s.title}</span> <ArrowRight size={14} />
+                  </Link>
+                )}
+                {s.route && !s.pillar && (
                   <div className="mt-4 flex items-center gap-1 text-sm font-semibold transition-all duration-200 group-hover:gap-2"
                     style={{ color: activeTab.color }}>
                     Learn more<span className="sr-only"> about {s.title}</span> <ArrowRight size={14} />

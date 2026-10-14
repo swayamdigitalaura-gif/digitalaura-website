@@ -2121,7 +2121,7 @@ Allow: /</code></pre>
 
 <h2>What Meta requires you to disclose</h2>
 
-<p>Since mid-2026, Meta automatically detects and labels ad media created or edited with generative AI tools with an “AI Info” tag — not a restriction, but a transparency requirement now built into the platform. See <a href="/ai-filmmaking-ahmedabad/">our AI filmmaking service in Ahmedabad</a>.</p>
+<p>Since mid-2026, Meta automatically detects and labels ad media created or edited with generative AI tools with an “AI Info” tag — not a restriction, but a transparency requirement now built into the platform.</p>
 
 <h2>Where AI-UGC fits in a creative mix</h2>
 
@@ -2204,7 +2204,7 @@ Allow: /</code></pre>
 
 <h2>Testing hooks systematically instead of guessing</h2>
 
-<p>Posting two or three versions of the same core content with different opening lines and comparing watch-time drop-off gives an objective, account-specific answer rather than relying on instinct for which hook “feels” strongest. See <a href="/ai-filmmaking-ahmedabad/">our AI filmmaking and video production service</a>.</p>
+<p>Posting two or three versions of the same core content with different opening lines and comparing watch-time drop-off gives an objective, account-specific answer rather than relying on instinct for which hook “feels” strongest.</p>
 
 <h2>Hooks that look good on paper but don't actually work</h2>
 

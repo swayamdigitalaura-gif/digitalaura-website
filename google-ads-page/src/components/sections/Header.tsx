@@ -33,6 +33,7 @@ const megaCategories = [
     key: "web", label: "Web Solutions", color: "#1A6FE8", bg: "rgba(26,111,232,0.07)",
     items: [
       { icon: Globe2,  title: "Custom Web Development",  desc: "High performance, SEO ready websites",          route: `${BASE}/services/web-app-development` },
+      { icon: Globe2,  title: "Website Development Ahmedabad", desc: "Business websites built to rank and convert", route: `${BASE}/website-development-services-ahmedabad/` },
       { icon: Code2,   title: "Full Stack Development",  desc: "End to end apps with robust backends & APIs",   route: `${BASE}/services/full-stack-development` },
       { icon: PenTool, title: "WordPress Development",   desc: "Fast, SEO driven WordPress sites",              route: `${BASE}/services/wordpress-development` },
     ],
@@ -47,9 +48,9 @@ const megaCategories = [
   {
     key: "marketing", label: "Digital Marketing", color: "#22C55E", bg: "rgba(34,197,94,0.07)",
     items: [
-      { icon: Search, title: "SEO & Content Marketing", desc: "Rank on page 1 with technical SEO & content", route: `${BASE}/services/seo-content-marketing` },
-      { icon: Target, title: "Google Ads",              desc: "Data driven Search, Display & Shopping ads",   route: `${BASE}/services/google-ads` },
-      { icon: Share2, title: "Meta Ads",                desc: "Facebook & Instagram campaigns that convert",  route: `${BASE}/services/meta-ads` },
+      { icon: Search, title: "SEO & Content Marketing", desc: "Rank on page 1 with technical SEO & content", route: `${BASE}/seo-services-ahmedabad` },
+      { icon: Target, title: "Google Ads",              desc: "Data driven Search, Display & Shopping ads",   route: `${BASE}/google-ads-agency-ahmedabad` },
+      { icon: Share2, title: "Meta Ads",                desc: "Facebook & Instagram campaigns that convert",  route: `${BASE}/meta-ads-agency-ahmedabad/` },
     ],
   },
   {

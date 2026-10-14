@@ -12,6 +12,7 @@ import { submitLead } from "@/lib/submitLead";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
+import { renderInline } from "@/lib/inlineLinks";
 import Testimonials from "@/components/Testimonials";
 import CaseStudies from "@/components/CaseStudies";
 import BlogInsights from "@/components/BlogInsights";
@@ -253,7 +254,7 @@ const OnPageSEOPage = () => {
 
   const heroH1 = g("onpageseo_hero_h1", "On Page SEO Services");
   const heroH1Highlight = g("onpageseo_hero_h1_highlight", "Built Around Search Intent");
-  const heroSub = g("onpageseo_hero_sub", "On-page SEO optimises the titles, headings, content, internal links, and images on every page of your site so Google understands exactly what each page is about — and ranks it for the searches that actually matter.");
+  const heroSub = g("onpageseo_hero_sub", "[On-page SEO](/seo-services-ahmedabad) optimises the titles, headings, content, internal links, and images on every page of your site so Google understands exactly what each page is about — and ranks it for the searches that actually matter.");
   const includedH2 = g("onpageseo_included_h2", "What On-Page SEO Covers");
   const processH2 = g("onpageseo_process_h2", "How We Optimise Every Page");
   const issuesH2 = g("onpageseo_issues_h2", "On-Page Issues We Find Most Often");
@@ -324,7 +325,7 @@ const OnPageSEOPage = () => {
             <span data-cms-key="onpageseo_hero_h1_highlight" data-cms-label="Hero H1 Highlight" data-cms-attr="text" style={{ color: accentColor }}>{heroH1Highlight}</span>
           </h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-4 leading-relaxed">
-            <span data-cms-key="onpageseo_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{heroSub}</span>
+            <span data-cms-key="onpageseo_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{renderInline(heroSub)}</span>
           </p>
           <div className="flex flex-wrap gap-2 justify-center mb-8">
             {["Title & Meta Optimisation", "Keyword Mapping", "Internal Linking", "Content Structure"].map(tag => (
@@ -527,6 +528,17 @@ const OnPageSEOPage = () => {
           <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }}>
             <AuditForm />
           </motion.div>
+        </div>
+      </div>
+    </section>
+
+    {/* Where this fits in the wider SEO plan (internal links to the SEO pillar and guides) */}
+    <section className="py-12 px-4 md:px-8" style={{ background: "#F8FAFF", borderTop: "1px solid #F3F4F6" }}>
+      <div className="max-w-3xl mx-auto">
+        <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] tracking-tight mb-4">On-page SEO works best alongside the rest of your SEO</h2>
+        <div className="space-y-4 text-[#4B5563] leading-relaxed">
+          <p>{renderInline("Clear titles, headings and internal links help Google understand a page, but a page also needs to be found, trusted and technically sound before it can rank. That is why on-page work is planned inside our [SEO services in Ahmedabad](/seo-services-ahmedabad), together with technical fixes and local visibility.")}</p>
+          <p>{renderInline("To check your own pages against a list, use our [on-page SEO checklist](/blog/on-page-seo-checklist-2026/), or ask for a [free SEO audit](/seo/free-audit/) and we will review them for you.")}</p>
         </div>
       </div>
     </section>

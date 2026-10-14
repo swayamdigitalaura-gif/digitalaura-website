@@ -7,6 +7,7 @@ import {
 import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
 
+import PillarLinks from "@/components/PillarLinks";
 /* Distinct palette from the other case studies — gold/black lifted from
    The Grand Palace's own branding, instead of the site's usual navy/blue. */
 const INK = "#1c1208";
@@ -474,6 +475,7 @@ const CaseStudyGrandPalace = () => {
           </motion.div>
         </div>
       </section>
+      <PillarLinks slug="case-study-grand-palace" />
     </PageLayout>
   );
 };

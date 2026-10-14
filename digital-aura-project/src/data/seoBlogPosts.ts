@@ -243,7 +243,7 @@ export const posts: BlogPost[] = [
       "A page written to directly answer its title's implied question in the opening lines performs better in both traditional search and AI Overviews.",
     ],
     contentHtml: `
-<p>On-page SEO is the part of SEO you have full control over — no waiting on backlinks, no dependency on Google's crawl schedule. Work through this checklist top to bottom on your most important pages first.</p>
+<p><a href="/seo-services-ahmedabad">On-page SEO</a> is the part of SEO you have full control over — no waiting on backlinks, no dependency on Google's crawl schedule. Work through this checklist top to bottom on your most important pages first.</p>
 
 <div class="da-checklist">
 <h4>The 10-point checklist at a glance</h4>
@@ -391,7 +391,7 @@ export const posts: BlogPost[] = [
 <ul>
 <li>Publish 2-4 genuinely comprehensive pieces of content targeting your long-tail keyword list — depth beats frequency at this stage</li>
 <li>Start outreach for your first few backlinks: guest posts, directory listings relevant to your industry, partner mentions</li>
-<li>Claim and fully optimise your Google Business Profile if you serve a local market — see our <a href="/blog/local-seo-strategies-2026/">local SEO strategies guide</a></li>
+<li>Claim and fully optimise your <a href="/blog/google-business-profile-seo-checklist/">Google Business Profile</a> if you serve a local market — see our <a href="/blog/local-seo-strategies-2026/">local SEO strategies guide</a></li>
 <li>Begin internal linking between your pages as content volume grows — this is often forgotten until later, which wastes early momentum</li>
 </ul>
 
@@ -465,7 +465,7 @@ export const posts: BlogPost[] = [
 </table>
 
 <h2>AEO — Answer Engine Optimization</h2>
-<p>AEO specifically targets Google's own AI-generated answers: AI Overviews and, before that, featured snippets. When someone searches "what is technical SEO," Google may generate a synthesized answer at the top of the results page, sourced from a small number of pages it trusts enough to quote — see Google's own <a href="https://developers.google.com/search/docs/appearance/ai-features" target="_blank" rel="noopener noreferrer">documentation on AI features</a>.</p>
+<p>AEO specifically targets Google's own AI-generated answers: AI Overviews and, before that, featured snippets. When someone searches "what is <a href="/blog/technical-seo-practices-2026/">technical SEO</a>," Google may generate a synthesized answer at the top of the results page, sourced from a small number of pages it trusts enough to quote — see Google's own <a href="https://developers.google.com/search/docs/appearance/ai-features" target="_blank" rel="noopener noreferrer">documentation on AI features</a>.</p>
 <p><strong>What earns AEO visibility:</strong> a clear, complete, self-contained answer appearing early on the page — ideally in the first paragraph after the heading that matches the question. Structured formatting (numbered steps, definition-style opening sentences) also helps Google's extraction process identify a quotable answer.</p>
 
 <h2>GEO — Generative Engine Optimization</h2>
@@ -623,7 +623,7 @@ export const posts: BlogPost[] = [
       "Canonical tag mistakes are one of the most common technical issues we find in audits, and one of the most damaging when done wrong.",
     ],
     contentHtml: `
-<p>Technical SEO doesn't change every year in dramatic ways, but a few things have shifted enough by 2026 to be worth a fresh look, alongside the fundamentals that never stopped mattering.</p>
+<p><a href="/seo-services-ahmedabad">Technical SEO</a> doesn't change every year in dramatic ways, but a few things have shifted enough by 2026 to be worth a fresh look, alongside the fundamentals that never stopped mattering.</p>
 
 <h2>1. Core Web Vitals (LCP, INP, CLS)</h2>
 <p>Largest Contentful Paint, Interaction to Next Paint, and Cumulative Layout Shift remain a confirmed ranking factor — see <a href="https://web.dev/articles/vitals" target="_blank" rel="noopener noreferrer">web.dev's Core Web Vitals reference</a> for current thresholds. Run your key pages through PageSpeed Insights and treat "Poor" scores as a priority fix, not a someday task — pages failing Core Web Vitals lose both ranking potential and real users who bounce before content even loads.</p>
@@ -782,7 +782,7 @@ Allow: /</code></pre>
 <p>For stores that want help, see our <a href="/services/seo-content-marketing/ecommerce-seo/">ecommerce SEO service</a> and our <a href="/services/shopify-development/">Shopify development service</a>.</p>
 
 <h2>Conclusion</h2>
-<p>Shopify SEO is mostly about closing the gaps the platform leaves open by default — duplicate content, thin collections, and generic titles. None of these nine steps require leaving Shopify's ecosystem or migrating platforms; they just require going beyond what the default theme and settings do for you. Work through them store-wide once, then apply the same checklist to every new product you add.</p>
+<p><a href="/seo-services-ahmedabad">Shopify SEO</a> is mostly about closing the gaps the platform leaves open by default — duplicate content, thin collections, and generic titles. None of these nine steps require leaving Shopify's ecosystem or migrating platforms; they just require going beyond what the default theme and settings do for you. Work through them store-wide once, then apply the same checklist to every new product you add.</p>
 
 <p class="text-xs" style="color:#9CA3AF">Sources: <a href="https://developers.google.com/search/docs/crawling-indexing/canonicalization" target="_blank" rel="noopener noreferrer">Google — canonicalization</a>, <a href="https://support.google.com/merchants/answer/7052112" target="_blank" rel="noopener noreferrer">Google Merchant Center — product data specification</a>.</p>
 `,
@@ -1134,7 +1134,7 @@ Allow: /</code></pre>
 
 <h2>Structure your page so an AI system can safely quote it</h2>
 
-<p>The most reliable improvement we've made across client sites is moving the direct answer to the top of the page. Beyond that opening, three structural habits consistently help extraction: See <a href="/services/seo-content-marketing/">our SEO content marketing service</a>.</p>
+<p>The most reliable improvement we've made across client sites is moving the direct answer to the top of the page. Beyond that opening, three structural habits consistently help extraction: See <a href="/seo-services-ahmedabad">our SEO content marketing service</a>.</p>
 
 <ul>
 
@@ -1223,7 +1223,7 @@ Allow: /</code></pre>
 
 <li>Exact-match-only keyword structure</li>
 
-<li>No Google Business Profile linked for local visibility</li>
+<li>No <a href="/blog/google-business-profile-seo-checklist/">Google Business Profile</a> linked for local visibility</li>
 
 <li>The same 2–3 ads running for months with no refresh</li>
 
@@ -1235,7 +1235,7 @@ Allow: /</code></pre>
 
 <h2>Mistake #1: broken or missing conversion tracking</h2>
 
-<p>Before touching a bid, we check conversion tracking on every new account — and it's broken, missing, or double-counting more often than not. The three most common causes: See <a href="/services/google-ads/">our Google Ads management service</a>.</p>
+<p>Before touching a bid, we check conversion tracking on every new account — and it's broken, missing, or double-counting more often than not. The three most common causes: See <a href="/google-ads-agency-ahmedabad">our Google Ads management service</a>.</p>
 
 <ul>
 
@@ -1326,7 +1326,7 @@ Allow: /</code></pre>
 
 <h2>Trusting broader, automated structures</h2>
 
-<p>Consolidating into fewer, broader campaigns organized around business goals — rather than granular keyword themes — gives Google's bidding systems a larger, cleaner dataset to optimize against. In practice this has produced lower cost-per-conversion for most accounts we've restructured this way. See <a href="/services/google-ads/">our Google Ads team</a>.</p>
+<p>Consolidating into fewer, broader campaigns organized around business goals — rather than granular keyword themes — gives Google's bidding systems a larger, cleaner dataset to optimize against. In practice this has produced lower cost-per-conversion for most accounts we've restructured this way. See <a href="/google-ads-agency-ahmedabad">our Google Ads team</a>.</p>
 
 <h2>AI Max and automated expansion features</h2>
 
@@ -1334,7 +1334,7 @@ Allow: /</code></pre>
 
 <h2>Test new formats on a separate, small budget first</h2>
 
-<p>The safest way to try Demand Gen or newer automated strategies is on a modest, separate budget alongside a proven Search campaign, not as a wholesale replacement — a test that underperforms then doesn't put existing lead flow at risk. See <a href="/services/meta-ads/">our Meta Ads work</a>.</p>
+<p>The safest way to try Demand Gen or newer automated strategies is on a modest, separate budget alongside a proven Search campaign, not as a wholesale replacement — a test that underperforms then doesn't put existing lead flow at risk. See <a href="/meta-ads-agency-ahmedabad/">our Meta Ads work</a>.</p>
 
 <h2>Reusing creative across channels to move faster</h2>
 
@@ -1407,7 +1407,7 @@ Allow: /</code></pre>
 
 <h2>Why these habits felt safe for so long</h2>
 
-<p>All three tactics gave the advertiser direct, visible control, which felt safer than trusting an algorithm with a business's ad budget. That's a harder habit to unlearn than a technical mistake, because it's rooted in reasonable caution rather than an error. See <a href="/services/google-ads/">our Google Ads audits</a>.</p>
+<p>All three tactics gave the advertiser direct, visible control, which felt safer than trusting an algorithm with a business's ad budget. That's a harder habit to unlearn than a technical mistake, because it's rooted in reasonable caution rather than an error. See <a href="/google-ads-agency-ahmedabad">our Google Ads audits</a>.</p>
 
 <h2>What to do if your account still relies on all three</h2>
 
@@ -1545,7 +1545,7 @@ Allow: /</code></pre>
     contentHtml: `
 <h2>Why linking to Google Business Profile matters</h2>
 
-<p>Local campaigns and location extensions — the features that put a business directly into Google Maps results with directions, hours, and a call button — only activate once Google Ads is properly linked to a verified Google Business Profile.</p>
+<p>Local campaigns and location extensions — the features that put a business directly into Google Maps results with directions, hours, and a call button — only activate once Google Ads is properly linked to a verified <a href="/blog/google-business-profile-seo-checklist/">Google Business Profile</a>.</p>
 
 <h2>What actually shows up in Maps, and why accuracy matters</h2>
 
@@ -1569,7 +1569,7 @@ Allow: /</code></pre>
 
 <h2>Service-area businesses without a storefront</h2>
 
-<p>Plumbers, electricians, and mobile repair services can still access Local campaigns and Maps visibility by defining a service area on GBP instead of a physical address — frequently overlooked by businesses without a public shopfront. See <a href="/services/google-ads/">our Google Ads management service</a>.</p>
+<p>Plumbers, electricians, and mobile repair services can still access Local campaigns and Maps visibility by defining a service area on GBP instead of a physical address — frequently overlooked by businesses without a public shopfront. See <a href="/google-ads-agency-ahmedabad">our Google Ads management service</a>.</p>
 
 <h2>Measuring what a Local campaign is actually contributing</h2>
 
@@ -1640,7 +1640,7 @@ Allow: /</code></pre>
 
 <h2>Update 1: AI-content labeling</h2>
 
-<p>Since mid-2026, Meta uses automated detection to identify ad media created or edited with generative AI tools, showing an “AI Info” label in the ad details when detected. This doesn't restrict AI-assisted ads from running, but production-method transparency is now built into the platform. See <a href="/services/meta-ads/">our Meta Ads management service</a>.</p>
+<p>Since mid-2026, Meta uses automated detection to identify ad media created or edited with generative AI tools, showing an “AI Info” label in the ad details when detected. This doesn't restrict AI-assisted ads from running, but production-method transparency is now built into the platform. See <a href="/meta-ads-agency-ahmedabad/">our Meta Ads management service</a>.</p>
 
 <h2>Update 2: delivery favors broad targeting more than before</h2>
 
@@ -1711,7 +1711,7 @@ Allow: /</code></pre>
 
 <h2>What competitor ad libraries are actually useful for</h2>
 
-<p>Meta's public ad library is a legitimate research tool, but its real value is creative inspiration — the angles, formats, and offers being tested — not reverse-engineering targeting or spend, neither of which it reveals. See <a href="/services/meta-ads/">a free account diagnostic</a>.</p>
+<p>Meta's public ad library is a legitimate research tool, but its real value is creative inspiration — the angles, formats, and offers being tested — not reverse-engineering targeting or spend, neither of which it reveals. See <a href="/meta-ads-agency-ahmedabad/">a free account diagnostic</a>.</p>
 
 <h2>When it actually is the budget</h2>
 
@@ -1766,7 +1766,7 @@ Allow: /</code></pre>
 
 <h2>Connect the form directly to a notification system</h2>
 
-<p>Manually checking a leads spreadsheet once or twice a day is the single most common reason fast follow-up doesn't happen. A direct CRM or instant notification (SMS, Slack, email) removes that delay almost entirely. See <a href="/services/meta-ads/">our Meta Ads lead generation service</a>.</p>
+<p>Manually checking a leads spreadsheet once or twice a day is the single most common reason fast follow-up doesn't happen. A direct CRM or instant notification (SMS, Slack, email) removes that delay almost entirely. See <a href="/meta-ads-agency-ahmedabad/">our Meta Ads lead generation service</a>.</p>
 
 <h2>Keep the form short</h2>
 
@@ -1843,7 +1843,7 @@ Allow: /</code></pre>
 
 <h2>Feature 1: Dynamic Creative</h2>
 
-<p>Dynamic Creative allows uploading multiple headlines, images, and body text variations, letting Meta automatically test and serve the best-performing combinations. Most advertisers instead upload one fixed ad per ad set. See <a href="/services/meta-ads/">our Meta Ads audits</a>.</p>
+<p>Dynamic Creative allows uploading multiple headlines, images, and body text variations, letting Meta automatically test and serve the best-performing combinations. Most advertisers instead upload one fixed ad per ad set. See <a href="/meta-ads-agency-ahmedabad/">our Meta Ads audits</a>.</p>
 
 <h2>Features 2–3: cost-cap and minimum-ROAS bidding</h2>
 
@@ -1914,7 +1914,7 @@ Allow: /</code></pre>
 
 <h2>What we've changed instead: creative and offer, not audience</h2>
 
-<p>For most client accounts, broadening targeting while tightening the creative and offer has produced a lower cost per result than further audience narrowing did. See <a href="/services/meta-ads/">our Meta Ads targeting audits</a>.</p>
+<p>For most client accounts, broadening targeting while tightening the creative and offer has produced a lower cost per result than further audience narrowing did. See <a href="/meta-ads-agency-ahmedabad/">our Meta Ads targeting audits</a>.</p>
 
 <h2>When narrow targeting still makes sense</h2>
 
@@ -1987,7 +1987,7 @@ Allow: /</code></pre>
 
 <h2>Payment and login patterns, in detail</h2>
 
-<p>Repeatedly declined cards and unverified payment methods are frequent triggers. Separately, a login from a different city or through a VPN resembles a compromised account closely enough that Meta's systems often act on it automatically. See <a href="/services/meta-ads/">our Meta Ads account management</a>.</p>
+<p>Repeatedly declined cards and unverified payment methods are frequent triggers. Separately, a login from a different city or through a VPN resembles a compromised account closely enough that Meta's systems often act on it automatically. See <a href="/meta-ads-agency-ahmedabad/">our Meta Ads account management</a>.</p>
 
 <h2>Sudden spend changes on dormant accounts</h2>
 
@@ -2125,7 +2125,7 @@ Allow: /</code></pre>
 
 <h2>Where AI-UGC fits in a creative mix</h2>
 
-<p>The advertisers getting the most value use AI-UGC tools as one format in a broader rotation alongside genuine testimonials, tested against each other rather than treated as a wholesale replacement. See <a href="/services/meta-ads/">our Meta Ads creative testing</a>.</p>
+<p>The advertisers getting the most value use AI-UGC tools as one format in a broader rotation alongside genuine testimonials, tested against each other rather than treated as a wholesale replacement. See <a href="/meta-ads-agency-ahmedabad/">our Meta Ads creative testing</a>.</p>
 
 <h2>Picking the right AI tool for the job</h2>
 

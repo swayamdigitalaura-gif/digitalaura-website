@@ -13,6 +13,7 @@ import BlogInsights from "@/components/BlogInsights";
 import Testimonials from "@/components/Testimonials";
 import { ArrowRight, ChevronDown, Check, MapPin, Phone, MessageCircle } from "lucide-react";
 import { StickyCtaBar, CtaBand, JumpLinks } from "@/components/PageCta";
+import PillarLinks from "@/components/PillarLinks";
 import { track, PHONE_DISPLAY, PHONE_TEL, whatsappLink } from "@/lib/track";
 import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
@@ -656,6 +657,7 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
           <StickyCtaBar accent={c.accentColor} label={ctaLabel} href={ctaHref} topic={config.h1} />
         </>
       )}
+      <PillarLinks slug={config.slug} />
     </PageLayout>
   );
 };

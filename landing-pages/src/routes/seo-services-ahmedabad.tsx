@@ -771,7 +771,7 @@ function QuickAnswer() {
     { href: "/seo/free-audit/", label: "Free SEO audit" },
     { href: "/downloads/Digital-Aura-Sample-SEO-Audit-Report.pdf", label: "Sample SEO audit report (PDF)", external: true },
     { href: "/seo/pricing/", label: "SEO packages and pricing" },
-    { href: "/blog/seo-cost-ahmedabad-2026/", label: "SEO cost in Ahmedabad (2026 guide)" },
+    { href: "/blog/seo-in-2026-ai-era/", label: "How SEO works in 2026 (guide)" },
     { href: "/seo/doctors-hospitals-ahmedabad/", label: "SEO for doctors and hospitals" },
     { href: "/seo/manufacturers-b2b-gujarat/", label: "SEO for manufacturers" },
   ];
@@ -1922,9 +1922,11 @@ function AreasAndServices() {
     { t: "SEO Audit & Strategy", href: "/services/seo-content-marketing/seo-audit-strategy/" },
     { t: "Free SEO Audit", href: "/seo/free-audit/" },
     { t: "SEO Packages & Pricing", href: "/seo/pricing/" },
-    { t: "SEO Cost in Ahmedabad (2026 guide)", href: "/blog/seo-cost-ahmedabad-2026/" },
+    { t: "SEO in 2026 and AI Overviews", href: "/blog/seo-in-2026-ai-era/" },
     { t: "SEO for Doctors & Hospitals", href: "/seo/doctors-hospitals-ahmedabad/" },
     { t: "SEO for Manufacturers & B2B", href: "/seo/manufacturers-b2b-gujarat/" },
+    { t: "SEO Company in Gujarat", href: "/seo-company-gujarat/" },
+    { t: "SEO for International Clients", href: "/seo-agency-international/" },
   ];
   return (
     <section id="areas" className="bg-white">
@@ -1970,6 +1972,49 @@ function AreasAndServices() {
             </ul>
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- SEO guides (supporting blog posts) ---------------- */
+
+function SEOGuides() {
+  const guides = [
+    { t: "How SEO works in 2026", d: "What changed with AI Overviews, and what still matters.", href: "/blog/seo-in-2026-ai-era/" },
+    { t: "AEO vs GEO vs LLMO explained", d: "How answer engines and AI assistants choose what to cite.", href: "/blog/aeo-vs-geo-vs-llmo-explained/" },
+    { t: "How to rank a new website on Google", d: "A realistic, ordered plan for a site with no history.", href: "/blog/how-to-rank-new-website-on-google/" },
+    { t: "How to increase organic website traffic", d: "Where organic growth usually comes from.", href: "/blog/increase-organic-website-traffic-10x/" },
+    { t: "Technical SEO practices for 2026", d: "Crawling, indexing, speed and structured data.", href: "/blog/technical-seo-practices-2026/" },
+    { t: "On-page SEO checklist for 2026", d: "Titles, headings, content and internal links.", href: "/blog/on-page-seo-checklist-2026/" },
+    { t: "Local SEO strategies for 2026", d: "Maps, citations and reviews for local businesses.", href: "/blog/local-seo-strategies-2026/" },
+    { t: "Google Business Profile SEO checklist", d: "Set up and keep your profile working for you.", href: "/blog/google-business-profile-seo-checklist/" },
+    { t: "Google Business Profile tricks for Maps", d: "Small profile changes that help you show up locally.", href: "/blog/google-business-profile-tricks-google-maps/" },
+    { t: "Shopify SEO tutorial", d: "Product, collection and store-level SEO basics.", href: "/blog/shopify-seo-tutorial-2026/" },
+    { t: "AI SEO skills for marketers", d: "What to learn as search and AI assistants overlap.", href: "/blog/ai-seo-skills-for-marketers-2026/" },
+    { t: "How to rank in ChatGPT, Perplexity and AI Overviews", d: "Making your pages easy for AI tools to cite.", href: "/blog/how-to-rank-chatgpt-perplexity-ai-overviews/" },
+  ];
+  return (
+    <section id="seo-guides" className="bg-surface-2">
+      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
+        <SectionHeading
+          eyebrow="SEO guides"
+          title="Learn how SEO works before you hire anyone"
+          sub="Plain-English guides from our team. Read them to judge any SEO proposal, ours included."
+        />
+        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {guides.map((g) => (
+            <li key={g.href}>
+              <a href={g.href} className="da-card-hover block h-full rounded-2xl border border-brand-navy/12 bg-white p-5">
+                <span className="block text-base font-bold text-brand-navy">{g.t}</span>
+                <span className="mt-1 block text-sm text-ink-muted">{g.d}</span>
+                <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-orange">
+                  Read the guide <ArrowRight className="h-4 w-4" />
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
@@ -2187,8 +2232,8 @@ function SEOPricing() {
         </Reveal>
         <p className="mx-auto mt-8 max-w-3xl text-center text-ink-muted">
           Want to see how packages are put together? Read{" "}
-          <a className="font-semibold text-brand-orange underline" href="/seo/pricing/">how SEO packages are priced in Ahmedabad</a> or the{" "}
-          <a className="font-semibold text-brand-orange underline" href="/blog/seo-cost-ahmedabad-2026/">SEO cost in Ahmedabad (2026 guide)</a>.
+          <a className="font-semibold text-brand-orange underline" href="/seo/pricing/">how SEO packages are priced in Ahmedabad</a>, or start with the{" "}
+          <a className="font-semibold text-brand-orange underline" href="/seo/free-audit/">free SEO audit</a>.
         </p>
         <div className="mt-8 flex justify-center">
           <PrimaryCTA href="#audit">Get a free audit and a written quote</PrimaryCTA>
@@ -2490,6 +2535,7 @@ function Index() {
         <CertifiedTrusted />
         <Industries />
         <AreasAndServices />
+        <SEOGuides />
         <SEOPricing />
         <Compare />
         <ChooseSEO />

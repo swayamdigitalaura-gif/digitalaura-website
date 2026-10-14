@@ -16,6 +16,7 @@ import { submitLead } from "@/lib/submitLead";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
+import { renderInline } from "@/lib/inlineLinks";
 import Testimonials from "@/components/Testimonials";
 import CaseStudies from "@/components/CaseStudies";
 import BlogInsights from "@/components/BlogInsights";
@@ -257,7 +258,7 @@ const SEOAuditStrategyPage = () => {
 
   const heroH1 = g("seoaudit_hero_h1", "SEO Audit & Strategy Services");
   const heroH1Highlight = g("seoaudit_hero_h1_highlight", "That Turn Data Into a Roadmap");
-  const heroSub = g("seoaudit_hero_sub", "An SEO audit is a full review of your site's technical health, on-page optimisation, content, and backlinks, benchmarked against real competitors, so every recommendation is prioritised by actual impact, not guesswork.");
+  const heroSub = g("seoaudit_hero_sub", "An [SEO audit](/seo-services-ahmedabad) is a full review of your site's technical health, on-page optimisation, content, and backlinks, benchmarked against real competitors, so every recommendation is prioritised by actual impact, not guesswork.");
   const includedH2 = g("seoaudit_included_h2", "What's Included in Every Audit");
   const includedSub = g("seoaudit_included_sub", "Six areas covered in full depth, not a surface-level checklist.");
   const processH2 = g("seoaudit_process_h2", "How We Audit: Business Understanding to Report");
@@ -331,7 +332,7 @@ const SEOAuditStrategyPage = () => {
             <span data-cms-key="seoaudit_hero_h1_highlight" data-cms-label="Hero H1 Highlight" data-cms-attr="text" style={{ color: accentColor }}>{heroH1Highlight}</span>
           </h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-4 leading-relaxed">
-            <span data-cms-key="seoaudit_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{heroSub}</span>
+            <span data-cms-key="seoaudit_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">{renderInline(heroSub)}</span>
           </p>
           <div className="flex flex-wrap gap-2 justify-center mb-8">
             {["Full Site Crawl", "Keyword Gap Analysis", "Competitor Benchmarking", "Prioritised Roadmap"].map(tag => (
@@ -562,6 +563,17 @@ const SEOAuditStrategyPage = () => {
           <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }}>
             <AuditForm />
           </motion.div>
+        </div>
+      </div>
+    </section>
+
+    {/* Where this fits in the wider SEO plan (internal links to the SEO pillar and guides) */}
+    <section className="py-12 px-4 md:px-8" style={{ background: "#F8FAFF", borderTop: "1px solid #F3F4F6" }}>
+      <div className="max-w-3xl mx-auto">
+        <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] tracking-tight mb-4">From audit to action plan</h2>
+        <div className="space-y-4 text-[#4B5563] leading-relaxed">
+          <p>{renderInline("An audit is the first step, not the whole job. The findings are turned into an ordered plan covering technical health, on-page work, content and links, and our [SEO services in Ahmedabad](/seo-services-ahmedabad) team can carry it out with you.")}</p>
+          <p>{renderInline("You can see how this is usually scoped on our [SEO pricing page](/seo/pricing/), and our [free SEO audit](/seo/free-audit/) is the quickest way to see what a review of your own site would show.")}</p>
         </div>
       </div>
     </section>

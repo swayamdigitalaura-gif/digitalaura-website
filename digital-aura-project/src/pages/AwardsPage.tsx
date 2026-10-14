@@ -6,6 +6,7 @@ import PageLayout from "@/components/PageLayout";
 import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
 
+import PillarLinks from "@/components/PillarLinks";
 const ReelVideo = ({ src }: { src: string }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [muted, setMuted] = useState(true);
@@ -410,6 +411,7 @@ const AwardsPage = () => {
           </motion.div>
         </div>
       </section>
+      <PillarLinks slug="awards" />
     </PageLayout>
   );
 };

@@ -11,6 +11,7 @@ import { submitLead } from "@/lib/submitLead";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
+import { renderInline } from "@/lib/inlineLinks";
 import { useSettings } from "@/hooks/useSettings";
 import Testimonials from "@/components/Testimonials";
 import CaseStudies from "@/components/CaseStudies";
@@ -268,7 +269,7 @@ const TechnicalSEOPage = () => {
   const heroH1b = g("techseo_hero_h1b", "That Fix What's Blocking Google");
   const heroSub = g(
     "techseo_hero_sub",
-    "Technical SEO fixes crawlability, page speed, Core Web Vitals, mobile usability, and structured data — the foundation that determines whether search engines can even access and rank your best content."
+    "[Technical SEO](/seo-services-ahmedabad) fixes crawlability, page speed, Core Web Vitals, mobile usability, and structured data — the foundation that determines whether search engines can even access and rank your best content."
   );
   const heroCta1 = g("techseo_hero_cta1", "Get a Free Technical Audit");
   const heroCta2 = g("techseo_hero_cta2", "See What's Included");
@@ -359,7 +360,7 @@ const TechnicalSEOPage = () => {
             <span data-cms-key="techseo_hero_h1a" data-cms-label="Hero H1" data-cms-attr="text">{heroH1a}</span><br /><span style={{ color: accentColor }} data-cms-key="techseo_hero_h1b" data-cms-label="Hero H1 Highlight" data-cms-attr="text">{heroH1b}</span>
           </h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-4 leading-relaxed" data-cms-key="techseo_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">
-            {heroSub}
+            {renderInline(heroSub)}
           </p>
           <div className="flex flex-wrap gap-2 justify-center mb-8">
             {heroTags.map((tag, i) => (
@@ -566,6 +567,17 @@ const TechnicalSEOPage = () => {
               successText={auditSuccessText}
             />
           </motion.div>
+        </div>
+      </div>
+    </section>
+
+    {/* Where this fits in the wider SEO plan (internal links to the SEO pillar and guides) */}
+    <section className="py-12 px-4 md:px-8" style={{ background: "#F8FAFF", borderTop: "1px solid #F3F4F6" }}>
+      <div className="max-w-3xl mx-auto">
+        <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] tracking-tight mb-4">Technical SEO as part of your wider SEO</h2>
+        <div className="space-y-4 text-[#4B5563] leading-relaxed">
+          <p>{renderInline("Fixing crawl errors, speed and structured data removes what holds a site back, but it works best inside a wider plan. Once Google can reach and understand your pages, the next gains come from content, local signals and links, which is where our [SEO services in Ahmedabad](/seo-services-ahmedabad) team picks up after the technical work.")}</p>
+          <p>{renderInline("If you want to understand the steps yourself first, our guide to [technical SEO practices](/blog/technical-seo-practices-2026/) covers them in plain language, and the [free SEO audit](/seo/free-audit/) shows what a full review of your site looks like.")}</p>
         </div>
       </div>
     </section>

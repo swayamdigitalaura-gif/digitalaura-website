@@ -4,6 +4,7 @@ import PageLayout from "@/components/PageLayout";
 import { TrendingUp, ArrowRight } from "lucide-react";
 import { useSettings } from "@/hooks/useSettings";
 
+import PillarLinks from "@/components/PillarLinks";
 const FEATURED_CASE = {
   tag: "Local Business · Web + Booking System",
   badge: "230 Customers Managed",
@@ -220,6 +221,7 @@ const CaseStudiesPage = () => {
         </div>
       </div>
     </section>
+    <PillarLinks slug="case-studies" />
   </PageLayout>
   );
 };

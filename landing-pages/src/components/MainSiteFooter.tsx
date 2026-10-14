@@ -28,6 +28,7 @@ const servicesLeft = [
     { label: "Full Stack Development", href: "/services/full-stack-development/" },
     { label: "WordPress Development",  href: "/services/wordpress-development/" },
     { label: "Custom Web Development", href: "/services/web-app-development/" },
+    { label: "Website Development Ahmedabad", href: "/website-development-services-ahmedabad/" },
     { label: "Design & Branding",      href: "/services/design-branding/" },
   ]},
   { heading: "E-Commerce Solutions", color: "#FF6B2B", items: [
@@ -38,9 +39,9 @@ const servicesLeft = [
 
 const servicesRight = [
   { heading: "Digital Marketing", color: "#22C55E", items: [
-    { label: "SEO, AIO & GEO", href: "/services/seo-content-marketing/" },
-    { label: "Google Ads",     href: "/services/google-ads/" },
-    { label: "Meta Ads",       href: "/services/meta-ads/" },
+    { label: "SEO, AIO & GEO", href: "/seo-services-ahmedabad" },
+    { label: "Google Ads",     href: "/google-ads-agency-ahmedabad" },
+    { label: "Meta Ads",       href: "/meta-ads-agency-ahmedabad/" },
     { label: "Social Media Marketing", href: "/services/social-media-marketing/" },
     { label: "Email & WhatsApp Marketing", href: "/services/email-whatsapp-marketing/" },
     { label: "LinkedIn & YouTube Ads", href: "/services/linkedin-youtube-ads/" },

@@ -11,7 +11,6 @@ export const CARDS = {
   seoPillar: { title: "SEO Services in Ahmedabad", desc: "Our SEO company page: services, process and what to expect month by month.", points: ["Technical SEO", "Local SEO", "AI search"], href: "/seo-services-ahmedabad" },
   seoAudit: { title: "Free SEO Audit", desc: "Enter your website and get a prioritised fix list across 14 areas.", points: ["Technical to AI search", "No obligation"], href: "/seo/free-audit/" },
   seoPricing: { title: "SEO Packages and Pricing", desc: "How our SEO plans are scoped, what is included and what is not.", points: ["Scope-based", "Written quote"], href: "/seo/pricing/" },
-  seoCost: { title: "SEO Cost in Ahmedabad (2026 guide)", desc: "Pricing models, cost drivers and red flags to watch for.", points: ["Cost drivers", "Red flags"], href: "/blog/seo-cost-ahmedabad-2026/" },
   seoDoctors: { title: "SEO for Doctors and Hospitals", desc: "Healthcare SEO with careful, informational content and tracked appointments.", points: ["Treatment pages", "Google Business Profile"], href: "/seo/doctors-hospitals-ahmedabad/" },
   seoManuf: { title: "SEO for Manufacturers and B2B", desc: "Product and specification pages and an RFQ funnel for Gujarat manufacturers.", points: ["Product pages", "Export SEO"], href: "/seo/manufacturers-b2b-gujarat/" },
   gadsPillar: { title: "Google Ads Agency in Ahmedabad", desc: "Ongoing management focused on leads you can track.", points: ["Search and Performance Max", "Call and WhatsApp tracking"], href: "/google-ads-agency-ahmedabad" },
@@ -77,7 +76,7 @@ type ExtraEntry = Enhancement & { relatedKeys?: CardKey[] };
 const raw: Record<string, ExtraEntry> = {
   /* ───────────── phase 1 ───────────── */
   seoFreeAudit: {
-    relatedKeys: ["seoPricing", "seoCost", "seoDoctors", "seoManuf", "seoPillar", "gadsAudit"],
+    relatedKeys: ["seoPricing", "seoDoctors", "seoManuf", "seoPillar", "gadsAudit"],
     extraAdd: [],
   },
   googleAdsAudit: {
@@ -143,7 +142,7 @@ const raw: Record<string, ExtraEntry> = {
 
   /* ───────────── phase 2: marketing ───────────── */
   seoPricing: {
-    relatedKeys: ["seoAudit", "seoCost", "seoDoctors", "seoManuf", "seoPillar", "webDoctors"],
+    relatedKeys: ["seoAudit", "seoDoctors", "seoManuf", "seoPillar", "webDoctors"],
     faqAdd: [{ q: "Do you offer a discount for annual payment?", a: "Payment options and any discount are stated in your written proposal. We do not publish a standard discount." }],
     extraAdd: [
       {
@@ -156,8 +155,8 @@ const raw: Record<string, ExtraEntry> = {
       },
     ],
   },
-  seoDoctors: { relatedKeys: ["seoPillar", "seoPricing", "seoCost", "seoAudit", "seoManuf", "webDoctors", "gadsDoctors", "metaClinics"] },
-  seoManufacturers: { relatedKeys: ["seoPillar", "seoPricing", "seoCost", "seoAudit", "seoDoctors", "webManuf"] },
+  seoDoctors: { relatedKeys: ["seoPillar", "seoPricing", "seoAudit", "seoManuf", "webDoctors", "gadsDoctors", "metaClinics"] },
+  seoManufacturers: { relatedKeys: ["seoPillar", "seoPricing", "seoAudit", "seoDoctors", "webManuf"] },
   googleAdsPricing: {
     relatedKeys: ["gadsPillar", "gadsAudit", "gadsDoctors", "metaPillar", "adAgency", "seoPillar", "engagement"],
     extraAdd: [

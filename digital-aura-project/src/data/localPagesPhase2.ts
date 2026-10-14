@@ -162,9 +162,9 @@ const phase2Raw: Record<string, LocalServiceConfig> = {
       {
         kind: "text",
         id: "cost-guide",
-        title: "Want the bigger picture on SEO cost?",
-        paragraphs: ["Our guide explains how SEO is priced in Ahmedabad, what drives the cost and which red flags to watch for."],
-        links: [{ label: "SEO cost in Ahmedabad in 2026", href: "/blog/seo-cost-ahmedabad-2026/" }, { label: "Free SEO audit", href: "/seo/free-audit/" }],
+        title: "Want a clear view of what SEO would cost you?",
+        paragraphs: ["Start with a free SEO audit. We review your site and tell you what is worth fixing first and what it would take."],
+        links: [{ label: "Free SEO audit", href: "/seo/free-audit/" }],
       },
     ],
     faqs: [

@@ -23,6 +23,12 @@ export default function Careers() {
 
   const load = () => api.get('/careers').then(r => setCareers(r.data.data));
   useEffect(() => { load(); }, []);
+  useEffect(() => {
+    if (!viewApps) return;
+    const onKey = (e) => { if (e.key === 'Escape') setViewApps(null); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [viewApps]);
 
   const open = (c = null) => {
     setEditing(c?.id || 'new');
@@ -214,11 +220,14 @@ export default function Careers() {
 
       {/* Applications panel */}
       {viewApps && (
-        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20 }}>
-          <div style={{ background: '#fff', borderRadius: 16, padding: 32, width: '100%', maxWidth: 720, maxHeight: '90vh', overflowY: 'auto' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
-              <h2 style={{ fontSize: 18, fontWeight: 800 }}>Applications ({applications.length})</h2>
-              <button onClick={() => setViewApps(null)} style={{ background: '#F1F5F9', border: 'none', borderRadius: 8, padding: '7px 14px', cursor: 'pointer', color: '#64748B', fontWeight: 600 }}>Close</button>
+        <div onClick={() => setViewApps(null)} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20 }}>
+          <div onClick={e => e.stopPropagation()} style={{ background: '#fff', borderRadius: 16, padding: '0 32px 32px', width: '100%', maxWidth: 720, maxHeight: '90vh', overflowY: 'auto' }}>
+            <div style={{ position: 'sticky', top: 0, zIndex: 1, background: '#fff', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 0 14px', marginBottom: 6, borderBottom: '1px solid #F1F5F9' }}>
+              <h2 style={{ fontSize: 18, fontWeight: 800, margin: 0 }}>Applications ({applications.length})</h2>
+              <div style={{ display: 'flex', gap: 8 }}>
+                <button type="button" title="Minimize" onClick={() => setViewApps(null)} style={{ background: '#F1F5F9', border: 'none', borderRadius: 8, padding: '6px 12px', cursor: 'pointer', color: '#64748B', fontWeight: 700, fontSize: 16, lineHeight: 1 }}>—</button>
+                <button type="button" title="Close" onClick={() => setViewApps(null)} style={{ background: '#FEF2F2', border: 'none', borderRadius: 8, padding: '6px 12px', cursor: 'pointer', color: '#EF4444', fontWeight: 700, fontSize: 16, lineHeight: 1 }}>✕</button>
+              </div>
             </div>
             {applications.length === 0 ? <p style={{ color: '#94A3B8', textAlign: 'center', padding: 32 }}>No applications yet.</p> : (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>

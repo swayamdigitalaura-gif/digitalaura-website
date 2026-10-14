@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import api from '../api';
 import toast from 'react-hot-toast';
-import { Plus, Edit2, Trash2, Search, Tag, FileCode, Globe } from 'lucide-react';
+import { Plus, Edit2, Trash2, Search, Tag, FileCode, Globe, ExternalLink } from 'lucide-react';
+import { posts as codePosts } from '../../../digital-aura-project/src/data/seoBlogPosts';
 
 const CATS = ['SEO', 'Digital Marketing', 'Web Development', 'AI & Tech', 'Case Study', 'Social Media', 'eCommerce'];
 const emptyForm = { title: '', slug: '', excerpt: '', content: '', cover_image: '', category: '', tags: '[]', status: 'draft', meta_title: '', meta_desc: '', keywords: '', schema_code: '', head_tags: '', og_image: '', canonical: '' };
@@ -62,7 +63,13 @@ export default function Blogs() {
     return <span style={{ fontSize: 11, color: n > max ? '#EF4444' : '#9CA3AF' }}>{n}/{max}</span>;
   };
 
-  const filtered = blogs.filter(b => !search || b.title.toLowerCase().includes(search.toLowerCase()));
+  // Posts published straight from code (src/data/seoBlogPosts.ts) never touch the DB,
+  // so list them here too (read-only) — otherwise the live blog looks empty in admin.
+  const staticRows = codePosts
+    .filter(p => !blogs.some(b => b.slug === p.slug))
+    .map(p => ({ id: `code-${p.slug}`, isCode: true, title: p.title, slug: p.slug, category: p.category, status: 'published', createdAt: p.date, meta_title: p.metaTitle, schema_code: '1', keywords: '1' }));
+  const allRows = [...blogs, ...staticRows].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  const filtered = allRows.filter(b => !search || b.title.toLowerCase().includes(search.toLowerCase()));
 
   return (
     <div style={{ padding: 32 }}>
@@ -211,7 +218,7 @@ export default function Blogs() {
               <tr key={b.id} style={{ borderBottom: '1px solid #F1F5F9', background: i % 2 === 0 ? '#fff' : '#FAFAFA' }}>
                 <td style={{ padding: '14px 20px' }}>
                   <div style={{ fontWeight: 600, color: '#0F172A', fontSize: 14 }}>{b.title}</div>
-                  <div style={{ fontSize: 12, color: '#94A3B8' }}>/{b.slug}</div>
+                  <div style={{ fontSize: 12, color: '#94A3B8' }}>/{b.slug}{b.isCode && <span style={{ marginLeft: 8, fontSize: 10, fontWeight: 700, color: '#7C3AED', background: '#F5F3FF', padding: '1px 6px', borderRadius: 10 }}>CODE</span>}</div>
                 </td>
                 <td style={{ padding: '14px 20px', fontSize: 13, color: '#64748B' }}>{b.category || '—'}</td>
                 <td style={{ padding: '14px 20px' }}>
@@ -222,11 +229,15 @@ export default function Blogs() {
                   </div>
                 </td>
                 <td style={{ padding: '14px 20px' }}>{statusBadge(b.status)}</td>
-                <td style={{ padding: '14px 20px', fontSize: 12, color: '#94A3B8' }}>{new Date(b.createdAt).toLocaleDateString()}</td>
+                <td style={{ padding: '14px 20px', fontSize: 12, color: '#94A3B8' }}>{new Date(b.createdAt).toLocaleDateString('en-IN')}</td>
                 <td style={{ padding: '14px 20px' }}>
                   <div style={{ display: 'flex', gap: 8 }}>
-                    <button onClick={() => open(b)} style={{ padding: '6px 12px', background: '#EFF6FF', border: 'none', borderRadius: 6, color: '#1A6FE8', cursor: 'pointer', fontWeight: 600, fontSize: 12, display: 'flex', alignItems: 'center', gap: 4 }}><Edit2 size={12} /> Edit</button>
-                    <button onClick={() => handleDelete(b.id)} style={{ padding: '6px 10px', background: '#FEF2F2', border: 'none', borderRadius: 6, color: '#EF4444', cursor: 'pointer' }}><Trash2 size={13} /></button>
+                    {b.isCode ? (
+                      <a href={`/blog/${b.slug}/`} target="_blank" rel="noreferrer" title="Published from website code — edit via developer" style={{ padding: '6px 12px', background: '#F1F5F9', borderRadius: 6, color: '#475569', fontWeight: 600, fontSize: 12, display: 'flex', alignItems: 'center', gap: 4, textDecoration: 'none' }}><ExternalLink size={12} /> View live</a>
+                    ) : (<>
+                      <button onClick={() => open(b)} style={{ padding: '6px 12px', background: '#EFF6FF', border: 'none', borderRadius: 6, color: '#1A6FE8', cursor: 'pointer', fontWeight: 600, fontSize: 12, display: 'flex', alignItems: 'center', gap: 4 }}><Edit2 size={12} /> Edit</button>
+                      <button onClick={() => handleDelete(b.id)} style={{ padding: '6px 10px', background: '#FEF2F2', border: 'none', borderRadius: 6, color: '#EF4444', cursor: 'pointer' }}><Trash2 size={13} /></button>
+                    </>)}
                   </div>
                 </td>
               </tr>

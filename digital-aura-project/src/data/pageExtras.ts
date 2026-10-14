@@ -107,17 +107,6 @@ const raw: Record<string, ExtraEntry> = {
     ],
     extraAdd: [
       {
-        kind: "cards",
-        id: "refresh-redesign-rebuild",
-        title: "Refresh, redesign or rebuild?",
-        subtext: "The right level depends on what is wrong. The more that changes, the more redirect and testing work there is.",
-        items: [
-          { tag: "Lightest", title: "Refresh", desc: "Keep the structure and URLs, update the design, content and speed." },
-          { tag: "Middle", title: "Redesign", desc: "New design and page structure on the same platform, with a URL and redirect plan." },
-          { tag: "Heaviest", title: "Rebuild", desc: "A new platform. Most redirect, content-migration and testing work." },
-        ],
-      },
-      {
         kind: "checklist",
         id: "redesign-scorecard",
         title: "Self-scorecard: do you need more than a refresh?",

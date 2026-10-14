@@ -31,6 +31,7 @@ const servicesLeft = [
     { label: "Full Stack Development", href: "/services/full-stack-development/" },
     { label: "WordPress Development",  href: "/services/wordpress-development/" },
     { label: "Custom Web Development", href: "/services/web-app-development/" },
+    { label: "Website Development Ahmedabad", href: "/website-development-services-ahmedabad/" },
     { label: "Design & Branding",      href: "/services/design-branding/" },
   ]},
   { heading: "E-Commerce Solutions", color: "#FF6B2B", items: [
@@ -41,9 +42,9 @@ const servicesLeft = [
 
 const servicesRight = [
   { heading: "Digital Marketing", color: "#22C55E", items: [
-    { label: "SEO, AIO & GEO", href: "/services/seo-content-marketing/" },
-    { label: "Google Ads",     href: "/services/google-ads/" },
-    { label: "Meta Ads",       href: "/services/meta-ads/" },
+    { label: "SEO, AIO & GEO", href: "/seo-services-ahmedabad", hard: true },
+    { label: "Google Ads",     href: "/google-ads-agency-ahmedabad", hard: true },
+    { label: "Meta Ads",       href: "/meta-ads-agency-ahmedabad/" },
     { label: "Social Media Marketing", href: "/services/social-media-marketing/" },
     { label: "Email & WhatsApp Marketing", href: "/services/email-whatsapp-marketing/" },
     { label: "LinkedIn & YouTube Ads", href: "/services/linkedin-youtube-ads/" },
@@ -55,14 +56,21 @@ const servicesRight = [
   ]},
 ];
 
-const LinkItem = ({ label, href, dot }: { label: string; href: string; dot: string }) => (
-  <li>
-    <Link to={href} className="group text-[13px] text-white hover:opacity-80 transition-opacity duration-200 flex items-center gap-2">
+// Pillars served by separate apps (SEO, Google Ads) need a plain anchor, not a client-side route.
+const LinkItem = ({ label, href, dot, hard }: { label: string; href: string; dot: string; hard?: boolean }) => {
+  const cls = "group text-[13px] text-white hover:opacity-80 transition-opacity duration-200 flex items-center gap-2";
+  const inner = (
+    <>
       <span className="w-1 h-1 rounded-full shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" style={{ background: dot }} />
       {label}
-    </Link>
-  </li>
-);
+    </>
+  );
+  return (
+    <li>
+      {hard ? <a href={href} className={cls}>{inner}</a> : <Link to={href} className={cls}>{inner}</Link>}
+    </li>
+  );
+};
 
 const Footer = () => {
   const s = useSettings(['contact_email','contact_phone','address_full','footer_copyright','social_linkedin','social_instagram']);

@@ -1,7 +1,7 @@
 ﻿import { useState, useEffect, useRef } from "react";
 import { Menu, X, Phone, ChevronDown,
   Bot, Brain, Workflow, Film,
-  Globe2, Code2, PenTool,
+  Globe2, Code2, PenTool, MonitorSmartphone,
   ShoppingCart, Store, CreditCard,
   Search, Share2, Target, Hash,
   Smartphone, AppWindow, Layers,
@@ -52,6 +52,7 @@ const megaCategories = [
       { icon: Globe2, title: "Custom Web Development",  desc: "High performance, SEO ready websites",           route: "/services/web-app-development/" },
       { icon: Code2,  title: "Full Stack Development",  desc: "End to end apps with robust backends & APIs",    route: "/services/full-stack-development/" },
       { icon: PenTool,title: "WordPress Development",   desc: "Fast, SEO driven WordPress sites",               route: "/services/wordpress-development/" },
+      { icon: MonitorSmartphone, title: "Website Development Ahmedabad", desc: "Business websites built to rank and convert", route: "/website-development-services-ahmedabad/" },
     ],
   },
   {
@@ -70,9 +71,9 @@ const megaCategories = [
     color: "#22C55E",
     bg: "rgba(34,197,94,0.07)",
     items: [
-      { icon: Search, title: "SEO & Content Marketing", desc: "Rank on page 1 with technical SEO & content",  route: "/services/seo-content-marketing/" },
-      { icon: Target, title: "Google Ads",              desc: "Data driven Search, Display & Shopping ads",    route: "/services/google-ads/" },
-      { icon: Share2, title: "Meta Ads",                desc: "Facebook & Instagram campaigns that convert",   route: "/services/meta-ads/" },
+      { icon: Search, title: "SEO & Content Marketing", desc: "Rank on page 1 with technical SEO & content",  route: "/seo-services-ahmedabad", hard: true },
+      { icon: Target, title: "Google Ads",              desc: "Data driven Search, Display & Shopping ads",    route: "/google-ads-agency-ahmedabad", hard: true },
+      { icon: Share2, title: "Meta Ads",                desc: "Facebook & Instagram campaigns that convert",   route: "/meta-ads-agency-ahmedabad/" },
       { icon: Hash,   title: "Social Media Marketing",  desc: "Content, community & organic growth",           route: "/services/social-media-marketing/" },
     ],
   },
@@ -88,6 +89,11 @@ const megaCategories = [
     ],
   },
 ];
+
+// Pillar pages that live in separate apps (SEO, Google Ads) need a normal anchor; in-app routes use Link.
+type ItemLinkProps = { route: string; hard?: boolean } & Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "href">;
+const ItemLink = ({ route, hard, ...rest }: ItemLinkProps) =>
+  hard ? <a href={route} {...rest} /> : <Link to={route} {...rest} />;
 
 const MegaMenu = ({ onClose }: { onClose: () => void }) => (
   <motion.div
@@ -118,9 +124,10 @@ const MegaMenu = ({ onClose }: { onClose: () => void }) => (
           {/* Sub-items */}
           <div className="space-y-1">
             {cat.items.map((item) => (
-              <Link
+              <ItemLink
                 key={item.title}
-                to={item.route}
+                route={item.route}
+                hard={(item as { hard?: boolean }).hard}
                 onClick={onClose}
                 className="group flex items-start gap-3 p-2.5 rounded-xl transition-all duration-150 hover:scale-[1.02]"
                 style={{ background: "transparent" }}
@@ -138,7 +145,7 @@ const MegaMenu = ({ onClose }: { onClose: () => void }) => (
                   </p>
                   <p className="text-[11.5px] text-[#9CA3AF] leading-snug">{item.desc}</p>
                 </div>
-              </Link>
+              </ItemLink>
             ))}
           </div>
         </div>
@@ -388,9 +395,10 @@ const Navbar = () => {
                                   <span className="text-[11px] font-bold tracking-widest uppercase" style={{ color: cat.color }}>{cat.label}</span>
                                 </div>
                                 {cat.items.map(item => (
-                                  <Link
+                                  <ItemLink
                                     key={item.title}
-                                    to={item.route}
+                                    route={item.route}
+                                    hard={(item as { hard?: boolean }).hard}
                                     onClick={() => setMobileOpen(false)}
                                     className="flex items-center gap-3 py-2.5 px-2 rounded-xl"
                                     style={{ background: "transparent" }}
@@ -399,7 +407,7 @@ const Navbar = () => {
                                       <item.icon size={13} style={{ color: cat.color }} />
                                     </div>
                                     <span className="text-[14px] font-medium text-[#0A1628]">{item.title}</span>
-                                  </Link>
+                                  </ItemLink>
                                 ))}
                               </div>
                             ))}

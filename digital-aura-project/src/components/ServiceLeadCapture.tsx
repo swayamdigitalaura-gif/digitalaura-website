@@ -4,6 +4,7 @@
  */
 import PageLeadForm, { type LeadFormConfig } from "@/components/PageLeadForm";
 import { StickyCtaBar } from "@/components/PageCta";
+import PillarLinks from "@/components/PillarLinks";
 
 const ORANGE = "#FF6B2B";
 const FORM_ID = "service-enquiry";
@@ -21,6 +22,7 @@ const ServiceLeadCapture = ({ service, slug }: { service: string; slug: string }
   };
   return (
     <>
+      <PillarLinks slug={slug} />
       <PageLeadForm cfg={cfg} accent={ORANGE} />
       <div className="h-16 md:hidden" aria-hidden="true" />
       <StickyCtaBar accent={ORANGE} label="Get a free consultation" href={`#${FORM_ID}`} topic={service} />

@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { StickyCtaBar } from "@/components/PageCta";
+import PillarLinks from "@/components/PillarLinks";
 import { submitLead } from "@/lib/submitLead";
 import { Link } from "react-router-dom";
 import {
@@ -916,6 +917,7 @@ const SocialMediaMarketingPage = () => {
       </div>
     </section>
   <div className="h-16 md:hidden" aria-hidden="true" />
+    <PillarLinks slug="social-media-marketing" />
     <StickyCtaBar accent="#FF6B2B" label="Get a free social media audit" href="#smm-audit" topic="social media marketing" />
   </PageLayout>
 );

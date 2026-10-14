@@ -1,6 +1,7 @@
 ﻿import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { StickyCtaBar } from "@/components/PageCta";
+import PillarLinks from "@/components/PillarLinks";
 import { submitLead } from "@/lib/submitLead";
 import {
   Target, Search, Globe2, BarChart2, TrendingUp, Gauge,
@@ -869,6 +870,7 @@ const GoogleAdsPage = () => {
       </div>
     </section>
   <div className="h-16 md:hidden" aria-hidden="true" />
+    <PillarLinks slug="google-ads" />
     <StickyCtaBar accent="#FF6B2B" label="Get a free Google Ads audit" href="#google-ads-audit" topic="Google Ads" />
   </PageLayout>
 );

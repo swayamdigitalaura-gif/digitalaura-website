@@ -221,6 +221,22 @@ jobs:
           fi
           REMOTE_CMD='ID=$(base64 -d); ENV_FILE=/home/digitalaura-backend/.env; if ! grep -q "^GOOGLE_PLACE_ID=" "$ENV_FILE" 2>/dev/null; then printf "GOOGLE_PLACE_ID=%s\n" "$ID" >> "$ENV_FILE"; sudo pm2 restart digitalaura-api; fi'
           printf '%s' "$GOOGLE_PLACE_ID" | base64 -w0 | ssh $SSH_OPTS "$H" "$REMOTE_CMD"
+                # Same bootstrap pattern, for the secret the careers->HRMS webhook
+      # (services/hrmsSync.js) sends as X-Webhook-Secret. Piped as base64 over
+      # SSH stdin so it never appears in a command line or job logs. Appended
+      # only if missing; the webhook URL has a built-in default in the code.
+      - name: Ensure HRMS_WEBHOOK_SECRET is set in server .env
+        env:
+          H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
+          HRMS_WEBHOOK_SECRET: ${{ secrets.HRMS_WEBHOOK_SECRET }}
+        run: |
+          if [ -z "$HRMS_WEBHOOK_SECRET" ]; then
+            echo "HRMS_WEBHOOK_SECRET secret not set — skipping."
+            exit 0
+          fi
+          REMOTE_CMD='KEY=$(base64 -d); ENV_FILE=/home/digitalaura-backend/.env; if ! grep -q "^HRMS_WEBHOOK_SECRET=" "$ENV_FILE" 2>/dev/null; then printf "HRMS_WEBHOOK_SECRET=%s\n" "$KEY" >> "$ENV_FILE"; sudo pm2 restart digitalaura-api --update-env; fi'
+          printf '%s' "$HRMS_WEBHOOK_SECRET" | base64 -w0 | ssh $SSH_OPTS "$H" "$REMOTE_CMD"
+
       # One-time idempotent seed: inserts the "HR Manager" row into the live
       # `careers` MySQL table if it isn't already there (checked by slug).
       # Careers data lives in the DB, not in git, so a normal file deploy can

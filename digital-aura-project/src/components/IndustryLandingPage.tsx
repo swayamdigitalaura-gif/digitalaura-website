@@ -17,6 +17,7 @@ import CaseStudies from "@/components/CaseStudies";
 import Testimonials from "@/components/Testimonials";
 import PageLeadForm from "@/components/PageLeadForm";
 import { StickyCtaBar } from "@/components/PageCta";
+import PillarLinks from "@/components/PillarLinks";
 import BlogInsights from "@/components/BlogInsights";
 import AdsCalculator from "@/components/AdsCalculators";
 import { ReelGrid, FounderLinks } from "@/components/ReelsAndTeam";
@@ -859,6 +860,7 @@ export default function IndustryLandingPage({ config, variant = "industry" }: { 
           <StickyCtaBar accent={ORANGE} label={ctaLabel} href={ctaHref} topic={c.h1} />
         </>
       )}
+      <PillarLinks slug={config.slug} />
     </PageLayout>
     </VariantCtx.Provider>
   );

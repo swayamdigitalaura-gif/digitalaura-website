@@ -13,6 +13,7 @@ import swayamPhoto from "@/assets/swayam.jpg";
 import { useSettings } from "@/hooks/useSettings";
 import CMSIcon from "@/components/CMSIcon";
 
+import PillarLinks from "@/components/PillarLinks";
 /* ─── Static data (non-editable arrays) ─────────────────────────────── */
 
 const values = [
@@ -662,6 +663,7 @@ const About = () => {
       </div>
     </section>
 
+    <PillarLinks slug="about" />
   </PageLayout>
   );
 };

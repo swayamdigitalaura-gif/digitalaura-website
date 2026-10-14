@@ -7,6 +7,7 @@ import {
 import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
 
+import PillarLinks from "@/components/PillarLinks";
 const NAVY = "#0A1628";
 const BLUE = "#1A6FE8";
 const ORANGE = "#FF6B2B";
@@ -481,6 +482,7 @@ const CaseStudyDpElectricalRepairs = () => {
           </motion.div>
         </div>
       </section>
+      <PillarLinks slug="case-study-dp-electrical-repairs" />
     </PageLayout>
   );
 };

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import CMSIcon from "@/components/CMSIcon";
 import { useSettings } from "@/hooks/useSettings";
+import PillarLinks from "@/components/PillarLinks";
 import {
   ArrowRight, CheckCircle2, Clock, DollarSign,
   Users, RefreshCw, Zap, Shield, BarChart3, MessageCircle,
@@ -463,6 +464,7 @@ const EngagementModelsPage = () => {
         </div>
       </section>
 
+      <PillarLinks slug="engagement-models" />
     </PageLayout>
   );
 };

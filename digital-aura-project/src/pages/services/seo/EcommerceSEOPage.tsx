@@ -11,6 +11,7 @@ import { submitLead } from "@/lib/submitLead";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
+import { renderInline } from "@/lib/inlineLinks";
 import Testimonials from "@/components/Testimonials";
 import CaseStudies from "@/components/CaseStudies";
 import BlogInsights from "@/components/BlogInsights";
@@ -261,7 +262,7 @@ const EcommerceSEOPage = () => {
   const heroBadge = g("ecomseo_hero_badge", "eCommerce SEO");
   const heroH1Line1 = g("ecomseo_hero_h1_line1", "eCommerce SEO Services");
   const heroH1Line2 = g("ecomseo_hero_h1_line2", "That Get Products Found");
-  const heroSub = g("ecomseo_hero_sub", "eCommerce SEO optimises product pages, category structures, and product schema across Shopify, WooCommerce, and custom stores so your listings rank in Google Shopping and organic search, not just paid ads.");
+  const heroSub = g("ecomseo_hero_sub", "[eCommerce SEO](/seo-services-ahmedabad) optimises product pages, category structures, and product schema across Shopify, WooCommerce, and custom stores so your listings rank in Google Shopping and organic search, not just paid ads.");
   const heroCta1 = g("ecomseo_hero_cta1", "Get a Free Store Audit");
   const heroCta2 = g("ecomseo_hero_cta2", "See What's Included");
   const heroTags = ["Product Page SEO", "Category Structure", "Product Schema", "Shopify & WooCommerce"].map((t, i) => g(`ecomseo_hero_tag_${i}`, t));
@@ -346,7 +347,7 @@ const EcommerceSEOPage = () => {
             <span data-cms-key="ecomseo_hero_h1_line1" data-cms-label="Hero H1 Line 1" data-cms-attr="text">{heroH1Line1}</span><br /><span style={{ color: accentColor }} data-cms-key="ecomseo_hero_h1_line2" data-cms-label="Hero H1 Line 2" data-cms-attr="text">{heroH1Line2}</span>
           </h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-4 leading-relaxed" data-cms-key="ecomseo_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">
-            {heroSub}
+            {renderInline(heroSub)}
           </p>
           <div className="flex flex-wrap gap-2 justify-center mb-8">
             {heroTags.map((tag, i) => (
@@ -553,6 +554,17 @@ const EcommerceSEOPage = () => {
               successText={auditFormSuccessText}
             />
           </motion.div>
+        </div>
+      </div>
+    </section>
+
+    {/* Where this fits in the wider SEO plan (internal links to the SEO pillar and guides) */}
+    <section className="py-12 px-4 md:px-8" style={{ background: "#F8FAFF", borderTop: "1px solid #F3F4F6" }}>
+      <div className="max-w-3xl mx-auto">
+        <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] tracking-tight mb-4">Store SEO inside a wider SEO plan</h2>
+        <div className="space-y-4 text-[#4B5563] leading-relaxed">
+          <p>{renderInline("Product and category pages rank best when the whole site is healthy: fast pages, clean structure and content that answers buyers' questions. We plan store work inside our [SEO services in Ahmedabad](/seo-services-ahmedabad), alongside technical and on-page fixes.")}</p>
+          <p>{renderInline("For platform-specific basics, our [Shopify SEO tutorial](/blog/shopify-seo-tutorial-2026/) is a good start, and a [free SEO audit](/seo/free-audit/) shows what is holding your store back.")}</p>
         </div>
       </div>
     </section>

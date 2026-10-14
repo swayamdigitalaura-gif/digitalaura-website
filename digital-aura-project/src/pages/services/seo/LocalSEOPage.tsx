@@ -11,6 +11,7 @@ import { submitLead } from "@/lib/submitLead";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
+import { renderInline } from "@/lib/inlineLinks";
 import { useSettings } from "@/hooks/useSettings";
 import Testimonials from "@/components/Testimonials";
 import CaseStudies from "@/components/CaseStudies";
@@ -268,7 +269,7 @@ const LocalSEOPage = () => {
   const heroH1b = g("localseo_hero_h1b", "That Win the Map Pack");
   const heroSub = g(
     "localseo_hero_sub",
-    "Local SEO gets your business found in Google Maps, the local pack, and \"near me\" searches, through Google Business Profile optimisation, consistent citations, review growth, and geo-targeted landing pages."
+    "[Local SEO](/seo-services-ahmedabad) gets your business found in Google Maps, the local pack, and \"near me\" searches, through Google Business Profile optimisation, consistent citations, review growth, and geo-targeted landing pages."
   );
   const heroCta1 = g("localseo_hero_cta1", "Get a Free Local SEO Review");
   const heroCta2 = g("localseo_hero_cta2", "See What's Included");
@@ -359,7 +360,7 @@ const LocalSEOPage = () => {
             <span data-cms-key="localseo_hero_h1a" data-cms-label="Hero H1" data-cms-attr="text">{heroH1a}</span><br /><span style={{ color: accentColor }} data-cms-key="localseo_hero_h1b" data-cms-label="Hero H1 Highlight" data-cms-attr="text">{heroH1b}</span>
           </h1>
           <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-4 leading-relaxed" data-cms-key="localseo_hero_sub" data-cms-label="Hero Subtext" data-cms-attr="text">
-            {heroSub}
+            {renderInline(heroSub)}
           </p>
           <div className="flex flex-wrap gap-2 justify-center mb-8">
             {heroTags.map((tag, i) => (
@@ -566,6 +567,17 @@ const LocalSEOPage = () => {
               successText={auditSuccessText}
             />
           </motion.div>
+        </div>
+      </div>
+    </section>
+
+    {/* Where this fits in the wider SEO plan (internal links to the SEO pillar and guides) */}
+    <section className="py-12 px-4 md:px-8" style={{ background: "#F8FAFF", borderTop: "1px solid #F3F4F6" }}>
+      <div className="max-w-3xl mx-auto">
+        <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] tracking-tight mb-4">Local SEO as one part of your SEO plan</h2>
+        <div className="space-y-4 text-[#4B5563] leading-relaxed">
+          <p>{renderInline("Maps visibility depends on your Google Business Profile, citations and reviews, but also on a website that clearly shows what you do and where. Our [SEO services in Ahmedabad](/seo-services-ahmedabad) combine local work with the technical and on-page work that supports it.")}</p>
+          <p>{renderInline("Our [local SEO strategies guide](/blog/local-seo-strategies-2026/) and [Google Business Profile checklist](/blog/google-business-profile-seo-checklist/) explain the steps you can start with today.")}</p>
         </div>
       </div>
     </section>

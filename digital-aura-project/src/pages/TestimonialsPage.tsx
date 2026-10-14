@@ -4,6 +4,7 @@ import { Star, Quote, Play, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 
+import PillarLinks from "@/components/PillarLinks";
 const COLORS = ["#FF6B2B", "#7C3AED", "#1A6FE8", "#22C55E", "#F59E0B", "#EC4899", "#0EA5E9", "#14B8A6"];
 
 const QUOTE_LIMIT = 160;
@@ -363,6 +364,7 @@ const TestimonialsPage = () => {
           </motion.div>
         </div>
       </section>
+      <PillarLinks slug="testimonials" />
     </PageLayout>
   );
 };

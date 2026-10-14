@@ -55,6 +55,33 @@ const BY_SLUG: Record<string, string[]> = {
   "woocommerce-development": ["web", "seo"],
   "bigcommerce-development": ["web", "seo"],
   "custom-ai-web-solutions": ["web"],
+  // city / country variants of the service pages
+  "shopify-website-design-ahmedabad": ["web", "seo"],
+  "shopify-development-international": ["web", "seo"],
+  "woocommerce-website-design-ahmedabad": ["web", "seo"],
+  "woocommerce-development-gujarat": ["web", "seo"],
+  "full-stack-development-ahmedabad": ["web", "seo"],
+  "full-stack-development-gujarat": ["web", "seo"],
+  "website-design-development-gujarat": ["web", "seo"],
+  "ai-automation-ahmedabad": ["web", "googleAds"],
+  "ai-automation-gujarat": ["web", "googleAds"],
+  "mobile-app-development-ahmedabad": ["web", "seo"],
+  "mobile-app-development-gujarat": ["web", "seo"],
+  "seo-company-gujarat": ["seo", "googleAds", "web"],
+  "seo-agency-international": ["seo", "googleAds", "web"],
+  "digital-marketing-agency-gujarat": ["seo", "googleAds", "metaAds"],
+  // proof / company pages
+  "case-study-riant-bikes": ["googleAds", "web"],
+  "case-study-prism-calibration": ["seo", "googleAds"],
+  "case-study-ivf-clinic": ["seo", "metaAds"],
+  "case-study-dp-electrical-repairs": ["seo", "googleAds"],
+  "case-study-oblprint": ["googleAds", "web"],
+  "case-study-grand-palace": ["web", "seo"],
+  "case-studies": ["seo", "googleAds", "metaAds", "web"],
+  "about": ["seo", "googleAds", "metaAds", "web"],
+  "awards": ["seo", "googleAds", "metaAds", "web"],
+  "testimonials": ["seo", "googleAds", "metaAds", "web"],
+  "engagement-models": ["seo", "googleAds", "metaAds", "web"],
 };
 
 const PillarLinks = ({ slug }: { slug: string }) => {

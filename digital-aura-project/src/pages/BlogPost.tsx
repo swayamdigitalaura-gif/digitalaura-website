@@ -8,6 +8,7 @@ import {
   Linkedin, Link as LinkIcon,
 } from "lucide-react";
 import { getBlogTheme } from "@/data/blogCategoryTheme";
+import { relatedServiceFor } from "@/data/relatedService";
 import sambhavPhoto from "@/assets/sambhav.jpg";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
@@ -162,6 +163,8 @@ const BlogPost = () => {
   const theme = getBlogTheme(blog.category);
   const CategoryIcon = theme.Icon;
   const authorName = blog.author?.name || "Sambhav Shah";
+  const relatedService = relatedServiceFor(blog.slug, blog.category);
+  const showUpdated =!!blog.updatedAt && !!blog.createdAt && new Date(blog.updatedAt).getTime() - new Date(blog.createdAt).getTime() > 24 * 60 * 60 * 1000;
 
   return (
     <PageLayout>
@@ -193,7 +196,10 @@ const BlogPost = () => {
             <div className="flex flex-wrap items-center gap-5 text-sm justify-center text-[#6B7280]">
               <span className="flex items-center gap-1.5"><Calendar size={14} style={{ color: theme.color }} /> {dateStr}</span>
               <span className="flex items-center gap-1.5"><Clock size={14} style={{ color: theme.color }} /> {minutes} min read</span>
-              <span>By <strong style={{ color: HEADING }}>{authorName}</strong></span>
+              {showUpdated && (
+                <span className="flex items-center gap-1.5">Last updated: <time dateTime={blog.updatedAt}>{fmtDate(blog.updatedAt as string)}</time></span>
+              )}
+              <span>By <Link to="/about/" className="font-bold hover:underline" style={{ color: HEADING }}>{authorName}</Link></span>
             </div>
           </motion.div>
         </section>
@@ -244,6 +250,24 @@ const BlogPost = () => {
                   </div>
                 </div>
               </div>
+
+              {relatedService && (
+                <div className="mt-8 rounded-2xl p-6 border" style={{ borderColor: theme.border, background: theme.bg }}>
+                  <p className="text-[11px] font-black uppercase tracking-[0.14em] mb-2" style={{ color: HEADING }}>Related service</p>
+                  <p className="text-base font-bold mb-1" style={{ color: HEADING }}>{relatedService.label}</p>
+                  <p className="text-sm text-[#4B5563] mb-4">{relatedService.blurb}</p>
+                  {/* Pillar apps outside the SPA need a normal anchor; in-app routes use Link. */}
+                  {relatedService.external ? (
+                    <a href={relatedService.href} className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.color }}>
+                      {relatedService.cta} <ArrowRight size={14} />
+                    </a>
+                  ) : (
+                    <Link to={relatedService.href} className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.color }}>
+                      {relatedService.cta} <ArrowRight size={14} />
+                    </Link>
+                  )}
+                </div>
+              )}
 
               <div className="pt-8 mt-8 border-t flex items-center justify-between flex-wrap gap-4" style={{ borderColor: "#E5E7EB" }}>
                 <Link to="/blog/" className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.color }}>

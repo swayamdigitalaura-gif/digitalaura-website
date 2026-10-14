@@ -6,6 +6,7 @@ import { Calendar, Clock, ChevronDown, ArrowRight, ArrowLeft, CheckCircle2 } fro
 import type { BlogPost } from "@/data/seoBlogPosts";
 import { posts } from "@/data/seoBlogPosts";
 import { getTheme } from "@/data/seoBlogCategoryTheme";
+import { relatedServiceFor } from "@/data/relatedService";
 import sambhavPhoto from "@/assets/sambhav.jpg";
 
 const SITE = "https://thedigitalaura.com";
@@ -49,6 +50,7 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
   const theme = getTheme(post.category);
   const CategoryIcon = theme.Icon;
   const canonicalUrl = `${SITE}/blog/${post.slug}/`;
+  const relatedService = relatedServiceFor(post.slug, post.category);
   const related = posts.filter(p => p.slug !== post.slug && p.category === post.category).slice(0, 3);
   const relatedFallback = posts.filter(p => p.slug !== post.slug).slice(0, 3);
   const relatedPosts = related.length ? related : relatedFallback;
@@ -221,6 +223,24 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
                 </div>
               </div>
             </div>
+
+            {relatedService && (
+              <div className="mt-8 rounded-2xl p-6 border" style={{ borderColor: theme.border, background: theme.bg }}>
+                <p className="text-[11px] font-black uppercase tracking-[0.14em] mb-2" style={{ color: "#0A1628" }}>Related service</p>
+                <p className="text-base font-bold mb-1" style={{ color: "#0A1628" }}>{relatedService.label}</p>
+                <p className="text-sm mb-4" style={{ color: "#4B5563" }}>{relatedService.blurb}</p>
+                {/* Pillar apps outside the SPA need a normal anchor; in-app routes use Link. */}
+                {relatedService.external ? (
+                  <a href={relatedService.href} className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.color }}>
+                    {relatedService.cta} <ArrowRight size={14} />
+                  </a>
+                ) : (
+                  <Link to={relatedService.href} className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.color }}>
+                    {relatedService.cta} <ArrowRight size={14} />
+                  </Link>
+                )}
+              </div>
+            )}
 
             <div className="pt-8 mt-8 border-t" style={{ borderColor: "#E5E7EB" }}>
               <Link to="/blog/" className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.color }}>

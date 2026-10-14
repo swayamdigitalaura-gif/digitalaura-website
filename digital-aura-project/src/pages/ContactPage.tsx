@@ -427,6 +427,16 @@ const ContactPage = () => {
         </div>
       </section>
 
+      {/* ── WHAT HAPPENS NEXT ── */}
+      <section className="px-4 md:px-8 pt-4 pb-10" style={{ background: "#F8FAFF" }}>
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-xl md:text-2xl font-black text-[#0A1628] tracking-tight mb-3">What happens after you contact us</h2>
+          <p className="text-[#4B5563] text-base leading-relaxed">
+            Share a few lines about your business and what you want to achieve, through the form above, a call or WhatsApp. A member of our Ahmedabad team reviews your enquiry and replies within 2 hours with a tailored proposal, not a generic pitch. We work with businesses across India and abroad on SEO, Google Ads, Meta Ads, web development and AI automation, so tell us where you are today and we will recommend the most practical next step.
+          </p>
+        </div>
+      </section>
+
       {/* ── OFFICE MAP ── */}
       <section className="px-4 md:px-8 pb-16" style={{ background: "#F8FAFF" }}>
         <div className="max-w-5xl mx-auto">

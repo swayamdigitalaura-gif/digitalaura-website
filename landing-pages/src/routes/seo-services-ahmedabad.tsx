@@ -1138,7 +1138,7 @@ function SEOToolsWeUse() {
               className="da-shadow-card da-card-hover flex h-full flex-col items-center gap-3 rounded-2xl border border-brand-navy/12 bg-white p-6 text-center"
             >
               <div className="grid h-28 w-full place-items-center rounded-xl bg-white">
-                <img src={tool.logo} alt={`${tool.name} logo`} className="h-24 w-auto max-w-[160px] object-contain" />
+                <img src={tool.logo} alt={`${tool.name} logo`} className="h-24 w-auto max-w-[min(160px,100%)] object-contain" />
               </div>
               <div>
                 <div className="text-sm font-bold text-brand-navy">{tool.name}</div>
@@ -1325,8 +1325,8 @@ function GSCSnapshots() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="left-2 md:-left-14" />
-            <CarouselNext className="right-2 md:-right-14" />
+            <CarouselPrevious className="left-2 xl:-left-14" />
+            <CarouselNext className="right-2 xl:-right-14" />
           </Carousel>
 
           <div className="mt-8 flex items-center justify-center gap-2">
@@ -1626,7 +1626,7 @@ function CertifiedTrusted() {
               className="da-shadow-card da-card-hover flex h-full flex-col items-center justify-center gap-3 rounded-2xl border border-brand-navy/12 bg-white p-6 text-center"
             >
               <div className="grid h-28 w-full place-items-center rounded-xl bg-white">
-                <img src={logo} alt={`${name} logo`} className="h-24 w-auto max-w-[160px] object-contain" />
+                <img src={logo} alt={`${name} logo`} className="h-24 w-auto max-w-[min(160px,100%)] object-contain" />
               </div>
               <div className="text-xs font-bold leading-snug text-brand-navy">{name}</div>
             </div>

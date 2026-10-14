@@ -38,8 +38,8 @@ export function DashboardGallery() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="-left-4 size-12 md:-left-16" />
-        <CarouselNext className="-right-4 size-12 md:-right-16" />
+        <CarouselPrevious className="left-2 size-12 xl:-left-16" />
+        <CarouselNext className="right-2 size-12 xl:-right-16" />
       </Carousel>
     </Section>
   );

@@ -1,6 +1,7 @@
 const { Op } = require('sequelize');
 const { Career, Application } = require('../models');
 const { sendMail, NOTIFY_EMAIL, HR_EMAIL } = require('../utils/mailer');
+const { pushApplicationToHrms } = require('../services/hrmsSync');
 
 function makeSlug(title) {
   return title.toLowerCase()
@@ -128,6 +129,10 @@ exports.applyPublic = async (req, res) => {
     });
 
     res.status(201).json({ success: true, message: 'Application submitted!', data: app });
+
+    // Sync to the HRMS in the background (never blocks or fails the applicant's submission)
+    pushApplicationToHrms(app.toJSON(), career.toJSON(), req.file && req.file.path)
+      .catch((err) => console.error('[HRMS sync]', err.message));
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };
 

@@ -2,7 +2,8 @@
 import { ArrowRight, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useSettings } from "@/hooks/useSettings";
-import { posts as seoBlogPosts } from "@/data/seoBlogPosts";
+import { posts as allSeoBlogPosts } from "@/data/seoBlogPosts";
+import { useHiddenBlogSlugs } from "@/hooks/useHiddenBlogs";
 import { getBlogTheme } from "@/data/blogCategoryTheme";
 
 const MotionLink = motion(Link);
@@ -20,6 +21,8 @@ interface BlogInsightsProps {
 
 const BlogInsights = ({ categories, heading, badge }: BlogInsightsProps) => {
   const s = useSettings(["blog_ins_badge_5", "blog_sec_1", "blog_ins_hl_105"]);
+  const hiddenSlugs = useHiddenBlogSlugs();
+  const seoBlogPosts = allSeoBlogPosts.filter(p => !hiddenSlugs.has(p.slug));
 
   const matched = categories
     ? [...seoBlogPosts].filter(p => categories.includes(p.category)).sort(byNewest)

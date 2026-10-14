@@ -19,7 +19,6 @@ const servicesLeft = [
     { label: "AI Powered Web Apps",    href: "/services/ai-powered-web-apps/" },
     { label: "AI Automation Systems",  href: "/services/ai-automation/" },
     { label: "AI Chatbot & Assistants",href: "/services/ai-chatbot-assistant/" },
-    { label: "AI Filmmaking",          href: "/services/ai-filmmaking/" },
     { label: "LLM-Powered Apps",       href: "/services/ai/llm-powered-apps/" },
     { label: "AI Virtual Assistants",  href: "/services/ai/chatbots-assistants/" },
     { label: "AI Workflow Automation", href: "/services/ai/workflow-automation/" },

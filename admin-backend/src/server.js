@@ -47,11 +47,35 @@ const PORT = process.env.PORT || 5000;
 // Start HTTP server immediately — don't block on DB connection
 app.listen(PORT, () => console.log(`Backend running on http://localhost:${PORT}`));
 
+// The project has no sequelize.sync()/migrations, so new ContactInquiry columns are added here.
+// Idempotent: only adds what's missing, never drops or alters anything.
+async function ensureInquiryTrackingColumns() {
+  try {
+    const { DataTypes } = require('sequelize');
+    const qi = sequelize.getQueryInterface();
+    const existing = await qi.describeTable('contact_inquiries');
+    const cols = {
+      page: DataTypes.STRING(500), landing_page: DataTypes.STRING(500), referrer: DataTypes.STRING(500),
+      utm_source: DataTypes.STRING(150), utm_medium: DataTypes.STRING(150), utm_campaign: DataTypes.STRING(250),
+      utm_term: DataTypes.STRING(250), utm_content: DataTypes.STRING(250), traffic_source: DataTypes.STRING(100),
+    };
+    for (const [name, type] of Object.entries(cols)) {
+      if (!existing[name]) {
+        await qi.addColumn('contact_inquiries', name, { type, allowNull: true });
+        console.log(`[migrate] contact_inquiries.${name} added`);
+      }
+    }
+  } catch (err) {
+    console.error('[migrate] contact_inquiries tracking columns failed:', err.message);
+  }
+}
+
 // Connect DB with retry — server stays up even if DB is not yet configured
 async function connectDB(retryDelay = 10000) {
   try {
     await sequelize.authenticate();
     console.log('✅ Database connected');
+    await ensureInquiryTrackingColumns();
   } catch (err) {
     console.error('DB connection failed:', err.message, '— retrying in', retryDelay / 1000, 's');
     setTimeout(() => connectDB(Math.min(retryDelay * 1.5, 60000)), retryDelay);

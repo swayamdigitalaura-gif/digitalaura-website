@@ -1,3 +1,4 @@
+import { getAttribution } from "@/lib/leadTracking";
 import { useState, type FormEvent } from "react";
 import { ArrowRight, Quote, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -351,6 +352,7 @@ export function FinalCta() {
           message: [fd.get("site"), ...messageParts].filter(Boolean).join(" — "),
           project: fd.get("type") || "Website Development",
           source: "website-development-services-ahmedabad",
+          ...getAttribution(),
         }),
       });
       if (!res.ok) throw new Error("Server error");

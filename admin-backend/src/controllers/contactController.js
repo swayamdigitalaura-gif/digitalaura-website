@@ -1,6 +1,10 @@
 const { ContactInquiry } = require('../models');
 const { sendMail, NOTIFY_EMAIL } = require('../utils/mailer');
 const { pushLeadToCRM } = require('../services/crmService');
+const { deriveTrafficSource } = require('../utils/trafficSource');
+
+const clip = (v, n) => (typeof v === 'string' && v.trim() ? v.trim().slice(0, n) : null);
+const pathOf = (u) => { try { return new URL(u, 'https://x').pathname; } catch { return null; } };
 
 exports.submit = async (req, res) => {
   try {
@@ -10,7 +14,22 @@ exports.submit = async (req, res) => {
     const { name, email, phone, company, project, budget, message, source } = body;
     if (!name || !email) return res.status(400).json({ success: false, message: 'Name and email are required' });
 
-    const inquiry = await ContactInquiry.create({ name, email, phone, company, project, budget, message: message || '', source: source || 'website' });
+    // Attribution. `page` falls back to the Referer header so forms that don't send it
+    // (e.g. the separate landing-page apps) still record where they were submitted.
+    const page = clip(body.page, 500) || clip(pathOf(req.headers.referer || ''), 500);
+    const track = {
+      page,
+      landing_page: clip(body.landing_page, 500),
+      referrer: clip(body.referrer, 500),
+      utm_source: clip(body.utm_source, 150),
+      utm_medium: clip(body.utm_medium, 150),
+      utm_campaign: clip(body.utm_campaign, 250),
+      utm_term: clip(body.utm_term, 250),
+      utm_content: clip(body.utm_content, 250),
+    };
+    track.traffic_source = deriveTrafficSource({ ...track, gclid: body.gclid, fbclid: body.fbclid });
+
+    const inquiry = await ContactInquiry.create({ name, email, phone, company, project, budget, message: message || '', source: source || 'website', ...track });
 
     // Forward to CRM (fire-and-forget; failures are logged, never surfaced to the visitor)
     pushLeadToCRM({ name, email, phone, company, project, budget, message: message || '', source: source || 'website' });
@@ -29,6 +48,8 @@ exports.submit = async (req, res) => {
           <tr><td style="padding:8px;font-weight:600;color:#374151">Service</td><td style="padding:8px;color:#0A1628">${project || '—'}</td></tr>
           <tr style="background:#F8FAFF"><td style="padding:8px;font-weight:600;color:#374151">Budget</td><td style="padding:8px;color:#0A1628">${budget || '—'}</td></tr>
           <tr><td style="padding:8px;font-weight:600;color:#374151;vertical-align:top">Message</td><td style="padding:8px;color:#0A1628">${message}</td></tr>
+          <tr style="background:#F8FAFF"><td style="padding:8px;font-weight:600;color:#374151">Lead source</td><td style="padding:8px;color:#0A1628">${track.traffic_source}${track.utm_campaign ? ' · ' + track.utm_campaign : ''}</td></tr>
+          <tr><td style="padding:8px;font-weight:600;color:#374151">Form page</td><td style="padding:8px;color:#0A1628">${page || '-'} (${source || 'website'})</td></tr>
         </table>
         <p style="font-size:12px;color:#9CA3AF;margin-top:20px">Submitted on ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST</p>
       `,

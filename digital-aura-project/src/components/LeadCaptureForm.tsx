@@ -1,4 +1,5 @@
-﻿import { useState } from "react";
+﻿import { getAttribution } from "@/lib/leadTracking";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { CheckCircle2, Lock, ArrowRight } from "lucide-react";
 import MathCaptcha from "@/components/MathCaptcha";
@@ -53,6 +54,7 @@ const LeadCaptureForm = () => {
           project: form.challenge,
           message: form.website ? `Website: ${form.website}` : "",
           source: "home-strategy-session",
+          ...getAttribution(),
         }),
       });
       const data = await res.json();

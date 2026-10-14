@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import api from '../api';
 import toast from 'react-hot-toast';
-import { Trash2, Mail, Phone, Building2, Tag, DollarSign, MessageSquare } from 'lucide-react';
+import { Trash2, Mail, Phone, Building2, Tag, DollarSign, MessageSquare, Globe, FileText } from 'lucide-react';
 
 const STATUS_COLOR = { new: '#1A6FE8', contacted: '#22C55E', closed: '#94A3B8' };
 const STATUS_BG    = { new: '#EFF6FF', contacted: '#F0FDF4', closed: '#F8FAFF' };
@@ -11,6 +11,7 @@ export default function Inquiries() {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('all');
   const [expanded, setExpanded] = useState(null);
+  const [sourceFilter, setSourceFilter] = useState('all');
 
   const load = async () => {
     setLoading(true);
@@ -40,7 +41,17 @@ export default function Inquiries() {
     } catch { toast.error('Failed to delete'); }
   };
 
-  const filtered = filter === 'all' ? items : items.filter(i => i.status === filter);
+  const srcOf = (i) => i.traffic_source || 'Unknown (before tracking)';
+  const countBy = (keyFn) => {
+    const m = {};
+    items.forEach(i => { const k = keyFn(i); if (k) m[k] = (m[k] || 0) + 1; });
+    return Object.entries(m).sort((a, b) => b[1] - a[1]);
+  };
+  const bySource = countBy(srcOf);
+  const byPage = countBy(i => i.page).slice(0, 6);
+  const filtered = items
+    .filter(i => filter === 'all' || i.status === filter)
+    .filter(i => sourceFilter === 'all' || srcOf(i) === sourceFilter);
   const counts = { all: items.length, new: items.filter(i => i.status === 'new').length, contacted: items.filter(i => i.status === 'contacted').length, closed: items.filter(i => i.status === 'closed').length };
 
   return (
@@ -55,6 +66,36 @@ export default function Inquiries() {
           ↻ Refresh
         </button>
       </div>
+
+      {/* Where leads come from */}
+      {items.length > 0 && (
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 14, marginBottom: 20 }}>
+          <div style={{ background: '#fff', border: '1px solid #E5E7EB', borderRadius: 12, padding: 16 }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: '#64748B', textTransform: 'uppercase', marginBottom: 10, display: 'flex', alignItems: 'center', gap: 6 }}><Globe size={13} /> Leads by source</div>
+            {bySource.map(([k, n]) => (
+              <button key={k} onClick={() => setSourceFilter(sourceFilter === k ? 'all' : k)} style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center', padding: '5px 8px', marginBottom: 3, border: 'none', borderRadius: 6, cursor: 'pointer', fontSize: 13, background: sourceFilter === k ? '#FFF1E8' : 'transparent', color: '#0F172A', textAlign: 'left' }}>
+                <span>{k}</span><b>{n}</b>
+              </button>
+            ))}
+          </div>
+          <div style={{ background: '#fff', border: '1px solid #E5E7EB', borderRadius: 12, padding: 16 }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: '#64748B', textTransform: 'uppercase', marginBottom: 10, display: 'flex', alignItems: 'center', gap: 6 }}><FileText size={13} /> Top pages generating leads</div>
+            {byPage.length === 0 && <div style={{ fontSize: 13, color: '#94A3B8' }}>Page data appears for new inquiries.</div>}
+            {byPage.map(([k, n]) => (
+              <div key={k} style={{ display: 'flex', justifyContent: 'space-between', padding: '5px 8px', fontSize: 13, color: '#0F172A' }}>
+                <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginRight: 10 }}>{k}</span><b>{n}</b>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {sourceFilter !== 'all' && (
+        <div style={{ marginBottom: 12, fontSize: 13, color: '#64748B' }}>
+          Showing source: <b style={{ color: '#0F172A' }}>{sourceFilter}</b>{' '}
+          <button onClick={() => setSourceFilter('all')} style={{ border: 'none', background: 'none', color: '#1A6FE8', cursor: 'pointer', fontWeight: 600 }}>clear</button>
+        </div>
+      )}
 
       {/* Filter tabs */}
       <div style={{ display: 'flex', gap: 8, marginBottom: 20 }}>
@@ -125,6 +166,18 @@ export default function Inquiries() {
                       <span style={{ fontSize: 11, color: '#94A3B8', alignSelf: 'center' }}>
                         {new Date(item.createdAt).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' })}
                       </span>
+                    </div>
+
+                    {/* Lead source */}
+                    <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 10, fontSize: 12 }}>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: 4, color: '#7C3AED', background: '#F5F3FF', padding: '3px 10px', borderRadius: 20, fontWeight: 600 }}>
+                        <Globe size={10} /> {srcOf(item)}
+                      </span>
+                      {item.page && <span style={{ color: '#475569', background: '#F1F5F9', padding: '3px 10px', borderRadius: 20 }}>Page: {item.page}</span>}
+                      {item.source && <span style={{ color: '#475569', background: '#F1F5F9', padding: '3px 10px', borderRadius: 20 }}>Form: {item.source}</span>}
+                      {item.landing_page && item.landing_page !== item.page && <span style={{ color: '#475569', background: '#F1F5F9', padding: '3px 10px', borderRadius: 20 }}>Landed on: {item.landing_page}</span>}
+                      {item.utm_campaign && <span style={{ color: '#475569', background: '#F1F5F9', padding: '3px 10px', borderRadius: 20 }}>Campaign: {item.utm_campaign}</span>}
+                      {item.referrer && <span title={item.referrer} style={{ color: '#475569', background: '#F1F5F9', padding: '3px 10px', borderRadius: 20, maxWidth: 260, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>From: {item.referrer.replace(/^https?:\/\//, '')}</span>}
                     </div>
 
                     {/* Message preview / expanded */}

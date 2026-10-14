@@ -1,3 +1,4 @@
+import { getAttribution } from "@/lib/leadTracking";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, CheckCircle2, Lock, ArrowRight } from "lucide-react";
@@ -100,6 +101,7 @@ const PopupLeadForm = () => {
           project: form.service,
           message: "",
           source: "popup-lead-form",
+          ...getAttribution(),
         }),
       });
       const data = await res.json();

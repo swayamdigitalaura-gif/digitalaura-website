@@ -1,3 +1,5 @@
+import { getAttribution } from "./leadTracking";
+
 const API = import.meta.env.VITE_API_BASE || "http://localhost:5000";
 
 export interface LeadFields {
@@ -17,7 +19,6 @@ export async function submitLead(
   formName: string,
 ): Promise<{ ok: boolean; error?: string }> {
   const { honeypot, ...rest } = fields;
-  const params = new URLSearchParams(window.location.search);
   try {
     const res = await fetch(`${API}/api/contact`, {
       method: "POST",
@@ -26,10 +27,7 @@ export async function submitLead(
         ...rest,
         company_site: honeypot || undefined,
         source: formName.slice(0, 100),
-        page: window.location.pathname,
-        utm_source: params.get("utm_source") ?? undefined,
-        utm_medium: params.get("utm_medium") ?? undefined,
-        utm_campaign: params.get("utm_campaign") ?? undefined,
+        ...getAttribution(),
       }),
     });
     if (res.ok) return { ok: true };

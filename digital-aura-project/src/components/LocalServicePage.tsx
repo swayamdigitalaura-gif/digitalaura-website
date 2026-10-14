@@ -14,6 +14,7 @@ import Testimonials from "@/components/Testimonials";
 import { ArrowRight, ChevronDown, Check, MapPin, Phone, MessageCircle } from "lucide-react";
 import { StickyCtaBar, CtaBand, JumpLinks } from "@/components/PageCta";
 import PillarLinks from "@/components/PillarLinks";
+import { renderInline } from "@/lib/inlineLinks";
 import { track, PHONE_DISPLAY, PHONE_TEL, whatsappLink } from "@/lib/track";
 import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
@@ -129,7 +130,7 @@ const ExtraBlock = ({ section, accent }: { section: ExtraSection; accent: string
       <div className={centred ? "max-w-3xl mx-auto" : "max-w-3xl"}>
         {heading}
         <div className="space-y-4 text-[#4B5563] leading-relaxed">
-          {section.paragraphs.map((p) => <p key={p}>{p}</p>)}
+          {section.paragraphs.map((p) => <p key={p}>{renderInline(p)}</p>)}
         </div>
         {section.links && (
           <div className={"mt-6 flex flex-wrap gap-3" + (centred ? " justify-center" : "")}>

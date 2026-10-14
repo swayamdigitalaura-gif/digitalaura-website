@@ -2,6 +2,7 @@ import type { LocalServiceConfig } from "@/components/LocalServicePage";
 import { buildIndustryPage, industryUrl, type IndustryService, type IndustrySpec } from "@/data/industryPageBuilder";
 import { metaRealEstate, metaHospitals, metaDentists, metaIvf } from "@/data/industryPagesMetaA";
 import { metaDermatology, metaEducation, metaRestaurants, metaEcommerce } from "@/data/industryPagesMetaB";
+import { wave4Extras } from "@/data/wave4Extras";
 import { googleIvf, googleDentists, webDentists, webOphthalmologists } from "@/data/industryPagesGoogleWeb";
 
 /**
@@ -25,7 +26,11 @@ const specs: Record<string, IndustrySpec> = {
 };
 
 export const phase4Pages: Record<string, LocalServiceConfig> = Object.fromEntries(
-  Object.entries(specs).map(([key, spec]) => [key, buildIndustryPage(spec)]),
+  Object.entries(specs).map(([key, spec]) => {
+    const page = buildIndustryPage(spec);
+    const add = wave4Extras[key]?.extraAdd;
+    return [key, add ? { ...page, extraSections: [...(page.extraSections || []), ...add] } : page];
+  }),
 );
 
 const SERVICE_TYPE: Record<IndustryService, string> = {

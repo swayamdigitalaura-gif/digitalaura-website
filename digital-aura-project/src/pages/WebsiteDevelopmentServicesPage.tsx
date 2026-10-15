@@ -12,8 +12,9 @@ import {
   Faq,
   FinalCta,
 } from "@/components/website-dev/SectionsC";
-import { CtaBand, CtaBanner, QuickEnquiry } from "@/components/website-dev/Cta";
+import { CtaBand, QuickEnquiry } from "@/components/website-dev/Cta";
 import OfficeMap from "@/components/OfficeMap";
+import "@/components/website-dev/pillar-compact.css";
 import CaseStudies, { CASE_CARDS } from "@/components/CaseStudies";
 import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
@@ -109,38 +110,20 @@ const WebsiteDevelopmentServicesPage = () => {
   ]);
   return (
     <PageLayout>
-      <div className="bg-background">
+      <div className="wds-pillar bg-background">
         <LocalBusinessSchema />
         <Hero />
         <TrustMetrics />
         <Problems />
-        <CtaBand
-          tone="dark"
-          headline={
-            s.wds_ctaband1_headline || "Let's Build a Website That Works for Your Business"
-          }
-          description={
-            s.wds_ctaband1_desc ||
-            "Whether you're starting from scratch or redesigning an existing website, we'll help you create a website focused on performance, user experience and business growth."
-          }
-          buttonText={s.wds_ctaband1_button || "Request My Website Proposal"}
-          href="#enquiry"
-        />
         <Included />
         <Process />
         <QuickEnquiry />
         <TechStack />
         <PerformanceSnapshot />
-        <CtaBanner
-          headline={s.wds_ctabanner_headline || "Let's Discuss Your Website Goals"}
-          buttonText={s.wds_ctabanner_button || "Talk to Our Team"}
-          href="#strategy"
-          bg="bg-cream"
-        />
         <Industries />
         <LogoMarquee />
         <Testimonials />
-        <CaseStudies cases={[CASE_CARDS.riant, CASE_CARDS.prism]} sub="Real websites that turned into real bookings and leads." />
+        <CaseStudies cases={[CASE_CARDS.riant, CASE_CARDS.prism]} sub="Real websites that turned into real bookings and leads." centered />
         <CtaBand
           tone="light"
           headline={
@@ -153,35 +136,35 @@ const WebsiteDevelopmentServicesPage = () => {
           buttonText={s.wds_ctaband2_button || "Get Expert Advice"}
           href="#strategy"
         />
-        <section className="bg-background py-14">
-          <div className="mx-auto max-w-5xl px-5 md:px-8">
-            <h2 className="text-2xl font-extrabold md:text-3xl">More website services in Ahmedabad</h2>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              <a href="/website-redesign-services-ahmedabad/" className="rounded-2xl border p-6 transition hover:shadow-md">
+        <section className="bg-background py-10">
+          <div className="mx-auto max-w-7xl px-5 md:px-8">
+            <h2 className="text-center text-2xl font-bold md:text-[34px]">More website services in Ahmedabad</h2>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <a href="/website-redesign-services-ahmedabad/" className="rounded-2xl border p-5 transition hover:shadow-md">
                 <h3 className="text-lg font-bold">Website redesign services</h3>
                 <p className="mt-2 text-sm opacity-80">Redesign your site without losing the Google rankings you already have.</p>
               </a>
-              <a href="/website-maintenance-amc-ahmedabad/" className="rounded-2xl border p-6 transition hover:shadow-md">
+              <a href="/website-maintenance-amc-ahmedabad/" className="rounded-2xl border p-5 transition hover:shadow-md">
                 <h3 className="text-lg font-bold">Website maintenance and AMC</h3>
                 <p className="mt-2 text-sm opacity-80">Updates, backups, security and monitoring for your website, built by us or by others.</p>
               </a>
-              <a href="/website-development-cost-ahmedabad/" className="rounded-2xl border p-6 transition hover:shadow-md">
+              <a href="/website-development-cost-ahmedabad/" className="rounded-2xl border p-5 transition hover:shadow-md">
                 <h3 className="text-lg font-bold">Website development cost</h3>
                 <p className="mt-2 text-sm opacity-80">What decides the price of a website in Ahmedabad and how to compare quotes.</p>
               </a>
-              <a href="/website-design-cost-ahmedabad/" className="rounded-2xl border p-6 transition hover:shadow-md">
+              <a href="/website-design-cost-ahmedabad/" className="rounded-2xl border p-5 transition hover:shadow-md">
                 <h3 className="text-lg font-bold">Website design cost</h3>
                 <p className="mt-2 text-sm opacity-80">What a design fee covers and how design differs from development.</p>
               </a>
-              <a href="/website-packages-ahmedabad/" className="rounded-2xl border p-6 transition hover:shadow-md">
+              <a href="/website-packages-ahmedabad/" className="rounded-2xl border p-5 transition hover:shadow-md">
                 <h3 className="text-lg font-bold">Website packages</h3>
                 <p className="mt-2 text-sm opacity-80">Starter, Business, Growth and Custom packages, and what each includes.</p>
               </a>
-              <a href="/website-design-for-doctors-ahmedabad/" className="rounded-2xl border p-6 transition hover:shadow-md">
+              <a href="/website-design-for-doctors-ahmedabad/" className="rounded-2xl border p-5 transition hover:shadow-md">
                 <h3 className="text-lg font-bold">Websites for doctors and hospitals</h3>
                 <p className="mt-2 text-sm opacity-80">Patient-first sites with doctor profiles and appointment booking.</p>
               </a>
-              <a href="/website-design-for-manufacturers-ahmedabad/" className="rounded-2xl border p-6 transition hover:shadow-md">
+              <a href="/website-design-for-manufacturers-ahmedabad/" className="rounded-2xl border p-5 transition hover:shadow-md">
                 <h3 className="text-lg font-bold">Websites for manufacturers and exporters</h3>
                 <p className="mt-2 text-sm opacity-80">Catalogue, RFQ flow and certificates for B2B buyers.</p>
               </a>

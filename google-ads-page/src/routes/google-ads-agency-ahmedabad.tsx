@@ -7,12 +7,10 @@ import { ConversionTracking } from "../components/sections/ConversionTracking";
 import { LandingPageOptimization } from "../components/sections/LandingPageOptimization";
 import { ToolsWeUse } from "../components/sections/ToolsWeUse";
 import { DashboardGallery } from "../components/sections/DashboardGallery";
-import { ProcessTimeline } from "../components/sections/ProcessTimeline";
 import { IndustrySolutions } from "../components/sections/IndustrySolutions";
 import { CaseStudies } from "../components/sections/CaseStudies";
 import { ClientLogoMarquee } from "../components/sections/ClientLogoMarquee";
 import { Testimonials } from "../components/sections/Testimonials";
-import { Certifications } from "../components/sections/Certifications";
 import { FAQ } from "../components/sections/FAQ";
 import { FinalCTA } from "../components/sections/FinalCTA";
 import { Footer } from "../components/sections/Footer";
@@ -75,7 +73,6 @@ function LandingPage() {
       <LeakChecks />
       <PlatformsWeManage />
       <WhatWeDo />
-      <ProcessTimeline />
       <First90Days />
       <ConversionTracking />
       <TrackingByLeadType />
@@ -87,7 +84,6 @@ function LandingPage() {
       <CaseStudies />
       <ClientLogoMarquee />
       <Testimonials />
-      <Certifications />
       <ExploreMore />
       <CostBreakdown />
       <AgencyComparison />

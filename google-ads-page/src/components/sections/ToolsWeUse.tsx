@@ -1,4 +1,4 @@
-import { Eyebrow, H2, Lead, Section } from "../shared/SectionPrimitives";
+import { Section, SectionHead } from "../shared/SectionPrimitives";
 
 const TOOLS = [
   { name: "Google Ads", logo: "/tools/google-ads.png" },
@@ -12,24 +12,16 @@ const TOOLS = [
 
 export function ToolsWeUse() {
   return (
-    <Section id="tools" className="bg-surface-cream">
-      <div className="mx-auto max-w-3xl text-center mb-14">
-        <Eyebrow>Google Ads Tools We Use</Eyebrow>
-        <H2 className="mt-6">The Stack Behind Every Campaign</H2>
-        <Lead className="mt-6 mx-auto">No black boxes — every tool we use is auditable inside your own accounts.</Lead>
-      </div>
-
-      <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+    <Section id="tools" className="bg-white">
+      <SectionHead
+        eyebrow="Google Ads tools we use"
+        title="The stack behind every campaign"
+        lead="No black boxes. Every tool we use is auditable inside your own accounts."
+      />
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-7">
         {TOOLS.map((t) => (
-          <div
-            key={t.name}
-            className="group flex h-52 items-center justify-center rounded-3xl border border-border bg-white p-8 shadow-xs hover-card"
-          >
-            <img
-              src={t.logo}
-              alt={t.name}
-              className="max-h-28 w-full object-contain transition-transform duration-300 group-hover:scale-110"
-            />
+          <div key={t.name} className="group flex h-28 items-center justify-center rounded-2xl border border-border bg-white p-4 shadow-xs transition-shadow hover:shadow-md">
+            <img src={t.logo} alt={t.name} className="max-h-16 w-full object-contain transition-transform duration-300 group-hover:scale-105" />
           </div>
         ))}
       </div>

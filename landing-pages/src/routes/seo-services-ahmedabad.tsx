@@ -60,6 +60,7 @@ import localFalconLogo from "@/assets/tool-logos/local-falcon.jpg";
 import dataForSeoLogo from "@/assets/tool-logos/dataforseo.png";
 import googleSearchConsoleToolLogo from "@/assets/tool-logos/google-search-console.png";
 import googleAnalyticsToolLogo from "@/assets/tool-logos/google-analytics.png";
+import googleTagManagerLogo from "@/assets/tool-logos/google-tag-manager.svg";
 import chatgptLogo from "@/assets/tool-logos/chatgpt.jpg";
 import claudeLogo from "@/assets/tool-logos/claude.png";
 import geminiLogo from "@/assets/tool-logos/gemini.png";
@@ -1126,6 +1127,7 @@ function SEOToolsWeUse() {
   const tools = [
     { name: "Google Search Console", logo: googleSearchConsoleToolLogo, use: "Indexing & search performance" },
     { name: "Google Analytics", logo: googleAnalyticsToolLogo, use: "Traffic & conversion data" },
+    { name: "Google Tag Manager", logo: googleTagManagerLogo, use: "Event & conversion tracking setup" },
     { name: "Semrush", logo: semrushLogo, use: "Competitive keyword & market research" },
     { name: "Ahrefs", logo: ahrefsLogo, use: "Backlink & content gap analysis" },
     { name: "Screaming Frog", logo: screamingFrogLogo, use: "Technical crawl audits" },
@@ -1235,29 +1237,12 @@ function Results() {
   return (
     <section id="results" className="bg-white">
       <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
-        <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div>
-            <SectionLabel>Proven Results</SectionLabel>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-brand-navy sm:text-3xl md:text-[42px]">
-              Real Clients. <span className="text-brand-orange">Real Growth.</span> Real Results.
-            </h2>
-            <p className="mt-2 max-w-lg text-sm text-ink-muted md:text-base">Real search results from real businesses we handle SEO for.</p>
-          </div>
-          {maxIndex > 0 && (
-            <div className="flex shrink-0 items-center gap-3">
-              <button type="button" aria-label="Previous case studies" onClick={() => go(indexRef.current - 1)} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#E5E7EB] bg-white shadow-sm transition-transform hover:scale-110">
-                <ArrowRight className="h-4 w-4 rotate-180 text-brand-navy" />
-              </button>
-              <div className="flex items-center gap-1.5">
-                {Array.from({ length: maxIndex + 1 }).map((_, i) => (
-                  <button key={i} type="button" aria-label={`Show case studies ${i + 1}`} onClick={() => go(i)} className="rounded-full transition-all duration-300" style={{ width: i === index ? 20 : 7, height: 7, background: i === index ? "#FF6B2B" : "#D1D5DB" }} />
-                ))}
-              </div>
-              <button type="button" aria-label="Next case studies" onClick={() => go(indexRef.current < maxIndex ? indexRef.current + 1 : 0)} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#E5E7EB] bg-white shadow-sm transition-transform hover:scale-110">
-                <ArrowRight className="h-4 w-4 text-brand-navy" />
-              </button>
-            </div>
-          )}
+        <div className="mx-auto mb-10 max-w-3xl text-center">
+          <SectionLabel>Proven Results</SectionLabel>
+          <h2 className="mt-3 text-2xl font-bold tracking-tight text-brand-navy sm:text-3xl md:text-[42px]">
+            Real Clients. <span className="text-brand-orange">Real Growth.</span> Real Results.
+          </h2>
+          <p className="mx-auto mt-2 max-w-lg text-sm text-ink-muted md:text-base">Real search results from real businesses we handle SEO for.</p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3" style={{ opacity: show ? 1 : 0, transition: "opacity 180ms ease" }}>
           {visible.map((c) => (
@@ -1280,6 +1265,21 @@ function Results() {
             </div>
           ))}
         </div>
+        {maxIndex > 0 && (
+          <div className="mt-8 flex items-center justify-center gap-3">
+            <button type="button" aria-label="Previous case studies" onClick={() => go(indexRef.current - 1)} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#E5E7EB] bg-white shadow-sm transition-transform hover:scale-110">
+              <ArrowRight className="h-4 w-4 rotate-180 text-brand-navy" />
+            </button>
+            <div className="flex items-center gap-1.5">
+              {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+                <button key={i} type="button" aria-label={`Show case studies ${i + 1}`} onClick={() => go(i)} className="rounded-full transition-all duration-300" style={{ width: i === index ? 20 : 7, height: 7, background: i === index ? "#FF6B2B" : "#D1D5DB" }} />
+              ))}
+            </div>
+            <button type="button" aria-label="Next case studies" onClick={() => go(indexRef.current < maxIndex ? indexRef.current + 1 : 0)} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#E5E7EB] bg-white shadow-sm transition-transform hover:scale-110">
+              <ArrowRight className="h-4 w-4 text-brand-navy" />
+            </button>
+          </div>
+        )}
         <div className="mt-8 text-center">
           <a href="/case-studies/" className="inline-flex items-center gap-2 rounded-full border-2 border-brand-orange px-6 py-3 text-sm font-bold text-brand-orange transition-colors hover:bg-brand-orange hover:text-white">
             View All Case Studies <ArrowRight className="h-4 w-4" />
@@ -1513,7 +1513,7 @@ function SampleAuditSnapshot() {
         <SectionHeading
           eyebrow="Sample report"
           title="See what a Digital Aura SEO audit looks like"
-          sub="A real audit with the client's details hidden. Download the full report to see every finding and the plan that follows."
+          sub="Download the full report to see every finding and the plan that follows."
         />
         <Reveal className="mx-auto mt-12 max-w-[760px]">
           <a href={SAMPLE_AUDIT_PDF} download="Digital-Aura-Sample-SEO-Audit-Report.pdf" className="da-shadow-card block overflow-hidden rounded-[18px] border border-brand-navy/10 bg-white">
@@ -2179,37 +2179,46 @@ function SEOPricing() {
     { t: "How much there is to cover", d: "The number of services, pages, locations and languages changes the scope." },
     { t: "How fast you want to move", d: "More content, local work and link building in a month means a bigger scope." },
   ];
+  const includes = ["A written scope with named deliverables", "Reporting on calls, forms and leads, not just rankings", "Access to your own Search Console, Analytics and Business Profile", "Contract and notice terms you can read before you sign"];
+  const excludes = ["A guaranteed ranking or a fixed number of days", "Hidden add-ons that appear in a later invoice", "Bought links or a standard package chosen before anyone looks at your site"];
   return (
     <section id="seo-pricing" className="bg-white">
-      <div className="mx-auto max-w-5xl px-5 py-16 md:px-8 md:py-24">
+      <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
         <SectionHeading
+          wide
           eyebrow="Pricing"
           title={<>SEO pricing in Ahmedabad: <span className="text-brand-orange">what to expect</span></>}
           sub="We do not print a rate card, because two businesses rarely need the same work. SEO is priced as a monthly scope, after we have looked at your site. Four things decide it."
         />
-        <Reveal className="mt-12 grid gap-5 sm:grid-cols-2">
+        <Reveal className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {drivers.map((x, i) => (
-            <div key={x.t} className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-6">
-              <span className="text-xs font-bold uppercase tracking-[0.14em] text-brand-orange">0{i + 1}</span>
-              <h3 className="mt-2 text-base font-bold text-brand-navy">{x.t}</h3>
-              <p className="mt-2 text-sm text-ink-muted">{x.d}</p>
+            <div key={x.t} className="da-shadow-card da-card-hover flex h-full flex-col rounded-2xl border border-brand-navy/12 bg-white p-6">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-orange-soft text-sm font-extrabold text-brand-orange">0{i + 1}</span>
+              <h3 className="mt-4 text-base font-bold leading-snug text-brand-navy">{x.t}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-muted">{x.d}</p>
             </div>
           ))}
         </Reveal>
-        <Reveal className="mt-8 grid gap-5 md:grid-cols-2">
-          <div className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-7">
-            <h3 className="text-lg font-bold text-brand-navy">A fair SEO quote should include</h3>
-            <ul className="mt-4 space-y-3">
-              {["A written scope with named deliverables", "Reporting on calls, forms and leads, not just rankings", "Access to your own Search Console, Analytics and Business Profile", "Contract and notice terms you can read before you sign"].map((x) => (
-                <li key={x} className="flex gap-3 text-sm text-ink-muted"><Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" />{x}</li>
+        <Reveal className="mt-6 grid gap-5 md:grid-cols-2">
+          <div className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-6 md:p-7">
+            <div className="flex items-center gap-3">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-green-50 text-green-600"><Check className="h-5 w-5" /></span>
+              <h3 className="text-lg font-bold text-brand-navy">A fair SEO quote should include</h3>
+            </div>
+            <ul className="mt-5 space-y-3">
+              {includes.map((x) => (
+                <li key={x} className="flex gap-3 text-sm leading-relaxed text-ink-muted"><Check className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />{x}</li>
               ))}
             </ul>
           </div>
-          <div className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-7">
-            <h3 className="text-lg font-bold text-brand-navy">It should not include</h3>
-            <ul className="mt-4 space-y-3">
-              {["A guaranteed ranking or a fixed number of days", "Hidden add-ons that appear in a later invoice", "Bought links or a standard package chosen before anyone looks at your site"].map((x) => (
-                <li key={x} className="flex gap-3 text-sm text-ink-muted"><X className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />{x}</li>
+          <div className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-6 md:p-7">
+            <div className="flex items-center gap-3">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-red-50 text-red-500"><X className="h-5 w-5" /></span>
+              <h3 className="text-lg font-bold text-brand-navy">It should not include</h3>
+            </div>
+            <ul className="mt-5 space-y-3">
+              {excludes.map((x) => (
+                <li key={x} className="flex gap-3 text-sm leading-relaxed text-ink-muted"><X className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />{x}</li>
               ))}
             </ul>
           </div>
@@ -2219,7 +2228,7 @@ function SEOPricing() {
           <a className="font-semibold text-brand-orange underline" href="/seo/pricing/">how SEO packages are priced in Ahmedabad</a>, or start with the{" "}
           <a className="font-semibold text-brand-orange underline" href="/seo/free-audit/">free SEO audit</a>.
         </p>
-        <div className="mt-8 flex justify-center">
+        <div className="mt-6 flex justify-center">
           <PrimaryCTA href="#audit">Get a free audit and a written quote</PrimaryCTA>
         </div>
       </div>
@@ -2239,7 +2248,7 @@ function OfficeMap() {
   return (
     <section id="visit-us" className="bg-surface-2">
       <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-20">
-        <SectionHeading eyebrow="Find us" title="Talk to us, or drop in at our Hanspura office" />
+        <SectionHeading wide eyebrow="Find us" title="Talk to us, or drop in at our Hanspura office" />
         <Reveal className="da-shadow-card mt-10 grid overflow-hidden rounded-2xl border border-brand-navy/12 bg-white md:grid-cols-[1.5fr_1fr]">
           <div className="relative min-h-[300px] bg-surface-2 md:min-h-[420px]">
             <iframe
@@ -2526,8 +2535,8 @@ function Index() {
         <SEOChallenges />
         <Framework />
         <SEOServicesScope />
-        <SampleAuditSnapshot />
         <Process />
+        <SampleAuditSnapshot />
         <First90Days />
         <SEOToolsWeUse />
         <Results />

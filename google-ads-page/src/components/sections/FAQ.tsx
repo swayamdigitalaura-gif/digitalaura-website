@@ -1,7 +1,5 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { BarChart3, ChevronDown, LineChart, Users } from "lucide-react";
-import { Eyebrow, H2, Lead, PrimaryCTA, Section } from "../shared/SectionPrimitives";
+import { CircleHelp } from "lucide-react";
+import { Section, SectionHead, CardBadge } from "../shared/SectionPrimitives";
 
 const FAQS = [
   { q: "Why hire a Google Ads agency instead of running ads yourself?", a: "Google Ads has hundreds of settings that affect cost and results. A small mistake can waste your entire budget on the wrong searches. We manage accounts daily and know what to fix immediately." },
@@ -46,46 +44,23 @@ function FAQSchema() {
 
 export function FAQ() {
   return (
-    <Section id="faq" className="bg-white">
+    <Section id="faq" className="bg-surface-cream">
       <FAQSchema />
-      <div className="mx-auto max-w-4xl">
-        <div className="text-center">
-          <Eyebrow>Common Questions</Eyebrow>
-          <H2 className="mt-6">Google Ads Management, Explained Simply</H2>
-          <Lead className="mt-6 mx-auto">Straightforward answers about cost, timelines, contracts, and who owns your account.</Lead>
-        </div>
-
-        <div className="mt-10 divide-y divide-border">
-          {FAQS.map((f) => (
-            <div key={f.q} className="py-6 first:pt-0">
-              <h3 className="font-display text-[17px] font-bold leading-snug text-navy md:text-[18px]">{f.q}</h3>
-              <p className="mt-2 text-[15.5px] leading-[1.75] text-muted-foreground">{f.a}</p>
+      <SectionHead
+        eyebrow="Common questions"
+        title="Google Ads management, explained simply"
+        lead="Straightforward answers about cost, timelines, contracts and who owns your account."
+      />
+      <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-2">
+        {FAQS.map((f) => (
+          <div key={f.q} className="rounded-2xl border border-border bg-white p-5 shadow-xs">
+            <div className="flex items-start gap-3">
+              <CardBadge className="!size-8 !rounded-lg"><CircleHelp className="size-4" /></CardBadge>
+              <h3 className="font-display text-[16px] font-bold leading-snug text-navy">{f.q}</h3>
             </div>
-          ))}
-        </div>
-
-        <div className="mt-10 flex justify-center"><PrimaryCTA>Speak With A Strategist</PrimaryCTA></div>
-        <div>
-
-          <div className="mt-10 grid grid-cols-3 gap-3 rounded-2xl border border-border bg-surface-cream p-5 shadow-xs">
-            <div className="flex flex-col items-center gap-1.5 text-center">
-              <BarChart3 className="size-5 text-primary" />
-              <span className="font-display text-[18px] font-bold text-navy leading-none">5.8x</span>
-              <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Avg ROAS</span>
-            </div>
-            <div className="flex flex-col items-center gap-1.5 text-center border-x border-border">
-              <LineChart className="size-5 text-primary" />
-              <span className="font-display text-[18px] font-bold text-navy leading-none">47%</span>
-              <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Lower CPL</span>
-            </div>
-            <div className="flex flex-col items-center gap-1.5 text-center">
-              <Users className="size-5 text-primary" />
-              <span className="font-display text-[18px] font-bold text-navy leading-none">1.2M+</span>
-              <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Leads Generated</span>
-            </div>
+            <p className="mt-2.5 pl-11 text-[14.5px] leading-[1.7] text-muted-foreground">{f.a}</p>
           </div>
-        </div>
-
+        ))}
       </div>
     </Section>
   );

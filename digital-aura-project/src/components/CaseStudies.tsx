@@ -87,9 +87,11 @@ interface CaseStudiesProps {
   /** Cards to show. Defaults to the home page set. */
   cases?: CaseCard[];
   sub?: string;
+  /** Centre the heading block (pillar pages). The home page keeps the left-aligned header with arrows on the right. */
+  centered?: boolean;
 }
 
-const CaseStudies = ({ cases = HOME_CASES, sub = "Across marketing, development & AI — real numbers from real businesses." }: CaseStudiesProps) => {
+const CaseStudies = ({ cases = HOME_CASES, sub = "Across marketing, development & AI — real numbers from real businesses.", centered = false }: CaseStudiesProps) => {
   const [index, setIndex] = useState(0);
   const [show, setShow] = useState(true);
   const indexRef = useRef(0);
@@ -125,16 +127,16 @@ const CaseStudies = ({ cases = HOME_CASES, sub = "Across marketing, development 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-4"
+          className={centered ? "mb-8 flex flex-col items-center gap-4 text-center" : "mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-4"}
         >
           <div>
             <span className="section-badge">Proven Results</span>
-            <h2 className="text-2xl sm:text-3xl md:text-[42px] font-bold text-[#0A1628] tracking-tight mt-1 mb-2">
+            <h2 className={`text-2xl sm:text-3xl font-bold text-[#0A1628] tracking-tight mt-1 mb-2 ${centered ? "md:text-[34px]" : "md:text-[42px]"}`}>
               Real Clients.{" "}
               <span className="text-orange-gradient">Real Growth.</span>{" "}
               Real Results.
             </h2>
-            <p className="text-[#4B5563] text-sm md:text-base max-w-lg">{sub}</p>
+            <p className={`text-[#4B5563] text-sm md:text-base max-w-lg ${centered ? "mx-auto" : ""}`}>{sub}</p>
           </div>
           {maxIndex > 0 && <div className="flex items-center gap-3 shrink-0">
             <button onClick={prev}

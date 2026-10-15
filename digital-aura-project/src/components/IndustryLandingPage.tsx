@@ -61,7 +61,7 @@ const Eyebrow = ({ children }: { children: React.ReactNode }) => {
   const pillar = useContext(VariantCtx) === "pillar";
   if (pillar) {
     return (
-      <span className="inline-flex items-center gap-2 rounded-full border bg-white px-4 py-2 text-[12px] font-bold uppercase tracking-[0.16em] shadow-sm" style={{ borderColor: "#EDE3DA", color: "#3B3F5C" }}>
+      <span className="inline-flex items-center gap-2 rounded-full border bg-white px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] shadow-sm" style={{ borderColor: "#EDE3DA", color: "#3B3F5C" }}>
         <span className="h-1.5 w-1.5 rounded-full" style={{ background: ORANGE }} />{children}
       </span>
     );
@@ -76,12 +76,12 @@ const Eyebrow = ({ children }: { children: React.ReactNode }) => {
 const Head = ({ eyebrow, title, sub, center = true }: { eyebrow?: string; title: React.ReactNode; sub?: string; center?: boolean }) => {
   const pillar = useContext(VariantCtx) === "pillar";
   return (
-    <div className={`${pillar ? "mb-10 md:mb-14" : "mb-8 md:mb-10"} ${center ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}`}>
-      {eyebrow && <div className={pillar ? "mb-6" : "mb-4"}><Eyebrow>{eyebrow}</Eyebrow></div>}
+    <div className={`${pillar ? "mb-7 md:mb-9" : "mb-8 md:mb-10"} ${center ? (pillar ? "mx-auto max-w-6xl text-center" : "mx-auto max-w-3xl text-center") : "max-w-3xl"}`}>
+      {eyebrow && <div className={pillar ? "mb-3.5" : "mb-4"}><Eyebrow>{eyebrow}</Eyebrow></div>}
       {pillar
-        ? <h2 className="text-[30px] font-bold leading-[1.12] tracking-[-0.02em] md:text-[42px] lg:text-[46px]" style={{ color: NAVY }}>{title}</h2>
+        ? <h2 className="text-[26px] font-bold leading-[1.15] tracking-[-0.02em] sm:text-[30px] md:text-[34px]" style={{ color: NAVY }}>{title}</h2>
         : <h2 className="text-2xl font-black leading-tight tracking-tight md:text-[34px]" style={{ color: NAVY }}>{title}</h2>}
-      {sub && <p className={pillar ? "mt-5 text-[17px] leading-[1.75] text-[#5B5F7A] md:text-[19px]" : "mt-3 text-[15.5px] leading-relaxed text-[#4B5563]"}>{sub}</p>}
+      {sub && <p className={pillar ? "mx-auto mt-3 max-w-2xl text-[16px] leading-[1.7] text-[#5B5F7A] md:text-[17px]" : "mt-3 text-[15.5px] leading-relaxed text-[#4B5563]"}>{sub}</p>}
     </div>
   );
 };
@@ -89,7 +89,7 @@ const Head = ({ eyebrow, title, sub, center = true }: { eyebrow?: string; title:
 const Wrap = ({ id, bg = "#fff", children, narrow = false }: { id?: string; bg?: string; children: React.ReactNode; narrow?: boolean }) => {
   const pillar = useContext(VariantCtx) === "pillar";
   return (
-    <section id={id} className={`scroll-mt-32 xl:scroll-mt-36 px-5 md:px-8 ${pillar ? "py-14 md:py-20 lg:py-24" : "py-14 md:py-20"}`} style={{ background: pillar && bg === "#F8FAFF" ? CREAM : bg }}>
+    <section id={id} className={`scroll-mt-32 xl:scroll-mt-36 px-5 md:px-8 ${pillar ? "py-9 md:py-11 lg:py-12" : "py-14 md:py-20"}`} style={{ background: pillar && bg === "#F8FAFF" ? CREAM : bg }}>
       <div className={`mx-auto ${narrow ? "max-w-4xl" : pillar ? "max-w-7xl" : "max-w-6xl"}`}>{children}</div>
     </section>
   );
@@ -98,8 +98,8 @@ const Wrap = ({ id, bg = "#fff", children, narrow = false }: { id?: string; bg?:
 const Card = ({ children, className = "", style }: { children: React.ReactNode; className?: string; style?: React.CSSProperties }) => {
   const pillar = useContext(VariantCtx) === "pillar";
   return (
-    <div className={`border bg-white ${pillar ? "rounded-[28px] p-7 md:p-8" : "rounded-2xl p-6"} ${className}`}
-      style={{ borderColor: pillar ? "#EDE3DA" : "#E5E7EB", boxShadow: pillar ? "0 6px 24px rgba(26,29,54,0.05)" : "0 2px 12px rgba(10,22,40,0.05)", ...style }}>{children}</div>
+    <div className={`border bg-white ${pillar ? "rounded-2xl p-5" : "rounded-2xl p-6"} ${className}`}
+      style={{ borderColor: pillar ? "#EDE3DA" : "#E5E7EB", boxShadow: pillar ? "0 2px 10px rgba(26,29,54,0.05)" : "0 2px 12px rgba(10,22,40,0.05)", ...style }}>{children}</div>
   );
 };
 
@@ -130,6 +130,7 @@ function TickItem({ text }: { text: string }) {
 }
 
 function GuideSection({ sec, index }: { sec: ExtraSection; index: number }) {
+  const pillar = useContext(VariantCtx) === "pillar";
   const eyebrow = sec.eyebrow;
   const sub = "subtext" in sec ? sec.subtext : undefined;
   const bg = index % 2 === 0 ? "#fff" : "#F8FAFF";
@@ -146,9 +147,17 @@ function GuideSection({ sec, index }: { sec: ExtraSection; index: number }) {
             {items.map((it, i) => (
               <li key={it.title} className="relative">
                 <Card className="h-full">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-black text-white" style={{ background: ORANGE }}>{i + 1}</span>
-                  <p className="mt-4 text-[11px] font-black uppercase tracking-[0.14em]" style={{ color: ORANGE }}>{it.tag}</p>
-                  <h3 className="mt-1 text-[16px] font-bold leading-snug" style={{ color: NAVY }}>{it.title}</h3>
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-[15px] font-extrabold" style={pillar ? { background: `${ORANGE}1a`, color: ORANGE } : { background: ORANGE, color: "#fff", borderRadius: 9999 }}>{i + 1}</span>
+                    {pillar ? (
+                      <div>
+                        <p className="text-[11px] font-black uppercase tracking-[0.14em]" style={{ color: ORANGE }}>{it.tag}</p>
+                        <h3 className="text-[16px] font-bold leading-snug" style={{ color: NAVY }}>{it.title}</h3>
+                      </div>
+                    ) : null}
+                  </div>
+                  {!pillar && <p className="mt-4 text-[11px] font-black uppercase tracking-[0.14em]" style={{ color: ORANGE }}>{it.tag}</p>}
+                  {!pillar && <h3 className="mt-1 text-[16px] font-bold leading-snug" style={{ color: NAVY }}>{it.title}</h3>}
                   <p className="mt-2 text-[14.5px] leading-relaxed text-[#4B5563]">{it.desc}</p>
                 </Card>
               </li>
@@ -158,11 +167,15 @@ function GuideSection({ sec, index }: { sec: ExtraSection; index: number }) {
           <div className={`grid gap-5 sm:grid-cols-2 ${items.length === 2 ? "" : items.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
             {items.map((it, n) => (
               <Card key={it.title} className="flex h-full flex-col">
-                {!it.tag && items.length >= 5 && <span className="mb-3 text-[13px] font-black" style={{ color: ORANGE }}>{String(n + 1).padStart(2, "0")}</span>}
                 {it.tag && <p className="mb-2 text-[11px] font-black uppercase tracking-[0.14em]" style={{ color: ORANGE }}>{it.tag}</p>}
-                <h3 className="text-[16px] font-bold leading-snug" style={{ color: NAVY }}>
-                  {it.href && !it.cta ? <a href={it.href} className="hover:underline">{it.title}</a> : it.title}
-                </h3>
+                <div className="flex items-center gap-3">
+                  {!it.tag && items.length >= 5 && (
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-[14px] font-extrabold" style={{ background: `${ORANGE}1a`, color: ORANGE }}>{String(n + 1).padStart(2, "0")}</span>
+                  )}
+                  <h3 className="text-[16px] font-bold leading-snug" style={{ color: NAVY }}>
+                    {it.href && !it.cta ? <a href={it.href} className="hover:underline">{it.title}</a> : it.title}
+                  </h3>
+                </div>
                 <p className="mt-2 flex-1 text-[14.5px] leading-relaxed text-[#4B5563]">{it.desc}</p>
                 {it.href && it.cta && (
                   <div className="mt-5 max-w-full">
@@ -252,8 +265,34 @@ function GuideSection({ sec, index }: { sec: ExtraSection; index: number }) {
     return (
       <Wrap id={sec.id} bg={bg}>
         <Head eyebrow={eyebrow} title={sec.title} sub={sub} />
-        <div className={`mx-auto grid gap-5 ${sec.members.length > 3 ? "sm:grid-cols-2 lg:grid-cols-3" : sec.members.length === 3 ? "md:grid-cols-3" : "max-w-3xl md:grid-cols-2"}`}>
-          {sec.members.map((m) => (
+        <div className={`mx-auto grid gap-5 ${pillar && sec.members.length >= 4 ? "lg:grid-cols-[1fr_1.7fr]" : sec.members.length > 3 ? "sm:grid-cols-2 lg:grid-cols-3" : sec.members.length === 3 ? "md:grid-cols-3" : "max-w-3xl md:grid-cols-2"}`}>
+          {pillar && sec.members.length >= 4 ? (<>
+            <Card className="border-2 !bg-[#FFF8F2]" style={{ borderColor: `${ORANGE}66` }}>
+              <div className="flex items-center gap-4">
+                <img src={sec.members[0].photo} alt={`${sec.members[0].name}, ${sec.members[0].role} at Digital Aura`} width={72} height={72} loading="lazy" className="h-[72px] w-[72px] shrink-0 rounded-2xl bg-white object-cover" />
+                <div>
+                  <h3 className="text-[19px] font-bold leading-tight" style={{ color: NAVY }}>{sec.members[0].name}</h3>
+                  <p className="text-sm font-semibold" style={{ color: ORANGE }}>{sec.members[0].role}</p>
+                </div>
+              </div>
+              <p className="mt-4 text-[14.5px] leading-relaxed text-[#4B5563]">{sec.members[0].bio}</p>
+              <MemberLinks links={sec.members[0].links} accent={ORANGE} />
+            </Card>
+            <div className="grid gap-5 sm:grid-cols-2">
+              {sec.members.slice(1).map((m) => (
+                <Card key={m.name}>
+                  <div className="flex items-center gap-3">
+                    <img src={m.photo} alt={`${m.name}, ${m.role} at Digital Aura`} width={48} height={48} loading="lazy" className="h-12 w-12 shrink-0 rounded-full bg-[#F3F4F6] object-cover" />
+                    <div>
+                      <h3 className="font-bold leading-tight" style={{ color: NAVY }}>{m.name}</h3>
+                      <p className="text-sm font-semibold" style={{ color: ORANGE }}>{m.role}</p>
+                    </div>
+                  </div>
+                  <p className="mt-3 text-[14px] leading-relaxed text-[#4B5563]">{m.bio}</p>
+                </Card>
+              ))}
+            </div>
+          </>) : sec.members.map((m) => (
             <Card key={m.name}>
               <div className="flex items-center gap-3">
                 <img src={m.photo} alt={`${m.name}, ${m.role} at Digital Aura`} width={56} height={56} loading="lazy" className="h-14 w-14 shrink-0 rounded-full bg-[#F3F4F6] object-cover" />
@@ -491,11 +530,8 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
           <div className="grid items-start gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
             <div>
               <Eyebrow>Quick answer</Eyebrow>
-              <h2 className="mt-6 text-[30px] font-bold leading-[1.12] tracking-[-0.02em] md:text-[42px] lg:text-[46px]" style={{ color: NAVY }}>{c.quickAnswer.heading}</h2>
-              <p className="mt-6 text-[17px] leading-[1.8] text-[#5B5F7A] md:text-[19px]">{c.quickAnswer.answer}</p>
-              <div className="mt-8">
-                <Pill href={c.heroCta?.href || ctaHref} onClick={() => track("cta_click", { cta_label: ctaLabel, cta_location: "quick_answer" })}>{ctaLabel} <ArrowRight size={16} /></Pill>
-              </div>
+              <h2 className="mt-4 text-[26px] font-bold leading-[1.15] tracking-[-0.02em] sm:text-[30px] md:text-[34px]" style={{ color: NAVY }}>{c.quickAnswer.heading}</h2>
+              <p className="mt-4 text-[16px] leading-[1.75] text-[#5B5F7A] md:text-[17px]">{c.quickAnswer.answer}</p>
               {c.lastUpdated && (
                 <p className="mt-6 flex items-start gap-2 text-xs leading-relaxed text-[#6B7280]">
                   <Clock size={14} className="mt-0.5 shrink-0" />
@@ -507,7 +543,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
               <Card>
                 <ul className="space-y-4">
                   {c.quickAnswer.points.map((p) => (
-                    <li key={p} className="flex gap-3 text-[16px] leading-snug text-[#374151]">
+                    <li key={p} className="flex gap-3 text-[15px] leading-snug text-[#374151]">
                       <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full" style={{ background: `${GREEN}1a`, color: GREEN }}><Check size={14} strokeWidth={3} /></span>{p}
                     </li>
                   ))}
@@ -522,9 +558,9 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
         <section aria-label="Digital Aura in numbers" className="px-5 pb-4 md:px-8" style={{ background: "#fff" }}>
           <ul className="mx-auto grid max-w-7xl grid-cols-2 gap-4 md:grid-cols-4">
             {stats.map((s) => (
-              <li key={s.label} className="rounded-[28px] border bg-white px-5 py-7 text-center" style={{ borderColor: "#EDE3DA", boxShadow: "0 6px 24px rgba(26,29,54,0.05)" }}>
-                <p className="text-4xl font-bold tracking-tight md:text-5xl" style={{ color: NAVY }}>{s.value}</p>
-                <p className="mt-2 text-[14px] text-[#5B5F7A]">{s.label}</p>
+              <li key={s.label} className="rounded-2xl border bg-white px-4 py-4 text-center" style={{ borderColor: "#EDE3DA", boxShadow: "0 2px 10px rgba(26,29,54,0.05)" }}>
+                <p className="text-3xl font-bold tracking-tight md:text-4xl" style={{ color: NAVY }}>{s.value}</p>
+                <p className="mt-1 text-[13.5px] text-[#5B5F7A]">{s.label}</p>
               </li>
             ))}
           </ul>
@@ -607,12 +643,12 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
         <ol className="relative grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {c.process.map((s, i) => (
             <li key={s.title} className="relative">
-              <Card className="flex h-full gap-4 md:block">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-base font-black text-white" style={{ background: i === c.process.length - 1 ? GREEN : ORANGE }}>{i + 1}</span>
-                <div>
-                  <h3 className="text-[16px] font-bold leading-snug md:mt-4" style={{ color: NAVY }}>{s.title}</h3>
-                  <p className="mt-2 text-[14.5px] leading-relaxed text-[#4B5563]">{s.desc}</p>
+              <Card className="h-full">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-[15px] font-extrabold" style={pillar ? { background: `${ORANGE}1a`, color: ORANGE } : { background: i === c.process.length - 1 ? GREEN : ORANGE, color: "#fff", borderRadius: 9999 }}>{i + 1}</span>
+                  <h3 className="text-[16px] font-bold leading-snug" style={{ color: NAVY }}>{s.title}</h3>
                 </div>
+                <p className="mt-2.5 text-[14.5px] leading-relaxed text-[#4B5563]">{s.desc}</p>
               </Card>
               {i < c.process.length - 1 && <ArrowRight size={18} className="absolute -right-4 top-10 hidden text-[#CBD5E1] lg:block" />}
             </li>
@@ -624,7 +660,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
       {early.map((s, i) => <GuideSection key={s.id} sec={s} index={i + 1} />)}
 
       {/* Mid-page call to action */}
-      {c.leadForm && !c.leadFormTop && (
+      {c.leadForm && !c.leadFormTop && !pillar && (
         <section className="relative overflow-hidden px-4 py-14 md:px-8" style={{ background: NAVY }}>
           <div className="pointer-events-none absolute -left-20 top-0 h-72 w-72 rounded-full" style={{ background: `radial-gradient(circle, ${ORANGE}33, transparent 70%)` }} />
           <div className="relative mx-auto flex max-w-5xl flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
@@ -645,7 +681,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
 
       {/* 7. Proof: same components as the home page */}
       <div id="proof" className="scroll-mt-32 xl:scroll-mt-36" style={{ marginBottom: "-60px" }}>
-        <CaseStudies cases={caseCards} sub={caseSub} />
+        <CaseStudies cases={caseCards} sub={caseSub} centered={pillar} />
       </div>
       <Testimonials />
 

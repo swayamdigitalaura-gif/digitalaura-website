@@ -1,0 +1,60 @@
+/*
+ * Layout polish for the Website Development pillar page only (scoped by .wds-pillar).
+ * Same system as the other pillar pages: centred one-line headings, tighter vertical rhythm,
+ * soft icon badges on cards. Written as overrides so the section components keep their CMS keys untouched.
+ */
+.wds-pillar section > div[class*="max-w-7xl"],
+.wds-pillar section > div[class*="max-w-4xl"] {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+@media (min-width: 1024px) {
+  .wds-pillar section > div[class*="max-w-7xl"],
+  .wds-pillar section > div[class*="max-w-4xl"] {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+/* Section header: always centred, wide enough for a one-line title */
+.wds-pillar section > div > div[class*="max-w-2xl"] {
+  max-width: 72rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.wds-pillar section > div > div[class*="max-w-2xl"] > * > p,
+.wds-pillar section > div > div[class*="max-w-2xl"] > p {
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.wds-pillar .text-section {
+  font-size: clamp(1.65rem, 2.6vw, 2.125rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+/* Gap between a header and its grid */
+.wds-pillar section > div > div[class*="mt-14"],
+.wds-pillar section > div > div[class*="mt-16"],
+.wds-pillar section > div > div[class*="mt-12"] {
+  margin-top: 2rem;
+}
+
+/* Cards: tighter padding, soft icon badges */
+.wds-pillar article[class*="p-7"],
+.wds-pillar article[class*="p-6"],
+.wds-pillar article[class*="p-8"] {
+  padding: 1.25rem;
+}
+.wds-pillar span.bg-primary.text-primary-foreground {
+  background-color: hsl(var(--primary) / 0.1);
+  color: hsl(var(--primary));
+}
+.wds-pillar article h3 {
+  font-size: 1.0625rem;
+  line-height: 1.3;
+}

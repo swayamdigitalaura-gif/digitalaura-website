@@ -215,7 +215,7 @@ const App = () => (
           <Route path="/mobile-app-development-ahmedabad" element={<IndustryLandingPage config={localPages.mobileAppAhmedabad} />} />
           <Route path="/mobile-app-development-gujarat" element={<IndustryLandingPage config={localPages.mobileAppGujarat} />} />
           <Route path="/google-ads-agency-ahmedabad" element={<IndustryLandingPage config={localPages.googleAdsAhmedabad} variant="pillar" />} />
-          <Route path="/meta-ads-agency-ahmedabad" element={<IndustryLandingPage config={localPages.metaAdsAhmedabad} variant="pillar" />} />
+          <Route path="/meta-ads-agency-ahmedabad" element={<IndustryLandingPage config={localPages.metaAdsAhmedabad} variant="pillar" officeMap />} />
           <Route path="/digital-marketing-agency-ahmedabad" element={<IndustryLandingPage config={localPages.digitalMarketingAhmedabad} variant="pillar" />} />
           <Route path="/digital-marketing-agency-gujarat" element={<IndustryLandingPage config={localPages.digitalMarketingGujarat} />} />
 

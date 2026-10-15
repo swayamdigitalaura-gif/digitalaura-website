@@ -13,6 +13,7 @@ import {
   FinalCta,
 } from "@/components/website-dev/SectionsC";
 import { CtaBand, CtaBanner, QuickEnquiry } from "@/components/website-dev/Cta";
+import OfficeMap from "@/components/OfficeMap";
 import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
 
@@ -187,6 +188,7 @@ const WebsiteDevelopmentServicesPage = () => {
         </section>
         <Faq />
         <FinalCta />
+        <OfficeMap auditHref="#enquiry" auditLabel="Request a website proposal" />
         <Toaster />
       </div>
     </PageLayout>

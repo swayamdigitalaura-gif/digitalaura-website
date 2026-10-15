@@ -93,9 +93,9 @@ function LandingPage() {
       <AgencyComparison />
       <AdsReels />
       <TeamSection />
-      <VisitUs />
       <FAQ />
       <FinalCTA />
+      <VisitUs />
       <Footer />
       <StickyMobileCTA />
     </main>

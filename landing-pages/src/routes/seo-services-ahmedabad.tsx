@@ -49,12 +49,11 @@ import {
   Lightbulb,
   Briefcase,
   ArrowDown,
+  Download,
 } from "lucide-react";
 import digitalAuraLogo from "@/assets/brand/digital-aura-logo.png";
 import googlePlatformLogo from "@/assets/platform-logos/google-logo.png";
-import clutchBadge from "@/assets/platform-logos/clutch-badge.png";
-import goodfirmsBadge from "@/assets/platform-logos/goodfirms-badge.png";
-import designrushBadge from "@/assets/platform-logos/designrush-badge.webp";
+import sampleAuditPreview from "@/assets/sample-seo-audit-preview.webp";
 import semrushLogo from "@/assets/tool-logos/semrush.png";
 import ahrefsLogo from "@/assets/tool-logos/ahrefs.png";
 import screamingFrogLogo from "@/assets/tool-logos/screaming-frog.png";
@@ -215,10 +214,19 @@ function BreadcrumbAndServiceSchema() {
 
 const SEO_REELS = ["DXwAkPRMl9c", "DTktVf7gdFf", "DcoMJiOskzp"];
 
+const FOUNDER = {
+  name: "Sambhav Shah",
+  role: "Founder & CEO",
+  photo: "/team/sambhav-shah.webp",
+  bio: "Sambhav started in digital marketing in 2015 and built his expertise hands-on, leading business development, client relationships and growing teams. With 10+ years across client acquisition, team leadership and digital execution, he stays personally involved in strategy on every account.",
+};
+
 const TEAM_MEMBERS = [
-  { name: "Jinali Lodariya", role: "SEO Executive", photo: "/team/jinali.png", bio: "Jinali Lodariya specializes in search engine optimization (SEO), focusing on keyword research, on-page optimization, content optimization, and website performance. She works to improve search engine rankings, organic traffic, and overall website visibility." },
-  { name: "Bhavesh Bhavsar", role: "Digital Marketing Executive", photo: "/team/bhavesh.webp", bio: "Bhavesh Bhavsar works on digital marketing activities focused on improving online visibility and business growth. He contributes to SEO, website optimization, content planning, and digital marketing performance to help businesses strengthen their online presence." },
-  { name: "Satish Prajapati", role: "Project Manager & Digital Marketing", photo: "/team/satish.png", bio: "Satish Prajapati leads project management and digital marketing initiatives, ensuring smooth project execution and effective marketing strategies. He focuses on team coordination, campaign planning, and delivering results that support business growth." },
+  { name: "Satish Prajapati", role: "SEO Specialist", photo: "/team/satish.png", bio: "Satish leads SEO delivery and project management on your account. Audit findings become a prioritised plan, and every month's work, report and next step is explained to you clearly." },
+  { name: "Jinali Lodariya", role: "SEO Executive", photo: "/team/jinali.png", bio: "Jinali handles keyword research, on-page optimisation and content improvements. Titles, headings and page copy are worked through so each service page matches what people in Ahmedabad actually search for." },
+  { name: "Bhavesh Bhavsar", role: "SEO Executive", photo: "/team/bhavesh.webp", bio: "Bhavesh looks after website optimisation, content planning and technical checks. The aim is pages that are crawlable, fast and well structured, so Google can find and understand them." },
+  { name: "Krishna Jani", role: "SEO Executive", photo: "/team/krishna.webp", bio: "Krishna supports on-page work, Google Business Profile updates and local search tasks, keeping your listings and pages accurate and consistent across the places customers look." },
+  { name: "Diya Mahida", role: "SEO Executive", photo: "/team/diya.webp", bio: "Diya supports keyword tracking, reporting and content research, and helps prepare the monthly updates that show which pages moved and what to work on next." },
 ];
 
 const FOUNDER_SAME_AS = ["https://www.linkedin.com/in/sambhav-shah/", "https://www.instagram.com/sambhavshah2/"];
@@ -291,16 +299,17 @@ function SEOReels() {
 }
 
 function TeamSection() {
+  const all = [FOUNDER, ...TEAM_MEMBERS];
   return (
     <section id="team" className="bg-surface-2">
       <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-20">
         <SectionHeading
           eyebrow="Our team"
-          title="The people behind your SEO"
-          sub="Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. Meet the in-house team you will work with at our Hanspura office, Ahmedabad."
+          title="Meet the team that ranks your business"
+          sub="Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. This is the in-house team at our Hanspura office, Ahmedabad, that works on your SEO."
         />
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {TEAM_MEMBERS.map((m) => (
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {all.map((m, i) => (
             <div key={m.name} className="rounded-2xl border border-border bg-white p-5">
               <div className="flex items-center gap-3">
                 <img src={m.photo} alt={`${m.name}, ${m.role} at Digital Aura`} width={56} height={56} loading="lazy" className="h-14 w-14 shrink-0 rounded-full bg-surface-2 object-cover" />
@@ -310,15 +319,15 @@ function TeamSection() {
                 </div>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-ink-muted">{m.bio}</p>
+              {i === 0 && (
+                <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+                  <a className="font-bold text-brand-orange underline" href={FOUNDER_SAME_AS[0]} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                  <a className="font-bold text-brand-orange underline" href={FOUNDER_SAME_AS[1]} target="_blank" rel="noopener noreferrer">Instagram</a>
+                </p>
+              )}
             </div>
           ))}
         </div>
-        <p className="mt-6 text-center text-sm text-ink-muted">
-          Founder Sambhav Shah:{" "}
-          <a className="font-bold text-brand-orange underline" href={FOUNDER_SAME_AS[0]} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          {" · "}
-          <a className="font-bold text-brand-orange underline" href={FOUNDER_SAME_AS[1]} target="_blank" rel="noopener noreferrer">Instagram</a>
-        </p>
       </div>
     </section>
   );
@@ -327,7 +336,7 @@ function TeamSection() {
 function PeopleSchema() {
   const org = { "@type": "ProfessionalService", name: "Digital Aura", url: "https://thedigitalaura.com/" };
   const people = [
-    { "@context": "https://schema.org", "@type": "Person", name: "Sambhav Shah", jobTitle: "Founder", worksFor: org, url: "https://thedigitalaura.com/about/", sameAs: FOUNDER_SAME_AS },
+    { "@context": "https://schema.org", "@type": "Person", name: FOUNDER.name, jobTitle: "Founder", description: FOUNDER.bio, worksFor: org, url: "https://thedigitalaura.com/about/", sameAs: FOUNDER_SAME_AS },
     ...TEAM_MEMBERS.map((m) => ({ "@context": "https://schema.org", "@type": "Person", name: m.name, jobTitle: m.role, description: m.bio, worksFor: org })),
   ];
   return (
@@ -447,16 +456,19 @@ function SectionHeading({
   title,
   sub,
   center = true,
+  wide = false,
 }: {
   eyebrow?: string;
   title: React.ReactNode;
   sub?: React.ReactNode;
   center?: boolean;
+  /** Lets a short title stay on one line on desktop. */
+  wide?: boolean;
 }) {
   return (
-    <div className={`${center ? "mx-auto text-center" : ""} max-w-3xl`}>
+    <div className={`${center ? "mx-auto text-center" : ""} ${wide ? "max-w-5xl" : "max-w-3xl"}`}>
       {eyebrow && <SectionLabel>{eyebrow}</SectionLabel>}
-      <h2 className="mt-4 text-3xl font-extrabold leading-[1.05] sm:text-4xl md:text-5xl">{title}</h2>
+      <h2 className={`mt-4 text-3xl font-extrabold leading-[1.05] sm:text-4xl md:text-5xl ${wide ? "lg:whitespace-nowrap" : ""}`}>{title}</h2>
       {sub && <p className="mt-5 text-lg text-ink-muted md:text-xl">{sub}</p>}
     </div>
   );
@@ -769,7 +781,7 @@ function Hero() {
 function QuickAnswer() {
   const links = [
     { href: "/seo/free-audit/", label: "Free SEO audit" },
-    { href: "/downloads/Digital-Aura-Sample-SEO-Audit-Report.pdf", label: "Sample SEO audit report (PDF)", external: true },
+    { href: "/downloads/Digital-Aura-Sample-SEO-Audit-Report.pdf", label: "Sample SEO audit report (PDF)", download: true },
     { href: "/seo/pricing/", label: "SEO packages and pricing" },
     { href: "/blog/seo-in-2026-ai-era/", label: "How SEO works in 2026 (guide)" },
     { href: "/seo/doctors-hospitals-ahmedabad/", label: "SEO for doctors and hospitals" },
@@ -790,7 +802,7 @@ function QuickAnswer() {
                 <li key={l.href}>
                   <a
                     href={l.href}
-                    {...(l.external ? { target: "_blank", rel: "noopener" } : {})}
+                    {...(l.download ? { download: "Digital-Aura-Sample-SEO-Audit-Report.pdf" } : {})}
                     className="inline-flex items-center rounded-full border border-brand-navy/12 bg-white px-4 py-2 text-sm font-semibold text-brand-navy transition-colors hover:border-brand-orange hover:text-brand-orange"
                   >
                     {l.label}
@@ -1482,45 +1494,6 @@ function Testimonials() {
 
 /* ---------------- Rated on top platforms ---------------- */
 
-function RatedOnPlatforms() {
-  const platforms = [
-    { name: "Google", logo: googlePlatformLogo, rating: "5.0", reviews: "100+ Reviews" },
-    { name: "Clutch", logo: clutchBadge, rating: "4.9", reviews: "50+ Reviews" },
-    { name: "GoodFirms", logo: goodfirmsBadge, rating: "4.8", reviews: "40+ Reviews" },
-    { name: "DesignRush", logo: designrushBadge, rating: "4.7", reviews: "30+ Reviews" },
-  ];
-  return (
-    <section className="bg-surface-2">
-      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
-        <SectionHeading
-          eyebrow="Verified reviews"
-          title="Rated on the platforms that matter"
-          sub="Independently reviewed by clients on the review platforms B2B buyers actually check."
-        />
-        <Reveal className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
-          {platforms.map(({ name, logo, rating, reviews }) => (
-            <div
-              key={name}
-              className="da-shadow-card da-card-hover flex h-full flex-col items-center justify-between gap-4 rounded-2xl border border-brand-navy/12 bg-white p-7 text-center"
-            >
-              <img src={logo} alt={`${name} rating badge`} className="h-24 w-auto max-w-[170px] object-contain" />
-              <div>
-                <div className="flex items-center justify-center gap-0.5 text-brand-orange">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-3.5 w-3.5 fill-current" />
-                  ))}
-                </div>
-                <div className="mt-1 text-lg font-extrabold text-brand-navy">{rating}</div>
-                <div className="text-xs text-ink-muted">{reviews}</div>
-              </div>
-            </div>
-          ))}
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
 /* ---------------- Why Businesses Choose Digital Aura ---------------- */
 
 function WhyChooseUs() {
@@ -1538,6 +1511,7 @@ function WhyChooseUs() {
     <section className="bg-white">
       <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
         <SectionHeading
+          wide
           eyebrow="Why Digital Aura"
           title={<>Why Businesses Choose <span className="text-brand-orange">Digital Aura</span></>}
           sub="Real reasons businesses across Ahmedabad call us the leading SEO company in Ahmedabad."
@@ -2112,8 +2086,35 @@ function SEOServicesScope() {
         <p className="mx-auto mt-8 max-w-3xl text-center text-ink-muted">
           Not sure which of these your business needs first? Start with the{" "}
           <a className="font-semibold text-brand-orange underline" href="/seo/free-audit/">free SEO audit</a>. It shows where you stand and what to fix first, and you can see what it looks like in the{" "}
-          <a className="font-semibold text-brand-orange underline" href="/downloads/Digital-Aura-Sample-SEO-Audit-Report.pdf" target="_blank" rel="noopener">sample audit report (PDF)</a>.
+          <a className="font-semibold text-brand-orange underline" href="/downloads/Digital-Aura-Sample-SEO-Audit-Report.pdf" download="Digital-Aura-Sample-SEO-Audit-Report.pdf">sample audit report (PDF)</a>.
         </p>
+        <Reveal className="mx-auto mt-10 max-w-3xl">
+          <a
+            href="/downloads/Digital-Aura-Sample-SEO-Audit-Report.pdf"
+            download="Digital-Aura-Sample-SEO-Audit-Report.pdf"
+            className="da-shadow-card da-card-hover group grid items-center gap-6 rounded-2xl border border-brand-navy/12 bg-white p-5 sm:grid-cols-[220px_1fr] sm:p-6"
+          >
+            <img
+              src={sampleAuditPreview}
+              alt="First page of the Digital Aura sample SEO audit report, with the client name hidden"
+              width={640}
+              height={707}
+              loading="lazy"
+              decoding="async"
+              className="mx-auto w-full max-w-[220px] rounded-lg border border-brand-navy/12 shadow-sm"
+            />
+            <div className="text-center sm:text-left">
+              <p className="text-xs font-bold uppercase tracking-wider text-brand-orange">Sample report</p>
+              <h3 className="mt-2 text-xl font-extrabold text-brand-navy">See what a Digital Aura SEO audit looks like</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+                A real audit with the client details hidden: keyword rankings, backlinks, page-by-page findings, Core Web Vitals and a prioritised plan. Download the full PDF.
+              </p>
+              <span className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-primary-foreground">
+                <Download className="h-4 w-4" /> Download the sample audit (PDF)
+              </span>
+            </div>
+          </a>
+        </Reveal>
       </div>
     </section>
   );
@@ -2243,23 +2244,26 @@ function SEOPricing() {
   );
 }
 
-function VisitUs() {
+const MAPS_EMBED = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3670.4042735126313!2d72.6881782!3d23.082292199999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e83bdb5cc83a9%3A0xcbe9af162f4cdebc!2sDigital%20Aura!5e0!3m2!1sen!2sin!4v1792055176408!5m2!1sen!2sin";
+
+/** Map and contact details, placed directly above the site footer. */
+function OfficeMap() {
   return (
     <section id="visit-us" className="bg-white">
-      <div className="mx-auto max-w-5xl px-5 py-16 md:px-8 md:py-20">
-        <SectionHeading
-          eyebrow="Visit us"
-          title="Meet the team at our Hanspura office"
-          sub="You can talk to the people who will work on your account before you decide. Call, message or drop in."
-        />
-        <Reveal className="mt-10 grid gap-5 md:grid-cols-2">
-          <div className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-7">
-            <h3 className="text-lg font-bold text-brand-navy">Digital Aura</h3>
-            <address className="mt-3 not-italic text-sm leading-relaxed text-ink-muted">
-              713, Shilp Arcade, Sardar Patel Ring Road,<br />Hanspura, Ahmedabad, Gujarat 382330
-            </address>
-            <p className="mt-3 text-sm text-ink-muted">Monday to Saturday, 10 AM to 7 PM. Closed on Sunday.</p>
-            <a className="mt-4 inline-block text-sm font-bold text-brand-orange underline" href="https://www.google.com/maps/search/?api=1&query=Digital+Aura+713+Shilp+Arcade+Sardar+Patel+Ring+Road+Hanspura+Ahmedabad+382330" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+      <div className="mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-16">
+        <h2 className="sr-only">Find Digital Aura in Hanspura, Ahmedabad</h2>
+        <Reveal className="grid gap-5 md:grid-cols-[1.6fr_1fr]">
+          <div className="da-shadow-card overflow-hidden rounded-2xl border border-brand-navy/12 bg-surface-2">
+            <iframe
+              src={MAPS_EMBED}
+              title="Digital Aura office on Google Maps: 713, Shilp Arcade, Sardar Patel Ring Road, Hanspura, Ahmedabad"
+              width="600"
+              height="450"
+              style={{ border: 0, width: "100%", height: "100%", minHeight: 320, display: "block" }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
           </div>
           <div className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-7">
             <h3 className="text-lg font-bold text-brand-navy">Talk to us</h3>
@@ -2529,7 +2533,6 @@ function Index() {
         <GSCSnapshots />
         <ClientLogoWall />
         <Testimonials />
-        <RatedOnPlatforms />
         <WhyChooseUs />
         <GAReporting />
         <CertifiedTrusted />
@@ -2542,9 +2545,9 @@ function Index() {
         <SEOvsAds />
         <SEOReels />
         <TeamSection />
-        <VisitUs />
         <FAQ />
         <FinalCTA />
+        <OfficeMap />
       </main>
       <MainSiteFooter />
       <FloatingWhatsApp />

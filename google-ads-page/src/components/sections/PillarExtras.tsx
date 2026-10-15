@@ -224,9 +224,19 @@ export function AgencyComparison() {
 
 const ADS_REELS = ["DbpWKskDuEi", "DXkCXfnDBZE"];
 
+export const FOUNDER = {
+  name: "Sambhav Shah",
+  role: "Founder & CEO",
+  photo: "/team/sambhav-shah.webp",
+  bio: "Sambhav started in digital marketing in 2015 and built his expertise hands-on, leading business development, client relationships and growing teams. With 10+ years across client acquisition, team leadership and digital execution, he stays personally involved in strategy on every account.",
+};
+
 export const TEAM_MEMBERS = [
-  { name: "Satish Prajapati", role: "Project Manager & Digital Marketing", photo: "/team/satish.png", bio: "Satish Prajapati leads project management and digital marketing initiatives, ensuring smooth project execution and effective marketing strategies. He focuses on team coordination, campaign planning, and delivering results that support business growth." },
-  { name: "Bhavesh Bhavsar", role: "Digital Marketing Executive", photo: "/team/bhavesh.webp", bio: "Bhavesh Bhavsar works on digital marketing activities focused on improving online visibility and business growth. He contributes to SEO, website optimization, content planning, and digital marketing performance to help businesses strengthen their online presence." },
+  { name: "Satish Prajapati", role: "Google Ads Specialist", photo: "/team/satish.png", bio: "Satish plans account structure, budgets and bidding, and keeps campaigns tied to the enquiries you want. Satish also coordinates the team and walks you through each month's results." },
+  { name: "Jinali Lodariya", role: "Google Ads Executive", photo: "/team/jinali.png", bio: "Jinali handles keyword research, search term reviews and ad copy tests. The work focuses on removing wasted clicks and keeping ads matched to what buyers actually search for." },
+  { name: "Bhavesh Bhavsar", role: "Google Ads Executive", photo: "/team/bhavesh.webp", bio: "Bhavesh manages campaign setup, conversion tracking and daily checks, so calls, forms and WhatsApp clicks are counted correctly and budgets stay on track." },
+  { name: "Krishna Jani", role: "Google Ads Executive", photo: "/team/krishna.webp", bio: "Krishna supports campaign optimisation and landing page checks, making sure the page a visitor lands on keeps the promise made in the ad." },
+  { name: "Diya Mahida", role: "Google Ads Executive", photo: "/team/diya.webp", bio: "Diya prepares performance reports and audience and placement reviews, turning account data into clear next steps for the team and for you." },
 ];
 
 export const FOUNDER_SAME_AS = ["https://www.linkedin.com/in/sambhav-shah/", "https://www.instagram.com/sambhavshah2/"];
@@ -301,17 +311,18 @@ export function AdsReels() {
 }
 
 export function TeamSection() {
+  const all = [FOUNDER, ...TEAM_MEMBERS];
   return (
     <Section id="team" className="bg-surface-cream">
       <div className="mx-auto max-w-3xl text-center">
         <Eyebrow>Our team</Eyebrow>
-        <H2 className="mt-6">The team behind your Google Ads</H2>
+        <H2 className="mt-6">Meet the team that guards your ad spend</H2>
         <Lead className="mt-6 mx-auto">
-          Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. Meet the in-house team you will work with at our Hanspura office, Ahmedabad.
+          Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. This is the in-house team at our Hanspura office, Ahmedabad, that runs your Google Ads.
         </Lead>
       </div>
-      <div className="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-5 md:grid-cols-2">
-        {TEAM_MEMBERS.map((m) => (
+      <div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {all.map((m, i) => (
           <div key={m.name} className={card}>
             <div className="flex items-center gap-3">
               <img src={m.photo} alt={`${m.name}, ${m.role} at Digital Aura`} width={56} height={56} loading="lazy" className="size-14 shrink-0 rounded-full bg-surface-cream object-cover" />
@@ -321,15 +332,15 @@ export function TeamSection() {
               </div>
             </div>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{m.bio}</p>
+            {i === 0 && (
+              <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+                <a className="font-semibold text-primary underline" href={FOUNDER_SAME_AS[0]} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a className="font-semibold text-primary underline" href={FOUNDER_SAME_AS[1]} target="_blank" rel="noopener noreferrer">Instagram</a>
+              </p>
+            )}
           </div>
         ))}
       </div>
-      <p className="mt-6 text-center text-sm text-muted-foreground">
-        Founder Sambhav Shah:{" "}
-        <a className="font-semibold text-primary underline" href={FOUNDER_SAME_AS[0]} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        {" · "}
-        <a className="font-semibold text-primary underline" href={FOUNDER_SAME_AS[1]} target="_blank" rel="noopener noreferrer">Instagram</a>
-      </p>
     </Section>
   );
 }
@@ -337,7 +348,7 @@ export function TeamSection() {
 export function PeopleSchema() {
   const org = { "@type": "LocalBusiness", "@id": "https://thedigitalaura.com/#localbusiness", name: "Digital Aura" };
   const people = [
-    { "@context": "https://schema.org", "@type": "Person", name: "Sambhav Shah", jobTitle: "Founder", worksFor: org, url: "https://thedigitalaura.com/about/", sameAs: FOUNDER_SAME_AS },
+    { "@context": "https://schema.org", "@type": "Person", name: FOUNDER.name, jobTitle: "Founder", description: FOUNDER.bio, worksFor: org, url: "https://thedigitalaura.com/about/", sameAs: FOUNDER_SAME_AS },
     ...TEAM_MEMBERS.map((m) => ({ "@context": "https://schema.org", "@type": "Person", name: m.name, jobTitle: m.role, description: m.bio, worksFor: org })),
   ];
   return (
@@ -481,22 +492,25 @@ export function First90Days() {
 
 /* ---------- Visit or contact us (local trust). Details confirmed by the owner. ---------- */
 
+const MAPS_EMBED = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3670.4042735126313!2d72.6881782!3d23.082292199999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e83bdb5cc83a9%3A0xcbe9af162f4cdebc!2sDigital%20Aura!5e0!3m2!1sen!2sin!4v1792055176408!5m2!1sen!2sin";
+
+/** Map and contact details, placed directly above the site footer. */
 export function VisitUs() {
   return (
     <Section id="visit-us" className="bg-white">
-      <div className="max-w-3xl">
-        <Eyebrow>Visit us</Eyebrow>
-        <H2 className="mt-6">Meet the team at our Hanspura office</H2>
-        <Lead className="mt-6">Talk to the people who will run your account before you decide. Call, message or drop in.</Lead>
-      </div>
-      <div className="mt-10 grid gap-5 md:grid-cols-2">
-        <div className={card}>
-          <h3 className="font-display text-[18px] font-bold text-navy">Digital Aura</h3>
-          <address className="mt-3 not-italic text-[15px] leading-relaxed text-muted-foreground">
-            713, Shilp Arcade, Sardar Patel Ring Road,<br />Hanspura, Ahmedabad, Gujarat 382330
-          </address>
-          <p className="mt-3 text-[15px] text-muted-foreground">Monday to Saturday, 10 AM to 7 PM. Closed on Sunday.</p>
-          <a className="mt-4 inline-block text-[14px] font-semibold text-primary underline" href="https://www.google.com/maps/search/?api=1&query=Digital+Aura+713+Shilp+Arcade+Sardar+Patel+Ring+Road+Hanspura+Ahmedabad+382330" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+      <h2 className="sr-only">Find Digital Aura in Hanspura, Ahmedabad</h2>
+      <div className="grid gap-5 md:grid-cols-[1.6fr_1fr]">
+        <div className="overflow-hidden rounded-2xl border border-border bg-surface-cream shadow-xs">
+          <iframe
+            src={MAPS_EMBED}
+            title="Digital Aura office on Google Maps: 713, Shilp Arcade, Sardar Patel Ring Road, Hanspura, Ahmedabad"
+            width="600"
+            height="450"
+            style={{ border: 0, width: "100%", height: "100%", minHeight: 320, display: "block" }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="strict-origin-when-cross-origin"
+          />
         </div>
         <div className={card}>
           <h3 className="font-display text-[18px] font-bold text-navy">Talk to us</h3>

@@ -21,7 +21,8 @@ import PillarLinks from "@/components/PillarLinks";
 import { renderInline } from "@/lib/inlineLinks";
 import BlogInsights from "@/components/BlogInsights";
 import AdsCalculator from "@/components/AdsCalculators";
-import { ReelGrid, FounderLinks } from "@/components/ReelsAndTeam";
+import { ReelGrid, FounderLinks, MemberLinks } from "@/components/ReelsAndTeam";
+import OfficeMap from "@/components/OfficeMap";
 import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
 import type { ExtraSection, LocalServiceConfig } from "@/components/LocalServicePage";
@@ -251,7 +252,7 @@ function GuideSection({ sec, index }: { sec: ExtraSection; index: number }) {
     return (
       <Wrap id={sec.id} bg={bg}>
         <Head eyebrow={eyebrow} title={sec.title} sub={sub} />
-        <div className={`mx-auto grid gap-5 ${sec.members.length >= 3 ? "md:grid-cols-3" : "max-w-3xl md:grid-cols-2"}`}>
+        <div className={`mx-auto grid gap-5 ${sec.members.length > 3 ? "sm:grid-cols-2 lg:grid-cols-3" : sec.members.length === 3 ? "md:grid-cols-3" : "max-w-3xl md:grid-cols-2"}`}>
           {sec.members.map((m) => (
             <Card key={m.name}>
               <div className="flex items-center gap-3">
@@ -262,6 +263,7 @@ function GuideSection({ sec, index }: { sec: ExtraSection; index: number }) {
                 </div>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-[#4B5563]">{m.bio}</p>
+              <MemberLinks links={m.links} accent={ORANGE} />
             </Card>
           ))}
         </div>
@@ -303,7 +305,7 @@ function Faq({ q, a }: { q: string; a: string }) {
 
 /* ───────────── page ───────────── */
 
-export default function IndustryLandingPage({ config, variant = "industry" }: { config: LocalServiceConfig; variant?: Variant }) {
+export default function IndustryLandingPage({ config, variant = "industry", officeMap = false }: { config: LocalServiceConfig; variant?: Variant; /** Show the Google Map + "Talk to us" block above the footer instead of the "Visit us" card. */ officeMap?: boolean }) {
   const pillar = variant === "pillar";
   useCMSEditor();
   // Same admin-edited copy overrides as LocalServicePage (settings keys are namespaced by slug), so nothing edited in the CMS is lost.
@@ -675,6 +677,7 @@ export default function IndustryLandingPage({ config, variant = "industry" }: { 
                     </div>
                   </div>
                   <p className="mt-3 text-sm leading-relaxed text-[#4B5563]">{m.bio}</p>
+                  <MemberLinks links={m.links} accent={ORANGE} />
                 </Card>
               ))}
             </div>
@@ -710,7 +713,7 @@ export default function IndustryLandingPage({ config, variant = "industry" }: { 
       )}
 
       {/* 11. Trust: who is behind this + where to find us */}
-      {(about || visit) && (
+      {(about || (visit && !officeMap)) && (
         <Wrap id="about" bg="#F8FAFF">
           <div className="mx-auto grid max-w-4xl gap-6">
             {about && about.kind === "text" && (
@@ -725,7 +728,7 @@ export default function IndustryLandingPage({ config, variant = "industry" }: { 
                 )}
               </Card>
             )}
-            {visit && visit.kind === "text" && (
+            {visit && !officeMap && visit.kind === "text" && (
               <Card className="p-7">
                 <Eyebrow>{visit.eyebrow}</Eyebrow>
                 <h2 className="mt-4 text-xl font-black md:text-2xl" style={{ color: NAVY }}>{visit.title}</h2>
@@ -862,6 +865,7 @@ export default function IndustryLandingPage({ config, variant = "industry" }: { 
         </>
       )}
       <PillarLinks slug={config.slug} />
+      {officeMap && <OfficeMap auditHref={"#" + formId} auditLabel="Get a free account review" />}
     </PageLayout>
     </VariantCtx.Provider>
   );

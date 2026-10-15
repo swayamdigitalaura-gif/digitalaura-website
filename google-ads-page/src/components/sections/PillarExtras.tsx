@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, MapPin, X } from "lucide-react";
+import { ArrowRight, Check, Clock, Mail, MapPin, MessageCircle, Phone, X } from "lucide-react";
 import { Eyebrow, H2, Lead, PrimaryCTA, SecondaryCTA, Section } from "../shared/SectionPrimitives";
 
 /* Sections added from the page blueprint (gads-01). Deliberately free of new
@@ -496,32 +496,53 @@ const MAPS_EMBED = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3670.4
 
 /** Map and contact details, placed directly above the site footer. */
 export function VisitUs() {
+  const rows = [
+    { Icon: Phone, label: "Call us", value: "+91 81412 00284", href: "tel:+918141200284" },
+    { Icon: MessageCircle, label: "WhatsApp", value: "Message us", href: "https://wa.me/918141200284" },
+    { Icon: Mail, label: "Email", value: "info@thedigitalaura.com", href: "mailto:info@thedigitalaura.com" },
+  ];
   return (
-    <Section id="visit-us" className="bg-white">
-      <h2 className="sr-only">Find Digital Aura in Hanspura, Ahmedabad</h2>
-      <div className="grid gap-5 md:grid-cols-[1.6fr_1fr]">
-        <div className="overflow-hidden rounded-2xl border border-border bg-surface-cream shadow-xs">
+    <Section id="visit-us" className="bg-surface-cream">
+      <div className="mx-auto max-w-5xl text-center">
+        <Eyebrow>Find us</Eyebrow>
+        <H2 className="mt-6 lg:!text-[40px]">Talk to us, or drop in at our Hanspura office</H2>
+      </div>
+      <div className="mx-auto mt-10 grid max-w-6xl overflow-hidden rounded-2xl border border-border bg-white shadow-xs md:grid-cols-[1.5fr_1fr]">
+        <div className="relative min-h-[300px] bg-surface-cream md:min-h-[440px]">
           <iframe
             src={MAPS_EMBED}
             title="Digital Aura office on Google Maps: 713, Shilp Arcade, Sardar Patel Ring Road, Hanspura, Ahmedabad"
             width="600"
             height="450"
-            style={{ border: 0, width: "100%", height: "100%", minHeight: 320, display: "block" }}
+            className="absolute inset-0 h-full w-full"
+            style={{ border: 0 }}
             allowFullScreen
             loading="lazy"
             referrerPolicy="strict-origin-when-cross-origin"
           />
         </div>
-        <div className={card}>
-          <h3 className="font-display text-[18px] font-bold text-navy">Talk to us</h3>
-          <ul className="mt-3 space-y-2 text-[15px] text-muted-foreground">
-            <li>Phone: <a className="font-semibold text-primary underline" href="tel:+918141200284">+91 81412 00284</a></li>
-            <li>WhatsApp: <a className="font-semibold text-primary underline" href="https://wa.me/918141200284">message us</a></li>
-            <li>Email: <a className="font-semibold text-primary underline" href="mailto:info@thedigitalaura.com">info@thedigitalaura.com</a></li>
+        <div className="flex flex-col p-6 md:p-8">
+          <h3 className="font-display text-[22px] font-bold text-navy">Talk to us</h3>
+          <ul className="mt-5 space-y-4">
+            {rows.map(({ Icon, label, value, href }) => (
+              <li key={label}>
+                <a href={href} className="group flex items-center gap-3">
+                  <span className="grid size-10 shrink-0 place-items-center rounded-full bg-primary/10 text-primary"><Icon className="size-5" /></span>
+                  <span className="min-w-0">
+                    <span className="block text-[12px] font-semibold uppercase tracking-wider text-muted-foreground">{label}</span>
+                    <span className="block truncate text-[15px] font-bold text-navy group-hover:text-primary">{value}</span>
+                  </span>
+                </a>
+              </li>
+            ))}
           </ul>
-          <p className="mt-4 text-[15px] text-muted-foreground">
-            Prefer to start with a review? <a className="font-semibold text-primary underline" href="/google-ads-audit-ahmedabad/">Request the free Google Ads audit</a>.
-          </p>
+          <div className="mt-6 space-y-3 border-t border-border pt-5 text-[14px] text-muted-foreground">
+            <p className="flex items-start gap-3"><MapPin className="mt-0.5 size-4 shrink-0 text-primary" /><span>713, Shilp Arcade, Sardar Patel Ring Road, Hanspura, Ahmedabad, Gujarat 382330</span></p>
+            <p className="flex items-start gap-3"><Clock className="mt-0.5 size-4 shrink-0 text-primary" /><span>Monday to Saturday, 10 AM to 7 PM. Closed on Sunday.</span></p>
+          </div>
+          <div className="mt-6 md:mt-auto md:pt-6">
+            <PrimaryCTA href="/google-ads-audit-ahmedabad/" className="w-full !px-6 !text-[16px]">Request the free Google Ads audit</PrimaryCTA>
+          </div>
         </div>
       </div>
     </Section>

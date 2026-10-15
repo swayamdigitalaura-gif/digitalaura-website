@@ -53,7 +53,7 @@ import {
 } from "lucide-react";
 import digitalAuraLogo from "@/assets/brand/digital-aura-logo.png";
 import googlePlatformLogo from "@/assets/platform-logos/google-logo.png";
-import sampleAuditPreview from "@/assets/sample-seo-audit-preview.webp";
+import sampleAuditSnapshot from "@/assets/sample-seo-audit-snapshot.webp";
 import semrushLogo from "@/assets/tool-logos/semrush.png";
 import ahrefsLogo from "@/assets/tool-logos/ahrefs.png";
 import screamingFrogLogo from "@/assets/tool-logos/screaming-frog.png";
@@ -407,14 +407,17 @@ function PrimaryCTA({
   children,
   href = "#audit",
   className = "",
+  download,
 }: {
   children: React.ReactNode;
   href?: string;
   className?: string;
+  download?: string;
 }) {
   return (
     <a
       href={href}
+      download={download}
       className={`da-shadow-cta da-focus-ring da-btn-sheen group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-base font-bold text-primary-foreground transition-all hover:-translate-y-0.5 hover:brightness-110 active:translate-y-0 active:brightness-95 ${className}`}
     >
       {children}
@@ -1494,6 +1497,43 @@ function Testimonials() {
 
 /* ---------------- Rated on top platforms ---------------- */
 
+/* ---------------- Sample audit report snapshot ---------------- */
+
+const SAMPLE_AUDIT_PDF = "/downloads/Digital-Aura-Sample-SEO-Audit-Report.pdf";
+
+function SampleAuditSnapshot() {
+  return (
+    <section id="sample-audit" className="bg-white">
+      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
+        <SectionHeading
+          eyebrow="Sample report"
+          title="See what a Digital Aura SEO audit looks like"
+          sub="A real audit with the client's details hidden: rankings, backlinks, page-by-page findings, Core Web Vitals and a prioritised plan."
+        />
+        <Reveal className="mx-auto mt-12 max-w-[1100px]">
+          <a href={SAMPLE_AUDIT_PDF} download="Digital-Aura-Sample-SEO-Audit-Report.pdf" className="da-shadow-card block overflow-hidden rounded-[18px] border border-brand-navy/10 bg-white">
+            <img
+              src={sampleAuditSnapshot}
+              alt="Two pages of the Digital Aura sample SEO audit report: the site health summary and a critical finding, with the client name hidden"
+              width={1600}
+              height={1223}
+              loading="lazy"
+              decoding="async"
+              className="h-auto w-full object-contain"
+            />
+          </a>
+          <div className="mt-8 flex flex-col items-center gap-3 text-center">
+            <PrimaryCTA href={SAMPLE_AUDIT_PDF} download="Digital-Aura-Sample-SEO-Audit-Report.pdf">
+              Download the full sample report (PDF)
+            </PrimaryCTA>
+            <p className="text-sm text-ink-muted">31 pages, PDF. Opens as a download in this tab.</p>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------- Why Businesses Choose Digital Aura ---------------- */
 
 function WhyChooseUs() {
@@ -2085,36 +2125,8 @@ function SEOServicesScope() {
         </Reveal>
         <p className="mx-auto mt-8 max-w-3xl text-center text-ink-muted">
           Not sure which of these your business needs first? Start with the{" "}
-          <a className="font-semibold text-brand-orange underline" href="/seo/free-audit/">free SEO audit</a>. It shows where you stand and what to fix first, and you can see what it looks like in the{" "}
-          <a className="font-semibold text-brand-orange underline" href="/downloads/Digital-Aura-Sample-SEO-Audit-Report.pdf" download="Digital-Aura-Sample-SEO-Audit-Report.pdf">sample audit report (PDF)</a>.
+          <a className="font-semibold text-brand-orange underline" href="/seo/free-audit/">free SEO audit</a>. It shows where you stand and what to fix first.
         </p>
-        <Reveal className="mx-auto mt-10 max-w-3xl">
-          <a
-            href="/downloads/Digital-Aura-Sample-SEO-Audit-Report.pdf"
-            download="Digital-Aura-Sample-SEO-Audit-Report.pdf"
-            className="da-shadow-card da-card-hover group grid items-center gap-6 rounded-2xl border border-brand-navy/12 bg-white p-5 sm:grid-cols-[220px_1fr] sm:p-6"
-          >
-            <img
-              src={sampleAuditPreview}
-              alt="First page of the Digital Aura sample SEO audit report, with the client name hidden"
-              width={640}
-              height={707}
-              loading="lazy"
-              decoding="async"
-              className="mx-auto w-full max-w-[220px] rounded-lg border border-brand-navy/12 shadow-sm"
-            />
-            <div className="text-center sm:text-left">
-              <p className="text-xs font-bold uppercase tracking-wider text-brand-orange">Sample report</p>
-              <h3 className="mt-2 text-xl font-extrabold text-brand-navy">See what a Digital Aura SEO audit looks like</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-                A real audit with the client details hidden: keyword rankings, backlinks, page-by-page findings, Core Web Vitals and a prioritised plan. Download the full PDF.
-              </p>
-              <span className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-primary-foreground">
-                <Download className="h-4 w-4" /> Download the sample audit (PDF)
-              </span>
-            </div>
-          </a>
-        </Reveal>
       </div>
     </section>
   );
@@ -2248,33 +2260,51 @@ const MAPS_EMBED = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3670.4
 
 /** Map and contact details, placed directly above the site footer. */
 function OfficeMap() {
+  const rows = [
+    { Icon: Phone, label: "Call us", value: "+91 81412 00284", href: "tel:+918141200284" },
+    { Icon: MessageCircle, label: "WhatsApp", value: "Message us", href: "https://wa.me/918141200284" },
+    { Icon: Mail, label: "Email", value: "info@thedigitalaura.com", href: "mailto:info@thedigitalaura.com" },
+  ];
   return (
-    <section id="visit-us" className="bg-white">
-      <div className="mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-16">
-        <h2 className="sr-only">Find Digital Aura in Hanspura, Ahmedabad</h2>
-        <Reveal className="grid gap-5 md:grid-cols-[1.6fr_1fr]">
-          <div className="da-shadow-card overflow-hidden rounded-2xl border border-brand-navy/12 bg-surface-2">
+    <section id="visit-us" className="bg-surface-2">
+      <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-20">
+        <SectionHeading eyebrow="Find us" title="Talk to us, or drop in at our Hanspura office" />
+        <Reveal className="da-shadow-card mt-10 grid overflow-hidden rounded-2xl border border-brand-navy/12 bg-white md:grid-cols-[1.5fr_1fr]">
+          <div className="relative min-h-[300px] bg-surface-2 md:min-h-[420px]">
             <iframe
               src={MAPS_EMBED}
               title="Digital Aura office on Google Maps: 713, Shilp Arcade, Sardar Patel Ring Road, Hanspura, Ahmedabad"
               width="600"
               height="450"
-              style={{ border: 0, width: "100%", height: "100%", minHeight: 320, display: "block" }}
+              className="absolute inset-0 h-full w-full"
+              style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="strict-origin-when-cross-origin"
             />
           </div>
-          <div className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-7">
-            <h3 className="text-lg font-bold text-brand-navy">Talk to us</h3>
-            <ul className="mt-3 space-y-2 text-sm text-ink-muted">
-              <li>Phone: <a className="font-semibold text-brand-orange underline" href="tel:+918141200284">+91 81412 00284</a></li>
-              <li>WhatsApp: <a className="font-semibold text-brand-orange underline" href="https://wa.me/918141200284">message us</a></li>
-              <li>Email: <a className="font-semibold text-brand-orange underline" href="mailto:info@thedigitalaura.com">info@thedigitalaura.com</a></li>
+          <div className="flex flex-col p-6 md:p-8">
+            <h3 className="text-xl font-extrabold text-brand-navy">Talk to us</h3>
+            <ul className="mt-5 space-y-4">
+              {rows.map(({ Icon, label, value, href }) => (
+                <li key={label}>
+                  <a href={href} className="group flex items-center gap-3">
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-orange-soft text-brand-orange"><Icon className="h-5 w-5" /></span>
+                    <span className="min-w-0">
+                      <span className="block text-xs font-semibold uppercase tracking-wider text-ink-muted">{label}</span>
+                      <span className="block truncate text-sm font-bold text-brand-navy group-hover:text-brand-orange">{value}</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
             </ul>
-            <p className="mt-4 text-sm text-ink-muted">
-              Prefer to start with a review of your site? <a className="font-semibold text-brand-orange underline" href="/seo/free-audit/">Request the free SEO audit</a>.
-            </p>
+            <div className="mt-6 space-y-3 border-t border-brand-navy/10 pt-5 text-sm text-ink-muted">
+              <p className="flex items-start gap-3"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" /><span>713, Shilp Arcade, Sardar Patel Ring Road, Hanspura, Ahmedabad, Gujarat 382330</span></p>
+              <p className="flex items-start gap-3"><Clock className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" /><span>Monday to Saturday, 10 AM to 7 PM. Closed on Sunday.</span></p>
+            </div>
+            <div className="mt-6 md:mt-auto md:pt-6">
+              <PrimaryCTA href="/seo/free-audit/" className="w-full">Request the free SEO audit</PrimaryCTA>
+            </div>
           </div>
         </Reveal>
       </div>
@@ -2531,6 +2561,7 @@ function Index() {
         <SEOToolsWeUse />
         <Results />
         <GSCSnapshots />
+        <SampleAuditSnapshot />
         <ClientLogoWall />
         <Testimonials />
         <WhyChooseUs />

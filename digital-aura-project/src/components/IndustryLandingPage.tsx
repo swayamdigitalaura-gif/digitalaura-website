@@ -13,7 +13,7 @@ import {
   ArrowRight, Check, X, Phone, MessageCircle, MapPin, ShieldAlert, Sparkles, Info, Clock, FileText,
 } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
-import CaseStudies from "@/components/CaseStudies";
+import CaseStudies, { type CaseCard } from "@/components/CaseStudies";
 import Testimonials from "@/components/Testimonials";
 import PageLeadForm from "@/components/PageLeadForm";
 import { StickyCtaBar } from "@/components/PageCta";
@@ -305,7 +305,7 @@ function Faq({ q, a }: { q: string; a: string }) {
 
 /* ───────────── page ───────────── */
 
-export default function IndustryLandingPage({ config, variant = "industry", officeMap = false }: { config: LocalServiceConfig; variant?: Variant; /** Show the Google Map + "Talk to us" block above the footer instead of the "Visit us" card. */ officeMap?: boolean }) {
+export default function IndustryLandingPage({ config, variant = "industry", officeMap = false, caseCards, caseSub }: { config: LocalServiceConfig; variant?: Variant; /** Service-specific case study cards (defaults to the home page set). */ caseCards?: CaseCard[]; caseSub?: string; /** Show the Google Map + "Talk to us" block above the footer instead of the "Visit us" card. */ officeMap?: boolean }) {
   const pillar = variant === "pillar";
   useCMSEditor();
   // Same admin-edited copy overrides as LocalServicePage (settings keys are namespaced by slug), so nothing edited in the CMS is lost.
@@ -645,7 +645,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
 
       {/* 7. Proof: same components as the home page */}
       <div id="proof" className="scroll-mt-32 xl:scroll-mt-36" style={{ marginBottom: "-60px" }}>
-        <CaseStudies />
+        <CaseStudies cases={caseCards} sub={caseSub} />
       </div>
       <Testimonials />
 

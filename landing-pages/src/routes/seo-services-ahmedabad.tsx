@@ -31,8 +31,6 @@ import {
   ShoppingCart,
   GraduationCap,
   Wrench,
-  Eye,
-  Baby,
   Dumbbell,
   Plane,
   Loader2,
@@ -53,7 +51,7 @@ import {
 } from "lucide-react";
 import digitalAuraLogo from "@/assets/brand/digital-aura-logo.png";
 import googlePlatformLogo from "@/assets/platform-logos/google-logo.png";
-import sampleAuditSnapshot from "@/assets/sample-seo-audit-snapshot.webp";
+import sampleAuditPage1 from "@/assets/sample-seo-audit-page1.webp";
 import semrushLogo from "@/assets/tool-logos/semrush.png";
 import ahrefsLogo from "@/assets/tool-logos/ahrefs.png";
 import screamingFrogLogo from "@/assets/tool-logos/screaming-frog.png";
@@ -1126,14 +1124,14 @@ function Process() {
 
 function SEOToolsWeUse() {
   const tools = [
+    { name: "Google Search Console", logo: googleSearchConsoleToolLogo, use: "Indexing & search performance" },
+    { name: "Google Analytics", logo: googleAnalyticsToolLogo, use: "Traffic & conversion data" },
     { name: "Semrush", logo: semrushLogo, use: "Competitive keyword & market research" },
     { name: "Ahrefs", logo: ahrefsLogo, use: "Backlink & content gap analysis" },
     { name: "Screaming Frog", logo: screamingFrogLogo, use: "Technical crawl audits" },
     { name: "Surfer SEO", logo: surferSeoLogo, use: "On-page content optimisation" },
     { name: "Local Falcon", logo: localFalconLogo, use: "Local pack & Map rank tracking" },
     { name: "DataForSEO", logo: dataForSeoLogo, use: "Large-scale SERP & rank data" },
-    { name: "Google Search Console", logo: googleSearchConsoleToolLogo, use: "Indexing & search performance" },
-    { name: "Google Analytics", logo: googleAnalyticsToolLogo, use: "Traffic & conversion data" },
     { name: "ChatGPT", logo: chatgptLogo, use: "AI-assisted research & workflows" },
     { name: "Claude", logo: claudeLogo, use: "AI-assisted research & workflows" },
     { name: "Gemini", logo: geminiLogo, use: "AI search visibility monitoring" },
@@ -1167,116 +1165,125 @@ function SEOToolsWeUse() {
   );
 }
 
-/* ---------------- Results ---------------- */
+/* ---------------- Results (same card design as the home page "Proven Results") ---------------- */
 
-function MiniGrowthGraph({ bars }: { bars: number[] }) {
-  return (
-    <div className="flex h-8 items-end gap-1" aria-hidden>
-      {bars.map((h, i) => (
-        <div
-          key={i}
-          className="flex-1 rounded-t-sm bg-white/70 transition-colors group-hover:bg-white"
-          style={{ height: `${h}%` }}
-        />
-      ))}
-    </div>
-  );
-}
+const SEO_CASES = [
+  {
+    tag: "Industrial B2B · SEO & AEO/GEO",
+    badge: "70–100 Leads/mo",
+    color: "#22C55E",
+    title: "Prism Calibration Centre",
+    statBig: "70–100",
+    statDesc: "qualified leads generated every month after we rebuilt their site into a search & AI-visibility engine.",
+    href: "/case-studies/prism-calibration/",
+  },
+  {
+    tag: "Healthcare & Fertility · SEO + YouTube",
+    badge: "+76.7% Traffic",
+    color: "#7C3AED",
+    title: "IVF Clinic",
+    statBig: "76.7%",
+    statDesc: "organic traffic growth in 6 months, turning a strong offline reputation into daily online demand.",
+    href: "/case-studies/ivf-clinic/",
+  },
+  {
+    tag: "Home Services · Local SEO & AEO",
+    badge: "10–15 Leads/day",
+    color: "#FF6B2B",
+    title: "DP Electrical Repairs",
+    statBig: "10–15",
+    statDesc: "qualified leads generated every day from the website — from invisible to local search leader in 4 months.",
+    href: "/case-studies/dp-electrical-repairs/",
+  },
+  {
+    tag: "Hospitality & Restaurant · SEO & Social",
+    badge: "1.26K+ Organic Visitors",
+    color: "#c8952f",
+    title: "The Grand Palace",
+    statBig: "1.26K+",
+    statDesc: "organic search sessions in 90 days, from a standing start — a decade-old restaurant's first real digital front door.",
+    href: "/case-studies/grand-palace/",
+  },
+];
 
 function Results() {
-  const cases = [
-    {
-      category: "Healthcare · IVF Clinic",
-      icon: Baby,
-      growth: "+76.7%",
-      growthLabel: "Organic traffic",
-      timeline: "6 Months",
-      title: "IVF Hospital — Organic Growth",
-      description:
-        "Targeted technical SEO and content authority building drove a 76.7% organic traffic increase in six months, generating 3× more appointment leads.",
-      tags: ["Technical SEO", "Content Strategy", "Local SEO"],
-      graph: [22, 30, 28, 48, 65, 88],
-    },
-    {
-      category: "Healthcare · Ophthalmology",
-      icon: Eye,
-      growth: "+120%",
-      growthLabel: "Full-funnel traffic",
-      timeline: "Ongoing Engagement",
-      title: "Eye Hospital — Full Funnel Growth",
-      description:
-        "An integrated Google Ads, Meta Ads and conversion-optimized website drove 120% traffic growth and doubled OPD bookings.",
-      tags: ["Google Ads", "Meta Ads", "Web Design"],
-      graph: [18, 26, 40, 55, 70, 92],
-    },
-    {
-      category: "Home Services",
-      icon: Wrench,
-      growth: "+174.5%",
-      growthLabel: "Local traffic surge",
-      timeline: "Ongoing Engagement",
-      title: "Home Appliance Repair — Local Dominance",
-      description:
-        "Local SEO, Meta Ads and conversion-optimized landing pages generated a 174.5% traffic surge and 200% more service bookings.",
-      tags: ["Local SEO", "Meta Ads", "Landing Pages"],
-      graph: [15, 24, 38, 60, 76, 96],
-    },
-  ];
+  const VISIBLE = 3;
+  const maxIndex = Math.max(0, SEO_CASES.length - VISIBLE);
+  const [index, setIndex] = useState(0);
+  const [show, setShow] = useState(true);
+  const indexRef = useRef(0);
+  const go = (n: number) => {
+    const clamped = Math.max(0, Math.min(n, maxIndex));
+    setShow(false);
+    setTimeout(() => {
+      indexRef.current = clamped;
+      setIndex(clamped);
+      setShow(true);
+    }, 180);
+  };
+  useEffect(() => {
+    if (maxIndex === 0) return;
+    const t = setInterval(() => {
+      const cur = indexRef.current;
+      const n = cur >= maxIndex ? 0 : cur + 1;
+      setShow(false);
+      setTimeout(() => { indexRef.current = n; setIndex(n); setShow(true); }, 180);
+    }, 4000);
+    return () => clearInterval(t);
+  }, [maxIndex]);
+  const visible = SEO_CASES.slice(index, index + VISIBLE);
   return (
-    <section id="results" className="bg-surface-2">
-      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
-        <SectionHeading
-          eyebrow="Case studies"
-          title={<>Real businesses. <span className="text-brand-orange">Real revenue</span>.</>}
-          sub="A glimpse into the kind of compounding outcomes our clients see when SEO is treated as engineering, not guesswork."
-        />
-        <div className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-3">
-          {cases.map((c) => (
-            <article
-              key={c.title}
-              className="da-shadow-card da-card-hover group flex flex-col overflow-hidden rounded-3xl border border-brand-navy/12 bg-white"
-            >
-              <div className="da-gradient-navy px-6 py-6 text-white">
-                <div className="flex items-center justify-between">
-                  <div className="text-xs font-bold uppercase tracking-[0.14em] text-white/70">{c.category}</div>
-                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/10">
-                    <c.icon className="h-4.5 w-4.5" />
-                  </span>
-                </div>
-                <div className="mt-3 text-4xl font-extrabold leading-none text-white">{c.growth}</div>
-                <div className="mt-1 text-sm text-white/75">{c.growthLabel}</div>
-                <div className="mt-4">
-                  <MiniGrowthGraph bars={c.graph} />
-                </div>
+    <section id="results" className="bg-white">
+      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
+        <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div>
+            <SectionLabel>Proven Results</SectionLabel>
+            <h2 className="mt-3 text-2xl font-bold tracking-tight text-brand-navy sm:text-3xl md:text-[42px]">
+              Real Clients. <span className="text-brand-orange">Real Growth.</span> Real Results.
+            </h2>
+            <p className="mt-2 max-w-lg text-sm text-ink-muted md:text-base">Real search results from real businesses we handle SEO for.</p>
+          </div>
+          {maxIndex > 0 && (
+            <div className="flex shrink-0 items-center gap-3">
+              <button type="button" aria-label="Previous case studies" onClick={() => go(indexRef.current - 1)} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#E5E7EB] bg-white shadow-sm transition-transform hover:scale-110">
+                <ArrowRight className="h-4 w-4 rotate-180 text-brand-navy" />
+              </button>
+              <div className="flex items-center gap-1.5">
+                {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+                  <button key={i} type="button" aria-label={`Show case studies ${i + 1}`} onClick={() => go(i)} className="rounded-full transition-all duration-300" style={{ width: i === index ? 20 : 7, height: 7, background: i === index ? "#FF6B2B" : "#D1D5DB" }} />
+                ))}
               </div>
-              <div className="flex flex-1 flex-col gap-4 p-6">
-                <div className="flex items-center gap-1.5 text-xs font-semibold text-ink-muted">
-                  <Clock className="h-3.5 w-3.5 text-brand-orange" /> {c.timeline}
+              <button type="button" aria-label="Next case studies" onClick={() => go(indexRef.current < maxIndex ? indexRef.current + 1 : 0)} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#E5E7EB] bg-white shadow-sm transition-transform hover:scale-110">
+                <ArrowRight className="h-4 w-4 text-brand-navy" />
+              </button>
+            </div>
+          )}
+        </div>
+        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3" style={{ opacity: show ? 1 : 0, transition: "opacity 180ms ease" }}>
+          {visible.map((c) => (
+            <div key={c.title} className="group flex flex-col overflow-hidden rounded-2xl border border-[#E5E7EB] bg-white transition-transform hover:-translate-y-1" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
+              <div className="relative flex h-20 items-end px-4 pb-3" style={{ background: `linear-gradient(135deg, ${c.color}14 0%, ${c.color}05 100%)` }}>
+                <span className="max-w-[55%] truncate rounded-full px-3 py-1 text-xs font-semibold" style={{ color: c.color, background: `${c.color}14` }}>{c.tag}</span>
+                <span className="absolute right-3 top-3 whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-bold" style={{ color: c.color, background: `${c.color}14`, border: `1px solid ${c.color}30` }}>{c.badge}</span>
+              </div>
+              <div className="flex flex-1 flex-col p-5">
+                <a href={c.href}><h3 className="mb-3 text-base font-bold text-brand-navy hover:underline">{c.title}</h3></a>
+                <div className="mb-2 flex items-center gap-2">
+                  <TrendingUp className="h-4 w-4" style={{ color: c.color }} />
+                  <span className="text-[36px] font-black leading-none" style={{ color: c.color }}>{c.statBig}</span>
                 </div>
-                <h3 className="text-lg font-bold leading-snug text-brand-navy">{c.title}</h3>
-                <p className="text-sm leading-relaxed text-ink-muted">{c.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {c.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-brand-orange/25 bg-brand-orange-soft px-3 py-1 text-xs font-semibold text-brand-orange"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <a
-                  href="https://thedigitalaura.com/case-studies"
-                  target="_blank"
-                  rel="noopener"
-                  className="da-focus-ring group/link mt-auto inline-flex items-center gap-1.5 rounded-sm text-sm font-bold text-brand-navy transition-colors hover:text-brand-orange"
-                >
-                  View Case Study
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/link:translate-x-1" />
+                <p className="mb-4 flex-1 text-sm leading-relaxed text-ink-muted">{c.statDesc}</p>
+                <a href={c.href} className="mt-auto inline-flex items-center gap-1 text-sm font-semibold transition-all group-hover:gap-2" style={{ color: c.color }}>
+                  Read Full Case Study <ArrowRight className="h-3.5 w-3.5" />
                 </a>
               </div>
-            </article>
+            </div>
           ))}
+        </div>
+        <div className="mt-8 text-center">
+          <a href="/case-studies/" className="inline-flex items-center gap-2 rounded-full border-2 border-brand-orange px-6 py-3 text-sm font-bold text-brand-orange transition-colors hover:bg-brand-orange hover:text-white">
+            View All Case Studies <ArrowRight className="h-4 w-4" />
+          </a>
         </div>
       </div>
     </section>
@@ -1495,28 +1502,26 @@ function Testimonials() {
   );
 }
 
-/* ---------------- Rated on top platforms ---------------- */
-
 /* ---------------- Sample audit report snapshot ---------------- */
 
 const SAMPLE_AUDIT_PDF = "/downloads/Digital-Aura-Sample-SEO-Audit-Report.pdf";
 
 function SampleAuditSnapshot() {
   return (
-    <section id="sample-audit" className="bg-white">
+    <section id="sample-audit" className="bg-surface-2">
       <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
         <SectionHeading
           eyebrow="Sample report"
           title="See what a Digital Aura SEO audit looks like"
-          sub="A real audit with the client's details hidden: rankings, backlinks, page-by-page findings, Core Web Vitals and a prioritised plan."
+          sub="A real audit with the client's details hidden. Download the full report to see every finding and the plan that follows."
         />
-        <Reveal className="mx-auto mt-12 max-w-[1100px]">
+        <Reveal className="mx-auto mt-12 max-w-[760px]">
           <a href={SAMPLE_AUDIT_PDF} download="Digital-Aura-Sample-SEO-Audit-Report.pdf" className="da-shadow-card block overflow-hidden rounded-[18px] border border-brand-navy/10 bg-white">
             <img
-              src={sampleAuditSnapshot}
-              alt="Two pages of the Digital Aura sample SEO audit report: the site health summary and a critical finding, with the client name hidden"
-              width={1600}
-              height={1223}
+              src={sampleAuditPage1}
+              alt="First page of the Digital Aura sample SEO audit report, with the client name hidden"
+              width={1000}
+              height={1049}
               loading="lazy"
               decoding="async"
               className="h-auto w-full object-contain"
@@ -1526,7 +1531,7 @@ function SampleAuditSnapshot() {
             <PrimaryCTA href={SAMPLE_AUDIT_PDF} download="Digital-Aura-Sample-SEO-Audit-Report.pdf">
               Download the full sample report (PDF)
             </PrimaryCTA>
-            <p className="text-sm text-ink-muted">31 pages, PDF. Opens as a download in this tab.</p>
+            <p className="text-sm text-ink-muted">31 pages, PDF. Downloads in this tab.</p>
           </div>
         </Reveal>
       </div>
@@ -1876,40 +1881,6 @@ function FAQ() {
             </div>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- What to expect (honest timeline) ---------------- */
-
-function Timeline() {
-  const steps = [
-    { m: "Month 1", t: "Foundation", d: "Audit finished, tracking set up for calls and forms, technical problems fixed and the pages that matter most to your revenue chosen. Rankings usually have not moved yet, and that is normal." },
-    { m: "Month 3", t: "First movement", d: "Fixed pages get re-crawled, impressions and clicks start to rise, and the first new content is live. Early enquiries tend to come from local and long-tail searches." },
-    { m: "Month 6", t: "Compounding", d: "Pages sitting just below page one start to climb. We review which pages bring paying enquiries and put more effort there." },
-    { m: "Month 12", t: "Steady growth", d: "More pages ranking, a steadier flow of leads and a lower cost per lead than paid ads alone. We plan the next year from real data." },
-  ];
-  return (
-    <section id="timeline" className="bg-white">
-      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
-        <SectionHeading
-          eyebrow="What to expect"
-          title={<>SEO results, <span className="text-brand-orange">month by month</span></>}
-          sub="SEO is not instant, and we will not pretend it is. This is the honest shape of a typical engagement."
-        />
-        <Reveal className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((x) => (
-            <div key={x.m} className="da-shadow-card da-card-hover flex h-full flex-col rounded-2xl border border-brand-navy/12 bg-white p-7">
-              <span className="text-xs font-bold uppercase tracking-[0.14em] text-brand-orange">{x.m}</span>
-              <h3 className="mt-2 text-lg font-bold text-brand-navy">{x.t}</h3>
-              <p className="mt-2 text-sm text-ink-muted">{x.d}</p>
-            </div>
-          ))}
-        </Reveal>
-        <p className="mx-auto mt-8 max-w-3xl text-center text-sm text-ink-muted">
-          Timelines vary with your competition, your website&apos;s age and where you are starting from. We do not promise specific rankings or dates.
-        </p>
       </div>
     </section>
   );
@@ -2555,13 +2526,12 @@ function Index() {
         <SEOChallenges />
         <Framework />
         <SEOServicesScope />
+        <SampleAuditSnapshot />
         <Process />
         <First90Days />
-        <Timeline />
         <SEOToolsWeUse />
         <Results />
         <GSCSnapshots />
-        <SampleAuditSnapshot />
         <ClientLogoWall />
         <Testimonials />
         <WhyChooseUs />

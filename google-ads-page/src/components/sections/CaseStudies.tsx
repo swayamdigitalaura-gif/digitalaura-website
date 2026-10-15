@@ -1,110 +1,73 @@
 import { motion } from "framer-motion";
-import { Award } from "lucide-react";
+import { ArrowRight, TrendingUp } from "lucide-react";
 import { Eyebrow, H2, Section } from "../shared/SectionPrimitives";
-import { MetricSparkline } from "../shared/DashboardMockups";
 
+/* Same card design as the "Proven Results" section on the home page. Only real, published case studies
+   where Google Ads was part of the work are listed here. */
 const CASES = [
   {
-    client: "Aura Vision Eye Hospital",
-    industry: "Ophthalmology",
-    headline: "From ₹980 CPL to ₹210 in 60 days",
-    challenge: "High cost per appointment from broad eye-care keywords, plus mobile visitors dropping off before booking.",
-    solution: "Restructured keywords by intent, cut wasted search terms, built fast booking pages.",
-    revenue: "↑ 4.6x Appointment Leads",
-    roas: "6.2x ROAS",
-    cpl: "₹210 CPL",
-    timeline: "60 Days",
-    chartPoints: [40, 36, 44, 30, 24, 18, 12, 14, 8],
+    tag: "Custom Printing & Signage · Google Ads & Shopping",
+    badge: "35 WhatsApp Chats/mo",
+    color: "#1A6FE8",
+    title: "OBLPrint",
+    statBig: "35",
+    statDesc: "WhatsApp click-to-chats in a month, after we rebuilt a silent Google Ads account from the ground up, across Search and Shopping.",
+    href: "/case-studies/oblprint/",
   },
   {
-    client: "Skyline Premium Realty",
-    industry: "Real Estate",
-    headline: "₹47 Cr in sales attributed to Search & PMax",
-    challenge: "Too many low-quality broker leads, no lead verification, no CRM sync.",
-    solution: "Proper conversion tracking, OTP lead verification, full CRM integration.",
-    revenue: "₹47 Cr Revenue Attributed",
-    roas: "9.1x ROAS",
-    cpl: "₹420 CPL",
-    timeline: "90 Days",
-    chartPoints: [20, 25, 30, 42, 55, 68, 80, 85, 92],
-  },
-  {
-    client: "LuxeMart Online",
-    industry: "eCommerce",
-    headline: "7.4x ROAS on Performance Max during peak season",
-    challenge: "Flat sales from basic Shopping ads and a checkout flow losing customers at cart.",
-    solution: "Cleaned product feed, launched cart-abandon retargeting, fixed checkout flow.",
-    revenue: "↑ 480% Online Revenue",
-    roas: "7.4x ROAS",
-    cpl: "↑ 2.8x Cart CR",
-    timeline: "120 Days",
-    chartPoints: [30, 40, 35, 55, 62, 70, 68, 82, 95],
+    tag: "Local Business · Website, Booking System & Google Ads",
+    badge: "230 Customers Managed",
+    color: "#FF6B2B",
+    title: "Riant Bikes",
+    statBig: "177",
+    statDesc: "bookings processed through the new website and online booking system, with Google Ads bringing in consistent bookings.",
+    href: "/case-studies/riant-bikes/",
   },
 ];
 
 export function CaseStudies() {
   return (
-    <Section id="results" className="bg-surface-cream">
-      <div className="mx-auto max-w-3xl text-center mb-20">
-        <Eyebrow>Premium Case Studies</Eyebrow>
-        <H2 className="mt-6">Real Results, Verified Numbers</H2>
+    <Section id="results" className="bg-white">
+      <div className="mx-auto max-w-5xl text-center">
+        <Eyebrow>Proven Results</Eyebrow>
+        <H2 className="mt-6 lg:!text-[40px]">Real Clients. Real Growth. Real Results.</H2>
+        <p className="mx-auto mt-4 max-w-xl text-[16px] text-muted-foreground">Real numbers from real businesses we run Google Ads for.</p>
       </div>
 
-      <div className="space-y-10">
+      <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2">
         {CASES.map((c, i) => (
           <motion.div
-            key={c.client}
+            key={c.title}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.08, duration: 0.5 }}
-            className="grid grid-cols-1 rounded-[2.5rem] border border-border bg-white overflow-hidden shadow-card hover-card lg:grid-cols-[1fr_1.3fr]"
+            className="group flex flex-col overflow-hidden rounded-2xl border border-[#E5E7EB] bg-white transition-transform hover:-translate-y-1"
+            style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}
           >
-            <div className="bg-navy p-10 md:p-14 text-white flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between">
-                  <span className="rounded-full bg-white/10 px-3.5 py-1.5 text-[12px] font-bold uppercase tracking-wider">{c.industry}</span>
-                  <Award className="size-5.5 text-primary" />
-                </div>
-                <p className="mt-10 text-[15px] text-white/70 font-medium">{c.client}</p>
-                <h3 className="mt-3 font-display text-[26px] md:text-[30px] font-bold leading-[1.2] tracking-[-0.01em]">{c.headline}</h3>
-              </div>
-              <div className="mt-10 pt-7 border-t border-white/10 flex items-center justify-between text-[13px] font-semibold text-white/80">
-                <span>Optimized Timeline</span>
-                <span className="text-primary font-mono font-bold">{c.timeline}</span>
-              </div>
+            <div className="relative flex h-20 items-end px-4 pb-3" style={{ background: `linear-gradient(135deg, ${c.color}14 0%, ${c.color}05 100%)` }}>
+              <span className="max-w-[55%] truncate rounded-full px-3 py-1 text-xs font-semibold" style={{ color: c.color, background: `${c.color}14` }}>{c.tag}</span>
+              <span className="absolute right-3 top-3 whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-bold" style={{ color: c.color, background: `${c.color}14`, border: `1px solid ${c.color}30` }}>{c.badge}</span>
             </div>
-
-            <div className="p-10 md:p-14 flex flex-col justify-between">
-              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-                <div>
-                  <p className="text-[12px] font-bold uppercase tracking-[0.1em] text-navy">The Challenge</p>
-                  <p className="text-[15px] text-muted-foreground mt-3 leading-[1.78]">{c.challenge}</p>
-                </div>
-                <div>
-                  <p className="text-[12px] font-bold uppercase tracking-[0.1em] text-navy">The Solution</p>
-                  <p className="text-[15px] text-muted-foreground mt-3 leading-[1.78]">{c.solution}</p>
-                </div>
+            <div className="flex flex-1 flex-col p-5">
+              <a href={c.href}><h3 className="mb-3 text-base font-bold text-navy hover:underline">{c.title}</h3></a>
+              <div className="mb-2 flex items-center gap-2">
+                <TrendingUp className="size-4" style={{ color: c.color }} />
+                <span className="text-[36px] font-black leading-none" style={{ color: c.color }}>{c.statBig}</span>
               </div>
-
-              <div className="mt-10 pt-8 border-t border-border grid grid-cols-3 gap-5">
-                {[["Revenue", c.revenue], ["ROAS", c.roas], ["CPL", c.cpl]].map(([label, val]) => (
-                  <div key={label} className="p-4 bg-surface-cream rounded-2xl text-center border border-border">
-                    <p className="text-[11px] font-bold uppercase tracking-[0.08em] text-muted-foreground">{label}</p>
-                    <p className="mt-2 font-display text-[16px] md:text-[18px] font-extrabold text-navy leading-tight">{val}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-border flex items-center gap-3">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-navy/40 shrink-0">Scale Trend</span>
-                <div className="w-28 h-8">
-                  <MetricSparkline points={c.chartPoints} width={100} height={28} />
-                </div>
-              </div>
+              <p className="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground">{c.statDesc}</p>
+              <a href={c.href} className="mt-auto inline-flex items-center gap-1 text-sm font-semibold transition-all group-hover:gap-2" style={{ color: c.color }}>
+                Read Full Case Study <ArrowRight className="size-3.5" />
+              </a>
             </div>
           </motion.div>
         ))}
+      </div>
+
+      <div className="mt-8 text-center">
+        <a href="/case-studies/" className="inline-flex items-center gap-2 rounded-full border-2 border-primary px-6 py-3 text-sm font-bold text-primary transition-colors hover:bg-primary hover:text-primary-foreground">
+          View All Case Studies <ArrowRight className="size-4" />
+        </a>
       </div>
     </Section>
   );

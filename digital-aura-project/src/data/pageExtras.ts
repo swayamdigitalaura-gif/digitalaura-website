@@ -65,7 +65,6 @@ const FOUNDER_CARD = {
 const META_PILLAR_TEAM = [
   FOUNDER_CARD,
   { name: "Satish Prajapati", role: "Meta Ads Specialist", photo: "/team/satish.png", bio: "Satish plans Meta campaigns from objective to budget and creative direction, and leads the reviews that keep spend following the leads that matter to your business." },
-  { name: "Jinali Lodariya", role: "Meta Ads Executive", photo: "/team/jinali.png", bio: "Jinali builds audiences and manages ad sets, testing targeting and placements so your ads reach people who are likely to enquire." },
   { name: "Bhavesh Bhavsar", role: "Meta Ads Executive", photo: "/team/bhavesh.webp", bio: "Bhavesh sets up lead forms, the pixel and conversion tracking, and checks that every lead reaches you, whether it comes by form, call or WhatsApp." },
   { name: "Krishna Jani", role: "Meta Ads Executive", photo: "/team/krishna.webp", bio: "Krishna works on ad creative briefs, copy variations and tests, helping keep creatives fresh as results change." },
   { name: "Diya Mahida", role: "Meta Ads Executive", photo: "/team/diya.webp", bio: "Diya handles reporting and optimisation checks across campaigns, summarising what produced leads and what to change next." },

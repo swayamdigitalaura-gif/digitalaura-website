@@ -14,6 +14,7 @@ import {
 } from "@/components/website-dev/SectionsC";
 import { CtaBand, CtaBanner, QuickEnquiry } from "@/components/website-dev/Cta";
 import OfficeMap from "@/components/OfficeMap";
+import CaseStudies, { CASE_CARDS } from "@/components/CaseStudies";
 import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
 
@@ -139,6 +140,7 @@ const WebsiteDevelopmentServicesPage = () => {
         <Industries />
         <LogoMarquee />
         <Testimonials />
+        <CaseStudies cases={[CASE_CARDS.riant, CASE_CARDS.prism]} sub="Real websites that turned into real bookings and leads." />
         <CtaBand
           tone="light"
           headline={

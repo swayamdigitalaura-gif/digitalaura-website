@@ -5,8 +5,14 @@ import { Link } from "react-router-dom";
 
 const FADE_MS = 180;
 
-const cases = [
-  {
+export interface CaseCard {
+  tag: string; badge: string; badgeColor: string; badgeBg: string; title: string;
+  statBig: string; statColor: string; statDesc: string; accent: string; topBg: string; href: string;
+}
+
+/** Every published case study, keyed so a page can pick the ones that match its own service. */
+export const CASE_CARDS: Record<"riant" | "prism" | "ivf" | "dp" | "grand", CaseCard> = {
+  riant: {
     tag: "Local Business · Web + Booking System",
     badge: "230 Customers Managed",
     badgeColor: "#1A6FE8",
@@ -19,7 +25,7 @@ const cases = [
     topBg: "linear-gradient(135deg, rgba(26,111,232,0.08) 0%, rgba(26,111,232,0.02) 100%)",
     href: "/case-studies/riant-bikes/",
   },
-  {
+  prism: {
     tag: "Industrial B2B · SEO & AEO/GEO",
     badge: "70–100 Leads/mo",
     badgeColor: "#22C55E",
@@ -32,7 +38,7 @@ const cases = [
     topBg: "linear-gradient(135deg, rgba(34,197,94,0.08) 0%, rgba(34,197,94,0.02) 100%)",
     href: "/case-studies/prism-calibration/",
   },
-  {
+  ivf: {
     tag: "Healthcare & Fertility · SEO + YouTube",
     badge: "+76.7% Traffic",
     badgeColor: "#7C3AED",
@@ -45,7 +51,7 @@ const cases = [
     topBg: "linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(124,58,237,0.02) 100%)",
     href: "/case-studies/ivf-clinic/",
   },
-  {
+  dp: {
     tag: "Home Services · Local SEO & AEO",
     badge: "10–15 Leads/day",
     badgeColor: "#FF6B2B",
@@ -58,7 +64,7 @@ const cases = [
     topBg: "linear-gradient(135deg, rgba(255,107,43,0.08) 0%, rgba(255,107,43,0.02) 100%)",
     href: "/case-studies/dp-electrical-repairs/",
   },
-  {
+  grand: {
     tag: "Hospitality & Restaurant · SEO & Social",
     badge: "1.26K+ Organic Visitors",
     badgeColor: "#c8952f",
@@ -71,15 +77,23 @@ const cases = [
     topBg: "linear-gradient(135deg, rgba(200,149,47,0.08) 0%, rgba(200,149,47,0.02) 100%)",
     href: "/case-studies/grand-palace/",
   },
-];
+};
+
+const HOME_CASES: CaseCard[] = [CASE_CARDS.riant, CASE_CARDS.prism, CASE_CARDS.ivf, CASE_CARDS.dp, CASE_CARDS.grand];
 
 const VISIBLE = 3;
 
-const CaseStudies = () => {
+interface CaseStudiesProps {
+  /** Cards to show. Defaults to the home page set. */
+  cases?: CaseCard[];
+  sub?: string;
+}
+
+const CaseStudies = ({ cases = HOME_CASES, sub = "Across marketing, development & AI — real numbers from real businesses." }: CaseStudiesProps) => {
   const [index, setIndex] = useState(0);
   const [show, setShow] = useState(true);
   const indexRef = useRef(0);
-  const maxIndex = cases.length - VISIBLE;
+  const maxIndex = Math.max(0, cases.length - VISIBLE);
 
   const go = useCallback((newIndex: number) => {
     const clamped = Math.max(0, Math.min(newIndex, maxIndex));
@@ -95,6 +109,7 @@ const CaseStudies = () => {
   const next = () => go(indexRef.current < maxIndex ? indexRef.current + 1 : 0);
 
   useEffect(() => {
+    if (maxIndex === 0) return;
     const t = setInterval(() => {
       go(indexRef.current >= maxIndex ? 0 : indexRef.current + 1);
     }, 4000);
@@ -119,11 +134,9 @@ const CaseStudies = () => {
               <span className="text-orange-gradient">Real Growth.</span>{" "}
               Real Results.
             </h2>
-            <p className="text-[#4B5563] text-sm md:text-base max-w-lg">
-              Across marketing, development &amp; AI — real numbers from real businesses.
-            </p>
+            <p className="text-[#4B5563] text-sm md:text-base max-w-lg">{sub}</p>
           </div>
-          <div className="flex items-center gap-3 shrink-0">
+          {maxIndex > 0 && <div className="flex items-center gap-3 shrink-0">
             <button onClick={prev}
               className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-110"
               style={{ background: "#fff", border: "1.5px solid #E5E7EB", boxShadow: "0 2px 8px rgba(0,0,0,0.08)" }}>
@@ -141,11 +154,11 @@ const CaseStudies = () => {
               style={{ background: "#fff", border: "1.5px solid #E5E7EB", boxShadow: "0 2px 8px rgba(0,0,0,0.08)" }}>
               <ChevronLeft size={16} className="text-[#374151] rotate-180" />
             </button>
-          </div>
+          </div>}
         </motion.div>
 
           <div
-            className="grid sm:grid-cols-2 md:grid-cols-3 gap-6"
+            className={`grid gap-6 ${cases.length === 1 ? "mx-auto max-w-md" : cases.length === 2 ? "mx-auto max-w-3xl sm:grid-cols-2" : "sm:grid-cols-2 md:grid-cols-3"}`}
             style={{ opacity: show ? 1 : 0, transition: `opacity ${FADE_MS}ms ease` }}
           >
             {visible.map((c, i) => (

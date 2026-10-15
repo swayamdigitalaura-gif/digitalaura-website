@@ -18,6 +18,7 @@ import Testimonials from "@/components/Testimonials";
 import PageLeadForm from "@/components/PageLeadForm";
 import { StickyCtaBar } from "@/components/PageCta";
 import PillarLinks from "@/components/PillarLinks";
+import { renderInline } from "@/lib/inlineLinks";
 import BlogInsights from "@/components/BlogInsights";
 import AdsCalculator from "@/components/AdsCalculators";
 import { ReelGrid, FounderLinks } from "@/components/ReelsAndTeam";
@@ -274,7 +275,7 @@ function GuideSection({ sec, index }: { sec: ExtraSection; index: number }) {
     return (
       <Wrap id={sec.id} bg={bg} narrow>
         <Head eyebrow={eyebrow} title={sec.title} />
-        <div className="space-y-4 text-[16px] leading-relaxed text-[#4B5563]">{sec.paragraphs.map((p) => <p key={p}>{p}</p>)}</div>
+        <div className="space-y-4 text-[16px] leading-relaxed text-[#4B5563]">{sec.paragraphs.map((p) => <p key={p}>{renderInline(p)}</p>)}</div>
         {sec.links && (
           <div className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
             {sec.links.map((l) => (

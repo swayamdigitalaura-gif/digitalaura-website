@@ -1,73 +1,65 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, MapPin, X } from "lucide-react";
-import { Eyebrow, H2, Lead, PrimaryCTA, SecondaryCTA, Section } from "../shared/SectionPrimitives";
+import {
+  ArrowRight, Check, Clock, Mail, MapPin, MessageCircle, Phone, X, Search, Layers, PenLine, Activity,
+  MousePointerClick, FileBarChart, PartyPopper, Gem, Wind, GraduationCap, Sun, IndianRupee, ClipboardCheck,
+  Stethoscope, Smile, Baby, Megaphone, TrendingUp, Factory, ShoppingCart, Wrench, Database,
+} from "lucide-react";
+import { Eyebrow, PrimaryCTA, SecondaryCTA, Section, SectionHead, CardBadge, CARD } from "../shared/SectionPrimitives";
 
 /* Sections added from the page blueprint (gads-01). Deliberately free of new
    numeric claims: no prices, ROAS, client counts or budgets are stated here. */
 
-const card = "rounded-2xl border border-border bg-white p-7 shadow-xs";
+const card = CARD;
 
 /* ---------- 1. Quick answer + who we are right for ---------- */
 
 export function QuickAnswer() {
+  const fit = [
+    "Businesses that need enquiries, appointments or sales from Google, not just traffic",
+    "Owners who want every lead tracked back to the ad that brought it",
+    "Teams taking over from another agency or a freelancer and wanting a clean restart",
+  ];
+  const honest = [
+    "If you want guaranteed results or a fixed ROAS, we will say no. Nobody can promise that.",
+    "If your monthly ad budget is very small, we will tell you when a freelancer or in-house route fits better.",
+    "If your website cannot turn visitors into enquiries, we will fix that first instead of spending more on ads.",
+  ];
   return (
     <Section id="quick-answer" className="bg-white">
-      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-        <div>
-          <Eyebrow>In 60 seconds</Eyebrow>
-          <H2 className="mt-6">Google Ads management in Ahmedabad, in plain words</H2>
-          <Lead className="mt-6">
-            Digital Aura is a Google Ads agency based in Hanspura, Ahmedabad. We plan, run and improve your Search,
-            Performance Max, Shopping and YouTube campaigns, set up tracking for calls, WhatsApp and form leads, and send
-            a monthly report that shows enquiries, not just clicks. Campaigns run inside your own Google Ads account.
-          </Lead>
-          <div className="mt-8">
-            <PrimaryCTA>Get My Free Google Ads Audit</PrimaryCTA>
-            <p className="mt-4 text-[14px] text-muted-foreground">
-              Curious what the audit covers? <a className="font-semibold text-primary underline" href="/google-ads-audit-ahmedabad/">See how our Google Ads audit works</a>.
-            </p>
-            <p className="mt-2 text-[14px] text-muted-foreground">
-              Planning a budget? <a className="font-semibold text-primary underline" href="/google-ads-pricing-ahmedabad/">How Google Ads pricing works</a>. Running a clinic? <a className="font-semibold text-primary underline" href="/google-ads-for-doctors-ahmedabad/">Google Ads for doctors and hospitals</a>.
-            </p>
-            <p className="mt-2 text-[14px] text-muted-foreground">
-              Comparing channels? See our <a className="font-semibold text-primary underline" href="/advertising-agency-ahmedabad/">advertising agency in Ahmedabad</a> page for Google, Meta, YouTube and LinkedIn ads.
-            </p>
-          </div>
+      <SectionHead
+        eyebrow="In 60 seconds"
+        title="Google Ads management in Ahmedabad, in plain words"
+        lead="Digital Aura is a Google Ads agency in Hanspura, Ahmedabad. We plan, run and improve your Search, Performance Max, Shopping and YouTube campaigns, set up tracking for calls, WhatsApp and form leads, and send a monthly report that shows enquiries, not just clicks. Campaigns run inside your own Google Ads account."
+      />
+      <div className="mx-auto grid max-w-5xl gap-5 md:grid-cols-2">
+        <div className={card}>
+          <h3 className="flex items-center gap-3 font-display text-[18px] font-bold text-navy">
+            <CardBadge><Check className="size-5" /></CardBadge> Who this is right for
+          </h3>
+          <ul className="mt-4 space-y-3 text-[15px] text-muted-foreground">
+            {fit.map((t) => (
+              <li key={t} className="flex gap-3"><Check className="mt-0.5 size-4 shrink-0 text-primary" />{t}</li>
+            ))}
+          </ul>
         </div>
-        <div className="grid gap-4">
-          <div className={card}>
-            <h3 className="font-display text-[18px] font-bold text-navy">Who this is right for</h3>
-            <ul className="mt-4 space-y-3 text-[15px] text-muted-foreground">
-              {[
-                "Businesses that need enquiries, appointments or sales from Google, not just traffic",
-                "Owners who want to see every lead tracked back to the ad that brought it",
-                "Teams taking over from another agency or a freelancer and wanting a clean restart",
-              ].map((t) => (
-                <li key={t} className="flex gap-3">
-                  <Check className="mt-0.5 size-4 shrink-0 text-primary" />
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className={card}>
-            <h3 className="font-display text-[18px] font-bold text-navy">Who we will be honest with</h3>
-            <ul className="mt-4 space-y-3 text-[15px] text-muted-foreground">
-              {[
-                "If you want guaranteed results or a fixed ROAS, we will say no. Nobody can promise that.",
-                "If your monthly ad budget is very small, we will tell you when a freelancer or in-house route fits better.",
-                "If your website cannot turn visitors into enquiries, we will fix that first instead of spending more on ads.",
-              ].map((t) => (
-                <li key={t} className="flex gap-3">
-                  <X className="mt-0.5 size-4 shrink-0 text-red-500" />
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className={card}>
+          <h3 className="flex items-center gap-3 font-display text-[18px] font-bold text-navy">
+            <CardBadge><X className="size-5" /></CardBadge> Who we will be honest with
+          </h3>
+          <ul className="mt-4 space-y-3 text-[15px] text-muted-foreground">
+            {honest.map((t) => (
+              <li key={t} className="flex gap-3"><X className="mt-0.5 size-4 shrink-0 text-red-500" />{t}</li>
+            ))}
+          </ul>
         </div>
       </div>
+      <p className="mx-auto mt-6 max-w-4xl text-center text-[14px] leading-relaxed text-muted-foreground">
+        <a className="font-semibold text-primary underline" href="/google-ads-audit-ahmedabad/">How our Google Ads audit works</a>
+        {" · "}<a className="font-semibold text-primary underline" href="/google-ads-pricing-ahmedabad/">How Google Ads pricing works</a>
+        {" · "}<a className="font-semibold text-primary underline" href="/google-ads-for-doctors-ahmedabad/">Google Ads for doctors</a>
+        {" · "}<a className="font-semibold text-primary underline" href="/advertising-agency-ahmedabad/">Advertising agency in Ahmedabad</a>
+      </p>
     </Section>
   );
 }
@@ -75,11 +67,11 @@ export function QuickAnswer() {
 /* ---------- 2. Ahmedabad market notes ---------- */
 
 const SEASONS = [
-  { t: "Festive season", d: "Navratri and Diwali lift demand for retail, jewellery, home and gifting. Budgets and offers need to be ready weeks before the peak, not during it." },
-  { t: "Wedding season", d: "Jewellery, venues, clothing and event services see search demand rise with the wedding calendar. Plan campaigns around it." },
-  { t: "Uttarayan and January", d: "Makar Sankranti is a major local event. Brands that tie offers to it get attention that generic campaigns miss." },
-  { t: "Admission season", d: "Schools, colleges and coaching classes get most of their enquiries in a short window. Campaigns should be live and tracked before it opens." },
-  { t: "Summer and monsoon", d: "Cooling, water, home repair and pest control spike in summer, and waterproofing and appliance repair follow in the rains." },
+  { Icon: PartyPopper, t: "Festive season", d: "Navratri and Diwali lift demand for retail, jewellery, home and gifting. Budgets and offers need to be ready weeks before the peak, not during it." },
+  { Icon: Gem, t: "Wedding season", d: "Jewellery, venues, clothing and event services see search demand rise with the wedding calendar. Plan campaigns around it." },
+  { Icon: Wind, t: "Uttarayan and January", d: "Makar Sankranti is a major local event. Brands that tie offers to it get attention that generic campaigns miss." },
+  { Icon: GraduationCap, t: "Admission season", d: "Schools, colleges and coaching classes get most of their enquiries in a short window. Campaigns should be live and tracked before it opens." },
+  { Icon: Sun, t: "Summer and monsoon", d: "Cooling, water, home repair and pest control spike in summer, and waterproofing and appliance repair follow in the rains." },
 ];
 
 const AREAS = ["SG Highway & Bodakdev", "Satellite & Prahlad Nagar", "Navrangpura & CG Road", "Maninagar & Vastral", "Naroda & Vatva industrial areas", "Hanspura & SP Ring Road"];
@@ -87,38 +79,39 @@ const AREAS = ["SG Highway & Bodakdev", "Satellite & Prahlad Nagar", "Navrangpur
 export function AhmedabadMarket() {
   return (
     <Section id="ahmedabad-market" className="bg-surface-cream">
-      <div className="mx-auto max-w-3xl text-center">
-        <Eyebrow>Local knowledge</Eyebrow>
-        <H2 className="mt-6">Ahmedabad market notes that change how we run ads</H2>
-        <Lead className="mt-6 mx-auto">
-          Demand in Ahmedabad follows the local calendar and the city&apos;s areas. Campaigns copied from another city miss both.
-        </Lead>
-      </div>
-      <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <SectionHead
+        eyebrow="Local knowledge"
+        title="Ahmedabad market notes that change how we run ads"
+        lead="Demand in Ahmedabad follows the local calendar and the city's areas. Campaigns copied from another city miss both."
+      />
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6">
         {SEASONS.map((s, i) => (
           <motion.div
             key={s.t}
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.06, duration: 0.4 }}
-            className={card}
+            transition={{ delay: i * 0.05, duration: 0.4 }}
+            className={`${card} ${i < 3 ? "lg:col-span-2" : "lg:col-span-3"}`}
           >
-            <h3 className="font-display text-[18px] font-bold text-navy">{s.t}</h3>
-            <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{s.d}</p>
+            <div className="flex items-center gap-3">
+              <CardBadge><s.Icon className="size-5" /></CardBadge>
+              <h3 className="font-display text-[17px] font-bold text-navy">{s.t}</h3>
+            </div>
+            <p className="mt-3 text-[14.5px] leading-relaxed text-muted-foreground">{s.d}</p>
           </motion.div>
         ))}
-        <div className={`${card} sm:col-span-2 lg:col-span-1`}>
-          <h3 className="font-display text-[18px] font-bold text-navy">Areas we target</h3>
-          <p className="mt-2 text-[15px] text-muted-foreground">
-            We set location targeting and ad copy by area, so a clinic in Satellite is not paying for clicks from Naroda.
+        <div className={`${card} sm:col-span-2 lg:col-span-6`}>
+          <div className="flex items-center gap-3">
+            <CardBadge><MapPin className="size-5" /></CardBadge>
+            <h3 className="font-display text-[17px] font-bold text-navy">Areas we target</h3>
+          </div>
+          <p className="mt-3 text-[14.5px] leading-relaxed text-muted-foreground">
+            Location targeting and ad copy are set by area, so a clinic in Satellite is not paying for clicks from Naroda.
           </p>
-          <ul className="mt-4 flex flex-wrap gap-2">
+          <ul className="mt-3 flex flex-wrap gap-2">
             {AREAS.map((a) => (
-              <li key={a} className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface-cream px-3 py-1.5 text-[13px] font-semibold text-navy">
-                <MapPin className="size-3.5 text-primary" />
-                {a}
-              </li>
+              <li key={a} className="rounded-full border border-border bg-surface-cream px-3 py-1 text-[12.5px] font-semibold text-navy">{a}</li>
             ))}
           </ul>
         </div>
@@ -137,43 +130,29 @@ export function CostBreakdown() {
     { t: "GST", d: "GST applies to agency fees and to Google Ads invoices as per Indian tax rules. Ask your accountant how input credit works for your business." },
   ];
   return (
-    <Section id="cost" className="bg-white">
-      <div className="mx-auto max-w-3xl text-center">
-        <Eyebrow>Cost</Eyebrow>
-        <H2 className="mt-6">What Google Ads really costs in Ahmedabad</H2>
-        <Lead className="mt-6 mx-auto">
-          Four things make up the bill. We explain each one in your free audit and give you the fee in writing before you commit.
-        </Lead>
-      </div>
-      <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    <Section id="cost" className="bg-surface-cream">
+      <SectionHead
+        eyebrow="Cost"
+        title="What Google Ads really costs in Ahmedabad"
+        lead="Four things make up the bill. We explain each one in your free audit and give you the fee in writing before you commit."
+      />
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {parts.map((p, i) => (
           <motion.div
             key={p.t}
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.06, duration: 0.4 }}
+            transition={{ delay: i * 0.05, duration: 0.4 }}
             className={card}
           >
-            <span className="text-[12px] font-bold uppercase tracking-wider text-primary">0{i + 1}</span>
-            <h3 className="mt-2 font-display text-[18px] font-bold text-navy">{p.t}</h3>
-            <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{p.d}</p>
+            <div className="flex items-center gap-3">
+              <CardBadge>0{i + 1}</CardBadge>
+              <h3 className="font-display text-[17px] font-bold text-navy">{p.t}</h3>
+            </div>
+            <p className="mt-3 text-[14.5px] leading-relaxed text-muted-foreground">{p.d}</p>
           </motion.div>
         ))}
-      </div>
-      <div className="mt-10 flex flex-col items-center gap-3 text-center">
-        <PrimaryCTA>Get a Written Quote With My Audit</PrimaryCTA>
-        <p className="text-[14px] text-muted-foreground">
-          Also see our{" "}
-          <a className="font-semibold text-primary underline" href="/seo-services-ahmedabad">SEO company in Ahmedabad</a> and{" "}
-          <a className="font-semibold text-primary underline" href="/meta-ads-agency-ahmedabad/">Meta ads agency</a>.
-        </p>
-        <p className="text-[14px] text-muted-foreground">
-          More from us: <a className="font-semibold text-primary underline" href="/digital-marketing-agency-ahmedabad/">digital marketing agency in Ahmedabad</a>,{" "}
-          <a className="font-semibold text-primary underline" href="/services/cro/">conversion rate optimisation</a>,{" "}
-          <a className="font-semibold text-primary underline" href="/awards/">awards and recognition</a> and{" "}
-          <a className="font-semibold text-primary underline" href="/service-areas/">the areas we serve</a>.
-        </p>
       </div>
     </Section>
   );
@@ -190,31 +169,36 @@ const ROWS: [string, string, string, string][] = [
 
 export function AgencyComparison() {
   return (
-    <Section id="compare-options" className="bg-surface-cream">
-      <div className="mx-auto max-w-3xl text-center">
-        <Eyebrow>Choosing help</Eyebrow>
-        <H2 className="mt-6">Agency, freelancer or in-house? An honest comparison</H2>
-        <Lead className="mt-6 mx-auto">
-          A freelancer is the right choice for some businesses, and we would rather you pick the right option than the wrong agency.
-        </Lead>
+    <Section id="compare-options" className="bg-white">
+      <SectionHead
+        eyebrow="Choosing help"
+        title="Agency, freelancer or in-house? An honest comparison"
+        lead="A freelancer is the right choice for some businesses, and we would rather you pick the right option than the wrong agency."
+      />
+      <div className="mx-auto max-w-5xl overflow-x-auto rounded-2xl border border-border bg-white shadow-xs">
+        <table className="w-full min-w-[680px] border-collapse text-left text-[14.5px]">
+          <thead>
+            <tr className="bg-surface-cream text-navy">
+              <th className="w-[16%] p-4 text-[12px] font-bold uppercase tracking-wider text-muted-foreground"> </th>
+              <th className="bg-primary/10 p-4 font-display text-[16px] font-bold">Agency</th>
+              <th className="p-4 font-display text-[16px] font-bold">Freelancer</th>
+              <th className="p-4 font-display text-[16px] font-bold">In-house</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ROWS.map((r) => (
+              <tr key={r[0]} className="border-t border-border align-top">
+                <th className="p-4 text-[12px] font-bold uppercase tracking-wider text-primary">{r[0]}</th>
+                <td className="bg-primary/[0.04] p-4 text-navy/90">{r[1]}</td>
+                <td className="p-4 text-muted-foreground">{r[2]}</td>
+                <td className="p-4 text-muted-foreground">{r[3]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-      <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3">
-        {(["Agency", "Freelancer", "In-house"] as const).map((who, col) => (
-          <div key={who} className={`${card} ${col === 0 ? "border-primary/40" : ""}`}>
-            <h3 className="font-display text-[20px] font-bold text-navy">{who}</h3>
-            <dl className="mt-4 space-y-4">
-              {ROWS.map((r) => (
-                <div key={r[0]}>
-                  <dt className="text-[12px] font-bold uppercase tracking-wider text-primary">{r[0]}</dt>
-                  <dd className="mt-1 text-[15px] leading-relaxed text-muted-foreground">{r[col + 1]}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        ))}
-      </div>
-      <p className="mt-6 text-center text-[15px] text-muted-foreground">
-        Not sure which fits? <a className="inline-flex items-center gap-1 font-semibold text-primary underline" href="#audit">Ask for the free audit <ArrowRight className="size-4" /></a>
+      <p className="mt-5 text-center text-[15px] text-muted-foreground">
+        Not sure which fits? <a className="inline-flex items-center gap-1 font-semibold text-primary underline" href="#audit-final">Ask for the free audit <ArrowRight className="size-4" /></a>
       </p>
     </Section>
   );
@@ -224,9 +208,18 @@ export function AgencyComparison() {
 
 const ADS_REELS = ["DbpWKskDuEi", "DXkCXfnDBZE"];
 
+export const FOUNDER = {
+  name: "Sambhav Shah",
+  role: "Founder & CEO",
+  photo: "/team/sambhav-shah.webp",
+  bio: "Sambhav started in digital marketing in 2015 and built his expertise hands-on, leading business development, client relationships and growing teams. With 10+ years across client acquisition, team leadership and digital execution, he stays personally involved in strategy on every account.",
+};
+
 export const TEAM_MEMBERS = [
-  { name: "Satish Prajapati", role: "Project Manager & Digital Marketing", photo: "/team/satish.png", bio: "Satish Prajapati leads project management and digital marketing initiatives, ensuring smooth project execution and effective marketing strategies. He focuses on team coordination, campaign planning, and delivering results that support business growth." },
-  { name: "Bhavesh Bhavsar", role: "Digital Marketing Executive", photo: "/team/bhavesh.webp", bio: "Bhavesh Bhavsar works on digital marketing activities focused on improving online visibility and business growth. He contributes to SEO, website optimization, content planning, and digital marketing performance to help businesses strengthen their online presence." },
+  { name: "Satish Prajapati", role: "Google Ads Specialist", photo: "/team/satish.png", bio: "Satish plans account structure, budgets and bidding, and keeps campaigns tied to the enquiries you want. Satish also coordinates the team and walks you through each month's results." },
+  { name: "Bhavesh Bhavsar", role: "Google Ads Executive", photo: "/team/bhavesh.webp", bio: "Bhavesh manages campaign setup, conversion tracking and daily checks, so calls, forms and WhatsApp clicks are counted correctly and budgets stay on track." },
+  { name: "Krishna Jani", role: "Google Ads Executive", photo: "/team/krishna.webp", bio: "Krishna supports campaign optimisation and landing page checks, making sure the page a visitor lands on keeps the promise made in the ad." },
+  { name: "Diya Mahida", role: "Google Ads Executive", photo: "/team/diya.webp", bio: "Diya prepares performance reports and audience and placement reviews, turning account data into clear next steps for the team and for you." },
 ];
 
 export const FOUNDER_SAME_AS = ["https://www.linkedin.com/in/sambhav-shah/", "https://www.instagram.com/sambhavshah2/"];
@@ -287,13 +280,13 @@ function ReelCard({ id, n }: { id: string; n: number }) {
 
 export function AdsReels() {
   return (
-    <Section id="google-ads-videos" className="bg-white">
-      <div className="mx-auto max-w-3xl text-center">
-        <Eyebrow>Watch</Eyebrow>
-        <H2 className="mt-6">Google Ads in short videos</H2>
-        <Lead className="mt-6 mx-auto">Short, practical videos from our founder, Sambhav Shah, on how Google Ads works for businesses in Ahmedabad.</Lead>
-      </div>
-      <div className="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-5 md:grid-cols-2">
+    <Section id="google-ads-videos" className="bg-surface-cream">
+      <SectionHead
+        eyebrow="Watch"
+        title="Google Ads in short videos"
+        lead="Short, practical videos from our founder, Sambhav Shah, on how Google Ads works for businesses in Ahmedabad."
+      />
+      <div className="mx-auto grid max-w-[580px] grid-cols-1 gap-4 sm:grid-cols-2">
         {ADS_REELS.map((id, i) => <ReelCard key={id} id={id} n={i + 1} />)}
       </div>
     </Section>
@@ -302,34 +295,42 @@ export function AdsReels() {
 
 export function TeamSection() {
   return (
-    <Section id="team" className="bg-surface-cream">
-      <div className="mx-auto max-w-3xl text-center">
-        <Eyebrow>Our team</Eyebrow>
-        <H2 className="mt-6">The team behind your Google Ads</H2>
-        <Lead className="mt-6 mx-auto">
-          Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. Meet the in-house team you will work with at our Hanspura office, Ahmedabad.
-        </Lead>
-      </div>
-      <div className="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-5 md:grid-cols-2">
-        {TEAM_MEMBERS.map((m) => (
-          <div key={m.name} className={card}>
-            <div className="flex items-center gap-3">
-              <img src={m.photo} alt={`${m.name}, ${m.role} at Digital Aura`} width={56} height={56} loading="lazy" className="size-14 shrink-0 rounded-full bg-surface-cream object-cover" />
-              <div>
-                <h3 className="font-bold leading-tight">{m.name}</h3>
-                <p className="text-sm font-semibold text-primary">{m.role}</p>
-              </div>
+    <Section id="team" className="bg-white">
+      <SectionHead
+        eyebrow="Our team"
+        title="Meet the team that guards your ad spend"
+        lead="Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. This is the in-house team at our Hanspura office, Ahmedabad, that runs your Google Ads."
+      />
+      <div className="mx-auto grid max-w-6xl gap-4 lg:grid-cols-[1fr_1.7fr]">
+        <div className="rounded-2xl border border-primary/40 bg-surface-cream p-6 shadow-xs">
+          <div className="flex items-center gap-4">
+            <img src={FOUNDER.photo} alt={`${FOUNDER.name}, ${FOUNDER.role} at Digital Aura`} width={72} height={72} loading="lazy" className="size-[72px] shrink-0 rounded-2xl bg-white object-cover" />
+            <div>
+              <h3 className="font-display text-[19px] font-bold leading-tight text-navy">{FOUNDER.name}</h3>
+              <p className="text-sm font-semibold text-primary">{FOUNDER.role}</p>
             </div>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{m.bio}</p>
           </div>
-        ))}
+          <p className="mt-4 text-[14.5px] leading-relaxed text-muted-foreground">{FOUNDER.bio}</p>
+          <p className="mt-4 flex flex-wrap gap-3 text-sm">
+            <a className="font-semibold text-primary underline" href={FOUNDER_SAME_AS[0]} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a className="font-semibold text-primary underline" href={FOUNDER_SAME_AS[1]} target="_blank" rel="noopener noreferrer">Instagram</a>
+          </p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {TEAM_MEMBERS.map((m) => (
+            <div key={m.name} className={card}>
+              <div className="flex items-center gap-3">
+                <img src={m.photo} alt={`${m.name}, ${m.role} at Digital Aura`} width={48} height={48} loading="lazy" className="size-12 shrink-0 rounded-full bg-surface-cream object-cover" />
+                <div>
+                  <h3 className="font-bold leading-tight text-navy">{m.name}</h3>
+                  <p className="text-sm font-semibold text-primary">{m.role}</p>
+                </div>
+              </div>
+              <p className="mt-3 text-[14px] leading-relaxed text-muted-foreground">{m.bio}</p>
+            </div>
+          ))}
+        </div>
       </div>
-      <p className="mt-6 text-center text-sm text-muted-foreground">
-        Founder Sambhav Shah:{" "}
-        <a className="font-semibold text-primary underline" href={FOUNDER_SAME_AS[0]} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        {" · "}
-        <a className="font-semibold text-primary underline" href={FOUNDER_SAME_AS[1]} target="_blank" rel="noopener noreferrer">Instagram</a>
-      </p>
     </Section>
   );
 }
@@ -337,7 +338,7 @@ export function TeamSection() {
 export function PeopleSchema() {
   const org = { "@type": "LocalBusiness", "@id": "https://thedigitalaura.com/#localbusiness", name: "Digital Aura" };
   const people = [
-    { "@context": "https://schema.org", "@type": "Person", name: "Sambhav Shah", jobTitle: "Founder", worksFor: org, url: "https://thedigitalaura.com/about/", sameAs: FOUNDER_SAME_AS },
+    { "@context": "https://schema.org", "@type": "Person", name: FOUNDER.name, jobTitle: "Founder", description: FOUNDER.bio, worksFor: org, url: "https://thedigitalaura.com/about/", sameAs: FOUNDER_SAME_AS },
     ...TEAM_MEMBERS.map((m) => ({ "@context": "https://schema.org", "@type": "Person", name: m.name, jobTitle: m.role, description: m.bio, worksFor: org })),
   ];
   return (
@@ -359,13 +360,13 @@ export function StatsBand() {
     { k: "Free", v: "Google Ads audit, reply by email" },
   ];
   return (
-    <section className="bg-surface-muted">
-      <div className="mx-auto w-full max-w-7xl px-5 py-12 md:px-8 md:py-16">
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+    <section className="bg-surface-cream">
+      <div className="mx-auto w-full max-w-7xl px-5 py-8 md:px-8 md:py-10">
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
           {items.map((s) => (
-            <div key={s.v} className="flex h-full flex-col items-center justify-center rounded-2xl border border-border bg-white p-6 text-center shadow-xs">
-              <div className="font-display text-4xl font-extrabold text-navy md:text-5xl">{s.k}</div>
-              <div className="mt-2 text-[14px] text-muted-foreground">{s.v}</div>
+            <div key={s.v} className="flex h-full flex-col items-center justify-center rounded-2xl border border-border bg-white p-4 text-center shadow-xs">
+              <div className="font-display text-3xl font-extrabold text-navy md:text-4xl">{s.k}</div>
+              <div className="mt-1 text-[13.5px] text-muted-foreground">{s.v}</div>
             </div>
           ))}
         </div>
@@ -378,28 +379,25 @@ export function StatsBand() {
 
 export function ExploreMore() {
   const items = [
-    { t: "Google Ads pricing", d: "How fees and ad spend are set, and what to budget.", h: "/google-ads-pricing-ahmedabad/" },
-    { t: "Free Google Ads audit", d: "Find where budget is wasted, with a written action list.", h: "/google-ads-audit-ahmedabad/" },
-    { t: "Google Ads for doctors", d: "Compliant campaigns for clinics and hospitals.", h: "/google-ads-for-doctors-ahmedabad/" },
-    { t: "Google Ads for dentists", d: "Near-me and treatment campaigns for dental clinics.", h: "/google-ads-for-dentists-ahmedabad/" },
-    { t: "Google Ads for IVF clinics", d: "Careful, policy-aware search campaigns for fertility clinics.", h: "/google-ads-for-ivf-clinics-ahmedabad/" },
-    { t: "Meta ads agency", d: "Facebook and Instagram campaigns for leads.", h: "/meta-ads-agency-ahmedabad/" },
-    { t: "SEO services", d: "Rank on Google and in AI search over time.", h: "/seo-services-ahmedabad" },
-    { t: "Conversion rate optimisation", d: "Turn more of the clicks you pay for into enquiries.", h: "/services/cro/" },
+    { Icon: IndianRupee, t: "Google Ads pricing", d: "How fees and ad spend are set, and what to budget.", h: "/google-ads-pricing-ahmedabad/" },
+    { Icon: ClipboardCheck, t: "Free Google Ads audit", d: "Find where budget is wasted, with a written action list.", h: "/google-ads-audit-ahmedabad/" },
+    { Icon: Stethoscope, t: "Google Ads for doctors", d: "Compliant campaigns for clinics and hospitals.", h: "/google-ads-for-doctors-ahmedabad/" },
+    { Icon: Smile, t: "Google Ads for dentists", d: "Near-me and treatment campaigns for dental clinics.", h: "/google-ads-for-dentists-ahmedabad/" },
+    { Icon: Baby, t: "Google Ads for IVF clinics", d: "Careful, policy-aware search campaigns for fertility clinics.", h: "/google-ads-for-ivf-clinics-ahmedabad/" },
+    { Icon: Megaphone, t: "Meta ads agency", d: "Facebook and Instagram campaigns for leads.", h: "/meta-ads-agency-ahmedabad/" },
+    { Icon: Search, t: "SEO services", d: "Rank on Google and in AI search over time.", h: "/seo-services-ahmedabad" },
+    { Icon: TrendingUp, t: "Conversion rate optimisation", d: "Turn more of the clicks you pay for into enquiries.", h: "/services/cro/" },
   ];
   return (
     <Section id="explore" className="bg-white">
-      <div className="max-w-3xl">
-        <Eyebrow>Explore</Eyebrow>
-        <H2 className="mt-6">Explore each Google Ads service</H2>
-        <Lead className="mt-4">One focused page for each question, so you can go straight to what you need.</Lead>
-      </div>
-      <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <SectionHead eyebrow="Explore" title="Explore each Google Ads service" lead="One focused page for each question, so you can go straight to what you need." />
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {items.map((i) => (
-          <a key={i.h} href={i.h} className={card + " group block transition-shadow hover:shadow-md"}>
-            <h3 className="font-display text-[18px] font-bold text-navy">{i.t}</h3>
-            <p className="mt-2 text-[15px] text-muted-foreground">{i.d}</p>
-            <span className="mt-4 inline-flex items-center gap-1 text-[14px] font-semibold text-primary group-hover:gap-2">
+          <a key={i.h} href={i.h} className={`${card} group flex flex-col`}>
+            <CardBadge><i.Icon className="size-5" /></CardBadge>
+            <h3 className="mt-3 font-display text-[16.5px] font-bold leading-snug text-navy">{i.t}</h3>
+            <p className="mt-1.5 flex-1 text-[14px] leading-relaxed text-muted-foreground">{i.d}</p>
+            <span className="mt-3 inline-flex items-center gap-1 text-[13.5px] font-semibold text-primary group-hover:gap-2">
               Learn more <ArrowRight className="size-4" />
             </span>
           </a>
@@ -413,39 +411,40 @@ export function ExploreMore() {
 
 export function WhatWeDo() {
   const items = [
-    { t: "Account and campaign structure", d: "Campaigns grouped by what you sell and where, so budget goes to the searches that pay." },
-    { t: "Keywords and search terms", d: "We add what converts and block the searches that waste money, reviewed on a regular schedule." },
-    { t: "Ads that match the search", d: "Ad copy written for the search, tested against alternatives and improved from real results." },
-    { t: "Conversion tracking", d: "Calls, WhatsApp clicks and form leads counted in your own Google Ads and Analytics accounts." },
-    { t: "Landing page advice", d: "Changes, or a focused page, so the click you paid for lands somewhere that makes it easy to enquire.", h: "/services/cro/" },
-    { t: "Reporting and a monthly call", d: "A report on enquiries and cost per enquiry, and a call to agree what happens next." },
+    { Icon: Layers, t: "Account and campaign structure", d: "Campaigns grouped by what you sell and where, so budget goes to the searches that pay." },
+    { Icon: Search, t: "Keywords and search terms", d: "We add what converts and block the searches that waste money, reviewed on a regular schedule." },
+    { Icon: PenLine, t: "Ads that match the search", d: "Ad copy written for the search, tested against alternatives and improved from real results." },
+    { Icon: Activity, t: "Conversion tracking", d: "Calls, WhatsApp clicks and form leads counted in your own Google Ads and Analytics accounts." },
+    { Icon: MousePointerClick, t: "Landing page advice", d: "Changes, or a focused page, so the click you paid for lands somewhere that makes it easy to enquire.", h: "/services/cro/" },
+    { Icon: FileBarChart, t: "Reporting and a monthly call", d: "A report on enquiries and cost per enquiry, and a call to agree what happens next." },
   ];
   return (
     <Section id="what-we-do" className="bg-white">
-      <div className="max-w-3xl">
-        <Eyebrow>What you get</Eyebrow>
-        <H2 className="mt-6">What a Google Ads agency in Ahmedabad actually does</H2>
-        <Lead className="mt-6">
-          Call it a Google Ads agency, a PPC agency, a Google Ads company or a Google Ads management service: the job is the same. It runs your paid search so the money you spend turns into enquiries you can count. This is the monthly work.
-        </Lead>
-      </div>
-      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <SectionHead
+        eyebrow="What you get"
+        title="What a Google Ads agency in Ahmedabad actually does"
+        lead="Whatever you call it, a Google Ads agency, a PPC agency or a management service, the job is the same: run your paid search so the money you spend turns into enquiries you can count."
+      />
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((x) => (
           <div key={x.t} className={card}>
-            <h3 className="font-display text-[18px] font-bold text-navy">{x.t}</h3>
-            <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{x.d}</p>
-            {x.h && <a className="mt-3 inline-block text-[14px] font-semibold text-primary underline" href={x.h}>Conversion rate optimisation</a>}
+            <div className="flex items-center gap-3">
+              <CardBadge><x.Icon className="size-5" /></CardBadge>
+              <h3 className="font-display text-[17px] font-bold leading-snug text-navy">{x.t}</h3>
+            </div>
+            <p className="mt-3 text-[14.5px] leading-relaxed text-muted-foreground">{x.d}</p>
+            {x.h && <a className="mt-2 inline-block text-[13.5px] font-semibold text-primary underline" href={x.h}>Conversion rate optimisation</a>}
           </div>
         ))}
       </div>
-      <p className="mt-8 max-w-3xl text-[15px] text-muted-foreground">
-        Want to know what this costs before you talk to anyone? See <a className="font-semibold text-primary underline" href="/google-ads-pricing-ahmedabad/">how Google Ads pricing works</a>, or ask for the <a className="font-semibold text-primary underline" href="/google-ads-audit-ahmedabad/">free Google Ads audit</a>.
+      <p className="mx-auto mt-6 max-w-3xl text-center text-[14.5px] text-muted-foreground">
+        Want to know what this costs first? See <a className="font-semibold text-primary underline" href="/google-ads-pricing-ahmedabad/">how Google Ads pricing works</a>, or ask for the <a className="font-semibold text-primary underline" href="/google-ads-audit-ahmedabad/">free Google Ads audit</a>.
       </p>
     </Section>
   );
 }
 
-/* ---------- First 90 days (blueprint gads-01 section 5), with a CTA at the end ---------- */
+/* ---------- First 90 days (blueprint gads-01 section 5), with one CTA at the end ---------- */
 
 export function First90Days() {
   const steps = [
@@ -455,59 +454,86 @@ export function First90Days() {
     { w: "Weeks 7 to 12", t: "Optimise and report", d: "Regular search term reviews and tests, the first full monthly report, and a call to decide whether to scale, hold or change." },
   ];
   return (
-    <Section id="first-90-days" className="bg-surface-muted">
-      <div className="max-w-3xl">
-        <Eyebrow>Your first 90 days</Eyebrow>
-        <H2 className="mt-6">Our first 90 days, step by step</H2>
-        <Lead className="mt-6">A clear start, so you know what is being done and when. Terms for notice and contract are written in your proposal, so you always know where you stand.</Lead>
+    <Section id="first-90-days" className="bg-surface-cream">
+      <SectionHead
+        eyebrow="Your first 90 days"
+        title="Our first 90 days, step by step"
+        lead="A clear start, so you know what is being done and when. Notice and contract terms are written in your proposal."
+      />
+      <div className="relative">
+        <div className="absolute left-[12%] right-[12%] top-5 hidden h-0.5 bg-border lg:block" aria-hidden="true" />
+        <div className="relative grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {steps.map((x, i) => (
+            <div key={x.w} className={card}>
+              <div className="flex items-center gap-3">
+                <CardBadge>{i + 1}</CardBadge>
+                <span className="text-[12px] font-bold uppercase tracking-[0.12em] text-primary">{x.w}</span>
+              </div>
+              <h3 className="mt-3 font-display text-[17px] font-bold text-navy">{x.t}</h3>
+              <p className="mt-1.5 text-[14.5px] leading-relaxed text-muted-foreground">{x.d}</p>
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {steps.map((x) => (
-          <div key={x.w} className={card}>
-            <span className="text-[12px] font-bold uppercase tracking-[0.14em] text-primary">{x.w}</span>
-            <h3 className="mt-2 font-display text-[18px] font-bold text-navy">{x.t}</h3>
-            <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{x.d}</p>
-          </div>
-        ))}
-      </div>
-      <p className="mt-6 max-w-3xl text-[14px] text-muted-foreground">Timelines vary with budget, industry and the state the account is in. Early weeks are for learning, so judge the first month on direction and lead quality, not on a single day.</p>
-      <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-        <PrimaryCTA href="#audit">Get My Free Google Ads Audit</PrimaryCTA>
+      <p className="mx-auto mt-5 max-w-3xl text-center text-[13.5px] text-muted-foreground">Timelines vary with budget, industry and the state of the account. Judge the first month on direction and lead quality, not on a single day.</p>
+      <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <PrimaryCTA href="#audit-final">Get My Free Google Ads Audit</PrimaryCTA>
         <SecondaryCTA href="https://wa.me/918141200284">Chat on WhatsApp</SecondaryCTA>
       </div>
     </Section>
   );
 }
 
-/* ---------- Visit or contact us (local trust). Details confirmed by the owner. ---------- */
+/* ---------- Map + contact (local trust). Details confirmed by the owner. ---------- */
 
+const MAPS_EMBED = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3670.4042735126313!2d72.6881782!3d23.082292199999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e83bdb5cc83a9%3A0xcbe9af162f4cdebc!2sDigital%20Aura!5e0!3m2!1sen!2sin!4v1792055176408!5m2!1sen!2sin";
+
+/** Map and contact details, placed directly above the site footer. */
 export function VisitUs() {
+  const rows = [
+    { Icon: Phone, label: "Call us", value: "+91 81412 00284", href: "tel:+918141200284" },
+    { Icon: MessageCircle, label: "WhatsApp", value: "Message us", href: "https://wa.me/918141200284" },
+    { Icon: Mail, label: "Email", value: "info@thedigitalaura.com", href: "mailto:info@thedigitalaura.com" },
+  ];
   return (
-    <Section id="visit-us" className="bg-white">
-      <div className="max-w-3xl">
-        <Eyebrow>Visit us</Eyebrow>
-        <H2 className="mt-6">Meet the team at our Hanspura office</H2>
-        <Lead className="mt-6">Talk to the people who will run your account before you decide. Call, message or drop in.</Lead>
-      </div>
-      <div className="mt-10 grid gap-5 md:grid-cols-2">
-        <div className={card}>
-          <h3 className="font-display text-[18px] font-bold text-navy">Digital Aura</h3>
-          <address className="mt-3 not-italic text-[15px] leading-relaxed text-muted-foreground">
-            713, Shilp Arcade, Sardar Patel Ring Road,<br />Hanspura, Ahmedabad, Gujarat 382330
-          </address>
-          <p className="mt-3 text-[15px] text-muted-foreground">Monday to Saturday, 10 AM to 7 PM. Closed on Sunday.</p>
-          <a className="mt-4 inline-block text-[14px] font-semibold text-primary underline" href="https://www.google.com/maps/search/?api=1&query=Digital+Aura+713+Shilp+Arcade+Sardar+Patel+Ring+Road+Hanspura+Ahmedabad+382330" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+    <Section id="visit-us" className="bg-surface-cream">
+      <SectionHead eyebrow="Find us" title="Talk to us, or drop in at our Hanspura office" />
+      <div className="mx-auto grid max-w-6xl overflow-hidden rounded-2xl border border-border bg-white shadow-xs md:grid-cols-[1.5fr_1fr]">
+        <div className="relative min-h-[300px] bg-surface-cream md:min-h-[400px]">
+          <iframe
+            src={MAPS_EMBED}
+            title="Digital Aura office on Google Maps: 713, Shilp Arcade, Sardar Patel Ring Road, Hanspura, Ahmedabad"
+            width="600"
+            height="450"
+            className="absolute inset-0 h-full w-full"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="strict-origin-when-cross-origin"
+          />
         </div>
-        <div className={card}>
-          <h3 className="font-display text-[18px] font-bold text-navy">Talk to us</h3>
-          <ul className="mt-3 space-y-2 text-[15px] text-muted-foreground">
-            <li>Phone: <a className="font-semibold text-primary underline" href="tel:+918141200284">+91 81412 00284</a></li>
-            <li>WhatsApp: <a className="font-semibold text-primary underline" href="https://wa.me/918141200284">message us</a></li>
-            <li>Email: <a className="font-semibold text-primary underline" href="mailto:info@thedigitalaura.com">info@thedigitalaura.com</a></li>
+        <div className="flex flex-col p-6 md:p-8">
+          <h3 className="font-display text-[22px] font-bold text-navy">Talk to us</h3>
+          <ul className="mt-5 space-y-4">
+            {rows.map(({ Icon, label, value, href }) => (
+              <li key={label}>
+                <a href={href} className="group flex items-center gap-3">
+                  <CardBadge className="rounded-full"><Icon className="size-5" /></CardBadge>
+                  <span className="min-w-0">
+                    <span className="block text-[12px] font-semibold uppercase tracking-wider text-muted-foreground">{label}</span>
+                    <span className="block truncate text-[15px] font-bold text-navy group-hover:text-primary">{value}</span>
+                  </span>
+                </a>
+              </li>
+            ))}
           </ul>
-          <p className="mt-4 text-[15px] text-muted-foreground">
-            Prefer to start with a review? <a className="font-semibold text-primary underline" href="/google-ads-audit-ahmedabad/">Request the free Google Ads audit</a>.
-          </p>
+          <div className="mt-6 space-y-3 border-t border-border pt-5 text-[14px] text-muted-foreground">
+            <p className="flex items-start gap-3"><MapPin className="mt-0.5 size-4 shrink-0 text-primary" /><span>713, Shilp Arcade, Sardar Patel Ring Road, Hanspura, Ahmedabad, Gujarat 382330</span></p>
+            <p className="flex items-start gap-3"><Clock className="mt-0.5 size-4 shrink-0 text-primary" /><span>Monday to Saturday, 10 AM to 7 PM. Closed on Sunday.</span></p>
+          </div>
+          <div className="mt-6 md:mt-auto md:pt-6">
+            <PrimaryCTA href="/google-ads-audit-ahmedabad/" className="w-full !px-6 !text-[16px]">Request the free Google Ads audit</PrimaryCTA>
+          </div>
         </div>
       </div>
     </Section>
@@ -519,27 +545,27 @@ export function VisitUs() {
 export function SelfCheck() {
   const qs = [
     { q: "Do people search for what you sell?", d: "If customers type your service or product into Google, ads can meet them at that moment. If nobody searches for it, another channel may do more." },
-    { q: "Is one customer worth more than the cost of the clicks?", d: "Work out what a new customer is worth to you, and how many enquiries it takes to win one. This decides how much you can sensibly pay per enquiry." },
+    { q: "Is one customer worth more than the cost of the clicks?", d: "Work out what a new customer is worth to you, and how many enquiries it takes to win one. This decides what you can sensibly pay per enquiry." },
     { q: "Can you answer calls and WhatsApp quickly?", d: "Paid enquiries cool fast. If nobody replies within the hour, the best campaign still loses the lead." },
     { q: "Do you have a budget that can run long enough to learn?", d: "Search campaigns need time and data. A budget that stops after a few days cannot show what works." },
   ];
   return (
     <Section id="is-it-right" className="bg-white">
-      <div className="max-w-3xl">
-        <Eyebrow>Is Google Ads right for you?</Eyebrow>
-        <H2 className="mt-6">Four questions to answer before you spend a rupee</H2>
-        <Lead className="mt-6">If you can say yes to all four, Google Ads is likely a good fit. If you cannot, we will tell you what to fix first, or suggest a different channel.</Lead>
-      </div>
-      <div className="mt-12 grid gap-5 sm:grid-cols-2">
+      <SectionHead
+        eyebrow="Is Google Ads right for you?"
+        title="Four questions to answer before you spend a rupee"
+        lead="If you can say yes to all four, Google Ads is likely a good fit. If not, we will tell you what to fix first, or suggest a different channel."
+      />
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {qs.map((x, i) => (
           <div key={x.q} className={card}>
-            <span className="text-[12px] font-bold uppercase tracking-[0.14em] text-primary">Question {i + 1}</span>
-            <h3 className="mt-2 font-display text-[18px] font-bold text-navy">{x.q}</h3>
-            <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{x.d}</p>
+            <CardBadge>{i + 1}</CardBadge>
+            <h3 className="mt-3 font-display text-[16.5px] font-bold leading-snug text-navy">{x.q}</h3>
+            <p className="mt-2 text-[14.5px] leading-relaxed text-muted-foreground">{x.d}</p>
           </div>
         ))}
       </div>
-      <p className="mt-6 max-w-3xl text-[14px] text-muted-foreground">
+      <p className="mt-5 text-center text-[14px] text-muted-foreground">
         Want to see what your budget could buy? Try the <a className="font-semibold text-primary underline" href="/google-ads-pricing-ahmedabad/">budget calculator on our pricing page</a>.
       </p>
     </Section>
@@ -553,28 +579,34 @@ export function LeakChecks() {
     { t: "Landing page", spot: "Click your own ad on a phone. If it lands on a generic homepage that loads slowly, visitors will leave.", fix: "We send each campaign to a page built for that search, with one clear action." },
     { t: "Location and schedule", spot: "Open the location report. Check whether clicks come from outside Ahmedabad, and whether ads run when nobody can answer.", fix: "We set location targeting to people in the area and match the ad schedule to office hours." },
     { t: "Lead follow-up", spot: "Count how many enquiries from the last month were answered the same day. Lost leads are budget lost after the click.", fix: "We set up instant WhatsApp replies and alerts so missed leads are caught." },
-    { t: "Brand mixed with generic", spot: "Check whether searches for your own name sit in the same campaign as new-customer searches. Results look better than they are.", fix: "We separate brand and non-brand campaigns so you can see what is bringing in new customers." },
+    { t: "Brand mixed with generic", spot: "Check whether searches for your own name sit in the same campaign as new-customer searches. Results look better than they are.", fix: "We separate brand and non-brand campaigns so you can see what is bringing new customers." },
   ];
   return (
     <Section id="leak-checks" className="bg-surface-cream">
-      <div className="max-w-3xl">
-        <Eyebrow>Check your own account</Eyebrow>
-        <H2 className="mt-6">Six common leaks, and how to spot each in five minutes</H2>
-        <Lead className="mt-6">You do not need us to find these. Open your account and look. If you would rather have a second pair of eyes, our audit covers all six and more.</Lead>
-      </div>
-      <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <SectionHead
+        eyebrow="Check your own account"
+        title="Six common leaks, and how to spot each in five minutes"
+        lead="You do not need us to find these. Open your account and look. If you would rather have a second pair of eyes, our audit covers all six and more."
+      />
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {leaks.map((l, i) => (
-          <div key={l.t} className={card}>
-            <span className="text-[12px] font-bold uppercase tracking-[0.14em] text-primary">Leak {i + 1}</span>
-            <h3 className="mt-2 font-display text-[18px] font-bold text-navy">{l.t}</h3>
-            <p className="mt-3 text-[14px] font-semibold text-navy">How to spot it</p>
-            <p className="mt-1 text-[15px] leading-relaxed text-muted-foreground">{l.spot}</p>
-            <p className="mt-3 text-[14px] font-semibold text-navy">What we change</p>
-            <p className="mt-1 text-[15px] leading-relaxed text-muted-foreground">{l.fix}</p>
+          <div key={l.t} className={`${card} flex flex-col`}>
+            <div className="flex items-center gap-3">
+              <CardBadge>{i + 1}</CardBadge>
+              <h3 className="font-display text-[17px] font-bold text-navy">{l.t}</h3>
+            </div>
+            <div className="mt-3 rounded-xl bg-surface-cream p-3">
+              <p className="text-[11.5px] font-bold uppercase tracking-wider text-navy">How to spot it</p>
+              <p className="mt-1 text-[14px] leading-relaxed text-muted-foreground">{l.spot}</p>
+            </div>
+            <div className="mt-2.5 rounded-xl bg-primary/[0.07] p-3">
+              <p className="text-[11.5px] font-bold uppercase tracking-wider text-primary">What we change</p>
+              <p className="mt-1 text-[14px] leading-relaxed text-navy/80">{l.fix}</p>
+            </div>
           </div>
         ))}
       </div>
-      <p className="mt-6 max-w-3xl text-[14px] text-muted-foreground">
+      <p className="mt-5 text-center text-[13.5px] text-muted-foreground">
         For a fuller list, see the <a className="font-semibold text-primary underline" href="/google-ads-audit-ahmedabad/">Google Ads audit checklist</a>. Settings and report names change as Google updates its interface.
       </p>
     </Section>
@@ -583,38 +615,42 @@ export function LeakChecks() {
 
 export function TrackingByLeadType() {
   const rows = [
-    { who: "Clinics and hospitals", lead: "Phone call, WhatsApp message, appointment request", how: "Call and WhatsApp click tracking, a short booking form counted as a conversion, no patient details sent to Google" },
-    { who: "Manufacturers and exporters", lead: "Quotation request, call, email", how: "RFQ form with product and quantity fields, click-to-call tracking, and a way to mark which enquiries became orders" },
-    { who: "Online stores", lead: "Purchase, add to cart", how: "Purchase tracking with order value, a clean product feed, and separate counting for new and returning customers" },
-    { who: "Education and coaching", lead: "Enquiry form, call, demo-class booking", how: "Form and call conversions by course, with admission outcome fed back where you keep records" },
-    { who: "Local services", lead: "Call, WhatsApp, directions request", how: "Call assets with duration thresholds, WhatsApp clicks and Google Business Profile actions" },
+    { Icon: Stethoscope, who: "Clinics and hospitals", lead: "Phone call, WhatsApp message, appointment request", how: "Call and WhatsApp click tracking, a short booking form counted as a conversion, no patient details sent to Google" },
+    { Icon: Factory, who: "Manufacturers and exporters", lead: "Quotation request, call, email", how: "RFQ form with product and quantity fields, click-to-call tracking, and a way to mark which enquiries became orders" },
+    { Icon: ShoppingCart, who: "Online stores", lead: "Purchase, add to cart", how: "Purchase tracking with order value, a clean product feed, and separate counting for new and returning customers" },
+    { Icon: GraduationCap, who: "Education and coaching", lead: "Enquiry form, call, demo-class booking", how: "Form and call conversions by course, with admission outcome fed back where you keep records" },
+    { Icon: Wrench, who: "Local services", lead: "Call, WhatsApp, directions request", how: "Call assets with duration thresholds, WhatsApp clicks and Google Business Profile actions" },
   ];
   return (
     <Section id="tracking-by-lead" className="bg-white">
-      <div className="max-w-3xl">
-        <Eyebrow>What counts as a lead</Eyebrow>
-        <H2 className="mt-6">What we track, by the kind of business you run</H2>
-        <Lead className="mt-6">Smart bidding optimises for whatever you count. So we agree what a real lead is for your business first, and set tracking to match.</Lead>
+      <SectionHead
+        eyebrow="What counts as a lead"
+        title="What we track, by the kind of business you run"
+        lead="Smart bidding optimises for whatever you count. So we agree what a real lead is for your business first, and set tracking to match."
+      />
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {rows.map((r) => (
+          <div key={r.who} className={card}>
+            <div className="flex items-center gap-3">
+              <CardBadge><r.Icon className="size-5" /></CardBadge>
+              <h3 className="font-display text-[17px] font-bold text-navy">{r.who}</h3>
+            </div>
+            <p className="mt-3 text-[11.5px] font-bold uppercase tracking-wider text-primary">A lead looks like</p>
+            <p className="mt-1 text-[14.5px] font-semibold text-navy/90">{r.lead}</p>
+            <p className="mt-3 text-[11.5px] font-bold uppercase tracking-wider text-primary">How we measure it</p>
+            <p className="mt-1 text-[14px] leading-relaxed text-muted-foreground">{r.how}</p>
+          </div>
+        ))}
+        <div className="rounded-2xl border border-dashed border-primary/40 bg-primary/[0.04] p-5">
+          <div className="flex items-center gap-3">
+            <CardBadge><Database className="size-5" /></CardBadge>
+            <h3 className="font-display text-[17px] font-bold text-navy">Do you keep a CRM?</h3>
+          </div>
+          <p className="mt-3 text-[14px] leading-relaxed text-muted-foreground">
+            Qualified leads and sales can be sent back to Google Ads, so bidding learns from real outcomes and not only from form fills. Consent and privacy wording follows the data protection rules that apply to your business.
+          </p>
+        </div>
       </div>
-      <div className="mt-10 overflow-x-auto rounded-2xl border border-border">
-        <table className="w-full min-w-[640px] text-left text-[15px]">
-          <thead className="bg-surface-muted text-[13px] uppercase tracking-wider text-navy">
-            <tr><th className="p-4">Business</th><th className="p-4">A lead looks like</th><th className="p-4">How we measure it</th></tr>
-          </thead>
-          <tbody>
-            {rows.map((r) => (
-              <tr key={r.who} className="border-t border-border align-top">
-                <td className="p-4 font-semibold text-navy">{r.who}</td>
-                <td className="p-4 text-muted-foreground">{r.lead}</td>
-                <td className="p-4 text-muted-foreground">{r.how}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <p className="mt-6 max-w-3xl text-[14px] text-muted-foreground">
-        Where you keep a CRM, qualified leads and sales can be sent back to Google Ads, so bidding learns from real outcomes and not only from form fills. Consent and privacy wording is set up to follow the data protection rules that apply to your business.
-      </p>
     </Section>
   );
 }

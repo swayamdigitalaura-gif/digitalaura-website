@@ -31,8 +31,6 @@ import {
   ShoppingCart,
   GraduationCap,
   Wrench,
-  Eye,
-  Baby,
   Dumbbell,
   Plane,
   Loader2,
@@ -49,12 +47,11 @@ import {
   Lightbulb,
   Briefcase,
   ArrowDown,
+  Download,
 } from "lucide-react";
 import digitalAuraLogo from "@/assets/brand/digital-aura-logo.png";
 import googlePlatformLogo from "@/assets/platform-logos/google-logo.png";
-import clutchBadge from "@/assets/platform-logos/clutch-badge.png";
-import goodfirmsBadge from "@/assets/platform-logos/goodfirms-badge.png";
-import designrushBadge from "@/assets/platform-logos/designrush-badge.webp";
+import sampleAuditPage1 from "@/assets/sample-seo-audit-page1.webp";
 import semrushLogo from "@/assets/tool-logos/semrush.png";
 import ahrefsLogo from "@/assets/tool-logos/ahrefs.png";
 import screamingFrogLogo from "@/assets/tool-logos/screaming-frog.png";
@@ -63,6 +60,7 @@ import localFalconLogo from "@/assets/tool-logos/local-falcon.jpg";
 import dataForSeoLogo from "@/assets/tool-logos/dataforseo.png";
 import googleSearchConsoleToolLogo from "@/assets/tool-logos/google-search-console.png";
 import googleAnalyticsToolLogo from "@/assets/tool-logos/google-analytics.png";
+import googleTagManagerLogo from "@/assets/tool-logos/google-tag-manager.svg";
 import chatgptLogo from "@/assets/tool-logos/chatgpt.jpg";
 import claudeLogo from "@/assets/tool-logos/claude.png";
 import geminiLogo from "@/assets/tool-logos/gemini.png";
@@ -215,10 +213,19 @@ function BreadcrumbAndServiceSchema() {
 
 const SEO_REELS = ["DXwAkPRMl9c", "DTktVf7gdFf", "DcoMJiOskzp"];
 
+const FOUNDER = {
+  name: "Sambhav Shah",
+  role: "Founder & CEO",
+  photo: "/team/sambhav-shah.webp",
+  bio: "Sambhav started in digital marketing in 2015 and built his expertise hands-on, leading business development, client relationships and growing teams. With 10+ years across client acquisition, team leadership and digital execution, he stays personally involved in strategy on every account.",
+};
+
 const TEAM_MEMBERS = [
-  { name: "Jinali Lodariya", role: "SEO Executive", photo: "/team/jinali.png", bio: "Jinali Lodariya specializes in search engine optimization (SEO), focusing on keyword research, on-page optimization, content optimization, and website performance. She works to improve search engine rankings, organic traffic, and overall website visibility." },
-  { name: "Bhavesh Bhavsar", role: "Digital Marketing Executive", photo: "/team/bhavesh.webp", bio: "Bhavesh Bhavsar works on digital marketing activities focused on improving online visibility and business growth. He contributes to SEO, website optimization, content planning, and digital marketing performance to help businesses strengthen their online presence." },
-  { name: "Satish Prajapati", role: "Project Manager & Digital Marketing", photo: "/team/satish.png", bio: "Satish Prajapati leads project management and digital marketing initiatives, ensuring smooth project execution and effective marketing strategies. He focuses on team coordination, campaign planning, and delivering results that support business growth." },
+  { name: "Satish Prajapati", role: "SEO Specialist", photo: "/team/satish.png", bio: "Satish leads SEO delivery and project management on your account. Audit findings become a prioritised plan, and every month's work, report and next step is explained to you clearly." },
+  { name: "Jinali Lodariya", role: "SEO Executive", photo: "/team/jinali.png", bio: "Jinali handles keyword research, on-page optimisation and content improvements. Titles, headings and page copy are worked through so each service page matches what people in Ahmedabad actually search for." },
+  { name: "Bhavesh Bhavsar", role: "SEO Executive", photo: "/team/bhavesh.webp", bio: "Bhavesh looks after website optimisation, content planning and technical checks. The aim is pages that are crawlable, fast and well structured, so Google can find and understand them." },
+  { name: "Krishna Jani", role: "SEO Executive", photo: "/team/krishna.webp", bio: "Krishna supports on-page work, Google Business Profile updates and local search tasks, keeping your listings and pages accurate and consistent across the places customers look." },
+  { name: "Diya Mahida", role: "SEO Executive", photo: "/team/diya.webp", bio: "Diya supports keyword tracking, reporting and content research, and helps prepare the monthly updates that show which pages moved and what to work on next." },
 ];
 
 const FOUNDER_SAME_AS = ["https://www.linkedin.com/in/sambhav-shah/", "https://www.instagram.com/sambhavshah2/"];
@@ -291,16 +298,17 @@ function SEOReels() {
 }
 
 function TeamSection() {
+  const all = [FOUNDER, ...TEAM_MEMBERS];
   return (
     <section id="team" className="bg-surface-2">
       <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-20">
         <SectionHeading
           eyebrow="Our team"
-          title="The people behind your SEO"
-          sub="Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. Meet the in-house team you will work with at our Hanspura office, Ahmedabad."
+          title="Meet the team that ranks your business"
+          sub="Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. This is the in-house team at our Hanspura office, Ahmedabad, that works on your SEO."
         />
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {TEAM_MEMBERS.map((m) => (
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {all.map((m, i) => (
             <div key={m.name} className="rounded-2xl border border-border bg-white p-5">
               <div className="flex items-center gap-3">
                 <img src={m.photo} alt={`${m.name}, ${m.role} at Digital Aura`} width={56} height={56} loading="lazy" className="h-14 w-14 shrink-0 rounded-full bg-surface-2 object-cover" />
@@ -310,15 +318,15 @@ function TeamSection() {
                 </div>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-ink-muted">{m.bio}</p>
+              {i === 0 && (
+                <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+                  <a className="font-bold text-brand-orange underline" href={FOUNDER_SAME_AS[0]} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                  <a className="font-bold text-brand-orange underline" href={FOUNDER_SAME_AS[1]} target="_blank" rel="noopener noreferrer">Instagram</a>
+                </p>
+              )}
             </div>
           ))}
         </div>
-        <p className="mt-6 text-center text-sm text-ink-muted">
-          Founder Sambhav Shah:{" "}
-          <a className="font-bold text-brand-orange underline" href={FOUNDER_SAME_AS[0]} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          {" · "}
-          <a className="font-bold text-brand-orange underline" href={FOUNDER_SAME_AS[1]} target="_blank" rel="noopener noreferrer">Instagram</a>
-        </p>
       </div>
     </section>
   );
@@ -327,7 +335,7 @@ function TeamSection() {
 function PeopleSchema() {
   const org = { "@type": "ProfessionalService", name: "Digital Aura", url: "https://thedigitalaura.com/" };
   const people = [
-    { "@context": "https://schema.org", "@type": "Person", name: "Sambhav Shah", jobTitle: "Founder", worksFor: org, url: "https://thedigitalaura.com/about/", sameAs: FOUNDER_SAME_AS },
+    { "@context": "https://schema.org", "@type": "Person", name: FOUNDER.name, jobTitle: "Founder", description: FOUNDER.bio, worksFor: org, url: "https://thedigitalaura.com/about/", sameAs: FOUNDER_SAME_AS },
     ...TEAM_MEMBERS.map((m) => ({ "@context": "https://schema.org", "@type": "Person", name: m.name, jobTitle: m.role, description: m.bio, worksFor: org })),
   ];
   return (
@@ -398,14 +406,17 @@ function PrimaryCTA({
   children,
   href = "#audit",
   className = "",
+  download,
 }: {
   children: React.ReactNode;
   href?: string;
   className?: string;
+  download?: string;
 }) {
   return (
     <a
       href={href}
+      download={download}
       className={`da-shadow-cta da-focus-ring da-btn-sheen group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-base font-bold text-primary-foreground transition-all hover:-translate-y-0.5 hover:brightness-110 active:translate-y-0 active:brightness-95 ${className}`}
     >
       {children}
@@ -447,16 +458,19 @@ function SectionHeading({
   title,
   sub,
   center = true,
+  wide = false,
 }: {
   eyebrow?: string;
   title: React.ReactNode;
   sub?: React.ReactNode;
   center?: boolean;
+  /** Lets a short title stay on one line on desktop. */
+  wide?: boolean;
 }) {
   return (
-    <div className={`${center ? "mx-auto text-center" : ""} max-w-3xl`}>
+    <div className={`${center ? "mx-auto text-center" : ""} ${wide ? "max-w-5xl" : "max-w-3xl"}`}>
       {eyebrow && <SectionLabel>{eyebrow}</SectionLabel>}
-      <h2 className="mt-4 text-3xl font-extrabold leading-[1.05] sm:text-4xl md:text-5xl">{title}</h2>
+      <h2 className={`mt-4 text-3xl font-extrabold leading-[1.05] sm:text-4xl md:text-5xl ${wide ? "lg:whitespace-nowrap" : ""}`}>{title}</h2>
       {sub && <p className="mt-5 text-lg text-ink-muted md:text-xl">{sub}</p>}
     </div>
   );
@@ -769,7 +783,7 @@ function Hero() {
 function QuickAnswer() {
   const links = [
     { href: "/seo/free-audit/", label: "Free SEO audit" },
-    { href: "/downloads/Digital-Aura-Sample-SEO-Audit-Report.pdf", label: "Sample SEO audit report (PDF)", external: true },
+    { href: "/downloads/Digital-Aura-Sample-SEO-Audit-Report.pdf", label: "Sample SEO audit report (PDF)", download: true },
     { href: "/seo/pricing/", label: "SEO packages and pricing" },
     { href: "/blog/seo-in-2026-ai-era/", label: "How SEO works in 2026 (guide)" },
     { href: "/seo/doctors-hospitals-ahmedabad/", label: "SEO for doctors and hospitals" },
@@ -790,7 +804,7 @@ function QuickAnswer() {
                 <li key={l.href}>
                   <a
                     href={l.href}
-                    {...(l.external ? { target: "_blank", rel: "noopener" } : {})}
+                    {...(l.download ? { download: "Digital-Aura-Sample-SEO-Audit-Report.pdf" } : {})}
                     className="inline-flex items-center rounded-full border border-brand-navy/12 bg-white px-4 py-2 text-sm font-semibold text-brand-navy transition-colors hover:border-brand-orange hover:text-brand-orange"
                   >
                     {l.label}
@@ -1111,14 +1125,15 @@ function Process() {
 
 function SEOToolsWeUse() {
   const tools = [
+    { name: "Google Search Console", logo: googleSearchConsoleToolLogo, use: "Indexing & search performance" },
+    { name: "Google Analytics", logo: googleAnalyticsToolLogo, use: "Traffic & conversion data" },
+    { name: "Google Tag Manager", logo: googleTagManagerLogo, use: "Event & conversion tracking setup" },
     { name: "Semrush", logo: semrushLogo, use: "Competitive keyword & market research" },
     { name: "Ahrefs", logo: ahrefsLogo, use: "Backlink & content gap analysis" },
     { name: "Screaming Frog", logo: screamingFrogLogo, use: "Technical crawl audits" },
     { name: "Surfer SEO", logo: surferSeoLogo, use: "On-page content optimisation" },
     { name: "Local Falcon", logo: localFalconLogo, use: "Local pack & Map rank tracking" },
     { name: "DataForSEO", logo: dataForSeoLogo, use: "Large-scale SERP & rank data" },
-    { name: "Google Search Console", logo: googleSearchConsoleToolLogo, use: "Indexing & search performance" },
-    { name: "Google Analytics", logo: googleAnalyticsToolLogo, use: "Traffic & conversion data" },
     { name: "ChatGPT", logo: chatgptLogo, use: "AI-assisted research & workflows" },
     { name: "Claude", logo: claudeLogo, use: "AI-assisted research & workflows" },
     { name: "Gemini", logo: geminiLogo, use: "AI search visibility monitoring" },
@@ -1152,116 +1167,123 @@ function SEOToolsWeUse() {
   );
 }
 
-/* ---------------- Results ---------------- */
+/* ---------------- Results (same card design as the home page "Proven Results") ---------------- */
 
-function MiniGrowthGraph({ bars }: { bars: number[] }) {
-  return (
-    <div className="flex h-8 items-end gap-1" aria-hidden>
-      {bars.map((h, i) => (
-        <div
-          key={i}
-          className="flex-1 rounded-t-sm bg-white/70 transition-colors group-hover:bg-white"
-          style={{ height: `${h}%` }}
-        />
-      ))}
-    </div>
-  );
-}
+const SEO_CASES = [
+  {
+    tag: "Industrial B2B · SEO & AEO/GEO",
+    badge: "70–100 Leads/mo",
+    color: "#22C55E",
+    title: "Prism Calibration Centre",
+    statBig: "70–100",
+    statDesc: "qualified leads generated every month after we rebuilt their site into a search & AI-visibility engine.",
+    href: "/case-studies/prism-calibration/",
+  },
+  {
+    tag: "Healthcare & Fertility · SEO + YouTube",
+    badge: "+76.7% Traffic",
+    color: "#7C3AED",
+    title: "IVF Clinic",
+    statBig: "76.7%",
+    statDesc: "organic traffic growth in 6 months, turning a strong offline reputation into daily online demand.",
+    href: "/case-studies/ivf-clinic/",
+  },
+  {
+    tag: "Home Services · Local SEO & AEO",
+    badge: "10–15 Leads/day",
+    color: "#FF6B2B",
+    title: "DP Electrical Repairs",
+    statBig: "10–15",
+    statDesc: "qualified leads generated every day from the website — from invisible to local search leader in 4 months.",
+    href: "/case-studies/dp-electrical-repairs/",
+  },
+  {
+    tag: "Hospitality & Restaurant · SEO & Social",
+    badge: "1.26K+ Organic Visitors",
+    color: "#c8952f",
+    title: "The Grand Palace",
+    statBig: "1.26K+",
+    statDesc: "organic search sessions in 90 days, from a standing start — a decade-old restaurant's first real digital front door.",
+    href: "/case-studies/grand-palace/",
+  },
+];
 
 function Results() {
-  const cases = [
-    {
-      category: "Healthcare · IVF Clinic",
-      icon: Baby,
-      growth: "+76.7%",
-      growthLabel: "Organic traffic",
-      timeline: "6 Months",
-      title: "IVF Hospital — Organic Growth",
-      description:
-        "Targeted technical SEO and content authority building drove a 76.7% organic traffic increase in six months, generating 3× more appointment leads.",
-      tags: ["Technical SEO", "Content Strategy", "Local SEO"],
-      graph: [22, 30, 28, 48, 65, 88],
-    },
-    {
-      category: "Healthcare · Ophthalmology",
-      icon: Eye,
-      growth: "+120%",
-      growthLabel: "Full-funnel traffic",
-      timeline: "Ongoing Engagement",
-      title: "Eye Hospital — Full Funnel Growth",
-      description:
-        "An integrated Google Ads, Meta Ads and conversion-optimized website drove 120% traffic growth and doubled OPD bookings.",
-      tags: ["Google Ads", "Meta Ads", "Web Design"],
-      graph: [18, 26, 40, 55, 70, 92],
-    },
-    {
-      category: "Home Services",
-      icon: Wrench,
-      growth: "+174.5%",
-      growthLabel: "Local traffic surge",
-      timeline: "Ongoing Engagement",
-      title: "Home Appliance Repair — Local Dominance",
-      description:
-        "Local SEO, Meta Ads and conversion-optimized landing pages generated a 174.5% traffic surge and 200% more service bookings.",
-      tags: ["Local SEO", "Meta Ads", "Landing Pages"],
-      graph: [15, 24, 38, 60, 76, 96],
-    },
-  ];
+  const VISIBLE = 3;
+  const maxIndex = Math.max(0, SEO_CASES.length - VISIBLE);
+  const [index, setIndex] = useState(0);
+  const [show, setShow] = useState(true);
+  const indexRef = useRef(0);
+  const go = (n: number) => {
+    const clamped = Math.max(0, Math.min(n, maxIndex));
+    setShow(false);
+    setTimeout(() => {
+      indexRef.current = clamped;
+      setIndex(clamped);
+      setShow(true);
+    }, 180);
+  };
+  useEffect(() => {
+    if (maxIndex === 0) return;
+    const t = setInterval(() => {
+      const cur = indexRef.current;
+      const n = cur >= maxIndex ? 0 : cur + 1;
+      setShow(false);
+      setTimeout(() => { indexRef.current = n; setIndex(n); setShow(true); }, 180);
+    }, 4000);
+    return () => clearInterval(t);
+  }, [maxIndex]);
+  const visible = SEO_CASES.slice(index, index + VISIBLE);
   return (
-    <section id="results" className="bg-surface-2">
-      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
-        <SectionHeading
-          eyebrow="Case studies"
-          title={<>Real businesses. <span className="text-brand-orange">Real revenue</span>.</>}
-          sub="A glimpse into the kind of compounding outcomes our clients see when SEO is treated as engineering, not guesswork."
-        />
-        <div className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-3">
-          {cases.map((c) => (
-            <article
-              key={c.title}
-              className="da-shadow-card da-card-hover group flex flex-col overflow-hidden rounded-3xl border border-brand-navy/12 bg-white"
-            >
-              <div className="da-gradient-navy px-6 py-6 text-white">
-                <div className="flex items-center justify-between">
-                  <div className="text-xs font-bold uppercase tracking-[0.14em] text-white/70">{c.category}</div>
-                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/10">
-                    <c.icon className="h-4.5 w-4.5" />
-                  </span>
-                </div>
-                <div className="mt-3 text-4xl font-extrabold leading-none text-white">{c.growth}</div>
-                <div className="mt-1 text-sm text-white/75">{c.growthLabel}</div>
-                <div className="mt-4">
-                  <MiniGrowthGraph bars={c.graph} />
-                </div>
+    <section id="results" className="bg-white">
+      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
+        <div className="mx-auto mb-10 max-w-3xl text-center">
+          <SectionLabel>Proven Results</SectionLabel>
+          <h2 className="mt-3 text-2xl font-bold tracking-tight text-brand-navy sm:text-3xl md:text-[42px]">
+            Real Clients. <span className="text-brand-orange">Real Growth.</span> Real Results.
+          </h2>
+          <p className="mx-auto mt-2 max-w-lg text-sm text-ink-muted md:text-base">Real search results from real businesses we handle SEO for.</p>
+        </div>
+        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3" style={{ opacity: show ? 1 : 0, transition: "opacity 180ms ease" }}>
+          {visible.map((c) => (
+            <div key={c.title} className="group flex flex-col overflow-hidden rounded-2xl border border-[#E5E7EB] bg-white transition-transform hover:-translate-y-1" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
+              <div className="relative flex h-20 items-end px-4 pb-3" style={{ background: `linear-gradient(135deg, ${c.color}14 0%, ${c.color}05 100%)` }}>
+                <span className="max-w-[55%] truncate rounded-full px-3 py-1 text-xs font-semibold" style={{ color: c.color, background: `${c.color}14` }}>{c.tag}</span>
+                <span className="absolute right-3 top-3 whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-bold" style={{ color: c.color, background: `${c.color}14`, border: `1px solid ${c.color}30` }}>{c.badge}</span>
               </div>
-              <div className="flex flex-1 flex-col gap-4 p-6">
-                <div className="flex items-center gap-1.5 text-xs font-semibold text-ink-muted">
-                  <Clock className="h-3.5 w-3.5 text-brand-orange" /> {c.timeline}
+              <div className="flex flex-1 flex-col p-5">
+                <a href={c.href}><h3 className="mb-3 text-base font-bold text-brand-navy hover:underline">{c.title}</h3></a>
+                <div className="mb-2 flex items-center gap-2">
+                  <TrendingUp className="h-4 w-4" style={{ color: c.color }} />
+                  <span className="text-[36px] font-black leading-none" style={{ color: c.color }}>{c.statBig}</span>
                 </div>
-                <h3 className="text-lg font-bold leading-snug text-brand-navy">{c.title}</h3>
-                <p className="text-sm leading-relaxed text-ink-muted">{c.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {c.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-brand-orange/25 bg-brand-orange-soft px-3 py-1 text-xs font-semibold text-brand-orange"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <a
-                  href="https://thedigitalaura.com/case-studies"
-                  target="_blank"
-                  rel="noopener"
-                  className="da-focus-ring group/link mt-auto inline-flex items-center gap-1.5 rounded-sm text-sm font-bold text-brand-navy transition-colors hover:text-brand-orange"
-                >
-                  View Case Study
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/link:translate-x-1" />
+                <p className="mb-4 flex-1 text-sm leading-relaxed text-ink-muted">{c.statDesc}</p>
+                <a href={c.href} className="mt-auto inline-flex items-center gap-1 text-sm font-semibold transition-all group-hover:gap-2" style={{ color: c.color }}>
+                  Read Full Case Study <ArrowRight className="h-3.5 w-3.5" />
                 </a>
               </div>
-            </article>
+            </div>
           ))}
+        </div>
+        {maxIndex > 0 && (
+          <div className="mt-8 flex items-center justify-center gap-3">
+            <button type="button" aria-label="Previous case studies" onClick={() => go(indexRef.current - 1)} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#E5E7EB] bg-white shadow-sm transition-transform hover:scale-110">
+              <ArrowRight className="h-4 w-4 rotate-180 text-brand-navy" />
+            </button>
+            <div className="flex items-center gap-1.5">
+              {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+                <button key={i} type="button" aria-label={`Show case studies ${i + 1}`} onClick={() => go(i)} className="rounded-full transition-all duration-300" style={{ width: i === index ? 20 : 7, height: 7, background: i === index ? "#FF6B2B" : "#D1D5DB" }} />
+              ))}
+            </div>
+            <button type="button" aria-label="Next case studies" onClick={() => go(indexRef.current < maxIndex ? indexRef.current + 1 : 0)} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#E5E7EB] bg-white shadow-sm transition-transform hover:scale-110">
+              <ArrowRight className="h-4 w-4 text-brand-navy" />
+            </button>
+          </div>
+        )}
+        <div className="mt-8 text-center">
+          <a href="/case-studies/" className="inline-flex items-center gap-2 rounded-full border-2 border-brand-orange px-6 py-3 text-sm font-bold text-brand-orange transition-colors hover:bg-brand-orange hover:text-white">
+            View All Case Studies <ArrowRight className="h-4 w-4" />
+          </a>
         </div>
       </div>
     </section>
@@ -1480,41 +1502,37 @@ function Testimonials() {
   );
 }
 
-/* ---------------- Rated on top platforms ---------------- */
+/* ---------------- Sample audit report snapshot ---------------- */
 
-function RatedOnPlatforms() {
-  const platforms = [
-    { name: "Google", logo: googlePlatformLogo, rating: "5.0", reviews: "100+ Reviews" },
-    { name: "Clutch", logo: clutchBadge, rating: "4.9", reviews: "50+ Reviews" },
-    { name: "GoodFirms", logo: goodfirmsBadge, rating: "4.8", reviews: "40+ Reviews" },
-    { name: "DesignRush", logo: designrushBadge, rating: "4.7", reviews: "30+ Reviews" },
-  ];
+const SAMPLE_AUDIT_PDF = "/downloads/Digital-Aura-Sample-SEO-Audit-Report.pdf";
+
+function SampleAuditSnapshot() {
   return (
-    <section className="bg-surface-2">
+    <section id="sample-audit" className="bg-surface-2">
       <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
         <SectionHeading
-          eyebrow="Verified reviews"
-          title="Rated on the platforms that matter"
-          sub="Independently reviewed by clients on the review platforms B2B buyers actually check."
+          eyebrow="Sample report"
+          title="See what a Digital Aura SEO audit looks like"
+          sub="Download the full report to see every finding and the plan that follows."
         />
-        <Reveal className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
-          {platforms.map(({ name, logo, rating, reviews }) => (
-            <div
-              key={name}
-              className="da-shadow-card da-card-hover flex h-full flex-col items-center justify-between gap-4 rounded-2xl border border-brand-navy/12 bg-white p-7 text-center"
-            >
-              <img src={logo} alt={`${name} rating badge`} className="h-24 w-auto max-w-[170px] object-contain" />
-              <div>
-                <div className="flex items-center justify-center gap-0.5 text-brand-orange">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-3.5 w-3.5 fill-current" />
-                  ))}
-                </div>
-                <div className="mt-1 text-lg font-extrabold text-brand-navy">{rating}</div>
-                <div className="text-xs text-ink-muted">{reviews}</div>
-              </div>
-            </div>
-          ))}
+        <Reveal className="mx-auto mt-12 max-w-[760px]">
+          <a href={SAMPLE_AUDIT_PDF} download="Digital-Aura-Sample-SEO-Audit-Report.pdf" className="da-shadow-card block overflow-hidden rounded-[18px] border border-brand-navy/10 bg-white">
+            <img
+              src={sampleAuditPage1}
+              alt="First page of the Digital Aura sample SEO audit report, with the client name hidden"
+              width={1000}
+              height={1049}
+              loading="lazy"
+              decoding="async"
+              className="h-auto w-full object-contain"
+            />
+          </a>
+          <div className="mt-8 flex flex-col items-center gap-3 text-center">
+            <PrimaryCTA href={SAMPLE_AUDIT_PDF} download="Digital-Aura-Sample-SEO-Audit-Report.pdf">
+              Download the full sample report (PDF)
+            </PrimaryCTA>
+            <p className="text-sm text-ink-muted">31 pages, PDF. Downloads in this tab.</p>
+          </div>
         </Reveal>
       </div>
     </section>
@@ -1538,6 +1556,7 @@ function WhyChooseUs() {
     <section className="bg-white">
       <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
         <SectionHeading
+          wide
           eyebrow="Why Digital Aura"
           title={<>Why Businesses Choose <span className="text-brand-orange">Digital Aura</span></>}
           sub="Real reasons businesses across Ahmedabad call us the leading SEO company in Ahmedabad."
@@ -1867,40 +1886,6 @@ function FAQ() {
   );
 }
 
-/* ---------------- What to expect (honest timeline) ---------------- */
-
-function Timeline() {
-  const steps = [
-    { m: "Month 1", t: "Foundation", d: "Audit finished, tracking set up for calls and forms, technical problems fixed and the pages that matter most to your revenue chosen. Rankings usually have not moved yet, and that is normal." },
-    { m: "Month 3", t: "First movement", d: "Fixed pages get re-crawled, impressions and clicks start to rise, and the first new content is live. Early enquiries tend to come from local and long-tail searches." },
-    { m: "Month 6", t: "Compounding", d: "Pages sitting just below page one start to climb. We review which pages bring paying enquiries and put more effort there." },
-    { m: "Month 12", t: "Steady growth", d: "More pages ranking, a steadier flow of leads and a lower cost per lead than paid ads alone. We plan the next year from real data." },
-  ];
-  return (
-    <section id="timeline" className="bg-white">
-      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
-        <SectionHeading
-          eyebrow="What to expect"
-          title={<>SEO results, <span className="text-brand-orange">month by month</span></>}
-          sub="SEO is not instant, and we will not pretend it is. This is the honest shape of a typical engagement."
-        />
-        <Reveal className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((x) => (
-            <div key={x.m} className="da-shadow-card da-card-hover flex h-full flex-col rounded-2xl border border-brand-navy/12 bg-white p-7">
-              <span className="text-xs font-bold uppercase tracking-[0.14em] text-brand-orange">{x.m}</span>
-              <h3 className="mt-2 text-lg font-bold text-brand-navy">{x.t}</h3>
-              <p className="mt-2 text-sm text-ink-muted">{x.d}</p>
-            </div>
-          ))}
-        </Reveal>
-        <p className="mx-auto mt-8 max-w-3xl text-center text-sm text-ink-muted">
-          Timelines vary with your competition, your website&apos;s age and where you are starting from. We do not promise specific rankings or dates.
-        </p>
-      </div>
-    </section>
-  );
-}
-
 /* ---------------- Areas + service links ---------------- */
 
 function AreasAndServices() {
@@ -2111,8 +2096,7 @@ function SEOServicesScope() {
         </Reveal>
         <p className="mx-auto mt-8 max-w-3xl text-center text-ink-muted">
           Not sure which of these your business needs first? Start with the{" "}
-          <a className="font-semibold text-brand-orange underline" href="/seo/free-audit/">free SEO audit</a>. It shows where you stand and what to fix first, and you can see what it looks like in the{" "}
-          <a className="font-semibold text-brand-orange underline" href="/downloads/Digital-Aura-Sample-SEO-Audit-Report.pdf" target="_blank" rel="noopener">sample audit report (PDF)</a>.
+          <a className="font-semibold text-brand-orange underline" href="/seo/free-audit/">free SEO audit</a>. It shows where you stand and what to fix first.
         </p>
       </div>
     </section>
@@ -2195,37 +2179,46 @@ function SEOPricing() {
     { t: "How much there is to cover", d: "The number of services, pages, locations and languages changes the scope." },
     { t: "How fast you want to move", d: "More content, local work and link building in a month means a bigger scope." },
   ];
+  const includes = ["A written scope with named deliverables", "Reporting on calls, forms and leads, not just rankings", "Access to your own Search Console, Analytics and Business Profile", "Contract and notice terms you can read before you sign"];
+  const excludes = ["A guaranteed ranking or a fixed number of days", "Hidden add-ons that appear in a later invoice", "Bought links or a standard package chosen before anyone looks at your site"];
   return (
     <section id="seo-pricing" className="bg-white">
-      <div className="mx-auto max-w-5xl px-5 py-16 md:px-8 md:py-24">
+      <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
         <SectionHeading
+          wide
           eyebrow="Pricing"
           title={<>SEO pricing in Ahmedabad: <span className="text-brand-orange">what to expect</span></>}
           sub="We do not print a rate card, because two businesses rarely need the same work. SEO is priced as a monthly scope, after we have looked at your site. Four things decide it."
         />
-        <Reveal className="mt-12 grid gap-5 sm:grid-cols-2">
+        <Reveal className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {drivers.map((x, i) => (
-            <div key={x.t} className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-6">
-              <span className="text-xs font-bold uppercase tracking-[0.14em] text-brand-orange">0{i + 1}</span>
-              <h3 className="mt-2 text-base font-bold text-brand-navy">{x.t}</h3>
-              <p className="mt-2 text-sm text-ink-muted">{x.d}</p>
+            <div key={x.t} className="da-shadow-card da-card-hover flex h-full flex-col rounded-2xl border border-brand-navy/12 bg-white p-6">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-orange-soft text-sm font-extrabold text-brand-orange">0{i + 1}</span>
+              <h3 className="mt-4 text-base font-bold leading-snug text-brand-navy">{x.t}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-muted">{x.d}</p>
             </div>
           ))}
         </Reveal>
-        <Reveal className="mt-8 grid gap-5 md:grid-cols-2">
-          <div className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-7">
-            <h3 className="text-lg font-bold text-brand-navy">A fair SEO quote should include</h3>
-            <ul className="mt-4 space-y-3">
-              {["A written scope with named deliverables", "Reporting on calls, forms and leads, not just rankings", "Access to your own Search Console, Analytics and Business Profile", "Contract and notice terms you can read before you sign"].map((x) => (
-                <li key={x} className="flex gap-3 text-sm text-ink-muted"><Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" />{x}</li>
+        <Reveal className="mt-6 grid gap-5 md:grid-cols-2">
+          <div className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-6 md:p-7">
+            <div className="flex items-center gap-3">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-green-50 text-green-600"><Check className="h-5 w-5" /></span>
+              <h3 className="text-lg font-bold text-brand-navy">A fair SEO quote should include</h3>
+            </div>
+            <ul className="mt-5 space-y-3">
+              {includes.map((x) => (
+                <li key={x} className="flex gap-3 text-sm leading-relaxed text-ink-muted"><Check className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />{x}</li>
               ))}
             </ul>
           </div>
-          <div className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-7">
-            <h3 className="text-lg font-bold text-brand-navy">It should not include</h3>
-            <ul className="mt-4 space-y-3">
-              {["A guaranteed ranking or a fixed number of days", "Hidden add-ons that appear in a later invoice", "Bought links or a standard package chosen before anyone looks at your site"].map((x) => (
-                <li key={x} className="flex gap-3 text-sm text-ink-muted"><X className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />{x}</li>
+          <div className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-6 md:p-7">
+            <div className="flex items-center gap-3">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-red-50 text-red-500"><X className="h-5 w-5" /></span>
+              <h3 className="text-lg font-bold text-brand-navy">It should not include</h3>
+            </div>
+            <ul className="mt-5 space-y-3">
+              {excludes.map((x) => (
+                <li key={x} className="flex gap-3 text-sm leading-relaxed text-ink-muted"><X className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />{x}</li>
               ))}
             </ul>
           </div>
@@ -2235,7 +2228,7 @@ function SEOPricing() {
           <a className="font-semibold text-brand-orange underline" href="/seo/pricing/">how SEO packages are priced in Ahmedabad</a>, or start with the{" "}
           <a className="font-semibold text-brand-orange underline" href="/seo/free-audit/">free SEO audit</a>.
         </p>
-        <div className="mt-8 flex justify-center">
+        <div className="mt-6 flex justify-center">
           <PrimaryCTA href="#audit">Get a free audit and a written quote</PrimaryCTA>
         </div>
       </div>
@@ -2243,34 +2236,55 @@ function SEOPricing() {
   );
 }
 
-function VisitUs() {
+const MAPS_EMBED = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3670.4042735126313!2d72.6881782!3d23.082292199999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e83bdb5cc83a9%3A0xcbe9af162f4cdebc!2sDigital%20Aura!5e0!3m2!1sen!2sin!4v1792055176408!5m2!1sen!2sin";
+
+/** Map and contact details, placed directly above the site footer. */
+function OfficeMap() {
+  const rows = [
+    { Icon: Phone, label: "Call us", value: "+91 81412 00284", href: "tel:+918141200284" },
+    { Icon: MessageCircle, label: "WhatsApp", value: "Message us", href: "https://wa.me/918141200284" },
+    { Icon: Mail, label: "Email", value: "info@thedigitalaura.com", href: "mailto:info@thedigitalaura.com" },
+  ];
   return (
-    <section id="visit-us" className="bg-white">
-      <div className="mx-auto max-w-5xl px-5 py-16 md:px-8 md:py-20">
-        <SectionHeading
-          eyebrow="Visit us"
-          title="Meet the team at our Hanspura office"
-          sub="You can talk to the people who will work on your account before you decide. Call, message or drop in."
-        />
-        <Reveal className="mt-10 grid gap-5 md:grid-cols-2">
-          <div className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-7">
-            <h3 className="text-lg font-bold text-brand-navy">Digital Aura</h3>
-            <address className="mt-3 not-italic text-sm leading-relaxed text-ink-muted">
-              713, Shilp Arcade, Sardar Patel Ring Road,<br />Hanspura, Ahmedabad, Gujarat 382330
-            </address>
-            <p className="mt-3 text-sm text-ink-muted">Monday to Saturday, 10 AM to 7 PM. Closed on Sunday.</p>
-            <a className="mt-4 inline-block text-sm font-bold text-brand-orange underline" href="https://www.google.com/maps/search/?api=1&query=Digital+Aura+713+Shilp+Arcade+Sardar+Patel+Ring+Road+Hanspura+Ahmedabad+382330" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+    <section id="visit-us" className="bg-surface-2">
+      <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-20">
+        <SectionHeading wide eyebrow="Find us" title="Talk to us, or drop in at our Hanspura office" />
+        <Reveal className="da-shadow-card mt-10 grid overflow-hidden rounded-2xl border border-brand-navy/12 bg-white md:grid-cols-[1.5fr_1fr]">
+          <div className="relative min-h-[300px] bg-surface-2 md:min-h-[420px]">
+            <iframe
+              src={MAPS_EMBED}
+              title="Digital Aura office on Google Maps: 713, Shilp Arcade, Sardar Patel Ring Road, Hanspura, Ahmedabad"
+              width="600"
+              height="450"
+              className="absolute inset-0 h-full w-full"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
           </div>
-          <div className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-7">
-            <h3 className="text-lg font-bold text-brand-navy">Talk to us</h3>
-            <ul className="mt-3 space-y-2 text-sm text-ink-muted">
-              <li>Phone: <a className="font-semibold text-brand-orange underline" href="tel:+918141200284">+91 81412 00284</a></li>
-              <li>WhatsApp: <a className="font-semibold text-brand-orange underline" href="https://wa.me/918141200284">message us</a></li>
-              <li>Email: <a className="font-semibold text-brand-orange underline" href="mailto:info@thedigitalaura.com">info@thedigitalaura.com</a></li>
+          <div className="flex flex-col p-6 md:p-8">
+            <h3 className="text-xl font-extrabold text-brand-navy">Talk to us</h3>
+            <ul className="mt-5 space-y-4">
+              {rows.map(({ Icon, label, value, href }) => (
+                <li key={label}>
+                  <a href={href} className="group flex items-center gap-3">
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-orange-soft text-brand-orange"><Icon className="h-5 w-5" /></span>
+                    <span className="min-w-0">
+                      <span className="block text-xs font-semibold uppercase tracking-wider text-ink-muted">{label}</span>
+                      <span className="block truncate text-sm font-bold text-brand-navy group-hover:text-brand-orange">{value}</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
             </ul>
-            <p className="mt-4 text-sm text-ink-muted">
-              Prefer to start with a review of your site? <a className="font-semibold text-brand-orange underline" href="/seo/free-audit/">Request the free SEO audit</a>.
-            </p>
+            <div className="mt-6 space-y-3 border-t border-brand-navy/10 pt-5 text-sm text-ink-muted">
+              <p className="flex items-start gap-3"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" /><span>713, Shilp Arcade, Sardar Patel Ring Road, Hanspura, Ahmedabad, Gujarat 382330</span></p>
+              <p className="flex items-start gap-3"><Clock className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" /><span>Monday to Saturday, 10 AM to 7 PM. Closed on Sunday.</span></p>
+            </div>
+            <div className="mt-6 md:mt-auto md:pt-6">
+              <PrimaryCTA href="/seo/free-audit/" className="w-full">Request the free SEO audit</PrimaryCTA>
+            </div>
           </div>
         </Reveal>
       </div>
@@ -2522,14 +2536,13 @@ function Index() {
         <Framework />
         <SEOServicesScope />
         <Process />
+        <SampleAuditSnapshot />
         <First90Days />
-        <Timeline />
         <SEOToolsWeUse />
         <Results />
         <GSCSnapshots />
         <ClientLogoWall />
         <Testimonials />
-        <RatedOnPlatforms />
         <WhyChooseUs />
         <GAReporting />
         <CertifiedTrusted />
@@ -2542,9 +2555,9 @@ function Index() {
         <SEOvsAds />
         <SEOReels />
         <TeamSection />
-        <VisitUs />
         <FAQ />
         <FinalCTA />
+        <OfficeMap />
       </main>
       <MainSiteFooter />
       <FloatingWhatsApp />

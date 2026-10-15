@@ -1,4 +1,4 @@
-import { Eyebrow, H2, Lead, Section } from "../shared/SectionPrimitives";
+import { Section, SectionHead } from "../shared/SectionPrimitives";
 import {
   Carousel,
   CarouselContent,
@@ -15,16 +15,14 @@ const SNAPSHOTS = [
 
 export function DashboardGallery() {
   return (
-    <Section id="gallery" className="bg-white">
-      <div className="mx-auto max-w-3xl text-center mb-14">
-        <Eyebrow>Verified Account Data</Eyebrow>
-        <H2 className="mt-6">Google Ads Performance Snapshots</H2>
-        <Lead className="mt-6 mx-auto">
-          Real Google Ads campaign dashboards from active client accounts. Sensitive information has been hidden for privacy.
-        </Lead>
-      </div>
+    <Section id="gallery" className="bg-surface-cream">
+      <SectionHead
+        eyebrow="Verified account data"
+        title="Google Ads performance snapshots"
+        lead="Real campaign dashboards from active client accounts. Sensitive information has been hidden for privacy."
+      />
 
-      <Carousel className="mx-auto max-w-5xl">
+      <Carousel className="mx-auto max-w-4xl">
         <CarouselContent>
           {SNAPSHOTS.map((s) => (
             <CarouselItem key={s.src}>

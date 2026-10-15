@@ -49,6 +49,27 @@ export const TEAM = {
   jinali: { name: "Jinali Lodariya", role: "SEO Executive", photo: "/team/jinali.png", bio: "Jinali Lodariya specializes in search engine optimization (SEO), focusing on keyword research, on-page optimization, content optimization, and website performance. She works to improve search engine rankings, organic traffic, and overall website visibility." },
 };
 
+/** Founder card shown first in the pillar-page team sections. Bio condensed from the About page. */
+const FOUNDER_CARD = {
+  name: "Sambhav Shah",
+  role: "Founder & CEO",
+  photo: "/team/sambhav-shah.webp",
+  bio: "Sambhav started in digital marketing in 2015 and built his expertise hands-on, leading business development, client relationships and growing teams. With 10+ years across client acquisition, team leadership and digital execution, he stays personally involved in strategy on every account.",
+  links: [
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/sambhav-shah/" },
+    { label: "Instagram", href: "https://www.instagram.com/sambhavshah2/" },
+  ],
+};
+
+/** Meta ads pillar team, in the order the owner asked for (2026-10-15). */
+const META_PILLAR_TEAM = [
+  FOUNDER_CARD,
+  { name: "Satish Prajapati", role: "Meta Ads Specialist", photo: "/team/satish.png", bio: "Satish plans Meta campaigns from objective to budget and creative direction, and leads the reviews that keep spend following the leads that matter to your business." },
+  { name: "Bhavesh Bhavsar", role: "Meta Ads Executive", photo: "/team/bhavesh.webp", bio: "Bhavesh sets up lead forms, the pixel and conversion tracking, and checks that every lead reaches you, whether it comes by form, call or WhatsApp." },
+  { name: "Krishna Jani", role: "Meta Ads Executive", photo: "/team/krishna.webp", bio: "Krishna works on ad creative briefs, copy variations and tests, helping keep creatives fresh as results change." },
+  { name: "Diya Mahida", role: "Meta Ads Executive", photo: "/team/diya.webp", bio: "Diya handles reporting and optimisation checks across campaigns, summarising what produced leads and what to change next." },
+];
+
 /** Instagram reel ids supplied by the owner (2026-10-09), grouped by service. */
 export const REELS = {
   seo: ["DXwAkPRMl9c", "DTktVf7gdFf", "DcoMJiOskzp"],
@@ -395,8 +416,7 @@ export const pillarExtras: Record<string, Enhancement> = {
     relatedServices: rel("metaPricing", "metaClinics", "gadsPillar", "socialAgency", "adAgency", "dmAgency", "seoPillar", "cro"),
     extraAdd: [
       { kind: "reels", id: "meta-videos", eyebrow: "Videos", title: "Watch: Meta ads in short videos", subtext: "Short, practical videos from our founder, Sambhav Shah, on how Meta ads work for businesses in Ahmedabad.", ids: REELS.meta, topic: "Meta ads", slug: "meta" },
-      { kind: "team", id: "meta-team", eyebrow: "Our team", title: "The team behind your Meta ads", subtext: "Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. Meet the in-house team you will work with at our Hanspura office, Ahmedabad.", members: [TEAM.satish, TEAM.bhavesh], founderLinks: true },
-      { kind: "text", id: "visit-us", eyebrow: "Visit us", title: "Meet the team at our Hanspura office", paragraphs: ["Talk to the people who will run your ads before you decide. We are at 713, Shilp Arcade, Sardar Patel Ring Road, Hanspura, Ahmedabad, Gujarat 382330. Open Monday to Saturday, 10 AM to 7 PM, closed on Sunday.", "Prefer to start with a review of your ad account? Send your details in the form below and we reply by email."], links: [{ label: "Call +91 81412 00284", href: "tel:+918141200284" }, { label: "WhatsApp us", href: "https://wa.me/918141200284" }, { label: "Open in Google Maps", href: "https://www.google.com/maps/search/?api=1&query=Digital+Aura+713+Shilp+Arcade+Sardar+Patel+Ring+Road+Hanspura+Ahmedabad+382330" }, { label: "Get a free account review", href: "#audit-form" }] },
+      { kind: "team", id: "meta-team", eyebrow: "Our team", title: "Meet the team behind every Meta campaign we run", subtext: "Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. This is the in-house team at our Hanspura office, Ahmedabad, that plans, builds and reports on your Meta ads.", members: META_PILLAR_TEAM },
     ],
     faqAdd: [
       { q: "Which businesses in Ahmedabad get the best results from Meta ads?", a: "Usually businesses that sell something people do not search for every day and can reply to enquiries quickly: clinics and classes, real estate, restaurants and online stores. Where customers already search in urgent moments, such as for a repair, Google Search often comes first." },

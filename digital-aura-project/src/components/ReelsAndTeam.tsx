@@ -1,7 +1,15 @@
 import { useState } from "react";
 import { Instagram, Linkedin } from "lucide-react";
 
-export interface TeamMember { name: string; role: string; bio: string; photo: string; }
+export interface TeamMember { name: string; role: string; bio: string; photo: string; links?: { label: string; href: string }[]; }
+
+/** Small link row under a team member's bio (used for the founder's LinkedIn and Instagram). */
+export const MemberLinks = ({ links, accent }: { links?: TeamMember["links"]; accent: string }) =>
+  links && links.length ? (
+    <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+      {links.map((l) => <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className="font-bold underline" style={{ color: accent }}>{l.label}</a>)}
+    </p>
+  ) : null;
 
 /**
  * Reel card styled like an Instagram post (profile header, video, "View more on Instagram"). The thumbnail is
@@ -65,7 +73,7 @@ export const ReelGrid = ({ ids, accent, topic, slug }: { ids: string[]; accent: 
 );
 
 export const TeamGrid = ({ members, accent }: { members: TeamMember[]; accent: string }) => (
-  <div className="grid gap-5 md:grid-cols-3">
+  <div className={`grid gap-5 ${members.length > 3 ? "sm:grid-cols-2 lg:grid-cols-3" : "md:grid-cols-3"}`}>
     {members.map((m) => (
       <div key={m.name} className="p-5 rounded-2xl bg-white border" style={{ borderColor: "#E5E7EB" }}>
         <div className="flex items-center gap-3">
@@ -76,6 +84,7 @@ export const TeamGrid = ({ members, accent }: { members: TeamMember[]; accent: s
           </div>
         </div>
         <p className="mt-3 text-sm text-[#4B5563] leading-relaxed">{m.bio}</p>
+        <MemberLinks links={m.links} accent={accent} />
       </div>
     ))}
   </div>

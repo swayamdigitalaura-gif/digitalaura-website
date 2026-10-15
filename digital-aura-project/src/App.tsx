@@ -63,6 +63,7 @@ import TermsAndConditionsPage from "./pages/TermsAndConditionsPage.tsx";
 import CancellationRefundPage from "./pages/CancellationRefundPage.tsx";
 import TestimonialsPage from "./pages/TestimonialsPage.tsx";
 import AwardsPage from "./pages/AwardsPage.tsx";
+import { CASE_CARDS } from "./components/CaseStudies";
 import WebsiteDevelopmentServicesPage from "./pages/WebsiteDevelopmentServicesPage.tsx";
 import SEOAuditStrategyPage from "./pages/services/seo/SEOAuditStrategyPage.tsx";
 import OnPageSEOPage from "./pages/services/seo/OnPageSEOPage.tsx";
@@ -215,7 +216,7 @@ const App = () => (
           <Route path="/mobile-app-development-ahmedabad" element={<IndustryLandingPage config={localPages.mobileAppAhmedabad} />} />
           <Route path="/mobile-app-development-gujarat" element={<IndustryLandingPage config={localPages.mobileAppGujarat} />} />
           <Route path="/google-ads-agency-ahmedabad" element={<IndustryLandingPage config={localPages.googleAdsAhmedabad} variant="pillar" />} />
-          <Route path="/meta-ads-agency-ahmedabad" element={<IndustryLandingPage config={localPages.metaAdsAhmedabad} variant="pillar" />} />
+          <Route path="/meta-ads-agency-ahmedabad" element={<IndustryLandingPage config={localPages.metaAdsAhmedabad} variant="pillar" officeMap caseCards={[CASE_CARDS.grand]} caseSub="A real result from a business we run Facebook and Instagram for." />} />
           <Route path="/digital-marketing-agency-ahmedabad" element={<IndustryLandingPage config={localPages.digitalMarketingAhmedabad} variant="pillar" />} />
           <Route path="/digital-marketing-agency-gujarat" element={<IndustryLandingPage config={localPages.digitalMarketingGujarat} />} />
 

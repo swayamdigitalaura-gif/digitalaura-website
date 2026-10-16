@@ -162,6 +162,7 @@ function TickItem({ text }: { text: string }) {
 
 function GuideSection({ sec, index }: { sec: ExtraSection; index: number }) {
   const pillar = useContext(VariantCtx) === "pillar";
+  const std = useContext(StandardCtx);
   const eyebrow = sec.eyebrow;
   const sub = "subtext" in sec ? sec.subtext : undefined;
   const bg = index % 2 === 0 ? "#fff" : "#F8FAFF";
@@ -287,6 +288,42 @@ function GuideSection({ sec, index }: { sec: ExtraSection; index: number }) {
       <Wrap id={sec.id} bg={bg}>
         <Head eyebrow={eyebrow} title={sec.title} sub={sub} />
         <ReelGrid ids={sec.ids} accent={ORANGE} topic={sec.topic} slug={sec.slug} />
+        {foot}
+      </Wrap>
+    );
+  }
+
+  if (sec.kind === "team" && std && sec.members.length >= 2) {
+    const [lead, ...rest] = sec.members;
+    return (
+      <Wrap id={sec.id} bg={bg}>
+        <Head eyebrow={eyebrow} title={sec.title} sub={sub} />
+        <div className="mx-auto max-w-6xl">
+          <div className="pillar-team-founder">
+            <img src={lead.photo} alt={`${lead.name}, ${lead.role} at Digital Aura`} width={96} height={96} loading="lazy" />
+            <div>
+              <h3>{lead.name}</h3>
+              <p className="pillar-team-role">{lead.role}</p>
+              <p className="pillar-team-bio">{lead.bio}</p>
+              <MemberLinks links={lead.links} accent={ORANGE} />
+            </div>
+          </div>
+          <div className="pillar-team-grid" style={{ "--team-cols": rest.length } as React.CSSProperties}>
+            {rest.map((m) => (
+              <div key={m.name} className="pillar-team-card">
+                <div className="pillar-team-card-top">
+                  <img src={m.photo} alt={`${m.name}, ${m.role} at Digital Aura`} width={56} height={56} loading="lazy" />
+                  <div>
+                    <h3>{m.name}</h3>
+                    <p className="pillar-team-role">{m.role}</p>
+                  </div>
+                </div>
+                <p className="pillar-team-bio">{m.bio}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        {sec.founderLinks && <div className="mx-auto max-w-3xl"><FounderLinks accent={ORANGE} /></div>}
         {foot}
       </Wrap>
     );

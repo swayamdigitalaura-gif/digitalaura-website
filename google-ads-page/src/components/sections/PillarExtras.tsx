@@ -301,32 +301,30 @@ export function TeamSection() {
         title="Meet the team that guards your ad spend"
         lead="Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. This is the in-house team at our Hanspura office, Ahmedabad, that runs your Google Ads."
       />
-      <div className="mx-auto grid max-w-6xl gap-4 lg:grid-cols-[1fr_1.7fr]">
-        <div className="rounded-2xl border border-primary/40 bg-surface-cream p-6 shadow-xs">
-          <div className="flex items-center gap-4">
-            <img src={FOUNDER.photo} alt={`${FOUNDER.name}, ${FOUNDER.role} at Digital Aura`} width={72} height={72} loading="lazy" className="size-[72px] shrink-0 rounded-2xl bg-white object-cover" />
-            <div>
-              <h3 className="font-display text-[19px] font-bold leading-tight text-navy">{FOUNDER.name}</h3>
-              <p className="text-sm font-semibold text-primary">{FOUNDER.role}</p>
-            </div>
+      <div className="mx-auto max-w-6xl">
+        <div className="pillar-team-founder">
+          <img src={FOUNDER.photo} alt={`${FOUNDER.name}, ${FOUNDER.role} at Digital Aura`} width={96} height={96} loading="lazy" />
+          <div>
+            <h3>{FOUNDER.name}</h3>
+            <p className="pillar-team-role">{FOUNDER.role}</p>
+            <p className="pillar-team-bio">{FOUNDER.bio}</p>
+            <p className="mt-3 flex flex-wrap gap-4 text-sm">
+              <a className="font-semibold text-primary underline" href={FOUNDER_SAME_AS[0]} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a className="font-semibold text-primary underline" href={FOUNDER_SAME_AS[1]} target="_blank" rel="noopener noreferrer">Instagram</a>
+            </p>
           </div>
-          <p className="mt-4 text-[14.5px] leading-relaxed text-muted-foreground">{FOUNDER.bio}</p>
-          <p className="mt-4 flex flex-wrap gap-3 text-sm">
-            <a className="font-semibold text-primary underline" href={FOUNDER_SAME_AS[0]} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a className="font-semibold text-primary underline" href={FOUNDER_SAME_AS[1]} target="_blank" rel="noopener noreferrer">Instagram</a>
-          </p>
         </div>
-        <div className="pillar-cols-2 grid gap-4 sm:grid-cols-2">
+        <div className="pillar-team-grid" style={{ "--team-cols": TEAM_MEMBERS.length } as React.CSSProperties}>
           {TEAM_MEMBERS.map((m) => (
-            <div key={m.name} className={card}>
-              <div className="flex items-center gap-3">
-                <img src={m.photo} alt={`${m.name}, ${m.role} at Digital Aura`} width={48} height={48} loading="lazy" className="size-12 shrink-0 rounded-full bg-surface-cream object-cover" />
+            <div key={m.name} className="pillar-team-card">
+              <div className="pillar-team-card-top">
+                <img src={m.photo} alt={`${m.name}, ${m.role} at Digital Aura`} width={56} height={56} loading="lazy" />
                 <div>
-                  <h3 className="font-bold leading-tight text-navy">{m.name}</h3>
-                  <p className="text-sm font-semibold text-primary">{m.role}</p>
+                  <h3>{m.name}</h3>
+                  <p className="pillar-team-role">{m.role}</p>
                 </div>
               </div>
-              <p className="mt-3 text-[14px] leading-relaxed text-muted-foreground">{m.bio}</p>
+              <p className="pillar-team-bio">{m.bio}</p>
             </div>
           ))}
         </div>

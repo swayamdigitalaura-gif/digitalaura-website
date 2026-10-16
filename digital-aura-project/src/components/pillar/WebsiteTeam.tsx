@@ -2,7 +2,6 @@ import { PillarSection } from "@/components/pillar/Pillar";
 import { MemberLinks } from "@/components/ReelsAndTeam";
 
 const ORANGE = "#FF6B2B";
-const NAVY = "#0A1628";
 
 const FOUNDER = {
   name: "Sambhav Shah",
@@ -32,29 +31,27 @@ export default function WebsiteTeam() {
       title="Meet the team behind every website we build"
       intro="Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. This is the in-house team at our Hanspura office, Ahmedabad, that plans, designs and builds your website."
     >
-      <div className="mx-auto grid gap-5 lg:grid-cols-[1fr_1.7fr]">
-        <div className="pillar-card rounded-2xl border-2 bg-[#FFF8F2] p-5" style={{ borderColor: `${ORANGE}66` }}>
-          <div className="flex items-center gap-4">
-            <img src={FOUNDER.photo} alt={`${FOUNDER.name}, ${FOUNDER.role} at Digital Aura`} width={72} height={72} loading="lazy" className="h-[72px] w-[72px] shrink-0 rounded-2xl bg-white object-cover" />
-            <div>
-              <h3 className="text-[19px] font-bold leading-tight" style={{ color: NAVY }}>{FOUNDER.name}</h3>
-              <p className="text-sm font-semibold" style={{ color: ORANGE }}>{FOUNDER.role}</p>
-            </div>
+      <div className="mx-auto max-w-6xl">
+        <div className="pillar-team-founder">
+          <img src={FOUNDER.photo} alt={`${FOUNDER.name}, ${FOUNDER.role} at Digital Aura`} width={96} height={96} loading="lazy" />
+          <div>
+            <h3>{FOUNDER.name}</h3>
+            <p className="pillar-team-role">{FOUNDER.role}</p>
+            <p className="pillar-team-bio">{FOUNDER.bio}</p>
+            <MemberLinks links={FOUNDER.links} accent={ORANGE} />
           </div>
-          <p className="mt-4 text-[14.5px] leading-relaxed text-[#4B5563]">{FOUNDER.bio}</p>
-          <MemberLinks links={FOUNDER.links} accent={ORANGE} />
         </div>
-        <div className="pillar-cols-2 grid gap-5 sm:grid-cols-2">
+        <div className="pillar-team-grid" style={{ "--team-cols": MEMBERS.length } as React.CSSProperties}>
           {MEMBERS.map((m) => (
-            <div key={m.name} className="pillar-card rounded-2xl border bg-white p-5">
-              <div className="flex items-center gap-3">
-                <img src={m.photo} alt={`${m.name}, ${m.role} at Digital Aura`} width={48} height={48} loading="lazy" className="h-12 w-12 shrink-0 rounded-full bg-[#F3F4F6] object-cover" />
+            <div key={m.name} className="pillar-team-card">
+              <div className="pillar-team-card-top">
+                <img src={m.photo} alt={`${m.name}, ${m.role} at Digital Aura`} width={56} height={56} loading="lazy" />
                 <div>
-                  <h3 className="font-bold leading-tight" style={{ color: NAVY }}>{m.name}</h3>
-                  <p className="text-sm font-semibold" style={{ color: ORANGE }}>{m.role}</p>
+                  <h3>{m.name}</h3>
+                  <p className="pillar-team-role">{m.role}</p>
                 </div>
               </div>
-              <p className="mt-3 text-[14px] leading-relaxed text-[#4B5563]">{m.bio}</p>
+              <p className="pillar-team-bio">{m.bio}</p>
             </div>
           ))}
         </div>

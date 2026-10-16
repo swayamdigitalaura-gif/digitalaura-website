@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, TrendingUp } from "lucide-react";
-import { Eyebrow, H2, Section } from "../shared/SectionPrimitives";
+import { Section, SectionHead } from "../shared/SectionPrimitives";
 
 /* Same card design as the "Proven Results" section on the home page. Only real, published case studies
    where Google Ads was part of the work are listed here. */
@@ -28,13 +28,9 @@ const CASES = [
 export function CaseStudies() {
   return (
     <Section id="results" className="bg-white">
-      <div className="mx-auto max-w-5xl text-center">
-        <Eyebrow>Proven Results</Eyebrow>
-        <H2 className="mt-6 lg:!text-[40px]">Real Clients. Real Growth. Real Results.</H2>
-        <p className="mx-auto mt-4 max-w-xl text-[16px] text-muted-foreground">Real numbers from real businesses we run Google Ads for.</p>
-      </div>
+      <SectionHead eyebrow="Proven Results" title="Real Clients. Real Growth. Real Results." lead="Real numbers from real businesses we run Google Ads for." />
 
-      <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2">
+      <div className="mx-auto grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2">
         {CASES.map((c, i) => (
           <motion.div
             key={c.title}

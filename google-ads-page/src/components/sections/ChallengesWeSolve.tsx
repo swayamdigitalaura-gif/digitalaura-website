@@ -33,7 +33,7 @@ export function ChallengesWeSolve() {
         title="Most accounts leak 40%+ of their budget"
         lead="We have audited hundreds of ad accounts. The issues are consistent: budget leakage, weak tracking and generic funnels."
       />
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="pillar-cols-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {CHALLENGES.map((c, i) => (
           <motion.div
             key={c.title}

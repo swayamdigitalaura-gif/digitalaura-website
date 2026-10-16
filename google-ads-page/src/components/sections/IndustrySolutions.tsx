@@ -23,7 +23,7 @@ export function IndustrySolutions() {
         title="We know how to sell in your industry"
         lead="We understand your margins, your customer value and what a qualified lead actually looks like."
       />
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="pillar-cols-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {INDUSTRIES.map((ind, i) => (
           <motion.div
             key={ind.name}

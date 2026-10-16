@@ -1,6 +1,7 @@
 import { Check, Clock } from "lucide-react";
-import { Eyebrow, Section } from "../shared/SectionPrimitives";
+import { Eyebrow } from "../shared/SectionPrimitives";
 import { AuditForm } from "../shared/AuditForm";
+import { VisitUs } from "./PillarExtras";
 
 const CHECKLIST = [
   "Google Ads Audit",
@@ -11,23 +12,21 @@ const CHECKLIST = [
   "30-Day Growth Plan",
 ];
 
+/** Final CTA with the audit form, followed by the map and contact block, in one dark section. */
 export function FinalCTA() {
   return (
-    <Section id="audit-final-section" className="bg-white">
-      <div className="relative overflow-hidden rounded-[2.5rem] bg-navy p-6 shadow-elevated md:p-10">
-        <div className="absolute -right-32 -top-32 size-96 rounded-full bg-primary/20 blur-3xl" />
-        <div className="absolute -left-20 -bottom-32 size-80 rounded-full bg-primary/10 blur-3xl" />
-
-        <div className="relative grid grid-cols-1 gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16 items-center">
-          <div className="text-white flex flex-col justify-center">
-            <Eyebrow light>Weekly Audit Cap: 5 Brands</Eyebrow>
-            <h2 className="mt-6 font-display text-[30px] font-extrabold leading-[1.12] tracking-[-0.02em] text-white md:text-[40px]">
+    <section id="audit-final-section" className="pillar-section pillar-section--navy">
+      <div className="pillar-container">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+          <div className="flex flex-col justify-center text-white">
+            <div><Eyebrow light>Weekly Audit Cap: 5 Brands</Eyebrow></div>
+            <h2 className="mt-3 mb-5 font-display font-extrabold leading-tight tracking-[-0.02em] text-white [font-size:clamp(26px,2.8vw,34px)]">
               See Exactly Where Your Ad Budget Is Being Wasted
             </h2>
-            <p className="mt-5 text-[16px] md:text-[18px] leading-[1.7] text-white/80">
+            <p className="text-[17px] leading-[1.7] text-white/80">
               In 24 hours, a senior strategist reviews your Google Ads account, tracking, and landing pages, then hands you a clear plan to fix it.
             </p>
-            <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {CHECKLIST.map((t) => (
                 <li key={t} className="flex items-start gap-3 text-[15px] font-semibold text-white/90">
                   <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground">
@@ -46,7 +45,8 @@ export function FinalCTA() {
             <AuditForm id="audit-final" compact />
           </div>
         </div>
+        <VisitUs />
       </div>
-    </Section>
+    </section>
   );
 }

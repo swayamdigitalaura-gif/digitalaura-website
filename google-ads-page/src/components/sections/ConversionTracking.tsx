@@ -12,7 +12,7 @@ const POINTS = [
 
 export function ConversionTracking() {
   return (
-    <Section id="dashboards" className="bg-navy text-white">
+    <Section id="dashboards" className="pillar-keep-bg bg-navy text-white">
       <SectionHead
         light
         eyebrow="Conversion tracking & analytics"

@@ -32,7 +32,7 @@ export function QuickAnswer() {
         title="Google Ads management in Ahmedabad, in plain words"
         lead="Digital Aura is a Google Ads agency in Hanspura, Ahmedabad. We plan, run and improve your Search, Performance Max, Shopping and YouTube campaigns, set up tracking for calls, WhatsApp and form leads, and send a monthly report that shows enquiries, not just clicks. Campaigns run inside your own Google Ads account."
       />
-      <div className="mx-auto grid max-w-5xl gap-5 md:grid-cols-2">
+      <div className="pillar-cols-2 mx-auto grid max-w-5xl gap-5 md:grid-cols-2">
         <div className={card}>
           <h3 className="flex items-center gap-3 font-display text-[18px] font-bold text-navy">
             <CardBadge><Check className="size-5" /></CardBadge> Who this is right for
@@ -101,7 +101,7 @@ export function AhmedabadMarket() {
             <p className="mt-3 text-[14.5px] leading-relaxed text-muted-foreground">{s.d}</p>
           </motion.div>
         ))}
-        <div className={`${card} sm:col-span-2 lg:col-span-6`}>
+        <div className={`${card} pillar-card--wide sm:col-span-2 lg:col-span-6`}>
           <div className="flex items-center gap-3">
             <CardBadge><MapPin className="size-5" /></CardBadge>
             <h3 className="font-display text-[17px] font-bold text-navy">Areas we target</h3>
@@ -136,7 +136,7 @@ export function CostBreakdown() {
         title="What Google Ads really costs in Ahmedabad"
         lead="Four things make up the bill. We explain each one in your free audit and give you the fee in writing before you commit."
       />
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="pillar-cols-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {parts.map((p, i) => (
           <motion.div
             key={p.t}
@@ -316,7 +316,7 @@ export function TeamSection() {
             <a className="font-semibold text-primary underline" href={FOUNDER_SAME_AS[1]} target="_blank" rel="noopener noreferrer">Instagram</a>
           </p>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="pillar-cols-2 grid gap-4 sm:grid-cols-2">
           {TEAM_MEMBERS.map((m) => (
             <div key={m.name} className={card}>
               <div className="flex items-center gap-3">
@@ -350,15 +350,17 @@ export function PeopleSchema() {
   );
 }
 
+export const STATS_ITEMS = [
+  { k: "120+", v: "Clients served" },
+  { k: "750+", v: "Projects delivered" },
+  { k: "10+", v: "Years in digital marketing" },
+  { k: "Free", v: "Google Ads audit, reply by email" },
+];
+
 /* ---------- Trust numbers band (same pattern as the SEO page; only the confirmed company figures) ---------- */
 
 export function StatsBand() {
-  const items = [
-    { k: "120+", v: "Clients served" },
-    { k: "750+", v: "Projects delivered" },
-    { k: "10+", v: "Years in digital marketing" },
-    { k: "Free", v: "Google Ads audit, reply by email" },
-  ];
+  const items = STATS_ITEMS;
   return (
     <section className="bg-surface-cream">
       <div className="mx-auto w-full max-w-7xl px-5 py-8 md:px-8 md:py-10">
@@ -391,7 +393,7 @@ export function ExploreMore() {
   return (
     <Section id="explore" className="bg-white">
       <SectionHead eyebrow="Explore" title="Explore each Google Ads service" lead="One focused page for each question, so you can go straight to what you need." />
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="pillar-cols-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {items.map((i) => (
           <a key={i.h} href={i.h} className={`${card} group flex flex-col`}>
             <CardBadge><i.Icon className="size-5" /></CardBadge>
@@ -462,7 +464,7 @@ export function First90Days() {
       />
       <div className="relative">
         <div className="absolute left-[12%] right-[12%] top-5 hidden h-0.5 bg-border lg:block" aria-hidden="true" />
-        <div className="relative grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="pillar-cols-4 relative grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((x, i) => (
             <div key={x.w} className={card}>
               <div className="flex items-center gap-3">
@@ -496,9 +498,12 @@ export function VisitUs() {
     { Icon: Mail, label: "Email", value: "info@thedigitalaura.com", href: "mailto:info@thedigitalaura.com" },
   ];
   return (
-    <Section id="visit-us" className="bg-surface-cream">
-      <SectionHead eyebrow="Find us" title="Talk to us, or drop in at our Hanspura office" />
-      <div className="mx-auto grid max-w-6xl overflow-hidden rounded-2xl border border-border bg-white shadow-xs md:grid-cols-[1.5fr_1fr]">
+    <div id="visit-us" className="mt-14 border-t border-white/15 pt-12">
+      <div className="pillar-head !mb-8">
+        <span className="pillar-eyebrow">Find us</span>
+        <h3 className="mt-3 text-2xl font-extrabold text-white md:text-[28px]">Talk to us, or drop in at our Hanspura office</h3>
+      </div>
+      <div className="grid overflow-hidden rounded-2xl border border-white/10 bg-white shadow-xs md:grid-cols-[1.5fr_1fr]">
         <div className="relative min-h-[300px] bg-surface-cream md:min-h-[400px]">
           <iframe
             src={MAPS_EMBED}
@@ -536,7 +541,7 @@ export function VisitUs() {
           </div>
         </div>
       </div>
-    </Section>
+    </div>
   );
 }
 
@@ -556,7 +561,7 @@ export function SelfCheck() {
         title="Four questions to answer before you spend a rupee"
         lead="If you can say yes to all four, Google Ads is likely a good fit. If not, we will tell you what to fix first, or suggest a different channel."
       />
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="pillar-cols-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {qs.map((x, i) => (
           <div key={x.q} className={card}>
             <CardBadge>{i + 1}</CardBadge>
@@ -641,7 +646,7 @@ export function TrackingByLeadType() {
             <p className="mt-1 text-[14px] leading-relaxed text-muted-foreground">{r.how}</p>
           </div>
         ))}
-        <div className="rounded-2xl border border-dashed border-primary/40 bg-primary/[0.04] p-5">
+        <div className="pillar-card rounded-2xl border border-dashed border-primary/40 bg-primary/[0.04] p-5">
           <div className="flex items-center gap-3">
             <CardBadge><Database className="size-5" /></CardBadge>
             <h3 className="font-display text-[17px] font-bold text-navy">Do you keep a CRM?</h3>

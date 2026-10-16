@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import { useInView, useMotionValue, useSpring } from "framer-motion";
+import { useInPillar } from "./Pillar";
 
 export function Section({
   id,
@@ -18,19 +19,8 @@ export function Section({
   );
 }
 
-export function Eyebrow({ children, light = false }: { children: ReactNode; light?: boolean }) {
-  return (
-    <div
-      className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[12px] font-bold uppercase tracking-[0.16em] shadow-xs ${
-        light
-          ? "border-white/15 bg-white/5 text-white/80"
-          : "border-border bg-surface text-navy/70"
-      }`}
-    >
-      <span className="size-1.5 rounded-full bg-primary animate-pulse-ring" />
-      {children}
-    </div>
-  );
+export function Eyebrow({ children }: { children: ReactNode; light?: boolean }) {
+  return <span className="pillar-eyebrow">{children}</span>;
 }
 
 /**
@@ -50,21 +40,22 @@ export function SectionHead({
   light?: boolean;
   className?: string;
 }) {
+  // Inside a pillar group/tab the block's own heading becomes a sub-heading (H3) under the group's H2.
+  const inPillar = useInPillar();
+  if (inPillar) {
+    return (
+      <div className={`pillar-subhead ${light ? "pillar-subhead--light" : ""} ${className}`}>
+        <Eyebrow>{eyebrow}</Eyebrow>
+        <h3>{title}</h3>
+        {lead && <p>{lead}</p>}
+      </div>
+    );
+  }
   return (
-    <div className={`mx-auto mb-8 max-w-6xl text-center md:mb-10 ${className}`}>
-      <Eyebrow light={light}>{eyebrow}</Eyebrow>
-      <h2
-        className={`mt-4 font-display text-[26px] font-bold leading-[1.15] tracking-[-0.02em] sm:text-[30px] md:text-[34px] lg:whitespace-nowrap ${
-          light ? "text-white" : "text-navy"
-        }`}
-      >
-        {title}
-      </h2>
-      {lead && (
-        <p className={`mx-auto mt-3 max-w-2xl text-[16px] leading-[1.7] md:text-[17px] ${light ? "text-white/70" : "text-muted-foreground"}`}>
-          {lead}
-        </p>
-      )}
+    <div className={`pillar-head ${light ? "pillar-head--light" : ""} ${className}`}>
+      <Eyebrow>{eyebrow}</Eyebrow>
+      <h2>{title}</h2>
+      {lead && <p>{lead}</p>}
     </div>
   );
 }
@@ -72,14 +63,14 @@ export function SectionHead({
 /** Icon or number in a rounded square: the one badge style used on every card of the page. */
 export function CardBadge({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <span className={`grid size-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-[15px] font-extrabold text-primary ${className}`}>
+    <span className={`pillar-badge grid size-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-[15px] font-extrabold text-primary ${className}`}>
       {children}
     </span>
   );
 }
 
 /** Shared card surface. */
-export const CARD = "rounded-2xl border border-border bg-white p-5 shadow-xs transition-shadow hover:shadow-md";
+export const CARD = "pillar-card rounded-2xl border border-border bg-white p-5 shadow-xs transition-shadow hover:shadow-md";
 
 export function H2({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
@@ -111,7 +102,7 @@ export function PrimaryCTA({
   return (
     <a
       href={href}
-      className={`group inline-flex items-center justify-center gap-2.5 rounded-full bg-primary px-8 py-4 text-[16px] md:text-[18px] font-semibold leading-none text-primary-foreground shadow-md hover-btn-glow transition-all duration-300 ${className}`}
+      className={`pillar-btn pillar-btn--primary group ${className}`}
     >
       {children}
       <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -123,7 +114,7 @@ export function SecondaryCTA({ children, href = "#process" }: { children: ReactN
   return (
     <a
       href={href}
-      className="group inline-flex items-center justify-center gap-2.5 rounded-full border border-border bg-white px-8 py-4 text-[16px] md:text-[18px] font-semibold leading-none text-navy transition-all duration-300 hover:border-navy/30 hover:shadow-sm hover:-translate-y-0.5"
+      className="pillar-btn pillar-btn--secondary group"
     >
       {children}
       <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />

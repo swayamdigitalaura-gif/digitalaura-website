@@ -27,6 +27,9 @@ import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
 import type { ExtraSection, LocalServiceConfig } from "@/components/LocalServicePage";
 import { track, PHONE_DISPLAY, PHONE_TEL, whatsappLink } from "@/lib/track";
+import { InPillarContext, PillarFaq, PillarSection, PillarSubNav, PillarTabs, useInPillar } from "@/components/pillar/Pillar";
+import TrustStrip from "@/components/pillar/TrustStrip";
+import "@/pillar-pages.css";
 
 const ORANGE = "#FF6B2B";
 const NAVY = "#0A1628";
@@ -55,10 +58,14 @@ function chipLabel(s: ExtraSection): string {
 /** "industry" = tabbed landing page; "pillar" = same structure and look as the Google Ads / SEO / Website pillar pages. */
 type Variant = "industry" | "pillar";
 const VariantCtx = createContext<Variant>("industry");
+/** True only for the standard pillar template (Meta Ads page); every other page keeps its current look. */
+const StandardCtx = createContext(false);
 const CREAM = "#FFF8F2";
 
 const Eyebrow = ({ children }: { children: React.ReactNode }) => {
+  const std = useContext(StandardCtx);
   const pillar = useContext(VariantCtx) === "pillar";
+  if (std) return <span className="pillar-eyebrow">{children}</span>;
   if (pillar) {
     return (
       <span className="inline-flex items-center gap-2 rounded-full border bg-white px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] shadow-sm" style={{ borderColor: "#EDE3DA", color: "#3B3F5C" }}>
@@ -74,7 +81,24 @@ const Eyebrow = ({ children }: { children: React.ReactNode }) => {
 };
 
 const Head = ({ eyebrow, title, sub, center = true }: { eyebrow?: string; title: React.ReactNode; sub?: string; center?: boolean }) => {
+  const std = useContext(StandardCtx);
+  const inGroup = useInPillar();
   const pillar = useContext(VariantCtx) === "pillar";
+  if (std) {
+    return inGroup ? (
+      <div className="pillar-subhead">
+        {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+        <h3>{title}</h3>
+        {sub && <p>{sub}</p>}
+      </div>
+    ) : (
+      <div className="pillar-head">
+        {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+        <h2>{title}</h2>
+        {sub && <p>{sub}</p>}
+      </div>
+    );
+  }
   return (
     <div className={`${pillar ? "mb-7 md:mb-9" : "mb-8 md:mb-10"} ${center ? (pillar ? "mx-auto max-w-6xl text-center" : "mx-auto max-w-3xl text-center") : "max-w-3xl"}`}>
       {eyebrow && <div className={pillar ? "mb-3.5" : "mb-4"}><Eyebrow>{eyebrow}</Eyebrow></div>}
@@ -90,20 +114,26 @@ const Wrap = ({ id, bg = "#fff", children, narrow = false }: { id?: string; bg?:
   const pillar = useContext(VariantCtx) === "pillar";
   return (
     <section id={id} className={`scroll-mt-32 xl:scroll-mt-36 px-5 md:px-8 ${pillar ? "py-9 md:py-11 lg:py-12" : "py-14 md:py-20"}`} style={{ background: pillar && bg === "#F8FAFF" ? CREAM : bg }}>
-      <div className={`mx-auto ${narrow ? "max-w-4xl" : pillar ? "max-w-7xl" : "max-w-6xl"}`}>{children}</div>
+      <div className={`mx-auto ${narrow ? "max-w-4xl" : pillar ? "max-w-7xl" : "max-w-6xl"}`} {...(narrow ? { "data-narrow": "" } : {})}>{children}</div>
     </section>
   );
 };
 
 const Card = ({ children, className = "", style }: { children: React.ReactNode; className?: string; style?: React.CSSProperties }) => {
   const pillar = useContext(VariantCtx) === "pillar";
+  const std = useContext(StandardCtx);
   return (
-    <div className={`border bg-white ${pillar ? "rounded-2xl p-5" : "rounded-2xl p-6"} ${className}`}
+    <div className={`border bg-white ${pillar ? "rounded-2xl p-5" : "rounded-2xl p-6"} ${std ? "pillar-card" : ""} ${className}`}
       style={{ borderColor: pillar ? "#EDE3DA" : "#E5E7EB", boxShadow: pillar ? "0 2px 10px rgba(26,29,54,0.05)" : "0 2px 12px rgba(10,22,40,0.05)", ...style }}>{children}</div>
   );
 };
 
 const Pill = ({ href, children, variant = "solid", onClick, external = false }: { href: string; children: React.ReactNode; variant?: "solid" | "outline" | "ghost"; onClick?: () => void; external?: boolean }) => {
+  const std = useContext(StandardCtx);
+  if (std) {
+    const cls = variant === "solid" ? "pillar-btn pillar-btn--primary" : variant === "outline" ? "pillar-btn pillar-btn--secondary" : "font-bold text-[#FF6B2B]";
+    return <a href={href} onClick={onClick} className={cls} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{children}</a>;
+  }
   const base = "inline-flex max-w-full shrink-0 items-center justify-center gap-2 whitespace-normal text-center rounded-full px-5 py-2.5 text-[13.5px] font-bold transition-all hover:gap-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2";
   const style: React.CSSProperties =
     variant === "solid" ? { background: ORANGE, color: "#fff", boxShadow: `0 8px 22px ${ORANGE}40` }
@@ -344,7 +374,7 @@ function Faq({ q, a }: { q: string; a: string }) {
 
 /* ───────────── page ───────────── */
 
-export default function IndustryLandingPage({ config, variant = "industry", officeMap = false, caseCards, caseSub }: { config: LocalServiceConfig; variant?: Variant; /** Service-specific case study cards (defaults to the home page set). */ caseCards?: CaseCard[]; caseSub?: string; /** Show the Google Map + "Talk to us" block above the footer instead of the "Visit us" card. */ officeMap?: boolean }) {
+export default function IndustryLandingPage({ config, variant = "industry", officeMap = false, caseCards, caseSub, standard = false }: { config: LocalServiceConfig; variant?: Variant; /** Standard pillar template (same section order and look as the SEO / Google Ads pages). */ standard?: boolean; /** Service-specific case study cards (defaults to the home page set). */ caseCards?: CaseCard[]; caseSub?: string; /** Show the Google Map + "Talk to us" block above the footer instead of the "Visit us" card. */ officeMap?: boolean }) {
   const pillar = variant === "pillar";
   useCMSEditor();
   // Same admin-edited copy overrides as LocalServicePage (settings keys are namespaced by slug), so nothing edited in the CMS is lost.
@@ -441,6 +471,405 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
   }, [nav]);
 
   const stats = c.statsBand || [];
+
+  // Standard pillar template (Meta Ads page): same section order and look as the SEO / Google Ads pages. Existing content is only rearranged.
+  if (standard) {
+    const pool = [...early, ...late];
+    const labelFor: Record<string, string> = {
+      "short-answer": "The short answer", "who-its-for": "Who it suits", "ad-formats": "Facebook, Instagram or WhatsApp",
+      "monthly-work": "Monthly work", "first-30-days": "First 30 days", "tracking-lead-quality": "Tracking and lead quality",
+      creative: "Creative", industries: "Industries", "ahmedabad-calendar": "Ahmedabad calendar", "industry-pages": "Industry guides",
+      cost: "What it costs", "meta-vs-google": "Meta vs Google Ads", "choose-an-agency": "How to choose",
+    };
+    const gtab = (id: string) => {
+      const sec = pool.find((x) => x.id === id);
+      return sec ? { id, label: labelFor[id] || chipLabel(sec), content: <GuideSection sec={sec} index={0} /> } : null;
+    };
+    const tabs = (list: ({ id: string; label: string; content: React.ReactNode } | null)[]) => list.filter(Boolean) as { id: string; label: string; content: React.ReactNode }[];
+    const mapped = new Set(Object.keys(labelFor).concat(["meta-videos"]));
+    const teamSec = team || pool.find((x) => x.kind === "team");
+    const restSections = pool.filter((x) => !mapped.has(x.id) && x.id !== "meta-videos" && x !== teamSec);
+    const videos = pool.find((x) => x.id === "meta-videos");
+    const QuickBlock = c.quickAnswer ? (
+      <Wrap id="quick-answer" bg="#fff">
+        <div className="grid items-start gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-14">
+          <div>
+            <Eyebrow>Quick answer</Eyebrow>
+            <h3 className="mt-3 text-[22px] font-bold leading-[1.2] tracking-[-0.01em] md:text-[26px]" style={{ color: NAVY }}>{c.quickAnswer.heading}</h3>
+            <p className="mt-4 text-[16px] leading-[1.75] text-[#5B5F7A] md:text-[17px]">{c.quickAnswer.answer}</p>
+            {c.lastUpdated && (
+              <p className="mt-6 flex items-start gap-2 text-xs leading-relaxed text-[#6B7280]">
+                <Clock size={14} className="mt-0.5 shrink-0" />
+                <span>Published by <a href="/about/" className="underline">Digital Aura</a>, 713 Shilp Arcade, SP Ring Road, Hanspura, Ahmedabad. Last updated <time dateTime={c.lastUpdated}>{formatDate(c.lastUpdated)}</time>.</span>
+              </p>
+            )}
+          </div>
+          {c.quickAnswer.points && (
+            <Card>
+              <ul className="space-y-4">
+                {c.quickAnswer.points.map((p) => (
+                  <li key={p} className="flex gap-3 text-[15px] leading-snug text-[#374151]">
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full" style={{ background: `${GREEN}1a`, color: GREEN }}><Check size={14} strokeWidth={3} /></span>{p}
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          )}
+        </div>
+      </Wrap>
+    ) : null;
+
+    const OverviewBlock = (
+      <Wrap id="overview" bg="#fff">
+        <div className="grid items-start gap-10 lg:grid-cols-[1fr_1.1fr]">
+          <div>
+            <Eyebrow>{c.differentiatorBadge}</Eyebrow>
+            <h3 className="mt-3 text-[22px] font-bold leading-[1.2] tracking-[-0.01em] md:text-[26px]" style={{ color: NAVY }}>
+              {c.differentiatorHeading}{c.differentiatorHeading2 && <> <span style={{ color: ORANGE }}>{c.differentiatorHeading2}</span></>}
+            </h3>
+            <p className="mt-4 text-[16px] leading-relaxed text-[#4B5563]"><span data-cms-key={k("differentiatorText")} data-cms-label="Differentiator Text" data-cms-attr="text">{c.differentiatorText}</span></p>
+            <div className="mt-6 flex gap-3 rounded-2xl border-l-4 px-5 py-4" style={{ background: SOFT, borderLeftColor: ORANGE }}>
+              <ShieldAlert size={20} className="mt-0.5 shrink-0" style={{ color: ORANGE }} />
+              <p className="text-[14.5px] font-semibold leading-relaxed text-[#374151]"><span data-cms-key={k("warningText")} data-cms-label="Warning Text" data-cms-attr="text">{c.warningText}</span></p>
+            </div>
+          </div>
+          <div>
+            <p className="mb-4 text-[11px] font-black uppercase tracking-[0.14em] text-[#DC2626]">{c.painPointsTitle}</p>
+            <ul className="space-y-3">
+              {c.painPoints.map((p) => (
+                <li key={p.pain} className="flex gap-3.5 rounded-2xl border bg-white p-4" style={{ borderColor: "#FECACA", background: "#FFF8F8" }}>
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl" style={{ background: "#FEE2E2", color: "#DC2626" }}><X size={18} strokeWidth={3} /></span>
+                  <div>
+                    <p className="text-[15.5px] font-bold leading-snug" style={{ color: NAVY }}>{p.pain}</p>
+                    <p className="mt-1 text-[14px] leading-relaxed text-[#6B7280]">{p.detail}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </Wrap>
+    );
+
+    const IncludedBlock = (
+      <Wrap id="what-we-handle" bg="#fff">
+        <Head eyebrow="What you get" title={<span data-cms-key={k("includedTitle")} data-cms-label="Included Title" data-cms-attr="text">{c.includedTitle}</span>} />
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {c.included.map((item) => (
+            <Card key={item.title} className="flex gap-4">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl" style={{ background: `${ORANGE}14`, color: ORANGE }}><Check size={22} strokeWidth={3} /></span>
+              <div>
+                <h3 className="text-[16px] font-bold leading-snug" style={{ color: NAVY }}>{item.title}</h3>
+                <p className="mt-1.5 text-[14.5px] leading-relaxed text-[#4B5563]">{item.desc}</p>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </Wrap>
+    );
+
+    const ProcessBlock = (
+      <Wrap id="how-it-works" bg="#fff">
+        <Head eyebrow="How it works" title={<span data-cms-key={k("processTitle")} data-cms-label="Process Title" data-cms-attr="text">{c.processTitle}</span>} sub={c.processSubtext} />
+        <ol className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          {c.process.map((s, i) => (
+            <li key={s.title}>
+              <Card className="h-full">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-[15px] font-extrabold" style={{ background: `${ORANGE}1a`, color: ORANGE }}>{i + 1}</span>
+                  <h3 className="text-[16px] font-bold leading-snug" style={{ color: NAVY }}>{s.title}</h3>
+                </div>
+                <p className="mt-2.5 text-[14.5px] leading-relaxed text-[#4B5563]">{s.desc}</p>
+              </Card>
+            </li>
+          ))}
+        </ol>
+      </Wrap>
+    );
+
+    const WhyBlock = (
+      <Wrap id="why-us" bg="#fff">
+        <Head eyebrow="Why us" title={<span data-cms-key={k("whyLocalTitle")} data-cms-label="Why Us Title" data-cms-attr="text">{c.whyLocalTitle}</span>} />
+        <ul className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-2">
+          {c.whyLocal.map((w) => (
+            <li key={w} className="flex items-start gap-3 rounded-2xl border bg-white p-4" style={{ borderColor: "#EDE3DA" }}>
+              <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full" style={{ background: `${GREEN}1a`, color: GREEN }}><Check size={14} strokeWidth={3} /></span>
+              <span className="text-[15px] leading-relaxed text-[#374151]">{w}</span>
+            </li>
+          ))}
+        </ul>
+      </Wrap>
+    );
+
+    const RelatedBlock = c.relatedServices.length > 0 ? (
+      <Wrap id="related" bg="#fff">
+        <Head eyebrow={c.relatedCategoryLabel} title="More Ways We Can Help" />
+        <div className="grid gap-5 md:grid-cols-3">
+          {c.relatedServices.map((s) => (
+            <Card key={s.title} className="flex flex-col">
+              <h3 className="text-[16px] font-bold" style={{ color: NAVY }}>{s.title}</h3>
+              <p className="mt-1.5 text-[14.5px] leading-relaxed text-[#4B5563]">{s.desc}</p>
+              <ul className="mt-3 flex-1 space-y-1.5">
+                {s.points.map((p) => (
+                  <li key={p} className="flex items-center gap-2 text-sm font-medium text-[#374151]"><span className="h-1.5 w-1.5 rounded-full" style={{ background: ORANGE }} />{p}</li>
+                ))}
+              </ul>
+              <Link to={s.href} className="mt-4 inline-flex items-center gap-1 text-sm font-bold hover:gap-2" style={{ color: ORANGE }}>
+                Learn more<span className="sr-only"> about {s.title}</span> <ArrowRight size={14} />
+              </Link>
+            </Card>
+          ))}
+        </div>
+      </Wrap>
+    ) : null;
+
+    const StartBlock = getStarted && getStarted.kind === "cards" ? (
+      <Wrap id="get-started" bg="#fff">
+        <Head eyebrow={getStarted.eyebrow} title={getStarted.title} sub={getStarted.subtext} />
+        <div className="grid gap-5 md:grid-cols-3">
+          {getStarted.items.map((it, i) => {
+            const Icon = i === 0 ? FileText : i === 1 ? MessageCircle : Phone;
+            return (
+              <Card key={it.title} className="flex flex-col items-start">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl" style={{ background: `${ORANGE}14`, color: ORANGE }}><Icon size={22} /></span>
+                <h3 className="mt-4 text-[17px] font-bold" style={{ color: NAVY }}>{it.title}</h3>
+                <p className="mt-1.5 flex-1 text-[14.5px] leading-relaxed text-[#4B5563]">{it.desc}</p>
+                {it.href && it.cta && (
+                  <div className="mt-5 max-w-full">
+                    <Pill href={it.href} variant={i === 0 ? "solid" : "outline"} external={/^https?:/.test(it.href)} onClick={() => track("cta_click", { cta_label: it.cta!, cta_location: "get_started" })}>
+                      {it.cta} <ArrowRight size={15} />
+                    </Pill>
+                  </div>
+                )}
+              </Card>
+            );
+          })}
+        </div>
+      </Wrap>
+    ) : null;
+
+    const aboutBlock = (sec: ExtraSection | undefined) => sec && sec.kind === "text" ? (
+      <Wrap id={sec.id === "about-guide" ? "about" : sec.id} bg="#fff" narrow>
+        <Card className="p-7">
+          <Eyebrow>{sec.eyebrow}</Eyebrow>
+          <h3 className="mt-3 text-xl font-bold md:text-2xl" style={{ color: NAVY }}>{sec.title}</h3>
+          <div className="mt-3 space-y-3 text-[15px] leading-relaxed text-[#4B5563]">{sec.paragraphs.map((p) => <p key={p}>{p}</p>)}</div>
+          {sec.links && (
+            <div className="mt-5 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
+              {sec.links.map((l, i) => <Pill key={l.href} href={l.href} variant={i === 0 && sec.id === "visit-us" ? "solid" : "outline"} external={/^https?:/.test(l.href)}>{l.label}</Pill>)}
+            </div>
+          )}
+        </Card>
+      </Wrap>
+    ) : null;
+
+    const industryTabs = tabs([gtab("industries"), gtab("ahmedabad-calendar"), gtab("industry-pages")]);
+    const exploreFinal = tabs([
+      RelatedBlock ? { id: "related", label: "More ways we can help", content: RelatedBlock } : null,
+      StartBlock ? { id: "start", label: "How to start", content: StartBlock } : null,
+      ...restSections.map((sec) => ({ id: sec.id, label: chipLabel(sec), content: <GuideSection sec={sec} index={0} /> })),
+    ]);
+
+    const subnav = [
+      { href: "#overview-group", label: "Overview" }, { href: "#services", label: "Services" }, { href: "#process", label: "Process" },
+      { href: "#results-proof", label: "Results" }, { href: "#pricing", label: "Pricing" }, { href: "#faqs", label: "FAQs" },
+    ];
+
+    return (
+      <VariantCtx.Provider value="pillar">
+      <StandardCtx.Provider value={true}>
+      <PageLayout>
+        <div className="pillar-page">
+          {/* 1. Hero: text on the left, the lead form on the right */}
+          <section id="top" className="relative overflow-hidden px-5 pb-12 pt-[92px] md:px-8 md:pb-16 md:pt-[104px]" style={{ background: `linear-gradient(180deg, ${CREAM} 0%, #fff 100%)` }}>
+            <div className="pointer-events-none absolute -right-24 -top-24 h-[520px] w-[520px] rounded-full" style={{ background: `radial-gradient(circle, ${ORANGE}1f 0%, transparent 70%)`, filter: "blur(60px)" }} />
+            <div className="relative mx-auto grid max-w-[1200px] items-start gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
+              <div>
+                <Link to={c.parentServiceHref} className="mb-5 inline-flex items-center gap-1 text-xs font-bold hover:underline" style={{ color: ORANGE }}>
+                  ← Back to {c.parentServiceLabel}
+                </Link>
+                <div className="mb-5"><Eyebrow><MapPin size={11} className="mr-1 inline -mt-0.5" />{c.eyebrow}</Eyebrow></div>
+                <h1 className="font-bold leading-[1.18] tracking-[-0.02em]" style={{ color: NAVY, fontSize: "clamp(30px, 4vw, 48px)" }}><span data-cms-key={k("h1")} data-cms-label="Hero Heading" data-cms-attr="text">{c.h1}</span></h1>
+                <p className="mt-5 text-[17px] leading-relaxed text-[#4B5563] md:text-lg"><span data-cms-key={k("heroParagraph")} data-cms-label="Hero Paragraph" data-cms-attr="text">{c.heroParagraph}</span></p>
+                {c.heroParagraph2 && (
+                  <p className="mt-4 flex gap-2.5 rounded-xl border px-4 py-3 text-[13.5px] leading-relaxed text-[#6B7280]" style={{ borderColor: "#E5E7EB", background: "#F8FAFC" }}>
+                    <Info size={16} className="mt-0.5 shrink-0" style={{ color: ORANGE }} />{c.heroParagraph2}
+                  </p>
+                )}
+                <div className="pillar-btn-row mt-7">
+                  <Pill href={c.heroCta?.href || ctaHref} onClick={() => track("cta_click", { cta_label: ctaLabel, cta_location: "hero" })}>{ctaLabel} <ArrowRight size={16} /></Pill>
+                  <Pill href={whatsappLink(`Hello, I have a question about: ${c.h1}`)} variant="outline" external onClick={() => track("whatsapp_click", { cta_location: "hero" })}>
+                    <MessageCircle size={16} /> WhatsApp us
+                  </Pill>
+                  <a href={PHONE_TEL} onClick={() => track("phone_click", { cta_location: "hero" })} aria-label={`Call ${PHONE_DISPLAY}`} className="pillar-btn pillar-btn--secondary">
+                    <Phone size={16} style={{ color: ORANGE }} /> {PHONE_DISPLAY}
+                  </a>
+                </div>
+                <p className="mt-3 text-xs text-[#6B7280]">Free to ask. No obligation. We reply by email.</p>
+                <aside aria-label="What we cover" className="mt-8 rounded-2xl border bg-white p-5" style={{ borderColor: "#EDE3DA", boxShadow: "0 2px 10px rgba(26,29,54,0.05)" }}>
+                  <p className="text-[12px] font-bold uppercase tracking-[0.16em]" style={{ color: ORANGE }}>What we cover</p>
+                  <ul className="mt-3 grid gap-x-6 gap-y-2.5 sm:grid-cols-2">
+                    {c.included.slice(0, 6).map((it) => (
+                      <li key={it.title} className="flex gap-2.5 text-[14.5px] font-semibold leading-snug" style={{ color: NAVY }}>
+                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full" style={{ background: `${GREEN}1a`, color: GREEN }}><Check size={12} strokeWidth={3} /></span>{it.title}
+                      </li>
+                    ))}
+                  </ul>
+                </aside>
+              </div>
+              {c.leadForm && (
+                <div>
+                  <div className="mb-4">
+                    <h2 className="text-[22px] font-bold leading-tight md:text-[26px]" style={{ color: NAVY }}>{c.leadForm.heading}</h2>
+                    {c.leadForm.text && <p className="mt-1.5 text-[15px] leading-relaxed text-[#5B5F7A]">{c.leadForm.text}</p>}
+                  </div>
+                  <PageLeadForm cfg={c.leadForm} accent={ORANGE} embedded />
+                </div>
+              )}
+            </div>
+          </section>
+          <TrustStrip stats={stats} />
+          <PillarSubNav items={subnav} />
+
+          {/* 2. Overview */}
+          <PillarSection id="overview-group" tone="white" eyebrow="Overview" title="What Meta ads management in Ahmedabad covers">
+            <PillarTabs label="Overview" tabs={tabs([QuickBlock ? { id: "quick", label: "Quick answer", content: QuickBlock } : null, gtab("short-answer")])} />
+          </PillarSection>
+
+          {/* 3. Problems we solve */}
+          <PillarSection id="problems" tone="light" eyebrow="Problems we solve" title="Where Meta ads go wrong, and who they suit">
+            <PillarTabs label="Problems we solve" tabs={tabs([{ id: "problem", label: "The real problem", content: OverviewBlock }, gtab("who-its-for")])} />
+          </PillarSection>
+
+          {/* 4. Services */}
+          <PillarSection id="services" tone="white" eyebrow="What's included" title="What our Meta ads service includes">
+            <PillarTabs label="Services" tabs={tabs([{ id: "included", label: "What you get", content: IncludedBlock }, gtab("ad-formats"), gtab("monthly-work")])} />
+          </PillarSection>
+
+          {/* 5. Process */}
+          <PillarSection id="process" tone="light" eyebrow="Our process" title="How we work, and what happens in the first 30 days">
+            <PillarTabs label="Process" tabs={tabs([{ id: "how", label: "How it works", content: ProcessBlock }, gtab("first-30-days")])} />
+          </PillarSection>
+
+          {/* 6. Tracking and creative */}
+          <PillarSection id="tracking" tone="white" eyebrow="Tracking & creative" title="Tracking, lead quality and the creative behind every campaign">
+            <PillarTabs label="Tracking and creative" tabs={tabs([gtab("tracking-lead-quality"), gtab("creative")])} />
+          </PillarSection>
+
+          {/* 7. Industries */}
+          <PillarSection id="industries-group" tone="light" eyebrow="Who we serve" title="Industries we run Meta ads for, and the Ahmedabad calendar">
+            <PillarTabs label="Industries" tabs={industryTabs} />
+          </PillarSection>
+
+          {/* 8. Results & proof */}
+          <PillarSection id="results-proof" tone="white" bare noHead>
+            <CaseStudies cases={caseCards} sub={caseSub} centered />
+          </PillarSection>
+          {videos && (
+            <PillarSection tone="light" bare noHead>
+              <GuideSection sec={videos} index={0} />
+            </PillarSection>
+          )}
+
+          {/* 9. Testimonials */}
+          <PillarSection tone="white" bare noHead>
+            <Testimonials />
+          </PillarSection>
+
+          {/* 10. Pricing and comparison */}
+          <PillarSection id="pricing" tone="light" eyebrow="Pricing & comparison" title="What Meta ads cost, and how to choose an agency">
+            <PillarTabs label="Pricing and comparison" tabs={tabs([gtab("cost"), { id: "why", label: "Why Digital Aura", content: WhyBlock }, gtab("meta-vs-google"), gtab("choose-an-agency")])} />
+          </PillarSection>
+
+          {/* 11. Team */}
+          {teamSec && (
+            <PillarSection tone="white" bare noHead>
+              <GuideSection sec={teamSec} index={0} />
+            </PillarSection>
+          )}
+
+          {/* Link cards */}
+          {(exploreFinal.length > 0 || about || visit) && (
+            <PillarSection id="explore" tone="light" eyebrow="Keep exploring" title="More ways we can help, and how to start">
+              <PillarTabs
+                label="Explore"
+                tabs={tabs([
+                  ...exploreFinal,
+                  about ? { id: "about", label: "About this page", content: aboutBlock(about) } : null,
+                  visit && !officeMap ? { id: "visit", label: "Visit us", content: aboutBlock(visit) } : null,
+                ])}
+              />
+            </PillarSection>
+          )}
+          {!c.storyLayout && (
+            <PillarSection tone="white" bare noHead>
+              <BlogInsights />
+            </PillarSection>
+          )}
+
+          {/* 12. FAQ (always open) */}
+          <PillarSection id="faqs" tone="light" eyebrow="FAQs" title={c.faqTitle || "Frequently Asked Questions"}>
+            <PillarFaq items={c.faqs} />
+            {c.sources && c.sources.length > 0 && (
+              <div className="mt-10 rounded-2xl border bg-white p-5" style={{ borderColor: "#EDE3DA" }}>
+                <h3 className="text-[13px] font-black uppercase tracking-[0.14em]" style={{ color: NAVY }}>Sources and further reading</h3>
+                <ul className="mt-3 space-y-1.5 text-sm">
+                  {c.sources.map((s2) => (
+                    <li key={s2.href}><a href={s2.href} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: ORANGE }}>{s2.label}</a></li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </PillarSection>
+
+          {/* 13. Final CTA + form */}
+          <section id="final-cta" className="pillar-section pillar-section--navy">
+            <div className="pillar-container">
+              <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
+                <div>
+                  <div className="mb-3"><Eyebrow>Let&apos;s Build Together</Eyebrow></div>
+                  <h2 className="mb-5 font-bold leading-[1.15] tracking-[-0.02em] text-white" style={{ fontSize: "clamp(26px, 2.8vw, 34px)" }}><span data-cms-key={k("ctaHeading")} data-cms-label="CTA Heading" data-cms-attr="text">{c.ctaHeading}</span></h2>
+                  <p className="text-[17px] leading-[1.7] text-white/80"><span data-cms-key={k("ctaText")} data-cms-label="CTA Text" data-cms-attr="text">{c.ctaText}</span></p>
+                  {c.leadForm?.text && <p className="mt-4 text-[15.5px] leading-relaxed text-white/70">{c.leadForm.text}</p>}
+                  <div className="pillar-btn-row mt-6"><Pill href={ctaHref} onClick={() => track("cta_click", { cta_label: c.ctaButton, cta_location: "final" })}>{c.ctaButton} <ArrowRight size={16} /></Pill></div>
+                  <p className="mt-7 text-[12px] font-bold uppercase tracking-[0.16em] text-white/60">What happens next</p>
+                  <ul className="mt-4 space-y-3">
+                    {(c.leadForm?.steps || ["You send your details", "We review them and reply by email", "You decide what to do next. No obligation."]).map((st) => (
+                      <li key={st} className="flex items-start gap-3 text-[15.5px] font-semibold text-white/90">
+                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-white" style={{ background: ORANGE }}><Check size={12} strokeWidth={3} /></span>{st}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-8 text-[15px] font-semibold text-white">Prefer to talk?</p>
+                  <div className="pillar-btn-row mt-3">
+                    <a href={PHONE_TEL} onClick={() => track("phone_click", { cta_location: "final" })} className="pillar-btn pillar-btn--ghost-light">
+                      <Phone size={16} /> {PHONE_DISPLAY}
+                    </a>
+                    <a href={whatsappLink(`Hello, I have a question about: ${c.leadForm?.service || c.h1}`)} target="_blank" rel="noopener noreferrer" onClick={() => track("whatsapp_click", { cta_location: "final" })} className="pillar-btn pillar-btn--ghost-light">
+                      <MessageCircle size={16} /> Message us on WhatsApp
+                    </a>
+                  </div>
+                  <p className="mt-4 text-xs leading-relaxed text-white/60">713 Shilp Arcade, SP Ring Road, Hanspura, Ahmedabad. Monday to Saturday, 10 am to 7 pm.</p>
+                </div>
+                {c.leadForm && <PageLeadForm cfg={{ ...c.leadForm, id: `${c.leadForm.id || "audit-form"}-final` }} accent={ORANGE} embedded idPrefix="plf-final" />}
+              </div>
+            </div>
+          </section>
+        </div>
+
+        {c.leadForm && (
+          <>
+            <div className="h-16 md:hidden" aria-hidden="true" />
+            <StickyCtaBar accent={ORANGE} label={ctaLabel} href={ctaHref} topic={c.h1} />
+          </>
+        )}
+        <PillarLinks slug={config.slug} />
+        {officeMap && <OfficeMap auditHref={"#" + formId} auditLabel="Get a free Meta ads account review" />}
+      </PageLayout>
+      </StandardCtx.Provider>
+      </VariantCtx.Provider>
+    );
+  }
 
   return (
     <VariantCtx.Provider value={variant}>

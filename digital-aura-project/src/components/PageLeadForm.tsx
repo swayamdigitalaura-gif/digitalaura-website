@@ -54,7 +54,7 @@ export function normaliseWebsite(raw: string): string | null {
   }
 }
 
-const PageLeadForm = ({ cfg, accent, embedded = false }: { cfg: LeadFormConfig; accent: string; embedded?: boolean }) => {
+const PageLeadForm = ({ cfg, accent, embedded = false, idPrefix = "plf" }: { cfg: LeadFormConfig; accent: string; embedded?: boolean; /** Prefix for the field ids; give a second form on the same page a different one. */ idPrefix?: string }) => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", website: "", business: "", city: "", competitor: "", businessType: "", notes: "", hp: "" });
   const [captchaOk, setCaptchaOk] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -121,36 +121,36 @@ const PageLeadForm = ({ cfg, accent, embedded = false }: { cfg: LeadFormConfig; 
             <form onSubmit={submit} onFocusCapture={onStart} noValidate className="space-y-4">
               {cfg.website !== "none" && (
                 <div>
-                  <label htmlFor="plf-website" className="block text-sm font-semibold text-[#0A1628] mb-1.5">
+                  <label htmlFor={`${idPrefix}-website`} className="block text-sm font-semibold text-[#0A1628] mb-1.5">
                     Your website {cfg.website === "required" ? "*" : "(optional)"}
                   </label>
-                  <input id="plf-website" name="website" type="text" inputMode="url" autoComplete="url" placeholder="yourbusiness.com"
+                  <input id={`${idPrefix}-website`} name="website" type="text" inputMode="url" autoComplete="url" placeholder="yourbusiness.com"
                     value={form.website} onChange={set("website")} className={inputClass} style={{ ["--tw-ring-color" as string]: accent }} />
                 </div>
               )}
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="plf-name" className="block text-sm font-semibold text-[#0A1628] mb-1.5">Your name *</label>
-                  <input id="plf-name" name="name" required autoComplete="name" value={form.name} onChange={set("name")} className={inputClass} />
+                  <label htmlFor={`${idPrefix}-name`} className="block text-sm font-semibold text-[#0A1628] mb-1.5">Your name *</label>
+                  <input id={`${idPrefix}-name`} name="name" required autoComplete="name" value={form.name} onChange={set("name")} className={inputClass} />
                 </div>
                 <div>
-                  <label htmlFor="plf-email" className="block text-sm font-semibold text-[#0A1628] mb-1.5">Email *</label>
-                  <input id="plf-email" name="email" type="email" required autoComplete="email" value={form.email} onChange={set("email")} className={inputClass} />
+                  <label htmlFor={`${idPrefix}-email`} className="block text-sm font-semibold text-[#0A1628] mb-1.5">Email *</label>
+                  <input id={`${idPrefix}-email`} name="email" type="email" required autoComplete="email" value={form.email} onChange={set("email")} className={inputClass} />
                 </div>
                 <div>
-                  <label htmlFor="plf-phone" className="block text-sm font-semibold text-[#0A1628] mb-1.5">Phone or WhatsApp</label>
-                  <input id="plf-phone" name="phone" type="tel" autoComplete="tel" value={form.phone} onChange={set("phone")} className={inputClass} />
+                  <label htmlFor={`${idPrefix}-phone`} className="block text-sm font-semibold text-[#0A1628] mb-1.5">Phone or WhatsApp</label>
+                  <input id={`${idPrefix}-phone`} name="phone" type="tel" autoComplete="tel" value={form.phone} onChange={set("phone")} className={inputClass} />
                 </div>
                 {cfg.business !== false && (
                   <div>
-                    <label htmlFor="plf-business" className="block text-sm font-semibold text-[#0A1628] mb-1.5">Business name</label>
-                    <input id="plf-business" name="business" autoComplete="organization" value={form.business} onChange={set("business")} className={inputClass} />
+                    <label htmlFor={`${idPrefix}-business`} className="block text-sm font-semibold text-[#0A1628] mb-1.5">Business name</label>
+                    <input id={`${idPrefix}-business`} name="business" autoComplete="organization" value={form.business} onChange={set("business")} className={inputClass} />
                   </div>
                 )}
                 {cfg.city !== false && (
                   <div>
-                    <label htmlFor="plf-city" className="block text-sm font-semibold text-[#0A1628] mb-1.5">City</label>
-                    <input id="plf-city" name="city" autoComplete="address-level2" value={form.city} onChange={set("city")} className={inputClass} />
+                    <label htmlFor={`${idPrefix}-city`} className="block text-sm font-semibold text-[#0A1628] mb-1.5">City</label>
+                    <input id={`${idPrefix}-city`} name="city" autoComplete="address-level2" value={form.city} onChange={set("city")} className={inputClass} />
                   </div>
                 )}
               </div>
@@ -158,8 +158,8 @@ const PageLeadForm = ({ cfg, accent, embedded = false }: { cfg: LeadFormConfig; 
                 <div className="grid sm:grid-cols-2 gap-4">
                   {cfg.businessTypes && (
                     <div>
-                      <label htmlFor="plf-btype" className="block text-sm font-semibold text-[#0A1628] mb-1.5">Business type</label>
-                      <select id="plf-btype" name="businessType" value={form.businessType} onChange={set("businessType")} className={inputClass}>
+                      <label htmlFor={`${idPrefix}-btype`} className="block text-sm font-semibold text-[#0A1628] mb-1.5">Business type</label>
+                      <select id={`${idPrefix}-btype`} name="businessType" value={form.businessType} onChange={set("businessType")} className={inputClass}>
                         <option value="">Select</option>
                         {cfg.businessTypes.map((t) => <option key={t} value={t}>{t}</option>)}
                       </select>
@@ -167,15 +167,15 @@ const PageLeadForm = ({ cfg, accent, embedded = false }: { cfg: LeadFormConfig; 
                   )}
                   {cfg.competitor && (
                     <div>
-                      <label htmlFor="plf-comp" className="block text-sm font-semibold text-[#0A1628] mb-1.5">Top competitor website (optional)</label>
-                      <input id="plf-comp" name="competitor" value={form.competitor} onChange={set("competitor")} placeholder="competitor.com" className={inputClass} />
+                      <label htmlFor={`${idPrefix}-comp`} className="block text-sm font-semibold text-[#0A1628] mb-1.5">Top competitor website (optional)</label>
+                      <input id={`${idPrefix}-comp`} name="competitor" value={form.competitor} onChange={set("competitor")} placeholder="competitor.com" className={inputClass} />
                     </div>
                   )}
                 </div>
               )}
               <div>
-                <label htmlFor="plf-notes" className="block text-sm font-semibold text-[#0A1628] mb-1.5">{cfg.notesLabel || "Anything we should know? (optional)"}</label>
-                <textarea id="plf-notes" name="notes" rows={3} placeholder={cfg.notesPlaceholder} value={form.notes} onChange={set("notes")} className={inputClass} />
+                <label htmlFor={`${idPrefix}-notes`} className="block text-sm font-semibold text-[#0A1628] mb-1.5">{cfg.notesLabel || "Anything we should know? (optional)"}</label>
+                <textarea id={`${idPrefix}-notes`} name="notes" rows={3} placeholder={cfg.notesPlaceholder} value={form.notes} onChange={set("notes")} className={inputClass} />
               </div>
               {/* Honeypot: hidden from people, bots fill it */}
               <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>

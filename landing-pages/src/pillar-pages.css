@@ -1,0 +1,501 @@
+/* ==========================================================================
+   Pillar pages standard template (SEO / Google Ads / Meta Ads / Website Dev)
+   Everything is scoped under .pillar-page so no other page is affected.
+   Brand values come from the existing tokens (orange, navy, light surface).
+   ========================================================================== */
+
+.pillar-page {
+  --p-primary: var(--brand-orange);
+  --p-primary-dark: oklch(0.62 0.18 50);
+  --p-primary-soft: var(--brand-orange-soft);
+  --p-navy: var(--brand-navy);
+  --p-navy-deep: var(--brand-navy-deep);
+  --p-bg-white: #fff;
+  --p-bg-light: var(--surface-2);
+  --p-text: var(--ink);
+  --p-muted: var(--ink-muted);
+  --p-border: oklch(0.27 0.09 280 / 0.12);
+  --p-radius-card: 16px;
+  --p-radius-btn: 10px;
+  --p-shadow: 0 2px 12px -2px oklch(0.27 0.09 280 / 0.1);
+  --p-shadow-hover: 0 12px 28px -10px oklch(0.27 0.09 280 / 0.22);
+  --p-gap: 24px;
+  --p-section-y: 72px;
+  --p-container: 1200px;
+  --p-pad-x: 20px;
+}
+
+@media (max-width: 640px) {
+  .pillar-page {
+    --p-section-y: 48px;
+    --p-pad-x: 16px;
+  }
+}
+
+/* ---------- Layout ---------- */
+
+.pillar-container {
+  width: 100%;
+  max-width: var(--p-container);
+  margin-inline: auto;
+  padding-inline: var(--p-pad-x);
+}
+
+.pillar-section {
+  padding-block: var(--p-section-y);
+  scroll-margin-top: 130px;
+}
+.pillar-section--white { background: var(--p-bg-white); }
+.pillar-section--light { background: var(--p-bg-light); }
+.pillar-section--navy {
+  background: var(--p-navy);
+  color: #fff;
+}
+.pillar-section--navy .pillar-head h2,
+.pillar-section--navy .pillar-head p { color: #fff; }
+.pillar-section--navy .pillar-head p { opacity: 0.8; }
+
+/* ---------- Typography: eyebrow, H2, intro ---------- */
+
+.pillar-head {
+  max-width: 760px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+.pillar-eyebrow {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--p-primary);
+}
+.pillar-head h2,
+.pillar-h2 {
+  margin-top: 12px;
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--p-navy);
+}
+.pillar-head p,
+.pillar-intro {
+  max-width: 720px;
+  margin: 16px auto 0;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--p-muted);
+}
+
+/* Sub-heading used when an existing block is placed inside a group/tab */
+.pillar-subhead {
+  max-width: 720px;
+  margin: 0 auto 28px;
+  text-align: center;
+}
+.pillar-subhead h3 {
+  margin-top: 8px;
+  font-size: clamp(22px, 2.4vw, 28px);
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--p-navy);
+}
+.pillar-subhead p {
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--p-muted);
+}
+
+/* Existing blocks that are now inside a group: drop their own section chrome */
+.pillar-group > section:not(.pillar-dark-card),
+.pillar-panel > section:not(.pillar-dark-card),
+.pillar-col > section:not(.pillar-dark-card) {
+  background: transparent !important;
+  padding: 0 !important;
+}
+.pillar-group > section:not(.pillar-dark-card) > div,
+.pillar-panel > section:not(.pillar-dark-card) > div,
+.pillar-col > section:not(.pillar-dark-card) > div {
+  max-width: none !important;
+  padding: 0 !important;
+}
+
+/* ---------- Buttons ---------- */
+
+.pillar-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 52px;
+  padding: 0 28px;
+  border-radius: var(--p-radius-btn);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+.pillar-btn:focus-visible { outline: 3px solid var(--p-primary); outline-offset: 2px; }
+.pillar-btn--primary {
+  background: var(--p-primary);
+  color: #fff;
+  border: 2px solid var(--p-primary);
+  box-shadow: 0 6px 16px -6px oklch(0.71 0.18 50 / 0.6);
+}
+.pillar-btn--primary:hover { background: var(--p-primary-dark); border-color: var(--p-primary-dark); transform: translateY(-1px); }
+.pillar-btn--secondary {
+  background: #fff;
+  color: var(--p-navy);
+  border: 2px solid oklch(0.27 0.09 280 / 0.2);
+}
+.pillar-btn--secondary:hover { border-color: var(--p-navy); transform: translateY(-1px); }
+.pillar-btn--ghost-light {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+.pillar-btn--ghost-light:hover { background: rgba(255, 255, 255, 0.14); }
+
+.pillar-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+.pillar-btn-row--center { justify-content: center; margin-top: 32px; }
+
+@media (max-width: 640px) {
+  .pillar-btn-row { flex-direction: column; align-items: stretch; }
+  .pillar-btn-row .pillar-btn { width: 100%; }
+}
+
+/* ---------- Cards & grids ---------- */
+/* Any grid whose direct children are the site's card class becomes a 3 / 2 / 1 column,
+   equal-height, centred-orphan flow. Add .pillar-cols-4 for small stat / logo / chip cards. */
+
+.pillar-page :where(div, ul, ol):has(> .da-card-hover):not(li) {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: var(--p-gap) !important;
+  margin-top: 32px;
+}
+.pillar-page :where(div, ul, ol):has(> .da-card-hover):not(li) > .da-card-hover {
+  flex: 0 1 calc((100% - 2 * var(--p-gap)) / 3);
+  min-width: 0;
+  box-sizing: border-box;
+  border-radius: var(--p-radius-card);
+  padding: 24px;
+  box-shadow: var(--p-shadow);
+  border: 1px solid var(--p-border);
+  background: #fff;
+}
+.pillar-page .da-card-hover:hover { box-shadow: var(--p-shadow-hover); }
+
+.pillar-page .pillar-cols-4:has(> .da-card-hover) > .da-card-hover {
+  flex-basis: calc((100% - 3 * var(--p-gap)) / 4);
+}
+.pillar-page .pillar-cols-5:has(> .da-card-hover) > .da-card-hover {
+  flex-basis: calc((100% - 4 * var(--p-gap)) / 5);
+}
+.pillar-page .pillar-cols-2:has(> .da-card-hover) > .da-card-hover {
+  flex-basis: calc((100% - var(--p-gap)) / 2);
+}
+
+@media (max-width: 1023px) {
+  .pillar-page :where(div, ul, ol):has(> .da-card-hover):not(li) > .da-card-hover,
+  .pillar-page .pillar-cols-4:has(> .da-card-hover) > .da-card-hover,
+  .pillar-page .pillar-cols-5:has(> .da-card-hover) > .da-card-hover {
+    flex-basis: calc((100% - var(--p-gap)) / 2);
+  }
+}
+@media (max-width: 640px) {
+  .pillar-page :where(div, ul, ol):has(> .da-card-hover):not(li) > .da-card-hover {
+    flex-basis: 100%;
+  }
+  /* only small logo cards stay two-up on phones */
+  .pillar-page .pillar-small:has(> .da-card-hover) > .da-card-hover {
+    flex-basis: calc((100% - var(--p-gap)) / 2);
+  }
+}
+
+/* Card typography: H3 20px, text 15-16px */
+.pillar-page .da-card-hover h3 {
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+.pillar-page .da-card-hover p,
+.pillar-page .da-card-hover li {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Card footer links / buttons stay on the same bottom line */
+.pillar-page .da-card-hover { display: flex; flex-direction: column; }
+.pillar-page .da-card-hover > :last-child:is(a, span.inline-flex) { margin-top: auto; }
+
+/* One icon style: 24px glyph in a 48px rounded square, light brand tint */
+.pillar-page .da-card-hover .grid.place-items-center.rounded-xl:is([class*="bg-brand-orange-soft"], [class*="bg-brand-navy"]) {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 12px !important;
+  background: var(--p-primary-soft) !important;
+  color: var(--p-primary) !important;
+}
+.pillar-page .da-card-hover .grid.place-items-center.rounded-xl:is([class*="bg-brand-orange-soft"], [class*="bg-brand-navy"]) > svg {
+  width: 24px !important;
+  height: 24px !important;
+  stroke-width: 2;
+}
+
+/* Logo cards: keep logos readable but compact */
+.pillar-page .pillar-logo-card img { max-height: 72px; }
+
+/* ---------- Tabs ---------- */
+
+.pillar-tabs-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto 32px;
+}
+.pillar-tab {
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 999px;
+  border: 1px solid var(--p-border);
+  background: #fff;
+  color: var(--p-navy);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.pillar-tab:hover { border-color: var(--p-primary); color: var(--p-primary); }
+.pillar-tab:focus-visible { outline: 3px solid var(--p-primary); outline-offset: 2px; }
+.pillar-tab[aria-selected="true"] {
+  background: var(--p-primary);
+  border-color: var(--p-primary);
+  color: #fff;
+}
+.pillar-panel[hidden] { display: none; }
+
+/* ---------- Two-column overview ---------- */
+
+.pillar-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .pillar-two-col { grid-template-columns: 1fr; gap: 32px; }
+}
+.pillar-dark-card {
+  border-radius: var(--p-radius-card);
+  background: var(--p-navy);
+  color: #fff;
+  padding: 32px;
+}
+.pillar-dark-card h3,
+.pillar-dark-card h2 { color: #fff; }
+
+/* ---------- Trust strip ---------- */
+
+.pillar-trust {
+  background: #fff;
+  border-block: 1px solid var(--p-border);
+  padding-block: 28px;
+}
+.pillar-trust-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  text-align: center;
+}
+.pillar-trust-stats strong {
+  display: block;
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 800;
+  color: var(--p-navy);
+  line-height: 1.1;
+}
+.pillar-trust-stats span {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--p-muted);
+}
+@media (max-width: 640px) {
+  .pillar-trust-stats { grid-template-columns: repeat(2, 1fr); row-gap: 20px; }
+}
+.pillar-trust-logos {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--p-border);
+}
+.pillar-trust-caption {
+  margin-bottom: 14px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--p-muted);
+}
+
+/* ---------- Sticky sub-nav (desktop) ---------- */
+
+.pillar-subnav {
+  position: sticky;
+  top: 72px;
+  z-index: 30;
+  display: none;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--p-border);
+}
+@media (min-width: 1024px) {
+  .pillar-subnav { display: block; }
+}
+.pillar-subnav ul {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.pillar-subnav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--p-navy);
+  border-bottom: 2px solid transparent;
+  text-decoration: none;
+}
+.pillar-subnav a:hover { color: var(--p-primary); }
+.pillar-subnav a:focus-visible { outline: 3px solid var(--p-primary); outline-offset: -3px; }
+.pillar-subnav a[aria-current="true"] { color: var(--p-primary); border-bottom-color: var(--p-primary); }
+
+/* ---------- FAQ: always open, two columns on desktop ---------- */
+
+.pillar-faq {
+  column-count: 2;
+  column-gap: 24px;
+}
+.pillar-faq-item {
+  break-inside: avoid;
+  margin: 0 0 16px;
+  padding: 16px 20px;
+  border: 1px solid var(--p-border);
+  border-radius: var(--p-radius-card);
+  background: #fff;
+}
+.pillar-faq-item h3 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--p-navy);
+}
+.pillar-faq-item p {
+  margin-top: 8px;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--p-muted);
+}
+@media (max-width: 900px) {
+  .pillar-faq { column-count: 1; }
+}
+
+/* ---------- Link-card row ---------- */
+
+.pillar-linkcards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.pillar-linkcards a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 18px 20px;
+  border: 1px solid var(--p-border);
+  border-radius: var(--p-radius-card);
+  background: #fff;
+  color: var(--p-navy);
+  text-decoration: none;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.pillar-linkcards a:hover { border-color: var(--p-primary); box-shadow: var(--p-shadow-hover); }
+@media (max-width: 1023px) { .pillar-linkcards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .pillar-linkcards { grid-template-columns: 1fr; } }
+
+/* ---------- Mobile sticky action bar ---------- */
+
+.pillar-mobilebar {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 40;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 8px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.96);
+  border-top: 1px solid var(--p-border);
+  backdrop-filter: blur(8px);
+}
+.pillar-mobilebar a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  border-radius: var(--p-radius-btn);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+@media (min-width: 768px) { .pillar-mobilebar { display: none; } }
+
+/* ---------- Testimonial carousel ---------- */
+
+.pillar-carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
+
+/* ---------- Misc: no horizontal scroll ---------- */
+
+.pillar-page { overflow-x: clip; }
+.pillar-page img { max-width: 100%; }
+
+/* Overview columns: left-align the existing centred quick-answer block */
+.pillar-col .text-center { text-align: left !important; }
+.pillar-col ul.justify-center { justify-content: flex-start !important; }
+.pillar-col .mx-auto { margin-inline: 0 !important; }
+
+/* Equal-height cards: the site's cards carry h-full, which blocks flex stretch */
+.pillar-page :where(div, ul, ol):has(> .da-card-hover):not(li) > .da-card-hover {
+  height: auto !important;
+  align-self: stretch;
+}
+/* Compact logo tiles (tools / certifications) */
+.pillar-page .da-card-hover .h-28 { height: 84px !important; }
+.pillar-page .da-card-hover img.h-24 { height: 68px !important; }
+
+@media (max-width: 640px) {
+  .pillar-page :is(.pillar-cols-4, .pillar-cols-5):not(.pillar-small):has(> .da-card-hover) > .da-card-hover {
+    flex-basis: 100%;
+  }
+}

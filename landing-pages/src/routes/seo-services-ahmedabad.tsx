@@ -101,6 +101,15 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { cn } from "@/lib/utils";
+import "@/pillar-pages.css";
+import {
+  InPillarContext,
+  PillarFaq,
+  PillarSection,
+  PillarSubNav,
+  PillarTabs,
+  useInPillar,
+} from "@/components/pillar/Pillar";
 
 export const Route = createFileRoute("/seo-services-ahmedabad")({
   head: () => ({
@@ -417,7 +426,7 @@ function PrimaryCTA({
     <a
       href={href}
       download={download}
-      className={`da-shadow-cta da-focus-ring da-btn-sheen group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-base font-bold text-primary-foreground transition-all hover:-translate-y-0.5 hover:brightness-110 active:translate-y-0 active:brightness-95 ${className}`}
+      className={`pillar-btn pillar-btn--primary group ${className}`}
     >
       {children}
       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -437,7 +446,7 @@ function SecondaryCTA({
   return (
     <a
       href={href}
-      className={`da-focus-ring inline-flex items-center justify-center gap-2 rounded-full border border-brand-navy/15 bg-white px-6 py-3.5 text-base font-semibold text-brand-navy transition-all hover:-translate-y-0.5 hover:border-brand-navy/40 hover:bg-surface-2 active:translate-y-0 ${className}`}
+      className={`pillar-btn pillar-btn--secondary ${className}`}
     >
       {children}
     </a>
@@ -446,10 +455,7 @@ function SecondaryCTA({
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-brand-orange/30 bg-brand-orange-soft px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-brand-orange">
-      <Sparkles className="h-3.5 w-3.5" />
-      {children}
-    </span>
+    <span className="pillar-eyebrow">{children}</span>
   );
 }
 
@@ -467,11 +473,22 @@ function SectionHeading({
   /** Lets a short title stay on one line on desktop. */
   wide?: boolean;
 }) {
+  // Inside a pillar group/tab the block's own heading becomes a sub-heading (H3) under the group's H2.
+  const inPillar = useInPillar();
+  if (inPillar) {
+    return (
+      <div className="pillar-subhead">
+        {eyebrow && <SectionLabel>{eyebrow}</SectionLabel>}
+        <h3>{title}</h3>
+        {sub && <p>{sub}</p>}
+      </div>
+    );
+  }
   return (
-    <div className={`${center ? "mx-auto text-center" : ""} ${wide ? "max-w-5xl" : "max-w-3xl"}`}>
+    <div className="pillar-head">
       {eyebrow && <SectionLabel>{eyebrow}</SectionLabel>}
-      <h2 className={`mt-4 text-3xl font-extrabold leading-[1.05] sm:text-4xl md:text-5xl ${wide ? "lg:whitespace-nowrap" : ""}`}>{title}</h2>
-      {sub && <p className="mt-5 text-lg text-ink-muted md:text-xl">{sub}</p>}
+      <h2>{title}</h2>
+      {sub && <p>{sub}</p>}
     </div>
   );
 }
@@ -677,7 +694,7 @@ function LeadForm() {
         <button
           type="submit"
           disabled={loading}
-          className="da-shadow-cta da-focus-ring mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-[15px] font-extrabold text-primary-foreground transition hover:brightness-110 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-70 sm:text-base"
+          className="pillar-btn pillar-btn--primary mt-5 w-full disabled:cursor-not-allowed disabled:opacity-70"
         >
           {loading ? (
             <>
@@ -733,7 +750,7 @@ function Hero() {
             SEO Company in Ahmedabad
           </div>
 
-          <h1 className="mt-6 text-[34px] font-extrabold leading-[1.12] tracking-tight text-brand-navy sm:text-5xl md:text-[50px] md:leading-[1.1]">
+          <h1 className="mt-6 font-extrabold leading-[1.12] tracking-tight text-brand-navy [font-size:clamp(32px,4vw,48px)]">
             SEO Company in Ahmedabad Built Around{" "}
             <span className="text-brand-orange">Leads</span>, Not Rankings Reports
           </h1>
@@ -744,7 +761,7 @@ function Hero() {
             structured, transparent SEO process built around real business outcomes.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="pillar-btn-row mt-8">
             <PrimaryCTA href="#audit">Get My Free SEO Audit</PrimaryCTA>
             <SecondaryCTA href="#results">View Case Studies</SecondaryCTA>
           </div>
@@ -795,8 +812,8 @@ function QuickAnswer() {
         <Reveal>
           <div className="mx-auto max-w-4xl text-center">
             <SectionLabel>Quick answer</SectionLabel>
-            <h2 className="mt-4 text-3xl font-extrabold leading-[1.1] sm:text-4xl md:text-[42px] text-balance">What does an SEO company in Ahmedabad do?</h2>
-            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-ink-muted md:text-xl">
+            <h2 className="pillar-h2 text-balance">What does an SEO company in Ahmedabad do?</h2>
+            <p className="mt-5 text-[17px] leading-relaxed text-ink-muted">
               An SEO company in Ahmedabad helps your business appear in Google, Google Maps and AI search when customers look for what you sell. At Digital Aura that means fixing technical problems, building pages around real search intent, improving your Google Business Profile and earning relevant links, then reporting on calls, forms and enquiries, not only rankings.
             </p>
             <ul className="mt-8 flex flex-wrap justify-center gap-3">
@@ -816,32 +833,6 @@ function QuickAnswer() {
               Published by <a className="underline" href="/about/">Digital Aura</a>, 713 Shilp Arcade, SP Ring Road, Hanspura, Ahmedabad. Last updated <time dateTime="2026-10-09">9 October 2026</time>.
             </p>
           </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-function Stats() {
-  const items = [
-    { k: "10×", v: "Average organic growth in 6 months" },
-    { k: "85%", v: "Of clients rank in AI search results" },
-    { k: "120+", v: "Clients served" },
-    { k: "48h", v: "Free audit turnaround time" },
-  ];
-  return (
-    <section className="bg-surface-2">
-      <div className="mx-auto max-w-7xl px-5 py-14 md:px-8 md:py-20">
-        <Reveal className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
-          {items.map((s) => (
-            <div
-              key={s.v}
-              className="da-shadow-card da-card-hover flex h-full flex-col items-center justify-center rounded-2xl border border-brand-navy/12 bg-white p-7 text-center"
-            >
-              <div className="text-4xl font-extrabold text-brand-navy md:text-5xl">{s.k}</div>
-              <div className="mt-2 text-sm font-medium text-ink-muted md:text-base">{s.v}</div>
-            </div>
-          ))}
         </Reveal>
       </div>
     </section>
@@ -876,19 +867,12 @@ function Problem() {
   return (
     <section className="bg-white">
       <div className="mx-auto max-w-7xl px-5 py-14 md:px-8 md:py-20">
-        <div className="mx-auto max-w-[720px] text-center">
-          <SectionLabel>The real problem</SectionLabel>
-          <h2 className="mt-4 text-[28px] font-extrabold leading-[1.25] tracking-tight text-brand-navy sm:text-[32px] md:text-[36px]">
-            Your Business Isn't Losing Leads.
-            <br />
-            It's Losing <span className="text-brand-orange">Visibility</span>.
-          </h2>
-          <p className="mx-auto mt-4 max-w-[600px] text-base leading-relaxed text-ink-muted md:text-lg">
-            Buyers don't just search Google anymore — they ask AI Overviews, ChatGPT, Gemini and Perplexity too.
-            If you're invisible there, you don't exist to them.
-          </p>
-        </div>
-        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <SectionHeading
+          eyebrow="The real problem"
+          title={<>Your Business Isn't Losing Leads. It's Losing <span className="text-brand-orange">Visibility</span>.</>}
+          sub="Buyers don't just search Google anymore — they ask AI Overviews, ChatGPT, Gemini and Perplexity too. If you're invisible there, you don't exist to them."
+        />
+        <div className="pillar-cols-4 mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {pains.map(({ icon: Icon, t, d }) => (
             <div
               key={t}
@@ -917,43 +901,33 @@ function AIShift() {
     "Entity SEO, structured data & topical authority decide who gets quoted",
   ];
   return (
-    <section className="da-gradient-navy relative overflow-hidden text-white">
-      <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-16 md:grid-cols-2 md:gap-14 md:px-8 md:py-24">
-        <div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-white">
-            <Bot className="h-3.5 w-3.5" /> The AI search shift
+    <section id="ai-search-shift" className="pillar-dark-card">
+      <span className="pillar-eyebrow inline-flex items-center gap-2">
+        <Bot className="h-3.5 w-3.5" /> The AI search shift
+      </span>
+      <h3 className="mt-3 text-2xl font-extrabold leading-tight md:text-[28px]">
+        Traditional SEO is dying.{" "}
+        <span className="text-brand-orange">AI Search</span> is the new battlefield.
+      </h3>
+      <p className="mt-4 text-base text-white/75">
+        Our AI-powered SEO services in Ahmedabad optimize you for both — Google's classic SERP and the new
+        generation of generative answer engines. One agency. One strategy. Full-funnel visibility.
+      </p>
+      <div className="mt-5 flex flex-wrap gap-2">
+        {["Google", "ChatGPT", "Gemini", "Perplexity", "AI Overviews"].map((p) => (
+          <span key={p} className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-sm font-semibold text-white">
+            {p}
           </span>
-          <h2 className="mt-4 text-3xl font-extrabold leading-tight text-white sm:text-4xl md:text-5xl">
-            Traditional SEO is dying.{" "}
-            <span className="text-brand-orange">AI Search</span> is the new battlefield.
-          </h2>
-          <p className="mt-5 text-lg text-white/75">
-            Our AI-powered SEO services in Ahmedabad optimize you for both — Google's classic SERP and the new
-            generation of generative answer engines. One agency. One strategy. Full-funnel visibility.
-          </p>
-          <div className="mt-7 flex flex-wrap gap-2">
-            {["Google", "ChatGPT", "Gemini", "Perplexity", "AI Overviews"].map((p) => (
-              <span
-                key={p}
-                className="rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-sm font-semibold text-white"
-              >
-                {p}
-              </span>
-            ))}
-          </div>
-        </div>
-        <ul className="space-y-3">
-          {points.map((p) => (
-            <li
-              key={p}
-              className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur"
-            >
-              <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange" />
-              <span className="text-base text-white/90 md:text-lg">{p}</span>
-            </li>
-          ))}
-        </ul>
+        ))}
       </div>
+      <ul className="mt-6 space-y-3">
+        {points.map((p) => (
+          <li key={p} className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/5 p-4">
+            <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange" />
+            <span className="text-[15px] text-white/90">{p}</span>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
@@ -1019,7 +993,7 @@ function SEOChallenges() {
           title={<>SEO Challenges We <span className="text-brand-orange">Solve</span></>}
           sub="Common SEO problems businesses face before they start seeing real growth."
         />
-        <Reveal className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <Reveal className="pillar-cols-4 mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {challenges.map(({ icon: Icon, t, problem, solution }) => (
             <div
               key={t}
@@ -1101,7 +1075,7 @@ function Process() {
           title="How we engineer your SEO growth"
           sub="A transparent, accountable system — so you always know what's being done, what's being moved, and why."
         />
-        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="pillar-cols-4 mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => (
             <div
               key={s.n}
@@ -1146,7 +1120,7 @@ function SEOToolsWeUse() {
           title={<>Professional SEO <span className="text-brand-orange">Tools</span> We Use</>}
           sub="From enterprise SEO services in Ahmedabad to AI-assisted research, Digital Aura runs every account on the same stack used by serious in-house SEO teams — combining enterprise platforms with AI-assisted workflows for faster, sharper decisions. The tools inform the strategy; our consultants make the call."
         />
-        <Reveal className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        <Reveal className="pillar-cols-4 pillar-small mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {tools.map((tool) => (
             <div
               key={tool.name}
@@ -1372,7 +1346,15 @@ function GSCSnapshots() {
 
 /* ---------------- Client Logo Wall ---------------- */
 
-function ClientLogoWall() {
+const TRUST_STATS = [
+  { k: "10×", v: "Average organic growth in 6 months" },
+  { k: "85%", v: "Of clients rank in AI search results" },
+  { k: "120+", v: "Clients served" },
+  { k: "48h", v: "Free audit turnaround time" },
+];
+
+/** Slim strip under the hero: 4 stats + client logos in one row (replaces the separate Stats and Trusted-by sections). */
+function TrustStrip() {
   const [paused, setPaused] = useState(false);
   const logos = [
     { src: clientLogoGameZone, name: "Game Zone Events" },
@@ -1393,44 +1375,36 @@ function ClientLogoWall() {
   const track = [...logos, ...logos];
 
   return (
-    <section className="bg-white">
-      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
-        <SectionHeading
-          eyebrow="Our clients"
-          title="Trusted by Businesses We've Helped Grow"
-          sub="From healthcare and education to eCommerce and local businesses, we're proud to work with ambitious brands across multiple industries."
-        />
-
-        <div
-          className="mt-14 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-        >
-          <div className="da-marquee-track flex w-max items-stretch gap-5" data-paused={paused}>
-            {track.map(({ src, name, dark }, i) => (
-              <div
-                key={`${name}-${i}`}
-                className={cn(
-                  "da-shadow-card flex w-[200px] flex-none flex-col items-center justify-center gap-3 rounded-2xl border border-brand-navy/10 bg-[#FAFAFA] p-4 transition-all duration-[250ms] ease-out sm:w-[220px] lg:w-[240px]",
-                  "hover:-translate-y-1 hover:border-brand-orange hover:shadow-lg",
-                )}
-              >
-                <div
-                  className={cn(
-                    "flex h-20 w-full items-center justify-center",
-                    dark && "rounded-lg bg-brand-navy px-3 py-2",
-                  )}
-                >
-                  <img
-                    src={src}
-                    alt={`${name} logo`}
-                    loading="lazy"
-                    className="h-full max-h-20 w-auto max-w-full object-contain"
-                  />
+    <section id="trust" className="pillar-trust" aria-label="Results and clients">
+      <div className="pillar-container">
+        <div className="pillar-trust-stats">
+          {TRUST_STATS.map((s) => (
+            <div key={s.v}>
+              <strong>{s.k}</strong>
+              <span>{s.v}</span>
+            </div>
+          ))}
+        </div>
+        <div className="pillar-trust-logos">
+          <span className="pillar-eyebrow mb-2 block text-center">Our clients</span>
+          <p className="pillar-trust-caption">
+            Trusted by Businesses We've Helped Grow. From healthcare and education to eCommerce and local businesses, we're proud to work with ambitious brands across multiple industries.
+          </p>
+          <div
+            className="overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+          >
+            <div className="da-marquee-track flex w-max items-center gap-8" data-paused={paused}>
+              {track.map(({ src, name, dark }, i) => (
+                <div key={`${name}-${i}`} className="flex w-[130px] flex-none flex-col items-center gap-1.5">
+                  <div className={cn("flex h-12 w-full items-center justify-center", dark && "rounded-md bg-brand-navy px-2")}>
+                    <img src={src} alt={`${name} logo`} loading="lazy" className="h-full max-h-12 w-auto max-w-full object-contain" />
+                  </div>
+                  <div className="text-center text-[11px] font-semibold leading-tight text-brand-navy">{name}</div>
                 </div>
-                <div className="text-center text-xs font-bold leading-snug text-brand-navy">{name}</div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -1460,45 +1434,64 @@ function Testimonials() {
       role: "Business Owner",
     },
   ];
+  const [api, setApi] = useState<CarouselApi>();
+  const [selected, setSelected] = useState(0);
+  useEffect(() => {
+    if (!api) return;
+    setSelected(api.selectedScrollSnap());
+    const onSelect = () => setSelected(api.selectedScrollSnap());
+    api.on("select", onSelect);
+    return () => {
+      api.off("select", onSelect);
+    };
+  }, [api]);
   return (
-    <section className="bg-white">
-      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
-        <SectionHeading
-          eyebrow="What clients say"
-          title="Loved by founders who care about outcomes"
-        />
-        <Reveal className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3">
+    <div>
+      <Carousel opts={{ align: "start", loop: false }} setApi={setApi} aria-label="Client testimonials">
+        <CarouselContent className="-ml-6">
           {items.map((t) => (
-            <figure
-              key={t.n}
-              className="da-shadow-card da-card-hover flex h-full flex-col rounded-2xl border border-brand-navy/12 bg-white p-7"
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1 text-brand-orange">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-current" />
-                  ))}
+            <CarouselItem key={t.n} className="basis-full pl-6 md:basis-1/2 lg:basis-1/3">
+              <figure className="da-shadow-card flex h-full flex-col rounded-2xl border border-brand-navy/12 bg-white p-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1 text-brand-orange">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-current" />
+                    ))}
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <img src={googlePlatformLogo} alt="Google" className="h-4 w-auto object-contain" />
+                    <span className="inline-flex items-center gap-1 rounded-full bg-brand-orange-soft px-2 py-0.5 text-[10px] font-bold text-brand-orange">
+                      <Check className="h-2.5 w-2.5" /> Verified
+                    </span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <img src={googlePlatformLogo} alt="Google" className="h-4 w-auto object-contain" />
-                  <span className="inline-flex items-center gap-1 rounded-full bg-brand-orange-soft px-2 py-0.5 text-[10px] font-bold text-brand-orange">
-                    <Check className="h-2.5 w-2.5" /> Verified
-                  </span>
-                </div>
-              </div>
-              <Quote className="mt-4 h-7 w-7 text-brand-orange/30" />
-              <blockquote className="mt-2 flex-1 text-[15px] leading-relaxed text-ink">
-                "{t.q}"
-              </blockquote>
-              <figcaption className="mt-5 border-t border-brand-navy/8 pt-4">
-                <div className="font-bold text-brand-navy">{t.n}</div>
-                <div className="text-sm text-ink-muted">{t.role}</div>
-              </figcaption>
-            </figure>
+                <Quote className="mt-4 h-7 w-7 text-brand-orange/30" />
+                <blockquote className="mt-2 flex-1 text-[15px] leading-relaxed text-ink">
+                  "{t.q}"
+                </blockquote>
+                <figcaption className="mt-5 border-t border-brand-navy/8 pt-4">
+                  <div className="font-bold text-brand-navy">{t.n}</div>
+                  <div className="text-sm text-ink-muted">{t.role}</div>
+                </figcaption>
+              </figure>
+            </CarouselItem>
           ))}
-        </Reveal>
+        </CarouselContent>
+        <CarouselPrevious className="left-2 xl:-left-12" />
+        <CarouselNext className="right-2 xl:-right-12" />
+      </Carousel>
+      <div className="pillar-carousel-dots">
+        {items.map((t, i) => (
+          <button
+            key={t.n}
+            type="button"
+            aria-label={`Go to testimonial ${i + 1}`}
+            onClick={() => api?.scrollTo(i)}
+            className={cn("h-2.5 rounded-full transition-all", selected === i ? "w-7 bg-brand-orange" : "w-2.5 bg-brand-navy/20")}
+          />
+        ))}
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -1561,7 +1554,7 @@ function WhyChooseUs() {
           title={<>Why Businesses Choose <span className="text-brand-orange">Digital Aura</span></>}
           sub="Real reasons businesses across Ahmedabad call us the leading SEO company in Ahmedabad."
         />
-        <Reveal className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <Reveal className="pillar-cols-4 mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {items.map(({ icon: Icon, t, d }) => (
             <div
               key={t}
@@ -1601,7 +1594,7 @@ function GAReporting() {
           title={<>You'll Always Know What's <span className="text-brand-orange">Working</span></>}
           sub="Every account gets enterprise-grade tracking and a reporting cadence built for decision-makers — not vanity metrics."
         />
-        <Reveal className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <Reveal className="pillar-cols-4 mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {items.map(({ icon: Icon, t, d }) => (
             <div
               key={t}
@@ -1638,7 +1631,7 @@ function CertifiedTrusted() {
           title="Certified Platforms & Trusted Ecosystem"
           sub="The platforms and certifications behind every account we run."
         />
-        <Reveal className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+        <Reveal className="pillar-cols-5 pillar-small mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
           {items.map(({ logo, name }) => (
             <div
               key={name}
@@ -1676,7 +1669,7 @@ function Industries() {
           eyebrow="Who we serve"
           title={<>Industries we move the <span className="text-brand-orange">needle</span> for</>}
         />
-        <Reveal className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <Reveal className="pillar-cols-4 mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {list.map(({ icon: Icon, t, d }) => (
             <div
               key={t}
@@ -1865,24 +1858,15 @@ function FAQSchema() {
 }
 
 function FAQ() {
-  const faqs = FAQS;
   return (
-    <section id="faq" className="bg-surface-2">
-      <div className="mx-auto max-w-4xl px-5 py-16 md:px-8 md:py-24">
-        <SectionHeading
-          eyebrow="FAQs"
-          title="Answers to what serious founders ask first"
-        />
-        <div className="mt-10 divide-y divide-brand-navy/12">
-          {faqs.map((f) => (
-            <div key={f.q} className="py-6 first:pt-0">
-              <h3 className="text-[17px] font-bold leading-snug text-brand-navy md:text-lg">{f.q}</h3>
-              <p className="mt-2 text-[15.5px] leading-relaxed text-ink-muted">{f.a}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <PillarSection
+      id="faq"
+      tone="white"
+      eyebrow="FAQs"
+      title="Answers to what serious founders ask first"
+    >
+      <PillarFaq items={FAQS} />
+    </PillarSection>
   );
 }
 
@@ -1919,9 +1903,9 @@ function AreasAndServices() {
         <div className="grid gap-10 lg:grid-cols-2">
           <div>
             <SectionLabel>Where we work</SectionLabel>
-            <h2 className="mt-4 text-3xl font-extrabold leading-[1.1] text-brand-navy sm:text-4xl">
+            <h3 className="mt-3 text-2xl font-extrabold leading-tight text-brand-navy md:text-[28px]">
               SEO for businesses across Ahmedabad
-            </h2>
+            </h3>
             <p className="mt-4 text-lg text-ink-muted">
               Customers in Ahmedabad search by area, so your pages, Google Business Profile and reviews should too. We work with businesses in:
             </p>
@@ -1939,9 +1923,9 @@ function AreasAndServices() {
           </div>
           <div>
             <SectionLabel>SEO in detail</SectionLabel>
-            <h2 className="mt-4 text-3xl font-extrabold leading-[1.1] text-brand-navy sm:text-4xl">
+            <h3 className="mt-3 text-2xl font-extrabold leading-tight text-brand-navy md:text-[28px]">
               Explore each SEO service
-            </h2>
+            </h3>
             <p className="mt-4 text-lg text-ink-muted">
               Want to see exactly what is included? Each service has its own page.
             </p>
@@ -2163,7 +2147,7 @@ function First90Days() {
         <p className="mx-auto mt-8 max-w-3xl text-center text-sm text-ink-muted">
           Rankings rarely move in the first weeks. We judge the first 90 days on fixes shipped, tracking in place and early movement in impressions, not on a promised position.
         </p>
-        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <div className="pillar-btn-row pillar-btn-row--center">
           <PrimaryCTA href="#audit">Get my free SEO audit</PrimaryCTA>
           <SecondaryCTA href="https://wa.me/918141200284">Chat on WhatsApp</SecondaryCTA>
         </div>
@@ -2190,7 +2174,7 @@ function SEOPricing() {
           title={<>SEO pricing in Ahmedabad: <span className="text-brand-orange">what to expect</span></>}
           sub="We do not print a rate card, because two businesses rarely need the same work. SEO is priced as a monthly scope, after we have looked at your site. Four things decide it."
         />
-        <Reveal className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <Reveal className="pillar-cols-4 mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {drivers.map((x, i) => (
             <div key={x.t} className="da-shadow-card da-card-hover flex h-full flex-col rounded-2xl border border-brand-navy/12 bg-white p-6">
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-orange-soft text-sm font-extrabold text-brand-orange">0{i + 1}</span>
@@ -2228,7 +2212,7 @@ function SEOPricing() {
           <a className="font-semibold text-brand-orange underline" href="/seo/pricing/">how SEO packages are priced in Ahmedabad</a>, or start with the{" "}
           <a className="font-semibold text-brand-orange underline" href="/seo/free-audit/">free SEO audit</a>.
         </p>
-        <div className="mt-6 flex justify-center">
+        <div className="pillar-btn-row pillar-btn-row--center">
           <PrimaryCTA href="#audit">Get a free audit and a written quote</PrimaryCTA>
         </div>
       </div>
@@ -2246,10 +2230,13 @@ function OfficeMap() {
     { Icon: Mail, label: "Email", value: "info@thedigitalaura.com", href: "mailto:info@thedigitalaura.com" },
   ];
   return (
-    <section id="visit-us" className="bg-surface-2">
-      <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-20">
-        <SectionHeading wide eyebrow="Find us" title="Talk to us, or drop in at our Hanspura office" />
-        <Reveal className="da-shadow-card mt-10 grid overflow-hidden rounded-2xl border border-brand-navy/12 bg-white md:grid-cols-[1.5fr_1fr]">
+    <div id="visit-us" className="mt-14 border-t border-white/15 pt-12">
+      <div className="pillar-head !mb-8">
+        <span className="pillar-eyebrow">Find us</span>
+        <h3 className="mt-3 text-2xl font-extrabold text-white md:text-[28px]">Talk to us, or drop in at our Hanspura office</h3>
+      </div>
+      <div>
+        <Reveal className="da-shadow-card grid overflow-hidden rounded-2xl border border-white/10 bg-white md:grid-cols-[1.5fr_1fr]">
           <div className="relative min-h-[300px] bg-surface-2 md:min-h-[420px]">
             <iframe
               src={MAPS_EMBED}
@@ -2288,7 +2275,7 @@ function OfficeMap() {
           </div>
         </Reveal>
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -2342,38 +2329,31 @@ function SEOvsAds() {
 
 function FinalCTA() {
   return (
-    <section id="contact" className="bg-white">
-      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
-        <div className="da-gradient-navy da-shadow-card relative overflow-hidden rounded-3xl px-6 py-12 text-white md:px-14 md:py-16">
-          <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-brand-orange/30 blur-3xl" />
-          <div className="relative grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-            <div>
-              <SectionLabel>Ready when you are</SectionLabel>
-              <h2 className="mt-4 text-3xl font-extrabold leading-tight text-white sm:text-4xl md:text-5xl">
-                Find out exactly why your SEO isn't generating leads — <span className="text-brand-orange">in 48 hours</span>.
-              </h2>
-              <p className="mt-5 max-w-xl text-lg text-white/80">
-                Free, no-obligation audit covering Technical SEO, On-Page SEO, Schema, Core Web Vitals, AI Search
-                visibility and GEO readiness. Delivered with a 30-minute strategy walkthrough by a senior consultant —
-                not a junior account manager reading a template.
-              </p>
-              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <PrimaryCTA href="#audit">Get My Free SEO Audit</PrimaryCTA>
-                <a
-                  href="https://wa.me/918141200284"
-                  target="_blank"
-                  rel="noopener"
-                  className="da-focus-ring inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-base font-semibold text-white backdrop-blur transition-all hover:-translate-y-0.5 hover:bg-white/10 active:translate-y-0"
-                >
-                  <MessageCircle className="h-4 w-4" /> WhatsApp us
-                </a>
-              </div>
-            </div>
-            <div>
-              <LeadForm />
+    <section id="contact" className="pillar-section pillar-section--navy">
+      <div className="pillar-container">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <SectionLabel>Ready when you are</SectionLabel>
+            <h2 className="mt-3 font-extrabold leading-tight text-white [font-size:clamp(26px,3vw,36px)]">
+              Find out exactly why your SEO isn't generating leads — <span className="text-brand-orange">in 48 hours</span>.
+            </h2>
+            <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-white/80">
+              Free, no-obligation audit covering Technical SEO, On-Page SEO, Schema, Core Web Vitals, AI Search
+              visibility and GEO readiness. Delivered with a 30-minute strategy walkthrough by a senior consultant —
+              not a junior account manager reading a template.
+            </p>
+            <div className="pillar-btn-row mt-7">
+              <PrimaryCTA href="#audit">Get My Free SEO Audit</PrimaryCTA>
+              <a href="https://wa.me/918141200284" target="_blank" rel="noopener" className="pillar-btn pillar-btn--ghost-light">
+                <MessageCircle className="h-4 w-4" /> WhatsApp us
+              </a>
             </div>
           </div>
+          <div>
+            <LeadForm />
+          </div>
         </div>
+        <OfficeMap />
       </div>
     </section>
   );
@@ -2495,7 +2475,7 @@ function FloatingWhatsApp() {
       target="_blank"
       rel="noopener"
       aria-label="Chat on WhatsApp"
-      className="da-focus-ring fixed bottom-20 right-5 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-[0_10px_28px_-6px_rgba(37,211,102,0.55)] transition hover:scale-105 md:bottom-5"
+      className="da-focus-ring fixed bottom-5 right-5 z-40 hidden md:grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-[0_10px_28px_-6px_rgba(37,211,102,0.55)] transition hover:scale-105 md:bottom-5"
     >
       <MessageCircle className="h-6 w-6" />
     </a>
@@ -2504,12 +2484,15 @@ function FloatingWhatsApp() {
 
 function MobileStickyCTA() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-brand-navy/10 bg-white/95 px-4 py-3 backdrop-blur md:hidden">
-      <a
-        href="#audit"
-        className="da-shadow-cta da-focus-ring flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-[15px] font-extrabold text-primary-foreground"
-      >
-        Get My Free SEO Audit <ArrowRight className="h-4 w-4 shrink-0" />
+    <div className="pillar-mobilebar">
+      <a href="#audit" className="bg-primary text-primary-foreground">
+        Free Audit
+      </a>
+      <a href="tel:+918141200284" className="border border-brand-navy/20 bg-white text-brand-navy">
+        <Phone className="mr-1.5 h-4 w-4" /> Call
+      </a>
+      <a href="https://wa.me/918141200284" target="_blank" rel="noopener" className="bg-[#25D366] text-white">
+        <MessageCircle className="mr-1.5 h-4 w-4" /> WhatsApp
       </a>
     </div>
   );
@@ -2517,9 +2500,18 @@ function MobileStickyCTA() {
 
 /* ---------------- Page ---------------- */
 
+const SUBNAV = [
+  { href: "#overview", label: "Overview" },
+  { href: "#services", label: "Services" },
+  { href: "#process", label: "Process" },
+  { href: "#results-proof", label: "Results" },
+  { href: "#pricing", label: "Pricing" },
+  { href: "#faq", label: "FAQ" },
+];
+
 function Index() {
   return (
-    <div className="min-h-screen bg-white pb-20 md:pb-0">
+    <div className="pillar-page min-h-screen bg-white pb-20 md:pb-0">
       <LocalBusinessSchema />
       <BreadcrumbAndServiceSchema />
       <PeopleSchema />
@@ -2527,37 +2519,132 @@ function Index() {
       <Toaster position="top-center" richColors />
       <MainSiteNavbar />
       <main className="pt-[72px]">
+        {/* 1. Hero + trust strip */}
         <Hero />
-        <QuickAnswer />
-        <Stats />
-        <Problem />
-        <AIShift />
-        <SEOChallenges />
-        <Framework />
-        <SEOServicesScope />
-        <Process />
-        <SampleAuditSnapshot />
-        <First90Days />
-        <SEOToolsWeUse />
-        <Results />
-        <GSCSnapshots />
-        <ClientLogoWall />
-        <Testimonials />
-        <WhyChooseUs />
-        <GAReporting />
-        <CertifiedTrusted />
-        <Industries />
-        <AreasAndServices />
-        <SEOGuides />
-        <SEOPricing />
-        <Compare />
-        <ChooseSEO />
-        <SEOvsAds />
-        <SEOReels />
-        <TeamSection />
+        <TrustStrip />
+        <PillarSubNav items={SUBNAV} />
+
+        {/* 2. Overview */}
+        <PillarSection id="overview" tone="white" bare noHead>
+          <div className="pillar-two-col">
+            <div className="pillar-col"><QuickAnswer /></div>
+            <div className="pillar-col"><AIShift /></div>
+          </div>
+        </PillarSection>
+
+        {/* 3. Problems we solve */}
+        <PillarSection id="problems" tone="light" eyebrow="Problems we solve" title="Why your SEO isn't bringing leads, and how we fix it">
+          <PillarTabs
+            label="Problems we solve"
+            tabs={[
+              { id: "visibility", label: "The real problem", content: <Problem /> },
+              { id: "challenges", label: "SEO challenges we solve", content: <SEOChallenges /> },
+            ]}
+          />
+        </PillarSection>
+
+        {/* 4. Services */}
+        <PillarSection id="services" tone="white" eyebrow="What's included" title="Our SEO services">
+          <PillarTabs
+            label="SEO services"
+            tabs={[
+              { id: "scope", label: "SEO services", content: <SEOServicesScope /> },
+              { id: "framework", label: "9-pillar framework", content: <Framework /> },
+            ]}
+          />
+        </PillarSection>
+
+        {/* 5. Process */}
+        <PillarSection id="process" tone="light" eyebrow="Our process" title="How we work, and what happens in the first 90 days">
+          <PillarTabs
+            label="Process"
+            tabs={[
+              { id: "how", label: "How we engineer growth", content: <Process /> },
+              { id: "90days", label: "First 90 days", content: <First90Days /> },
+            ]}
+          />
+        </PillarSection>
+
+        {/* 6. Tools, tracking & platforms */}
+        <PillarSection id="tools" tone="white" eyebrow="Tools & tracking" title="The tools, tracking and platforms behind every account">
+          <PillarTabs
+            label="Tools, tracking and platforms"
+            tabs={[
+              { id: "tools", label: "SEO tools we use", content: <SEOToolsWeUse /> },
+              { id: "reporting", label: "Tracking & reporting", content: <GAReporting /> },
+              { id: "platforms", label: "Certified platforms", content: <CertifiedTrusted /> },
+            ]}
+          />
+        </PillarSection>
+
+        {/* 7. Industries */}
+        <PillarSection tone="light" bare noHead>
+          <Industries />
+        </PillarSection>
+
+        {/* 8. Results & proof */}
+        <PillarSection id="results-proof" tone="white" eyebrow="Results & proof" title="Real results from real businesses">
+          <PillarTabs
+            label="Results and proof"
+            tabs={[
+              { id: "cases", label: "Case studies", content: <Results /> },
+              { id: "gsc", label: "Search Console snapshots", content: <GSCSnapshots /> },
+              { id: "audit", label: "Sample audit report", content: <SampleAuditSnapshot /> },
+            ]}
+          />
+        </PillarSection>
+        <PillarSection tone="light" bare noHead>
+          <SEOReels />
+        </PillarSection>
+
+        {/* 9. Testimonials */}
+        <PillarSection id="testimonials" tone="white" bare eyebrow="What clients say" title="Loved by founders who care about outcomes">
+          <Testimonials />
+        </PillarSection>
+
+        {/* 10. Pricing, comparison */}
+        <PillarSection id="pricing" tone="light" eyebrow="Pricing & comparison" title="SEO pricing, and how we compare">
+          <PillarTabs
+            label="Pricing and comparison"
+            tabs={[
+              { id: "pricing", label: "SEO pricing", content: <SEOPricing /> },
+              {
+                id: "compare",
+                label: "Us vs a typical agency",
+                content: (
+                  <>
+                    <Compare />
+                    <div className="mt-12"><WhyChooseUs /></div>
+                  </>
+                ),
+              },
+              { id: "choose", label: "How to choose", content: <ChooseSEO /> },
+              { id: "vs-ads", label: "SEO vs Google Ads", content: <SEOvsAds /> },
+            ]}
+          />
+        </PillarSection>
+
+        {/* 11. Team */}
+        <PillarSection tone="white" bare noHead>
+          <TeamSection />
+        </PillarSection>
+
+        {/* Link cards before FAQ */}
+        <PillarSection id="explore" tone="light" eyebrow="Keep exploring" title="Areas we cover, service pages and SEO guides">
+          <PillarTabs
+            label="Explore"
+            tabs={[
+              { id: "areas", label: "Areas & service pages", content: <AreasAndServices /> },
+              { id: "guides", label: "SEO guides", content: <SEOGuides /> },
+            ]}
+          />
+        </PillarSection>
+
+        {/* 12. FAQ (always open) */}
         <FAQ />
+
+        {/* 13. Final CTA + contact */}
         <FinalCTA />
-        <OfficeMap />
       </main>
       <MainSiteFooter />
       <FloatingWhatsApp />

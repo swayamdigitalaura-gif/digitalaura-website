@@ -47,6 +47,7 @@ import {
   Lightbulb,
   Briefcase,
   ArrowDown,
+  ArrowUp,
   Download,
 } from "lucide-react";
 import digitalAuraLogo from "@/assets/brand/digital-aura-logo.png";
@@ -810,9 +811,9 @@ function QuickAnswer() {
     <section id="quick-answer" className="bg-white">
       <div className="mx-auto max-w-7xl px-5 py-14 md:px-8 md:py-20">
         <Reveal>
-          <div className="mx-auto max-w-4xl text-center">
+          <div className="mx-auto max-w-5xl text-center">
             <SectionLabel>Quick answer</SectionLabel>
-            <h2 className="pillar-h2 text-balance">What does an SEO company in Ahmedabad do?</h2>
+            <h2 className="pillar-h2">What does an SEO company in Ahmedabad do?</h2>
             <p className="mt-5 text-[17px] leading-relaxed text-ink-muted">
               An SEO company in Ahmedabad helps your business appear in Google, Google Maps and AI search when customers look for what you sell. At Digital Aura that means fixing technical problems, building pages around real search intent, improving your Google Business Profile and earning relevant links, then reporting on calls, forms and enquiries, not only rankings.
             </p>
@@ -905,7 +906,7 @@ function AIShift() {
       <span className="pillar-eyebrow inline-flex items-center gap-2">
         <Bot className="h-3.5 w-3.5" /> The AI search shift
       </span>
-      <h3 className="mt-3 text-2xl font-extrabold leading-tight md:text-[28px]">
+      <h3 className="pillar-oneline mt-3 text-2xl font-extrabold leading-tight md:text-[28px]">
         Traditional SEO is dying.{" "}
         <span className="text-brand-orange">AI Search</span> is the new battlefield.
       </h3>
@@ -920,7 +921,7 @@ function AIShift() {
           </span>
         ))}
       </div>
-      <ul className="mt-6 space-y-3">
+      <ul className="mt-6 grid gap-3 md:grid-cols-2">
         {points.map((p) => (
           <li key={p} className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/5 p-4">
             <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand-orange" />
@@ -1213,9 +1214,9 @@ function Results() {
       <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
         <div className="mx-auto mb-10 max-w-3xl text-center">
           <SectionLabel>Proven Results</SectionLabel>
-          <h2 className="mt-3 text-2xl font-bold tracking-tight text-brand-navy sm:text-3xl md:text-[42px]">
+          <h3 className="pillar-oneline mt-3 text-2xl font-extrabold tracking-tight text-brand-navy">
             Real Clients. <span className="text-brand-orange">Real Growth.</span> Real Results.
-          </h2>
+          </h3>
           <p className="mx-auto mt-2 max-w-lg text-sm text-ink-muted md:text-base">Real search results from real businesses we handle SEO for.</p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3" style={{ opacity: show ? 1 : 0, transition: "opacity 180ms ease" }}>
@@ -1386,7 +1387,7 @@ function TrustStrip() {
           ))}
         </div>
         <div className="pillar-trust-logos">
-          <span className="pillar-eyebrow mb-2 block text-center">Our clients</span>
+          <div className="mb-2 text-center"><span className="pillar-eyebrow">Our clients</span></div>
           <p className="pillar-trust-caption">
             Trusted by Businesses We've Helped Grow. From healthcare and education to eCommerce and local businesses, we're proud to work with ambitious brands across multiple industries.
           </p>
@@ -2331,13 +2332,15 @@ function FinalCTA() {
   return (
     <section id="contact" className="pillar-section pillar-section--navy">
       <div className="pillar-container">
+        <div className="pillar-head">
+          <SectionLabel>Ready when you are</SectionLabel>
+          <h2 className="pillar-oneline pillar-oneline--long mt-3 font-extrabold leading-tight text-white">
+            Find out exactly why your SEO isn't generating leads — <span className="text-brand-orange">in 48 hours</span>.
+          </h2>
+        </div>
         <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
-            <SectionLabel>Ready when you are</SectionLabel>
-            <h2 className="mt-3 font-extrabold leading-tight text-white [font-size:clamp(26px,3vw,36px)]">
-              Find out exactly why your SEO isn't generating leads — <span className="text-brand-orange">in 48 hours</span>.
-            </h2>
-            <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-white/80">
+            <p className="max-w-xl text-[17px] leading-relaxed text-white/80">
               Free, no-obligation audit covering Technical SEO, On-Page SEO, Schema, Core Web Vitals, AI Search
               visibility and GEO readiness. Delivered with a 30-minute strategy walkthrough by a senior consultant —
               not a junior account manager reading a template.
@@ -2345,7 +2348,7 @@ function FinalCTA() {
             <div className="pillar-btn-row mt-7">
               <PrimaryCTA href="#audit">Get My Free SEO Audit</PrimaryCTA>
               <a href="https://wa.me/918141200284" target="_blank" rel="noopener" className="pillar-btn pillar-btn--ghost-light">
-                <MessageCircle className="h-4 w-4" /> WhatsApp us
+                <WhatsAppIcon className="h-4 w-4" /> WhatsApp us
               </a>
             </div>
           </div>
@@ -2468,17 +2471,44 @@ function Footer() {
 
 /* ---------------- Floating widgets ---------------- */
 
-function FloatingWhatsApp() {
+function WhatsAppIcon({ className = "h-7 w-7" }: { className?: string }) {
   return (
-    <a
-      href="https://wa.me/918141200284"
-      target="_blank"
-      rel="noopener"
-      aria-label="Chat on WhatsApp"
-      className="da-focus-ring fixed bottom-5 right-5 z-40 hidden md:grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-[0_10px_28px_-6px_rgba(37,211,102,0.55)] transition hover:scale-105 md:bottom-5"
-    >
-      <MessageCircle className="h-6 w-6" />
-    </a>
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88zM20.5 3.49A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.42z" />
+    </svg>
+  );
+}
+
+/** Bottom-right floating actions: scroll-to-top sits above the WhatsApp button. */
+function FloatingWhatsApp() {
+  const [showTop, setShowTop] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setShowTop(window.scrollY > 600);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <div className="fixed bottom-5 right-5 z-40 hidden flex-col items-center gap-3 md:flex">
+      <button
+        type="button"
+        aria-label="Scroll to top"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        tabIndex={showTop ? 0 : -1}
+        className={`grid h-12 w-12 place-items-center rounded-full bg-brand-navy text-white shadow-[0_8px_22px_-6px_rgba(30,27,75,0.5)] transition hover:scale-105 ${showTop ? "opacity-100" : "pointer-events-none opacity-0"}`}
+      >
+        <ArrowUp className="h-5 w-5" />
+      </button>
+      <a
+        href="https://wa.me/918141200284"
+        target="_blank"
+        rel="noopener"
+        aria-label="Chat on WhatsApp"
+        className="da-focus-ring grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-[0_10px_28px_-6px_rgba(37,211,102,0.55)] transition hover:scale-105"
+      >
+        <WhatsAppIcon />
+      </a>
+    </div>
   );
 }
 
@@ -2492,7 +2522,7 @@ function MobileStickyCTA() {
         <Phone className="mr-1.5 h-4 w-4" /> Call
       </a>
       <a href="https://wa.me/918141200284" target="_blank" rel="noopener" className="bg-[#25D366] text-white">
-        <MessageCircle className="mr-1.5 h-4 w-4" /> WhatsApp
+        <WhatsAppIcon className="mr-1.5 h-4 w-4" /> WhatsApp
       </a>
     </div>
   );
@@ -2526,10 +2556,8 @@ function Index() {
 
         {/* 2. Overview */}
         <PillarSection id="overview" tone="white" bare noHead>
-          <div className="pillar-two-col">
-            <div className="pillar-col"><QuickAnswer /></div>
-            <div className="pillar-col"><AIShift /></div>
-          </div>
+          <QuickAnswer />
+          <div className="mt-12"><AIShift /></div>
         </PillarSection>
 
         {/* 3. Problems we solve */}
@@ -2608,16 +2636,8 @@ function Index() {
             label="Pricing and comparison"
             tabs={[
               { id: "pricing", label: "SEO pricing", content: <SEOPricing /> },
-              {
-                id: "compare",
-                label: "Us vs a typical agency",
-                content: (
-                  <>
-                    <Compare />
-                    <div className="mt-12"><WhyChooseUs /></div>
-                  </>
-                ),
-              },
+              { id: "why", label: "Why Digital Aura", content: <WhyChooseUs /> },
+              { id: "compare", label: "Us vs a typical agency", content: <Compare /> },
               { id: "choose", label: "How to choose", content: <ChooseSEO /> },
               { id: "vs-ads", label: "SEO vs Google Ads", content: <SEOvsAds /> },
             ]}

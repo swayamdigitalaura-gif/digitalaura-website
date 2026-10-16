@@ -499,3 +499,23 @@
     flex-basis: 100%;
   }
 }
+
+/* ---------- Headings stay on one line (desktop / tablet); phones may wrap ---------- */
+.pillar-page .pillar-head { max-width: none; }
+.pillar-page .pillar-head p, .pillar-page .pillar-subhead p { margin-inline: auto; }
+@media (min-width: 768px) {
+  .pillar-page .pillar-head h2,
+  .pillar-page .pillar-h2,
+  .pillar-page .pillar-subhead h3,
+  .pillar-page .pillar-oneline {
+    white-space: nowrap;
+  }
+  .pillar-page .pillar-head h2,
+  .pillar-page .pillar-h2 { font-size: clamp(20px, 3.1vw, 36px); }
+  .pillar-page .pillar-subhead h3 { font-size: clamp(18px, 2.4vw, 28px); }
+  .pillar-page .pillar-oneline { font-size: clamp(18px, 2.4vw, 28px); }
+}
+
+@media (min-width: 768px) {
+  .pillar-page .pillar-head h2.pillar-oneline--long { font-size: clamp(14px, 2vw, 28px); }
+}

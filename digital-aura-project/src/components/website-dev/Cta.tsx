@@ -116,7 +116,7 @@ const projectTypes = [
   "Not Sure Yet",
 ];
 
-export function QuickEnquiry() {
+export function QuickEnquiry({ compact = false }: { compact?: boolean } = {}) {
   useCMSEditor();
   const s = useSettings([
     "wds_enquiry_badge",
@@ -157,9 +157,10 @@ export function QuickEnquiry() {
     }
   }
 
+  const Outer = compact ? "div" : "section";
   return (
-    <section id="enquiry" className="bg-background">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-14 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+    <Outer id="enquiry" className={compact ? "scroll-mt-28" : "bg-background"}>
+      <div className={compact ? "grid grid-cols-1 gap-6" : "mx-auto grid max-w-7xl grid-cols-1 gap-14 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center"}>
         <div>
           <Reveal>
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary-soft/60 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-primary">
@@ -174,7 +175,7 @@ export function QuickEnquiry() {
               data-cms-key="wds_enquiry_h2"
               data-cms-label="Enquiry Heading"
               data-cms-attr="text"
-              className="mt-5 text-section"
+              className={compact ? "mt-3 text-[22px] font-bold leading-tight tracking-tight md:text-[26px]" : "mt-5 text-section"}
             >
               {s.wds_enquiry_h2 || "Every project starts with your goals, not a template"}
             </h2>
@@ -184,7 +185,7 @@ export function QuickEnquiry() {
               data-cms-key="wds_enquiry_p"
               data-cms-label="Enquiry Paragraph"
               data-cms-attr="text"
-              className="mt-4 max-w-md text-muted-foreground"
+              className={compact ? "mt-2 text-[15px] leading-relaxed text-muted-foreground" : "mt-4 max-w-md text-muted-foreground"}
             >
               {s.wds_enquiry_p ||
                 "Before we talk design or platform, we take the time to understand your business, your buyers and what you actually need this website to achieve. Share a few details and we'll come back with next steps."}
@@ -260,6 +261,6 @@ export function QuickEnquiry() {
           </form>
         </Reveal>
       </div>
-    </section>
+    </Outer>
   );
 }

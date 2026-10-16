@@ -559,3 +559,8 @@
 /* Sub-headings may use the full container width so they stay on one line */
 .pillar-page .pillar-subhead { max-width: none; }
 .pillar-page .pillar-subhead p { max-width: 720px; }
+
+/* Website Development page: existing section headings (text-section) stay on one line on larger screens */
+@media (min-width: 768px) {
+  .pillar-page .text-section { white-space: nowrap; font-size: clamp(20px, 2.6vw, 32px); }
+}

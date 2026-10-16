@@ -27,7 +27,7 @@ import { Reveal, SectionLabel } from "./Reveal";
 import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
 
-const metrics = [
+export const metrics = [
   { value: "320+", label: "Websites delivered" },
   { value: "11", label: "Years driving business growth" },
   { value: "98%", label: "Clients who'd refer us" },

@@ -13,7 +13,7 @@ const trustItems = [
   { icon: Gauge, text: "Conversion-Focused Design" },
 ];
 
-export function Hero() {
+export function Hero({ aside }: { aside?: React.ReactNode } = {}) {
   useCMSEditor();
   const s = useSettings([
     "wds_hero_label",
@@ -38,7 +38,7 @@ export function Hero() {
       <div className="pointer-events-none absolute -left-40 -top-40 h-[28rem] w-[28rem] rounded-full bg-primary/12 blur-[110px]" />
       <div className="pointer-events-none absolute -right-32 top-24 h-[26rem] w-[26rem] rounded-full bg-navy/10 blur-[120px]" />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-5 py-14 sm:px-8 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:py-20">
+      <div className={cn("relative mx-auto grid items-center gap-14 px-5 py-14 sm:px-8 lg:gap-16 lg:py-20", aside ? "max-w-[1200px] lg:grid-cols-[1.05fr_0.95fr] lg:items-start" : "max-w-7xl lg:grid-cols-[1.05fr_1fr]")}>
         <div>
           <Reveal>
             <SectionLabel>
@@ -101,9 +101,21 @@ export function Hero() {
               </Button>
             </div>
           </Reveal>
+          {aside && (
+            <Reveal delay={200} className="relative mt-8 flex justify-start">
+              <div className="relative w-full max-w-[560px]">
+                <img
+                  src="/wds/hero-showcase.webp"
+                  alt="Digital Aura website showcase — browser and mobile preview with performance and SEO badges"
+                  className="relative h-auto w-full drop-shadow-[0_25px_45px_-15px_rgba(15,23,42,0.3)]"
+                />
+              </div>
+            </Reveal>
+          )}
         </div>
 
-        {/* Hero showcase image */}
+        {aside ? <div className="min-w-0">{aside}</div> : (
+        /* Hero showcase image */
         <Reveal delay={200} className="relative flex justify-center">
           <div className="relative w-full max-w-3xl lg:scale-[1.09]">
             <div className="pointer-events-none absolute inset-x-6 top-10 h-[85%] rounded-[2rem] bg-primary/15 blur-3xl" />
@@ -114,6 +126,7 @@ export function Hero() {
             />
           </div>
         </Reveal>
+        )}
       </div>
 
       <div className="relative border-t border-border/70 bg-background/60 backdrop-blur-sm">

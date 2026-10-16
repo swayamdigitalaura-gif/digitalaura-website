@@ -24,7 +24,7 @@ export function PillarSection({
 }: {
   id?: string;
   tone?: Tone;
-  eyebrow?: string;
+  eyebrow?: ReactNode;
   title?: ReactNode;
   intro?: ReactNode;
   children: ReactNode;
@@ -163,11 +163,11 @@ export function PillarSubNav({ items }: { items: { href: string; label: string }
 }
 
 /** FAQ list: always fully open, two columns on desktop. Question is an H3. No accordion. */
-export function PillarFaq({ items }: { items: { q: string; a: string }[] }) {
+export function PillarFaq({ items }: { items: { q: ReactNode; a: ReactNode; key?: string }[] }) {
   return (
     <div className="pillar-faq">
-      {items.map((f) => (
-        <div key={f.q} className="pillar-faq-item">
+      {items.map((f, i) => (
+        <div key={f.key || (typeof f.q === "string" ? f.q : i)} className="pillar-faq-item">
           <h3>{f.q}</h3>
           <p>{f.a}</p>
         </div>

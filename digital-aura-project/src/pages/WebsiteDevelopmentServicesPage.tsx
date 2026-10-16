@@ -4,17 +4,19 @@ import { Toaster } from "@/components/ui/sonner";
 import digitalAuraLogo from "@/assets/wds/brand/digital-aura-logo.png";
 
 import { Hero } from "@/components/website-dev/Hero";
-import { TrustMetrics, Problems, Included, Process } from "@/components/website-dev/SectionsA";
+import { Problems, Included, Process } from "@/components/website-dev/SectionsA";
 import { TechStack, PerformanceSnapshot, Industries } from "@/components/website-dev/SectionsB";
 import {
-  LogoMarquee,
   Testimonials,
   Faq,
   FinalCta,
 } from "@/components/website-dev/SectionsC";
+import { WdsTrustStrip } from "@/components/website-dev/TrustStrip";
+import { PillarSection, PillarSubNav, PillarTabs } from "@/components/pillar/Pillar";
 import { CtaBand, QuickEnquiry } from "@/components/website-dev/Cta";
 import OfficeMap from "@/components/OfficeMap";
 import "@/components/website-dev/pillar-compact.css";
+import "@/pillar-pages.css";
 import CaseStudies, { CASE_CARDS } from "@/components/CaseStudies";
 import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
@@ -95,6 +97,15 @@ function LocalBusinessSchema() {
   );
 }
 
+const SUBNAV = [
+  { href: "#problems", label: "Problems" },
+  { href: "#services", label: "Services" },
+  { href: "#process", label: "Process" },
+  { href: "#results-proof", label: "Results" },
+  { href: "#pricing", label: "Compare" },
+  { href: "#faq", label: "FAQ" },
+];
+
 const WebsiteDevelopmentServicesPage = () => {
   useBasicSEO();
   useCMSEditor();
@@ -110,32 +121,74 @@ const WebsiteDevelopmentServicesPage = () => {
   ]);
   return (
     <PageLayout>
-      <div className="wds-pillar bg-background">
+      <div className="wds-pillar pillar-page bg-background">
         <LocalBusinessSchema />
-        <Hero />
-        <TrustMetrics />
-        <Problems />
-        <Included />
-        <Process />
-        <QuickEnquiry />
-        <TechStack />
-        <PerformanceSnapshot />
-        <Industries />
-        <LogoMarquee />
-        <Testimonials />
-        <CaseStudies cases={[CASE_CARDS.riant, CASE_CARDS.prism]} sub="Real websites that turned into real bookings and leads." centered />
-        <CtaBand
-          tone="light"
-          headline={
-            s.wds_ctaband2_headline || "Still Comparing Website Development Companies?"
-          }
-          description={
-            s.wds_ctaband2_desc ||
-            "Let's discuss your project and recommend the right solution for your business."
-          }
-          buttonText={s.wds_ctaband2_button || "Get Expert Advice"}
-          href="#strategy"
-        />
+        {/* 1. Hero (with the enquiry form) + trust strip */}
+        <Hero aside={<QuickEnquiry compact />} />
+        <WdsTrustStrip />
+        <PillarSubNav items={SUBNAV} />
+
+        {/* 3. Problems we solve */}
+        <PillarSection id="problems" tone="white" bare noHead>
+          <Problems />
+        </PillarSection>
+
+        {/* 4. What's included */}
+        <PillarSection id="services" tone="light" bare noHead>
+          <Included />
+        </PillarSection>
+
+        {/* 5. Process */}
+        <PillarSection tone="white" bare noHead>
+          <Process />
+        </PillarSection>
+
+        {/* 6. Tech stack and performance */}
+        <PillarSection id="tools" tone="light" eyebrow="Tools & performance" title="The technology and speed behind every website">
+          <PillarTabs
+            label="Technology and performance"
+            tabs={[
+              { id: "stack", label: "Tech stack", content: <TechStack /> },
+              { id: "performance", label: "Performance snapshot", content: <PerformanceSnapshot /> },
+            ]}
+          />
+        </PillarSection>
+
+        {/* 7. Industries */}
+        <PillarSection tone="white" bare noHead>
+          <Industries />
+        </PillarSection>
+
+        {/* 8. Results */}
+        <PillarSection id="results-proof" tone="light" bare noHead>
+          <div id="results">
+            <CaseStudies cases={[CASE_CARDS.riant, CASE_CARDS.prism]} sub="Real websites that turned into real bookings and leads." centered />
+          </div>
+        </PillarSection>
+
+        {/* 9. Testimonials */}
+        <PillarSection tone="white" bare noHead>
+          <Testimonials />
+        </PillarSection>
+
+        {/* 10. Comparison */}
+        <PillarSection id="pricing" tone="light" bare noHead>
+          <CtaBand
+            tone="light"
+            headline={
+              s.wds_ctaband2_headline || "Still Comparing Website Development Companies?"
+            }
+            description={
+              s.wds_ctaband2_desc ||
+              "Let's discuss your project and recommend the right solution for your business."
+            }
+            buttonText={s.wds_ctaband2_button || "Get Expert Advice"}
+            href="#strategy"
+          />
+        </PillarSection>
+
+        {/* Link cards before the FAQ */}
+        <PillarSection tone="white" bare noHead>
         <section className="bg-background py-10">
           <div className="mx-auto max-w-7xl px-5 md:px-8">
             <h2 className="text-center text-2xl font-bold md:text-[34px]">More website services in Ahmedabad</h2>
@@ -171,6 +224,8 @@ const WebsiteDevelopmentServicesPage = () => {
             </div>
           </div>
         </section>
+        </PillarSection>
+
         <Faq />
         <FinalCta />
         <OfficeMap auditHref="#enquiry" auditLabel="Request a website proposal" />

@@ -23,6 +23,7 @@ import BlogInsights from "@/components/BlogInsights";
 import AdsCalculator from "@/components/AdsCalculators";
 import { ReelGrid, FounderLinks, MemberLinks } from "@/components/ReelsAndTeam";
 import OfficeMap from "@/components/OfficeMap";
+import VisitUs from "@/components/pillar/VisitUs";
 import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
 import type { ExtraSection, LocalServiceConfig } from "@/components/LocalServicePage";
@@ -308,7 +309,7 @@ function GuideSection({ sec, index }: { sec: ExtraSection; index: number }) {
               <p className="mt-4 text-[14.5px] leading-relaxed text-[#4B5563]">{sec.members[0].bio}</p>
               <MemberLinks links={sec.members[0].links} accent={ORANGE} />
             </Card>
-            <div className="grid gap-5 sm:grid-cols-2">
+            <div className="pillar-cols-2 grid gap-5 sm:grid-cols-2">
               {sec.members.slice(1).map((m) => (
                 <Card key={m.name}>
                   <div className="flex items-center gap-3">
@@ -589,7 +590,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
 
     const WhyBlock = (
       <Wrap id="why-us" bg="#fff">
-        <Head eyebrow="Why us" title={<span data-cms-key={k("whyLocalTitle")} data-cms-label="Why Us Title" data-cms-attr="text">{c.whyLocalTitle}</span>} />
+        <Head eyebrow="Why us" title={<span data-cms-key={k("whyLocalTitle")} data-cms-label="Why Us Title" data-cms-attr="text">{c.whyLocalTitle.split("Digital Aura").flatMap((part, i, arr) => (i < arr.length - 1 ? [part, <span key={i} style={{ color: ORANGE }}>Digital Aura</span>] : [part]))}</span>} />
         <ul className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-2">
           {c.whyLocal.map((w) => (
             <li key={w} className="flex items-start gap-3 rounded-2xl border bg-white p-4" style={{ borderColor: "#EDE3DA" }}>
@@ -663,6 +664,8 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
       </Wrap>
     ) : null;
 
+    const shortSec = pool.find((x) => x.id === "short-answer");
+    const shortTab = shortSec ? { id: "short-answer", label: labelFor["short-answer"], content: <div className="pillar-center"><GuideSection sec={shortSec} index={0} /></div> } : null;
     const industryTabs = tabs([gtab("industries"), gtab("ahmedabad-calendar"), gtab("industry-pages")]);
     const exploreFinal = tabs([
       RelatedBlock ? { id: "related", label: "More ways we can help", content: RelatedBlock } : null,
@@ -733,7 +736,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
 
           {/* 2. Overview */}
           <PillarSection id="overview-group" tone="white" eyebrow="Overview" title="What Meta ads management in Ahmedabad covers">
-            <PillarTabs label="Overview" tabs={tabs([QuickBlock ? { id: "quick", label: "Quick answer", content: QuickBlock } : null, gtab("short-answer")])} />
+            <PillarTabs label="Overview" initial="short-answer" tabs={tabs([QuickBlock ? { id: "quick", label: "Quick answer", content: QuickBlock } : null, shortTab])} />
           </PillarSection>
 
           {/* 3. Problems we solve */}
@@ -758,7 +761,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
 
           {/* 7. Industries */}
           <PillarSection id="industries-group" tone="light" eyebrow="Who we serve" title="Industries we run Meta ads for, and the Ahmedabad calendar">
-            <PillarTabs label="Industries" tabs={industryTabs} />
+            <PillarTabs label="Industries" initial="industry-pages" tabs={industryTabs} />
           </PillarSection>
 
           {/* 8. Results & proof */}
@@ -853,6 +856,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
                 </div>
                 {c.leadForm && <PageLeadForm cfg={{ ...c.leadForm, id: `${c.leadForm.id || "audit-form"}-final` }} accent={ORANGE} embedded idPrefix="plf-final" />}
               </div>
+              {officeMap && <VisitUs auditHref={"#" + formId} auditLabel="Get a free Meta ads account review" />}
             </div>
           </section>
         </div>
@@ -864,7 +868,6 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
           </>
         )}
         <PillarLinks slug={config.slug} />
-        {officeMap && <OfficeMap auditHref={"#" + formId} auditLabel="Get a free Meta ads account review" />}
       </PageLayout>
       </StandardCtx.Provider>
       </VariantCtx.Provider>

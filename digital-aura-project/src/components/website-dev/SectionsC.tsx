@@ -23,6 +23,7 @@ import { Reveal, SectionLabel, SectionLabelDark } from "./Reveal";
 import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
 import { PillarFaq, PillarSection } from "@/components/pillar/Pillar";
+import VisitUs from "@/components/pillar/VisitUs";
 
 export const logos = [
   { name: "Clarity Eye Surgeons", category: "Healthcare", src: "/wds/logos/clarity-eye-surgeons.png" },
@@ -507,6 +508,9 @@ export function FinalCta() {
             </p>
           </form>
         </Reveal>
+      </div>
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+        <VisitUs auditHref="#strategy" auditLabel="Request a website proposal" />
       </div>
     </section>
   );

@@ -54,9 +54,9 @@ export function PillarSection({
 export type PillarTab = { id: string; label: string; content: ReactNode };
 
 /** Accessible tabs. Every panel stays in the DOM (inactive ones use the `hidden` attribute). */
-export function PillarTabs({ tabs, label }: { tabs: PillarTab[]; label: string }) {
+export function PillarTabs({ tabs, label, initial }: { tabs: PillarTab[]; label: string; /** id of the tab that is open on first load (defaults to the first) */ initial?: string }) {
   const uid = useId().replace(/:/g, "");
-  const [active, setActive] = useState(tabs[0].id);
+  const [active, setActive] = useState(initial && tabs.some((t) => t.id === initial) ? initial : tabs[0].id);
   const listRef = useRef<HTMLDivElement>(null);
 
   // Opening /page#some-id where that id lives inside a hidden panel switches to that tab and scrolls to it.

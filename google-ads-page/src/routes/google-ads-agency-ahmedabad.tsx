@@ -123,9 +123,12 @@ function LandingPage() {
             { id: "conversion", label: "Conversion tracking", content: <ConversionTracking /> },
             { id: "by-lead", label: "What we track", content: <TrackingByLeadType /> },
             { id: "landing", label: "Landing pages", content: <LandingPageOptimization /> },
-            { id: "tools", label: "Tools we use", content: <ToolsWeUse /> },
           ]}
         />
+      </PillarSection>
+
+      <PillarSection id="tools" tone="light" bare noHead>
+        <ToolsWeUse />
       </PillarSection>
 
       {/* 7. Industries */}
@@ -140,7 +143,7 @@ function LandingPage() {
       </PillarSection>
 
       {/* 8. Results & proof */}
-      <PillarSection id="results-proof" tone="white" eyebrow="Results & proof" title="Real results from real businesses">
+      <PillarSection id="results-proof" tone="white" bare noHead>
         <CaseStudies />
         <div className="mt-16"><DashboardGallery /></div>
       </PillarSection>

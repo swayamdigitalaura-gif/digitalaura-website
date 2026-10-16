@@ -13,8 +13,7 @@ import {
 } from "@/components/website-dev/SectionsC";
 import { WdsTrustStrip } from "@/components/website-dev/TrustStrip";
 import { PillarSection, PillarSubNav, PillarTabs } from "@/components/pillar/Pillar";
-import { CtaBand, QuickEnquiry } from "@/components/website-dev/Cta";
-import OfficeMap from "@/components/OfficeMap";
+import { CtaBand } from "@/components/website-dev/Cta";
 import "@/components/website-dev/pillar-compact.css";
 import "@/pillar-pages.css";
 import CaseStudies, { CASE_CARDS } from "@/components/CaseStudies";
@@ -124,7 +123,7 @@ const WebsiteDevelopmentServicesPage = () => {
       <div className="wds-pillar pillar-page bg-background">
         <LocalBusinessSchema />
         {/* 1. Hero (with the enquiry form) + trust strip */}
-        <Hero aside={<QuickEnquiry compact />} />
+        <Hero />
         <WdsTrustStrip />
         <PillarSubNav items={SUBNAV} />
 
@@ -228,7 +227,6 @@ const WebsiteDevelopmentServicesPage = () => {
 
         <Faq />
         <FinalCta />
-        <OfficeMap auditHref="#enquiry" auditLabel="Request a website proposal" />
         <Toaster />
       </div>
     </PageLayout>

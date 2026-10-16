@@ -93,7 +93,7 @@ export function Lead({ children, className = "" }: { children: ReactNode; classN
 export function PrimaryCTA({
   children = "Get My Free Revenue Audit",
   className = "",
-  href = "#audit",
+  href = "#audit-final",
 }: {
   children?: ReactNode;
   className?: string;

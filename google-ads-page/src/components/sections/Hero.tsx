@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
 import { PrimaryCTA, SecondaryCTA } from "../shared/SectionPrimitives";
-import { AuditForm } from "../shared/AuditForm";
 
 export function Hero() {
   return (
@@ -12,7 +11,7 @@ export function Hero() {
       <div className="pointer-events-none absolute top-1/4 right-[8%] size-[460px] rounded-full bg-primary/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-10 -left-16 size-[320px] rounded-full bg-primary/[0.06] blur-3xl" />
 
-      <div className="relative mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-12 px-4 md:px-5 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 items-start">
+      <div className="relative mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-12 px-4 md:px-5 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 items-center">
         {/* LEFT COLUMN */}
         <div className="flex flex-col">
           <motion.div
@@ -52,30 +51,20 @@ export function Hero() {
             <PrimaryCTA href="#audit-final">Get Free Google Ads Audit</PrimaryCTA>
             <SecondaryCTA href="#results">View Case Studies</SecondaryCTA>
           </motion.div>
-
-          {/* Campaign dashboard visual (kept from the previous hero), now under the text */}
-          <motion.div
-            initial={{ opacity: 0, y: 28, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="relative mt-8 w-full max-w-[560px]"
-          >
-            <img
-              src="/hero-section-image.webp"
-              alt="Google Ads campaign dashboard, GA4 analytics, and Google Search result preview for Digital Aura"
-              className="w-full h-auto drop-shadow-[0_30px_60px_rgba(26,29,54,0.16)]"
-            />
-          </motion.div>
         </div>
 
-        {/* RIGHT COLUMN: the audit form */}
+        {/* RIGHT COLUMN: campaign dashboard visual (the audit form lives in the final CTA) */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="w-full"
+          initial={{ opacity: 0, y: 28, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="relative w-full"
         >
-          <AuditForm id="audit" compact />
+          <img
+            src="/hero-section-image.webp"
+            alt="Google Ads campaign dashboard, GA4 analytics, and Google Search result preview for Digital Aura"
+            className="w-full h-auto drop-shadow-[0_30px_60px_rgba(26,29,54,0.16)]"
+          />
         </motion.div>
       </div>
     </section>

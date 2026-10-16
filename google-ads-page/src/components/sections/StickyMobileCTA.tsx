@@ -21,7 +21,7 @@ export function StickyMobileCTA() {
   return (
     <>
       <div className="pillar-mobilebar">
-        <a href="#audit" aria-label="Claim My Free Revenue Audit" className="bg-primary text-primary-foreground">Free Audit</a>
+        <a href="#audit-final" aria-label="Claim My Free Revenue Audit" className="bg-primary text-primary-foreground">Free Audit</a>
         <a href="tel:+918141200284" className="border border-border bg-white text-navy">
           <Phone className="mr-1.5 size-4" /> Call
         </a>

@@ -198,13 +198,13 @@
 }
 .pillar-page .pillar-card:hover { box-shadow: var(--p-shadow-hover); }
 
-.pillar-page .pillar-cols-4:has(> .pillar-card) > .pillar-card {
+.pillar-page div.pillar-cols-4:has(> .pillar-card) > .pillar-card {
   flex-basis: calc((100% - 3 * var(--p-gap)) / 4);
 }
-.pillar-page .pillar-cols-5:has(> .pillar-card) > .pillar-card {
+.pillar-page div.pillar-cols-5:has(> .pillar-card) > .pillar-card {
   flex-basis: calc((100% - 4 * var(--p-gap)) / 5);
 }
-.pillar-page .pillar-cols-2:has(> .pillar-card) > .pillar-card {
+.pillar-page div.pillar-cols-2:has(> .pillar-card) > .pillar-card {
   flex-basis: calc((100% - var(--p-gap)) / 2);
 }
 
@@ -220,7 +220,7 @@
     flex-basis: 100%;
   }
   /* only small logo cards stay two-up on phones */
-  .pillar-page .pillar-small:has(> .pillar-card) > .pillar-card {
+  .pillar-page div.pillar-small:has(> .pillar-card) > .pillar-card {
     flex-basis: calc((100% - var(--p-gap)) / 2);
   }
 }
@@ -564,3 +564,8 @@
 @media (min-width: 768px) {
   .pillar-page .text-section { white-space: nowrap; font-size: clamp(20px, 2.6vw, 32px); }
 }
+
+/* ---------- Centred text blocks (e.g. Meta "The short answer") ---------- */
+.pillar-page .pillar-center p,
+.pillar-page .pillar-center h3 { text-align: center; }
+.pillar-page .pillar-center .flex { justify-content: center; }

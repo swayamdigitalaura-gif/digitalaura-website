@@ -38,7 +38,7 @@ export function Hero({ aside }: { aside?: React.ReactNode } = {}) {
       <div className="pointer-events-none absolute -left-40 -top-40 h-[28rem] w-[28rem] rounded-full bg-primary/12 blur-[110px]" />
       <div className="pointer-events-none absolute -right-32 top-24 h-[26rem] w-[26rem] rounded-full bg-navy/10 blur-[120px]" />
 
-      <div className={cn("relative mx-auto grid items-center gap-14 px-5 py-14 sm:px-8 lg:gap-16 lg:py-20", aside ? "max-w-[1200px] lg:grid-cols-[1.05fr_0.95fr] lg:items-start" : "max-w-7xl lg:grid-cols-[1.05fr_1fr]")}>
+      <div className={cn("relative mx-auto grid items-center gap-14 px-5 pb-14 pt-[104px] sm:px-8 lg:gap-16 lg:py-20", aside ? "max-w-[1200px] lg:grid-cols-[1.05fr_0.95fr] lg:items-start" : "max-w-7xl lg:grid-cols-[1.05fr_1fr]")}>
         <div>
           <Reveal>
             <SectionLabel>

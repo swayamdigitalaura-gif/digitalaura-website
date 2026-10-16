@@ -94,14 +94,17 @@ export function PrimaryCTA({
   children = "Get My Free Revenue Audit",
   className = "",
   href = "#audit-final",
+  download,
 }: {
   children?: ReactNode;
   className?: string;
   href?: string;
+  download?: string;
 }) {
   return (
     <a
       href={href}
+      download={download}
       className={`pillar-btn pillar-btn--primary group ${className}`}
     >
       {children}

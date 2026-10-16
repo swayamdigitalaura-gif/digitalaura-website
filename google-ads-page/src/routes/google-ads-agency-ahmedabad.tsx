@@ -6,6 +6,7 @@ import { PlatformsWeManage } from "../components/sections/PlatformsWeManage";
 import { ConversionTracking } from "../components/sections/ConversionTracking";
 import { LandingPageOptimization } from "../components/sections/LandingPageOptimization";
 import { ToolsWeUse } from "../components/sections/ToolsWeUse";
+import { SampleAuditSnapshot } from "../components/sections/SampleAuditSnapshot";
 import { DashboardGallery } from "../components/sections/DashboardGallery";
 import { IndustrySolutions } from "../components/sections/IndustrySolutions";
 import { CaseStudies } from "../components/sections/CaseStudies";
@@ -146,6 +147,7 @@ function LandingPage() {
       <PillarSection id="results-proof" tone="white" bare noHead>
         <CaseStudies />
         <div className="mt-16"><DashboardGallery /></div>
+        <div className="mt-16"><SampleAuditSnapshot /></div>
       </PillarSection>
       <PillarSection tone="light" bare noHead>
         <AdsReels />

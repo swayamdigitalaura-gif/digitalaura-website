@@ -569,3 +569,11 @@
 .pillar-page .pillar-center p,
 .pillar-page .pillar-center h3 { text-align: center; }
 .pillar-page .pillar-center .flex { justify-content: center; }
+
+/* The site sets overflow-x:hidden on html/body, which turns body into a scroll container and stops
+   position:sticky (the sub-nav) from ever sticking. "clip" still blocks sideways scroll without that side effect. */
+html:has(.pillar-page),
+body:has(.pillar-page) { overflow-x: clip; overflow-y: visible; }
+
+/* Anchor targets inside a pillar page clear the fixed header and the sticky sub-nav. */
+.pillar-page [id] { scroll-margin-top: 130px; }

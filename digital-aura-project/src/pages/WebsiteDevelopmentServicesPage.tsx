@@ -13,6 +13,7 @@ import {
 } from "@/components/website-dev/SectionsC";
 import { WdsTrustStrip } from "@/components/website-dev/TrustStrip";
 import { PillarSection, PillarSubNav, PillarTabs } from "@/components/pillar/Pillar";
+import WebsiteTeam from "@/components/pillar/WebsiteTeam";
 import { CtaBand } from "@/components/website-dev/Cta";
 import "@/components/website-dev/pillar-compact.css";
 import "@/pillar-pages.css";
@@ -185,6 +186,9 @@ const WebsiteDevelopmentServicesPage = () => {
             href="#strategy"
           />
         </PillarSection>
+
+        {/* 11. Team */}
+        <WebsiteTeam />
 
         {/* Link cards before the FAQ */}
         <PillarSection tone="white" bare noHead>

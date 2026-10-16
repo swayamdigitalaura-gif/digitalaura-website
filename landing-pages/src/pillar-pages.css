@@ -519,3 +519,13 @@
 @media (min-width: 768px) {
   .pillar-page .pillar-head h2.pillar-oneline--long { font-size: clamp(14px, 2vw, 28px); }
 }
+
+/* Blocks stacked inside a wrapper div within a group (e.g. Results & proof) get the same reset */
+.pillar-group > div > section:not(.pillar-dark-card) {
+  background: transparent !important;
+  padding: 0 !important;
+}
+.pillar-group > div > section:not(.pillar-dark-card) > div {
+  max-width: none !important;
+  padding: 0 !important;
+}

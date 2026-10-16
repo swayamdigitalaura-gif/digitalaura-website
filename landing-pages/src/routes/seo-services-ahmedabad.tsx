@@ -2610,14 +2610,9 @@ function Index() {
 
         {/* 8. Results & proof */}
         <PillarSection id="results-proof" tone="white" eyebrow="Results & proof" title="Real results from real businesses">
-          <PillarTabs
-            label="Results and proof"
-            tabs={[
-              { id: "cases", label: "Case studies", content: <Results /> },
-              { id: "gsc", label: "Search Console snapshots", content: <GSCSnapshots /> },
-              { id: "audit", label: "Sample audit report", content: <SampleAuditSnapshot /> },
-            ]}
-          />
+          <Results />
+          <div className="mt-16"><GSCSnapshots /></div>
+          <div className="mt-16"><SampleAuditSnapshot /></div>
         </PillarSection>
         <PillarSection tone="light" bare noHead>
           <SEOReels />

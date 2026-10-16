@@ -721,7 +721,7 @@ function LeadForm() {
       </form>
 
       <div className="mt-4 rounded-2xl border border-brand-navy/8 bg-surface-2 p-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between max-sm:flex-wrap max-sm:gap-y-1">
           <div className="text-xs font-bold uppercase tracking-wider text-ink-muted">Your Free Audit Includes</div>
           <div className="flex items-center gap-1.5 text-sm">
             <span className="text-ink-muted/70 line-through">Worth ₹15,000</span>

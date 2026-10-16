@@ -58,3 +58,14 @@
   font-size: 1.0625rem;
   line-height: 1.3;
 }
+
+/* ---------- Mobile polish (Website Development page) ---------- */
+/* Hero: the section rule above removes the hero's top padding, which pushed the label under the fixed navbar on phones and tablets. */
+@media (max-width: 1023px) {
+  .wds-pillar > section:first-of-type > div[class*="max-w-7xl"] { padding-top: 104px; }
+}
+/* Five headline numbers: wrap 3 + 2, centred, instead of clipping on the right */
+@media (max-width: 640px) {
+  .wds-pillar .pillar-trust-stats { display: flex !important; flex-wrap: wrap; justify-content: center; gap: 20px 12px; }
+  .wds-pillar .pillar-trust-stats > div { flex: 0 0 calc(33.333% - 8px); }
+}

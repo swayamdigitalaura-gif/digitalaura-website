@@ -634,3 +634,22 @@ body:has(.pillar-page) { overflow-x: clip; overflow-y: visible; }
   .pillar-page .pillar-team-grid { grid-template-columns: 1fr; }
   .pillar-page .pillar-team-grid > :last-child:nth-child(odd) { grid-column: auto; width: auto; justify-self: stretch; }
 }
+
+/* ---------- Mobile polish: phones only (max-width 767px). Tablet and desktop are not touched. ---------- */
+@media (max-width: 767px) {
+  /* smallest labels become readable */
+  .pillar-page [class*="text-[11px]"] { font-size: 12px; }
+  .pillar-page [class*="text-[10px]"] { font-size: 11px; }
+  /* bigger invisible tap area on small text links (no layout change) */
+  .pillar-page a:is(.mt-auto, .mb-5.inline-flex, [class*="hover:underline"], .pillar-card [class*="inline-flex"]):not(.pillar-btn):not([class*="fixed"]):not([class*="absolute"]) { position: relative; }
+  .pillar-page a:is(.mt-auto, .mb-5.inline-flex, [class*="hover:underline"], .pillar-card [class*="inline-flex"]):not(.pillar-btn):not([class*="fixed"]):not([class*="absolute"])::after {
+    content: "";
+    position: absolute;
+    inset: -12px -6px;
+  }
+}
+@media (max-width: 380px) {
+  .pillar-mobilebar { gap: 6px; padding: 10px 8px; grid-template-columns: 1.2fr 0.9fr 1.4fr; }
+  .pillar-mobilebar a { font-size: 13px; padding-inline: 6px; }
+  .pillar-mobilebar a svg { margin-right: 4px !important; width: 15px; height: 15px; }
+}

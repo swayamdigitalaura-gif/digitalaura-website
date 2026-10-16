@@ -2332,14 +2332,12 @@ function FinalCTA() {
   return (
     <section id="contact" className="pillar-section pillar-section--navy">
       <div className="pillar-container">
-        <div className="pillar-head">
-          <SectionLabel>Ready when you are</SectionLabel>
-          <h2 className="pillar-oneline pillar-oneline--long mt-3 font-extrabold leading-tight text-white">
-            Find out exactly why your SEO isn't generating leads — <span className="text-brand-orange">in 48 hours</span>.
-          </h2>
-        </div>
         <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
+            <SectionLabel>Ready when you are</SectionLabel>
+            <h2 className="mt-3 mb-5 font-extrabold leading-tight text-white [font-size:clamp(26px,2.8vw,34px)]">
+              Find out exactly why your SEO isn't generating leads — <span className="text-brand-orange">in 48 hours</span>.
+            </h2>
             <p className="max-w-xl text-[17px] leading-relaxed text-white/80">
               Free, no-obligation audit covering Technical SEO, On-Page SEO, Schema, Core Web Vitals, AI Search
               visibility and GEO readiness. Delivered with a 30-minute strategy walkthrough by a senior consultant —

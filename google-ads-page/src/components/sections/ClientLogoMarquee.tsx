@@ -1,4 +1,4 @@
-const CLIENTS = [
+export const CLIENTS = [
   { name: "A-One Autocare", logo: "/clients/a-one-autocare.png" },
   { name: "DP Electric", logo: "/clients/dp-electric.png" },
   { name: "Game Zone Events", logo: "/clients/game-zone-events.webp" },

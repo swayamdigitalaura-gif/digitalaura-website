@@ -55,7 +55,7 @@ export function AuditForm({ id = "audit", compact = false }: { id?: string; comp
       <div className="absolute top-0 right-0 bg-primary-soft border-l border-b border-primary/10 px-4.5 py-1.5 text-[11px] font-extrabold uppercase tracking-wider text-primary rounded-bl-2xl">
         Worth ₹15,000 · <span className="text-primary font-black">FREE</span>
       </div>
-      <h3 className="font-display text-xl font-bold text-navy">Request Your Free Google Ads Audit</h3>
+      <h3 className="mt-5 font-display text-xl font-bold text-navy">Request Your Free Google Ads Audit</h3>
       <p className="text-xs text-muted-foreground mt-1">
         Get a Google Ads account tear-down and 90-day action plan from a senior strategist.
       </p>

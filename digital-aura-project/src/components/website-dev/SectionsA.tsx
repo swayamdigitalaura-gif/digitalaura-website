@@ -27,7 +27,7 @@ import { Reveal, SectionLabel } from "./Reveal";
 import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
 
-const metrics = [
+export const metrics = [
   { value: "320+", label: "Websites delivered" },
   { value: "11", label: "Years driving business growth" },
   { value: "98%", label: "Clients who'd refer us" },
@@ -334,32 +334,28 @@ export function Process() {
         </div>
 
         <div className="relative mt-16">
-          <div className="absolute left-[26px] top-2 hidden h-[calc(100%-1rem)] w-px bg-gradient-to-b from-primary/60 via-border to-transparent lg:block" />
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="flex flex-wrap justify-center gap-5">
             {steps.map((step, i) => (
-              <Reveal key={step.title} delay={(i % 4) * 80}>
-                <article className="hover-lift relative h-full rounded-2xl border border-border bg-background p-6 shadow-[var(--shadow-soft)]">
-                  <div className="flex items-center justify-between gap-3">
+              <Reveal key={step.title} delay={(i % 4) * 80} className="flex w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(25%-0.9375rem)]">
+                <article className="hover-lift relative w-full rounded-2xl border border-border bg-background p-6 shadow-[var(--shadow-soft)]">
+                  <div className="flex items-center gap-3">
                     <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
                       <step.icon className="h-5 w-5" />
                     </span>
-                    <span className="text-3xl font-extrabold text-foreground/8">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                  </div>
                   <h3
                     data-cms-key={`wds_process_${i}_title`}
                     data-cms-label={`Process ${i + 1} Title`}
                     data-cms-attr="text"
-                    className="mt-5 text-lg font-extrabold tracking-tight"
+                    className="text-lg font-extrabold leading-tight tracking-tight"
                   >
                     {s[`wds_process_${i}_title`] || step.title}
                   </h3>
+                  </div>
                   <p
                     data-cms-key={`wds_process_${i}_text`}
                     data-cms-label={`Process ${i + 1} Text`}
                     data-cms-attr="text"
-                    className="mt-2 text-sm leading-relaxed text-muted-foreground"
+                    className="mt-4 text-sm leading-relaxed text-muted-foreground"
                   >
                     {s[`wds_process_${i}_text`] || step.text}
                   </p>

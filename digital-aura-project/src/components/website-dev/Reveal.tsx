@@ -46,19 +46,9 @@ export function Reveal({
 }
 
 export function SectionLabel({ children }: { children: ReactNode }) {
-  return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary-soft/60 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-primary">
-      <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-      {children}
-    </span>
-  );
+  return <span className="pillar-eyebrow">{children}</span>;
 }
 
 export function SectionLabelDark({ children }: { children: ReactNode }) {
-  return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-primary">
-      <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-      {children}
-    </span>
-  );
+  return <span className="pillar-eyebrow">{children}</span>;
 }

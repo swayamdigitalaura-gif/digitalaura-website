@@ -1,5 +1,4 @@
-import { CircleHelp } from "lucide-react";
-import { Section, SectionHead, CardBadge } from "../shared/SectionPrimitives";
+import { PillarFaq, PillarSection } from "../shared/Pillar";
 
 const FAQS = [
   { q: "Why hire a Google Ads agency instead of running ads yourself?", a: "Google Ads has hundreds of settings that affect cost and results. A small mistake can waste your entire budget on the wrong searches. We manage accounts daily and know what to fix immediately." },
@@ -44,24 +43,9 @@ function FAQSchema() {
 
 export function FAQ() {
   return (
-    <Section id="faq" className="bg-surface-cream">
+    <PillarSection id="faq" tone="white" eyebrow="Common questions" title="Google Ads management, explained simply" intro="Straightforward answers about cost, timelines, contracts and who owns your account.">
       <FAQSchema />
-      <SectionHead
-        eyebrow="Common questions"
-        title="Google Ads management, explained simply"
-        lead="Straightforward answers about cost, timelines, contracts and who owns your account."
-      />
-      <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-2">
-        {FAQS.map((f) => (
-          <div key={f.q} className="rounded-2xl border border-border bg-white p-5 shadow-xs">
-            <div className="flex items-start gap-3">
-              <CardBadge className="!size-8 !rounded-lg"><CircleHelp className="size-4" /></CardBadge>
-              <h3 className="font-display text-[16px] font-bold leading-snug text-navy">{f.q}</h3>
-            </div>
-            <p className="mt-2.5 pl-11 text-[14.5px] leading-[1.7] text-muted-foreground">{f.a}</p>
-          </div>
-        ))}
-      </div>
-    </Section>
+      <PillarFaq items={FAQS} />
+    </PillarSection>
   );
 }

@@ -22,8 +22,10 @@ import { toast } from "sonner";
 import { Reveal, SectionLabel, SectionLabelDark } from "./Reveal";
 import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
+import { PillarFaq, PillarSection } from "@/components/pillar/Pillar";
+import VisitUs from "@/components/pillar/VisitUs";
 
-const logos = [
+export const logos = [
   { name: "Clarity Eye Surgeons", category: "Healthcare", src: "/wds/logos/clarity-eye-surgeons.png" },
   { name: "Grand Bavarchi", category: "Restaurant", src: "/wds/logos/grand-bavarchi.png" },
   { name: "Mainstream Real Estate", category: "Real Estate", src: "/wds/logos/mainstream-real-estate.png" },
@@ -239,59 +241,22 @@ export function Faq() {
     ...faqs.flatMap((_, i) => [`wds_faq_${i}_q`, `wds_faq_${i}_a`]),
   ]);
   return (
-    <section id="faq" className="bg-cream">
-      <div className="mx-auto max-w-4xl px-5 py-16 sm:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <Reveal>
-            <SectionLabel>
-              <span data-cms-key="wds_faq_label" data-cms-label="FAQ Label" data-cms-attr="text">
-                {s.wds_faq_label || "FAQ"}
-              </span>
-            </SectionLabel>
-          </Reveal>
-          <Reveal delay={80}>
-            <h2
-              data-cms-key="wds_faq_h2"
-              data-cms-label="FAQ Heading"
-              data-cms-attr="text"
-              className="mt-5 text-section"
-            >
-              {s.wds_faq_h2 || "Questions worth asking before you hire us"}
-            </h2>
-          </Reveal>
-          <Reveal delay={140}>
-            <p
-              data-cms-key="wds_faq_p"
-              data-cms-label="FAQ Paragraph"
-              data-cms-attr="text"
-              className="mt-4 text-muted-foreground"
-            >
-              {s.wds_faq_p ||
-                "Still unsure about something? Ask it on the strategy call — no obligation, no sales script."}
-            </p>
-          </Reveal>
-        </div>
-        <Reveal delay={160} className="mt-14 block">
-          {/* Plain question and answer, always open (same FAQ look on every page). */}
-          <div className="w-full divide-y divide-border">
-            {faqs.map((f, i) => (
-              <div key={f.q} className="py-6 first:pt-0">
-                <h3 className="text-[17px] font-bold leading-snug md:text-[18px]">
-                  <span data-cms-key={`wds_faq_${i}_q`} data-cms-label={`FAQ ${i + 1} Question`} data-cms-attr="text">
-                    {s[`wds_faq_${i}_q`] || f.q}
-                  </span>
-                </h3>
-                <p className="mt-2 text-[15.5px] leading-relaxed text-muted-foreground">
-                  <span data-cms-key={`wds_faq_${i}_a`} data-cms-label={`FAQ ${i + 1} Answer`} data-cms-attr="text">
-                    {s[`wds_faq_${i}_a`] || f.a}
-                  </span>
-                </p>
-              </div>
-            ))}
-          </div>
-        </Reveal>
-      </div>
-    </section>
+    <PillarSection
+      id="faq"
+      tone="light"
+      eyebrow={<span data-cms-key="wds_faq_label" data-cms-label="FAQ Label" data-cms-attr="text">{s.wds_faq_label || "FAQ"}</span>}
+      title={<span data-cms-key="wds_faq_h2" data-cms-label="FAQ Heading" data-cms-attr="text">{s.wds_faq_h2 || "Questions worth asking before you hire us"}</span>}
+      intro={<span data-cms-key="wds_faq_p" data-cms-label="FAQ Paragraph" data-cms-attr="text">{s.wds_faq_p || "Still unsure about something? Ask it on the strategy call — no obligation, no sales script."}</span>}
+    >
+      {/* Plain question and answer, always open (same FAQ look on every page). */}
+      <PillarFaq
+        items={faqs.map((f, i) => ({
+          key: f.q,
+          q: <span data-cms-key={`wds_faq_${i}_q`} data-cms-label={`FAQ ${i + 1} Question`} data-cms-attr="text">{s[`wds_faq_${i}_q`] || f.q}</span>,
+          a: <span data-cms-key={`wds_faq_${i}_a`} data-cms-label={`FAQ ${i + 1} Answer`} data-cms-attr="text">{s[`wds_faq_${i}_a`] || f.a}</span>,
+        }))}
+      />
+    </PillarSection>
   );
 }
 
@@ -543,6 +508,9 @@ export function FinalCta() {
             </p>
           </form>
         </Reveal>
+      </div>
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+        <VisitUs auditHref="#strategy" auditLabel="Request a website proposal" />
       </div>
     </section>
   );

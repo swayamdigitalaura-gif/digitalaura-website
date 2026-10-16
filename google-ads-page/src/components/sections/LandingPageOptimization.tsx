@@ -17,7 +17,7 @@ export function LandingPageOptimization() {
         title="Pages built to convert the click you paid for"
         lead="Sending paid traffic to a slow, generic homepage is the fastest way to waste ad spend. We build fast, intent-matched pages instead."
       />
-      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+      <div className="pillar-cols-4 pillar-small grid grid-cols-2 gap-4 lg:grid-cols-4">
         {METRICS.map((m, i) => (
           <motion.div
             key={m.label}

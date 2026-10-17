@@ -1212,12 +1212,13 @@ function Results() {
   return (
     <section id="results" className="bg-white">
       <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
-        <div className="mx-auto mb-10 max-w-3xl text-center">
-          <SectionLabel>Proven Results</SectionLabel>
-          <h3 className="pillar-oneline mt-3 text-2xl font-extrabold tracking-tight text-brand-navy">
-            Real Clients. <span className="text-brand-orange">Real Growth.</span> Real Results.
-          </h3>
-          <p className="mx-auto mt-2 max-w-lg text-sm text-ink-muted md:text-base">Real search results from real businesses we handle SEO for.</p>
+        <div className="mb-10">
+          <SectionHeading
+            wide
+            eyebrow="Proven Results"
+            title={<>Real Clients. <span className="text-brand-orange">Real Growth.</span> Real Results.</>}
+            sub="Real search results from real businesses we handle SEO for."
+          />
         </div>
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3" style={{ opacity: show ? 1 : 0, transition: "opacity 180ms ease" }}>
           {visible.map((c) => (
@@ -2609,7 +2610,7 @@ function Index() {
         </PillarSection>
 
         {/* 8. Results & proof */}
-        <PillarSection id="results-proof" tone="white" eyebrow="Results & proof" title="Real results from real businesses">
+        <PillarSection id="results-proof" tone="white" bare noHead>
           <Results />
           <div className="mt-16"><GSCSnapshots /></div>
           <div className="mt-16"><SampleAuditSnapshot /></div>

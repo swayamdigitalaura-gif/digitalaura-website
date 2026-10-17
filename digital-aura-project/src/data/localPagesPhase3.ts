@@ -119,7 +119,7 @@ export const phase3Pages: Record<string, LocalServiceConfig> = {
           { title: "Enquiries", desc: "Calls, forms, WhatsApp clicks and direct messages that reach your team." },
           { title: "Message response time", desc: "How quickly enquiries get a reply. It often decides who wins the customer." },
           { title: "Saves and shares", desc: "Signs that content is useful enough to keep or pass on." },
-          { title: "Cost per enquiry", desc: "For paid campaigns, what each enquiry costs against what it is worth.", href: "/meta-ads-agency-ahmedabad/pricing/#break-even-calculator", cta: "Try the break-even calculator" },
+          { title: "Cost per enquiry", desc: "For paid campaigns, what each enquiry costs against what it is worth.", href: "/meta-ads-agency-ahmedabad/pricing/#plan", cta: "Try the break-even calculator" },
         ],
         footnote: "Reach and follower counts are reported, but we do not treat them as results.",
       },

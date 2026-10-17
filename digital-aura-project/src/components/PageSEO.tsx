@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { PRICING_PAGES, plainText } from '@/data/pricingPages';
 import { useLocation } from 'react-router-dom';
 import { localPages } from '../data/localPagesData';
 import { phase1Pages } from '../data/localPagesPhase1';
@@ -327,10 +328,7 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: 'Website Maintenance & AMC in Ahmedabad | Digital Aura',
     description: 'Website maintenance and AMC in Ahmedabad: updates, backups, security and monitoring. We take over sites built by others. Free health check.',
   },
-  '/seo/pricing-ahmedabad': {
-    title: "SEO Packages in Ahmedabad: Plans & What's Included",
-    description: "See how SEO packages are scoped in Ahmedabad: what is included, what is not, contract terms and how to get a written quote after a free audit.",
-  },
+  '/seo/pricing-ahmedabad': PRICING_PAGES.seo.meta,
   '/seo/doctors-hospitals-ahmedabad': {
     title: "SEO for Doctors & Hospitals in Ahmedabad",
     description: "Healthcare SEO for Ahmedabad doctors, clinics and hospitals: treatment pages, local SEO, careful content and appointment tracking. Free audit.",
@@ -339,18 +337,12 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: "SEO for Manufacturers & B2B in Gujarat",
     description: "B2B SEO for Gujarat manufacturers and exporters: product-spec pages, RFQ funnels, export keywords and AI search. Get a free audit.",
   },
-  '/google-ads-pricing-ahmedabad': {
-    title: "Google Ads Pricing in Ahmedabad: Fees & Ad Spend",
-    description: "How Google Ads pricing works in Ahmedabad: ad spend, management fee and GST, fee models, break-even test and red flags in agency quotes.",
-  },
+  '/google-ads-pricing-ahmedabad': PRICING_PAGES.gads.meta,
   '/google-ads-for-doctors-ahmedabad': {
     title: "Google Ads for Doctors & Hospitals in Ahmedabad",
     description: "Google Ads for doctors in Ahmedabad: careful ad copy, service-line campaigns, tracked appointments and a free healthcare review.",
   },
-  '/meta-ads-agency-ahmedabad/pricing': {
-    title: "Meta Ads Pricing in Ahmedabad: Fees & Packages",
-    description: "Meta ads pricing in Ahmedabad: agency fee vs ad spend, what is included, contract terms and red flags. Get a written quote.",
-  },
+  '/meta-ads-agency-ahmedabad/pricing': PRICING_PAGES.meta.meta,
   '/meta-ads-agency-ahmedabad/clinics-doctors': {
     title: "Meta Ads for Doctors & Clinics in Ahmedabad",
     description: "Meta ads for doctors and clinics in Ahmedabad: health ad policy limits, WhatsApp lead handling and booked appointments. Free ad review.",
@@ -409,6 +401,8 @@ const ORG = {
 
 // Per-page JSON-LD schema — overridden by DB schema_code if set via admin panel
 // Built from the same list the page renders, so the markup always matches the visible FAQs.
+const plainFaq = (f: { q: string; a: string }) => ({ q: f.q, a: plainText(f.a) });
+
 function faqPageSchema(faqs: { q: string; a: string }[]) {
   return {
     '@context': 'https://schema.org',
@@ -781,8 +775,8 @@ PAGE_SCHEMA['/website-maintenance-amc-ahmedabad'] = [
   breadcrumbSchema([['Home', '/'], ["Website Development in Ahmedabad", '/website-development-services-ahmedabad/'], ["Website Maintenance and AMC", '/website-maintenance-amc-ahmedabad/']]),
 ];
 PAGE_SCHEMA['/seo/pricing-ahmedabad'] = [
-  faqPageSchema(phase2Pages.seoPricing.faqs),
-  webPageSchema('/seo/pricing-ahmedabad', PAGE_META['/seo/pricing-ahmedabad'].title, PAGE_META['/seo/pricing-ahmedabad'].description, phase2Pages.seoPricing.lastUpdated),
+  faqPageSchema(PRICING_PAGES.seo.faqs.map(plainFaq)),
+  webPageSchema('/seo/pricing-ahmedabad', PAGE_META['/seo/pricing-ahmedabad'].title, PAGE_META['/seo/pricing-ahmedabad'].description, PRICING_PAGES.seo.updated),
   serviceSchema('/seo/pricing-ahmedabad', PAGE_META['/seo/pricing-ahmedabad'].title, "SEO packages and pricing", PAGE_META['/seo/pricing-ahmedabad'].description, false, monthlyOffer(15000, 150000, "SEO plans in Ahmedabad from SEO Basic (15,000 to 25,000 INR) to SEO Advance (50,000 to 1,50,000 INR) per month, excluding GST")),
   breadcrumbSchema([['Home', '/'], ["SEO Services in Ahmedabad", '/seo-services-ahmedabad'], ["SEO Packages and Pricing", '/seo/pricing-ahmedabad/']]),
 ];
@@ -799,8 +793,8 @@ PAGE_SCHEMA['/seo/manufacturers-b2b-gujarat'] = [
   breadcrumbSchema([['Home', '/'], ["SEO Services in Ahmedabad", '/seo-services-ahmedabad'], ["SEO for Manufacturers and B2B", '/seo/manufacturers-b2b-gujarat/']]),
 ];
 PAGE_SCHEMA['/google-ads-pricing-ahmedabad'] = [
-  faqPageSchema(phase2Pages.googleAdsPricing.faqs),
-  webPageSchema('/google-ads-pricing-ahmedabad', PAGE_META['/google-ads-pricing-ahmedabad'].title, PAGE_META['/google-ads-pricing-ahmedabad'].description, phase2Pages.googleAdsPricing.lastUpdated),
+  faqPageSchema(PRICING_PAGES.gads.faqs.map(plainFaq)),
+  webPageSchema('/google-ads-pricing-ahmedabad', PAGE_META['/google-ads-pricing-ahmedabad'].title, PAGE_META['/google-ads-pricing-ahmedabad'].description, PRICING_PAGES.gads.updated),
   serviceSchema('/google-ads-pricing-ahmedabad', PAGE_META['/google-ads-pricing-ahmedabad'].title, "Google Ads management", PAGE_META['/google-ads-pricing-ahmedabad'].description, false, monthlyOffer(15000, 60000, "Google Ads management fee in Ahmedabad per month, excluding GST. Ad spend is paid to Google separately")),
   breadcrumbSchema([['Home', '/'], ["Google Ads Agency in Ahmedabad", '/google-ads-agency-ahmedabad'], ["Google Ads Pricing", '/google-ads-pricing-ahmedabad/']]),
   { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Google Ads budget and break-even calculator', url: `${SITE_URL}/google-ads-pricing-ahmedabad/`, applicationCategory: 'BusinessApplication', operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' } },
@@ -812,8 +806,8 @@ PAGE_SCHEMA['/google-ads-for-doctors-ahmedabad'] = [
   breadcrumbSchema([['Home', '/'], ["Google Ads Agency in Ahmedabad", '/google-ads-agency-ahmedabad'], ["Google Ads for Doctors and Hospitals", '/google-ads-for-doctors-ahmedabad/']]),
 ];
 PAGE_SCHEMA['/meta-ads-agency-ahmedabad/pricing'] = [
-  faqPageSchema(phase2Pages.metaAdsPricing.faqs),
-  webPageSchema('/meta-ads-agency-ahmedabad/pricing', PAGE_META['/meta-ads-agency-ahmedabad/pricing'].title, PAGE_META['/meta-ads-agency-ahmedabad/pricing'].description, phase2Pages.metaAdsPricing.lastUpdated),
+  faqPageSchema(PRICING_PAGES.meta.faqs.map(plainFaq)),
+  webPageSchema('/meta-ads-agency-ahmedabad/pricing', PAGE_META['/meta-ads-agency-ahmedabad/pricing'].title, PAGE_META['/meta-ads-agency-ahmedabad/pricing'].description, PRICING_PAGES.meta.updated),
   serviceSchema('/meta-ads-agency-ahmedabad/pricing', PAGE_META['/meta-ads-agency-ahmedabad/pricing'].title, "Meta Ads management", PAGE_META['/meta-ads-agency-ahmedabad/pricing'].description, false, monthlyOffer(15000, 60000, "Meta Ads management fee in Ahmedabad per month, excluding GST. Ad spend is paid to Meta separately")),
   breadcrumbSchema([['Home', '/'], ["Meta Ads Agency in Ahmedabad", '/meta-ads-agency-ahmedabad/'], ["Meta Ads Pricing", '/meta-ads-agency-ahmedabad/pricing/']]),
 ];

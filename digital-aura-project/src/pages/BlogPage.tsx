@@ -148,7 +148,7 @@ const BlogPage = () => {
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
                 className="text-xs font-bold px-3.5 py-2 rounded-full border transition-colors flex items-center gap-1.5"
-                style={isActive ? { background: t.color, borderColor: t.color, color: "#fff" } : { background: t.bg, borderColor: t.border, color: t.color }}
+                style={isActive ? { background: t.ink, borderColor: t.ink, color: "#fff" } : { background: t.bg, borderColor: t.border, color: t.ink }}
               >
                 <t.Icon size={12} /> {cat}
               </button>
@@ -182,7 +182,7 @@ const BlogPage = () => {
                       </div>
                     </div>
                     <div className="p-6 flex flex-col flex-1">
-                      <span className="inline-flex w-fit text-[11px] font-bold px-2.5 py-1 rounded-full mb-3" style={{ color: t.color, background: t.bg }}>
+                      <span className="inline-flex w-fit text-[11px] font-bold px-2.5 py-1 rounded-full mb-3" style={{ color: t.ink, background: t.bg }}>
                         {p.category}
                       </span>
                       <h3 className="text-[17px] font-black leading-snug mb-2.5 transition-colors" style={{ color: "#0A1628" }}>{p.title}</h3>
@@ -191,7 +191,7 @@ const BlogPage = () => {
                       </p>
                       <div className="flex items-center justify-between text-xs pt-4 border-t" style={{ borderColor: "#F3F4F6", color: "#9CA3AF" }}>
                         <span className="flex items-center gap-1.5"><Calendar size={12} /> {p.date}</span>
-                        <span className="flex items-center gap-1 font-bold group-hover:gap-2 transition-all" style={{ color: t.color }}>
+                        <span className="flex items-center gap-1 font-bold group-hover:gap-2 transition-all" style={{ color: t.ink }}>
                           Read <ArrowRight size={12} />
                         </span>
                       </div>

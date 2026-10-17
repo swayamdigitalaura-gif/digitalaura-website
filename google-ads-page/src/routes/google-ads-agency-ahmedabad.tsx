@@ -15,7 +15,7 @@ import { Testimonials } from "../components/sections/Testimonials";
 import { FAQ } from "../components/sections/FAQ";
 import { FinalCTA } from "../components/sections/FinalCTA";
 import { Footer } from "../components/sections/Footer";
-import { QuickAnswer, ExploreMore, WhatWeDo, First90Days, VisitUs, AhmedabadMarket, CostBreakdown, SelfCheck, LeakChecks, TrackingByLeadType, AgencyComparison, AdsReels, TeamSection, PeopleSchema } from "../components/sections/PillarExtras";
+import { QuickAnswer, ExploreMore, WhatWeDo, First90Days, VisitUs, AhmedabadMarket, CostBreakdown, SelfCheck, LeakChecks, TrackingByLeadType, AgencyComparison, AdsReels, TeamSection, PeopleSchema, AdsGuides } from "../components/sections/PillarExtras";
 import { FeeTable, AdLanguages } from "../components/sections/PricingAndLanguages";
 import { StickyMobileCTA } from "../components/sections/StickyMobileCTA";
 import { PillarSection, PillarSubNav, PillarTabs } from "../components/shared/Pillar";
@@ -184,8 +184,14 @@ function LandingPage() {
       </PillarSection>
 
       {/* Explore (link cards) */}
-      <PillarSection tone="light" bare noHead>
-        <ExploreMore />
+      <PillarSection id="explore" tone="light" eyebrow="Keep exploring" title="Google Ads service pages and guides">
+        <PillarTabs
+          label="Explore"
+          tabs={[
+            { id: "pages", label: "Service pages", content: <ExploreMore /> },
+            { id: "guides", label: "Google Ads guides", content: <AdsGuides /> },
+          ]}
+        />
       </PillarSection>
 
       {/* 12. FAQ (always open) */}

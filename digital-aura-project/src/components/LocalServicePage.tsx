@@ -22,6 +22,8 @@ import AdsCalculator, { type CalculatorVariant } from "@/components/AdsCalculato
 import PageLeadForm, { type LeadFormConfig } from "@/components/PageLeadForm";
 import { ReelGrid, TeamGrid, FounderLinks, type TeamMember } from "@/components/ReelsAndTeam";
 import PriceTable from "@/components/PriceTable";
+import AuthorBox from "@/components/AuthorBox";
+import RelatedGuides from "@/components/RelatedGuides";
 
 export interface IncludedItem { title: string; desc: string; }
 export interface FaqItem { q: string; a: string; }
@@ -630,19 +632,9 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
         </div>
       </section>
 
-      {/* Sources (E-E-A-T / GEO) */}
-      {config.sources && config.sources.length > 0 && (
-        <section className="py-10 px-4 md:px-8 bg-white">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628]">Sources and further reading</h2>
-            <ul className="mt-3 space-y-1.5 text-sm">
-              {config.sources.map((src) => (
-                <li key={src.href}><a href={src.href} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: c.accentColor }}>{src.label}</a></li>
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
+      {/* Author (E-E-A-T): same Sambhav Shah card as the blog posts and the About page */}
+      <RelatedGuides parentHref={c.parentServiceHref} accent={c.accentColor} />
+      <section className="bg-white py-10"><AuthorBox accent={c.accentColor} /></section>
 
       {/* Final CTA */}
       <section className="py-16 px-4 md:px-8 relative overflow-hidden text-center" style={{ background: "#0A1628" }}>

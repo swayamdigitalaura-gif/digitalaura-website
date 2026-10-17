@@ -224,6 +224,42 @@ const WebsiteDevelopmentServicesPage = () => {
                 <h3 className="text-lg font-bold">Websites for manufacturers and exporters</h3>
                 <p className="mt-2 text-sm opacity-80">Catalogue, RFQ flow and certificates for B2B buyers.</p>
               </a>
+              <a href="/website-design-for-dentists-ahmedabad/" className="rounded-2xl border p-5 transition hover:shadow-md">
+                <h3 className="text-lg font-bold">Websites for dentists</h3>
+                <p className="mt-2 text-sm opacity-80">Clear treatment pages, before-you-visit information and easy appointment requests.</p>
+              </a>
+              <a href="/website-design-for-ophthalmologists-ahmedabad/" className="rounded-2xl border p-5 transition hover:shadow-md">
+                <h3 className="text-lg font-bold">Websites for eye hospitals</h3>
+                <p className="mt-2 text-sm opacity-80">Surgeon profiles, treatment pages and booking for eye care practices.</p>
+              </a>
+              <a href="/shopify-website-design-ahmedabad/" className="rounded-2xl border p-5 transition hover:shadow-md">
+                <h3 className="text-lg font-bold">Shopify website design</h3>
+                <p className="mt-2 text-sm opacity-80">Online stores on Shopify, designed to sell and easy to manage.</p>
+              </a>
+              <a href="/woocommerce-website-design-ahmedabad/" className="rounded-2xl border p-5 transition hover:shadow-md">
+                <h3 className="text-lg font-bold">WooCommerce website design</h3>
+                <p className="mt-2 text-sm opacity-80">Flexible online stores on WordPress that you fully own.</p>
+              </a>
+              <a href="/services/bigcommerce-development/" className="rounded-2xl border p-5 transition hover:shadow-md">
+                <h3 className="text-lg font-bold">BigCommerce development</h3>
+                <p className="mt-2 text-sm opacity-80">Stores for larger catalogues and B2B selling.</p>
+              </a>
+              <a href="/full-stack-development-ahmedabad/" className="rounded-2xl border p-5 transition hover:shadow-md">
+                <h3 className="text-lg font-bold">Full stack development</h3>
+                <p className="mt-2 text-sm opacity-80">Custom portals, dashboards and integrations built in Ahmedabad.</p>
+              </a>
+              <a href="/website-design-development-gujarat/" className="rounded-2xl border p-5 transition hover:shadow-md">
+                <h3 className="text-lg font-bold">Website design across Gujarat</h3>
+                <p className="mt-2 text-sm opacity-80">Business websites for companies in Surat, Vadodara, Rajkot and the rest of Gujarat.</p>
+              </a>
+              <a href="/woocommerce-development-gujarat/" className="rounded-2xl border p-5 transition hover:shadow-md">
+                <h3 className="text-lg font-bold">WooCommerce development in Gujarat</h3>
+                <p className="mt-2 text-sm opacity-80">WooCommerce builds and customisation for Gujarat businesses.</p>
+              </a>
+              <a href="/shopify-development-international/" className="rounded-2xl border p-5 transition hover:shadow-md">
+                <h3 className="text-lg font-bold">Shopify development for global brands</h3>
+                <p className="mt-2 text-sm opacity-80">Shopify builds for brands selling outside India.</p>
+              </a>
             </div>
           </div>
         </section>

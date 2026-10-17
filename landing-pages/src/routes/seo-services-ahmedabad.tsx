@@ -1892,6 +1892,7 @@ function AreasAndServices() {
     "Gandhinagar & wider Gujarat",
   ];
   const services = [
+    { t: "SEO Services Overview", href: "/services/seo-content-marketing/" },
     { t: "Technical SEO", href: "/services/seo-content-marketing/technical-seo/" },
     { t: "On-Page SEO", href: "/services/seo-content-marketing/on-page-seo/" },
     { t: "Local SEO", href: "/services/seo-content-marketing/local-seo/" },

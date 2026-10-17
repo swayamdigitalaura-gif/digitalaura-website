@@ -14,6 +14,9 @@ import {
 } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
 import PriceTable from "@/components/PriceTable";
+import AuthorBox from "@/components/AuthorBox";
+import { GUIDES } from "@/data/linkMap";
+import RelatedGuides from "@/components/RelatedGuides";
 import CaseStudies, { type CaseCard } from "@/components/CaseStudies";
 import Testimonials from "@/components/Testimonials";
 import PageLeadForm from "@/components/PageLeadForm";
@@ -715,9 +718,23 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
     const shortSec = pool.find((x) => x.id === "short-answer");
     const shortTab = shortSec ? { id: "short-answer", label: labelFor["short-answer"], content: <div className="pillar-center"><GuideSection sec={shortSec} index={0} /></div> } : null;
     const industryTabs = tabs([gtab("industries"), gtab("ahmedabad-calendar"), gtab("industry-pages"), gtab("ad-languages")]);
+    const GuidesBlock = (
+      <Wrap id="meta-guides" bg="#fff">
+        <Head eyebrow="Meta ads guides" title="Learn how Meta ads work before you hire anyone" sub="Plain-English guides from our team. Read them to judge any Meta ads proposal, ours included." />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {GUIDES.meta.map((g) => (
+            <a key={g.slug} href={`/blog/${g.slug}/`} className="group flex h-full flex-col justify-between gap-3 rounded-2xl border bg-white p-5 transition-shadow hover:shadow-md" style={{ borderColor: "#E5E7EB" }}>
+              <span className="text-[16px] font-bold leading-snug" style={{ color: NAVY }}>{g.title}</span>
+              <span className="inline-flex items-center gap-1 text-sm font-semibold transition-all group-hover:gap-2" style={{ color: ORANGE }}>Read the guide <ArrowRight size={14} /></span>
+            </a>
+          ))}
+        </div>
+      </Wrap>
+    );
     const exploreFinal = tabs([
       RelatedBlock ? { id: "related", label: "More ways we can help", content: RelatedBlock } : null,
       StartBlock ? { id: "start", label: "How to start", content: StartBlock } : null,
+      { id: "guides", label: "Meta ads guides", content: GuidesBlock },
       ...restSections.map((sec) => ({ id: sec.id, label: chipLabel(sec), content: <GuideSection sec={sec} index={0} /> })),
     ]);
 
@@ -861,16 +878,6 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
           {/* 12. FAQ (always open) */}
           <PillarSection id="faqs" tone="light" eyebrow="FAQs" title={c.faqTitle || "Frequently Asked Questions"}>
             <PillarFaq items={c.faqs} />
-            {c.sources && c.sources.length > 0 && (
-              <div className="mt-10 rounded-2xl border bg-white p-5" style={{ borderColor: "#EDE3DA" }}>
-                <h3 className="text-[13px] font-black uppercase tracking-[0.14em]" style={{ color: NAVY }}>Sources and further reading</h3>
-                <ul className="mt-3 space-y-1.5 text-sm">
-                  {c.sources.map((s2) => (
-                    <li key={s2.href}><a href={s2.href} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: ORANGE }}>{s2.label}</a></li>
-                  ))}
-                </ul>
-              </div>
-            )}
           </PillarSection>
 
           {/* 13. Final CTA + form */}
@@ -1296,17 +1303,11 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
         <div className="divide-y" style={{ borderColor: "#E5E7EB" }}>
           {c.faqs.map((f) => <Faq key={f.q} q={f.q} a={f.a} />)}
         </div>
-        {c.sources && c.sources.length > 0 && (
-          <div className="mt-10 rounded-2xl border bg-white p-5" style={{ borderColor: "#E5E7EB" }}>
-            <h2 className="text-[13px] font-black uppercase tracking-[0.14em]" style={{ color: NAVY }}>Sources and further reading</h2>
-            <ul className="mt-3 space-y-1.5 text-sm">
-              {c.sources.map((s) => (
-                <li key={s.href}><a href={s.href} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: ORANGE }}>{s.label}</a></li>
-              ))}
-            </ul>
-          </div>
-        )}
       </Wrap>
+
+      {/* Author (E-E-A-T): same Sambhav Shah card as the blog posts and the About page */}
+      <RelatedGuides parentHref={c.parentServiceHref} accent={ORANGE} />
+      <section className="bg-white py-10"><AuthorBox accent={ORANGE} /></section>
 
       {/* 15. Closing call to action */}
       <section id="final-cta" className={pillar ? "px-5 pb-16 pt-4 md:px-8 md:pb-20" : "relative overflow-hidden px-4 py-16 text-center md:px-8 md:py-20"} style={{ background: pillar ? "#fff" : NAVY }}>

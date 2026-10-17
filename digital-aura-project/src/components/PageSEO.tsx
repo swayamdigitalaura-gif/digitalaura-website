@@ -445,11 +445,18 @@ function webPageSchema(path: string, name: string, description: string, dateModi
     inLanguage: 'en-IN',
     isPartOf: { '@type': 'WebSite', name: 'Digital Aura', url: SITE_URL },
     publisher: ORG_REF,
+    // Same author card as the About page, so search and AI engines can tie the page to a named expert.
+    author: { '@type': 'Person', name: 'Sambhav Shah', jobTitle: 'Founder & CEO, Digital Aura', url: `${SITE_URL}/about/`, sameAs: ['https://www.linkedin.com/in/sambhav-shah/', 'https://www.instagram.com/sambhavshah2/'] },
     ...(dateModified ? { dateModified } : {}),
   };
 }
 
-function serviceSchema(path: string, name: string, serviceType: string, description: string, free = false) {
+/** Owner-supplied monthly fee range (Ahmedabad, excluding GST) attached to a Service as a machine-readable offer. */
+function monthlyOffer(minPrice: number, maxPrice: number, description: string) {
+  return { '@type': 'Offer', priceCurrency: 'INR', description, priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'INR', minPrice, maxPrice, unitText: 'MONTH' } };
+}
+
+function serviceSchema(path: string, name: string, serviceType: string, description: string, free = false, offers?: object) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -461,6 +468,7 @@ function serviceSchema(path: string, name: string, serviceType: string, descript
     provider: ORG_REF,
     areaServed: { '@type': 'City', name: 'Ahmedabad' },
     ...(free ? { offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR', description: 'Free, no obligation' } } : {}),
+    ...(offers ? { offers } : {}),
   };
 }
 
@@ -775,7 +783,7 @@ PAGE_SCHEMA['/website-maintenance-amc-ahmedabad'] = [
 PAGE_SCHEMA['/seo/pricing-ahmedabad'] = [
   faqPageSchema(phase2Pages.seoPricing.faqs),
   webPageSchema('/seo/pricing-ahmedabad', PAGE_META['/seo/pricing-ahmedabad'].title, PAGE_META['/seo/pricing-ahmedabad'].description, phase2Pages.seoPricing.lastUpdated),
-  serviceSchema('/seo/pricing-ahmedabad', PAGE_META['/seo/pricing-ahmedabad'].title, "SEO packages and pricing", PAGE_META['/seo/pricing-ahmedabad'].description),
+  serviceSchema('/seo/pricing-ahmedabad', PAGE_META['/seo/pricing-ahmedabad'].title, "SEO packages and pricing", PAGE_META['/seo/pricing-ahmedabad'].description, false, monthlyOffer(15000, 150000, "SEO plans in Ahmedabad from SEO Basic (15,000 to 25,000 INR) to SEO Advance (50,000 to 1,50,000 INR) per month, excluding GST")),
   breadcrumbSchema([['Home', '/'], ["SEO Services in Ahmedabad", '/seo-services-ahmedabad'], ["SEO Packages and Pricing", '/seo/pricing-ahmedabad/']]),
 ];
 PAGE_SCHEMA['/seo/doctors-hospitals-ahmedabad'] = [
@@ -793,7 +801,7 @@ PAGE_SCHEMA['/seo/manufacturers-b2b-gujarat'] = [
 PAGE_SCHEMA['/google-ads-pricing-ahmedabad'] = [
   faqPageSchema(phase2Pages.googleAdsPricing.faqs),
   webPageSchema('/google-ads-pricing-ahmedabad', PAGE_META['/google-ads-pricing-ahmedabad'].title, PAGE_META['/google-ads-pricing-ahmedabad'].description, phase2Pages.googleAdsPricing.lastUpdated),
-  serviceSchema('/google-ads-pricing-ahmedabad', PAGE_META['/google-ads-pricing-ahmedabad'].title, "Google Ads management", PAGE_META['/google-ads-pricing-ahmedabad'].description),
+  serviceSchema('/google-ads-pricing-ahmedabad', PAGE_META['/google-ads-pricing-ahmedabad'].title, "Google Ads management", PAGE_META['/google-ads-pricing-ahmedabad'].description, false, monthlyOffer(15000, 60000, "Google Ads management fee in Ahmedabad per month, excluding GST. Ad spend is paid to Google separately")),
   breadcrumbSchema([['Home', '/'], ["Google Ads Agency in Ahmedabad", '/google-ads-agency-ahmedabad'], ["Google Ads Pricing", '/google-ads-pricing-ahmedabad/']]),
   { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Google Ads budget and break-even calculator', url: `${SITE_URL}/google-ads-pricing-ahmedabad/`, applicationCategory: 'BusinessApplication', operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' } },
 ];
@@ -806,7 +814,7 @@ PAGE_SCHEMA['/google-ads-for-doctors-ahmedabad'] = [
 PAGE_SCHEMA['/meta-ads-agency-ahmedabad/pricing'] = [
   faqPageSchema(phase2Pages.metaAdsPricing.faqs),
   webPageSchema('/meta-ads-agency-ahmedabad/pricing', PAGE_META['/meta-ads-agency-ahmedabad/pricing'].title, PAGE_META['/meta-ads-agency-ahmedabad/pricing'].description, phase2Pages.metaAdsPricing.lastUpdated),
-  serviceSchema('/meta-ads-agency-ahmedabad/pricing', PAGE_META['/meta-ads-agency-ahmedabad/pricing'].title, "Meta Ads management", PAGE_META['/meta-ads-agency-ahmedabad/pricing'].description),
+  serviceSchema('/meta-ads-agency-ahmedabad/pricing', PAGE_META['/meta-ads-agency-ahmedabad/pricing'].title, "Meta Ads management", PAGE_META['/meta-ads-agency-ahmedabad/pricing'].description, false, monthlyOffer(15000, 60000, "Meta Ads management fee in Ahmedabad per month, excluding GST. Ad spend is paid to Meta separately")),
   breadcrumbSchema([['Home', '/'], ["Meta Ads Agency in Ahmedabad", '/meta-ads-agency-ahmedabad/'], ["Meta Ads Pricing", '/meta-ads-agency-ahmedabad/pricing/']]),
 ];
 PAGE_SCHEMA['/meta-ads-agency-ahmedabad/clinics-doctors'] = [

@@ -384,6 +384,7 @@ export function ExploreMore() {
     { Icon: Stethoscope, t: "Google Ads for doctors", d: "Compliant campaigns for clinics and hospitals.", h: "/google-ads-for-doctors-ahmedabad/" },
     { Icon: Smile, t: "Google Ads for dentists", d: "Near-me and treatment campaigns for dental clinics.", h: "/google-ads-for-dentists-ahmedabad/" },
     { Icon: Baby, t: "Google Ads for IVF clinics", d: "Careful, policy-aware search campaigns for fertility clinics.", h: "/google-ads-for-ivf-clinics-ahmedabad/" },
+    { Icon: Search, t: "Google Ads service overview", d: "Every Google Ads service we run, on one page.", h: "/services/google-ads/" },
     { Icon: Megaphone, t: "Meta ads agency", d: "Facebook and Instagram campaigns for leads.", h: "/meta-ads-agency-ahmedabad/" },
     { Icon: Search, t: "SEO services", d: "Rank on Google and in AI search over time.", h: "/seo-services-ahmedabad" },
     { Icon: TrendingUp, t: "Conversion rate optimisation", d: "Turn more of the clicks you pay for into enquiries.", h: "/services/cro/" },
@@ -400,6 +401,33 @@ export function ExploreMore() {
             <span className="mt-3 inline-flex items-center gap-1 text-[13.5px] font-semibold text-primary group-hover:gap-2">
               Learn more <ArrowRight className="size-4" />
             </span>
+          </a>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+/* ---------- Google Ads guides (blog posts on this topic) ---------- */
+
+const GUIDES = [
+  { t: "Google Ads strategy checklist for 2026", d: "A step-by-step checklist to review an account before you spend more.", h: "/blog/google-ads-strategy-checklist-2026/" },
+  { t: "7 Google Ads mistakes costing you money", d: "The settings and habits that quietly waste budget.", h: "/blog/7-google-ads-mistakes-2026/" },
+  { t: "Google Ads in 2026: new strategies worth testing", d: "What is new, and what is worth a test budget.", h: "/blog/google-ads-2026-new-strategies/" },
+  { t: "Google Ads tactics that stopped working", d: "Old tricks that no longer pay off.", h: "/blog/google-ads-tactics-stopped-working-2026/" },
+  { t: "Local business marketing with Google Ads and Maps", d: "How a local business gets calls from Search and Maps.", h: "/blog/local-business-google-ads-maps-2026/" },
+];
+
+export function AdsGuides() {
+  return (
+    <Section id="ads-guides" className="bg-white">
+      <SectionHead eyebrow="Google Ads guides" title="Learn how Google Ads works before you hire anyone" lead="Plain-English guides from our team. Read them to judge any Google Ads proposal, ours included." />
+      <div className="pillar-cols-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {GUIDES.map((g) => (
+          <a key={g.h} href={g.h} className={`${card} group flex flex-col`}>
+            <h3 className="font-display text-[16.5px] font-bold leading-snug text-navy">{g.t}</h3>
+            <p className="mt-1.5 flex-1 text-[14px] leading-relaxed text-muted-foreground">{g.d}</p>
+            <span className="mt-3 inline-flex items-center gap-1 text-[13.5px] font-semibold text-primary group-hover:gap-2">Read the guide <ArrowRight className="size-4" /></span>
           </a>
         ))}
       </div>

@@ -2,6 +2,17 @@
 
 > Digital Aura is a data-driven digital marketing agency based in Ahmedabad, Gujarat, India, offering SEO, Google Ads, Meta Ads, website/app development, and AI automation. 120+ clients served and 750+ projects delivered in 10+ years.
 
+## Key facts (Ahmedabad)
+
+- Location: 713 Shilp Arcade, SP Ring Road, Hanspura, Ahmedabad, Gujarat 382330, India. Phone and WhatsApp: +91 81412 00284.
+- Founder and CEO: Sambhav Shah (digital marketing since 2015). About: https://thedigitalaura.com/about/
+- SEO plans in Ahmedabad, per month excluding GST: SEO Basic Rs 15,000 to 25,000; SEO Growth Rs 25,000 to 50,000; SEO Advance Rs 50,000 to 1,50,000. Exact fee is written after a free SEO audit. Details: https://thedigitalaura.com/seo/pricing-ahmedabad/
+- Google Ads management fee in Ahmedabad: Rs 15,000 to 60,000 per month excluding GST. Ad spend is separate and is paid to Google from the client's own account. Details: https://thedigitalaura.com/google-ads-pricing-ahmedabad/
+- Meta Ads (Facebook and Instagram) management fee in Ahmedabad: Rs 15,000 to 60,000 per month excluding GST. Ad spend is separate. Details: https://thedigitalaura.com/meta-ads-agency-ahmedabad/pricing/
+- These prices are for businesses in Ahmedabad. Projects in other cities or countries are quoted separately.
+- Ad languages: Google Ads and Meta Ads campaigns are run in English, Hindi, Gujarati, Marathi, Tamil and other languages, with keyword research, ad copy and landing pages written in the same language.
+- No ranking, lead or return-on-ad-spend guarantees are made.
+
 ## Company
 
 - [About Digital Aura](https://thedigitalaura.com/about/): Story, vision, and the team behind the agency
@@ -35,17 +46,17 @@
 
 - [SEO services in Ahmedabad](https://thedigitalaura.com/seo-services-ahmedabad): what an SEO company does, process and reporting
 - [Free SEO audit](https://thedigitalaura.com/seo/free-audit/): enter your website; 14-area checklist covering technical, on-page, off-page, spam backlinks, CRO, content, intent, AEO and GEO
-- [SEO packages and pricing](https://thedigitalaura.com/seo/pricing-ahmedabad/): how SEO plans are scoped, what is included and excluded
+- [SEO packages and pricing](https://thedigitalaura.com/seo/pricing-ahmedabad/): SEO Basic, Growth and Advance plans for Ahmedabad (Rs 15,000 to 1,50,000 per month), what is included and excluded
 - [SEO for doctors and hospitals](https://thedigitalaura.com/seo/doctors-hospitals-ahmedabad/)
 - [SEO for manufacturers and B2B in Gujarat](https://thedigitalaura.com/seo/manufacturers-b2b-gujarat/)
 - [Google Ads agency in Ahmedabad](https://thedigitalaura.com/google-ads-agency-ahmedabad)
-- [Google Ads pricing and calculators](https://thedigitalaura.com/google-ads-pricing-ahmedabad/)
+- [Google Ads pricing and calculators](https://thedigitalaura.com/google-ads-pricing-ahmedabad/): management fee Rs 15,000 to 60,000 per month, ad spend separate
 - [Google Ads audit](https://thedigitalaura.com/google-ads-audit-ahmedabad/)
 - [Google Ads for doctors and hospitals](https://thedigitalaura.com/google-ads-for-doctors-ahmedabad/)
 - [Google Ads for IVF and fertility clinics in Ahmedabad](https://thedigitalaura.com/google-ads-for-ivf-clinics-ahmedabad/)
 - [Google Ads for dentists in Ahmedabad](https://thedigitalaura.com/google-ads-for-dentists-ahmedabad/)
 - [Meta ads agency in Ahmedabad](https://thedigitalaura.com/meta-ads-agency-ahmedabad/)
-- [Meta ads pricing](https://thedigitalaura.com/meta-ads-agency-ahmedabad/pricing/)
+- [Meta ads pricing](https://thedigitalaura.com/meta-ads-agency-ahmedabad/pricing/): management fee Rs 15,000 to 60,000 per month, ad spend separate
 - [Meta ads for doctors and clinics](https://thedigitalaura.com/meta-ads-agency-ahmedabad/clinics-doctors/)
 - [Meta ads for real estate in Ahmedabad](https://thedigitalaura.com/meta-ads-agency-ahmedabad/real-estate/)
 - [Meta ads for hospitals in Ahmedabad](https://thedigitalaura.com/meta-ads-agency-ahmedabad/hospitals/)
@@ -74,6 +85,40 @@
 - [Riant Bikes](https://thedigitalaura.com/case-studies/riant-bikes/)
 - [Prism Calibration Centre](https://thedigitalaura.com/case-studies/prism-calibration/)
 - [IVF Clinic](https://thedigitalaura.com/case-studies/ivf-clinic/)
+
+## Guides (blog)
+
+SEO and AI search:
+- [SEO in 2026: the complete strategy guide](https://thedigitalaura.com/blog/seo-in-2026-ai-era/)
+- [On-page SEO checklist for 2026](https://thedigitalaura.com/blog/on-page-seo-checklist-2026/)
+- [Technical SEO practices for 2026](https://thedigitalaura.com/blog/technical-seo-practices-2026/)
+- [Local SEO strategies for 2026](https://thedigitalaura.com/blog/local-seo-strategies-2026/)
+- [Google Business Profile SEO checklist](https://thedigitalaura.com/blog/google-business-profile-seo-checklist/)
+- [Google Business Profile tricks for Google Maps](https://thedigitalaura.com/blog/google-business-profile-tricks-google-maps/)
+- [How to rank a new website on Google](https://thedigitalaura.com/blog/how-to-rank-new-website-on-google/)
+- [How to increase organic website traffic](https://thedigitalaura.com/blog/increase-organic-website-traffic-10x/)
+- [AEO vs GEO vs LLMO explained](https://thedigitalaura.com/blog/aeo-vs-geo-vs-llmo-explained/)
+- [How to rank in ChatGPT, Perplexity and AI Overviews](https://thedigitalaura.com/blog/how-to-rank-chatgpt-perplexity-ai-overviews/)
+- [AI SEO skills for marketers](https://thedigitalaura.com/blog/ai-seo-skills-for-marketers-2026/)
+- [Shopify SEO tutorial 2026](https://thedigitalaura.com/blog/shopify-seo-tutorial-2026/)
+
+Google Ads:
+- [Google Ads strategy checklist for 2026](https://thedigitalaura.com/blog/google-ads-strategy-checklist-2026/)
+- [7 Google Ads mistakes costing you money](https://thedigitalaura.com/blog/7-google-ads-mistakes-2026/)
+- [Google Ads in 2026: new strategies worth testing](https://thedigitalaura.com/blog/google-ads-2026-new-strategies/)
+- [Google Ads tactics that stopped working](https://thedigitalaura.com/blog/google-ads-tactics-stopped-working-2026/)
+- [Local business marketing with Google Ads and Maps](https://thedigitalaura.com/blog/local-business-google-ads-maps-2026/)
+
+Meta ads and social media:
+- [Meta lead gen ads: what top advertisers do](https://thedigitalaura.com/blog/meta-lead-gen-ads-2026/)
+- [Meta ads targeting approach most advertisers get wrong](https://thedigitalaura.com/blog/meta-ads-targeting-2026/)
+- [Why competitors outperform you on Meta ads](https://thedigitalaura.com/blog/why-competitors-outperform-meta-ads-2026/)
+- [Why Meta disables ad accounts](https://thedigitalaura.com/blog/why-meta-disables-ad-accounts-2026/)
+- [5 Meta ads features most advertisers don't use](https://thedigitalaura.com/blog/5-meta-ads-features-2026/)
+- [6 Meta ads updates for 2026](https://thedigitalaura.com/blog/6-meta-ads-updates-2026/)
+- [AI tools for UGC-style ads](https://thedigitalaura.com/blog/ai-tools-ugc-ads-2026/)
+- [Video hooks that go viral in 2026](https://thedigitalaura.com/blog/video-hooks-viral-2026/)
+- [How to grow on Instagram in 2026](https://thedigitalaura.com/blog/instagram-growth-2026/)
 
 ## Blog
 

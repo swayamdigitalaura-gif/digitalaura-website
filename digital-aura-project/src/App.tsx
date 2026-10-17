@@ -73,6 +73,8 @@ import OffPageSEOPage from "./pages/services/seo/OffPageSEOPage.tsx";
 import EcommerceSEOPage from "./pages/services/seo/EcommerceSEOPage.tsx";
 import LocalServicePage from "./components/LocalServicePage.tsx";
 import IndustryLandingPage from "./components/IndustryLandingPage";
+import PricingPage from "./components/PricingPage";
+import { PRICING_PAGES } from "./data/pricingPages";
 import { phase1Pages } from "./data/localPagesPhase1.ts";
 import { phase2Pages } from "./data/localPagesPhase2.ts";
 import { phase2WebPages } from "./data/localPagesPhase2Web.ts";
@@ -171,12 +173,12 @@ const App = () => (
           <Route path="/google-ads-audit-ahmedabad" element={<IndustryLandingPage config={phase1Pages.googleAdsAudit} />} />
           <Route path="/website-redesign-services-ahmedabad" element={<IndustryLandingPage config={phase1Pages.websiteRedesign} />} />
           <Route path="/website-maintenance-amc-ahmedabad" element={<IndustryLandingPage config={phase1Pages.websiteMaintenance} />} />
-          <Route path="/seo/pricing-ahmedabad" element={<IndustryLandingPage config={phase2Pages.seoPricing} />} />
+          <Route path="/seo/pricing-ahmedabad" element={<PricingPage config={PRICING_PAGES.seo} />} />
           <Route path="/seo/doctors-hospitals-ahmedabad" element={<IndustryLandingPage config={phase2Pages.seoDoctors} />} />
           <Route path="/seo/manufacturers-b2b-gujarat" element={<IndustryLandingPage config={phase2Pages.seoManufacturers} />} />
-          <Route path="/google-ads-pricing-ahmedabad" element={<IndustryLandingPage config={phase2Pages.googleAdsPricing} />} />
+          <Route path="/google-ads-pricing-ahmedabad" element={<PricingPage config={PRICING_PAGES.gads} />} />
           <Route path="/google-ads-for-doctors-ahmedabad" element={<IndustryLandingPage config={phase2Pages.googleAdsDoctors} />} />
-          <Route path="/meta-ads-agency-ahmedabad/pricing" element={<IndustryLandingPage config={phase2Pages.metaAdsPricing} />} />
+          <Route path="/meta-ads-agency-ahmedabad/pricing" element={<PricingPage config={PRICING_PAGES.meta} />} />
           <Route path="/meta-ads-agency-ahmedabad/clinics-doctors" element={<IndustryLandingPage config={phase2Pages.metaAdsClinics} />} />
           <Route path="/meta-ads-agency-ahmedabad/real-estate" element={<IndustryLandingPage config={phase4Pages.metaRealEstate} />} />
           <Route path="/meta-ads-agency-ahmedabad/hospitals" element={<IndustryLandingPage config={phase4Pages.metaHospitals} />} />

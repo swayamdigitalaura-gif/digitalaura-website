@@ -2,7 +2,7 @@ import { Fragment, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 
 /**
- * Renders a plain string that may contain markdown-style links: "see [our SEO guide](/seo/pricing/) first".
+ * Renders a plain string that may contain markdown-style links: "see [our SEO guide](/seo/pricing-ahmedabad/) first".
  * Strings without a link render exactly as before. In-app paths use the router Link; the two pillar pages
  * served by separate apps (SEO, Google Ads) and anything external use a normal anchor.
  */

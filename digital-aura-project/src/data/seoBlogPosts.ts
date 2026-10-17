@@ -580,7 +580,7 @@ export const posts: BlogPost[] = [
 <p>For a site starting from a low or moderate traffic baseline with real optimisation gaps, a 10x increase is a genuinely achievable 9-12 month outcome when steps 1-4 are executed consistently. The first 2-3 months often show modest, encouraging movement from the quick wins in step 1; months 4-8 are where the compounding from topic clusters and backlinks starts showing up clearly in the traffic graph.</p>
 <p>If your site is already well-optimised and capturing most of its realistic market share, 10x becomes a much harder — sometimes unrealistic — target, and that's worth knowing honestly before committing budget to it.</p>
 
-<p>For help building a plan like this, see our <a href="/seo-services-ahmedabad">SEO services in Ahmedabad</a>. How SEO plans are scoped is explained on our <a href="/seo/pricing/">SEO packages page</a>.</p>
+<p>For help building a plan like this, see our <a href="/seo-services-ahmedabad">SEO services in Ahmedabad</a>. How SEO plans are scoped is explained on our <a href="/seo/pricing-ahmedabad/">SEO packages page</a>.</p>
 
 <h2>Conclusion</h2>
 <p>Big traffic gains rarely come from one dramatic change — they come from fixing what's already close to working, then compounding it with structure and consistency. Start with the Search Console quick wins this week, build your first topic cluster this month, and treat the framework above as a repeatable cycle rather than a one-time project.</p>

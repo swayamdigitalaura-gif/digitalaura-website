@@ -573,7 +573,7 @@ const SEOAuditStrategyPage = () => {
         <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] tracking-tight mb-4">From audit to action plan</h2>
         <div className="space-y-4 text-[#4B5563] leading-relaxed">
           <p>{renderInline("An audit is the first step, not the whole job. The findings are turned into an ordered plan covering technical health, on-page work, content and links, and our [SEO services in Ahmedabad](/seo-services-ahmedabad) team can carry it out with you.")}</p>
-          <p>{renderInline("You can see how this is usually scoped on our [SEO pricing page](/seo/pricing/), and our [free SEO audit](/seo/free-audit/) is the quickest way to see what a review of your own site would show.")}</p>
+          <p>{renderInline("You can see how this is usually scoped on our [SEO pricing page](/seo/pricing-ahmedabad/), and our [free SEO audit](/seo/free-audit/) is the quickest way to see what a review of your own site would show.")}</p>
         </div>
       </div>
     </section>

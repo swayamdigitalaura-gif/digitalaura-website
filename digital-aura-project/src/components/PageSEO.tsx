@@ -327,7 +327,7 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: 'Website Maintenance & AMC in Ahmedabad | Digital Aura',
     description: 'Website maintenance and AMC in Ahmedabad: updates, backups, security and monitoring. We take over sites built by others. Free health check.',
   },
-  '/seo/pricing': {
+  '/seo/pricing-ahmedabad': {
     title: "SEO Packages in Ahmedabad: Plans & What's Included",
     description: "See how SEO packages are scoped in Ahmedabad: what is included, what is not, contract terms and how to get a written quote after a free audit.",
   },
@@ -772,11 +772,11 @@ PAGE_SCHEMA['/website-maintenance-amc-ahmedabad'] = [
   serviceSchema('/website-maintenance-amc-ahmedabad', PAGE_META['/website-maintenance-amc-ahmedabad'].title, "Website maintenance", PAGE_META['/website-maintenance-amc-ahmedabad'].description),
   breadcrumbSchema([['Home', '/'], ["Website Development in Ahmedabad", '/website-development-services-ahmedabad/'], ["Website Maintenance and AMC", '/website-maintenance-amc-ahmedabad/']]),
 ];
-PAGE_SCHEMA['/seo/pricing'] = [
+PAGE_SCHEMA['/seo/pricing-ahmedabad'] = [
   faqPageSchema(phase2Pages.seoPricing.faqs),
-  webPageSchema('/seo/pricing', PAGE_META['/seo/pricing'].title, PAGE_META['/seo/pricing'].description, phase2Pages.seoPricing.lastUpdated),
-  serviceSchema('/seo/pricing', PAGE_META['/seo/pricing'].title, "SEO packages and pricing", PAGE_META['/seo/pricing'].description),
-  breadcrumbSchema([['Home', '/'], ["SEO Services in Ahmedabad", '/seo-services-ahmedabad'], ["SEO Packages and Pricing", '/seo/pricing/']]),
+  webPageSchema('/seo/pricing-ahmedabad', PAGE_META['/seo/pricing-ahmedabad'].title, PAGE_META['/seo/pricing-ahmedabad'].description, phase2Pages.seoPricing.lastUpdated),
+  serviceSchema('/seo/pricing-ahmedabad', PAGE_META['/seo/pricing-ahmedabad'].title, "SEO packages and pricing", PAGE_META['/seo/pricing-ahmedabad'].description),
+  breadcrumbSchema([['Home', '/'], ["SEO Services in Ahmedabad", '/seo-services-ahmedabad'], ["SEO Packages and Pricing", '/seo/pricing-ahmedabad/']]),
 ];
 PAGE_SCHEMA['/seo/doctors-hospitals-ahmedabad'] = [
   faqPageSchema(phase2Pages.seoDoctors.faqs),

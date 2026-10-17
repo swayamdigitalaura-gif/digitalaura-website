@@ -13,6 +13,7 @@ import {
   ArrowRight, Check, X, Phone, MessageCircle, MapPin, ShieldAlert, Sparkles, Info, Clock, FileText,
 } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
+import PriceTable from "@/components/PriceTable";
 import CaseStudies, { type CaseCard } from "@/components/CaseStudies";
 import Testimonials from "@/components/Testimonials";
 import PageLeadForm from "@/components/PageLeadForm";
@@ -220,6 +221,16 @@ function GuideSection({ sec, index }: { sec: ExtraSection; index: number }) {
             ))}
           </div>
         )}
+        {foot}
+      </Wrap>
+    );
+  }
+
+  if (sec.kind === "pricing") {
+    return (
+      <Wrap id={sec.id} bg={bg}>
+        <Head eyebrow={eyebrow} title={sec.title} sub={sub} />
+        <PriceTable columns={sec.columns} rows={sec.rows} accent={ORANGE} featuredCol={sec.featuredCol} caption={sec.title} />
         {foot}
       </Wrap>
     );
@@ -517,7 +528,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
       "short-answer": "The short answer", "who-its-for": "Who it suits", "ad-formats": "Facebook, Instagram or WhatsApp",
       "monthly-work": "Monthly work", "first-30-days": "First 30 days", "tracking-lead-quality": "Tracking and lead quality",
       creative: "Creative", industries: "Industries", "ahmedabad-calendar": "Ahmedabad calendar", "industry-pages": "Industry guides",
-      cost: "What it costs", "meta-vs-google": "Meta vs Google Ads", "choose-an-agency": "How to choose",
+      "management-fee": "Management fee", "ad-languages": "Ads in your language", cost: "What it costs", "meta-vs-google": "Meta vs Google Ads", "choose-an-agency": "How to choose",
     };
     const gtab = (id: string) => {
       const sec = pool.find((x) => x.id === id);
@@ -703,7 +714,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
 
     const shortSec = pool.find((x) => x.id === "short-answer");
     const shortTab = shortSec ? { id: "short-answer", label: labelFor["short-answer"], content: <div className="pillar-center"><GuideSection sec={shortSec} index={0} /></div> } : null;
-    const industryTabs = tabs([gtab("industries"), gtab("ahmedabad-calendar"), gtab("industry-pages")]);
+    const industryTabs = tabs([gtab("industries"), gtab("ahmedabad-calendar"), gtab("industry-pages"), gtab("ad-languages")]);
     const exploreFinal = tabs([
       RelatedBlock ? { id: "related", label: "More ways we can help", content: RelatedBlock } : null,
       StartBlock ? { id: "start", label: "How to start", content: StartBlock } : null,
@@ -797,7 +808,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
           </PillarSection>
 
           {/* 7. Industries */}
-          <PillarSection id="industries-group" tone="light" eyebrow="Who we serve" title="Industries we run Meta ads for, and the Ahmedabad calendar">
+          <PillarSection id="industries-group" tone="light" eyebrow="Who we serve" title="Industries, the Ahmedabad calendar and the languages we run Meta ads in">
             <PillarTabs label="Industries" initial="industry-pages" tabs={industryTabs} />
           </PillarSection>
 
@@ -818,7 +829,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
 
           {/* 10. Pricing and comparison */}
           <PillarSection id="pricing" tone="light" eyebrow="Pricing & comparison" title="What Meta ads cost, and how to choose an agency">
-            <PillarTabs label="Pricing and comparison" tabs={tabs([gtab("cost"), { id: "why", label: "Why Digital Aura", content: WhyBlock }, gtab("meta-vs-google"), gtab("choose-an-agency")])} />
+            <PillarTabs label="Pricing and comparison" tabs={tabs([gtab("management-fee"), gtab("cost"), { id: "why", label: "Why Digital Aura", content: WhyBlock }, gtab("meta-vs-google"), gtab("choose-an-agency")])} />
           </PillarSection>
 
           {/* 11. Team */}

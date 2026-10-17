@@ -10,7 +10,7 @@ import type { Enhancement } from "@/data/pageEnhancements";
 export const CARDS = {
   seoPillar: { title: "SEO Services in Ahmedabad", desc: "Our SEO company page: services, process and what to expect month by month.", points: ["Technical SEO", "Local SEO", "AI search"], href: "/seo-services-ahmedabad" },
   seoAudit: { title: "Free SEO Audit", desc: "Enter your website and get a prioritised fix list across 14 areas.", points: ["Technical to AI search", "No obligation"], href: "/seo/free-audit/" },
-  seoPricing: { title: "SEO Packages and Pricing", desc: "How our SEO plans are scoped, what is included and what is not.", points: ["Scope-based", "Written quote"], href: "/seo/pricing/" },
+  seoPricing: { title: "SEO Packages and Pricing", desc: "How our SEO plans are scoped, what is included and what is not.", points: ["Scope-based", "Written quote"], href: "/seo/pricing-ahmedabad/" },
   seoDoctors: { title: "SEO for Doctors and Hospitals", desc: "Healthcare SEO with careful, informational content and tracked appointments.", points: ["Treatment pages", "Google Business Profile"], href: "/seo/doctors-hospitals-ahmedabad/" },
   seoManuf: { title: "SEO for Manufacturers and B2B", desc: "Product and specification pages and an RFQ funnel for Gujarat manufacturers.", points: ["Product pages", "Export SEO"], href: "/seo/manufacturers-b2b-gujarat/" },
   gadsPillar: { title: "Google Ads Agency in Ahmedabad", desc: "Ongoing management focused on leads you can track.", points: ["Search and Performance Max", "Call and WhatsApp tracking"], href: "/google-ads-agency-ahmedabad" },

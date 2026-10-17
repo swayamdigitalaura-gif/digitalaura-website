@@ -564,7 +564,7 @@ const OffPageSEOPage = () => {
         <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] tracking-tight mb-4">Links work best when the site underneath is ready</h2>
         <div className="space-y-4 text-[#4B5563] leading-relaxed">
           <p>{renderInline("Backlinks and brand mentions carry more weight when the pages they point to are fast, clear and relevant. We plan off-page work as part of our wider [SEO services in Ahmedabad](/seo-services-ahmedabad), after checking that the site can make good use of the authority it earns.")}</p>
-          <p>{renderInline("You can see how SEO work is scoped on our [SEO pricing page](/seo/pricing/), and read [how to increase organic website traffic](/blog/increase-organic-website-traffic-10x/) for where growth usually comes from.")}</p>
+          <p>{renderInline("You can see how SEO work is scoped on our [SEO pricing page](/seo/pricing-ahmedabad/), and read [how to increase organic website traffic](/blog/increase-organic-website-traffic-10x/) for where growth usually comes from.")}</p>
         </div>
       </div>
     </section>

@@ -16,6 +16,7 @@ import { FAQ } from "../components/sections/FAQ";
 import { FinalCTA } from "../components/sections/FinalCTA";
 import { Footer } from "../components/sections/Footer";
 import { QuickAnswer, ExploreMore, WhatWeDo, First90Days, VisitUs, AhmedabadMarket, CostBreakdown, SelfCheck, LeakChecks, TrackingByLeadType, AgencyComparison, AdsReels, TeamSection, PeopleSchema } from "../components/sections/PillarExtras";
+import { FeeTable, AdLanguages } from "../components/sections/PricingAndLanguages";
 import { StickyMobileCTA } from "../components/sections/StickyMobileCTA";
 import { PillarSection, PillarSubNav, PillarTabs } from "../components/shared/Pillar";
 import "../pillar-pages.css";
@@ -53,6 +54,12 @@ function PageSchema() {
     description: "Google Ads management for Ahmedabad businesses, run in the client's own account with tracked calls, WhatsApp and form leads.",
     provider: { "@type": "LocalBusiness", "@id": "https://thedigitalaura.com/#localbusiness", name: "Digital Aura" },
     areaServed: { "@type": "City", name: "Ahmedabad" },
+    offers: {
+      "@type": "Offer",
+      description: "Monthly Google Ads management fee. Ad spend is paid to Google separately.",
+      priceCurrency: "INR",
+      priceSpecification: { "@type": "PriceSpecification", priceCurrency: "INR", minPrice: 15000, maxPrice: 60000, unitText: "MONTH" },
+    },
   };
   return (
     <>
@@ -133,12 +140,13 @@ function LandingPage() {
       </PillarSection>
 
       {/* 7. Industries */}
-      <PillarSection id="industries-market" tone="light" eyebrow="Who we serve" title="Industries we know, and the Ahmedabad market">
+      <PillarSection id="industries-market" tone="light" eyebrow="Who we serve" title="Industries, the Ahmedabad market and the languages we work in">
         <PillarTabs
           label="Industries and market"
           tabs={[
             { id: "industries", label: "Industry solutions", content: <IndustrySolutions /> },
             { id: "market", label: "Ahmedabad market notes", content: <AhmedabadMarket /> },
+            { id: "languages", label: "Ads in your language", content: <AdLanguages /> },
           ]}
         />
       </PillarSection>
@@ -163,6 +171,7 @@ function LandingPage() {
         <PillarTabs
           label="Pricing and comparison"
           tabs={[
+            { id: "fee", label: "Management fee", content: <FeeTable /> },
             { id: "cost", label: "What it costs", content: <CostBreakdown /> },
             { id: "compare", label: "Agency, freelancer or in-house", content: <AgencyComparison /> },
           ]}

@@ -21,6 +21,7 @@ import { useCMSEditor } from "@/hooks/useCMSEditor";
 import AdsCalculator, { type CalculatorVariant } from "@/components/AdsCalculators";
 import PageLeadForm, { type LeadFormConfig } from "@/components/PageLeadForm";
 import { ReelGrid, TeamGrid, FounderLinks, type TeamMember } from "@/components/ReelsAndTeam";
+import PriceTable from "@/components/PriceTable";
 
 export interface IncludedItem { title: string; desc: string; }
 export interface FaqItem { q: string; a: string; }
@@ -33,6 +34,8 @@ export interface ExtraList { title: string; items: string[]; tone: "good" | "bad
 export type ExtraSection = (
   | { kind: "text"; id: string; title: string; paragraphs: string[]; links?: { label: string; href: string }[] }
   | { kind: "cards"; id: string; title: string; subtext?: string; items: ExtraCard[]; footnote?: string }
+  /** Price table: first column is the row heading, "featuredCol" (default 1) is the highlighted amount column. */
+  | { kind: "pricing"; id: string; title: string; subtext?: string; columns: string[]; rows: string[][]; featuredCol?: number; footnote?: string }
   | { kind: "compare"; id: string; title: string; subtext?: string; left: ExtraList; right: ExtraList; footnote?: string }
   | { kind: "calculator"; id: string; title: string; subtext?: string; variant: CalculatorVariant; footnote?: string }
   | { kind: "checklist"; id: string; title: string; subtext?: string; groups: { title: string; items: string[] }[]; footnote?: string }
@@ -183,6 +186,15 @@ const ExtraBlock = ({ section, accent }: { section: ExtraSection; accent: string
           className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold px-5 py-2.5 rounded-full text-white" style={{ background: accent }}>
           Want this checked for your business? Get a written quote <ArrowRight className="w-4 h-4" />
         </a>
+      </div>
+    );
+  }
+  if (section.kind === "pricing") {
+    return (
+      <div>
+        {heading}
+        <PriceTable columns={section.columns} rows={section.rows} accent={accent} featuredCol={section.featuredCol} caption={section.title} />
+        {note(section.footnote)}
       </div>
     );
   }

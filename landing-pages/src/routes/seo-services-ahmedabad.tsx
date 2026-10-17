@@ -202,6 +202,13 @@ function BreadcrumbAndServiceSchema() {
       "Technical SEO, local SEO, content and AI search optimisation for Ahmedabad businesses, with monthly reporting on calls, forms and enquiries.",
     provider: { "@type": "ProfessionalService", name: "Digital Aura", url: "https://thedigitalaura.com/" },
     areaServed: { "@type": "City", name: "Ahmedabad" },
+    offers: SEO_PLANS.map((pl) => ({
+      "@type": "Offer",
+      name: pl.name,
+      description: pl.best,
+      priceCurrency: "INR",
+      priceSpecification: { "@type": "PriceSpecification", priceCurrency: "INR", minPrice: pl.min, maxPrice: pl.max, unitText: "MONTH" },
+    })),
   };
   return (
     <>
@@ -802,7 +809,7 @@ function QuickAnswer() {
   const links = [
     { href: "/seo/free-audit/", label: "Free SEO audit" },
     { href: "/downloads/Digital-Aura-Sample-SEO-Audit-Report.pdf", label: "Sample SEO audit report (PDF)", download: true },
-    { href: "/seo/pricing/", label: "SEO packages and pricing" },
+    { href: "/seo/pricing-ahmedabad/", label: "SEO packages and pricing" },
     { href: "/blog/seo-in-2026-ai-era/", label: "How SEO works in 2026 (guide)" },
     { href: "/seo/doctors-hospitals-ahmedabad/", label: "SEO for doctors and hospitals" },
     { href: "/seo/manufacturers-b2b-gujarat/", label: "SEO for manufacturers" },
@@ -1776,7 +1783,7 @@ const FAQS = [
     },
     {
       q: "How much does SEO cost in Ahmedabad?",
-      a: "SEO pricing depends on your competition, current site health and how fast you want to move. After the free audit, we give you a fixed monthly scope and price — no hidden add-ons, no surprise invoices mid-engagement.",
+      a: "In Ahmedabad, our SEO plans run from ₹15,000 to ₹1,50,000 per month, plus GST: SEO Basic ₹15,000–₹25,000, SEO Growth ₹25,000–₹50,000 and SEO Advance ₹50,000–₹1,50,000. Where you land depends on your competition, current site health, the number of services and locations, and how fast you want to move. After the free audit, we give you a fixed monthly scope and price — no hidden add-ons, no surprise invoices mid-engagement.",
     },
     {
       q: "How long before SEO shows results?",
@@ -1892,7 +1899,7 @@ function AreasAndServices() {
     { t: "Ecommerce SEO", href: "/services/seo-content-marketing/ecommerce-seo/" },
     { t: "SEO Audit & Strategy", href: "/services/seo-content-marketing/seo-audit-strategy/" },
     { t: "Free SEO Audit", href: "/seo/free-audit/" },
-    { t: "SEO Packages & Pricing", href: "/seo/pricing/" },
+    { t: "SEO Packages & Pricing", href: "/seo/pricing-ahmedabad/" },
     { t: "SEO in 2026 and AI Overviews", href: "/blog/seo-in-2026-ai-era/" },
     { t: "SEO for Doctors & Hospitals", href: "/seo/doctors-hospitals-ahmedabad/" },
     { t: "SEO for Manufacturers & B2B", href: "/seo/manufacturers-b2b-gujarat/" },
@@ -2158,6 +2165,90 @@ function First90Days() {
   );
 }
 
+/** Owner-supplied monthly fees (2026-10-17), excluding GST. Final fee is set in the written quote after the free audit. */
+const SEO_PLANS = [
+  {
+    name: "SEO Basic",
+    fee: "₹15,000 – ₹25,000",
+    min: 15000,
+    max: 25000,
+    best: "A clinic, shop or service business serving one city, with a small site.",
+    items: ["SEO audit and tracking set up", "On-page fixes on your key service pages", "Google Business Profile set-up and upkeep", "Local citations and review requests", "Monthly report on calls and enquiries"],
+  },
+  {
+    name: "SEO Growth",
+    fee: "₹25,000 – ₹50,000",
+    min: 25000,
+    max: 50000,
+    best: "Businesses ready to compete for more services and areas.",
+    items: ["Everything in SEO Basic", "New service and location pages, written every month", "Link building from relevant, earned sources", "Technical fixes and speed work", "Conversion improvements on key pages", "Monthly review call"],
+  },
+  {
+    name: "SEO Advance",
+    fee: "₹50,000 – ₹1,50,000",
+    min: 50000,
+    max: 150000,
+    best: "Large catalogues, several locations, export or multi-language projects, and crowded markets.",
+    items: ["Everything in SEO Growth", "Category and product optimisation for online stores", "A larger content and link programme", "AI search (AEO and GEO) work on your key pages", "Multi-location or multi-language scope", "A named lead and strategy reviews"],
+  },
+];
+
+function SEOPlanTable() {
+  return (
+    <Reveal className="mt-12">
+      <div className="mx-auto max-w-6xl space-y-4 md:hidden">
+        {SEO_PLANS.map((pl) => (
+          <div key={pl.name} className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-5">
+            <h3 className="text-lg font-extrabold text-brand-navy">{pl.name}</h3>
+            <p className="mt-1 text-xl font-extrabold text-brand-orange">{pl.fee} <span className="text-xs font-medium text-ink-muted">per month, plus GST</span></p>
+            <p className="mt-2 text-sm leading-relaxed text-ink-muted">{pl.best}</p>
+            <ul className="mt-3 space-y-2">
+              {pl.items.map((x) => (
+                <li key={x} className="flex gap-2.5 text-sm leading-relaxed text-ink-muted"><Check className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />{x}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div className="mx-auto hidden max-w-6xl overflow-x-auto rounded-2xl border border-brand-navy/12 bg-white da-shadow-card md:block">
+        <table className="w-full min-w-[760px] border-collapse text-left">
+          <caption className="sr-only">SEO plans in Ahmedabad with monthly fee ranges, excluding GST</caption>
+          <thead>
+            <tr className="bg-brand-orange-soft text-brand-navy">
+              <th scope="col" className="w-[16%] p-4 text-xs font-bold uppercase tracking-wider text-ink-muted">Plan</th>
+              <th scope="col" className="w-[18%] p-4 text-xs font-bold uppercase tracking-wider text-ink-muted">Monthly fee</th>
+              <th scope="col" className="w-[24%] p-4 text-xs font-bold uppercase tracking-wider text-ink-muted">Best for</th>
+              <th scope="col" className="p-4 text-xs font-bold uppercase tracking-wider text-ink-muted">What is included</th>
+            </tr>
+          </thead>
+          <tbody>
+            {SEO_PLANS.map((pl) => (
+              <tr key={pl.name} className="border-t border-brand-navy/10 align-top">
+                <th scope="row" className="p-4 text-base font-extrabold text-brand-navy">{pl.name}</th>
+                <td className="p-4">
+                  <span className="block text-lg font-extrabold text-brand-orange">{pl.fee}</span>
+                  <span className="text-xs text-ink-muted">per month, plus GST</span>
+                </td>
+                <td className="p-4 text-sm leading-relaxed text-ink-muted">{pl.best}</td>
+                <td className="p-4">
+                  <ul className="space-y-2">
+                    {pl.items.map((x) => (
+                      <li key={x} className="flex gap-2.5 text-sm leading-relaxed text-ink-muted"><Check className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />{x}</li>
+                    ))}
+                  </ul>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="mx-auto mt-4 max-w-3xl text-center text-sm leading-relaxed text-ink-muted">
+        These prices are for businesses in Ahmedabad; projects in other cities or countries are quoted separately. Fees are monthly and exclude GST. Your exact fee is set in a written quote after the free audit, and it lists the work it covers. No ranking is guaranteed on any plan.
+      </p>
+    </Reveal>
+  );
+}
+
 function SEOPricing() {
   const drivers = [
     { t: "How strong your competition is", d: "A search with many established sites ranking needs more work than a quiet local one." },
@@ -2174,9 +2265,11 @@ function SEOPricing() {
           wide
           eyebrow="Pricing"
           title={<>SEO pricing in Ahmedabad: <span className="text-brand-orange">what to expect</span></>}
-          sub="We do not print a rate card, because two businesses rarely need the same work. SEO is priced as a monthly scope, after we have looked at your site. Four things decide it."
+          sub="Three plans, from ₹15,000 to ₹1,50,000 a month. Where you land inside a range depends on four things, and the final fee is written after we have looked at your site."
         />
-        <Reveal className="pillar-cols-4 mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <SEOPlanTable />
+        <h3 className="mx-auto mt-14 max-w-3xl text-center text-xl font-extrabold text-brand-navy md:text-2xl">What decides where you land in the range</h3>
+        <Reveal className="pillar-cols-4 mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {drivers.map((x, i) => (
             <div key={x.t} className="da-shadow-card da-card-hover flex h-full flex-col rounded-2xl border border-brand-navy/12 bg-white p-6">
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-orange-soft text-sm font-extrabold text-brand-orange">0{i + 1}</span>
@@ -2211,7 +2304,7 @@ function SEOPricing() {
         </Reveal>
         <p className="mx-auto mt-8 max-w-3xl text-center text-ink-muted">
           Want to see how packages are put together? Read{" "}
-          <a className="font-semibold text-brand-orange underline" href="/seo/pricing/">how SEO packages are priced in Ahmedabad</a>, or start with the{" "}
+          <a className="font-semibold text-brand-orange underline" href="/seo/pricing-ahmedabad/">how SEO packages are priced in Ahmedabad</a>, or start with the{" "}
           <a className="font-semibold text-brand-orange underline" href="/seo/free-audit/">free SEO audit</a>.
         </p>
         <div className="pillar-btn-row pillar-btn-row--center">

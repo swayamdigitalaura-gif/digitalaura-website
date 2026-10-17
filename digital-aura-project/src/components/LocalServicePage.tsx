@@ -5,7 +5,7 @@
  * copy-paste-the-city-name clone, per local SEO best practice.
  */
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
+import { AppLink } from "./AppLink";
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
 import CaseStudies from "@/components/CaseStudies";
@@ -368,9 +368,9 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
                   </li>
                 ))}
               </ul>
-              <Link to={s.href} className="inline-flex items-center gap-1 text-sm font-semibold hover:gap-2 transition-all" style={{ color: c.relatedCategoryColor }}>
+              <AppLink to={s.href} className="inline-flex items-center gap-1 text-sm font-semibold hover:gap-2 transition-all" style={{ color: c.relatedCategoryColor }}>
                 Learn more<span className="sr-only"> about {s.title}</span> <ArrowRight size={14} />
-              </Link>
+              </AppLink>
             </motion.div>
           ))}
         </div>
@@ -389,9 +389,9 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
         </div>
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative z-10 pt-20 pb-14">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <Link to={c.parentServiceHref} className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: c.accentColor }}>
+            <AppLink to={c.parentServiceHref} className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: c.accentColor }}>
               ← Back to {c.parentServiceLabel}
-            </Link>
+            </AppLink>
             <div className="flex justify-center mb-6">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase"
                 style={{ background: `${c.accentColor}12`, color: c.accentColor, border: `1px solid ${c.accentColor}30` }}>
@@ -414,10 +414,10 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
                 {config.heroCta.label} <ArrowRight size={15} />
               </a>
             ) : (
-              <Link to="/contact/#contact-form" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
+              <AppLink to="/contact/#contact-form" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
                 style={{ background: c.accentColor, boxShadow: `0 8px 24px ${c.accentColor}40` }}>
                 Book a Free Consultation <ArrowRight size={15} />
-              </Link>
+              </AppLink>
             )}
             <div className="mt-4 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm font-semibold">
               <a href={PHONE_TEL} onClick={() => track("phone_click", { cta_location: "hero" })} className="inline-flex items-center gap-1.5" style={{ color: c.accentColor }}>
@@ -649,10 +649,10 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
             </span>
             <h2 data-cms-key={k("ctaHeading")} data-cms-label="CTA Heading" data-cms-attr="text" className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4">{c.ctaHeading}</h2>
             <p data-cms-key={k("ctaText")} data-cms-label="CTA Text" data-cms-attr="text" className="text-[#E2E8F0] mb-8 leading-relaxed">{c.ctaText}</p>
-            <Link to="/contact/#contact-form" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
+            <AppLink to="/contact/#contact-form" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
               style={{ background: `linear-gradient(135deg, ${c.accentColor}, #0A1628)`, boxShadow: `0 4px 20px ${c.accentColor}40` }}>
               <span data-cms-key={k("ctaButton")} data-cms-label="CTA Button" data-cms-attr="text">{c.ctaButton}</span> <ArrowRight size={16} />
-            </Link>
+            </AppLink>
           </motion.div>
         </div>
       </section>

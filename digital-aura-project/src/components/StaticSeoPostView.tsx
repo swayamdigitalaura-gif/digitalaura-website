@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { AppLink } from "./AppLink";
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import { Calendar, Clock, ChevronDown, ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
@@ -126,9 +126,9 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
           <div className="absolute inset-0 dot-pattern opacity-20" />
         </div>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="max-w-3xl mx-auto relative z-10 py-10 text-center">
-          <Link to="/blog/" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: theme.ink }}>
+          <AppLink to="/blog/" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: theme.ink }}>
             ← Back to All Articles
-          </Link>
+          </AppLink>
           <div className="flex justify-center mb-6">
             <span
               className="inline-flex items-center gap-2 text-xs font-bold px-4 py-2 rounded-full"
@@ -206,17 +206,17 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
                     {relatedService.cta} <ArrowRight size={14} />
                   </a>
                 ) : (
-                  <Link to={relatedService.href} className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.ink }}>
+                  <AppLink to={relatedService.href} className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.ink }}>
                     {relatedService.cta} <ArrowRight size={14} />
-                  </Link>
+                  </AppLink>
                 )}
               </div>
             )}
 
             <div className="pt-8 mt-8 border-t" style={{ borderColor: "#E5E7EB" }}>
-              <Link to="/blog/" className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.ink }}>
+              <AppLink to="/blog/" className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.ink }}>
                 <ArrowLeft size={14} /> Back to all posts
-              </Link>
+              </AppLink>
             </div>
           </div>
 
@@ -232,9 +232,9 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
               </div>
               <h3 className="font-black text-base mb-2" style={{ color: "#0A1628" }}>Want results like this?</h3>
               <p className="text-xs mb-4 leading-relaxed" style={{ color: "#6B7280" }}>Talk to Digital Aura about your SEO.</p>
-              <Link to="/contact/" className="btn-orange w-full py-3 text-sm">
+              <AppLink to="/contact/" className="btn-orange w-full py-3 text-sm">
                 Get in Touch <ArrowRight size={14} />
-              </Link>
+              </AppLink>
             </div>
 
             {relatedPosts.length > 0 && (
@@ -246,10 +246,10 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
                   {relatedPosts.map(p => {
                     const pTheme = getTheme(p.category);
                     return (
-                      <Link key={p.slug} to={`/blog/${p.slug}`} className="block p-3 rounded-xl border-l-4 border transition-all group" style={{ borderColor: "#E5E7EB", borderLeftColor: pTheme.color }}>
+                      <AppLink key={p.slug} to={`/blog/${p.slug}`} className="block p-3 rounded-xl border-l-4 border transition-all group" style={{ borderColor: "#E5E7EB", borderLeftColor: pTheme.color }}>
                         <p className="text-sm font-bold leading-snug transition-colors" style={{ color: "#0A1628" }}>{p.title}</p>
                         <p className="text-xs mt-1 font-semibold" style={{ color: pTheme.ink }}>{p.category}</p>
-                      </Link>
+                      </AppLink>
                     );
                   })}
                 </div>
@@ -271,9 +271,9 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4">{post.ctaHeading}</h2>
           <p className="text-[#E2E8F0] mb-8 leading-relaxed">{post.ctaText}</p>
-          <Link to="/contact/" className="btn-orange" style={{ padding: "1rem 2rem", fontSize: ".95rem" }}>
+          <AppLink to="/contact/" className="btn-orange" style={{ padding: "1rem 2rem", fontSize: ".95rem" }}>
             {post.ctaButton} <ArrowRight size={16} />
-          </Link>
+          </AppLink>
         </div>
       </section>
     </PageLayout>

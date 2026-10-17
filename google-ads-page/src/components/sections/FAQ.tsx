@@ -2,7 +2,7 @@ import { PillarFaq, PillarSection } from "../shared/Pillar";
 
 const FAQS = [
   { q: "Why hire a Google Ads agency instead of running ads yourself?", a: "Google Ads has hundreds of settings that affect cost and results. A small mistake can waste your entire budget on the wrong searches. We manage accounts daily and know what to fix immediately." },
-  { q: "How much does Google Ads management cost?", a: "Our fee depends on your ad spend, channels, and tracking setup. We give you full pricing clarity in your free Google Ads audit, before you commit to anything." },
+  { q: "How much does Google Ads management cost?", a: "For Ahmedabad businesses, our Google Ads management fee is ₹15,000 to ₹60,000 per month, plus GST. Where you land depends on your ad spend, the number of campaigns and channels, the languages you run ads in and how much tracking work is needed. Your ad budget is separate and is paid to Google from your own account. You get the exact fee in writing after your free Google Ads audit, before you commit to anything." },
   { q: "What's the minimum ad budget to get started?", a: "We work best with businesses spending ₹50,000+ a month on Google Ads. This is enough budget for campaigns to collect real data and start optimizing toward results." },
   { q: "How long before Google Ads start generating leads?", a: "Most accounts see lower cost per lead within 14–30 days of optimization. Reaching your target ROAS usually takes 60–90 days." },
   { q: "What's included in your Google Ads Audit?", a: "A full review of your account structure, conversion tracking, landing pages, competitor activity, and keyword opportunities, plus a 90-day plan to fix what's broken." },
@@ -19,7 +19,7 @@ const FAQS = [
   { q: "What do you need from me to start?", a: "Access to your Google Ads account if you have one (or we set one up in your name), your Google Analytics, your website, your phone and WhatsApp numbers, and a clear idea of what a good lead is for your business." },
   { q: "What if my website is not turning clicks into enquiries?", a: "We start by showing where visitors drop off. Then we suggest page changes or build a focused landing page, so the clicks you pay for are more likely to turn into calls, WhatsApp messages and forms." },
   { q: "Are you a Google Partner agency?", a: "Yes. Digital Aura is a Google Partner agency. That means we are recognised by Google for managing Google Ads accounts, and our campaigns follow Google's own recommended practices. We always run your campaigns inside your own Google Ads account." },
-  { q: "Can you run Google Ads in Gujarati or Hindi?", a: "Yes. We can write and run ads and target audiences in Gujarati, Hindi and English, so you can reach customers in the language they search in across Ahmedabad and Gujarat." },
+  { q: "Can you run Google Ads in Gujarati or Hindi?", a: "Yes. We write and run Google Ads in English, Hindi, Gujarati, Marathi, Tamil and other languages, with keyword research, ad copy and landing pages in the same language, so you reach customers in the language they search in across Ahmedabad, Gujarat and the rest of India." },
 ];
 
 function FAQSchema() {

@@ -88,7 +88,7 @@ const BlogInsights = ({ categories, heading, badge }: BlogInsightsProps) => {
                 {/* Category tag */}
                 <span
                   className="absolute top-4 left-4 text-xs font-bold px-3 py-1.5 rounded-full"
-                  style={{ color: theme.color, background: theme.bg }}
+                  style={{ color: theme.ink, background: theme.bg }}
                 >
                   {p.category}
                 </span>

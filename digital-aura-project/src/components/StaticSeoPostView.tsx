@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
@@ -8,17 +8,11 @@ import { posts as allPosts } from "@/data/seoBlogPosts";
 import { useHiddenBlogSlugs } from "@/hooks/useHiddenBlogs";
 import { getTheme } from "@/data/seoBlogCategoryTheme";
 import { relatedServiceFor } from "@/data/relatedService";
-import sambhavPhoto from "@/assets/sambhav.jpg";
+import { topicForBlog, PILLARS, CLUSTER_LINKS, SEO_SERVICE_BY_CATEGORY } from "@/data/linkMap";
+import { autoLink } from "@/lib/autoLink";
+import AuthorBox from "@/components/AuthorBox";
 
 const SITE = "https://thedigitalaura.com";
-
-const AUTHOR_PHOTOS: Record<string, string> = {
-  "Sambhav Shah": sambhavPhoto,
-  "Jinali Lodariya": "/team/jinali.png",
-  "Swayam Parikh": "/team/swayam.png",
-  "Deepak Nagar": "/team/deepak.webp",
-  "Satish Prajapati": "/team/satish.png",
-};
 
 const shortTeaser = (text: string) => {
   const firstSentence = text.split(/(?<=\.)\s/)[0];
@@ -52,6 +46,9 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
   const CategoryIcon = theme.Icon;
   const canonicalUrl = `${SITE}/blog/${post.slug}/`;
   const relatedService = relatedServiceFor(post.slug, post.category);
+  const topic = topicForBlog(post.slug, post.category);
+  const goDeeper = [...(topic === "seo" && SEO_SERVICE_BY_CATEGORY[post.category] ? [SEO_SERVICE_BY_CATEGORY[post.category]] : []), ...CLUSTER_LINKS[topic]].slice(0, 4);
+  const bodyHtml = useMemo(() => autoLink(post.contentHtml, topic, PILLARS[topic].href), [post.contentHtml, topic]);
   const hiddenSlugs = useHiddenBlogSlugs();
   const posts = allPosts.filter(p => !hiddenSlugs.has(p.slug));
   const related = posts.filter(p => p.slug !== post.slug && p.category === post.category).slice(0, 3);
@@ -87,7 +84,7 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
           description: post.metaDescription,
           datePublished: post.date,
           dateModified: post.date,
-          author: { "@type": "Person", name: post.author, jobTitle: post.authorRole, url: `${SITE}/about` },
+          author: { "@type": "Person", name: "Sambhav Shah", jobTitle: "Founder & CEO, Digital Aura", url: `${SITE}/about/`, sameAs: ["https://www.linkedin.com/in/sambhav-shah/", "https://www.instagram.com/sambhavshah2/"] },
           publisher: { "@type": "Organization", name: "Digital Aura", url: SITE, logo: { "@type": "ImageObject", url: `${SITE}/logos/digital-aura-logo.png` } },
           mainEntityOfPage: canonicalUrl,
         },
@@ -129,13 +126,13 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
           <div className="absolute inset-0 dot-pattern opacity-20" />
         </div>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="max-w-3xl mx-auto relative z-10 py-10 text-center">
-          <Link to="/blog/" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: theme.color }}>
+          <Link to="/blog/" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: theme.ink }}>
             ← Back to All Articles
           </Link>
           <div className="flex justify-center mb-6">
             <span
               className="inline-flex items-center gap-2 text-xs font-bold px-4 py-2 rounded-full"
-              style={{ color: theme.color, background: theme.bg, border: `1px solid ${theme.border}` }}
+              style={{ color: theme.ink, background: theme.bg, border: `1px solid ${theme.border}` }}
             >
               <CategoryIcon size={13} /> {post.category}
             </span>
@@ -145,9 +142,9 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
           </h1>
           <p className="text-lg mb-7 leading-relaxed max-w-xl mx-auto" style={{ color: "#4B5563" }}>{shortTeaser(post.directAnswer)}</p>
           <div className="flex flex-wrap items-center gap-5 text-sm justify-center" style={{ color: "#6B7280" }}>
-            <span className="flex items-center gap-1.5"><Calendar size={14} style={{ color: theme.color }} /> {post.dateDisplay}</span>
-            <span className="flex items-center gap-1.5"><Clock size={14} style={{ color: theme.color }} /> {post.readTime}</span>
-            <span>Reviewed by: <strong style={{ color: "#0A1628" }}>Sambhav Shah</strong></span>
+            <span className="flex items-center gap-1.5"><Calendar size={14} style={{ color: theme.ink }} /> {post.dateDisplay}</span>
+            <span className="flex items-center gap-1.5"><Clock size={14} style={{ color: theme.ink }} /> {post.readTime}</span>
+            <span>By <a href="/about/" className="font-bold hover:underline" style={{ color: "#0A1628" }}>Sambhav Shah</a></span>
           </div>
         </motion.div>
       </section>
@@ -166,19 +163,19 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
               style={{ background: theme.bg, borderColor: theme.color, borderTop: "1px solid #E5E7EB", borderRight: "1px solid #E5E7EB", borderBottom: "1px solid #E5E7EB" }}
             >
               <h2 className="text-[13px] font-black uppercase tracking-[0.14em] mb-3 flex items-center gap-2" style={{ color: "#0A1628" }}>
-                <CategoryIcon size={15} style={{ color: theme.color }} /> Key Takeaways
+                <CategoryIcon size={15} style={{ color: theme.ink }} /> Key Takeaways
               </h2>
               <ul className="space-y-2.5">
                 {post.keyTakeaways.map((t, i) => (
                   <li key={i} className="flex items-start gap-2.5 text-[14.5px]" style={{ color: "#374151" }}>
-                    <CheckCircle2 size={16} className="mt-0.5 shrink-0" style={{ color: theme.color }} />
+                    <CheckCircle2 size={16} className="mt-0.5 shrink-0" style={{ color: theme.ink }} />
                     {t}
                   </li>
                 ))}
               </ul>
             </motion.div>
 
-            <div className="blog-prose" style={{ ["--accent" as string]: theme.color }} dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+            <div className="blog-prose" style={{ ["--accent" as string]: theme.color, ["--accent-ink" as string]: theme.ink }} dangerouslySetInnerHTML={{ __html: bodyHtml }} />
 
             {/* FAQ */}
             <div className="mt-12">
@@ -190,55 +187,26 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
               </div>
             </div>
 
-            {/* Author box - E-E-A-T, styled to match thedigitalaura.com/about */}
-            <div className="mt-12 rounded-2xl p-6 md:p-8 border" style={{ borderColor: "#E5E7EB", background: "#F8FAFF" }}>
-              <p className="text-[11px] font-black uppercase tracking-[0.14em] mb-5 flex items-center gap-2" style={{ color: "#0A1628" }}>
-                <span className="w-4 h-0.5 rounded-full" style={{ background: theme.color }} /> About the Author
-              </p>
-              <div className="flex flex-col sm:flex-row gap-6">
-                <div className="shrink-0 flex sm:flex-col items-center sm:items-start gap-4 sm:gap-3">
-                  <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden" style={{ boxShadow: `0 8px 32px ${theme.glow}`, border: `3px solid ${theme.border}` }}>
-                    <img src={AUTHOR_PHOTOS[post.author] || sambhavPhoto} alt={post.author} className="w-full h-full object-cover object-top scale-110" />
-                  </div>
-                  <div className="sm:hidden">
-                    <p className="font-black text-lg leading-tight" style={{ color: "#0A1628" }}><a href="/about/" className="hover:underline">{post.author}</a></p>
-                    <p className="text-sm font-semibold" style={{ color: theme.color }}>{post.authorRole}</p>
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <div className="hidden sm:block mb-3">
-                    <p className="font-black text-xl leading-tight" style={{ color: "#0A1628" }}><a href="/about/" className="hover:underline">{post.author}</a></p>
-                    <p className="text-sm font-semibold" style={{ color: theme.color }}>{post.authorRole}</p>
-                  </div>
-                  {post.authorBio.split("\n\n").map((para, i) => (
-                    <p key={i} className={`leading-relaxed mb-3 last:mb-0 ${i === 0 ? "text-[15px]" : "text-sm"}`} style={{ color: "#4B5563" }}>{para}</p>
-                  ))}
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {post.authorTags.map(tag => (
-                      <span key={tag} className="text-[11px] font-semibold px-2.5 py-1 rounded-full" style={{ background: "#fff", color: theme.color, border: `1px solid ${theme.border}` }}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <p className="text-xs mt-4 pt-4 border-t" style={{ color: "#9CA3AF", borderColor: "#E5E7EB" }}>
-                    Reviewed by: <strong style={{ color: "#0A1628" }}>Sambhav Shah</strong>
-                  </p>
-                </div>
-              </div>
-            </div>
+            {/* Author (E-E-A-T): Sambhav Shah, same card as the About page and the cluster pages */}
+            <AuthorBox accent={theme.ink} className="mt-12 !max-w-none !px-0" />
 
             {relatedService && (
               <div className="mt-8 rounded-2xl p-6 border" style={{ borderColor: theme.border, background: theme.bg }}>
                 <p className="text-[11px] font-black uppercase tracking-[0.14em] mb-2" style={{ color: "#0A1628" }}>Related service</p>
                 <p className="text-base font-bold mb-1" style={{ color: "#0A1628" }}>{relatedService.label}</p>
                 <p className="text-sm mb-4" style={{ color: "#4B5563" }}>{relatedService.blurb}</p>
+                <ul className="mb-4 flex flex-wrap gap-2">
+                  {goDeeper.map((l) => (
+                    <li key={l.href}><a href={l.href} className="inline-block rounded-full border bg-white px-3 py-1.5 text-[13px] font-semibold hover:underline" style={{ borderColor: theme.border, color: theme.ink }}>{l.label}</a></li>
+                  ))}
+                </ul>
                 {/* Pillar apps outside the SPA need a normal anchor; in-app routes use Link. */}
                 {relatedService.external ? (
-                  <a href={relatedService.href} className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.color }}>
+                  <a href={relatedService.href} className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.ink }}>
                     {relatedService.cta} <ArrowRight size={14} />
                   </a>
                 ) : (
-                  <Link to={relatedService.href} className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.color }}>
+                  <Link to={relatedService.href} className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.ink }}>
                     {relatedService.cta} <ArrowRight size={14} />
                   </Link>
                 )}
@@ -246,7 +214,7 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
             )}
 
             <div className="pt-8 mt-8 border-t" style={{ borderColor: "#E5E7EB" }}>
-              <Link to="/blog/" className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.color }}>
+              <Link to="/blog/" className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.ink }}>
                 <ArrowLeft size={14} /> Back to all posts
               </Link>
             </div>
@@ -260,7 +228,7 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
                 className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
                 style={{ background: theme.bg, border: `1px solid ${theme.border}` }}
               >
-                <CategoryIcon size={18} style={{ color: theme.color }} />
+                <CategoryIcon size={18} style={{ color: theme.ink }} />
               </div>
               <h3 className="font-black text-base mb-2" style={{ color: "#0A1628" }}>Want results like this?</h3>
               <p className="text-xs mb-4 leading-relaxed" style={{ color: "#6B7280" }}>Talk to Digital Aura about your SEO.</p>
@@ -280,7 +248,7 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
                     return (
                       <Link key={p.slug} to={`/blog/${p.slug}`} className="block p-3 rounded-xl border-l-4 border transition-all group" style={{ borderColor: "#E5E7EB", borderLeftColor: pTheme.color }}>
                         <p className="text-sm font-bold leading-snug transition-colors" style={{ color: "#0A1628" }}>{p.title}</p>
-                        <p className="text-xs mt-1 font-semibold" style={{ color: pTheme.color }}>{p.category}</p>
+                        <p className="text-xs mt-1 font-semibold" style={{ color: pTheme.ink }}>{p.category}</p>
                       </Link>
                     );
                   })}

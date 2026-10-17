@@ -171,7 +171,7 @@ const App = () => (
           <Route path="/google-ads-audit-ahmedabad" element={<IndustryLandingPage config={phase1Pages.googleAdsAudit} />} />
           <Route path="/website-redesign-services-ahmedabad" element={<IndustryLandingPage config={phase1Pages.websiteRedesign} />} />
           <Route path="/website-maintenance-amc-ahmedabad" element={<IndustryLandingPage config={phase1Pages.websiteMaintenance} />} />
-          <Route path="/seo/pricing" element={<IndustryLandingPage config={phase2Pages.seoPricing} />} />
+          <Route path="/seo/pricing-ahmedabad" element={<IndustryLandingPage config={phase2Pages.seoPricing} />} />
           <Route path="/seo/doctors-hospitals-ahmedabad" element={<IndustryLandingPage config={phase2Pages.seoDoctors} />} />
           <Route path="/seo/manufacturers-b2b-gujarat" element={<IndustryLandingPage config={phase2Pages.seoManufacturers} />} />
           <Route path="/google-ads-pricing-ahmedabad" element={<IndustryLandingPage config={phase2Pages.googleAdsPricing} />} />

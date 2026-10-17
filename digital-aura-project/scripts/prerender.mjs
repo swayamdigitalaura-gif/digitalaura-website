@@ -34,7 +34,7 @@ const HARDCODED_ROUTES = [
   '/google-ads-audit-ahmedabad',
   '/website-redesign-services-ahmedabad',
   '/website-maintenance-amc-ahmedabad',
-  '/seo/pricing',
+  '/seo/pricing-ahmedabad',
   '/seo/doctors-hospitals-ahmedabad',
   '/seo/manufacturers-b2b-gujarat',
   '/google-ads-pricing-ahmedabad',

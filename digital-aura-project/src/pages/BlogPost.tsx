@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { getBlogTheme } from "@/data/blogCategoryTheme";
 import { relatedServiceFor } from "@/data/relatedService";
-import sambhavPhoto from "@/assets/sambhav.jpg";
+import AuthorBox from "@/components/AuthorBox";
 
 const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
 const SITE_URL = "https://thedigitalaura.com";
@@ -125,9 +125,7 @@ const BlogPost = () => {
       image: blog.cover_image || undefined,
       datePublished: blog.createdAt,
       dateModified: blog.updatedAt || blog.createdAt,
-      author: blog.author?.name
-        ? { "@type": "Person", name: blog.author.name }
-        : { "@type": "Organization", name: "Digital Aura" },
+      author: { "@type": "Person", name: "Sambhav Shah", url: SITE_URL + "/about/" },
       publisher: { "@type": "Organization", name: "Digital Aura", url: SITE_URL },
       mainEntityOfPage: canonicalUrl,
     });
@@ -162,7 +160,7 @@ const BlogPost = () => {
   const dateStr = fmtDate(blog.createdAt);
   const theme = getBlogTheme(blog.category);
   const CategoryIcon = theme.Icon;
-  const authorName = blog.author?.name || "Sambhav Shah";
+  const authorName = "Sambhav Shah"; // one author on every blog post
   const relatedService = relatedServiceFor(blog.slug, blog.category);
   const showUpdated =!!blog.updatedAt && !!blog.createdAt && new Date(blog.updatedAt).getTime() - new Date(blog.createdAt).getTime() > 24 * 60 * 60 * 1000;
 
@@ -177,12 +175,12 @@ const BlogPost = () => {
             <div className="absolute inset-0 dot-pattern opacity-20" />
           </div>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="max-w-3xl mx-auto relative z-10 py-10 text-center px-5">
-            <Link to="/blog/" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: theme.color }}>
+            <Link to="/blog/" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: theme.ink }}>
               ← Back to All Articles
             </Link>
             {blog.category && (
               <div className="flex justify-center mb-6">
-                <span className="inline-flex items-center gap-2 text-xs font-bold px-4 py-2 rounded-full" style={{ color: theme.color, background: theme.bg, border: `1px solid ${theme.border}` }}>
+                <span className="inline-flex items-center gap-2 text-xs font-bold px-4 py-2 rounded-full" style={{ color: theme.ink, background: theme.bg, border: `1px solid ${theme.border}` }}>
                   <CategoryIcon size={13} /> {blog.category}
                 </span>
               </div>
@@ -194,8 +192,8 @@ const BlogPost = () => {
               <p className="text-lg mb-8 leading-relaxed max-w-xl mx-auto text-[#4B5563]">{shortTeaser(blog.excerpt)}</p>
             )}
             <div className="flex flex-wrap items-center gap-5 text-sm justify-center text-[#6B7280]">
-              <span className="flex items-center gap-1.5"><Calendar size={14} style={{ color: theme.color }} /> {dateStr}</span>
-              <span className="flex items-center gap-1.5"><Clock size={14} style={{ color: theme.color }} /> {minutes} min read</span>
+              <span className="flex items-center gap-1.5"><Calendar size={14} style={{ color: theme.ink }} /> {dateStr}</span>
+              <span className="flex items-center gap-1.5"><Clock size={14} style={{ color: theme.ink }} /> {minutes} min read</span>
               {showUpdated && (
                 <span className="flex items-center gap-1.5">Last updated: <time dateTime={blog.updatedAt}>{fmtDate(blog.updatedAt as string)}</time></span>
               )}
@@ -210,46 +208,12 @@ const BlogPost = () => {
             <div className="lg:col-span-2 min-w-0">
               <div
                 className="blog-prose"
-                style={{ ["--accent" as string]: theme.color }}
+                style={{ ["--accent" as string]: theme.color, ["--accent-ink" as string]: theme.ink }}
                 dangerouslySetInnerHTML={{ __html: blog.content || "" }}
               />
 
-              {/* Author box */}
-              <div className="mt-12 rounded-2xl p-6 md:p-8 border" style={{ borderColor: "#E5E7EB", background: "#F8FAFF" }}>
-                <p className="text-[11px] font-black uppercase tracking-[0.14em] mb-5 flex items-center gap-2" style={{ color: HEADING }}>
-                  <span className="w-4 h-0.5 rounded-full" style={{ background: theme.color }} /> About the Author
-                </p>
-                <div className="flex flex-col sm:flex-row gap-6">
-                  <div className="shrink-0 flex sm:flex-col items-center sm:items-start gap-4 sm:gap-3">
-                    <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden" style={{ boxShadow: `0 8px 32px ${theme.glow}`, border: `3px solid ${theme.border}` }}>
-                      <img src={sambhavPhoto} alt={authorName} className="w-full h-full object-cover object-top" />
-                    </div>
-                    <div className="sm:hidden">
-                      <p className="font-black text-lg leading-tight" style={{ color: HEADING }}>{authorName}</p>
-                      <p className="text-sm font-semibold" style={{ color: theme.color }}>Founder, Digital Aura</p>
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <div className="hidden sm:block mb-3">
-                      <p className="font-black text-xl leading-tight" style={{ color: HEADING }}>{authorName}</p>
-                      <p className="text-sm font-semibold" style={{ color: theme.color }}>Founder, Digital Aura</p>
-                    </div>
-                    <p className="text-[15px] leading-relaxed mb-3 text-[#4B5563]">
-                      Sambhav didn't learn digital marketing in a classroom. Starting in 2015, he built his expertise the hard way — self-taught, hands-on, scaling teams and driving growth across industries for over a decade.
-                    </p>
-                    <p className="text-sm leading-relaxed text-[#4B5563]">
-                      With 10+ years of cross-functional experience in client acquisition, team leadership, and digital execution, he's personally involved in strategy on every engagement Digital Aura takes on.
-                    </p>
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      {["SEO Strategy", "Performance Marketing", "AI Solutions", "Team Leadership"].map((tag) => (
-                        <span key={tag} className="text-[11px] font-semibold px-2.5 py-1 rounded-full" style={{ background: "#fff", color: theme.color, border: `1px solid ${theme.border}` }}>
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {/* Author (E-E-A-T): Sambhav Shah, same card as the static posts, About page and cluster pages */}
+              <AuthorBox accent={theme.ink} className="mt-12 !max-w-none !px-0" />
 
               {relatedService && (
                 <div className="mt-8 rounded-2xl p-6 border" style={{ borderColor: theme.border, background: theme.bg }}>
@@ -258,11 +222,11 @@ const BlogPost = () => {
                   <p className="text-sm text-[#4B5563] mb-4">{relatedService.blurb}</p>
                   {/* Pillar apps outside the SPA need a normal anchor; in-app routes use Link. */}
                   {relatedService.external ? (
-                    <a href={relatedService.href} className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.color }}>
+                    <a href={relatedService.href} className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.ink }}>
                       {relatedService.cta} <ArrowRight size={14} />
                     </a>
                   ) : (
-                    <Link to={relatedService.href} className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.color }}>
+                    <Link to={relatedService.href} className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.ink }}>
                       {relatedService.cta} <ArrowRight size={14} />
                     </Link>
                   )}
@@ -270,7 +234,7 @@ const BlogPost = () => {
               )}
 
               <div className="pt-8 mt-8 border-t flex items-center justify-between flex-wrap gap-4" style={{ borderColor: "#E5E7EB" }}>
-                <Link to="/blog/" className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.color }}>
+                <Link to="/blog/" className="inline-flex items-center gap-2 text-sm font-semibold hover:gap-3 transition-all" style={{ color: theme.ink }}>
                   <ArrowLeft size={14} /> Back to all posts
                 </Link>
                 <div className="flex items-center gap-2">
@@ -278,7 +242,7 @@ const BlogPost = () => {
                     className="grid h-9 w-9 place-items-center rounded-full border border-[#E5E7EB] bg-white text-[#6B7280] transition-all hover:-translate-y-0.5" style={{ borderColor: "#E5E7EB" }}>
                     <Linkedin size={15} />
                   </a>
-                  <span className="inline-flex items-center gap-1.5 text-xs text-[#9CA3AF]"><LinkIcon size={12} /> {canonicalUrl.replace("https://", "")}</span>
+                  <span className="inline-flex items-center gap-1.5 text-xs text-[#6B7280]"><LinkIcon size={12} /> {canonicalUrl.replace("https://", "")}</span>
                 </div>
               </div>
             </div>
@@ -288,7 +252,7 @@ const BlogPost = () => {
               <div className="rounded-2xl p-6 border overflow-hidden relative" style={{ borderColor: "#E5E7EB" }}>
                 <div className="h-1.5 w-full rounded-full mb-5" style={{ background: `linear-gradient(90deg, ${theme.color}, #7C3AED)` }} />
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: theme.bg, border: `1px solid ${theme.border}` }}>
-                  <CategoryIcon size={18} style={{ color: theme.color }} />
+                  <CategoryIcon size={18} style={{ color: theme.ink }} />
                 </div>
                 <h3 className="font-black text-base mb-2" style={{ color: HEADING }}>Want results like this?</h3>
                 <p className="text-xs mb-4 leading-relaxed text-[#6B7280]">Talk to Digital Aura about your growth.</p>

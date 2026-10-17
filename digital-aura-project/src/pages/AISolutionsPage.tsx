@@ -24,10 +24,10 @@ const servicesList = [
   { title: "AI Chatbots & Assistants", icon: Bot, iconName: "Bot", href: "/services/ai-chatbot-assistant/", desc: "Deploy 24/7 conversational agents" },
   { title: "AI Powered Web Apps", icon: WorkflowIcon, iconName: "Workflow", href: "/services/ai-powered-web-apps/", desc: "Generative interfaces & real time data" },
   { title: "Custom AI Solutions", icon: Cpu, iconName: "Cpu", href: "/services/custom-ai-web-solutions/", desc: "Bespoke SaaS & Vertical platforms" },
-  { title: "LLM Powered Apps", icon: Brain, iconName: "Brain", href: "/services/llm-powered-apps/", desc: "RAG systems & enterprise knowledge bases" },
-  { title: "Predictive Analytics", icon: LineChart, iconName: "LineChart", href: "/services/predictive-analytics/", desc: "Demand forecasting & churn prediction ML" },
-  { title: "Custom ML Models", icon: Blocks, iconName: "Blocks", href: "/services/custom-ml-models/", desc: "Bespoke algorithms trained on your local data" },
-  { title: "AI API Integrations", icon: Code2, iconName: "Code2", href: "/services/ai-api-integration/", desc: "Seamlessly embed OpenAI, Anthropic & Gemini" }
+  { title: "LLM Powered Apps", icon: Brain, iconName: "Brain", href: "/services/ai/llm-powered-apps/", desc: "RAG systems & enterprise knowledge bases" },
+  { title: "Predictive Analytics", icon: LineChart, iconName: "LineChart", href: "/services/ai/predictive-analytics/", desc: "Demand forecasting & churn prediction ML" },
+  { title: "Custom ML Models", icon: Blocks, iconName: "Blocks", href: "/services/ai/custom-ml-models/", desc: "Bespoke algorithms trained on your local data" },
+  { title: "AI API Integrations", icon: Code2, iconName: "Code2", href: "/services/ai/api-integration/", desc: "Seamlessly embed OpenAI, Anthropic & Gemini" }
 ];
 
 const engagementModels = [

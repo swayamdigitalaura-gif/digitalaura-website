@@ -21,7 +21,7 @@ const relatedSeo = [
   { title: "SEO Services in Ahmedabad", desc: "Our SEO company page: services, process and what to expect month by month.", points: ["Technical SEO", "Local SEO", "AI search"], href: "/seo-services-ahmedabad" },
   { title: "Google Ads Agency", desc: "Paid search to bring leads while SEO builds.", points: ["Search campaigns", "Call and WhatsApp tracking"], href: "/google-ads-agency-ahmedabad" },
   { title: "SEO Audit & Strategy", desc: "The full audit and strategy service.", points: ["Technical audit", "Keyword map"], href: "/services/seo-content-marketing/seo-audit-strategy/" },
-  { title: "SEO Packages and Pricing", desc: "How our SEO plans are scoped, what is included and what is not.", points: ["Scope-based", "Written quote"], href: "/seo/pricing/" },
+  { title: "SEO Packages and Pricing", desc: "How our SEO plans are scoped, what is included and what is not.", points: ["Scope-based", "Written quote"], href: "/seo/pricing-ahmedabad/" },
 ];
 
 const phase1Raw: Record<string, LocalServiceConfig> = {

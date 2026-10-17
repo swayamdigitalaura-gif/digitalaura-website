@@ -4,6 +4,7 @@ import { pageExtras } from "@/data/pageExtras";
 import { wave3Extras } from "@/data/wave3Extras";
 import { wave4Extras } from "@/data/wave4Extras";
 import { clusterExtras } from "@/data/clusterExtras";
+import { seoPlansSection, adsFeeSection, adLanguagesSection } from "@/data/pricingData";
 
 /**
  * Phase 2 pages from "Digital Aura Page Blueprints": seo-02, seo-05, seo-06, gads-02, gads-04, meta-02, meta-03.
@@ -91,19 +92,7 @@ const phase2Raw: Record<string, LocalServiceConfig> = {
     relatedCategoryColor: SEO_GREEN,
     relatedServices: seoRelated,
     extraSections: [
-      {
-        kind: "cards",
-        id: "plan-types",
-        title: "Which kind of SEO plan fits your business",
-        subtext: "We scope within these shapes. Your written quote lists the exact deliverables.",
-        items: [
-          { tag: "1", title: "Local / small business", desc: "For a clinic, shop or service business serving one city: technical fixes, key service pages, Google Business Profile and local citations." },
-          { tag: "2", title: "Growth", desc: "For businesses ready to compete for more services and areas: regular content, link building and conversion improvements on top of the basics." },
-          { tag: "3", title: "Competitive / ecommerce", desc: "For large catalogues or crowded markets: category and product optimisation, deeper content and technical work." },
-          { tag: "4", title: "Custom", desc: "Multi-location, export or multi-language projects, scoped around your goals." },
-        ],
-        footnote: "We do not publish fixed fees on this page yet. Your written quote shows the fee next to the exact work it covers.",
-      },
+      seoPlansSection(),
       {
         kind: "cards",
         id: "included-areas",
@@ -169,7 +158,7 @@ const phase2Raw: Record<string, LocalServiceConfig> = {
       },
     ],
     faqs: [
-      { q: "How much do SEO packages cost in Ahmedabad?", a: "Prices vary widely because scope varies. At Digital Aura the fee depends on your site, competition, locations and the content needed, and you receive it in writing after a free audit, next to the exact work it covers." },
+      { q: "How much do SEO packages cost in Ahmedabad?", a: "In Ahmedabad, our SEO plans run from ₹15,000 to ₹1,50,000 a month plus GST: SEO Basic ₹15,000–₹25,000, SEO Growth ₹25,000–₹50,000 and SEO Advance ₹50,000–₹1,50,000. Where you land depends on your site, competition, locations and the content needed, and you receive the exact fee in writing after a free audit, next to the exact work it covers." },
       { q: "What is included in a monthly SEO package?", a: "Depending on your plan: technical fixes, on-page optimisation, content, local SEO and Google Business Profile, link building, AI search work and reporting. Your quote lists what applies to you." },
       { q: "Do you charge per keyword?", a: "No. Keyword counts do not show how much work is involved, so we scope by pages, fixes, content and locations instead." },
       { q: "Is there a setup fee, and is GST extra?", a: "Any setup fee and GST treatment is stated in your written proposal before you decide." },
@@ -237,7 +226,7 @@ const phase2Raw: Record<string, LocalServiceConfig> = {
     relatedCategoryColor: SEO_GREEN,
     relatedServices: [
       { title: "Free SEO Audit", desc: "Start with a free audit of your clinic or hospital website.", points: ["Technical", "Local", "Content"], href: "/seo/free-audit/" },
-      { title: "SEO Packages and Pricing", desc: "How our SEO plans are scoped and what they include.", points: ["Scope-based", "Written quote"], href: "/seo/pricing/" },
+      { title: "SEO Packages and Pricing", desc: "How our SEO plans are scoped and what they include.", points: ["Scope-based", "Written quote"], href: "/seo/pricing-ahmedabad/" },
       { title: "Website Design for Doctors", desc: "Patient-first websites with booking and doctor profiles.", points: ["Appointment booking", "Doctor profiles"], href: "/website-design-for-doctors-ahmedabad/" },
     ],
     extraSections: [
@@ -293,7 +282,7 @@ const phase2Raw: Record<string, LocalServiceConfig> = {
         paragraphs: [
           "The cost depends on how many treatments, doctors and locations you want to rank for, how competitive your specialty is, and the condition of your current website. We give a written scope and fee after a free audit.",
         ],
-        links: [{ label: "How our SEO plans are scoped", href: "/seo/pricing/" }],
+        links: [{ label: "How our SEO plans are scoped", href: "/seo/pricing-ahmedabad/" }],
       },
     ],
     faqs: [
@@ -364,7 +353,7 @@ const phase2Raw: Record<string, LocalServiceConfig> = {
     relatedCategoryColor: SEO_GREEN,
     relatedServices: [
       { title: "Free SEO Audit", desc: "Start with a free audit of your manufacturing website.", points: ["Technical", "Product pages"], href: "/seo/free-audit/" },
-      { title: "SEO Packages and Pricing", desc: "How our SEO plans are scoped and what they include.", points: ["Scope-based", "Written quote"], href: "/seo/pricing/" },
+      { title: "SEO Packages and Pricing", desc: "How our SEO plans are scoped and what they include.", points: ["Scope-based", "Written quote"], href: "/seo/pricing-ahmedabad/" },
       { title: "Website Design for Manufacturers", desc: "Catalogue and RFQ websites for manufacturers and exporters.", points: ["Catalogue", "RFQ flow"], href: "/website-design-for-manufacturers-ahmedabad/" },
     ],
     extraSections: [
@@ -489,6 +478,8 @@ const phase2Raw: Record<string, LocalServiceConfig> = {
     relatedCategoryColor: "#22C55E",
     relatedServices: googleRelated,
     extraSections: [
+      adsFeeSection("google"),
+      adLanguagesSection("google"),
       {
         kind: "cards",
         id: "three-costs",
@@ -570,8 +561,8 @@ const phase2Raw: Record<string, LocalServiceConfig> = {
       },
     ],
     faqs: [
-      { q: "How much does Google Ads cost per month in Ahmedabad?", a: "Total cost is your ad spend plus the management fee plus any GST. You choose the ad spend. We give the management fee in a written quote after reviewing your goals and account." },
-      { q: "How much does a Google Ads agency in Ahmedabad charge?", a: "Agencies use flat fees, a percentage of ad spend, or a mix. We explain our fee in writing and always keep it separate from your ad spend." },
+      { q: "How much does Google Ads cost per month in Ahmedabad?", a: "Total cost is your ad spend plus the management fee plus GST. You choose the ad spend. For Ahmedabad businesses our management fee is ₹15,000 to ₹60,000 per month, written in a quote after we review your goals and account." },
+      { q: "How much does a Google Ads agency in Ahmedabad charge?", a: "Agencies use flat fees, a percentage of ad spend, or a mix. For Ahmedabad businesses our management fee is ₹15,000 to ₹60,000 per month plus GST, written in your quote and always kept separate from your ad spend, which you pay to Google from your own account." },
       { q: "Is GST charged on Google Ads and on agency fees?", a: "Tax treatment can differ between Google's invoices and agency fees. Please confirm with your accountant. Our proposal states how GST applies to our fee." },
       { q: "What is the average cost per click in Ahmedabad?", a: "It varies a lot by industry, keyword and season, so a single average is misleading. We estimate it for your market after keyword research." },
       { q: "Can I run Google Ads with a small monthly budget?", a: "You can, but a very small budget limits how much data the account gathers and how quickly it can improve. We advise honestly on what is realistic." },
@@ -762,6 +753,8 @@ const phase2Raw: Record<string, LocalServiceConfig> = {
     relatedCategoryColor: "#22C55E",
     relatedServices: metaRelated,
     extraSections: [
+      adsFeeSection("meta"),
+      adLanguagesSection("meta"),
       {
         kind: "cards",
         id: "two-budgets",
@@ -831,7 +824,7 @@ const phase2Raw: Record<string, LocalServiceConfig> = {
       },
     ],
     faqs: [
-      { q: "How much does a Meta ads agency charge in Ahmedabad?", a: "Agencies charge a management fee that varies with scope. We give ours in a written quote after a goal call and keep it separate from your ad spend." },
+      { q: "How much does a Meta ads agency charge in Ahmedabad?", a: "For Ahmedabad businesses, our Meta ads management fee is ₹15,000 to ₹60,000 per month plus GST, depending on scope: the number of campaigns, creative volume, languages and tracking. We give the exact fee in a written quote after a goal call and keep it separate from your ad spend, which you pay to Meta from your own ad account." },
       { q: "What is the minimum ad budget for Meta ads?", a: "It depends on your goal and market. A very small budget limits testing and learning. We advise honestly and suggest a starting test budget." },
       { q: "Is ad spend included in your fee?", a: "No. Ad spend is paid to Meta from your own ad account. Our fee covers the work." },
       { q: "Do you charge a setup fee?", a: "Any set-up fee is stated in your written proposal before you decide." },

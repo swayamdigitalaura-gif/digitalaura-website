@@ -13,6 +13,10 @@ import {
   ArrowRight, Check, X, Phone, MessageCircle, MapPin, ShieldAlert, Sparkles, Info, Clock, FileText,
 } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
+import PriceTable from "@/components/PriceTable";
+import AuthorBox from "@/components/AuthorBox";
+import { GUIDES } from "@/data/linkMap";
+import RelatedGuides from "@/components/RelatedGuides";
 import CaseStudies, { type CaseCard } from "@/components/CaseStudies";
 import Testimonials from "@/components/Testimonials";
 import PageLeadForm from "@/components/PageLeadForm";
@@ -225,6 +229,16 @@ function GuideSection({ sec, index }: { sec: ExtraSection; index: number }) {
     );
   }
 
+  if (sec.kind === "pricing") {
+    return (
+      <Wrap id={sec.id} bg={bg}>
+        <Head eyebrow={eyebrow} title={sec.title} sub={sub} />
+        <PriceTable columns={sec.columns} rows={sec.rows} accent={ORANGE} featuredCol={sec.featuredCol} caption={sec.title} />
+        {foot}
+      </Wrap>
+    );
+  }
+
   if (sec.kind === "compare") {
     return (
       <Wrap id={sec.id} bg={bg}>
@@ -267,7 +281,7 @@ function GuideSection({ sec, index }: { sec: ExtraSection; index: number }) {
             </Card>
           ))}
         </div>
-        <p className="mt-4 text-center text-xs text-[#9CA3AF]">Tap an item to tick it off as you go.</p>
+        <p className="mt-4 text-center text-xs text-[#6B7280]">Tap an item to tick it off as you go.</p>
         {foot}
       </Wrap>
     );
@@ -517,7 +531,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
       "short-answer": "The short answer", "who-its-for": "Who it suits", "ad-formats": "Facebook, Instagram or WhatsApp",
       "monthly-work": "Monthly work", "first-30-days": "First 30 days", "tracking-lead-quality": "Tracking and lead quality",
       creative: "Creative", industries: "Industries", "ahmedabad-calendar": "Ahmedabad calendar", "industry-pages": "Industry guides",
-      cost: "What it costs", "meta-vs-google": "Meta vs Google Ads", "choose-an-agency": "How to choose",
+      "management-fee": "Management fee", "ad-languages": "Ads in your language", cost: "What it costs", "meta-vs-google": "Meta vs Google Ads", "choose-an-agency": "How to choose",
     };
     const gtab = (id: string) => {
       const sec = pool.find((x) => x.id === id);
@@ -703,10 +717,24 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
 
     const shortSec = pool.find((x) => x.id === "short-answer");
     const shortTab = shortSec ? { id: "short-answer", label: labelFor["short-answer"], content: <div className="pillar-center"><GuideSection sec={shortSec} index={0} /></div> } : null;
-    const industryTabs = tabs([gtab("industries"), gtab("ahmedabad-calendar"), gtab("industry-pages")]);
+    const industryTabs = tabs([gtab("industries"), gtab("ahmedabad-calendar"), gtab("industry-pages"), gtab("ad-languages")]);
+    const GuidesBlock = (
+      <Wrap id="meta-guides" bg="#fff">
+        <Head eyebrow="Meta ads guides" title="Learn how Meta ads work before you hire anyone" sub="Plain-English guides from our team. Read them to judge any Meta ads proposal, ours included." />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {GUIDES.meta.map((g) => (
+            <a key={g.slug} href={`/blog/${g.slug}/`} className="group flex h-full flex-col justify-between gap-3 rounded-2xl border bg-white p-5 transition-shadow hover:shadow-md" style={{ borderColor: "#E5E7EB" }}>
+              <span className="text-[16px] font-bold leading-snug" style={{ color: NAVY }}>{g.title}</span>
+              <span className="inline-flex items-center gap-1 text-sm font-semibold transition-all group-hover:gap-2" style={{ color: ORANGE }}>Read the guide <ArrowRight size={14} /></span>
+            </a>
+          ))}
+        </div>
+      </Wrap>
+    );
     const exploreFinal = tabs([
       RelatedBlock ? { id: "related", label: "More ways we can help", content: RelatedBlock } : null,
       StartBlock ? { id: "start", label: "How to start", content: StartBlock } : null,
+      { id: "guides", label: "Meta ads guides", content: GuidesBlock },
       ...restSections.map((sec) => ({ id: sec.id, label: chipLabel(sec), content: <GuideSection sec={sec} index={0} /> })),
     ]);
 
@@ -797,7 +825,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
           </PillarSection>
 
           {/* 7. Industries */}
-          <PillarSection id="industries-group" tone="light" eyebrow="Who we serve" title="Industries we run Meta ads for, and the Ahmedabad calendar">
+          <PillarSection id="industries-group" tone="light" eyebrow="Who we serve" title="Industries, the Ahmedabad calendar and the languages we run Meta ads in">
             <PillarTabs label="Industries" initial="industry-pages" tabs={industryTabs} />
           </PillarSection>
 
@@ -818,7 +846,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
 
           {/* 10. Pricing and comparison */}
           <PillarSection id="pricing" tone="light" eyebrow="Pricing & comparison" title="What Meta ads cost, and how to choose an agency">
-            <PillarTabs label="Pricing and comparison" tabs={tabs([gtab("cost"), { id: "why", label: "Why Digital Aura", content: WhyBlock }, gtab("meta-vs-google"), gtab("choose-an-agency")])} />
+            <PillarTabs label="Pricing and comparison" tabs={tabs([gtab("management-fee"), gtab("cost"), { id: "why", label: "Why Digital Aura", content: WhyBlock }, gtab("meta-vs-google"), gtab("choose-an-agency")])} />
           </PillarSection>
 
           {/* 11. Team */}
@@ -850,16 +878,6 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
           {/* 12. FAQ (always open) */}
           <PillarSection id="faqs" tone="light" eyebrow="FAQs" title={c.faqTitle || "Frequently Asked Questions"}>
             <PillarFaq items={c.faqs} />
-            {c.sources && c.sources.length > 0 && (
-              <div className="mt-10 rounded-2xl border bg-white p-5" style={{ borderColor: "#EDE3DA" }}>
-                <h3 className="text-[13px] font-black uppercase tracking-[0.14em]" style={{ color: NAVY }}>Sources and further reading</h3>
-                <ul className="mt-3 space-y-1.5 text-sm">
-                  {c.sources.map((s2) => (
-                    <li key={s2.href}><a href={s2.href} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: ORANGE }}>{s2.label}</a></li>
-                  ))}
-                </ul>
-              </div>
-            )}
           </PillarSection>
 
           {/* 13. Final CTA + form */}
@@ -1285,17 +1303,11 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
         <div className="divide-y" style={{ borderColor: "#E5E7EB" }}>
           {c.faqs.map((f) => <Faq key={f.q} q={f.q} a={f.a} />)}
         </div>
-        {c.sources && c.sources.length > 0 && (
-          <div className="mt-10 rounded-2xl border bg-white p-5" style={{ borderColor: "#E5E7EB" }}>
-            <h2 className="text-[13px] font-black uppercase tracking-[0.14em]" style={{ color: NAVY }}>Sources and further reading</h2>
-            <ul className="mt-3 space-y-1.5 text-sm">
-              {c.sources.map((s) => (
-                <li key={s.href}><a href={s.href} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: ORANGE }}>{s.label}</a></li>
-              ))}
-            </ul>
-          </div>
-        )}
       </Wrap>
+
+      {/* Author (E-E-A-T): same Sambhav Shah card as the blog posts and the About page */}
+      <RelatedGuides parentHref={c.parentServiceHref} accent={ORANGE} />
+      <section className="bg-white py-10"><AuthorBox accent={ORANGE} /></section>
 
       {/* 15. Closing call to action */}
       <section id="final-cta" className={pillar ? "px-5 pb-16 pt-4 md:px-8 md:pb-20" : "relative overflow-hidden px-4 py-16 text-center md:px-8 md:py-20"} style={{ background: pillar ? "#fff" : NAVY }}>

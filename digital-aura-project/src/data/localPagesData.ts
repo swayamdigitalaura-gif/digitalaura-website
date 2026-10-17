@@ -3,6 +3,7 @@ import { LAST_UPDATED } from "@/data/auditContent";
 import { enhance } from "@/data/pageEnhancements";
 import { pillarExtras } from "@/data/pageExtras";
 import { wave3Extras } from "@/data/wave3Extras";
+import { adsFeeSection, adLanguagesSection } from "@/data/pricingData";
 
 const BLUE = "#1A6FE8";
 const SHOPIFY_GREEN = "#96BF48";
@@ -588,7 +589,7 @@ const localPagesRaw: Record<string, LocalServiceConfig> = {
     faqs: [
       { q: "Is there a good SEO agency in Ahmedabad?", a: "Yes — Digital Aura is an Ahmedabad-based SEO agency and SEO company that has delivered 750+ projects, with dedicated in-house SEO, content, and technical specialists." },
       { q: "What's the difference between an SEO agency and an SEO company?", a: "In practice, the terms are used interchangeably — both describe a business that provides SEO services. What matters more is whether the agency does the work in-house and reports on real outcomes, not just activity." },
-      { q: "How much does SEO cost in Ahmedabad?", a: "SEO packages typically start from a fixed monthly retainer, scaled to the size of your site and competitiveness of your industry. An exact quote follows a free audit call." },
+      { q: "How much does SEO cost in Ahmedabad?", a: "In Ahmedabad, our SEO plans run from ₹15,000 to ₹1,50,000 per month plus GST: SEO Basic ₹15,000–₹25,000, SEO Growth ₹25,000–₹50,000 and SEO Advance ₹50,000–₹1,50,000. The exact fee depends on the size of your site and how competitive your industry is, and follows a free audit call." },
       { q: "How long does SEO take to show results in Ahmedabad?", a: "Local SEO improvements can show local pack movement within 4-6 weeks; broader organic ranking growth typically builds over 3-6 months." },
       { q: "Do you also handle AI search visibility (AIO/GEO)?", a: "Yes — alongside traditional SEO, we optimise for Google AI Overviews and for being cited by tools like ChatGPT and Perplexity." },
     ],
@@ -652,7 +653,7 @@ const localPagesRaw: Record<string, LocalServiceConfig> = {
     faqs: [
       { q: "Is there a good SEO company that serves all of Gujarat?", a: "Yes — Digital Aura works with businesses across Ahmedabad, Surat, Vadodara, Rajkot, and other Gujarat cities, often being searched for as the best SEO agency in Gujarat by businesses comparing options statewide." },
       { q: "Do you build separate local SEO pages for each city?", a: "Yes — genuine local SEO requires content specific to each city, not one page trying to rank for five different locations at once." },
-      { q: "How much does SEO cost for a Gujarat-based business?", a: "SEO packages typically start from a fixed monthly retainer, scaled to the size of your site and competitiveness of your industry. An exact quote follows a free audit call." },
+      { q: "How much does SEO cost for a Gujarat-based business?", a: "SEO packages typically start from a fixed monthly retainer, scaled to the size of your site and competitiveness of your industry. An exact quote follows a free audit call. Our published plan prices are for businesses in Ahmedabad; see our SEO packages page for Ahmedabad." },
       { q: "Can SEO work be managed remotely for clients outside Ahmedabad?", a: "Yes — audits, strategy calls, and monthly reporting are all handled over video calls and shared dashboards regardless of your city." },
       { q: "How long does SEO take to show results?", a: "Local SEO improvements can show local pack movement within 4-6 weeks; broader organic ranking growth typically builds over 3-6 months." },
     ],
@@ -1040,6 +1041,7 @@ const localPagesRaw: Record<string, LocalServiceConfig> = {
     ],
     faqs: [
       { q: "Is there a good Google Ads agency in Ahmedabad?", a: "Yes — Digital Aura is an Ahmedabad-based Google Ads agency running Search, Display, and Shopping campaigns for local businesses, with in-house paid media specialists managing every account." },
+      { q: "How much does Google Ads management cost in Ahmedabad?", a: "For Ahmedabad businesses, our Google Ads management fee is ₹15,000 to ₹60,000 per month plus GST. Your ad budget is separate and is paid to Google from your own account. The exact fee is written in your quote." },
       { q: "How much should I budget for Google Ads in Ahmedabad?", a: "Budget depends on your industry's competitiveness and lead value. Most local businesses start testing with a modest monthly budget before scaling what works." },
       { q: "What's a good cost-per-lead for Google Ads?", a: "It varies significantly by industry — a benchmark is set during your account audit by comparing your current metrics against realistic targets for your specific market." },
       { q: "How long before Google Ads start delivering results?", a: "Campaigns typically need 2-4 weeks of data to optimise properly; meaningful cost-per-lead improvements are usually visible within the first 4-6 weeks." },
@@ -1304,6 +1306,8 @@ const localPagesRaw: Record<string, LocalServiceConfig> = {
           { tag: "04", title: "GST", desc: "GST applies to agency fees and to Meta ad invoices under Indian tax rules. Ask your accountant how input credit applies to you." },
         ],
       },
+      adsFeeSection("meta"),
+      adLanguagesSection("meta"),
       {
         kind: "compare",
         id: "meta-vs-google",
@@ -1363,7 +1367,9 @@ const localPagesRaw: Record<string, LocalServiceConfig> = {
     ],
     faqs: [
       { q: "Is there a good Meta Ads agency in Ahmedabad?", a: "Yes — Digital Aura is an Ahmedabad-based Meta Ads agency running Facebook and Instagram campaigns for local businesses, with in-house paid media specialists managing every account." },
+      { q: "How much does Meta ads management cost in Ahmedabad?", a: "For Ahmedabad businesses, our Meta ads management fee is ₹15,000 to ₹60,000 per month plus GST. Where you land depends on the number of campaigns, creative volume, languages and tracking. Your ad budget is separate and is paid to Meta from your own ad account. The exact fee is written in your quote." },
       { q: "How much should I budget for Meta Ads in Ahmedabad?", a: "Budget depends on your industry and campaign goal. Most local businesses start testing with a modest monthly budget before scaling what works." },
+      { q: "Can you run Meta ads in Gujarati, Hindi, Marathi or Tamil?", a: "Yes. We write and run Facebook and Instagram ads in English, Hindi, Gujarati, Marathi, Tamil and other languages, including the ad text, video captions, lead form questions and WhatsApp message, and we report each language separately." },
       { q: "What's a good ROAS for Meta Ads?", a: "It varies by industry and margin — a realistic benchmark is set during your account audit based on your specific business economics." },
       { q: "Do you handle both lead generation and eCommerce campaigns?", a: "Yes — lead generation ads for service businesses and catalogue/conversion campaigns for eCommerce brands are both core parts of our Meta Ads service." },
       { q: "How long before Meta Ads start delivering results?", a: "Campaigns typically need 1-2 weeks of data and creative testing to optimise properly; meaningful improvements are usually visible within the first month." },

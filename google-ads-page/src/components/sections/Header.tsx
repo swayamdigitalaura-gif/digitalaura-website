@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import {
   Menu, X, Phone, ChevronDown,
   Bot, Brain, Workflow,
-  Globe2, Code2, PenTool,
+  Globe2, Code2, PenTool, MonitorSmartphone, Hash,
   ShoppingCart, Store,
   Search, Share2, Target,
   Smartphone, AppWindow, Layers,
@@ -33,9 +33,9 @@ const megaCategories = [
     key: "web", label: "Web Solutions", color: "#1A6FE8", bg: "rgba(26,111,232,0.07)",
     items: [
       { icon: Globe2,  title: "Custom Web Development",  desc: "High performance, SEO ready websites",          route: `${BASE}/services/web-app-development` },
-      { icon: Globe2,  title: "Website Development Ahmedabad", desc: "Business websites built to rank and convert", route: `${BASE}/website-development-services-ahmedabad/` },
       { icon: Code2,   title: "Full Stack Development",  desc: "End to end apps with robust backends & APIs",   route: `${BASE}/services/full-stack-development` },
       { icon: PenTool, title: "WordPress Development",   desc: "Fast, SEO driven WordPress sites",              route: `${BASE}/services/wordpress-development` },
+      { icon: MonitorSmartphone,  title: "Website Development Ahmedabad", desc: "Business websites built to rank and convert", route: `${BASE}/website-development-services-ahmedabad/` },
     ],
   },
   {
@@ -51,6 +51,7 @@ const megaCategories = [
       { icon: Search, title: "SEO & Content Marketing", desc: "Rank on page 1 with technical SEO & content", route: `${BASE}/seo-services-ahmedabad` },
       { icon: Target, title: "Google Ads",              desc: "Data driven Search, Display & Shopping ads",   route: `${BASE}/google-ads-agency-ahmedabad` },
       { icon: Share2, title: "Meta Ads",                desc: "Facebook & Instagram campaigns that convert",  route: `${BASE}/meta-ads-agency-ahmedabad/` },
+      { icon: Hash,   title: "Social Media Marketing",  desc: "Content, community & organic growth",         route: `${BASE}/services/social-media-marketing` },
     ],
   },
   {
@@ -211,7 +212,7 @@ export function Header() {
             <a href="tel:+918141200284" className="flex items-center gap-1.5 text-[15px] font-medium text-[#374151] hover:text-[#FF6B2B] transition-colors">
               <Phone size={14} className="text-[#FF6B2B]" /> +91 81412 00284
             </a>
-            <a href={`${BASE}/contact`} style={{ background: "#FF6B2B", color: "#fff", borderRadius: "8px", padding: "10px 20px", fontWeight: 600, fontSize: "15px", textDecoration: "none", display: "inline-block" }}>
+            <a href={`${BASE}/contact#contact-form`} className="btn-orange px-5 py-2.5 text-[15px]">
               Get Growth Plan
             </a>
           </div>
@@ -255,7 +256,7 @@ export function Header() {
                 <ChevronDown size={20} className={`transition-transform duration-200 ${mobileServicesOpen ? "rotate-180" : ""}`} />
               </button>
             </div>
-            <div className={`overflow-hidden transition-all duration-200 ${mobileServicesOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}>
+            <div className={`overflow-hidden transition-all duration-200 ${mobileServicesOpen ? "max-h-[1600px] opacity-100" : "max-h-0 opacity-0"}`}>
               {megaCategories.map(cat => (
                 <div key={cat.key} className="mb-4 mt-2">
                   <div className="flex items-center gap-2 mb-2 px-1">
@@ -286,7 +287,7 @@ export function Header() {
           <a href="tel:+918141200284" className="flex items-center gap-2 text-sm text-[#6B7280]">
             <Phone size={14} className="text-[#FF6B2B]" /> +91 81412 00284
           </a>
-          <a href={`${BASE}/contact`} className="block text-center w-full py-4 px-6 text-base font-semibold text-white rounded-xl" style={{ background: "#FF6B2B" }}>
+          <a href={`${BASE}/contact#contact-form`} className="btn-orange px-6 py-4 text-base w-full block text-center">
             Get Growth Plan →
           </a>
         </div>

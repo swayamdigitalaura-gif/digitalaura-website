@@ -8,6 +8,8 @@ import {
   Brain,
   Workflow,
   Globe2,
+  MonitorSmartphone,
+  Hash,
   Code2,
   PenTool,
   ShoppingCart,
@@ -82,12 +84,6 @@ const megaCategories = [
         route: `${BASE}/services/web-app-development`,
       },
       {
-        icon: Globe2,
-        title: "Website Development Ahmedabad",
-        desc: "Business websites built to rank and convert",
-        route: `${BASE}/website-development-services-ahmedabad/`,
-      },
-      {
         icon: Code2,
         title: "Full Stack Development",
         desc: "End to end apps with robust backends & APIs",
@@ -98,6 +94,12 @@ const megaCategories = [
         title: "WordPress Development",
         desc: "Fast, SEO driven WordPress sites",
         route: `${BASE}/services/wordpress-development`,
+      },
+      {
+        icon: MonitorSmartphone,
+        title: "Website Development Ahmedabad",
+        desc: "Business websites built to rank and convert",
+        route: `${BASE}/website-development-services-ahmedabad/`,
       },
     ],
   },
@@ -144,6 +146,12 @@ const megaCategories = [
         title: "Meta Ads",
         desc: "Facebook & Instagram campaigns that convert",
         route: `${BASE}/meta-ads-agency-ahmedabad/`,
+      },
+      {
+        icon: Hash,
+        title: "Social Media Marketing",
+        desc: "Content, community & organic growth",
+        route: `${BASE}/services/social-media-marketing`,
       },
     ],
   },
@@ -520,7 +528,7 @@ export function MainSiteNavbar() {
               </button>
             </div>
             <div
-              className={`overflow-hidden transition-all duration-200 ${mobileServicesOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}
+              className={`overflow-hidden transition-all duration-200 ${mobileServicesOpen ? "max-h-[1600px] opacity-100" : "max-h-0 opacity-0"}`}
             >
               {megaCategories.map((cat) => (
                 <div key={cat.key} className="mb-4 mt-2">

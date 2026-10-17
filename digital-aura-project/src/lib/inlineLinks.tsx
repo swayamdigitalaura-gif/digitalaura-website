@@ -1,5 +1,5 @@
 import { Fragment, type ReactNode } from "react";
-import { Link } from "react-router-dom";
+import { AppLink } from "@/components/AppLink";
 
 /**
  * Renders a plain string that may contain markdown-style links: "see [our SEO guide](/seo/pricing-ahmedabad/) first".
@@ -21,7 +21,7 @@ export function renderInline(text: string): ReactNode {
     const cls = "font-semibold underline underline-offset-2 hover:opacity-80";
     out.push(
       href.startsWith("/") && !HARD.test(href)
-        ? <Link key={out.length} to={href} className={cls}>{label}</Link>
+        ? <AppLink key={out.length} to={href} className={cls}>{label}</AppLink>
         : <a key={out.length} href={href} className={cls}>{label}</a>,
     );
     last = m.index + m[0].length;

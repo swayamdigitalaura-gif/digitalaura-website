@@ -8,7 +8,7 @@
  * Every answer stays in the DOM (also when a FAQ is closed) so crawlers and AI tools can read it.
  */
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { AppLink } from "./AppLink";
 import {
   ArrowRight, Check, X, Phone, MessageCircle, MapPin, ShieldAlert, Sparkles, Info, Clock, FileText,
 } from "lucide-react";
@@ -666,9 +666,9 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
                   <li key={p} className="flex items-center gap-2 text-sm font-medium text-[#374151]"><span className="h-1.5 w-1.5 rounded-full" style={{ background: ORANGE }} />{p}</li>
                 ))}
               </ul>
-              <Link to={s.href} className="mt-4 inline-flex items-center gap-1 text-sm font-bold hover:gap-2" style={{ color: ORANGE }}>
+              <AppLink to={s.href} className="mt-4 inline-flex items-center gap-1 text-sm font-bold hover:gap-2" style={{ color: ORANGE }}>
                 Learn more<span className="sr-only"> about {s.title}</span> <ArrowRight size={14} />
-              </Link>
+              </AppLink>
             </Card>
           ))}
         </div>
@@ -753,9 +753,9 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
             <div className="pointer-events-none absolute -right-24 -top-24 h-[520px] w-[520px] rounded-full" style={{ background: `radial-gradient(circle, ${ORANGE}1f 0%, transparent 70%)`, filter: "blur(60px)" }} />
             <div className="relative mx-auto grid max-w-[1200px] items-start gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
               <div>
-                <Link to={c.parentServiceHref} className="mb-5 inline-flex items-center gap-1 text-xs font-bold hover:underline" style={{ color: ORANGE }}>
+                <AppLink to={c.parentServiceHref} className="mb-5 inline-flex items-center gap-1 text-xs font-bold hover:underline" style={{ color: ORANGE }}>
                   ← Back to {c.parentServiceLabel}
-                </Link>
+                </AppLink>
                 <div className="mb-5"><Eyebrow><MapPin size={11} className="mr-1 inline -mt-0.5" />{c.eyebrow}</Eyebrow></div>
                 <h1 className="font-bold leading-[1.18] tracking-[-0.02em]" style={{ color: NAVY, fontSize: "clamp(30px, 4vw, 48px)" }}><span data-cms-key={k("h1")} data-cms-label="Hero Heading" data-cms-attr="text">{c.h1}</span></h1>
                 <p className="mt-5 text-[17px] leading-relaxed text-[#4B5563] md:text-lg"><span data-cms-key={k("heroParagraph")} data-cms-label="Hero Paragraph" data-cms-attr="text">{c.heroParagraph}</span></p>
@@ -937,9 +937,9 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
         <div className="pointer-events-none absolute -right-24 -top-24 h-[520px] w-[520px] rounded-full" style={{ background: `radial-gradient(circle, ${ORANGE}1f 0%, transparent 70%)`, filter: "blur(60px)" }} />
         <div className={`relative mx-auto grid items-start gap-10 lg:gap-14 ${c.quickAnswer || stats.length > 0 || pillar ? (pillar ? "max-w-7xl lg:grid-cols-[1fr_1fr]" : "max-w-6xl lg:grid-cols-[1.1fr_0.9fr]") : "max-w-4xl"}`}>
           <div>
-            <Link to={c.parentServiceHref} className="mb-5 inline-flex items-center gap-1 text-xs font-bold hover:underline" style={{ color: ORANGE }}>
+            <AppLink to={c.parentServiceHref} className="mb-5 inline-flex items-center gap-1 text-xs font-bold hover:underline" style={{ color: ORANGE }}>
               ← Back to {c.parentServiceLabel}
-            </Link>
+            </AppLink>
             <div className="mb-5"><Eyebrow><MapPin size={11} className="mr-1 inline -mt-0.5" />{c.eyebrow}</Eyebrow></div>
             <h1 className={pillar ? "text-[30px] font-bold leading-[1.18] tracking-[-0.02em] md:text-[44px] lg:text-[50px]" : "text-[28px] font-black leading-[1.15] tracking-tight md:text-[40px]"} style={{ color: NAVY }}><span data-cms-key={k("h1")} data-cms-label="Hero Heading" data-cms-attr="text">{c.h1}</span></h1>
             <p className="mt-5 text-[17px] leading-relaxed text-[#4B5563] md:text-lg"><span data-cms-key={k("heroParagraph")} data-cms-label="Hero Paragraph" data-cms-attr="text">{c.heroParagraph}</span></p>
@@ -1286,9 +1286,9 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
                   <li key={p} className="flex items-center gap-2 text-sm font-medium text-[#374151]"><span className="h-1.5 w-1.5 rounded-full" style={{ background: ORANGE }} />{p}</li>
                 ))}
               </ul>
-              <Link to={s.href} className="mt-4 inline-flex items-center gap-1 text-sm font-bold hover:gap-2" style={{ color: ORANGE }}>
+              <AppLink to={s.href} className="mt-4 inline-flex items-center gap-1 text-sm font-bold hover:gap-2" style={{ color: ORANGE }}>
                 Learn more<span className="sr-only"> about {s.title}</span> <ArrowRight size={14} />
-              </Link>
+              </AppLink>
             </Card>
           ))}
         </div>

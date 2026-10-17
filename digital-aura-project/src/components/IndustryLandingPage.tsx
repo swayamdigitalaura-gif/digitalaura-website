@@ -281,7 +281,7 @@ function GuideSection({ sec, index }: { sec: ExtraSection; index: number }) {
             </Card>
           ))}
         </div>
-        <p className="mt-4 text-center text-xs text-[#9CA3AF]">Tap an item to tick it off as you go.</p>
+        <p className="mt-4 text-center text-xs text-[#6B7280]">Tap an item to tick it off as you go.</p>
         {foot}
       </Wrap>
     );

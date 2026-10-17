@@ -125,9 +125,7 @@ const BlogPost = () => {
       image: blog.cover_image || undefined,
       datePublished: blog.createdAt,
       dateModified: blog.updatedAt || blog.createdAt,
-      author: blog.author?.name
-        ? { "@type": "Person", name: blog.author.name }
-        : { "@type": "Organization", name: "Digital Aura" },
+      author: { "@type": "Person", name: "Sambhav Shah", url: SITE_URL + "/about/" },
       publisher: { "@type": "Organization", name: "Digital Aura", url: SITE_URL },
       mainEntityOfPage: canonicalUrl,
     });
@@ -162,7 +160,7 @@ const BlogPost = () => {
   const dateStr = fmtDate(blog.createdAt);
   const theme = getBlogTheme(blog.category);
   const CategoryIcon = theme.Icon;
-  const authorName = blog.author?.name || "Sambhav Shah";
+  const authorName = "Sambhav Shah"; // one author on every blog post
   const relatedService = relatedServiceFor(blog.slug, blog.category);
   const showUpdated =!!blog.updatedAt && !!blog.createdAt && new Date(blog.updatedAt).getTime() - new Date(blog.createdAt).getTime() > 24 * 60 * 60 * 1000;
 
@@ -244,7 +242,7 @@ const BlogPost = () => {
                     className="grid h-9 w-9 place-items-center rounded-full border border-[#E5E7EB] bg-white text-[#6B7280] transition-all hover:-translate-y-0.5" style={{ borderColor: "#E5E7EB" }}>
                     <Linkedin size={15} />
                   </a>
-                  <span className="inline-flex items-center gap-1.5 text-xs text-[#9CA3AF]"><LinkIcon size={12} /> {canonicalUrl.replace("https://", "")}</span>
+                  <span className="inline-flex items-center gap-1.5 text-xs text-[#6B7280]"><LinkIcon size={12} /> {canonicalUrl.replace("https://", "")}</span>
                 </div>
               </div>
             </div>

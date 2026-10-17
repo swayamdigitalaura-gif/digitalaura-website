@@ -248,7 +248,7 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
                     return (
                       <Link key={p.slug} to={`/blog/${p.slug}`} className="block p-3 rounded-xl border-l-4 border transition-all group" style={{ borderColor: "#E5E7EB", borderLeftColor: pTheme.color }}>
                         <p className="text-sm font-bold leading-snug transition-colors" style={{ color: "#0A1628" }}>{p.title}</p>
-                        <p className="text-xs mt-1 font-semibold" style={{ color: pTheme.color }}>{p.category}</p>
+                        <p className="text-xs mt-1 font-semibold" style={{ color: pTheme.ink }}>{p.category}</p>
                       </Link>
                     );
                   })}

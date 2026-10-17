@@ -2201,7 +2201,7 @@ function SEOPlanTable() {
         {SEO_PLANS.map((pl) => (
           <div key={pl.name} className="da-shadow-card rounded-2xl border border-brand-navy/12 bg-white p-5">
             <h3 className="text-lg font-extrabold text-brand-navy">{pl.name}</h3>
-            <p className="mt-1 text-xl font-extrabold text-brand-orange">{pl.fee} <span className="text-xs font-medium text-ink-muted">per month, plus GST</span></p>
+            <p className="mt-1 text-xl font-extrabold text-brand-navy">{pl.fee} <span className="text-xs font-medium text-ink-muted">per month, plus GST</span></p>
             <p className="mt-2 text-sm leading-relaxed text-ink-muted">{pl.best}</p>
             <ul className="mt-3 space-y-2">
               {pl.items.map((x) => (
@@ -2227,7 +2227,7 @@ function SEOPlanTable() {
               <tr key={pl.name} className="border-t border-brand-navy/10 align-top">
                 <th scope="row" className="p-4 text-base font-extrabold text-brand-navy">{pl.name}</th>
                 <td className="p-4">
-                  <span className="block text-lg font-extrabold text-brand-orange">{pl.fee}</span>
+                  <span className="block text-lg font-extrabold text-brand-navy">{pl.fee}</span>
                   <span className="text-xs text-ink-muted">per month, plus GST</span>
                 </td>
                 <td className="p-4 text-sm leading-relaxed text-ink-muted">{pl.best}</td>

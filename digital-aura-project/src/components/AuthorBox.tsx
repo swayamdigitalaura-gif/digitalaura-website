@@ -47,7 +47,7 @@ export default function AuthorBox({ accent = ORANGE, className = "" }: { accent?
             ))}
             <div className="mt-4 flex flex-wrap gap-2">
               {TAGS.map((t) => (
-                <span key={t} className="rounded-full px-3 py-1 text-[11.5px] font-semibold" style={{ background: "rgba(255,107,43,0.08)", color: ORANGE, border: "1px solid rgba(255,107,43,0.2)" }}>{t}</span>
+                <span key={t} className="rounded-full px-3 py-1 text-[11.5px] font-semibold" style={{ background: "rgba(255,107,43,0.08)", color: INK, border: "1px solid rgba(255,107,43,0.25)" }}>{t}</span>
               ))}
             </div>
             <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 border-t pt-4 text-sm font-semibold" style={{ borderColor: "#E5E7EB" }}>

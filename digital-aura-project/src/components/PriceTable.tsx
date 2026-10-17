@@ -24,7 +24,7 @@ export default function PriceTable({
       {rows.map((r) => (
         <div key={r[0]} className="rounded-2xl border bg-white p-5" style={{ borderColor: "#E5E7EB", boxShadow: "0 2px 12px rgba(10,22,40,0.05)" }}>
           <h3 className="text-[17px] font-extrabold" style={{ color: NAVY }}>{r[0]}</h3>
-          {r[featuredCol] && <p className="mt-1 text-[18px] font-extrabold" style={{ color: accent }}>{r[featuredCol]}</p>}
+          {r[featuredCol] && <p className="mt-1 text-[18px] font-extrabold" style={{ color: NAVY }}>{r[featuredCol]}</p>}
           <dl className="mt-3 space-y-3">
             {r.map((cell, i) => i === 0 || i === featuredCol ? null : (
               <div key={i}>
@@ -56,7 +56,7 @@ export default function PriceTable({
                   <td
                     key={i}
                     className={`p-4 text-[14.5px] leading-relaxed ${i === featuredCol ? "font-extrabold" : ""}`}
-                    style={i === featuredCol ? { color: accent, background: `${accent}0d`, fontSize: 16 } : { color: "#374151" }}
+                    style={i === featuredCol ? { color: NAVY, background: `${accent}0d`, fontSize: 16 } : { color: "#374151" }}
                   >
                     {cell}
                   </td>

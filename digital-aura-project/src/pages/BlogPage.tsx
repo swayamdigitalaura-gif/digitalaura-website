@@ -189,7 +189,7 @@ const BlogPage = () => {
                       <p className="text-[13.5px] leading-relaxed mb-5 flex-1" style={{ color: "#6B7280" }}>
                         {p.excerpt.length > 130 ? p.excerpt.slice(0, 130).trim() + "…" : p.excerpt}
                       </p>
-                      <div className="flex items-center justify-between text-xs pt-4 border-t" style={{ borderColor: "#F3F4F6", color: "#9CA3AF" }}>
+                      <div className="flex items-center justify-between text-xs pt-4 border-t" style={{ borderColor: "#F3F4F6", color: "#6B7280" }}>
                         <span className="flex items-center gap-1.5"><Calendar size={12} /> {p.date}</span>
                         <span className="flex items-center gap-1 font-bold group-hover:gap-2 transition-all" style={{ color: t.ink }}>
                           Read <ArrowRight size={12} />

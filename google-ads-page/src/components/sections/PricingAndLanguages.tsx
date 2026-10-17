@@ -74,7 +74,7 @@ export function FeeTable() {
             {FEE_ROWS.map((r, i) => (
               <tr key={r.what} className="border-t border-border align-top">
                 <th scope="row" className="p-4 font-display text-[15.5px] font-bold text-navy">{r.what}</th>
-                <td className={`p-4 font-bold ${i === 0 ? "bg-primary/[0.06] text-primary" : "text-navy"}`}>{r.amount}</td>
+                <td className={`p-4 font-bold ${i === 0 ? "bg-primary/[0.06] text-navy" : "text-navy"}`}>{r.amount}</td>
                 <td className="p-4 text-navy/90">{r.who}</td>
                 <td className="p-4 text-muted-foreground">{r.note}</td>
               </tr>

@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
 const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL || 'info@thedigitalaura.com';
 const FROM_EMAIL   = process.env.FROM_EMAIL   || `"Digital Aura Website" <${process.env.SMTP_USER || 'noreply@thedigitalaura.com'}>`;
 
-const HR_EMAIL = process.env.HR_EMAIL || 'hr@thedigitalaura.com';
+const HR_EMAIL = process.env.HR_EMAIL || 'hr.digitalaura@gmail.com';
 
 async function sendMail({ to, cc, subject, html }) {
   if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {

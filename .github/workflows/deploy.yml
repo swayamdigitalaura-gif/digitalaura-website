@@ -248,7 +248,7 @@ jobs:
         env:
           H: ${{ secrets.CONTABO_SSH_USER }}@${{ secrets.CONTABO_SSH_HOST }}
         run: |
-          ssh $SSH_OPTS "$H" "cd /home/digitalaura-backend && node scripts/seed-hr-manager-job.js && node scripts/fix-ai-developer-job.js"
+          ssh $SSH_OPTS "$H" "cd /home/digitalaura-backend && node scripts/seed-hr-manager-job.js && node scripts/fix-ai-developer-job.js && node scripts/find-career-like-inquiries.js"
 
   # ── 5. SEO landing page  →  /home/landing-seo/  (pm2: seo-landing) ────────
   seo-landing:

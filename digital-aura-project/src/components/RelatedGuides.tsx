@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { GUIDES, PILLARS, topicForParent, type Topic } from "@/data/linkMap";
+import { GUIDES, PILLARS, topicForParent } from "@/data/linkMap";
 
 const NAVY = "#0A1628";
 
@@ -10,8 +10,8 @@ const NAVY = "#0A1628";
  */
 export default function RelatedGuides({ parentHref, accent }: { parentHref: string; accent: string }) {
   const topic = topicForParent(parentHref);
-  if (!topic || topic === "web") return null;
-  const guides = GUIDES[topic as Exclude<Topic, "web">].slice(0, 3);
+  if (!topic) return null;
+  const guides = GUIDES[topic].slice(0, 3);
   const pillar = PILLARS[topic];
   return (
     <section aria-label="Related guides" className="bg-white py-10 px-4 md:px-8">

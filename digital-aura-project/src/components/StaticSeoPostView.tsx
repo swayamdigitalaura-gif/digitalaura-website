@@ -231,7 +231,7 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
                 <CategoryIcon size={18} style={{ color: theme.ink }} />
               </div>
               <h3 className="font-black text-base mb-2" style={{ color: "#0A1628" }}>Want results like this?</h3>
-              <p className="text-xs mb-4 leading-relaxed" style={{ color: "#6B7280" }}>Talk to Digital Aura about your SEO.</p>
+              <p className="text-xs mb-4 leading-relaxed" style={{ color: "#6B7280" }}>Talk to Digital Aura about your {topic === "gads" ? "Google Ads" : topic === "meta" ? "Meta ads" : topic === "web" ? "website" : "SEO"}.</p>
               <AppLink to="/contact/" className="btn-orange w-full py-3 text-sm">
                 Get in Touch <ArrowRight size={14} />
               </AppLink>

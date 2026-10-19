@@ -3,6 +3,7 @@ import { enhance, phase2WebEnhancements } from "@/data/pageEnhancements";
 import { pageExtras } from "@/data/pageExtras";
 import { wave3Extras } from "@/data/wave3Extras";
 import { wave4Extras } from "@/data/wave4Extras";
+import { wave5Extras } from "@/data/wave5Extras";
 
 /**
  * Phase 2 web pages from "Digital Aura Page Blueprints": web-01, web-02, web-03, web-06, web-07.
@@ -1047,4 +1048,4 @@ const phase2WebRaw: Record<string, LocalServiceConfig> = {
   },
 };
 
-export const phase2WebPages: Record<string, LocalServiceConfig> = enhance(phase2WebRaw, phase2WebEnhancements, pageExtras, wave3Extras, wave4Extras);
+export const phase2WebPages: Record<string, LocalServiceConfig> = enhance(phase2WebRaw, phase2WebEnhancements, pageExtras, wave3Extras, wave4Extras, wave5Extras);

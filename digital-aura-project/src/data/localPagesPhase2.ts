@@ -3,6 +3,7 @@ import { enhance, phase2Enhancements } from "@/data/pageEnhancements";
 import { pageExtras } from "@/data/pageExtras";
 import { wave3Extras } from "@/data/wave3Extras";
 import { wave4Extras } from "@/data/wave4Extras";
+import { wave5Extras } from "@/data/wave5Extras";
 import { clusterExtras } from "@/data/clusterExtras";
 import { seoPlansSection, adsFeeSection, adLanguagesSection } from "@/data/pricingData";
 
@@ -986,4 +987,4 @@ const phase2Raw: Record<string, LocalServiceConfig> = {
   },
 };
 
-export const phase2Pages: Record<string, LocalServiceConfig> = enhance(phase2Raw, phase2Enhancements, pageExtras, clusterExtras, wave3Extras, wave4Extras);
+export const phase2Pages: Record<string, LocalServiceConfig> = enhance(phase2Raw, phase2Enhancements, pageExtras, clusterExtras, wave3Extras, wave4Extras, wave5Extras);

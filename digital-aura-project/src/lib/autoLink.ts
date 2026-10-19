@@ -27,13 +27,7 @@ const RULES: Record<Topic, Rule[]> = {
     { re: /\bMeta ads (?:management|agency)\b/i, href: "/meta-ads-agency-ahmedabad/" },
     { re: /\bMeta ads (?:pricing|costs?)\b/i, href: "/meta-ads-agency-ahmedabad/pricing/" },
   ],
-  web: [
-    { re: /\bwebsite (?:development|design) (?:services )?in Ahmedabad\b/i, href: "/website-development-services-ahmedabad/" },
-    { re: /\bwebsite (?:development )?cost\b/i, href: "/website-development-cost-ahmedabad/" },
-    { re: /\bwebsite redesign\b/i, href: "/website-redesign-services-ahmedabad/" },
-    { re: /\bwebsite maintenance\b/i, href: "/website-maintenance-amc-ahmedabad/" },
-    { re: /\bWordPress (?:website )?cost\b/i, href: "/wordpress-website-cost-ahmedabad/" },
-  ],
+  web: [],
 };
 
 const SKIP = /^(a|h[1-6]|code|pre|button|script|style|summary|th)$/i;

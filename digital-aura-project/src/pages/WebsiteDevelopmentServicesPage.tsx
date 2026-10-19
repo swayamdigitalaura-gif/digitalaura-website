@@ -232,46 +232,6 @@ const WebsiteDevelopmentServicesPage = () => {
                 <h3 className="text-lg font-bold">Websites for eye hospitals</h3>
                 <p className="mt-2 text-sm opacity-80">Surgeon profiles, treatment pages and booking for eye care practices.</p>
               </a>
-              <a href="/website-design-for-hospitals-ahmedabad/" className="rounded-2xl border p-5 transition hover:shadow-md">
-                <h3 className="text-lg font-bold">Websites for hospitals</h3>
-                <p className="mt-2 text-sm opacity-80">Department and doctor pages with clear emergency and appointment routes.</p>
-              </a>
-              <a href="/website-design-for-real-estate-ahmedabad/" className="rounded-2xl border p-5 transition hover:shadow-md">
-                <h3 className="text-lg font-bold">Websites for real estate</h3>
-                <p className="mt-2 text-sm opacity-80">A page for every project, registration details shown clearly and a simple site-visit form.</p>
-              </a>
-              <a href="/website-design-for-schools-coaching-ahmedabad/" className="rounded-2xl border p-5 transition hover:shadow-md">
-                <h3 className="text-lg font-bold">Websites for schools and coaching</h3>
-                <p className="mt-2 text-sm opacity-80">Course pages and admission enquiries that work well on phones.</p>
-              </a>
-              <a href="/website-design-for-restaurants-ahmedabad/" className="rounded-2xl border p-5 transition hover:shadow-md">
-                <h3 className="text-lg font-bold">Websites for restaurants</h3>
-                <p className="mt-2 text-sm opacity-80">Fast text menus, Maps and booking for restaurants, cafes and banquets.</p>
-              </a>
-              <a href="/ecommerce-website-cost-ahmedabad/" className="rounded-2xl border p-5 transition hover:shadow-md">
-                <h3 className="text-lg font-bold">Ecommerce website cost</h3>
-                <p className="mt-2 text-sm opacity-80">What decides the price of an online store and what to ask in every quote.</p>
-              </a>
-              <a href="/wordpress-website-cost-ahmedabad/" className="rounded-2xl border p-5 transition hover:shadow-md">
-                <h3 className="text-lg font-bold">WordPress website cost</h3>
-                <p className="mt-2 text-sm opacity-80">What decides the price of a WordPress site and how to compare quotes.</p>
-              </a>
-              <a href="/blog/website-redesign-checklist-protect-traffic/" className="rounded-2xl border p-5 transition hover:shadow-md">
-                <h3 className="text-lg font-bold">Guide: website redesign checklist</h3>
-                <p className="mt-2 text-sm opacity-80">Redesign without losing Google traffic, step by step.</p>
-              </a>
-              <a href="/blog/wordpress-vs-shopify-vs-custom-website-india/" className="rounded-2xl border p-5 transition hover:shadow-md">
-                <h3 className="text-lg font-bold">Guide: WordPress, Shopify or custom</h3>
-                <p className="mt-2 text-sm opacity-80">How to choose a platform for your business.</p>
-              </a>
-              <a href="/blog/manufacturer-website-checklist-b2b-buyers/" className="rounded-2xl border p-5 transition hover:shadow-md">
-                <h3 className="text-lg font-bold">Guide: manufacturer website checklist</h3>
-                <p className="mt-2 text-sm opacity-80">What B2B buyers need to see before they send an RFQ.</p>
-              </a>
-              <a href="/blog/website-maintenance-checklist-for-business/" className="rounded-2xl border p-5 transition hover:shadow-md">
-                <h3 className="text-lg font-bold">Guide: website maintenance checklist</h3>
-                <p className="mt-2 text-sm opacity-80">What a business website needs every month.</p>
-              </a>
               <a href="/shopify-website-design-ahmedabad/" className="rounded-2xl border p-5 transition hover:shadow-md">
                 <h3 className="text-lg font-bold">Shopify website design</h3>
                 <p className="mt-2 text-sm opacity-80">Online stores on Shopify, designed to sell and easy to manage.</p>

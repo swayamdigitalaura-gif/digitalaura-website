@@ -2,8 +2,6 @@ export type RelatedService = { label: string; blurb: string; cta: string; href: 
 
 export const relatedServiceFor = (slug: string, category?: string | null): RelatedService | null => {
   const key = `${slug} ${category || ""}`.toLowerCase();
-  if ((category || "").toLowerCase() === "web development")
-    return { label: "Website Development in Ahmedabad", blurb: "Business websites built to load fast, rank on Google and turn visitors into enquiries.", cta: "See website development", href: "/website-development-services-ahmedabad/" };
   if (/google-ads|local-business-google-ads/.test(key))
     return { label: "Google Ads Agency in Ahmedabad", blurb: "Search, Maps and Performance Max campaigns built around qualified leads, not just clicks.", cta: "See Google Ads services", href: "/google-ads-agency-ahmedabad", external: true };
   if (/meta|instagram|ugc|video-hooks/.test(key))

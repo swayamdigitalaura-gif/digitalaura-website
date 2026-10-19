@@ -8,7 +8,7 @@ import { TEAM } from "@/data/pageExtras";
  * industry. Content rules: no prices, no results, no client names, no new numeric claims, no legal advice.
  */
 
-export type IndustryService = "meta" | "google" | "web" | "seo";
+export type IndustryService = "meta" | "google" | "web";
 
 export interface IndustrySpec {
   service: IndustryService;
@@ -58,18 +58,16 @@ export interface IndustrySpec {
 export const GENERAL_NOTICE =
   "General information, not legal or medical advice. Advertising and professional-conduct rules for healthcare differ by who is advertising and change over time, so please confirm what applies to you with your own legal adviser.";
 
-const ACCENT: Record<IndustryService, string> = { meta: "#1877F2", google: "#4285F4", web: "#1A6FE8", seo: "#22C55E" };
+const ACCENT: Record<IndustryService, string> = { meta: "#1877F2", google: "#4285F4", web: "#1A6FE8" };
 const PARENT: Record<IndustryService, { href: string; label: string }> = {
   meta: { href: "/meta-ads-agency-ahmedabad/", label: "Meta Ads Agency in Ahmedabad" },
   google: { href: "/google-ads-agency-ahmedabad/", label: "Google Ads Agency in Ahmedabad" },
   web: { href: "/website-development-services-ahmedabad/", label: "Website Development in Ahmedabad" },
-  seo: { href: "/seo-services-ahmedabad", label: "SEO Services in Ahmedabad" },
 };
 const SOURCES: Record<IndustryService, { label: string; href: string }[]> = {
   meta: [{ label: "Meta Advertising Standards", href: "https://transparency.meta.com/policies/ad-standards/" }],
   google: [{ label: "Google Ads policies", href: "https://support.google.com/adspolicy" }, { label: "Google Ads Help", href: "https://support.google.com/google-ads" }],
   web: [{ label: "web.dev: Core Web Vitals", href: "https://web.dev/vitals/" }, { label: "Google Search Central: SEO Starter Guide", href: "https://developers.google.com/search/docs/fundamentals/seo-starter-guide" }],
-  seo: [{ label: "Google Search Central: SEO Starter Guide", href: "https://developers.google.com/search/docs/fundamentals/seo-starter-guide" }, { label: "Google Search Central: Creating helpful content", href: "https://developers.google.com/search/docs/fundamentals/creating-helpful-content" }],
 };
 const BUSINESS_TYPES = ["Doctor, clinic or hospital", "Manufacturer or exporter", "Online store", "Local service business", "Education or coaching", "Real estate", "Restaurant or hospitality", "Other"];
 
@@ -91,9 +89,9 @@ const EYEBROWS: Record<string, string> = {
 const DEFAULT_EYEBROW: Record<string, string> = { cards: "Guide", compare: "Do and avoid", checklist: "Checklist", text: "Overview", calculator: "Tool", reels: "Videos", team: "Our team" };
 /** How many guide sections sit before the proof (case studies, testimonials). The rest come after it. */
 const EARLY_COUNT = 3;
-const FREE_LABEL: Record<IndustryService, string> = { meta: "Meta ads account review", google: "Google Ads account review", web: "Website review", seo: "SEO audit" };
-const TEAM_FOR: Record<IndustryService, (keyof typeof TEAM)[]> = { meta: ["satish", "bhavesh"], google: ["satish", "bhavesh"], web: [], seo: ["satish", "jinali", "bhavesh"] };
-const TEAM_TITLE: Record<IndustryService, string> = { meta: "The team behind your Meta ads", google: "The team behind your Google Ads", web: "", seo: "The team behind your SEO" };
+const FREE_LABEL: Record<IndustryService, string> = { meta: "Meta ads account review", google: "Google Ads account review", web: "Website review" };
+const TEAM_FOR: Record<IndustryService, (keyof typeof TEAM)[]> = { meta: ["satish", "bhavesh"], google: ["satish", "bhavesh"], web: [] };
+const TEAM_TITLE: Record<IndustryService, string> = { meta: "The team behind your Meta ads", google: "The team behind your Google Ads", web: "" };
 
 export function buildIndustryPage(s: IndustrySpec): LocalServiceConfig {
   const parent = PARENT[s.service];

@@ -197,15 +197,14 @@ function GuideSection({ sec, index }: { sec: ExtraSection; index: number }) {
             {items.map((it, i) => (
               <li key={it.title} className="relative">
                 <Card className="h-full">
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-[15px] font-extrabold" style={pillar ? { background: `${ORANGE}1a`, color: ORANGE } : { background: ORANGE, color: "#fff", borderRadius: 9999 }}>{i + 1}</span>
-                    {pillar ? (
-                      <div>
-                        <p className="text-[11px] font-black uppercase tracking-[0.14em]" style={{ color: ORANGE }}>{it.tag}</p>
-                        <h3 className="text-[16px] font-bold leading-snug" style={{ color: NAVY }}>{it.title}</h3>
-                      </div>
-                    ) : null}
-                  </div>
+                  {pillar ? (
+                    <div>
+                      <p className="text-[11px] font-black uppercase tracking-[0.14em]" style={{ color: ORANGE }}>{it.tag}</p>
+                      <h3 className="mt-1 text-[16px] font-bold leading-snug" style={{ color: NAVY }}>{it.title}</h3>
+                    </div>
+                  ) : (
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-[15px] font-extrabold" style={{ background: ORANGE, color: "#fff", borderRadius: 9999 }}>{i + 1}</span>
+                  )}
                   {!pillar && <p className="mt-4 text-[11px] font-black uppercase tracking-[0.14em]" style={{ color: ORANGE }}>{it.tag}</p>}
                   {!pillar && <h3 className="mt-1 text-[16px] font-bold leading-snug" style={{ color: NAVY }}>{it.title}</h3>}
                   <p className="mt-2 text-[14.5px] leading-relaxed text-[#4B5563]">{it.desc}</p>
@@ -641,10 +640,8 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
           {c.process.map((s, i) => (
             <li key={s.title}>
               <Card className="h-full">
-                <div className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-[15px] font-extrabold" style={{ background: `${ORANGE}1a`, color: ORANGE }}>{i + 1}</span>
-                  <h3 className="text-[16px] font-bold leading-snug" style={{ color: NAVY }}>{s.title.replace(/^\d+\.\s+/, "")}</h3>
-                </div>
+                <p className="text-[11px] font-black uppercase tracking-[0.14em]" style={{ color: ORANGE }}>Step {i + 1}</p>
+                <h3 className="mt-1 text-[16px] font-bold leading-snug" style={{ color: NAVY }}>{s.title.replace(/^\d+\.\s+/, "")}</h3>
                 <p className="mt-2.5 text-[14.5px] leading-relaxed text-[#4B5563]">{s.desc}</p>
               </Card>
             </li>

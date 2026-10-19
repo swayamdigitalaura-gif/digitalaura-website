@@ -506,10 +506,10 @@ const Careers = () => {
               style={{ background: "linear-gradient(135deg, #FF6B2B, #e85a1a)", boxShadow: "0 4px 20px rgba(255,107,43,0.3)" }}>
               <Mail size={15} /> <span data-cms-key="careers_resume_btn" data-cms-label="Send Resume Button" data-cms-attr="text">{resumeBtn}</span>
             </a>
-            <a href="tel:+918141200284"
+            <a href="tel:+919558519542"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm border transition-all"
               style={{ color: "#7C3AED", borderColor: "rgba(124,58,237,0.25)", background: "rgba(124,58,237,0.05)" }}>
-              <Phone size={15} /> +91 81412 00284
+              <Phone size={15} /> {hrPhone}
             </a>
           </div>
         </motion.div>

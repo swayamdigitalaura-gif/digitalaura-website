@@ -37,7 +37,7 @@ const phase1Raw: Record<string, LocalServiceConfig> = {
     heroCta: { label: "Enter My Website for the Audit", href: "#audit-form" },
     quickAnswer: {
       heading: "What is a free SEO audit?",
-      answer: "A free SEO audit is a review of your website's technical health, content, search intent, links and search visibility that ends in a prioritised list of fixes. Ours starts with your business goals, checks 14 areas from technical SEO to AI search, explains the findings in a walkthrough and gives you a written report.",
+      answer: "A free SEO audit is a review of your website's technical health, content, search intent, links and search visibility that ends in a prioritised list of fixes. Ours starts with your business goals, checks 14 areas from [technical SEO](/services/seo-content-marketing/technical-seo/) to [AI search](/blog/how-to-rank-chatgpt-perplexity-ai-overviews/), explains the findings in a walkthrough and gives you a written report. It is the first step of our [SEO services in Ahmedabad](/seo-services-ahmedabad).",
       points: ["Free, with no obligation to buy anything afterwards", "Tools find issues, and a person decides what matters for your business", "Findings ranked by impact and effort, in plain English"],
     },
     lastUpdated: LAST_UPDATED,
@@ -177,7 +177,7 @@ const phase1Raw: Record<string, LocalServiceConfig> = {
       { q: "What if my site is new?", a: "A new site is a good time to audit, because it is easier to fix foundations before the site grows." },
     ],
     ctaHeading: "Ready to See What Is Holding Your Site Back?",
-    ctaText: "Enter your website above and get a prioritised fix list for your business.",
+    ctaText: "Enter your website and get a prioritised fix list for your business.",
     ctaButton: "Get My Free SEO Audit",
   },
 

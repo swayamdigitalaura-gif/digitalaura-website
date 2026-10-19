@@ -66,6 +66,20 @@ const VariantCtx = createContext<Variant>("industry");
 /** True only for the standard pillar template (Meta Ads page); every other page keeps its current look. */
 const StandardCtx = createContext(false);
 const CREAM = "#FFF8F2";
+/** Section grouping for the standard pillar template, so each SEO sub-page can group its own content. Tab keys: quick, problem, included, how, why, related, start, guides, or any extra section id. */
+export type StdPart =
+  | { type: "group"; id: string; tone: "white" | "light"; eyebrow: string; title: string; tabs: string[]; initial?: string }
+  | { type: "proof"; tone?: "white" | "light" }
+  | { type: "testimonials"; tone?: "white" | "light" }
+  | { type: "team"; tone?: "white" | "light" }
+  | { type: "explore"; tone?: "white" | "light"; title?: string };
+export type StdLayout = {
+  subnav: { href: string; label: string }[];
+  parts: StdPart[];
+  labels?: Record<string, string>;
+  guides?: { topic: "seo" | "gads" | "meta"; slugs?: string[]; eyebrow: string; title: string; sub?: string; tabLabel?: string };
+  visitLabel?: string;
+};
 
 const Eyebrow = ({ children }: { children: React.ReactNode }) => {
   const std = useContext(StandardCtx);
@@ -154,8 +168,8 @@ function TickItem({ text }: { text: string }) {
   const [on, setOn] = useState(false);
   return (
     <li>
-      <button type="button" aria-pressed={on} onClick={() => setOn((v) => !v)} className="group flex w-full items-start gap-3 rounded-lg px-1 py-1.5 text-left">
-        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition-colors" style={{ borderColor: on ? GREEN : "#CBD5E1", background: on ? GREEN : "#fff" }}>
+      <button type="button" role="checkbox" aria-checked={on} onClick={() => setOn((v) => !v)} className="group flex w-full items-start gap-3 rounded-lg px-1 py-1.5 text-left">
+        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center border-2 transition-colors" style={{ borderRadius: 4, borderColor: on ? GREEN : "#94A3B8", background: on ? GREEN : "#fff" }}>
           {on && <Check size={13} color="#fff" strokeWidth={3} />}
         </span>
         <span className={`text-[14.5px] leading-relaxed ${on ? "text-[#6B7280] line-through decoration-[#9CA3AF]" : "text-[#374151]"}`}>{text}</span>
@@ -179,7 +193,7 @@ function GuideSection({ sec, index }: { sec: ExtraSection; index: number }) {
       <Wrap id={sec.id} bg={bg}>
         <Head eyebrow={eyebrow} title={sec.title} sub={sub} />
         {stepper ? (
-          <ol className={`grid gap-5 ${items.length === 3 ? "md:grid-cols-3" : items.length === 4 ? "md:grid-cols-2 lg:grid-cols-4" : "md:grid-cols-3 lg:grid-cols-5"}`}>
+          <ol className={`grid gap-5 ${items.length === 3 ? "md:grid-cols-3" : items.length === 4 ? "md:grid-cols-2 lg:grid-cols-4" : std ? "md:grid-cols-3 2xl:grid-cols-5" : "md:grid-cols-3 lg:grid-cols-5"}`}>
             {items.map((it, i) => (
               <li key={it.title} className="relative">
                 <Card className="h-full">
@@ -426,7 +440,7 @@ function Faq({ q, a }: { q: string; a: string }) {
 
 /* ───────────── page ───────────── */
 
-export default function IndustryLandingPage({ config, variant = "industry", officeMap = false, caseCards, caseSub, standard = false }: { config: LocalServiceConfig; variant?: Variant; /** Standard pillar template (same section order and look as the SEO / Google Ads pages). */ standard?: boolean; /** Service-specific case study cards (defaults to the home page set). */ caseCards?: CaseCard[]; caseSub?: string; /** Show the Google Map + "Talk to us" block above the footer instead of the "Visit us" card. */ officeMap?: boolean }) {
+export default function IndustryLandingPage({ config, variant = "industry", officeMap = false, caseCards, caseSub, standard = false, layout }: { config: LocalServiceConfig; variant?: Variant; /** Custom section grouping for the standard template (SEO sub-pages). The Meta page omits it and keeps its own layout. */ layout?: StdLayout; /** Standard pillar template (same section order and look as the SEO / Google Ads pages). */ standard?: boolean; /** Service-specific case study cards (defaults to the home page set). */ caseCards?: CaseCard[]; caseSub?: string; /** Show the Google Map + "Talk to us" block above the footer instead of the "Visit us" card. */ officeMap?: boolean }) {
   const pillar = variant === "pillar";
   useCMSEditor();
   // Same admin-edited copy overrides as LocalServicePage (settings keys are namespaced by slug), so nothing edited in the CMS is lost.
@@ -548,11 +562,11 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
           <div>
             <Eyebrow>Quick answer</Eyebrow>
             <h3 className="mt-3 text-[22px] font-bold leading-[1.2] tracking-[-0.01em] md:text-[26px]" style={{ color: NAVY }}>{c.quickAnswer.heading}</h3>
-            <p className="mt-4 text-[16px] leading-[1.75] text-[#5B5F7A] md:text-[17px]">{c.quickAnswer.answer}</p>
+            <p className="mt-4 text-[16px] leading-[1.75] text-[#5B5F7A] md:text-[17px]">{renderInline(c.quickAnswer.answer)}</p>
             {c.lastUpdated && (
               <p className="mt-6 flex items-start gap-2 text-xs leading-relaxed text-[#6B7280]">
                 <Clock size={14} className="mt-0.5 shrink-0" />
-                <span>Published by <a href="/about/" className="underline">Digital Aura</a>, 713 Shilp Arcade, SP Ring Road, Hanspura, Ahmedabad. Last updated <time dateTime={c.lastUpdated}>{formatDate(c.lastUpdated)}</time>.</span>
+                <span>Published by <a href="/about/" className="underline">Digital Aura</a>. Last updated <time dateTime={c.lastUpdated}>{formatDate(c.lastUpdated)}</time>.</span>
               </p>
             )}
           </div>
@@ -623,13 +637,13 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
     const ProcessBlock = (
       <Wrap id="how-it-works" bg="#fff">
         <Head eyebrow="How it works" title={<span data-cms-key={k("processTitle")} data-cms-label="Process Title" data-cms-attr="text">{c.processTitle}</span>} sub={c.processSubtext} />
-        <ol className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <ol className={`grid gap-5 md:grid-cols-2 ${c.process.length === 3 ? "lg:grid-cols-3" : c.process.length >= 5 ? "lg:grid-cols-3 2xl:grid-cols-5" : c.process.length === 2 ? "lg:grid-cols-2" : "lg:grid-cols-4"}`}>
           {c.process.map((s, i) => (
             <li key={s.title}>
               <Card className="h-full">
                 <div className="flex items-center gap-3">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-[15px] font-extrabold" style={{ background: `${ORANGE}1a`, color: ORANGE }}>{i + 1}</span>
-                  <h3 className="text-[16px] font-bold leading-snug" style={{ color: NAVY }}>{s.title}</h3>
+                  <h3 className="text-[16px] font-bold leading-snug" style={{ color: NAVY }}>{s.title.replace(/^\d+\.\s+/, "")}</h3>
                 </div>
                 <p className="mt-2.5 text-[14.5px] leading-relaxed text-[#4B5563]">{s.desc}</p>
               </Card>
@@ -738,7 +752,73 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
       ...restSections.map((sec) => ({ id: sec.id, label: chipLabel(sec), content: <GuideSection sec={sec} index={0} /> })),
     ]);
 
-    const subnav = [
+    // Generic standard layout (SEO sub-pages): the same blocks as above, grouped into tabbed sections as the page's own content calls for.
+    const genericMiddle = layout ? (() => {
+      const gl = layout.guides;
+      const guideList = gl ? (gl.slugs ? gl.slugs.map((sl) => GUIDES[gl.topic].find((x) => x.slug === sl)).filter(Boolean) : GUIDES[gl.topic]) as { slug: string; title: string }[] : [];
+      const GuidesGeneric = gl && guideList.length ? (
+        <Wrap id={`${gl.topic}-guides`} bg="#fff">
+          <Head eyebrow={gl.eyebrow} title={gl.title} sub={gl.sub} />
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {guideList.map((g) => (
+              <a key={g.slug} href={`/blog/${g.slug}/`} className="group flex h-full flex-col justify-between gap-3 rounded-2xl border bg-white p-5 transition-shadow hover:shadow-md" style={{ borderColor: "#E5E7EB" }}>
+                <span className="text-[16px] font-bold leading-snug" style={{ color: NAVY }}>{g.title}</span>
+                <span className="inline-flex items-center gap-1 text-sm font-semibold transition-all group-hover:gap-2" style={{ color: ORANGE }}>Read the guide <ArrowRight size={14} /></span>
+              </a>
+            ))}
+          </div>
+        </Wrap>
+      ) : null;
+      const keyed: Record<string, { label: string; node: React.ReactNode }> = {
+        quick: { label: "Quick answer", node: QuickBlock },
+        problem: { label: "The real problem", node: OverviewBlock },
+        included: { label: "What you get", node: IncludedBlock },
+        how: { label: "How it works", node: ProcessBlock },
+        why: { label: "Why Digital Aura", node: WhyBlock },
+        related: { label: "More ways we can help", node: RelatedBlock },
+        start: { label: "How to start", node: StartBlock },
+        guides: { label: gl?.tabLabel || "Guides", node: GuidesGeneric },
+      };
+      const used = new Set<string>();
+      const tabFor = (key: string) => {
+        used.add(key);
+        const k2 = keyed[key];
+        if (k2) return k2.node ? { id: key, label: layout.labels?.[key] || k2.label, content: k2.node } : null;
+        const sec = pool.find((x) => x.id === key);
+        return sec ? { id: key, label: layout.labels?.[key] || chipLabel(sec), content: <GuideSection sec={sec} index={0} /> } : null;
+      };
+      const teamSec2 = team || pool.find((x) => x.kind === "team");
+      const asTabs = (keys: string[], label: string, initial?: string) => {
+        const t = tabs(keys.map(tabFor));
+        if (t.length === 0) return null;
+        return t.length === 1 ? t[0].content : <PillarTabs label={label} initial={initial} tabs={t} />;
+      };
+      const parts = layout.parts.map((part, i) => {
+        if (part.type === "group") {
+          const body = asTabs(part.tabs, part.eyebrow, part.initial);
+          return body ? <PillarSection key={part.id} id={part.id} tone={part.tone} eyebrow={part.eyebrow} title={part.title}>{body}</PillarSection> : null;
+        }
+        if (part.type === "proof") return <PillarSection key="proof" id="results-proof" tone={part.tone ?? "white"} bare noHead><CaseStudies cases={caseCards} sub={caseSub} centered /></PillarSection>;
+        if (part.type === "testimonials") return <PillarSection key="testimonials" tone={part.tone ?? "white"} bare noHead><Testimonials /></PillarSection>;
+        if (part.type === "team") return teamSec2 ? <PillarSection key="team" tone={part.tone ?? "white"} bare noHead><GuideSection sec={teamSec2} index={0} /></PillarSection> : null;
+        // "explore": link cards and any leftover sections, so no existing content is dropped
+        const left = pool.filter((x) => !used.has(x.id) && x !== teamSec2 && x.kind !== "team");
+        const exploreTabs = tabs([
+          ...(["related", "start", "guides"] as const).map((key) => (used.has(key) ? null : tabFor(key))),
+          ...left.map((sec) => ({ id: sec.id, label: layout.labels?.[sec.id] || chipLabel(sec), content: <GuideSection sec={sec} index={0} /> })),
+          about ? { id: "about", label: "About this page", content: aboutBlock(about) } : null,
+          visit && !officeMap ? { id: "visit", label: "Visit us", content: aboutBlock(visit) } : null,
+        ]);
+        return exploreTabs.length ? (
+          <PillarSection key={`explore-${i}`} id="explore" tone={part.tone ?? "light"} eyebrow="Keep exploring" title={part.title ?? "More ways we can help, and how to start"}>
+            {exploreTabs.length === 1 ? exploreTabs[0].content : <PillarTabs label="Explore" tabs={exploreTabs} />}
+          </PillarSection>
+        ) : null;
+      });
+      return <>{parts}</>;
+    })() : null;
+
+    const subnav = layout?.subnav ?? [
       { href: "#overview-group", label: "Overview" }, { href: "#services", label: "Services" }, { href: "#process", label: "Process" },
       { href: "#results-proof", label: "Results" }, { href: "#pricing", label: "Pricing" }, { href: "#faqs", label: "FAQs" },
     ];
@@ -764,15 +844,25 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
                     <Info size={16} className="mt-0.5 shrink-0" style={{ color: ORANGE }} />{c.heroParagraph2}
                   </p>
                 )}
-                <div className="pillar-btn-row mt-7">
-                  <Pill href={c.heroCta?.href || ctaHref} onClick={() => track("cta_click", { cta_label: ctaLabel, cta_location: "hero" })}>{ctaLabel} <ArrowRight size={16} /></Pill>
-                  <Pill href={whatsappLink(`Hello, I have a question about: ${c.h1}`)} variant="outline" external onClick={() => track("whatsapp_click", { cta_location: "hero" })}>
-                    <MessageCircle size={16} /> WhatsApp us
-                  </Pill>
-                  <a href={PHONE_TEL} onClick={() => track("phone_click", { cta_location: "hero" })} aria-label={`Call ${PHONE_DISPLAY}`} className="pillar-btn pillar-btn--secondary">
-                    <Phone size={16} style={{ color: ORANGE }} /> {PHONE_DISPLAY}
-                  </a>
-                </div>
+                {(() => {
+                  const cta = <Pill href={c.heroCta?.href || ctaHref} onClick={() => track("cta_click", { cta_label: ctaLabel, cta_location: "hero" })}>{ctaLabel} <ArrowRight size={16} /></Pill>;
+                  const wa = (
+                    <Pill href={whatsappLink(`Hello, I have a question about: ${c.h1}`)} variant="outline" external onClick={() => track("whatsapp_click", { cta_location: "hero" })}>
+                      <MessageCircle size={16} /> WhatsApp us
+                    </Pill>
+                  );
+                  const ph = (
+                    <a href={PHONE_TEL} onClick={() => track("phone_click", { cta_location: "hero" })} aria-label={`Call ${PHONE_DISPLAY}`} className="pillar-btn pillar-btn--secondary">
+                      <Phone size={16} style={{ color: ORANGE }} /> {PHONE_DISPLAY}
+                    </a>
+                  );
+                  // SEO sub-pages: main button on its own row, WhatsApp and phone side by side below it (no lone wrapped button).
+                  return layout ? (
+                    <div className="mt-7 space-y-3"><div className="pillar-btn-row">{cta}</div><div className="pillar-btn-row">{wa}{ph}</div></div>
+                  ) : (
+                    <div className="pillar-btn-row mt-7">{cta}{wa}{ph}</div>
+                  );
+                })()}
                 <p className="mt-3 text-xs text-[#6B7280]">Free to ask. No obligation. We reply by email.</p>
                 <aside aria-label="What we cover" className="mt-8 rounded-2xl border bg-white p-5" style={{ borderColor: "#EDE3DA", boxShadow: "0 2px 10px rgba(26,29,54,0.05)" }}>
                   <p className="text-[12px] font-bold uppercase tracking-[0.16em]" style={{ color: ORANGE }}>What we cover</p>
@@ -796,9 +886,10 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
               )}
             </div>
           </section>
-          <TrustStrip stats={stats} />
+          {!layout && <TrustStrip stats={stats} />}
           <PillarSubNav items={subnav} />
 
+          {layout ? genericMiddle : (<>
           {/* 2. Overview */}
           <PillarSection id="overview-group" tone="white" eyebrow="Overview" title="What Meta ads management in Ahmedabad covers">
             <PillarTabs label="Overview" initial="short-answer" tabs={tabs([QuickBlock ? { id: "quick", label: "Quick answer", content: QuickBlock } : null, shortTab])} />
@@ -869,6 +960,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
               />
             </PillarSection>
           )}
+          </>)}
           {!c.storyLayout && (
             <PillarSection tone="white" bare noHead>
               <BlogInsights />
@@ -911,7 +1003,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
                 </div>
                 {c.leadForm && <PageLeadForm cfg={{ ...c.leadForm, id: `${c.leadForm.id || "audit-form"}-final` }} accent={ORANGE} embedded idPrefix="plf-final" />}
               </div>
-              {officeMap && <VisitUs auditHref={"#" + formId} auditLabel="Get a free Meta ads account review" />}
+              {officeMap && <VisitUs auditHref={"#" + formId} auditLabel={layout?.visitLabel ?? "Get a free Meta ads account review"} />}
             </div>
           </section>
         </div>
@@ -990,7 +1082,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
               {c.lastUpdated && (
                 <p className="mt-5 flex items-start gap-2 border-t pt-4 text-xs leading-relaxed text-[#6B7280]" style={{ borderColor: "#E5E7EB" }}>
                   <Clock size={14} className="mt-0.5 shrink-0" />
-                  <span>Published by <a href="/about/" className="underline">Digital Aura</a>, 713 Shilp Arcade, SP Ring Road, Hanspura, Ahmedabad. Last updated <time dateTime={c.lastUpdated}>{formatDate(c.lastUpdated)}</time>.</span>
+                  <span>Published by <a href="/about/" className="underline">Digital Aura</a>. Last updated <time dateTime={c.lastUpdated}>{formatDate(c.lastUpdated)}</time>.</span>
                 </p>
               )}
             </aside>
@@ -1022,7 +1114,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
               {c.lastUpdated && (
                 <p className="mt-6 flex items-start gap-2 text-xs leading-relaxed text-[#6B7280]">
                   <Clock size={14} className="mt-0.5 shrink-0" />
-                  <span>Published by <a href="/about/" className="underline">Digital Aura</a>, 713 Shilp Arcade, SP Ring Road, Hanspura, Ahmedabad. Last updated <time dateTime={c.lastUpdated}>{formatDate(c.lastUpdated)}</time>.</span>
+                  <span>Published by <a href="/about/" className="underline">Digital Aura</a>. Last updated <time dateTime={c.lastUpdated}>{formatDate(c.lastUpdated)}</time>.</span>
                 </p>
               )}
             </div>

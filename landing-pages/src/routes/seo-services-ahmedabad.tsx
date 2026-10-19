@@ -838,7 +838,7 @@ function QuickAnswer() {
               ))}
             </ul>
             <p className="mt-6 text-xs text-ink-muted">
-              Published by <a className="underline" href="/about/">Digital Aura</a>, 713 Shilp Arcade, SP Ring Road, Hanspura, Ahmedabad. Last updated <time dateTime="2026-10-09">9 October 2026</time>.
+              Published by <a className="underline" href="/about/">Digital Aura</a>. Last updated <time dateTime="2026-10-09">9 October 2026</time>.
             </p>
           </div>
         </Reveal>

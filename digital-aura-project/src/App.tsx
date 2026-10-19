@@ -73,6 +73,7 @@ import OffPageSEOPage from "./pages/services/seo/OffPageSEOPage.tsx";
 import EcommerceSEOPage from "./pages/services/seo/EcommerceSEOPage.tsx";
 import LocalServicePage from "./components/LocalServicePage.tsx";
 import IndustryLandingPage from "./components/IndustryLandingPage";
+import { seoFreeAuditLayout, seoDoctorsLayout, seoManufacturersLayout } from "./data/seoSubpageLayouts";
 import PricingPage from "./components/PricingPage";
 import { PRICING_PAGES } from "./data/pricingPages";
 import { phase1Pages } from "./data/localPagesPhase1.ts";
@@ -169,13 +170,13 @@ const App = () => (
           <Route path="/testimonials" element={<TestimonialsPage />} />
           <Route path="/awards" element={<AwardsPage />} />
           <Route path="/website-development-services-ahmedabad" element={<WebsiteDevelopmentServicesPage />} />
-          <Route path="/seo/free-audit" element={<IndustryLandingPage config={phase1Pages.seoFreeAudit} />} />
+          <Route path="/seo/free-audit" element={<IndustryLandingPage config={phase1Pages.seoFreeAudit} variant="pillar" standard layout={seoFreeAuditLayout} caseCards={[CASE_CARDS.ivf, CASE_CARDS.prism, CASE_CARDS.dp]} caseSub="Real results from businesses we do SEO for." />} />
           <Route path="/google-ads-audit-ahmedabad" element={<IndustryLandingPage config={phase1Pages.googleAdsAudit} />} />
           <Route path="/website-redesign-services-ahmedabad" element={<IndustryLandingPage config={phase1Pages.websiteRedesign} />} />
           <Route path="/website-maintenance-amc-ahmedabad" element={<IndustryLandingPage config={phase1Pages.websiteMaintenance} />} />
           <Route path="/seo/pricing-ahmedabad" element={<PricingPage config={PRICING_PAGES.seo} />} />
-          <Route path="/seo/doctors-hospitals-ahmedabad" element={<IndustryLandingPage config={phase2Pages.seoDoctors} />} />
-          <Route path="/seo/manufacturers-b2b-gujarat" element={<IndustryLandingPage config={phase2Pages.seoManufacturers} />} />
+          <Route path="/seo/doctors-hospitals-ahmedabad" element={<IndustryLandingPage config={phase2Pages.seoDoctors} variant="pillar" standard officeMap layout={seoDoctorsLayout} caseCards={[CASE_CARDS.ivf]} caseSub="A real result from a healthcare business we do SEO for." />} />
+          <Route path="/seo/manufacturers-b2b-gujarat" element={<IndustryLandingPage config={phase2Pages.seoManufacturers} variant="pillar" standard layout={seoManufacturersLayout} caseCards={[CASE_CARDS.prism]} caseSub="A real result from an industrial B2B business we do SEO for." />} />
           <Route path="/google-ads-pricing-ahmedabad" element={<PricingPage config={PRICING_PAGES.gads} />} />
           <Route path="/google-ads-for-doctors-ahmedabad" element={<IndustryLandingPage config={phase2Pages.googleAdsDoctors} />} />
           <Route path="/meta-ads-agency-ahmedabad/pricing" element={<PricingPage config={PRICING_PAGES.meta} />} />

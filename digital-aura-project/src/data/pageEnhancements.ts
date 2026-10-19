@@ -124,7 +124,8 @@ export const phase2Enhancements: Record<string, Enhancement> = {
     heroCta: { label: "Get a Free Healthcare SEO Audit", href: "#audit-form" },
     quickAnswer: {
       heading: "What is healthcare SEO for doctors and hospitals?",
-      answer: "Healthcare SEO helps doctors, clinics and hospitals in Ahmedabad appear when patients search for treatments, doctors and nearby care. It combines a complete Google Business Profile, treatment and doctor pages, technical fixes and careful, informational content, and it tracks calls and appointment requests rather than only traffic.",
+      answer: "Healthcare SEO helps doctors, clinics and hospitals in Ahmedabad appear when patients search for treatments, doctors and nearby care. It combines a complete [Google Business Profile](/blog/google-business-profile-seo-checklist/), treatment and doctor pages, [technical fixes](/services/seo-content-marketing/technical-seo/) and careful, informational content, and it tracks calls and appointment requests rather than only traffic. It is part of our [SEO services in Ahmedabad](/seo-services-ahmedabad).",
+      points: ["Treatment and doctor pages built around what patients search for", "A complete Google Business Profile and consistent local listings", "Calls and appointment requests tracked, without patient data"],
     },
     leadForm: form({ formName: "seo-healthcare-audit", service: "Healthcare SEO audit", heading: "Get a free healthcare SEO audit", text: "Tell us about your practice or hospital. " + NO_PATIENT_DATA, notesLabel: "Specialties and locations (optional)", submitLabel: "Get My Free Healthcare Audit", successText: "Thank you. We will review your details and reply by email." }),
     faqTitle: "Healthcare SEO FAQs",
@@ -144,7 +145,8 @@ export const phase2Enhancements: Record<string, Enhancement> = {
     heroCta: { label: "Get a Free B2B SEO Audit", href: "#audit-form" },
     quickAnswer: {
       heading: "What is B2B SEO for manufacturers?",
-      answer: "B2B SEO for Gujarat manufacturers puts your products in front of buyers searching by product, specification, standard or supplier. It builds structured catalogue and specification pages, an RFQ form that captures product and quantity, and export-ready pages, so your own website brings in qualified requests for quotation.",
+      answer: "B2B SEO for Gujarat manufacturers puts your products in front of buyers searching by product, specification, standard or supplier. It builds structured catalogue and specification pages, an RFQ form that captures product and quantity, and export-ready pages, so your own website brings in qualified requests for quotation. It is part of our [SEO services in Ahmedabad](/seo-services-ahmedabad), and the [technical SEO](/services/seo-content-marketing/technical-seo/) of a large catalogue matters as much as the content.",
+      points: ["Product and specification pages buyers can find by search", "An RFQ form that captures the product and quantity", "Qualified requests tracked, not just traffic"],
     },
     leadForm: form({ formName: "seo-b2b-audit", service: "B2B SEO audit", heading: "Get a free B2B SEO audit", text: "Share your website, products and target markets. We will send a prioritised plan.", notesLabel: "Main products and target markets (optional)", submitLabel: "Get My Free B2B SEO Audit", successText: "Thank you. We will review your website and reply by email." }),
     faqTitle: "B2B SEO FAQs",

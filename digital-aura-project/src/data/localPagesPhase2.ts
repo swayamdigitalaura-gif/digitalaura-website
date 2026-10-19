@@ -281,6 +281,7 @@ const phase2Raw: Record<string, LocalServiceConfig> = {
         title: "Cost of SEO for doctors and hospitals",
         paragraphs: [
           "The cost depends on how many treatments, doctors and locations you want to rank for, how competitive your specialty is, and the condition of your current website. We give a written scope and fee after a free audit.",
+          "For businesses in Ahmedabad our SEO plans run from ₹15,000 to ₹1,50,000 a month plus GST. SEO Basic suits one city and a small site, SEO Growth adds more services and areas, and SEO Advance covers large, multi-location or crowded markets, which is where multi-speciality hospitals usually need to look.",
         ],
         links: [{ label: "How our SEO plans are scoped", href: "/seo/pricing-ahmedabad/" }],
       },

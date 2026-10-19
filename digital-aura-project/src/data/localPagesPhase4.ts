@@ -3,11 +3,7 @@ import { buildIndustryPage, industryUrl, type IndustryService, type IndustrySpec
 import { metaRealEstate, metaHospitals, metaDentists, metaIvf } from "@/data/industryPagesMetaA";
 import { metaDermatology, metaEducation, metaRestaurants, metaEcommerce } from "@/data/industryPagesMetaB";
 import { wave4Extras } from "@/data/wave4Extras";
-import { wave5Extras } from "@/data/wave5Extras";
 import { googleIvf, googleDentists, webDentists, webOphthalmologists } from "@/data/industryPagesGoogleWeb";
-import { seoRealEstate, seoEducation, seoHospitality } from "@/data/industryPagesSeo";
-import { googleRealEstate, googleEducation, googleManufacturers } from "@/data/industryPagesGoogleAds2";
-import { webHospitals, webRealEstate, webEducation, webRestaurants, webEcommerceCost, webWordpressCost } from "@/data/industryPagesWeb2";
 
 /**
  * Round 3 industry pages. Each spec is turned into a full page config by buildIndustryPage().
@@ -27,25 +23,13 @@ const specs: Record<string, IndustrySpec> = {
   googleDentists,
   webDentists,
   webOphthalmologists,
-  seoRealEstate,
-  seoEducation,
-  seoHospitality,
-  googleRealEstate,
-  googleEducation,
-  googleManufacturers,
-  webHospitals,
-  webRealEstate,
-  webEducation,
-  webRestaurants,
-  webEcommerceCost,
-  webWordpressCost,
 };
 
 export const phase4Pages: Record<string, LocalServiceConfig> = Object.fromEntries(
   Object.entries(specs).map(([key, spec]) => {
     const page = buildIndustryPage(spec);
-    const add = [...(wave4Extras[key]?.extraAdd || []), ...(wave5Extras[key]?.extraAdd || [])];
-    return [key, add.length ? { ...page, extraSections: [...(page.extraSections || []), ...add] } : page];
+    const add = wave4Extras[key]?.extraAdd;
+    return [key, add ? { ...page, extraSections: [...(page.extraSections || []), ...add] } : page];
   }),
 );
 
@@ -53,13 +37,11 @@ const SERVICE_TYPE: Record<IndustryService, string> = {
   meta: "Meta Ads management",
   google: "Google Ads management",
   web: "Website design and development",
-  seo: "SEO",
 };
 const PARENT: Record<IndustryService, [string, string]> = {
   meta: ["Meta Ads Agency in Ahmedabad", "/meta-ads-agency-ahmedabad/"],
   google: ["Google Ads Agency in Ahmedabad", "/google-ads-agency-ahmedabad/"],
   web: ["Website Development in Ahmedabad", "/website-development-services-ahmedabad/"],
-  seo: ["SEO Services in Ahmedabad", "/seo-services-ahmedabad"],
 };
 
 export interface Phase4Entry {

@@ -193,18 +193,6 @@ const App = () => (
           <Route path="/google-ads-for-dentists-ahmedabad" element={<IndustryLandingPage config={phase4Pages.googleDentists} />} />
           <Route path="/website-design-for-dentists-ahmedabad" element={<IndustryLandingPage config={phase4Pages.webDentists} />} />
           <Route path="/website-design-for-ophthalmologists-ahmedabad" element={<IndustryLandingPage config={phase4Pages.webOphthalmologists} />} />
-          <Route path="/seo/real-estate-ahmedabad" element={<IndustryLandingPage config={phase4Pages.seoRealEstate} />} />
-          <Route path="/seo/education-coaching-ahmedabad" element={<IndustryLandingPage config={phase4Pages.seoEducation} />} />
-          <Route path="/seo/restaurants-hospitality-ahmedabad" element={<IndustryLandingPage config={phase4Pages.seoHospitality} />} />
-          <Route path="/google-ads-for-real-estate-ahmedabad" element={<IndustryLandingPage config={phase4Pages.googleRealEstate} />} />
-          <Route path="/google-ads-for-education-coaching-ahmedabad" element={<IndustryLandingPage config={phase4Pages.googleEducation} />} />
-          <Route path="/google-ads-for-manufacturers-ahmedabad" element={<IndustryLandingPage config={phase4Pages.googleManufacturers} />} />
-          <Route path="/website-design-for-hospitals-ahmedabad" element={<IndustryLandingPage config={phase4Pages.webHospitals} />} />
-          <Route path="/website-design-for-real-estate-ahmedabad" element={<IndustryLandingPage config={phase4Pages.webRealEstate} />} />
-          <Route path="/website-design-for-schools-coaching-ahmedabad" element={<IndustryLandingPage config={phase4Pages.webEducation} />} />
-          <Route path="/website-design-for-restaurants-ahmedabad" element={<IndustryLandingPage config={phase4Pages.webRestaurants} />} />
-          <Route path="/ecommerce-website-cost-ahmedabad" element={<IndustryLandingPage config={phase4Pages.webEcommerceCost} />} />
-          <Route path="/wordpress-website-cost-ahmedabad" element={<IndustryLandingPage config={phase4Pages.webWordpressCost} />} />
           <Route path="/website-development-cost-ahmedabad" element={<IndustryLandingPage config={phase2WebPages.websiteDevCost} />} />
           <Route path="/website-design-cost-ahmedabad" element={<IndustryLandingPage config={phase2WebPages.websiteDesignCost} />} />
           <Route path="/website-packages-ahmedabad" element={<IndustryLandingPage config={phase2WebPages.websitePackages} />} />

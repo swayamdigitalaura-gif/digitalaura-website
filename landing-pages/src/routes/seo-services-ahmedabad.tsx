@@ -813,9 +813,6 @@ function QuickAnswer() {
     { href: "/blog/seo-in-2026-ai-era/", label: "How SEO works in 2026 (guide)" },
     { href: "/seo/doctors-hospitals-ahmedabad/", label: "SEO for doctors and hospitals" },
     { href: "/seo/manufacturers-b2b-gujarat/", label: "SEO for manufacturers" },
-    { href: "/seo/real-estate-ahmedabad/", label: "SEO for real estate" },
-    { href: "/seo/education-coaching-ahmedabad/", label: "SEO for coaching and schools" },
-    { href: "/seo/restaurants-hospitality-ahmedabad/", label: "SEO for restaurants and hotels" },
   ];
   return (
     <section id="quick-answer" className="bg-white">
@@ -1907,9 +1904,6 @@ function AreasAndServices() {
     { t: "SEO in 2026 and AI Overviews", href: "/blog/seo-in-2026-ai-era/" },
     { t: "SEO for Doctors & Hospitals", href: "/seo/doctors-hospitals-ahmedabad/" },
     { t: "SEO for Manufacturers & B2B", href: "/seo/manufacturers-b2b-gujarat/" },
-    { t: "SEO for Real Estate", href: "/seo/real-estate-ahmedabad/" },
-    { t: "SEO for Coaching & Schools", href: "/seo/education-coaching-ahmedabad/" },
-    { t: "SEO for Restaurants & Hotels", href: "/seo/restaurants-hospitality-ahmedabad/" },
     { t: "SEO Company in Gujarat", href: "/seo-company-gujarat/" },
     { t: "SEO for International Clients", href: "/seo-agency-international/" },
   ];
@@ -1976,9 +1970,6 @@ function SEOGuides() {
     { t: "Google Business Profile SEO checklist", d: "Set up and keep your profile working for you.", href: "/blog/google-business-profile-seo-checklist/" },
     { t: "Google Business Profile tricks for Maps", d: "Small profile changes that help you show up locally.", href: "/blog/google-business-profile-tricks-google-maps/" },
     { t: "Shopify SEO tutorial", d: "Product, collection and store-level SEO basics.", href: "/blog/shopify-seo-tutorial-2026/" },
-    { t: "SEO or paid ads first?", d: "How to choose between search and ads for your timeline and budget.", href: "/blog/seo-vs-paid-ads-which-first-ahmedabad/" },
-    { t: "How long does SEO take?", d: "A realistic timeline, stage by stage.", href: "/blog/how-long-does-seo-take-ahmedabad/" },
-    { t: "B2B SEO for manufacturers", d: "How industrial buyers search and what wins RFQs.", href: "/blog/b2b-seo-manufacturers-gujarat-guide/" },
     { t: "AI SEO skills for marketers", d: "What to learn as search and AI assistants overlap.", href: "/blog/ai-seo-skills-for-marketers-2026/" },
     { t: "How to rank in ChatGPT, Perplexity and AI Overviews", d: "Making your pages easy for AI tools to cite.", href: "/blog/how-to-rank-chatgpt-perplexity-ai-overviews/" },
   ];

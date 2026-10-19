@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import {
   ArrowRight, Check, Clock, Mail, MapPin, MessageCircle, Phone, X, Search, Layers, PenLine, Activity,
   MousePointerClick, FileBarChart, PartyPopper, Gem, Wind, GraduationCap, Sun, IndianRupee, ClipboardCheck,
-  Stethoscope, Smile, Baby, Megaphone, TrendingUp, Factory, ShoppingCart, Wrench, Database, Building2,
+  Stethoscope, Smile, Baby, Megaphone, TrendingUp, Factory, ShoppingCart, Wrench, Database,
 } from "lucide-react";
 import { Eyebrow, PrimaryCTA, SecondaryCTA, Section, SectionHead, CardBadge, CARD } from "../shared/SectionPrimitives";
 
@@ -384,9 +384,6 @@ export function ExploreMore() {
     { Icon: Stethoscope, t: "Google Ads for doctors", d: "Compliant campaigns for clinics and hospitals.", h: "/google-ads-for-doctors-ahmedabad/" },
     { Icon: Smile, t: "Google Ads for dentists", d: "Near-me and treatment campaigns for dental clinics.", h: "/google-ads-for-dentists-ahmedabad/" },
     { Icon: Baby, t: "Google Ads for IVF clinics", d: "Careful, policy-aware search campaigns for fertility clinics.", h: "/google-ads-for-ivf-clinics-ahmedabad/" },
-    { Icon: Building2, t: "Google Ads for real estate", d: "Campaigns by project and locality, tracked to site visits.", h: "/google-ads-for-real-estate-ahmedabad/" },
-    { Icon: GraduationCap, t: "Google Ads for coaching and schools", d: "Admission-season campaigns tracked by course and branch.", h: "/google-ads-for-education-coaching-ahmedabad/" },
-    { Icon: Factory, t: "Google Ads for manufacturers", d: "Tight product campaigns tracked to qualified RFQs.", h: "/google-ads-for-manufacturers-ahmedabad/" },
     { Icon: Search, t: "Google Ads service overview", d: "Every Google Ads service we run, on one page.", h: "/services/google-ads/" },
     { Icon: Megaphone, t: "Meta ads agency", d: "Facebook and Instagram campaigns for leads.", h: "/meta-ads-agency-ahmedabad/" },
     { Icon: Search, t: "SEO services", d: "Rank on Google and in AI search over time.", h: "/seo-services-ahmedabad" },
@@ -419,9 +416,6 @@ const GUIDES = [
   { t: "Google Ads in 2026: new strategies worth testing", d: "What is new, and what is worth a test budget.", h: "/blog/google-ads-2026-new-strategies/" },
   { t: "Google Ads tactics that stopped working", d: "Old tricks that no longer pay off.", h: "/blog/google-ads-tactics-stopped-working-2026/" },
   { t: "Local business marketing with Google Ads and Maps", d: "How a local business gets calls from Search and Maps.", h: "/blog/local-business-google-ads-maps-2026/" },
-  { t: "Google Ads vs Meta Ads: where to spend first", d: "How intent, product type and follow-up decide where to start.", h: "/blog/google-ads-vs-meta-ads-ahmedabad/" },
-  { t: "How to track calls and WhatsApp leads", d: "What to count as a conversion and how to test it.", h: "/blog/track-calls-whatsapp-leads-google-ads/" },
-  { t: "Performance Max vs Search for lead generation", d: "Which campaign type fits lead generation, and the risks.", h: "/blog/google-ads-performance-max-vs-search-leads/" },
 ];
 
 export function AdsGuides() {

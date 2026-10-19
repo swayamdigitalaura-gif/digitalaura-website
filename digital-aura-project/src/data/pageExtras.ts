@@ -70,6 +70,17 @@ const META_PILLAR_TEAM = [
   { name: "Diya Mahida", role: "Meta Ads Executive", photo: "/team/diya.webp", bio: "Diya handles reporting and optimisation checks across campaigns, summarising what produced leads and what to change next." },
 ];
 
+/** SEO pillar team (same people and wording as the /seo-services-ahmedabad page) for the SEO sub-pages. */
+const SEO_PILLAR_TEAM = [
+  FOUNDER_CARD,
+  { name: "Satish Prajapati", role: "SEO Specialist", photo: "/team/satish.png", bio: "Satish leads SEO delivery and project management on your account. Audit findings become a prioritised plan, and every month’s work, report and next step is explained to you clearly." },
+  { name: "Jinali Lodariya", role: "SEO Executive", photo: "/team/jinali.png", bio: "Jinali handles keyword research, on-page optimisation and content improvements. Titles, headings and page copy are worked through so each service page matches what people in Ahmedabad actually search for." },
+  { name: "Bhavesh Bhavsar", role: "SEO Executive", photo: "/team/bhavesh.webp", bio: "Bhavesh looks after website optimisation, content planning and technical checks. The aim is pages that are crawlable, fast and well structured, so Google can find and understand them." },
+  { name: "Krishna Jani", role: "SEO Executive", photo: "/team/krishna.webp", bio: "Krishna supports on-page work, Google Business Profile updates and local search tasks, keeping your listings and pages accurate and consistent across the places customers look." },
+  { name: "Diya Mahida", role: "SEO Executive", photo: "/team/diya.webp", bio: "Diya supports keyword tracking, reporting and content research, and helps prepare the monthly updates that show which pages moved and what to work on next." },
+];
+const seoTeamSection = (id: string, subtext: string): ExtraSection => ({ kind: "team", id, eyebrow: "Our team", title: "Meet the team behind your SEO", subtext, members: SEO_PILLAR_TEAM });
+
 /** Instagram reel ids supplied by the owner (2026-10-09), grouped by service. */
 export const REELS = {
   seo: ["DXwAkPRMl9c", "DTktVf7gdFf", "DcoMJiOskzp"],
@@ -98,7 +109,10 @@ const raw: Record<string, ExtraEntry> = {
   /* ───────────── phase 1 ───────────── */
   seoFreeAudit: {
     relatedKeys: ["seoPricing", "seoDoctors", "seoManuf", "seoPillar", "gadsAudit"],
-    extraAdd: [],
+    extraAdd: [
+      { kind: "reels", id: "seo-videos", eyebrow: "Videos", title: "Watch: SEO in short videos", subtext: "Short, practical videos from our founder, Sambhav Shah, on how SEO works for businesses in Ahmedabad.", ids: REELS.seo, topic: "SEO", slug: "seo" },
+      seoTeamSection("seo-team", "Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. This is the in-house team at our Hanspura office, Ahmedabad, that carries out and explains every audit."),
+    ],
   },
   googleAdsAudit: {
     relatedKeys: ["gadsPillar", "gadsPricing", "gadsDoctors", "metaPillar", "seoPillar", "cro"],
@@ -165,8 +179,13 @@ const raw: Record<string, ExtraEntry> = {
       },
     ],
   },
-  seoDoctors: { relatedKeys: ["seoPillar", "seoPricing", "seoAudit", "seoManuf", "webDoctors", "gadsDoctors", "metaClinics"] },
-  seoManufacturers: { relatedKeys: ["seoPillar", "seoPricing", "seoAudit", "seoDoctors", "webManuf"] },
+  seoDoctors: { relatedKeys: ["seoPillar", "seoPricing", "seoAudit", "seoManuf", "webDoctors", "gadsDoctors", "metaClinics"],
+    extraAdd: [seoTeamSection("seo-team", "Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. This is the in-house team at our Hanspura office, Ahmedabad, that plans and runs healthcare SEO.")],
+  },
+  seoManufacturers: { relatedKeys: ["seoPillar", "seoPricing", "seoAudit", "seoDoctors", "webManuf"],
+    extraAdd: [
+      { kind: "text", id: "cost", title: "What B2B SEO costs for a manufacturer", paragraphs: ["The cost depends on catalogue size, the markets you want to reach and how competitive your products are. We give a written scope and fee after a free audit, so you can compare it with what marketplace listings cost you today.", "For businesses in Ahmedabad our SEO plans run from ₹15,000 to ₹1,50,000 a month plus GST. For a plant elsewhere in Gujarat, we confirm the scope and fee in writing after the audit."], links: [{ label: "How our SEO plans are scoped", href: "/seo/pricing-ahmedabad/" }], after: "qualified-leads" },seoTeamSection("seo-team", "Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. This is the in-house team at our Hanspura office, Ahmedabad, that plans and runs B2B SEO for manufacturers.")],
+  },
   googleAdsPricing: {
     relatedKeys: ["gadsPillar", "gadsAudit", "gadsDoctors", "metaPillar", "adAgency", "seoPillar", "engagement"],
     extraAdd: [

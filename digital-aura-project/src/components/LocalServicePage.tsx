@@ -452,7 +452,7 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
             {jumpItems.length >= 4 && <JumpLinks accent={c.accentColor} items={jumpItems} />}
             {config.lastUpdated && (
               <p className="mt-4 text-xs text-[#6B7280] text-center leading-relaxed">
-                Published by <a href="/about/" className="underline">Digital Aura</a>, 713 Shilp Arcade, SP Ring Road, Hanspura, Ahmedabad. Last updated{" "}
+                Published by <a href="/about/" className="underline">Digital Aura</a>. Last updated{" "}
                 <time dateTime={config.lastUpdated}>{formatDate(config.lastUpdated)}</time>. <a href="/contact/" className="underline">Contact us</a>.
               </p>
             )}

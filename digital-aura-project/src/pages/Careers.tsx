@@ -245,7 +245,7 @@ const Careers = () => {
     "careers_culture_badge", "careers_side_h2", "careers_pg_p_10",
     ...cultureValues.map((_, i) => `careers_val_${i}`),
     "careers_pg_badge_8", "careers_jobs_h2", "careers_hl_119", "careers_pg_6", "careers_pg_p_11",
-    "careers_pg_2", "careers_pg_p_12", "careers_resume_btn",
+    "careers_pg_2", "careers_pg_p_12", "careers_resume_btn", "careers_hr_phone",
     "careers_cta_badge", "careers_cta_h2", "careers_hl_120", "careers_cta_h2b", "careers_pg_p_13", "careers_cta_btn",
   ]);
   const g = (key: string, fallback: string) => s[key] || fallback;
@@ -282,6 +282,7 @@ const Careers = () => {
   const pg2 = g("careers_pg_2", "Don't See the Right Role?");
   const pgP12 = g("careers_pg_p_12", "We're always open to exceptional people. Send us your resume with a note on what you do best — we'll reach out when something fits.");
   const resumeBtn = g("careers_resume_btn", "Send Your Resume");
+  const hrPhone = g("careers_hr_phone", "+91 95585 19542");
   const ctaBadge = g("careers_cta_badge", "Join the Team");
   const ctaH2 = g("careers_cta_h2", "Ready to");
   const heroHl120 = g("careers_hl_120", "Build Something");
@@ -490,9 +491,14 @@ const Careers = () => {
           <div className="relative z-10">
             <h3 className="font-black text-[#0A1628] text-2xl mb-3"><span data-cms-key="careers_pg_2" data-cms-label="H3 Text" data-cms-attr="text">{pg2}</span></h3>
             <p className="text-[#6B7280] text-sm leading-relaxed max-w-md"><span data-cms-key="careers_pg_p_12" data-cms-label="Body Text" data-cms-attr="text">{pgP12}</span></p>
-            <a href="mailto:hr@thedigitalaura.com" className="inline-flex items-center gap-2 mt-3 text-sm font-semibold" style={{ color: "#7C3AED" }}>
-              <Mail size={14} /> hr@thedigitalaura.com
-            </a>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 mt-3">
+              <a href="mailto:hr@thedigitalaura.com" className="inline-flex items-center gap-2 text-sm font-semibold" style={{ color: "#7C3AED" }}>
+                <Mail size={14} /> hr@thedigitalaura.com
+              </a>
+              <a href="tel:+919558519542" className="inline-flex items-center gap-2 text-sm font-semibold" style={{ color: "#7C3AED" }}>
+                <Phone size={14} /> <span data-cms-key="careers_hr_phone" data-cms-label="HR Phone" data-cms-attr="text">{hrPhone}</span>
+              </a>
+            </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0 relative z-10">
             <a href="mailto:hr@thedigitalaura.com?subject=Open Application"

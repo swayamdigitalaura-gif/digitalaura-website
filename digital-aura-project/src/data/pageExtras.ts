@@ -85,6 +85,23 @@ const META_PILLAR_TEAM = [
   { name: "Diya Mahida", role: "Meta Ads Executive", photo: "/team/diya.webp", bio: "Diya handles reporting and optimisation checks across campaigns, summarising what produced leads and what to change next." },
 ];
 
+/** Google Ads pillar team (same people and wording as the /google-ads-agency-ahmedabad page). */
+const GOOGLE_PILLAR_TEAM = [
+  FOUNDER_CARD,
+  { name: "Satish Prajapati", role: "Google Ads Specialist", photo: "/team/satish.png", bio: "Satish plans account structure, budgets and bidding, and keeps campaigns tied to the enquiries you want. Satish also coordinates the team and walks you through each month's results." },
+  { name: "Bhavesh Bhavsar", role: "Google Ads Executive", photo: "/team/bhavesh.webp", bio: "Bhavesh manages campaign setup, conversion tracking and daily checks, so calls, forms and WhatsApp clicks are counted correctly and budgets stay on track." },
+  { name: "Krishna Jani", role: "Google Ads Executive", photo: "/team/krishna.webp", bio: "Krishna supports campaign optimisation and landing page checks, making sure the page a visitor lands on keeps the promise made in the ad." },
+  { name: "Diya Mahida", role: "Google Ads Executive", photo: "/team/diya.webp", bio: "Diya prepares performance reports and audience and placement reviews, turning account data into clear next steps for the team and for you." },
+];
+
+/** Website pillar team (same people and wording as the /website-development-services-ahmedabad page). */
+const WEB_PILLAR_TEAM = [
+  FOUNDER_CARD,
+  { name: "Jaspreet Singh", role: "Web Design & Dev Project Manager", photo: "/team/jaspreet.png", bio: "Jaspreet is your point of contact on a website project. He plans the scope and timeline, coordinates design and development, and keeps every stage moving towards the launch date." },
+  { name: "Swayam Parikh", role: "AI Full Stack Developer", photo: "/team/swayam.png", bio: "Swayam builds the front end and back end of custom websites and web apps, and adds AI-powered features where they help, keeping the code fast, secure and easy to maintain." },
+  { name: "Abhishek Kaushal", role: "Shopify Developer", photo: "/team/placeholder-male.svg", bio: "Abhishek builds and customises Shopify stores, from theme setup and product catalogues to checkout and payment integrations, so your online store is ready to sell." },
+];
+
 /** SEO pillar team (same people and wording as the /seo-services-ahmedabad page) for the SEO sub-pages. */
 const SEO_PILLAR_TEAM = [
   FOUNDER_CARD,
@@ -95,6 +112,9 @@ const SEO_PILLAR_TEAM = [
   { name: "Diya Mahida", role: "SEO Executive", photo: "/team/diya.webp", bio: "Diya supports keyword tracking, reporting and content research, and helps prepare the monthly updates that show which pages moved and what to work on next." },
 ];
 const seoTeamSection = (id: string, subtext: string): ExtraSection => ({ kind: "team", id, eyebrow: "Our team", title: "Meet the team behind your SEO", subtext, members: SEO_PILLAR_TEAM });
+
+/** Pillar-page teams by service, so every cluster page shows the founder first and then the members relevant to that service. */
+export const PILLAR_TEAMS = { seo: SEO_PILLAR_TEAM, gads: GOOGLE_PILLAR_TEAM, meta: META_PILLAR_TEAM, web: WEB_PILLAR_TEAM };
 
 /** Instagram reel ids supplied by the owner (2026-10-09), grouped by service. */
 export const REELS = {

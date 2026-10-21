@@ -95,6 +95,29 @@ const FREE_LABEL: Record<IndustryService, string> = { meta: "Meta ads account re
 const TEAM_FOR: Record<IndustryService, (keyof typeof TEAM)[]> = { meta: ["satish", "bhavesh"], google: ["satish", "bhavesh"], web: [], seo: ["satish", "jinali", "bhavesh"] };
 const TEAM_TITLE: Record<IndustryService, string> = { meta: "The team behind your Meta ads", google: "The team behind your Google Ads", web: "", seo: "The team behind your SEO" };
 
+/**
+ * Cost section shown in the "Pricing" group of cluster pages. Wording and ranges come only from the approved pricing pages
+ * (pricingPages.ts): the Ahmedabad SEO range, the Google Ads and Meta ads management fee ranges. Website pages quote no figure.
+ */
+function costSection(s: IndustrySpec): ExtraSection {
+  const base = { kind: "text" as const, id: "cost", title: `Cost of ${s.name}` };
+  if (s.service === "seo") return { ...base, paragraphs: [
+    "The cost depends on how many pages, services and areas you want to rank for, how competitive your market is, and the condition of your current website. We give a written scope and fee after a free audit.",
+    "For businesses in Ahmedabad our SEO plans run from ₹15,000 to ₹1,50,000 a month plus GST. SEO Basic suits one city and a small site, SEO Growth adds more services and areas, and SEO Advance covers large, multi-location or crowded markets.",
+  ], links: [{ label: "How our SEO plans are scoped", href: "/seo/pricing-ahmedabad/" }] };
+  if (s.service === "google") return { ...base, paragraphs: [
+    "Google Ads cost has three parts: your ad spend, which is paid to Google and which you decide; our management fee; and GST. The fee depends on how much there is to manage and is written in your quote before you commit.",
+    "For Ahmedabad businesses our management fee is ₹15,000 to ₹60,000 per month plus GST.",
+  ], links: [{ label: "Google Ads pricing explained", href: "/google-ads-pricing-ahmedabad/" }] };
+  if (s.service === "meta") return { ...base, paragraphs: [
+    "Meta ads cost has two budgets: our management fee, plus GST, and your ad spend, which you pay to Meta from your own ad account. The fee depends on the number of campaigns, the creative you need and the tracking set-up, and is written in your quote.",
+    "For Ahmedabad businesses our management fee is ₹15,000 to ₹60,000 per month plus GST.",
+  ], links: [{ label: "Meta ads pricing explained", href: "/meta-ads-agency-ahmedabad/pricing/" }] };
+  return { ...base, paragraphs: [
+    "The cost depends on the number of pages, the features and integrations you need, the design and content work involved, and ongoing hosting and maintenance. We give a written quote after a short brief, so you can compare it fairly.",
+  ], links: [{ label: "How website cost is worked out", href: "/website-development-cost-ahmedabad/" }] };
+}
+
 export function buildIndustryPage(s: IndustrySpec): LocalServiceConfig {
   const parent = PARENT[s.service];
   const slug = s.path.replace(/^\//, "").replace(/\//g, "-");
@@ -106,8 +129,10 @@ export function buildIndustryPage(s: IndustrySpec): LocalServiceConfig {
     ...(i < EARLY_COUNT ? { slot: "early" as const } : {}),
   }));
   const teamMembers = TEAM_FOR[s.service].map((k) => TEAM[k]);
+  const hasCost = /cost/.test(s.path) || s.sections.some((x) => /cost/.test(x.id));
   const sections: ExtraSection[] = [
     ...guide,
+    ...(hasCost ? [] : [costSection(s)]),
     {
       kind: "cards",
       id: "get-started",

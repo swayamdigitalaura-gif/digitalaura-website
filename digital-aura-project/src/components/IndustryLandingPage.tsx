@@ -17,6 +17,7 @@ import PriceTable from "@/components/PriceTable";
 import AuthorBox from "@/components/AuthorBox";
 import { GUIDES } from "@/data/linkMap";
 import RelatedGuides from "@/components/RelatedGuides";
+import { PILLAR_TEAMS } from "@/data/pageExtras";
 import CaseStudies, { type CaseCard } from "@/components/CaseStudies";
 import Testimonials from "@/components/Testimonials";
 import PageLeadForm from "@/components/PageLeadForm";
@@ -77,7 +78,7 @@ export type StdLayout = {
   subnav: { href: string; label: string }[];
   parts: StdPart[];
   labels?: Record<string, string>;
-  guides?: { topic: "seo" | "gads" | "meta"; slugs?: string[]; eyebrow: string; title: string; sub?: string; tabLabel?: string };
+  guides?: { topic: "seo" | "gads" | "meta" | "web"; slugs?: string[]; eyebrow: string; title: string; sub?: string; tabLabel?: string };
   visitLabel?: string;
 };
 
@@ -439,8 +440,10 @@ function Faq({ q, a }: { q: string; a: string }) {
 
 /* ───────────── page ───────────── */
 
-export default function IndustryLandingPage({ config, variant = "industry", officeMap = false, caseCards, caseSub, standard = false, layout }: { config: LocalServiceConfig; variant?: Variant; /** Custom section grouping for the standard template (SEO sub-pages). The Meta page omits it and keeps its own layout. */ layout?: StdLayout; /** Standard pillar template (same section order and look as the SEO / Google Ads pages). */ standard?: boolean; /** Service-specific case study cards (defaults to the home page set). */ caseCards?: CaseCard[]; caseSub?: string; /** Show the Google Map + "Talk to us" block above the footer instead of the "Visit us" card. */ officeMap?: boolean }) {
+export default function IndustryLandingPage({ config, variant = "industry", officeMap: officeMapProp = false, caseCards, caseSub, standard = false, layout: layoutProp }: { config: LocalServiceConfig; variant?: Variant; /** Custom section grouping for the standard template (SEO sub-pages). The Meta page omits it and keeps its own layout. */ layout?: StdLayout | "auto"; /** Standard pillar template (same section order and look as the SEO / Google Ads pages). */ standard?: boolean; /** Service-specific case study cards (defaults to the home page set). */ caseCards?: CaseCard[]; caseSub?: string; /** Show the Google Map + "Talk to us" block above the footer instead of the "Visit us" card. */ officeMap?: boolean }) {
   const pillar = variant === "pillar";
+  // Cluster pages (layout="auto") on Ahmedabad pages show the same "Find us" map block as the SEO sub-pages. Map stays Ahmedabad-only.
+  const officeMap = officeMapProp || (layoutProp === "auto" && /ahmedabad/i.test(`${config.slug} ${config.h1} ${config.eyebrow}`));
   useCMSEditor();
   // Same admin-edited copy overrides as LocalServicePage (settings keys are namespaced by slug), so nothing edited in the CMS is lost.
   const k = (field: string) => `${config.slug}_${field}`;
@@ -540,6 +543,44 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
   // Standard pillar template (Meta Ads page): same section order and look as the SEO / Google Ads pages. Existing content is only rearranged.
   if (standard) {
     const pool = [...early, ...late];
+    // "auto": cluster pages. Same tabbed pillar layout as the SEO sub-pages, grouping this page's own sections by position (nothing is dropped; leftovers go to "Keep exploring").
+    const autoTopic = /google-ads/.test(c.parentServiceHref || "") ? "gads" : /meta-ads/.test(c.parentServiceHref || "") ? "meta" : /seo/.test(c.parentServiceHref || "") ? "seo" : "web";
+    const autoLabel = (sec: { title: string; jumpLabel?: string }) => {
+      if (sec.jumpLabel && !/^(guide|checklist|do and avoid)$/i.test(sec.jumpLabel)) return sec.jumpLabel;
+      const words = sec.title.split(/[:?,]/)[0].trim().split(/\s+/);
+      while (words.length > 2 && /^(the|a|an|our|your)$/i.test(words[0])) words.shift();
+      let out = words[0];
+      for (let i = 1; i < words.length; i++) { if ((out + " " + words[i]).length > 24) break; out += " " + words[i]; }
+      return out.charAt(0).toUpperCase() + out.slice(1);
+    };
+    const costSec = pool.find((x) => x.id === "cost");
+    const mid = pool.filter((x) => x !== costSec && x.kind !== "team");
+    // Cluster pages always show the pillar team for their service: founder first, then the members relevant to that service (same people and wording as the pillar page).
+    const autoTeam: ExtraSection | undefined = layoutProp === "auto" ? {
+      kind: "team", id: "team", eyebrow: "Our team",
+      title: autoTopic === "web" ? "Meet the team behind every website we build" : `Meet the team behind your ${autoTopic === "seo" ? "SEO" : autoTopic === "gads" ? "Google Ads" : "Meta ads"}`,
+      subtext: `Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. This is the in-house team at our Hanspura office, Ahmedabad, that ${autoTopic === "web" ? "plans, designs and builds your website" : autoTopic === "seo" ? "plans and runs your SEO" : autoTopic === "gads" ? "plans and runs your Google Ads" : "plans and runs your Meta ads"}.`,
+      members: PILLAR_TEAMS[autoTopic],
+    } : undefined;
+    const layout: StdLayout | undefined = layoutProp === "auto" ? {
+      visitLabel: c.heroCta?.label || "Get a free review",
+      labels: { ...Object.fromEntries(pool.map((x) => [x.id, autoLabel(x)])), cost: "What it costs" },
+      guides: { topic: autoTopic, tabLabel: `${autoTopic === "seo" ? "SEO" : autoTopic === "gads" ? "Google Ads" : autoTopic === "meta" ? "Meta ads" : "Website"} guides`, eyebrow: "Guides from our team", title: "Read the plain-English guides before you decide", sub: "Written by our team. They help you judge any proposal, ours included." },
+      subnav: [
+        { href: "#overview-group", label: "Overview" }, { href: "#services", label: "Services" }, { href: "#process", label: "Process" },
+        { href: "#results-proof", label: "Results" }, { href: "#pricing", label: "Pricing" }, { href: "#faqs", label: "FAQs" },
+      ],
+      parts: [
+        { type: "group", id: "overview-group", tone: "white", eyebrow: "Overview", title: "What this covers, and the real problem", tabs: ["quick", "problem", ...(mid[0] ? [mid[0].id] : [])] },
+        { type: "group", id: "services", tone: "light", eyebrow: "What's included", title: "What you get", tabs: ["included", ...(mid[1] ? [mid[1].id] : [])] },
+        { type: "group", id: "process", tone: "white", eyebrow: "Our process", title: "How we work", tabs: ["how", ...(mid[2] ? [mid[2].id] : [])] },
+        { type: "proof", tone: "light" },
+        { type: "testimonials", tone: "white" },
+        { type: "group", id: "pricing", tone: "light", eyebrow: "Fit & cost", title: costSec ? "What it costs, and why work with us" : "What to know, and why work with us", tabs: [...(costSec ? ["cost"] : []), "why", ...mid.slice(3).map((x) => x.id)] },
+        { type: "team", tone: "white" },
+        { type: "explore", tone: "light" },
+      ],
+    } : layoutProp;
     const labelFor: Record<string, string> = {
       "short-answer": "The short answer", "who-its-for": "Who it suits", "ad-formats": "Facebook, Instagram or WhatsApp",
       "monthly-work": "Monthly work", "first-30-days": "First 30 days", "tracking-lead-quality": "Tracking and lead quality",
@@ -784,7 +825,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
         const sec = pool.find((x) => x.id === key);
         return sec ? { id: key, label: layout.labels?.[key] || chipLabel(sec), content: <GuideSection sec={sec} index={0} /> } : null;
       };
-      const teamSec2 = team || pool.find((x) => x.kind === "team");
+      const teamSec2 = autoTeam || team || pool.find((x) => x.kind === "team");
       const asTabs = (keys: string[], label: string, initial?: string) => {
         const t = tabs(keys.map(tabFor));
         if (t.length === 0) return null;
@@ -801,9 +842,9 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
         // "explore": link cards and any leftover sections, so no existing content is dropped
         const left = pool.filter((x) => !used.has(x.id) && x !== teamSec2 && x.kind !== "team");
         const exploreTabs = tabs([
-          ...(["related", "start", "guides"] as const).map((key) => (used.has(key) ? null : tabFor(key))),
+          ...((layoutProp === "auto" ? ["related", "guides"] : ["related", "start", "guides"]) as ("related" | "start" | "guides")[]).map((key) => (used.has(key) ? null : tabFor(key))),
           ...left.map((sec) => ({ id: sec.id, label: layout.labels?.[sec.id] || chipLabel(sec), content: <GuideSection sec={sec} index={0} /> })),
-          about ? { id: "about", label: "About this page", content: aboutBlock(about) } : null,
+          about && layoutProp !== "auto" ? { id: "about", label: "About this page", content: aboutBlock(about) } : null,
           visit && !officeMap ? { id: "visit", label: "Visit us", content: aboutBlock(visit) } : null,
         ]);
         return exploreTabs.length ? (
@@ -958,7 +999,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
             </PillarSection>
           )}
           </>)}
-          {!c.storyLayout && (
+          {(!c.storyLayout || layoutProp === "auto") && (
             <PillarSection tone="white" bare noHead>
               <BlogInsights />
             </PillarSection>

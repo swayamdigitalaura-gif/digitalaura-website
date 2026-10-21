@@ -171,33 +171,33 @@ const App = () => (
           <Route path="/awards" element={<AwardsPage />} />
           <Route path="/website-development-services-ahmedabad" element={<WebsiteDevelopmentServicesPage />} />
           <Route path="/seo/free-audit" element={<IndustryLandingPage config={phase1Pages.seoFreeAudit} variant="pillar" standard layout={seoFreeAuditLayout} caseCards={[CASE_CARDS.ivf, CASE_CARDS.prism, CASE_CARDS.dp]} caseSub="Real results from businesses we do SEO for." />} />
-          <Route path="/google-ads-audit-ahmedabad" element={<IndustryLandingPage config={phase1Pages.googleAdsAudit} />} />
-          <Route path="/website-redesign-services-ahmedabad" element={<IndustryLandingPage config={phase1Pages.websiteRedesign} />} />
-          <Route path="/website-maintenance-amc-ahmedabad" element={<IndustryLandingPage config={phase1Pages.websiteMaintenance} />} />
+          <Route path="/google-ads-audit-ahmedabad" element={<IndustryLandingPage config={phase1Pages.googleAdsAudit} variant="pillar" standard layout="auto" />} />
+          <Route path="/website-redesign-services-ahmedabad" element={<IndustryLandingPage config={phase1Pages.websiteRedesign} variant="pillar" standard layout="auto" />} />
+          <Route path="/website-maintenance-amc-ahmedabad" element={<IndustryLandingPage config={phase1Pages.websiteMaintenance} variant="pillar" standard layout="auto" />} />
           <Route path="/seo/pricing-ahmedabad" element={<PricingPage config={PRICING_PAGES.seo} />} />
           <Route path="/seo/doctors-hospitals-ahmedabad" element={<IndustryLandingPage config={phase2Pages.seoDoctors} variant="pillar" standard officeMap layout={seoDoctorsLayout} caseCards={[CASE_CARDS.ivf]} caseSub="A real result from a healthcare business we do SEO for." />} />
           <Route path="/seo/manufacturers-b2b-gujarat" element={<IndustryLandingPage config={phase2Pages.seoManufacturers} variant="pillar" standard layout={seoManufacturersLayout} caseCards={[CASE_CARDS.prism]} caseSub="A real result from an industrial B2B business we do SEO for." />} />
           <Route path="/google-ads-pricing-ahmedabad" element={<PricingPage config={PRICING_PAGES.gads} />} />
-          <Route path="/google-ads-for-doctors-ahmedabad" element={<IndustryLandingPage config={phase2Pages.googleAdsDoctors} />} />
+          <Route path="/google-ads-for-doctors-ahmedabad" element={<IndustryLandingPage config={phase2Pages.googleAdsDoctors} variant="pillar" standard layout="auto" />} />
           <Route path="/meta-ads-agency-ahmedabad/pricing" element={<PricingPage config={PRICING_PAGES.meta} />} />
-          <Route path="/meta-ads-agency-ahmedabad/clinics-doctors" element={<IndustryLandingPage config={phase2Pages.metaAdsClinics} />} />
-          <Route path="/meta-ads-agency-ahmedabad/real-estate" element={<IndustryLandingPage config={phase4Pages.metaRealEstate} />} />
-          <Route path="/meta-ads-agency-ahmedabad/hospitals" element={<IndustryLandingPage config={phase4Pages.metaHospitals} />} />
-          <Route path="/meta-ads-agency-ahmedabad/dentists" element={<IndustryLandingPage config={phase4Pages.metaDentists} />} />
-          <Route path="/meta-ads-agency-ahmedabad/ivf-fertility-clinics" element={<IndustryLandingPage config={phase4Pages.metaIvf} />} />
-          <Route path="/meta-ads-agency-ahmedabad/dermatologists-skin-clinics" element={<IndustryLandingPage config={phase4Pages.metaDermatology} />} />
-          <Route path="/meta-ads-agency-ahmedabad/education-coaching" element={<IndustryLandingPage config={phase4Pages.metaEducation} />} />
-          <Route path="/meta-ads-agency-ahmedabad/restaurants" element={<IndustryLandingPage config={phase4Pages.metaRestaurants} />} />
-          <Route path="/meta-ads-agency-ahmedabad/ecommerce" element={<IndustryLandingPage config={phase4Pages.metaEcommerce} />} />
-          <Route path="/google-ads-for-ivf-clinics-ahmedabad" element={<IndustryLandingPage config={phase4Pages.googleIvf} />} />
-          <Route path="/google-ads-for-dentists-ahmedabad" element={<IndustryLandingPage config={phase4Pages.googleDentists} />} />
-          <Route path="/website-design-for-dentists-ahmedabad" element={<IndustryLandingPage config={phase4Pages.webDentists} />} />
-          <Route path="/website-design-for-ophthalmologists-ahmedabad" element={<IndustryLandingPage config={phase4Pages.webOphthalmologists} />} />
-          <Route path="/website-development-cost-ahmedabad" element={<IndustryLandingPage config={phase2WebPages.websiteDevCost} />} />
-          <Route path="/website-design-cost-ahmedabad" element={<IndustryLandingPage config={phase2WebPages.websiteDesignCost} />} />
-          <Route path="/website-packages-ahmedabad" element={<IndustryLandingPage config={phase2WebPages.websitePackages} />} />
-          <Route path="/website-design-for-doctors-ahmedabad" element={<IndustryLandingPage config={phase2WebPages.websiteDoctors} />} />
-          <Route path="/website-design-for-manufacturers-ahmedabad" element={<IndustryLandingPage config={phase2WebPages.websiteManufacturers} />} />
+          <Route path="/meta-ads-agency-ahmedabad/clinics-doctors" element={<IndustryLandingPage config={phase2Pages.metaAdsClinics} variant="pillar" standard layout="auto" />} />
+          <Route path="/meta-ads-agency-ahmedabad/real-estate" element={<IndustryLandingPage config={phase4Pages.metaRealEstate} variant="pillar" standard layout="auto" />} />
+          <Route path="/meta-ads-agency-ahmedabad/hospitals" element={<IndustryLandingPage config={phase4Pages.metaHospitals} variant="pillar" standard layout="auto" />} />
+          <Route path="/meta-ads-agency-ahmedabad/dentists" element={<IndustryLandingPage config={phase4Pages.metaDentists} variant="pillar" standard layout="auto" />} />
+          <Route path="/meta-ads-agency-ahmedabad/ivf-fertility-clinics" element={<IndustryLandingPage config={phase4Pages.metaIvf} variant="pillar" standard layout="auto" />} />
+          <Route path="/meta-ads-agency-ahmedabad/dermatologists-skin-clinics" element={<IndustryLandingPage config={phase4Pages.metaDermatology} variant="pillar" standard layout="auto" />} />
+          <Route path="/meta-ads-agency-ahmedabad/education-coaching" element={<IndustryLandingPage config={phase4Pages.metaEducation} variant="pillar" standard layout="auto" />} />
+          <Route path="/meta-ads-agency-ahmedabad/restaurants" element={<IndustryLandingPage config={phase4Pages.metaRestaurants} variant="pillar" standard layout="auto" />} />
+          <Route path="/meta-ads-agency-ahmedabad/ecommerce" element={<IndustryLandingPage config={phase4Pages.metaEcommerce} variant="pillar" standard layout="auto" />} />
+          <Route path="/google-ads-for-ivf-clinics-ahmedabad" element={<IndustryLandingPage config={phase4Pages.googleIvf} variant="pillar" standard layout="auto" />} />
+          <Route path="/google-ads-for-dentists-ahmedabad" element={<IndustryLandingPage config={phase4Pages.googleDentists} variant="pillar" standard layout="auto" />} />
+          <Route path="/website-design-for-dentists-ahmedabad" element={<IndustryLandingPage config={phase4Pages.webDentists} variant="pillar" standard layout="auto" />} />
+          <Route path="/website-design-for-ophthalmologists-ahmedabad" element={<IndustryLandingPage config={phase4Pages.webOphthalmologists} variant="pillar" standard layout="auto" />} />
+          <Route path="/website-development-cost-ahmedabad" element={<IndustryLandingPage config={phase2WebPages.websiteDevCost} variant="pillar" standard layout="auto" />} />
+          <Route path="/website-design-cost-ahmedabad" element={<IndustryLandingPage config={phase2WebPages.websiteDesignCost} variant="pillar" standard layout="auto" />} />
+          <Route path="/website-packages-ahmedabad" element={<IndustryLandingPage config={phase2WebPages.websitePackages} variant="pillar" standard layout="auto" />} />
+          <Route path="/website-design-for-doctors-ahmedabad" element={<IndustryLandingPage config={phase2WebPages.websiteDoctors} variant="pillar" standard layout="auto" />} />
+          <Route path="/website-design-for-manufacturers-ahmedabad" element={<IndustryLandingPage config={phase2WebPages.websiteManufacturers} variant="pillar" standard layout="auto" />} />
           <Route path="/social-media-marketing-agency-ahmedabad" element={<IndustryLandingPage config={phase3Pages.socialMediaAgency} />} />
           <Route path="/advertising-agency-ahmedabad" element={<IndustryLandingPage config={phase3Pages.advertisingAgency} />} />
 

@@ -15,7 +15,7 @@ export const PILLARS: Record<Topic, { label: string; short: string; href: string
 
 export type Guide = { slug: string; title: string };
 
-export const GUIDES: Record<Exclude<Topic, "web">, Guide[]> = {
+export const GUIDES: Record<Topic, Guide[]> = {
   seo: [
     { slug: "seo-in-2026-ai-era", title: "SEO in 2026: The Complete Strategy Guide for the AI Search Era" },
     { slug: "on-page-seo-checklist-2026", title: "On-Page SEO Checklist for 2026" },
@@ -29,6 +29,9 @@ export const GUIDES: Record<Exclude<Topic, "web">, Guide[]> = {
     { slug: "how-to-rank-chatgpt-perplexity-ai-overviews", title: "How to Rank in ChatGPT, Perplexity and AI Overviews" },
     { slug: "ai-seo-skills-for-marketers-2026", title: "6 AI SEO Skills Every Marketer Needs in 2026" },
     { slug: "shopify-seo-tutorial-2026", title: "Shopify SEO Tutorial 2026" },
+    { slug: "seo-vs-paid-ads-which-first-ahmedabad", title: "SEO or Paid Ads First? How Ahmedabad Businesses Should Decide" },
+    { slug: "how-long-does-seo-take-ahmedabad", title: "How Long Does SEO Take? A Realistic Timeline for Ahmedabad Businesses" },
+    { slug: "b2b-seo-manufacturers-gujarat-guide", title: "B2B SEO for Manufacturers: How Industrial Buyers Find Suppliers Online" },
   ],
   gads: [
     { slug: "google-ads-strategy-checklist-2026", title: "Google Ads Strategy Checklist for 2026" },
@@ -36,6 +39,9 @@ export const GUIDES: Record<Exclude<Topic, "web">, Guide[]> = {
     { slug: "google-ads-2026-new-strategies", title: "Google Ads in 2026: New Strategies Worth Testing" },
     { slug: "google-ads-tactics-stopped-working-2026", title: "Google Ads Tactics That Stopped Working in 2026" },
     { slug: "local-business-google-ads-maps-2026", title: "Local Business Marketing With Google Ads and Maps" },
+    { slug: "google-ads-vs-meta-ads-ahmedabad", title: "Google Ads vs Meta Ads: Where Should an Ahmedabad Business Spend First?" },
+    { slug: "track-calls-whatsapp-leads-google-ads", title: "How to Track Calls and WhatsApp Leads From Google Ads" },
+    { slug: "google-ads-performance-max-vs-search-leads", title: "Performance Max vs Search Campaigns for Lead Generation" },
   ],
   meta: [
     { slug: "meta-lead-gen-ads-2026", title: "Meta Lead Gen Ads: What Top Advertisers Actually Do" },
@@ -47,11 +53,20 @@ export const GUIDES: Record<Exclude<Topic, "web">, Guide[]> = {
     { slug: "ai-tools-ugc-ads-2026", title: "6 AI Tools for Creating UGC-Style Ads" },
     { slug: "video-hooks-viral-2026", title: "The Video Hooks That Actually Go Viral in 2026" },
     { slug: "instagram-growth-2026", title: "How to Grow on Instagram and Get More Views in 2026" },
+    { slug: "meta-click-to-whatsapp-ads-guide", title: "Click-to-WhatsApp Ads: How They Work and When to Use Them" },
+    { slug: "meta-ad-creative-testing-lead-generation", title: "How to Test Meta Ad Creative Without Wasting Budget" },
+  ],
+  web: [
+    { slug: "website-redesign-checklist-protect-traffic", title: "Website Redesign Checklist: How to Redesign Without Losing Google Traffic" },
+    { slug: "wordpress-vs-shopify-vs-custom-website-india", title: "WordPress, Shopify or Custom Build: Which Is Right for Your Business?" },
+    { slug: "manufacturer-website-checklist-b2b-buyers", title: "Manufacturer Website Checklist: What B2B Buyers Need to See" },
+    { slug: "website-maintenance-checklist-for-business", title: "Website Maintenance Checklist: What a Business Website Needs Every Month" },
   ],
 };
 
 /** Which pillar a blog post belongs to. Social-media posts feed the Meta pillar. */
 export function topicForBlog(slug: string, category?: string | null): Topic {
+  if ((category || "").toLowerCase() === "web development") return "web";
   const key = `${slug} ${category || ""}`.toLowerCase();
   if (/google-ads|local-business-google-ads/.test(key)) return "gads";
   if (/meta|instagram|ugc|video-hooks|social media/.test(key)) return "meta";
@@ -75,11 +90,13 @@ export const CLUSTER_LINKS: Record<Topic, ClusterLink[]> = {
     { label: "SEO packages and pricing in Ahmedabad", href: "/seo/pricing-ahmedabad/" },
     { label: "Free SEO audit", href: "/seo/free-audit/" },
     { label: "SEO for doctors and hospitals", href: "/seo/doctors-hospitals-ahmedabad/" },
+    { label: "SEO for manufacturers in Gujarat", href: "/seo/manufacturers-b2b-gujarat/" },
   ],
   gads: [
     { label: "Google Ads pricing in Ahmedabad", href: "/google-ads-pricing-ahmedabad/" },
     { label: "Free Google Ads audit", href: "/google-ads-audit-ahmedabad/" },
     { label: "Google Ads for doctors", href: "/google-ads-for-doctors-ahmedabad/" },
+    { label: "Google Ads for real estate", href: "/google-ads-for-real-estate-ahmedabad/" },
   ],
   meta: [
     { label: "Meta ads pricing in Ahmedabad", href: "/meta-ads-agency-ahmedabad/pricing/" },
@@ -90,6 +107,7 @@ export const CLUSTER_LINKS: Record<Topic, ClusterLink[]> = {
     { label: "Website development cost in Ahmedabad", href: "/website-development-cost-ahmedabad/" },
     { label: "Website packages in Ahmedabad", href: "/website-packages-ahmedabad/" },
     { label: "Website redesign without losing rankings", href: "/website-redesign-services-ahmedabad/" },
+    { label: "Ecommerce website cost", href: "/ecommerce-website-cost-ahmedabad/" },
   ],
 };
 

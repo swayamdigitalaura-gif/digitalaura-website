@@ -1960,6 +1960,11 @@ function AreasAndServices() {
 
 function SEOGuides() {
   const guides = [
+    { t: "What SEO costs in Ahmedabad", d: "Monthly fees, what decides the price and how to compare quotes.", href: "/blog/seo-cost-in-ahmedabad/" },
+    { t: "How to choose an SEO company in Ahmedabad", d: "12 questions to ask and the red flags to watch for.", href: "/blog/how-to-choose-seo-company-ahmedabad/" },
+    { t: "SEO or Google Ads first", d: "Which brings more leads for an Ahmedabad business, and when to use both.", href: "/blog/seo-vs-paid-ads-which-first-ahmedabad/" },
+    { t: "How long SEO takes in Ahmedabad", d: "A realistic timeline by business type, with no promised rankings.", href: "/blog/how-long-does-seo-take-ahmedabad/" },
+    { t: "Google Maps ranking checklist", d: "A 15-point local SEO checklist for Ahmedabad businesses.", href: "/blog/google-maps-ranking-ahmedabad-checklist/" },
     { t: "How SEO works in 2026", d: "What changed with AI Overviews, and what still matters.", href: "/blog/seo-in-2026-ai-era/" },
     { t: "AEO vs GEO vs LLMO explained", d: "How answer engines and AI assistants choose what to cite.", href: "/blog/aeo-vs-geo-vs-llmo-explained/" },
     { t: "How to rank a new website on Google", d: "A realistic, ordered plan for a site with no history.", href: "/blog/how-to-rank-new-website-on-google/" },
@@ -2305,7 +2310,8 @@ function SEOPricing() {
         </Reveal>
         <p className="mx-auto mt-8 max-w-3xl text-center text-ink-muted">
           Want to see how packages are put together? Read{" "}
-          <a className="font-semibold text-brand-orange underline" href="/seo/pricing-ahmedabad/">how SEO packages are priced in Ahmedabad</a>, or start with the{" "}
+          <a className="font-semibold text-brand-orange underline" href="/seo/pricing-ahmedabad/">how SEO packages are priced in Ahmedabad</a>, see{" "}
+          <a className="font-semibold text-brand-orange underline" href="/blog/seo-cost-in-ahmedabad/">what SEO costs in Ahmedabad</a>, or start with the{" "}
           <a className="font-semibold text-brand-orange underline" href="/seo/free-audit/">free SEO audit</a>.
         </p>
         <div className="pillar-btn-row pillar-btn-row--center">

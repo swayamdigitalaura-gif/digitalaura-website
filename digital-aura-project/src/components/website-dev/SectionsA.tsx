@@ -230,7 +230,7 @@ export function Included() {
               data-cms-attr="text"
               className="mt-5 text-section"
             >
-              {s.wds_included_h2 || "One build. Every detail handled properly."}
+              {s.wds_included_h2 || "Website development services in Ahmedabad, every detail handled."}
             </h2>
           </Reveal>
           <Reveal delay={140}>

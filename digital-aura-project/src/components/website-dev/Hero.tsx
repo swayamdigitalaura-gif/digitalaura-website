@@ -25,11 +25,11 @@ export function Hero({ aside }: { aside?: React.ReactNode } = {}) {
     ...trustItems.map((_, i) => `wds_hero_trust_${i}_text`),
   ]);
   const label = s.wds_hero_label || "Website Development Company · Ahmedabad";
-  const h1Main = s.wds_hero_h1_main || "Websites that win customers.";
-  const h1Highlight = s.wds_hero_h1_highlight || "Not just admirers.";
+  const h1Main = s.wds_hero_h1_main || "Website Development Services in Ahmedabad";
+  const h1Highlight = s.wds_hero_h1_highlight || "that win customers.";
   const subtitle =
     s.wds_hero_subtitle ||
-    "Digital Aura is a website design and development company in Ahmedabad building fast, SEO-friendly websites designed around one goal: turning visitors into enquiries. Every page is planned around your buyers, built for performance, and measured against real business results.";
+    "Digital Aura provides website development services in Ahmedabad as a web development company. Our website developers build fast, SEO-friendly websites designed around one goal: turning visitors into enquiries. Every page is planned around your buyers, built for performance, and measured against real business results.";
   const cta1 = s.wds_hero_cta1 || "Get My Free Website Strategy";
   const cta2 = s.wds_hero_cta2 || "See Our Results";
   return (

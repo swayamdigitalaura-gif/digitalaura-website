@@ -10,6 +10,7 @@ import {
   Testimonials,
   Faq,
   FinalCta,
+  faqs,
 } from "@/components/website-dev/SectionsC";
 import { WdsTrustStrip } from "@/components/website-dev/TrustStrip";
 import { PillarSection, PillarSubNav, PillarTabs } from "@/components/pillar/Pillar";
@@ -21,9 +22,9 @@ import CaseStudies, { CASE_CARDS } from "@/components/CaseStudies";
 import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
 
-const PAGE_TITLE = "Website Development Services in Ahmedabad | Digital Aura";
+const PAGE_TITLE = "Website Development Services in Ahmedabad | Web Development Company";
 const PAGE_DESCRIPTION =
-  "Get custom website development services in Ahmedabad with fast, mobile-friendly, SEO-ready websites built to generate more leads, sales, and business growth. Contact Digital Aura today.";
+  "Website development services in Ahmedabad by a web design and development company. Fast, SEO-ready websites that bring leads. Talk to Digital Aura.";
 const PAGE_URL = "https://thedigitalaura.com/website-development-services-ahmedabad/";
 
 function useBasicSEO() {
@@ -77,6 +78,10 @@ function LocalBusinessSchema() {
     areaServed: "Ahmedabad, Gujarat, India",
     priceRange: "$$",
     serviceType: [
+      "Website Development Services in Ahmedabad",
+      "Website Development Company in Ahmedabad",
+      "Web Development Company in Ahmedabad",
+      "Website Design Company in Ahmedabad",
       "Website Development",
       "Website Design",
       "Custom Web Development",
@@ -87,6 +92,26 @@ function LocalBusinessSchema() {
       "Website Maintenance",
     ],
     sameAs: [],
+  };
+  return (
+    <script
+      type="application/ld+json"
+      // Static, hard-coded JSON — no user input — safe to inject directly.
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+/* FAQPage structured data, built from the same list the FAQ section renders. */
+function FaqSchema() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
   };
   return (
     <script
@@ -123,10 +148,43 @@ const WebsiteDevelopmentServicesPage = () => {
     <PageLayout>
       <div className="wds-pillar pillar-page bg-background">
         <LocalBusinessSchema />
+        <FaqSchema />
         {/* 1. Hero (with the enquiry form) + trust strip */}
         <Hero />
         <WdsTrustStrip />
         <PillarSubNav items={SUBNAV} />
+
+        {/* Short, direct answer (for Google and AI answer engines) */}
+        <PillarSection id="short-answer" tone="white" eyebrow="In short" title="Website development services in Ahmedabad: what Digital Aura does">
+          <p className="mx-auto max-w-3xl text-center text-base leading-relaxed opacity-90">
+            Digital Aura is a website development company in Ahmedabad. Our website development services in Ahmedabad come
+            from a web development company and website design company working as one team. Our website developers design, build and maintain business websites, ecommerce
+            stores and custom web applications, and set up every site to rank on Google and turn visitors into enquiries. If you
+            need website development in Ahmedabad, we work with businesses across the city, Gujarat and beyond.
+          </p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-2xl border p-5">
+              <h3 className="text-base font-bold">What we do</h3>
+              <p className="mt-2 text-sm opacity-80">Website development services in Ahmedabad: design, development, ecommerce, redesign and maintenance.</p>
+            </div>
+            <div className="rounded-2xl border p-5">
+              <h3 className="text-base font-bold">Platforms</h3>
+              <p className="mt-2 text-sm opacity-80">WordPress, WooCommerce, Shopify, BigCommerce and custom builds.</p>
+            </div>
+            <div className="rounded-2xl border p-5">
+              <h3 className="text-base font-bold">Timeline</h3>
+              <p className="mt-2 text-sm opacity-80">Most business websites launch in four to seven weeks.</p>
+            </div>
+            <div className="rounded-2xl border p-5">
+              <h3 className="text-base font-bold">Where</h3>
+              <p className="mt-2 text-sm opacity-80">713, Shilp Arcade, Sardar Patel Ring Rd, Hanspura, Ahmedabad 382330.</p>
+            </div>
+          </div>
+          <p className="mt-5 text-center text-sm opacity-80">
+            Planning a budget? Read the <a className="font-semibold underline" href="/website-development-cost-ahmedabad/">website development cost guide</a> and
+            compare <a className="font-semibold underline" href="/website-packages-ahmedabad/">website packages</a>.
+          </p>
+        </PillarSection>
 
         {/* 3. Problems we solve */}
         <PillarSection id="problems" tone="white" bare noHead>
@@ -176,7 +234,7 @@ const WebsiteDevelopmentServicesPage = () => {
           <CtaBand
             tone="light"
             headline={
-              s.wds_ctaband2_headline || "Still Comparing Website Development Companies?"
+              s.wds_ctaband2_headline || "Still Comparing Website Development Companies in Ahmedabad?"
             }
             description={
               s.wds_ctaband2_desc ||

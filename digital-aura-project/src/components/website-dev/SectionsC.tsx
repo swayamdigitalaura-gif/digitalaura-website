@@ -205,9 +205,9 @@ export function Testimonials() {
   );
 }
 
-const faqs = [
+export const faqs = [
   {
-    q: "How long does website development take?",
+    q: "How long do website development services in Ahmedabad take?",
     a: "Most business websites launch in four to seven weeks. Ecommerce and custom builds usually take eight to fourteen weeks. Either way, you get a clear timeline before work begins.",
   },
   {
@@ -219,7 +219,7 @@ const faqs = [
     a: "Yes. Every site comes with an editable CMS plus a short training session, so your team can update content and offers without calling a developer.",
   },
   {
-    q: "What does a professional website cost?",
+    q: "How much does website development in Ahmedabad cost?",
     a: "Business websites typically start in the mid four figures; ecommerce and custom builds are scoped individually. You always get one fixed quote, never an hourly guess.",
   },
   {
@@ -229,6 +229,26 @@ const faqs = [
   {
     q: "How do you know if the website is actually working?",
     a: "We track it against the numbers that matter — enquiries, conversion rate, speed and search visibility — with reporting set up before launch so there's a clear baseline.",
+  },
+  {
+    q: "What website development services do you offer in Ahmedabad?",
+    a: "Our website development services in Ahmedabad cover business websites, ecommerce stores on Shopify and WooCommerce, custom web applications, landing pages, website redesign and ongoing maintenance. Every project includes mobile-first design, speed optimisation and SEO-ready setup, so the site is built to be found and to convert.",
+  },
+  {
+    q: "What is the difference between website design and web development?",
+    a: "Website design is how the site looks and feels: layout, brand, content flow and user experience. Web development is how it is built and runs: code, CMS, speed, security and integrations. A good web development company in Ahmedabad does both together, which is how we work, so the design is never handed to a developer who cannot build it properly.",
+  },
+  {
+    q: "How do I choose a web development company in Ahmedabad?",
+    a: "Ask to see live websites they have built, who will actually work on your project, what the quote includes, and how they handle speed, SEO and support after launch. Compare fixed quotes line by line, not just the headline price. Our website development cost guide explains what to compare.",
+  },
+  {
+    q: "Which platforms do your website developers in Ahmedabad work on?",
+    a: "WordPress, WooCommerce, Shopify, BigCommerce and custom builds. We recommend the platform that suits your goals and budget, not the one that is easiest for us.",
+  },
+  {
+    q: "Do you build websites for businesses outside Ahmedabad?",
+    a: "Yes. We are based in Ahmedabad and work with businesses across Gujarat and India, and we build Shopify stores for brands that sell outside India. Calls, reviews and handover all happen online.",
   },
 ];
 

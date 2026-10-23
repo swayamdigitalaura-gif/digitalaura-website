@@ -44,6 +44,13 @@ const BlogPage = () => {
   const [realBlogs, setRealBlogs] = useState<RealBlog[] | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>("All");
 
+  // Links such as /blog/?category=SEO open with that filter selected. Applied after mount so the prerendered page stays the plain "All" view.
+  useEffect(() => {
+    const wanted = new URLSearchParams(window.location.search).get("category");
+    if (!wanted) return;
+    if (wanted === "SEO" || seoBlogPosts.some((p) => p.category === wanted)) setActiveCategory(wanted);
+  }, []);
+
   useEffect(() => {
     fetch(`${API_BASE}/api/blogs?status=published`)
       .then((r) => r.json())

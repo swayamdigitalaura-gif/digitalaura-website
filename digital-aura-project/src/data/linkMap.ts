@@ -47,12 +47,16 @@ export const GUIDES: Record<Exclude<Topic, "web">, Guide[]> = {
     { slug: "ai-tools-ugc-ads-2026", title: "6 AI Tools for Creating UGC-Style Ads" },
     { slug: "video-hooks-viral-2026", title: "The Video Hooks That Actually Go Viral in 2026" },
     { slug: "instagram-growth-2026", title: "How to Grow on Instagram and Get More Views in 2026" },
+    { slug: "meta-ads-cost-in-ahmedabad", title: "Meta Ads Cost in Ahmedabad: Management Fee, Ad Spend and What Changes the Price" },
+    { slug: "meta-ad-creative-testing-lead-generation", title: "Meta Ad Creative Testing for Lead Generation: What to Test and How Often" },
+    { slug: "fix-low-quality-leads-facebook-instagram-ads", title: "Low-Quality Leads from Facebook and Instagram Ads? How to Fix Lead Quality" },
   ],
 };
 
 /** Which pillar a blog post belongs to. Social-media posts feed the Meta pillar. */
 export function topicForBlog(slug: string, category?: string | null): Topic {
   const key = `${slug} ${category || ""}`.toLowerCase();
+  if (/website development/i.test(category || "")) return "web";
   if (/google-ads|local-business-google-ads/.test(key)) return "gads";
   if (/meta|instagram|ugc|video-hooks|social media/.test(key)) return "meta";
   return "seo";

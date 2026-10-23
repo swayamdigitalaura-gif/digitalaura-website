@@ -411,6 +411,11 @@ export function ExploreMore() {
 /* ---------- Google Ads guides (blog posts on this topic) ---------- */
 
 const GUIDES = [
+  { t: "How to choose a Google Ads agency in Ahmedabad", d: "10 questions to ask and the red flags to watch for.", h: "/blog/how-to-choose-google-ads-agency-ahmedabad/" },
+  { t: "Google Ads or Meta Ads first", d: "Where an Ahmedabad business should spend its first rupee.", h: "/blog/google-ads-vs-meta-ads-ahmedabad/" },
+  { t: "Google Ads clicks but no leads: 10 fixes", d: "Where to look when the ads get clicks and the phone stays quiet.", h: "/blog/google-ads-clicks-but-no-leads-fixes/" },
+  { t: "Google Ads audit checklist: 30 checks", d: "Find wasted spend in your account before you add budget.", h: "/blog/google-ads-audit-checklist/" },
+  { t: "Google Ads for builders and real estate", d: "Keywords, budget planning and lead quality for property ads.", h: "/blog/google-ads-real-estate-ahmedabad-guide/" },
   { t: "Google Ads strategy checklist for 2026", d: "A step-by-step checklist to review an account before you spend more.", h: "/blog/google-ads-strategy-checklist-2026/" },
   { t: "7 Google Ads mistakes costing you money", d: "The settings and habits that quietly waste budget.", h: "/blog/7-google-ads-mistakes-2026/" },
   { t: "Google Ads in 2026: new strategies worth testing", d: "What is new, and what is worth a test budget.", h: "/blog/google-ads-2026-new-strategies/" },

@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { AppLink } from "./AppLink";
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
-import { Calendar, Clock, ChevronDown, ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
+import { Calendar, Clock, ChevronDown, ArrowRight, ArrowLeft, CheckCircle2, Phone, MessageCircle } from "lucide-react";
 import type { BlogPost } from "@/data/seoBlogPosts";
 import { posts as allPosts } from "@/data/seoBlogPosts";
 import { useHiddenBlogSlugs } from "@/hooks/useHiddenBlogs";
@@ -11,6 +11,8 @@ import { relatedServiceFor } from "@/data/relatedService";
 import { topicForBlog, PILLARS, CLUSTER_LINKS, SEO_SERVICE_BY_CATEGORY } from "@/data/linkMap";
 import { autoLink } from "@/lib/autoLink";
 import AuthorBox from "@/components/AuthorBox";
+import { StickyCtaBar } from "@/components/PageCta";
+import { track, PHONE_DISPLAY, PHONE_TEL, whatsappLink } from "@/lib/track";
 
 const SITE = "https://thedigitalaura.com";
 
@@ -49,11 +51,23 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
   const topic = topicForBlog(post.slug, post.category);
   const goDeeper = [...(topic === "seo" && SEO_SERVICE_BY_CATEGORY[post.category] ? [SEO_SERVICE_BY_CATEGORY[post.category]] : []), ...CLUSTER_LINKS[topic]].slice(0, 4);
   const bodyHtml = useMemo(() => autoLink(post.contentHtml, topic, PILLARS[topic].href), [post.contentHtml, topic]);
+  // Posts with a cro block get a mid-article CTA band: the body is split at the middle section heading.
+  const [bodyFirst, bodySecond] = useMemo(() => {
+    if (!post.cro) return [bodyHtml, ""];
+    const heads = [...bodyHtml.matchAll(/<h2[ >]/g)].map(m => m.index as number);
+    if (heads.length < 4) return [bodyHtml, ""];
+    const at = heads[Math.floor(heads.length / 2)];
+    return [bodyHtml.slice(0, at), bodyHtml.slice(at)];
+  }, [bodyHtml, post.cro]);
   const hiddenSlugs = useHiddenBlogSlugs();
   const posts = allPosts.filter(p => !hiddenSlugs.has(p.slug));
   const related = posts.filter(p => p.slug !== post.slug && p.category === post.category).slice(0, 3);
   const relatedFallback = posts.filter(p => p.slug !== post.slug).slice(0, 3);
   const relatedPosts = related.length ? related : relatedFallback;
+  // "See all ... blogs" link at the end of the More Posts card: opens the blog page with that category filter pre-selected.
+  const inSeoGroup = ["SEO Strategy", "Local SEO", "On-Page SEO", "Technical SEO"].includes(post.category);
+  const seeAllLabel = inSeoGroup ? "See all SEO blogs" : `See all ${post.category} blogs`;
+  const seeAllHref = `/blog/?category=${encodeURIComponent(inSeoGroup ? "SEO" : post.category)}`;
 
   useEffect(() => {
     document.title = post.metaTitle;
@@ -137,7 +151,7 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
               <CategoryIcon size={13} /> {post.category}
             </span>
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-[44px] font-black tracking-tight mb-5 leading-[1.3]" style={{ color: "#0A1628" }}>
+          <h1 className="text-3xl sm:text-4xl md:text-[44px] font-black tracking-tight mb-5 leading-[1.3] sm:leading-[1.3]" style={{ color: "#0A1628" }}>
             <TitleWithHighlight title={post.title} highlight={post.titleHighlight} />
           </h1>
           <p className="text-lg mb-7 leading-relaxed max-w-xl mx-auto" style={{ color: "#4B5563" }}>{shortTeaser(post.directAnswer)}</p>
@@ -175,7 +189,23 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
               </ul>
             </motion.div>
 
-            <div className="blog-prose" style={{ ["--accent" as string]: theme.color, ["--accent-ink" as string]: theme.ink }} dangerouslySetInnerHTML={{ __html: bodyHtml }} />
+            <div className="blog-prose" style={{ ["--accent" as string]: theme.color, ["--accent-ink" as string]: theme.ink }} dangerouslySetInnerHTML={{ __html: bodyFirst }} />
+            {post.cro && bodySecond && (
+              <aside aria-label="Next step" className="my-10 rounded-2xl border p-6 md:p-7" style={{ background: "#FFF4EC", borderColor: "#FFD9C2" }}>
+                <p className="text-xl font-black leading-tight text-[#0A1628]">{post.cro.bandHeading}</p>
+                <p className="mt-2 text-[15px] leading-relaxed text-[#4B5563]">{post.cro.bandText}</p>
+                <div className="mt-5 flex flex-col items-start gap-4 sm:flex-row sm:flex-wrap sm:items-center">
+                  <a href={post.cro.href} onClick={() => track("cta_click", { cta_label: post.cro!.label, cta_location: "blog_mid_band" })} className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-white" style={{ background: "#FF6B2B", boxShadow: "0 8px 24px #FF6B2B40" }}>
+                    {post.cro.label} <ArrowRight size={15} />
+                  </a>
+                  <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                    <a href={PHONE_TEL} onClick={() => track("phone_click", { cta_location: "blog_mid_band" })} className="inline-flex items-center gap-1.5 text-sm font-semibold" style={{ color: "#C2410C" }}><Phone size={15} /> {PHONE_DISPLAY}</a>
+                    <a href={whatsappLink("Hello, I have a question about: " + post.title)} target="_blank" rel="noopener noreferrer" onClick={() => track("whatsapp_click", { cta_location: "blog_mid_band" })} className="inline-flex items-center gap-1.5 text-sm font-semibold" style={{ color: "#C2410C" }}><MessageCircle size={15} /> WhatsApp</a>
+                  </div>
+                </div>
+              </aside>
+            )}
+            {bodySecond && <div className="blog-prose" style={{ ["--accent" as string]: theme.color, ["--accent-ink" as string]: theme.ink }} dangerouslySetInnerHTML={{ __html: bodySecond }} />}
 
             {/* FAQ */}
             <div className="mt-12">
@@ -221,38 +251,47 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
           </div>
 
           {/* Sidebar — single sticky wrapper so cards move together and never overlap */}
-          <div className="lg:sticky lg:top-24 space-y-6">
-            <div className="rounded-2xl p-6 border overflow-hidden relative" style={{ borderColor: "#E5E7EB" }}>
-              <div className="h-1.5 w-full rounded-full mb-5" style={{ background: `linear-gradient(90deg, ${theme.color}, #7C3AED)` }} />
+          <div className="lg:sticky lg:top-24 space-y-4">
+            <div className="rounded-2xl p-5 border overflow-hidden relative" style={{ borderColor: "#E5E7EB" }}>
+              <div className="h-1.5 w-full rounded-full mb-4" style={{ background: `linear-gradient(90deg, ${theme.color}, #7C3AED)` }} />
               <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
+                className="w-9 h-9 rounded-xl flex items-center justify-center mb-3 [@media(max-height:720px)]:hidden"
                 style={{ background: theme.bg, border: `1px solid ${theme.border}` }}
               >
                 <CategoryIcon size={18} style={{ color: theme.ink }} />
               </div>
               <h3 className="font-black text-base mb-2" style={{ color: "#0A1628" }}>Want results like this?</h3>
-              <p className="text-xs mb-4 leading-relaxed" style={{ color: "#6B7280" }}>Talk to Digital Aura about your SEO.</p>
-              <AppLink to="/contact/" className="btn-orange w-full py-3 text-sm">
-                Get in Touch <ArrowRight size={14} />
-              </AppLink>
+              <p className="text-xs mb-3 leading-relaxed" style={{ color: "#6B7280" }}>{post.cro ? post.cro.sidebar : "Talk to Digital Aura about your SEO."}</p>
+              {post.cro ? (
+                <a href={post.cro.href} className="btn-orange w-full py-3 text-sm">
+                  {post.cro.label} <ArrowRight size={14} />
+                </a>
+              ) : (
+                <AppLink to="/contact/" className="btn-orange w-full py-3 text-sm">
+                  Get in Touch <ArrowRight size={14} />
+                </AppLink>
+              )}
             </div>
 
             {relatedPosts.length > 0 && (
-              <div className="rounded-2xl p-6 border" style={{ borderColor: "#E5E7EB" }}>
-                <h3 className="font-black text-base mb-4 flex items-center gap-2" style={{ color: "#0A1628" }}>
+              <div className="rounded-2xl p-5 border" style={{ borderColor: "#E5E7EB" }}>
+                <h3 className="font-black text-base mb-3 flex items-center gap-2" style={{ color: "#0A1628" }}>
                   <span className="w-4 h-0.5 rounded-full" style={{ background: theme.color }} /> More Posts
                 </h3>
-                <div className="space-y-3">
-                  {relatedPosts.map(p => {
+                <div className="space-y-2.5">
+                  {relatedPosts.map((p, idx) => {
                     const pTheme = getTheme(p.category);
                     return (
-                      <AppLink key={p.slug} to={`/blog/${p.slug}`} className="block p-3 rounded-xl border-l-4 border transition-all group" style={{ borderColor: "#E5E7EB", borderLeftColor: pTheme.color }}>
+                      <AppLink key={p.slug} to={`/blog/${p.slug}`} className={`block p-2.5 rounded-xl border-l-4 border transition-all group ${idx >= 2 ? "[@media(max-height:820px)]:hidden" : idx === 1 ? "[@media(max-height:680px)]:hidden" : ""}`} style={{ borderColor: "#E5E7EB", borderLeftColor: pTheme.color }}>
                         <p className="text-sm font-bold leading-snug transition-colors" style={{ color: "#0A1628" }}>{p.title}</p>
                         <p className="text-xs mt-1 font-semibold" style={{ color: pTheme.ink }}>{p.category}</p>
                       </AppLink>
                     );
                   })}
                 </div>
+                <a href={seeAllHref} className="mt-3 inline-flex items-center gap-1.5 text-[13px] font-bold hover:gap-2.5 transition-all" style={{ color: theme.ink }}>
+                  {seeAllLabel} <ArrowRight size={13} />
+                </a>
               </div>
             )}
           </div>
@@ -271,11 +310,23 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4">{post.ctaHeading}</h2>
           <p className="text-[#E2E8F0] mb-8 leading-relaxed">{post.ctaText}</p>
-          <AppLink to="/contact/" className="btn-orange" style={{ padding: "1rem 2rem", fontSize: ".95rem" }}>
-            {post.ctaButton} <ArrowRight size={16} />
-          </AppLink>
+          {post.cro ? (
+            <a href={post.cro.href} className="btn-orange" style={{ padding: "1rem 2rem", fontSize: ".95rem" }}>
+              {post.ctaButton} <ArrowRight size={16} />
+            </a>
+          ) : (
+            <AppLink to="/contact/" className="btn-orange" style={{ padding: "1rem 2rem", fontSize: ".95rem" }}>
+              {post.ctaButton} <ArrowRight size={16} />
+            </AppLink>
+          )}
         </div>
       </section>
+      {post.cro && (
+        <>
+          <StickyCtaBar accent="#FF6B2B" label={post.cro.label} href={post.cro.href} topic={post.title} />
+          <div className="h-16 md:hidden" aria-hidden="true" />
+        </>
+      )}
     </PageLayout>
   );
 };

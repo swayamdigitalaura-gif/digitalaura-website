@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Phone, Mail, ArrowRight } from "lucide-react";
 import { useSettings } from "@/hooks/useSettings";
+import HomeFindUs from "@/components/HomeFindUs";
 
 const CtaBanner = () => {
   const s = useSettings(['cta_badge','cta_heading','cta_subtext','cta_button','contact_phone','contact_email']);
@@ -55,6 +56,7 @@ const CtaBanner = () => {
         </div>
       </motion.div>
     </div>
+    <HomeFindUs />
   </section>
   );
 };

@@ -54,6 +54,12 @@ export default {
       },
     },
     extend: {
+      // Default text-5xl and up carry line-height:1, which beats a plain leading-* class and makes two-line headings touch. 1.1 matches the leading the pages were written with.
+      fontSize: {
+        "5xl": ["3rem", { lineHeight: "1.1" }],
+        "6xl": ["3.75rem", { lineHeight: "1.1" }],
+        "7xl": ["4.5rem", { lineHeight: "1.1" }],
+      },
       fontFamily: {
         sans: ["Plus Jakarta Sans", "sans-serif"],
       },

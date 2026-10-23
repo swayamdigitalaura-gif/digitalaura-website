@@ -1960,6 +1960,7 @@ function AreasAndServices() {
 
 function SEOGuides() {
   const guides = [
+    { t: "SEO audit checklist: 25 checks before you hire", d: "Check indexing, speed, on-page, local SEO and tracking yourself first.", href: "/blog/seo-audit-checklist-before-hiring-agency/" },
     { t: "What SEO costs in Ahmedabad", d: "Monthly fees, what decides the price and how to compare quotes.", href: "/blog/seo-cost-in-ahmedabad/" },
     { t: "How to choose an SEO company in Ahmedabad", d: "12 questions to ask and the red flags to watch for.", href: "/blog/how-to-choose-seo-company-ahmedabad/" },
     { t: "SEO or Google Ads first", d: "Which brings more leads for an Ahmedabad business, and when to use both.", href: "/blog/seo-vs-paid-ads-which-first-ahmedabad/" },

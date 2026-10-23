@@ -389,14 +389,24 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   },
 };
 
+// Google Business Profile (Maps) listing for the Ahmedabad office; same place as the footer's maps.app.goo.gl link.
+const GBP_MAPS_URL = 'https://www.google.com/maps?cid=14693467769090662076';
+
 const ORG = {
-  '@type': 'Organization',
+  '@type': ['Organization', 'ProfessionalService'],
+  '@id': `${SITE_URL}/#organization`,
   name: 'Digital Aura',
+  alternateName: 'Digital Aura - Digital Marketing Agency in Ahmedabad',
   url: SITE_URL,
   logo: DEFAULT_IMAGE,
-  description: 'Data-driven digital marketing agency specializing in SEO, Google Ads, Meta Ads, Web Development, and AI solutions.',
-  contactPoint: { '@type': 'ContactPoint', contactType: 'customer service', email: 'swayam.digitalaura@gmail.com' },
-  sameAs: ['https://www.linkedin.com/in/sambhav-shah/', 'https://www.instagram.com/sambhavshah2/'],
+  image: DEFAULT_IMAGE,
+  description: 'Digital marketing agency in Ahmedabad specializing in SEO, Google Ads, Meta Ads, Web Development, and AI solutions.',
+  telephone: '+91 81412 00284',
+  address: { '@type': 'PostalAddress', streetAddress: '713, Shilp Arcade, Sardar Patel Ring Rd, Hanspura', addressLocality: 'Ahmedabad', addressRegion: 'Gujarat', postalCode: '382330', addressCountry: 'IN' },
+  areaServed: { '@type': 'City', name: 'Ahmedabad' },
+  hasMap: GBP_MAPS_URL,
+  contactPoint: { '@type': 'ContactPoint', contactType: 'customer service', email: 'swayam.digitalaura@gmail.com', telephone: '+91 81412 00284' },
+  sameAs: [GBP_MAPS_URL, 'https://maps.app.goo.gl/rNtQ9RkNtePogkJeA', 'https://www.linkedin.com/in/sambhav-shah/', 'https://www.instagram.com/sambhavshah2/'],
 };
 
 // Per-page JSON-LD schema — overridden by DB schema_code if set via admin panel

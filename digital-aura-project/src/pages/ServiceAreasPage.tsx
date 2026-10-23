@@ -27,7 +27,7 @@ const groups: AreaGroup[] = [
     subtitle: "Our home base — the full range of services, delivered locally.",
     color: "#FF6B2B",
     links: [
-      { label: "Digital Marketing Agency in Ahmedabad", href: "/digital-marketing-agency-ahmedabad/" },
+      { label: "Digital Marketing Company in Ahmedabad", href: "/digital-marketing-company-ahmedabad" },
       { label: "SEO Company in Ahmedabad", href: "/seo-services-ahmedabad" },
       { label: "Google Ads Agency in Ahmedabad", href: "/google-ads-agency-ahmedabad" },
       { label: "Meta Ads Agency in Ahmedabad", href: "/meta-ads-agency-ahmedabad/" },

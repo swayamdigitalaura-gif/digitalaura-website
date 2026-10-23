@@ -39,7 +39,7 @@ export const CARDS = {
   engagement: { title: "Engagement Models", desc: "Retainer, project, hourly and dedicated-resource ways to work with us.", points: ["Retainer", "Project", "Dedicated"], href: "/engagement-models/" },
   socialAgency: { title: "Social Media Marketing Agency in Ahmedabad", desc: "Content, Reels and paid social that bring enquiries.", points: ["Content plan", "Reels", "Paid social"], href: "/social-media-marketing-agency-ahmedabad/" },
   adAgency: { title: "Advertising Agency in Ahmedabad", desc: "Google, Meta, YouTube and LinkedIn ads with tracking.", points: ["PPC", "Meta ads", "Reporting"], href: "/advertising-agency-ahmedabad/" },
-  dmAgency: { title: "Digital Marketing Agency in Ahmedabad", desc: "SEO, ads, web and AI automation under one team.", points: ["SEO", "Ads", "Web"], href: "/digital-marketing-agency-ahmedabad/" },
+  dmAgency: { title: "Digital Marketing Company in Ahmedabad", desc: "SEO, ads, social media and AI automation under one team.", points: ["SEO", "Ads", "Social"], href: "/digital-marketing-company-ahmedabad" },
 } satisfies Record<string, RelatedService>;
 
 /** Team details supplied by the owner (2026-10-09). Roles and bios are used exactly as given. */

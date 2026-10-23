@@ -45,6 +45,7 @@ const servicesRight = [
     { label: "Google Ads",     href: "/google-ads-agency-ahmedabad", hard: true },
     { label: "Meta Ads",       href: "/meta-ads-agency-ahmedabad/" },
     { label: "Social Media Marketing", href: "/services/social-media-marketing/" },
+    { label: "Digital Marketing Company", href: "/digital-marketing-company-ahmedabad", hard: true },
     { label: "Email & WhatsApp Marketing", href: "/services/email-whatsapp-marketing/" },
     { label: "LinkedIn & YouTube Ads", href: "/services/linkedin-youtube-ads/" },
   ]},

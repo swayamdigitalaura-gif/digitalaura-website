@@ -754,6 +754,8 @@ const CANONICAL_OVERRIDE: Record<string, string> = {
   '/seo-agency-ahmedabad': `${SITE_URL}/seo-services-ahmedabad`,
   // Owner confirmed /website-development-services-ahmedabad/ as the one web development page (2026-10-09).
   '/website-design-development-ahmedabad': `${SITE_URL}/website-development-services-ahmedabad/`,
+  // Owner confirmed /digital-marketing-company-ahmedabad as the one digital marketing page (2026-10-23); the agency page 301s to it.
+  '/digital-marketing-agency-ahmedabad': `${SITE_URL}/digital-marketing-company-ahmedabad`,
 };
 
 PAGE_SCHEMA['/seo/free-audit'] = [

@@ -153,6 +153,12 @@ const megaCategories = [
         desc: "Content, community & organic growth",
         route: `${BASE}/services/social-media-marketing`,
       },
+      {
+        icon: Target,
+        title: "Digital Marketing Company",
+        desc: "Full funnel growth marketing for Ahmedabad brands",
+        route: `${BASE}/digital-marketing-company-ahmedabad`,
+      },
     ],
   },
   {

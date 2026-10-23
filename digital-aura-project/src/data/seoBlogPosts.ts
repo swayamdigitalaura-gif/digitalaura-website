@@ -1953,7 +1953,7 @@ Allow: /</code></pre>
 </ul>
 
 <h2>Get your local ads set up properly</h2>
-<p>At <a href="/">Digital Aura</a>, we set up and connect Google Business Profile and local campaigns correctly, the first time, and track the calls that matter. See our <a href="/google-ads-agency-ahmedabad">Google Ads agency services in Ahmedabad</a>, our full <a href="/digital-marketing-agency-ahmedabad/">digital marketing services in Ahmedabad</a>, or ask for a <a href="/google-ads-audit-ahmedabad/">free Google Ads audit</a>.</p>
+<p>At <a href="/">Digital Aura</a>, we set up and connect Google Business Profile and local campaigns correctly, the first time, and track the calls that matter. See our <a href="/google-ads-agency-ahmedabad">Google Ads agency services in Ahmedabad</a>, our full <a href="/digital-marketing-company-ahmedabad">digital marketing services in Ahmedabad</a>, or ask for a <a href="/google-ads-audit-ahmedabad/">free Google Ads audit</a>.</p>
 `,
     faqs: [
       { q: "Do I need a Google Business Profile to run Google Ads?", a: "Not for standard Search ads. But location assets and local campaigns that show your address and directions need a verified, linked Google Business Profile." },

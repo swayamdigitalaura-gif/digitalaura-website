@@ -138,6 +138,13 @@ const content: Record<TabKey, { icon: React.ElementType; iconName: string; title
       points: ["Content strategy", "Community management", "Organic growth"],
       route: "/services/social-media-marketing/",
     },
+    {
+      icon: BarChart3, iconName: "BarChart3",
+      title: "Digital Marketing Company",
+      desc: "One team for SEO, Google Ads, Meta Ads and social media, with a single growth plan built around leads for Ahmedabad businesses.",
+      points: ["Full funnel strategy", "SEO, ads & social together", "Lead focused reporting"],
+      route: "/digital-marketing-company-ahmedabad", pillar: true, hard: true,
+    },
   ],
   mobile: [
     {

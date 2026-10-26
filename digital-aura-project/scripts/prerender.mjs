@@ -3,6 +3,7 @@ import { spawn } from 'child_process';
 import { writeFileSync, mkdirSync, readFileSync, copyFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { contentHash, readManifest, HASHES_PATH } from './sitemap-lastmod-lib.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT    = join(__dirname, '..');
@@ -265,7 +266,14 @@ const EXTRA_LIVE_ROUTES = [
 // listing a route that failed (and so has no fresh dist/ file) would submit
 // a URL to Google that's either 404ing or still serving a stale previous
 // build, both worse than just leaving it out until the next successful run.
-function writeSitemap(succeededRoutes) {
+function writeSitemap(succeededRoutes, pageHashes = {}) {
+  // <lastmod> comes from scripts/sitemap-lastmod.json, which records the date a page's content last changed.
+  // The build never invents a date: a page whose content changed since its recorded date keeps the old date and
+  // is listed below until someone runs `npm run sitemap:lastmod` and commits the file; a page with no record gets
+  // no <lastmod> at all.
+  const manifest = readManifest();
+  const stale = [];
+  const unrecorded = [];
   // Those proxied apps 307-redirect "/path/" to "/path", so the no-slash URL
   // is the one that returns 200 and matches their canonical tags. Listing the
   // slash form here recreates a canonical/redirect loop.
@@ -275,11 +283,17 @@ function writeSitemap(succeededRoutes) {
   const urls = [...new Set([...succeededRoutes, ...EXTRA_LIVE_ROUTES])].filter((route) => !CANONICALISED_ROUTES.has(route)).map((route) => {
     const loc = route === '/' ? `${SITE_URL}/` : noSlash.has(route) ? `${SITE_URL}${route}` : `${SITE_URL}${route}/`;
     const priority = route === '/' ? '1.0' : (route.startsWith('/blog/') || route.startsWith('/careers/')) ? '0.6' : '0.8';
-    return `  <url>\n    <loc>${loc}</loc>\n    <changefreq>weekly</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
+    const rec = manifest[route];
+    if (!rec) unrecorded.push(route);
+    else if (rec.h && pageHashes[route] && rec.h !== pageHashes[route]) stale.push(route);
+    const lastmod = rec?.d ? `\n    <lastmod>${rec.d}</lastmod>` : '';
+    return `  <url>\n    <loc>${loc}</loc>${lastmod}\n    <changefreq>weekly</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
   });
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`;
   writeFileSync(join(DIST, 'sitemap.xml'), xml, 'utf-8');
   console.log(`  📝  Wrote sitemap.xml with ${succeededRoutes.length} URLs`);
+  if (stale.length) console.log(`  ⚠  ${stale.length} page(s) changed since their recorded lastmod (old date kept). Run "npm run prerender && npm run sitemap:lastmod" and commit scripts/sitemap-lastmod.json: ${stale.slice(0, 12).join(', ')}${stale.length > 12 ? ', ...' : ''}`);
+  if (unrecorded.length) console.log(`  ⚠  ${unrecorded.length} URL(s) have no lastmod record (no <lastmod> written): ${unrecorded.slice(0, 12).join(', ')}`);
 }
 
 async function main() {
@@ -307,6 +321,7 @@ async function main() {
 
     let ok = 0, fail = 0;
     const succeededRoutes = [];
+    const pageHashes = {};
     const MAX_ATTEMPTS = 4;
 
     for (const route of allRoutes) {
@@ -348,6 +363,7 @@ async function main() {
           }
 
           assertSsrQuality(route, html);
+          pageHashes[route] = contentHash(html);
 
           // build the output file path
           const parts  = route === '/' ? [] : route.slice(1).split('/');
@@ -373,7 +389,8 @@ async function main() {
     }
 
     console.log(`\n✅  Prerender complete — ${ok} succeeded, ${fail} failed\n`);
-    writeSitemap(succeededRoutes);
+    writeSitemap(succeededRoutes, pageHashes);
+    writeFileSync(HASHES_PATH, JSON.stringify(pageHashes, null, 1), 'utf-8');
     // A blog post that fails validation on every attempt is never written to
     // disk, so any file already in dist/ for that slug from a *previous*
     // successful deploy is left untouched by this run — the rsync step in

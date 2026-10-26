@@ -1,0 +1,630 @@
+{
+ "/": {
+  "d": "2026-10-23",
+  "h": "df655c311ed70875"
+ },
+ "/about": {
+  "d": "2026-10-14",
+  "h": "ba525b633ead4ba0"
+ },
+ "/advertising-agency-ahmedabad": {
+  "d": "2026-10-23",
+  "h": "536764b2b0e8c1ad"
+ },
+ "/ai-automation-ahmedabad": {
+  "d": "2026-10-05",
+  "h": "5b9b226ba4cdc64f"
+ },
+ "/ai-automation-gujarat": {
+  "d": "2026-10-05",
+  "h": "fc964c05b2748788"
+ },
+ "/ai-solutions": {
+  "d": "2026-10-17",
+  "h": "902814ef1cf63a4e"
+ },
+ "/awards": {
+  "d": "2026-10-14",
+  "h": "93907baa3d26cfe8"
+ },
+ "/blog": {
+  "d": "2026-10-23",
+  "h": "855ea2b19afa1acd"
+ },
+ "/blog/5-meta-ads-features-2026": {
+  "d": "2026-10-23",
+  "h": "a010fcaecf3829d8"
+ },
+ "/blog/6-meta-ads-updates-2026": {
+  "d": "2026-10-23",
+  "h": "c7cce8132896ebd0"
+ },
+ "/blog/7-google-ads-mistakes-2026": {
+  "d": "2026-10-23",
+  "h": "f50aebe5c6a40c45"
+ },
+ "/blog/aeo-vs-geo-vs-llmo-explained": {
+  "d": "2026-10-23",
+  "h": "9b11480cdefb61a4"
+ },
+ "/blog/ai-seo-skills-for-marketers-2026": {
+  "d": "2026-10-23",
+  "h": "bd76c9160b2527d7"
+ },
+ "/blog/ai-tools-ugc-ads-2026": {
+  "d": "2026-10-23",
+  "h": "d4f9136b25c1eb70"
+ },
+ "/blog/fix-low-quality-leads-facebook-instagram-ads": {
+  "d": "2026-10-23",
+  "h": "3c04986062ac494d"
+ },
+ "/blog/google-ads-2026-new-strategies": {
+  "d": "2026-10-23",
+  "h": "728ed46f18429d92"
+ },
+ "/blog/google-ads-audit-checklist": {
+  "d": "2026-10-23",
+  "h": "869b423053a91a52"
+ },
+ "/blog/google-ads-clicks-but-no-leads-fixes": {
+  "d": "2026-10-23",
+  "h": "aff297c9ffdc56db"
+ },
+ "/blog/google-ads-real-estate-ahmedabad-guide": {
+  "d": "2026-10-23",
+  "h": "807e7dae63a7824c"
+ },
+ "/blog/google-ads-strategy-checklist-2026": {
+  "d": "2026-10-23",
+  "h": "8923d4dd2ff87d71"
+ },
+ "/blog/google-ads-tactics-stopped-working-2026": {
+  "d": "2026-10-23",
+  "h": "18056d3004d297a7"
+ },
+ "/blog/google-ads-vs-meta-ads-ahmedabad": {
+  "d": "2026-10-23",
+  "h": "e0ed0033221cf935"
+ },
+ "/blog/google-business-profile-seo-checklist": {
+  "d": "2026-10-23",
+  "h": "d1800bdd90840e95"
+ },
+ "/blog/google-business-profile-tricks-google-maps": {
+  "d": "2026-10-23",
+  "h": "ad1de4ef14ebaa2e"
+ },
+ "/blog/google-maps-ranking-ahmedabad-checklist": {
+  "d": "2026-10-23",
+  "h": "2f22a6bf73ce29ba"
+ },
+ "/blog/how-long-does-seo-take-ahmedabad": {
+  "d": "2026-10-23",
+  "h": "cd9d8c54a571ce22"
+ },
+ "/blog/how-to-choose-google-ads-agency-ahmedabad": {
+  "d": "2026-10-23",
+  "h": "cc06bdd40ad8aca7"
+ },
+ "/blog/how-to-choose-seo-company-ahmedabad": {
+  "d": "2026-10-23",
+  "h": "870d470f18e3ad2e"
+ },
+ "/blog/how-to-choose-website-development-company-ahmedabad": {
+  "d": "2026-10-23",
+  "h": "1cfde4e08b78dc62"
+ },
+ "/blog/how-to-rank-chatgpt-perplexity-ai-overviews": {
+  "d": "2026-10-23",
+  "h": "aa8cb6b66cd32fe2"
+ },
+ "/blog/how-to-rank-new-website-on-google": {
+  "d": "2026-10-23",
+  "h": "d12edebf242cefeb"
+ },
+ "/blog/increase-organic-website-traffic-10x": {
+  "d": "2026-10-23",
+  "h": "816b45734f09bfe4"
+ },
+ "/blog/instagram-growth-2026": {
+  "d": "2026-10-23",
+  "h": "889bb09be2c1aeac"
+ },
+ "/blog/local-business-google-ads-maps-2026": {
+  "d": "2026-10-23",
+  "h": "3562e28eddf2bb15"
+ },
+ "/blog/local-seo-strategies-2026": {
+  "d": "2026-10-23",
+  "h": "bc051fa2e3eff4b0"
+ },
+ "/blog/manufacturer-website-checklist-b2b-buyers": {
+  "d": "2026-10-23",
+  "h": "e924fd7dd6882a97"
+ },
+ "/blog/meta-ad-creative-testing-lead-generation": {
+  "d": "2026-10-23",
+  "h": "a612628e8288a5fe"
+ },
+ "/blog/meta-ads-cost-in-ahmedabad": {
+  "d": "2026-10-23",
+  "h": "020632fad90a2055"
+ },
+ "/blog/meta-ads-targeting-2026": {
+  "d": "2026-10-23",
+  "h": "60e3a94fbc508853"
+ },
+ "/blog/meta-lead-gen-ads-2026": {
+  "d": "2026-10-23",
+  "h": "611b69f7ceb5c5b5"
+ },
+ "/blog/on-page-seo-checklist-2026": {
+  "d": "2026-10-23",
+  "h": "24b1ab87bde79981"
+ },
+ "/blog/seo-audit-checklist-before-hiring-agency": {
+  "d": "2026-10-23",
+  "h": "0b8ef0e812c57b24"
+ },
+ "/blog/seo-cost-in-ahmedabad": {
+  "d": "2026-10-23",
+  "h": "c95fa7d28b6f9b63"
+ },
+ "/blog/seo-in-2026-ai-era": {
+  "d": "2026-10-23",
+  "h": "a299cd035d9ec35c"
+ },
+ "/blog/seo-vs-paid-ads-which-first-ahmedabad": {
+  "d": "2026-10-23",
+  "h": "6d6d001d74a878d7"
+ },
+ "/blog/shopify-seo-tutorial-2026": {
+  "d": "2026-10-23",
+  "h": "c1f7e732abc754d0"
+ },
+ "/blog/technical-seo-practices-2026": {
+  "d": "2026-10-23",
+  "h": "96e6045fa200ec33"
+ },
+ "/blog/video-hooks-viral-2026": {
+  "d": "2026-10-23",
+  "h": "e817cca9fd291695"
+ },
+ "/blog/website-development-cost-ahmedabad-guide": {
+  "d": "2026-10-23",
+  "h": "adecc105b86e8a5f"
+ },
+ "/blog/website-features-that-generate-leads": {
+  "d": "2026-10-23",
+  "h": "f967ea4af6839cec"
+ },
+ "/blog/website-maintenance-checklist-for-business": {
+  "d": "2026-10-23",
+  "h": "fe4fb2aa904caaa1"
+ },
+ "/blog/website-redesign-checklist-protect-traffic": {
+  "d": "2026-10-23",
+  "h": "262d24c6e6eaa6f0"
+ },
+ "/blog/why-competitors-outperform-meta-ads-2026": {
+  "d": "2026-10-23",
+  "h": "e9fc7f3b605897a8"
+ },
+ "/blog/why-meta-disables-ad-accounts-2026": {
+  "d": "2026-10-23",
+  "h": "c83b6ce77d8db627"
+ },
+ "/cancellation-refund-policy": {
+  "d": "2026-07-13",
+  "h": "f177135ec2476b1b"
+ },
+ "/careers": {
+  "d": "2026-10-19",
+  "h": null
+ },
+ "/careers/business-development-executive": {
+  "d": "2026-10-12",
+  "h": "a1973d552acd7b91"
+ },
+ "/careers/seo-executive": {
+  "d": "2026-05-22",
+  "h": "ad89ad83dde1e82d"
+ },
+ "/case-studies": {
+  "d": "2026-10-14",
+  "h": "73ee8f92071c2316"
+ },
+ "/case-studies/dp-electrical-repairs": {
+  "d": "2026-10-14",
+  "h": "db3d8e285ab149ed"
+ },
+ "/case-studies/grand-palace": {
+  "d": "2026-10-14",
+  "h": "630fd76a4fde6efa"
+ },
+ "/case-studies/ivf-clinic": {
+  "d": "2026-10-14",
+  "h": "ba30374a419966e3"
+ },
+ "/case-studies/oblprint": {
+  "d": "2026-10-14",
+  "h": "27f596a3f764353d"
+ },
+ "/case-studies/prism-calibration": {
+  "d": "2026-10-14",
+  "h": "e1ab1d2a07331c7d"
+ },
+ "/case-studies/riant-bikes": {
+  "d": "2026-10-14",
+  "h": "070539cf19124997"
+ },
+ "/contact": {
+  "d": "2026-10-14",
+  "h": "df9caf34899a28f0"
+ },
+ "/digital-marketing-agency-ahmedabad": {
+  "d": "2026-10-05",
+  "h": "0c9c7b4599f6510c"
+ },
+ "/digital-marketing-agency-gujarat": {
+  "d": "2026-10-12",
+  "h": "4e1cae0d519b4971"
+ },
+ "/digital-marketing-company-ahmedabad": {
+  "d": "2026-10-23",
+  "h": null
+ },
+ "/engagement-models": {
+  "d": "2026-10-14",
+  "h": "b25dd2d2a70a51ce"
+ },
+ "/full-stack-development-ahmedabad": {
+  "d": "2026-10-05",
+  "h": "4fa34d5c65af0368"
+ },
+ "/full-stack-development-gujarat": {
+  "d": "2026-10-05",
+  "h": "c48a2a31512efb4c"
+ },
+ "/google-ads-agency-ahmedabad": {
+  "d": "2026-10-23",
+  "h": null
+ },
+ "/google-ads-audit-ahmedabad": {
+  "d": "2026-10-09",
+  "h": "b233f2cd596f6b57"
+ },
+ "/google-ads-for-dentists-ahmedabad": {
+  "d": "2026-10-12",
+  "h": "9d987180e569273b"
+ },
+ "/google-ads-for-doctors-ahmedabad": {
+  "d": "2026-10-09",
+  "h": "e4f0c0036af78a74"
+ },
+ "/google-ads-for-ivf-clinics-ahmedabad": {
+  "d": "2026-10-12",
+  "h": "f39c3fb8b2ba4b5e"
+ },
+ "/google-ads-pricing-ahmedabad": {
+  "d": "2026-10-17",
+  "h": "1fbf6bb91bb9df04"
+ },
+ "/meta-ads-agency-ahmedabad": {
+  "d": "2026-10-17",
+  "h": "d54c13b2c155bcaa"
+ },
+ "/meta-ads-agency-ahmedabad/clinics-doctors": {
+  "d": "2026-10-09",
+  "h": "38d1beb63e9aee28"
+ },
+ "/meta-ads-agency-ahmedabad/dentists": {
+  "d": "2026-10-12",
+  "h": "7b57a524556a7a8b"
+ },
+ "/meta-ads-agency-ahmedabad/dermatologists-skin-clinics": {
+  "d": "2026-10-12",
+  "h": "6f260db350a92c5a"
+ },
+ "/meta-ads-agency-ahmedabad/ecommerce": {
+  "d": "2026-10-12",
+  "h": "fe431e79819d6b7c"
+ },
+ "/meta-ads-agency-ahmedabad/education-coaching": {
+  "d": "2026-10-12",
+  "h": "d18da7302ebb1270"
+ },
+ "/meta-ads-agency-ahmedabad/hospitals": {
+  "d": "2026-10-12",
+  "h": "67bf783b194d6439"
+ },
+ "/meta-ads-agency-ahmedabad/ivf-fertility-clinics": {
+  "d": "2026-10-12",
+  "h": "e723a79cd61662d3"
+ },
+ "/meta-ads-agency-ahmedabad/pricing": {
+  "d": "2026-10-12",
+  "h": "7f99419d6bcbedbc"
+ },
+ "/meta-ads-agency-ahmedabad/real-estate": {
+  "d": "2026-10-12",
+  "h": "831f5cf1a198b327"
+ },
+ "/meta-ads-agency-ahmedabad/restaurants": {
+  "d": "2026-10-12",
+  "h": "8c8e6ac55c782de6"
+ },
+ "/mobile-app-development-ahmedabad": {
+  "d": "2026-10-05",
+  "h": "05e55dee351e32e0"
+ },
+ "/mobile-app-development-gujarat": {
+  "d": "2026-10-05",
+  "h": "ab7f1c1fd5c4a1d3"
+ },
+ "/mobile-apps": {
+  "d": "2026-10-17",
+  "h": "2b7e2dc04141f86d"
+ },
+ "/privacy-policy": {
+  "d": "2026-08-31",
+  "h": "6733e1d488a17d92"
+ },
+ "/seo-agency-ahmedabad": {
+  "d": "2026-10-17",
+  "h": "e9a926d63313f852"
+ },
+ "/seo-agency-international": {
+  "d": "2026-10-05",
+  "h": "89cd49c010659a1a"
+ },
+ "/seo-company-gujarat": {
+  "d": "2026-10-17",
+  "h": "688297e9ab96b5e3"
+ },
+ "/seo-services-ahmedabad": {
+  "d": "2026-10-23",
+  "h": null
+ },
+ "/seo/doctors-hospitals-ahmedabad": {
+  "d": "2026-10-19",
+  "h": "15ab13f8b28c99ab"
+ },
+ "/seo/free-audit": {
+  "d": "2026-10-19",
+  "h": "181c3b61dca0bd0d"
+ },
+ "/seo/manufacturers-b2b-gujarat": {
+  "d": "2026-10-17",
+  "h": "cad57cefbdd5a45c"
+ },
+ "/seo/pricing-ahmedabad": {
+  "d": "2026-10-17",
+  "h": "fa3cd4368de08932"
+ },
+ "/service-areas": {
+  "d": "2026-10-23",
+  "h": "912d48a34d8ec70a"
+ },
+ "/services": {
+  "d": "2026-10-23",
+  "h": "51506ac2f06fc1e8"
+ },
+ "/services/ai-automation": {
+  "d": "2026-10-17",
+  "h": "7a121a95f41bcfdd"
+ },
+ "/services/ai-chatbot-assistant": {
+  "d": "2026-10-17",
+  "h": "6d956237d2821463"
+ },
+ "/services/ai-powered-web-apps": {
+  "d": "2026-10-17",
+  "h": "d974e43f4b5b566d"
+ },
+ "/services/ai/api-integration": {
+  "d": "2026-10-17",
+  "h": "c2e17113f66c1bc8"
+ },
+ "/services/ai/chatbots-assistants": {
+  "d": "2026-10-17",
+  "h": "27119082f7d6cfd3"
+ },
+ "/services/ai/custom-ml-models": {
+  "d": "2026-10-17",
+  "h": "f49208de3fb0d44e"
+ },
+ "/services/ai/llm-powered-apps": {
+  "d": "2026-10-17",
+  "h": "7853a99826bc3fdf"
+ },
+ "/services/ai/predictive-analytics": {
+  "d": "2026-10-17",
+  "h": "34fe7777741a1b5c"
+ },
+ "/services/ai/workflow-automation": {
+  "d": "2026-10-17",
+  "h": "c61b9e5be422d340"
+ },
+ "/services/android-development": {
+  "d": "2026-10-17",
+  "h": "4c5054beb352c3d3"
+ },
+ "/services/bigcommerce-development": {
+  "d": "2026-10-14",
+  "h": "044aff707e72b8d7"
+ },
+ "/services/cro": {
+  "d": "2026-10-14",
+  "h": "a557fb1932bd83d9"
+ },
+ "/services/custom-ai-web-solutions": {
+  "d": "2026-10-17",
+  "h": "1d6cbbfbda582330"
+ },
+ "/services/design-branding": {
+  "d": "2026-10-14",
+  "h": "96f1555616d98f68"
+ },
+ "/services/digital-marketing": {
+  "d": "2026-10-14",
+  "h": "fc207ea91cb48f76"
+ },
+ "/services/email-whatsapp-marketing": {
+  "d": "2026-10-14",
+  "h": "9a67098a2ffef53b"
+ },
+ "/services/flutter-apps": {
+  "d": "2026-10-17",
+  "h": "abee7fa682e81e6b"
+ },
+ "/services/full-stack-development": {
+  "d": "2026-10-17",
+  "h": "ef5f731a8a233feb"
+ },
+ "/services/google-ads": {
+  "d": "2026-10-17",
+  "h": "76cd72d87e5c097b"
+ },
+ "/services/linkedin-youtube-ads": {
+  "d": "2026-10-14",
+  "h": "c06ab7302dd4c99a"
+ },
+ "/services/meta-ads": {
+  "d": "2026-10-17",
+  "h": "e048611128ab8792"
+ },
+ "/services/mobile-app-development": {
+  "d": "2026-10-17",
+  "h": "bdb54859b3df45a3"
+ },
+ "/services/react-native-apps": {
+  "d": "2026-10-17",
+  "h": "f5aca305265bc94a"
+ },
+ "/services/seo-content-marketing": {
+  "d": "2026-10-17",
+  "h": "b21a6894f75f6ac7"
+ },
+ "/services/seo-content-marketing/ecommerce-seo": {
+  "d": "2026-10-17",
+  "h": "426b3f6c71f85725"
+ },
+ "/services/seo-content-marketing/local-seo": {
+  "d": "2026-10-17",
+  "h": "1abcd18b757c88f9"
+ },
+ "/services/seo-content-marketing/off-page-seo": {
+  "d": "2026-10-17",
+  "h": "f639e35c609f737d"
+ },
+ "/services/seo-content-marketing/on-page-seo": {
+  "d": "2026-10-17",
+  "h": "989c766840fa9e69"
+ },
+ "/services/seo-content-marketing/seo-audit-strategy": {
+  "d": "2026-10-17",
+  "h": "8440afb445241436"
+ },
+ "/services/seo-content-marketing/technical-seo": {
+  "d": "2026-10-17",
+  "h": "0e8930ff93622ad7"
+ },
+ "/services/shopify-development": {
+  "d": "2026-10-14",
+  "h": "68b5f94a545cf8ac"
+ },
+ "/services/social-media-marketing": {
+  "d": "2026-10-17",
+  "h": "93fd138d0ebb0675"
+ },
+ "/services/web-app-development": {
+  "d": "2026-10-17",
+  "h": "9da167a57b0388de"
+ },
+ "/services/woocommerce-development": {
+  "d": "2026-10-14",
+  "h": "04d7255d4d16a64d"
+ },
+ "/services/wordpress-development": {
+  "d": "2026-10-14",
+  "h": "df35128301d0849e"
+ },
+ "/shopify-development-international": {
+  "d": "2026-10-05",
+  "h": "9d795630915a96aa"
+ },
+ "/shopify-website-design-ahmedabad": {
+  "d": "2026-10-05",
+  "h": "81c4ed7ae617c6ee"
+ },
+ "/social-media-marketing-agency-ahmedabad": {
+  "d": "2026-10-17",
+  "h": "aa3d7a8acd1302ab"
+ },
+ "/terms-and-conditions": {
+  "d": "2026-07-13",
+  "h": "30f5fe901f63c767"
+ },
+ "/testimonials": {
+  "d": "2026-10-14",
+  "h": "cbd8d3d64e57aa9d"
+ },
+ "/website-design-cost-ahmedabad": {
+  "d": "2026-10-09",
+  "h": "c8f8937813244df8"
+ },
+ "/website-design-development-ahmedabad": {
+  "d": "2026-10-05",
+  "h": "eec177328e395898"
+ },
+ "/website-design-development-gujarat": {
+  "d": "2026-10-05",
+  "h": "a20369fb91b8e4ec"
+ },
+ "/website-design-for-dentists-ahmedabad": {
+  "d": "2026-10-12",
+  "h": "b49a74586f31d059"
+ },
+ "/website-design-for-doctors-ahmedabad": {
+  "d": "2026-10-08",
+  "h": "d1452343665f5bd2"
+ },
+ "/website-design-for-manufacturers-ahmedabad": {
+  "d": "2026-10-19",
+  "h": "d5f428b2fdc5fdeb"
+ },
+ "/website-design-for-ophthalmologists-ahmedabad": {
+  "d": "2026-10-12",
+  "h": "0ea37997daff9fae"
+ },
+ "/website-development-cost-ahmedabad": {
+  "d": "2026-10-09",
+  "h": "5999976b174f5239"
+ },
+ "/website-development-services-ahmedabad": {
+  "d": "2026-10-22",
+  "h": "314d80c14d5aa757"
+ },
+ "/website-maintenance-amc-ahmedabad": {
+  "d": "2026-10-19",
+  "h": "b83fc2518cdf748a"
+ },
+ "/website-packages-ahmedabad": {
+  "d": "2026-10-09",
+  "h": "c7436bfb71360e78"
+ },
+ "/website-redesign-services-ahmedabad": {
+  "d": "2026-10-07",
+  "h": "c8ca3f291fcfc53c"
+ },
+ "/woocommerce-development-gujarat": {
+  "d": "2026-10-05",
+  "h": "521ff3943c2009a0"
+ },
+ "/woocommerce-website-design-ahmedabad": {
+  "d": "2026-10-05",
+  "h": "0ebce032bbe036c5"
+ }
+}

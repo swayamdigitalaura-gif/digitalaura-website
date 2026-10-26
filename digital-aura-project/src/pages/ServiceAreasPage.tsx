@@ -7,7 +7,7 @@ const HEADING = "#0A1628";
 const ORANGE = "#FF6B2B";
 
 // Served by a separate landing-pages app, so it needs a normal page load, not a client-side route.
-const HARD_NAV = new Set(["/seo-services-ahmedabad"]);
+const HARD_NAV = new Set(["/seo-services-ahmedabad", "/digital-marketing-company-ahmedabad"]);
 
 interface AreaLink {
   label: string;

@@ -142,6 +142,12 @@ const megaCategories = [
         route: `${BASE}/google-ads-agency-ahmedabad`,
       },
       {
+        icon: Target,
+        title: "Digital Marketing Company",
+        desc: "Full funnel growth marketing for Ahmedabad brands",
+        route: `${BASE}/digital-marketing-company-ahmedabad`,
+      },
+      {
         icon: Share2,
         title: "Meta Ads",
         desc: "Facebook & Instagram campaigns that convert",
@@ -152,12 +158,6 @@ const megaCategories = [
         title: "Social Media Marketing",
         desc: "Content, community & organic growth",
         route: `${BASE}/services/social-media-marketing`,
-      },
-      {
-        icon: Target,
-        title: "Digital Marketing Company",
-        desc: "Full funnel growth marketing for Ahmedabad brands",
-        route: `${BASE}/digital-marketing-company-ahmedabad`,
       },
     ],
   },

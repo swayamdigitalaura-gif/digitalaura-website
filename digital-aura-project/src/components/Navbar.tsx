@@ -72,9 +72,9 @@ const megaCategories = [
     items: [
       { icon: Search, title: "SEO & Content Marketing", desc: "Rank on page 1 with technical SEO & content",  route: "/seo-services-ahmedabad", hard: true },
       { icon: Target, title: "Google Ads",              desc: "Data driven Search, Display & Shopping ads",    route: "/google-ads-agency-ahmedabad", hard: true },
+      { icon: Target, title: "Digital Marketing Company", desc: "Full funnel growth marketing for Ahmedabad brands", route: "/digital-marketing-company-ahmedabad", hard: true },
       { icon: Share2, title: "Meta Ads",                desc: "Facebook & Instagram campaigns that convert",   route: "/meta-ads-agency-ahmedabad/" },
       { icon: Hash,   title: "Social Media Marketing",  desc: "Content, community & organic growth",           route: "/services/social-media-marketing/" },
-      { icon: Target, title: "Digital Marketing Company", desc: "Full funnel growth marketing for Ahmedabad brands", route: "/digital-marketing-company-ahmedabad", hard: true },
     ],
   },
   {

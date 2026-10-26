@@ -37,6 +37,12 @@ declare -A NEW_LOCATIONS=(
         error_page 404 /index.html;
         return 404;
     }'
+  [DA_COMPRESSION]='    # da-compression: gzip the JS/CSS/JSON/SVG bundles (nginx only gzips text/html by default).
+    gzip on;
+    gzip_vary on;
+    gzip_comp_level 5;
+    gzip_min_length 1024;
+    gzip_types text/css application/javascript text/javascript application/json image/svg+xml text/plain text/xml application/xml;'
 )
 
 # Literal substring (no regex metacharacters) — the insertion point.
@@ -79,7 +85,7 @@ cp "$LIVE" "$WORK"
 CHANGED=0
 
 for path in "${!NEW_LOCATIONS[@]}"; do
-  if grep -qF "location $path {" "$WORK" || { [ "$path" = "REMOVED_AI_FILMMAKING" ] && grep -qF "ai-filmmaking|ai-filmmaking-ahmedabad" "$WORK"; }; then
+  if grep -qF "location $path {" "$WORK" || { [ "$path" = "REMOVED_AI_FILMMAKING" ] && grep -qF "ai-filmmaking|ai-filmmaking-ahmedabad" "$WORK"; } || { [ "$path" = "DA_COMPRESSION" ] && grep -qE "gzip_types[^;]*(text/css|application/javascript)" "$WORK"; }; then
     echo "Already live, skipping: $path"
     continue
   fi

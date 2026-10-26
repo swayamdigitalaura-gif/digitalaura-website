@@ -58,7 +58,7 @@ const HomeFindUs = () => (
         </div>
         <div className="mt-6 md:mt-auto md:pt-6">
           <a
-            href="/free-audit/"
+            href="/seo/free-audit/"
             className="inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-white transition-transform hover:-translate-y-0.5"
             style={{ background: ORANGE, boxShadow: `0 8px 22px ${ORANGE}40` }}
           >

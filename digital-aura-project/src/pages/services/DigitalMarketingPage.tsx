@@ -101,6 +101,7 @@ const DigitalMarketingPage = () => {
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <h2 className="text-3xl font-bold text-[#0A1628] mb-4"><span data-cms-key="digmkt_s10_h2" data-cms-label="Section Heading" data-cms-attr="text">Free Marketing Audit: Worth ₹15,000</span></h2>
           <p className="text-[#4B5563] mb-8"><span data-cms-key="digmkt_x7" data-cms-label="Body Text" data-cms-attr="text">We'll audit your SEO, ads, and website: and show you exactly where revenue is being left on the table.</span></p>
+          <p className="text-sm text-[#4B5563] mb-8">Based in Ahmedabad? See our <a href="/digital-marketing-company-ahmedabad" className="font-semibold text-[#FF6B2B] underline underline-offset-2">digital marketing company in Ahmedabad</a> page for plans, pricing and case studies.</p>
           <Link to="/contact/" className="btn-orange px-8 py-4 text-base gap-2 inline-flex">Claim Free Audit <ArrowRight size={18} /></Link>
         </motion.div>
       </div>

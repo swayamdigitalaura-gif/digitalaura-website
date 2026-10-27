@@ -1502,6 +1502,17 @@ const localPagesRaw: Record<string, LocalServiceConfig> = {
       { title: 'Google Ads', desc: 'Data driven Google campaigns, Search, Display, and Shopping ads that deliver high quality leads.', points: ['Search & Display ads', 'Shopping campaigns', 'ROI focused bidding'], href: '/services/google-ads/' },
       { title: 'Meta Ads', desc: 'High converting Facebook & Instagram ad campaigns targeting the right audience.', points: ['Facebook & Instagram', 'Audience targeting', 'Creative A/B testing'], href: '/services/meta-ads/' },
     ],
+    extraSections: [
+      {
+        kind: "text",
+        id: "ahmedabad-digital-marketing",
+        eyebrow: "Based in Ahmedabad",
+        title: "Looking for a digital marketing company in Ahmedabad?",
+        paragraphs: [
+          "Our home market is Ahmedabad. If your business is in the city, our [digital marketing company in Ahmedabad](/digital-marketing-company-ahmedabad) page shows the plans, pricing, process and case studies for local businesses, and you can ask for a free growth audit there.",
+        ],
+      },
+    ],
     faqs: [
       { q: "Do you serve digital marketing clients across all of Gujarat?", a: "Yes — we work with businesses across Ahmedabad, Surat, Vadodara, Rajkot, and other Gujarat cities, delivering every service through the same in-house team." },
       { q: "I don't know which service I need — where do I start?", a: "Book a free consultation. We'll talk through your business goals and current challenges before recommending anything, rather than defaulting to the most expensive package." },

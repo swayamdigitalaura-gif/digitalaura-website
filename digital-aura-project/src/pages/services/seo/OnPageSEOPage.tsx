@@ -15,6 +15,7 @@ import PageLayout from "@/components/PageLayout";
 import { renderInline } from "@/lib/inlineLinks";
 import Testimonials from "@/components/Testimonials";
 import CaseStudies from "@/components/CaseStudies";
+import { CASES_BY_CATEGORY } from "@/components/caseCards";
 import BlogInsights from "@/components/BlogInsights";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 import MathCaptcha from "@/components/MathCaptcha";
@@ -468,7 +469,7 @@ const OnPageSEOPage = () => {
 
     {/* Real Clients. Real Growth. Real Results. */}
     <div style={{ marginBottom: "-60px" }}>
-      <CaseStudies />
+      <CaseStudies cases={CASES_BY_CATEGORY.seo} />
       <BlogInsights categories={["On-Page SEO"]} />
     </div>
 

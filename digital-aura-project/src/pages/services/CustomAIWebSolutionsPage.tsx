@@ -1,4 +1,5 @@
 ﻿import CaseStudies from "@/components/CaseStudies";
+import { CASES_BY_CATEGORY } from "@/components/caseCards";
 import BlogInsights from "@/components/BlogInsights";
 import ServiceLeadCapture from "@/components/ServiceLeadCapture";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
@@ -338,7 +339,7 @@ const CustomAIWebSolutionsPage = () => {
         </div>
       </div>
     </section>
-    <CaseStudies />
+    <CaseStudies cases={CASES_BY_CATEGORY.web} />
     <BlogInsights categories={["AI Search"]} />
         {/* Testimonials */}
     <section className="py-20 px-4 md:px-8 bg-white">

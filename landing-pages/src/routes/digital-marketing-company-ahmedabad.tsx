@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { CaseStudySlider, type SliderCase } from "@/components/CaseStudySlider";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import {
   ArrowRight,
@@ -1177,130 +1178,99 @@ function Industries() {
 
 /* ---------------- Results & proof ---------------- */
 
-const CASES = [
+const CASES: SliderCase[] = [
+  {
+    tag: "Local Business · Web + Booking System",
+    color: "#1A6FE8",
+    title: "Riant Bikes",
+    href: "/case-studies/riant-bikes/",
+    stats: [
+      { num: "177", label: "Bookings processed through the new website" },
+      { num: "₹1.6L+", label: "Revenue tracked inside the platform" },
+      { num: "230", label: "Customers managed in one system" },
+    ],
+    problems: ["Every booking depended on someone answering the phone", "No idea which bike earned the most or sat idle", "Static pricing while weekend demand kept changing", "No digital record of bike condition at rental"],
+    solutions: ["Built a new website with instant online booking", "Fleet management dashboard for demand, branches and revenue", "Customer database to spot and reward repeat renters", "Launched Google Ads for consistent daily bookings"],
+  },
   {
     tag: "Industrial B2B · SEO & AEO/GEO",
-    badge: "70–100 Leads/mo",
     color: "#22C55E",
     title: "Prism Calibration Centre",
-    statBig: "70–100",
-    statDesc: "qualified leads generated every month after we rebuilt their site into a search and AI-visibility engine.",
     href: "/case-studies/prism-calibration/",
+    stats: [
+      { num: "70–100", label: "Qualified leads every month" },
+      { num: "Top 3", label: "Google rankings on major keywords" },
+      { num: "AI Overview", label: "Featured in Google's AI answers" },
+    ],
+    problems: ["Strong expertise, but growth came from word-of-mouth only", "Outdated website with no search-friendly structure", "Enquiries untracked across multiple forms", "Legacy PBN backlinks and weak local signals"],
+    solutions: ["Rebuilt the site for speed, SEO and scale", "Service → industry → instrument page architecture", "Pillar content, internal linking, schema and local SEO", "Optimised for AI search with AEO + GEO"],
   },
   {
     tag: "Healthcare & Fertility · SEO + YouTube",
-    badge: "+76.7% Traffic",
     color: "#7C3AED",
     title: "IVF Clinic",
-    statBig: "76.7%",
-    statDesc: "organic traffic growth in 6 months, turning a strong offline reputation into daily online demand.",
     href: "/case-studies/ivf-clinic/",
+    stats: [
+      { num: "+76.7%", label: "Organic website traffic growth in 6 months" },
+      { num: "1 → 10", label: "Keywords ranking #1 on Google" },
+      { num: "SEO + YouTube", label: "Two growth channels running together" },
+    ],
+    problems: ["No authority on Google despite being an industry leader", "Slow site; patients couldn't find treatment information", "Weaker competitors outranked them", "YouTube library with almost no reach"],
+    solutions: ["Keyword research and a patient-first site rebuild", "Treatment pages, blogs and AIO/GEO pages with internal links", "CRO plus targeted Google Ads for quick leads", "YouTube SEO and a consistent short + long video schedule"],
   },
   {
     tag: "Home Services · Local SEO & AEO",
-    badge: "10–15 Leads/day",
     color: "#FF6B2B",
     title: "DP Electrical Repairs",
-    statBig: "10–15",
-    statDesc: "qualified leads generated every day from the website, from invisible to local search leader in 4 months.",
     href: "/case-studies/dp-electrical-repairs/",
+    stats: [
+      { num: "10–15", label: "Qualified leads every day from the website" },
+      { num: "3,000+", label: "Monthly website visitors, up from almost none" },
+      { num: "200+", label: "Suburbs covered with local pages" },
+    ],
+    problems: ["Website generated almost no organic enquiries", "Growth capped by referrals only", "Shared paid leads led to a constant price war", "Lower-skilled competitors ranked higher"],
+    solutions: ["A dedicated page for every repair service and brand", "Suburb-level pages covering 200+ local areas", "Local SEO and AEO built for “repair near me” searches", "Exit-intent callback popup to capture leaving visitors"],
+  },
+  {
+    tag: "Custom Printing · Google Ads & Shopping",
+    color: "#0891B2",
+    title: "OBLPrint",
+    href: "/case-studies/oblprint/",
+    stats: [
+      { num: "35", label: "WhatsApp click-to-chats in a month" },
+      { num: "79.1%", label: "Optimization score, up from 31/100" },
+      { num: "14.6%", label: "Click-through rate on top search keywords" },
+    ],
+    problems: ["Only 10% impression share; every landing page rated Poor by Google", "80+ keywords in one ad group, with no negative keywords", "Broken website migration left old URLs indexed", "Budget went out every month while the WhatsApp stayed silent"],
+    solutions: ["Rebuilt the account into focused, product-specific campaigns", "Launched Google Shopping for stickers, banners and foam board", "Tracked WhatsApp chats, calls and form fills properly", "Removed wasted keywords and added negative keywords everywhere"],
   },
   {
     tag: "Hospitality & Restaurant · SEO & Social",
-    badge: "1.26K+ Organic Visitors",
     color: "#c8952f",
     title: "The Grand Palace",
-    statBig: "1.26K+",
-    statDesc: "organic search sessions in 90 days, from a standing start: a decade-old restaurant's first real digital front door.",
     href: "/case-studies/grand-palace/",
-  },
-  {
-    tag: "Hospitality · Meta Ads",
-    badge: "3.8X ROAS",
-    color: "#2563EB",
-    title: "Restaurant Chain",
-    statBig: "3.8X",
-    statDesc: "return on ad spend from Meta Ads, with new covers up 333% a month and cost per lead down 52% (client name withheld by request).",
-    href: "/case-studies/",
+    stats: [
+      { num: "1.26K+", label: "Visitors from Google search in 90 days" },
+      { num: "+73%", label: "Instagram engagement growth" },
+      { num: "+78.3%", label: "More Google Business Profile interactions" },
+    ],
+    problems: ["No website, so nowhere to send curious customers", "Venue hire and catering went unnoticed", "No online booking; every enquiry needed a phone call", "Invisible in search, so competitors were found first"],
+    solutions: ["Built the restaurant's first digital front door", "Local SEO and Google Business Profile optimisation", "Pages for events, catering and banquet bookings", "Social media content to grow engagement"],
   },
 ];
 
 function Results() {
-  const VISIBLE = 3;
-  const maxIndex = Math.max(0, CASES.length - VISIBLE);
-  const [index, setIndex] = useState(0);
-  const [show, setShow] = useState(true);
-  const indexRef = useRef(0);
-  const go = (n: number) => {
-    const clamped = Math.max(0, Math.min(n, maxIndex));
-    setShow(false);
-    setTimeout(() => {
-      indexRef.current = clamped;
-      setIndex(clamped);
-      setShow(true);
-    }, 180);
-  };
-  useEffect(() => {
-    if (maxIndex === 0) return;
-    const t = setInterval(() => {
-      const cur = indexRef.current;
-      const n = cur >= maxIndex ? 0 : cur + 1;
-      setShow(false);
-      setTimeout(() => {
-        indexRef.current = n;
-        setIndex(n);
-        setShow(true);
-      }, 180);
-    }, 4000);
-    return () => clearInterval(t);
-  }, [maxIndex]);
-  const visible = CASES.slice(index, index + VISIBLE);
   return (
     <section id="results" className="bg-white">
       <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
-        <div className="mb-10">
+        <div className="mb-10 text-center">
           <SectionHeading
             eyebrow="Proven results"
             title={<>Real clients. <span className="text-brand-orange">Real growth.</span> Real results.</>}
             sub="Results from real businesses we handle SEO, ads and social media for."
           />
         </div>
-        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3" style={{ opacity: show ? 1 : 0, transition: "opacity 180ms ease" }}>
-          {visible.map((c) => (
-            <div key={c.title} className="group flex flex-col overflow-hidden rounded-2xl border border-[#E5E7EB] bg-white transition-transform hover:-translate-y-1" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
-              <div className="relative flex h-20 items-end px-4 pb-3" style={{ background: `linear-gradient(135deg, ${c.color}14 0%, ${c.color}05 100%)` }}>
-                <span className="max-w-[55%] truncate rounded-full px-3 py-1 text-xs font-semibold" style={{ color: c.color, background: `${c.color}14` }}>{c.tag}</span>
-                <span className="absolute right-3 top-3 whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-bold" style={{ color: c.color, background: `${c.color}14`, border: `1px solid ${c.color}30` }}>{c.badge}</span>
-              </div>
-              <div className="flex flex-1 flex-col p-5">
-                <a href={c.href}><h3 className="mb-3 text-base font-bold text-brand-navy hover:underline">{c.title}</h3></a>
-                <div className="mb-2 flex items-center gap-2">
-                  <TrendingUp className="h-4 w-4" style={{ color: c.color }} />
-                  <span className="text-[36px] font-black leading-none" style={{ color: c.color }}>{c.statBig}</span>
-                </div>
-                <p className="mb-4 flex-1 text-sm leading-relaxed text-ink-muted">{c.statDesc}</p>
-                <a href={c.href} className="mt-auto inline-flex items-center gap-1 text-sm font-semibold transition-all group-hover:gap-2" style={{ color: c.color }}>
-                  Read Full Case Study <ArrowRight className="h-3.5 w-3.5" />
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-        {maxIndex > 0 && (
-          <div className="mt-8 flex items-center justify-center gap-3">
-            <button type="button" aria-label="Previous case studies" onClick={() => go(indexRef.current - 1)} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#E5E7EB] bg-white shadow-sm transition-transform hover:scale-110">
-              <ArrowRight className="h-4 w-4 rotate-180 text-brand-navy" />
-            </button>
-            <div className="flex items-center gap-1.5">
-              {Array.from({ length: maxIndex + 1 }).map((_, i) => (
-                <button key={i} type="button" aria-label={`Show case studies ${i + 1}`} onClick={() => go(i)} className="rounded-full transition-all duration-300" style={{ width: i === index ? 20 : 7, height: 7, background: i === index ? "#FF6B2B" : "#D1D5DB" }} />
-              ))}
-            </div>
-            <button type="button" aria-label="Next case studies" onClick={() => go(indexRef.current < maxIndex ? indexRef.current + 1 : 0)} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#E5E7EB] bg-white shadow-sm transition-transform hover:scale-110">
-              <ArrowRight className="h-4 w-4 text-brand-navy" />
-            </button>
-          </div>
-        )}
+        <CaseStudySlider items={CASES} />
         <div className="mt-8 text-center">
           <a href="/case-studies/" className="inline-flex items-center gap-2 rounded-full border-2 border-brand-orange px-6 py-3 text-sm font-bold text-brand-orange transition-colors hover:bg-brand-orange hover:text-white">
             View All Case Studies <ArrowRight className="h-4 w-4" />

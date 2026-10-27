@@ -16,6 +16,7 @@ import CMSIcon from "@/components/CMSIcon";
 import { useSettings } from "@/hooks/useSettings";
 import Testimonials from "@/components/Testimonials";
 import CaseStudies from "@/components/CaseStudies";
+import { CASES_BY_CATEGORY } from "@/components/caseCards";
 import BlogInsights from "@/components/BlogInsights";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 
@@ -857,7 +858,7 @@ const SEOPage = () => {
 
     {/* ── Case Studies ── */}
     <div style={{ marginBottom: "-60px" }}>
-      <CaseStudies />
+      <CaseStudies cases={CASES_BY_CATEGORY.seo} />
       <BlogInsights categories={["SEO Strategy","Technical SEO","On-Page SEO","Local SEO"]} />
     </div>
 

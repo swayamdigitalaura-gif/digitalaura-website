@@ -5,6 +5,7 @@ import { useState } from "react";
 import MathCaptcha from "@/components/MathCaptcha";
 import PageLayout from "@/components/PageLayout";
 import CaseStudies from "@/components/CaseStudies";
+import { CASES_BY_CATEGORY } from "@/components/caseCards";
 import BlogInsights from "@/components/BlogInsights";
 import Testimonials from "@/components/Testimonials";
 import {
@@ -325,7 +326,7 @@ const AISolutionsPage = () => {
 
     {/* ── Case Studies ── */}
     <div style={{ marginBottom: "-60px" }}>
-      <CaseStudies />
+      <CaseStudies cases={CASES_BY_CATEGORY.web} />
       <BlogInsights categories={["AI Search"]} />
     </div>
 

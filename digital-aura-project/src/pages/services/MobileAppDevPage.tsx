@@ -10,6 +10,7 @@ import PageLayout from "@/components/PageLayout";
 import CMSIcon from "@/components/CMSIcon";
 import { useSettings } from "@/hooks/useSettings";
 import CaseStudies from "@/components/CaseStudies";
+import { CASES_BY_CATEGORY } from "@/components/caseCards";
 import BlogInsights from "@/components/BlogInsights";
 import Testimonials from "@/components/Testimonials";
 import {
@@ -437,7 +438,7 @@ const MobileAppDevPage = () => {
 
     {/* ── Case Studies ── */}
     <div style={{ marginBottom: "-60px" }}>
-      <CaseStudies />
+      <CaseStudies cases={CASES_BY_CATEGORY.web} />
       <BlogInsights />
     </div>
 

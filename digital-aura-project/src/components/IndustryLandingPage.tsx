@@ -19,6 +19,7 @@ import { GUIDES } from "@/data/linkMap";
 import RelatedGuides from "@/components/RelatedGuides";
 import { PILLAR_TEAMS } from "@/data/pageExtras";
 import CaseStudies, { type CaseCard } from "@/components/CaseStudies";
+import { casesForSlug } from "@/components/caseCards";
 import Testimonials from "@/components/Testimonials";
 import PageLeadForm from "@/components/PageLeadForm";
 import { StickyCtaBar } from "@/components/PageCta";
@@ -836,7 +837,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
           const body = asTabs(part.tabs, part.eyebrow, part.initial);
           return body ? <PillarSection key={part.id} id={part.id} tone={part.tone} eyebrow={part.eyebrow} title={part.title}>{body}</PillarSection> : null;
         }
-        if (part.type === "proof") return <PillarSection key="proof" id="results-proof" tone={part.tone ?? "white"} bare noHead><CaseStudies cases={caseCards} sub={caseSub} centered /></PillarSection>;
+        if (part.type === "proof") return <PillarSection key="proof" id="results-proof" tone={part.tone ?? "white"} bare noHead><CaseStudies cases={caseCards ?? casesForSlug(config.slug)} sub={caseSub} centered /></PillarSection>;
         if (part.type === "testimonials") return <PillarSection key="testimonials" tone={part.tone ?? "white"} bare noHead><Testimonials /></PillarSection>;
         if (part.type === "team") return teamSec2 ? <PillarSection key="team" tone={part.tone ?? "white"} bare noHead><GuideSection sec={teamSec2} index={0} /></PillarSection> : null;
         // "explore": link cards and any leftover sections, so no existing content is dropped
@@ -960,7 +961,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
 
           {/* 8. Results & proof */}
           <PillarSection id="results-proof" tone="white" bare noHead>
-            <CaseStudies cases={caseCards} sub={caseSub} centered />
+            <CaseStudies cases={caseCards ?? casesForSlug(config.slug)} sub={caseSub} centered />
           </PillarSection>
           {videos && (
             <PillarSection tone="light" bare noHead>
@@ -1298,7 +1299,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
 
       {/* 7. Proof: same components as the home page */}
       <div id="proof" className="scroll-mt-32 xl:scroll-mt-36" style={{ marginBottom: "-60px" }}>
-        <CaseStudies cases={caseCards} sub={caseSub} centered={pillar} />
+        <CaseStudies cases={caseCards ?? casesForSlug(config.slug)} sub={caseSub} centered={pillar} />
       </div>
       <Testimonials />
 

@@ -1,4 +1,5 @@
 import CaseStudies from "@/components/CaseStudies";
+import { CASES_BY_CATEGORY } from "@/components/caseCards";
 import ServiceLeadCapture from "@/components/ServiceLeadCapture";
 import BlogInsights from "@/components/BlogInsights";
 import ClientLogoSection from "@/components/ClientLogoSection";
@@ -247,7 +248,7 @@ const WebAppDevPage = () => {
       </div>
     </section>
 
-    <CaseStudies />
+    <CaseStudies cases={CASES_BY_CATEGORY.web} />
     <BlogInsights />
 
     {/* Testimonials */}

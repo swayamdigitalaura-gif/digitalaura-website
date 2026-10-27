@@ -9,6 +9,7 @@ import { AppLink } from "./AppLink";
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
 import CaseStudies from "@/components/CaseStudies";
+import { casesForSlug } from "@/components/caseCards";
 import BlogInsights from "@/components/BlogInsights";
 import Testimonials from "@/components/Testimonials";
 import { ArrowRight, ChevronDown, Check, MapPin, Phone, MessageCircle } from "lucide-react";
@@ -567,7 +568,7 @@ const LocalServicePage = ({ config }: { config: LocalServiceConfig }) => {
 
       {/* Proof */}
       <div style={{ marginBottom: "-60px" }}>
-        <CaseStudies />
+        <CaseStudies cases={casesForSlug(config.slug)} />
         {!config.storyLayout && <BlogInsights />}
       </div>
 

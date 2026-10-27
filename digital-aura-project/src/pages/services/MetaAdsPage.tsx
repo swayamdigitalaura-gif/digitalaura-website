@@ -18,6 +18,7 @@ import CMSIcon from "@/components/CMSIcon";
 import { useSettings } from "@/hooks/useSettings";
 import Testimonials from "@/components/Testimonials";
 import CaseStudies from "@/components/CaseStudies";
+import { CASES_BY_CATEGORY } from "@/components/caseCards";
 import BlogInsights from "@/components/BlogInsights";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 
@@ -768,7 +769,7 @@ const MetaAdsPage = () => {
 
     {/* ── Case Studies ── */}
     <div style={{ marginBottom: "-60px" }}>
-      <CaseStudies />
+      <CaseStudies cases={CASES_BY_CATEGORY.meta} />
       <BlogInsights />
     </div>
 

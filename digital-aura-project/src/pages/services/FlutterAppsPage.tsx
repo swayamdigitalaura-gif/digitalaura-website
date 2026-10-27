@@ -5,6 +5,7 @@ import { ArrowRight, Layers, Zap, Palette, Database, Globe2, Rocket, Check, Chev
 import PageLayout from "@/components/PageLayout";
 import ClientLogoSection from "@/components/ClientLogoSection";
 import CaseStudies from "@/components/CaseStudies";
+import { CASES_BY_CATEGORY } from "@/components/caseCards";
 import BlogInsights from "@/components/BlogInsights";
 import Testimonials from "@/components/Testimonials";
 
@@ -178,7 +179,7 @@ const FlutterAppsPage = () => (
     </section>
 
     {/* Case Studies */}
-    <CaseStudies />
+    <CaseStudies cases={CASES_BY_CATEGORY.web} />
     <BlogInsights />
 
     {/* Testimonials */}

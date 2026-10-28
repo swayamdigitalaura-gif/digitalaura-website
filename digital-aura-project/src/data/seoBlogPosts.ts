@@ -1457,7 +1457,7 @@ Allow: /</code></pre>
 <tr><td>6</td><td>A negative keyword list nobody updates</td><td>Budget spent on jobs, free, DIY and wrong-area searches</td></tr>
 <tr><td>7</td><td>Smart bidding switched on too early</td><td>Unstable results and wasted learning budget</td></tr>
 </table>
-<p>Most accounts we audit make at least three of these at once. Our <a href="/google-ads-agency-ahmedabad">Google Ads agency in Ahmedabad</a> team starts every review with number one.</p>
+<p>Most accounts we audit make at least three of these at once. Our <a href="/google-ads-agency-ahmedabad">Google Ads and performance marketing team in Ahmedabad</a> starts every review with number one.</p>
 
 <h2>Mistake 1: broken or incomplete conversion tracking</h2>
 <p>Conversion tracking is how Google Ads knows which clicks turned into enquiries. When it is wrong, every report and every automated decision is built on bad data. In audits we find three patterns again and again:</p>
@@ -1845,7 +1845,7 @@ Allow: /</code></pre>
 </table>
 
 <h2>Want a second pair of eyes?</h2>
-<p>You can run through the 30 checks in our <a href="/blog/google-ads-audit-checklist/">Google Ads account audit checklist</a>, or ask us for a <a href="/google-ads-audit-ahmedabad/">Google Ads audit</a>. If you plan to hire help, read <a href="/blog/how-to-choose-google-ads-agency-ahmedabad/">how to choose a Google Ads agency in Ahmedabad</a> first. See also our <a href="/google-ads-agency-ahmedabad">Google Ads agency in Ahmedabad</a> page.</p>
+<p>You can run through the 30 checks in our <a href="/blog/google-ads-audit-checklist/">Google Ads account audit checklist</a>, or ask us for a <a href="/google-ads-audit-ahmedabad/">Google Ads audit</a>. If you plan to hire help, read <a href="/blog/how-to-choose-google-ads-agency-ahmedabad/">how to choose a Google Ads agency in Ahmedabad</a> first. See also our <a href="/google-ads-agency-ahmedabad">Google Ads and performance marketing services in Ahmedabad</a>.</p>
 <p>At <a href="/">Digital Aura</a>, we audit accounts against this exact priority order, free of charge. To compare ads with organic search for lead generation, see <a href="/blog/seo-vs-paid-ads-which-first-ahmedabad/">SEO or Google Ads first</a>.</p>
 `,
     faqs: [
@@ -2260,7 +2260,7 @@ Allow: /</code></pre>
 </ul>
 
 <h2>Get your lead ads connected to instant follow-up</h2>
-<p>At <a href="/">Digital Aura</a>, we connect Meta lead forms to instant follow-up and report on qualified leads and customers. See our <a href="/meta-ads-agency-ahmedabad/">Meta ads agency in Ahmedabad</a> services, what a month costs on our <a href="/meta-ads-agency-ahmedabad/pricing/">Meta ads pricing page</a>, or our pages for <a href="/meta-ads-agency-ahmedabad/real-estate/">real estate</a> and <a href="/meta-ads-agency-ahmedabad/clinics-doctors/">clinics and doctors</a>.</p>
+<p>At <a href="/">Digital Aura</a>, we connect Meta lead forms to instant follow-up and report on qualified leads and customers. See our <a href="/meta-ads-agency-ahmedabad/">Meta ads agency in Ahmedabad</a> services, what a month costs on our <a href="/meta-ads-agency-ahmedabad/pricing/">Meta ads pricing page</a>, or our pages for <a href="/meta-ads-agency-ahmedabad/real-estate/">real estate</a> and <a href="/meta-ads-agency-ahmedabad/clinics-doctors/">clinics and doctors</a>. Many Ahmedabad businesses run Meta lead ads next to Google Search as one performance marketing plan. If that is what you need, talk to our <a href="/google-ads-agency-ahmedabad">performance marketing company in Ahmedabad</a> team.</p>
 `,
     faqs: [
       { q: "What is the biggest lever for Meta lead gen results?", a: "Speed and quality of follow-up. Replying within minutes, in the customer's language, usually matters more than small targeting changes." },
@@ -2470,7 +2470,7 @@ Allow: /</code></pre>
 
 <h2>Next steps</h2>
 <p>Read <a href="/blog/5-meta-ads-features-2026/">5 Meta ads features most advertisers do not use</a> to set up bidding and creative testing, and <a href="/blog/why-competitors-outperform-meta-ads-2026/">why competitors outperform you on Meta ads</a> before you assume a rival has a targeting secret. Deciding between platforms? See <a href="/blog/google-ads-vs-meta-ads-ahmedabad/">Google Ads or Meta ads first</a>.</p>
-<p>At <a href="/">Digital Aura</a>, we rebuild targeting around what works with Meta's delivery system now. See our <a href="/meta-ads-agency-ahmedabad/">Meta ads agency in Ahmedabad</a> services.</p>
+<p>At <a href="/">Digital Aura</a>, we rebuild targeting around what works with Meta's delivery system now. See our <a href="/meta-ads-agency-ahmedabad/">Meta ads agency in Ahmedabad</a> services. If you also want people who are already searching for what you sell, our <a href="/google-ads-agency-ahmedabad">PPC management company in Ahmedabad</a> team runs Google Ads alongside Meta.</p>
 `,
     faqs: [
       { q: "Is broad targeting always better than narrow?", a: "No. It is generally a good default to test, but small, niche or low-budget offers can still do better with narrower targeting. Test both in your own account." },
@@ -3032,7 +3032,7 @@ Allow: /</code></pre>
 <p>SEO is not instant. For most businesses, the first signs (more pages indexed, better impressions) show up in the first few months, and enquiries grow as rankings build. The time depends on your starting point and your competition. Treat the monthly fee as an investment over 6 to 12 months, and judge it by calls and enquiries, not by a ranking screenshot. The month-by-month pattern is in <a href="/blog/how-long-does-seo-take-ahmedabad/">how long SEO takes in Ahmedabad</a>, and if you need leads sooner you can compare the two routes in <a href="/blog/seo-vs-paid-ads-which-first-ahmedabad/">SEO or Google Ads first</a>. If you also depend on <a href="/blog/local-seo-strategies-2026/">local SEO for Google Maps</a>, results from a well-kept Business Profile can come sooner than results for broad keywords.</p>
 
 <h2>What to do next</h2>
-<p>The fastest way to a real number is a free audit. We look at your site, your competition and your goals, then send a written quote that lists the work, the monthly fee, the contract terms and how GST applies. If you want an honest view before you commit, <a href="/seo-services-ahmedabad">talk to an SEO company in Ahmedabad</a> that shows its pricing openly. If you need more than SEO, our <a href="/digital-marketing-company-ahmedabad">digital marketing packages in Ahmedabad</a> bundle SEO, ads and social media, with the plan prices listed openly.</p>
+<p>The fastest way to a real number is a free audit. We look at your site, your competition and your goals, then send a written quote that lists the work, the monthly fee, the contract terms and how GST applies. If you want an honest view before you commit, <a href="/seo-services-ahmedabad">talk to an SEO company in Ahmedabad</a> that shows its pricing openly. If you need more than SEO, our <a href="/digital-marketing-company-ahmedabad">digital marketing packages in Ahmedabad</a> bundle SEO, ads and social media, with the plan prices listed openly. If you want leads sooner while SEO builds, paid search is the faster route: see our <a href="/google-ads-agency-ahmedabad">Google Ads management team in Ahmedabad</a> for how performance marketing campaigns are run.</p>
 `,
     faqs: [
       { q: "How much does SEO cost in Ahmedabad per month?", a: "At Digital Aura, SEO costs ₹15,000 to ₹1,50,000 a month plus GST: SEO Basic ₹15,000 to ₹25,000, SEO Growth ₹25,000 to ₹50,000 and SEO Advance ₹50,000 to ₹1,50,000. These prices are for businesses in Ahmedabad, and the exact fee is written in a quote after a free audit." },
@@ -3267,7 +3267,7 @@ Allow: /</code></pre>
 <li>Your website is new and has no visibility yet.</li>
 <li>You want to test which services and keywords actually bring leads before investing in long-term SEO.</li>
 </ul>
-<p>If this is you, look at our <a href="/google-ads-agency-ahmedabad">Google Ads agency in Ahmedabad</a> page for how campaigns are set up. At Digital Aura, the management fee is ₹15,000 to ₹60,000 a month plus GST, with ad spend paid to Google separately.</p>
+<p>If this is you, look at our <a href="/google-ads-agency-ahmedabad">Google Ads and PPC management in Ahmedabad</a> page for how campaigns are set up. At Digital Aura, the management fee is ₹15,000 to ₹60,000 a month plus GST, with ad spend paid to Google separately.</p>
 
 <h2>When SEO should come first</h2>
 <ul>
@@ -3489,7 +3489,7 @@ Allow: /</code></pre>
 </ul>
 
 <h2>Where to start</h2>
-<p>The best first step is to find out where your site stands today. <a href="/seo/free-audit/">Start with a free SEO audit</a> and you will get a clear view of what needs fixing first and a more realistic timeline for your business. If you are still choosing an agency, use our <a href="/blog/how-to-choose-seo-company-ahmedabad/">12 questions to ask an SEO company</a>.</p>
+<p>The best first step is to find out where your site stands today. <a href="/seo/free-audit/">Start with a free SEO audit</a> and you will get a clear view of what needs fixing first and a more realistic timeline for your business. If you are still choosing an agency, use our <a href="/blog/how-to-choose-seo-company-ahmedabad/">12 questions to ask an SEO company</a>. SEO takes months, so many Ahmedabad businesses add a PPC campaign for leads in the meantime; our <a href="/google-ads-agency-ahmedabad">PPC company in Ahmedabad</a> team can run it in parallel.</p>
 `,
     faqs: [
       { q: "How long does SEO take to show results in Ahmedabad?", a: "Most businesses see early signs in 3 to 6 months and clearer momentum from about 6 to 12 months. The pace depends on your website, competition and how much work is done each month. Local searches can move sooner than broad keywords." },
@@ -4805,7 +4805,7 @@ Allow: /</code></pre>
 </ol>
 
 <h2>Next steps</h2>
-<p>If you want a number for your own business, tell us what you sell, which area you serve and how many leads you need, and we will suggest a budget range and fee. You can also see how our <a href="/meta-ads-agency-ahmedabad/">Meta ads agency in Ahmedabad</a> team works, or read <a href="/blog/meta-lead-gen-ads-2026/">how top advertisers run Meta lead ads</a> to know what good looks like before you speak to anyone. For Meta ads together with SEO and Google Ads under one monthly plan, see our <a href="/digital-marketing-company-ahmedabad">digital marketing agency in Ahmedabad</a> page.</p>
+<p>If you want a number for your own business, tell us what you sell, which area you serve and how many leads you need, and we will suggest a budget range and fee. You can also see how our <a href="/meta-ads-agency-ahmedabad/">Meta ads agency in Ahmedabad</a> team works, or read <a href="/blog/meta-lead-gen-ads-2026/">how top advertisers run Meta lead ads</a> to know what good looks like before you speak to anyone. For Meta ads together with SEO and Google Ads under one monthly plan, see our <a href="/digital-marketing-company-ahmedabad">digital marketing agency in Ahmedabad</a> page. If you want Meta and Google Search managed together as one performance marketing plan, see our <a href="/google-ads-agency-ahmedabad">performance marketing agency in Ahmedabad</a> page.</p>
 `,
     faqs: [
       { q: "How much do Meta ads cost in Ahmedabad?", a: "There are two costs. The management fee for an agency at Digital Aura ranges from Rs 15,000 to Rs 60,000 a month plus GST, depending on scope. The ad spend is separate, paid to Meta from your own ad account, and you decide the amount." },
@@ -4966,7 +4966,7 @@ Allow: /</code></pre>
 </ul>
 
 <h2>Next steps</h2>
-<p>If your account has run the same two or three ads for months, start with one new offer test this week. If you would like help with planning, producing and reading the tests, talk to our <a href="/meta-ads-agency-ahmedabad/">Meta ads agency in Ahmedabad</a> team. You can also compare how rivals perform in <a href="/blog/why-competitors-outperform-meta-ads-2026/">why competitors outperform you on Meta ads</a>.</p>
+<p>If your account has run the same two or three ads for months, start with one new offer test this week. If you would like help with planning, producing and reading the tests, talk to our <a href="/meta-ads-agency-ahmedabad/">Meta ads agency in Ahmedabad</a> team. You can also compare how rivals perform in <a href="/blog/why-competitors-outperform-meta-ads-2026/">why competitors outperform you on Meta ads</a>. Most Ahmedabad businesses test creative on Meta and capture search demand on Google, so our <a href="/google-ads-agency-ahmedabad">performance marketing services in Ahmedabad</a> cover both.</p>
 `,
     faqs: [
       { q: "What is Meta ad creative testing?", a: "It is the practice of running a few clearly different ads at the same time, giving each enough budget and time, and keeping the ones that bring the best results. For lead generation, results mean qualified leads at a good cost." },
@@ -5120,7 +5120,7 @@ Allow: /</code></pre>
 </ul>
 
 <h2>Next steps</h2>
-<p>If your cost per lead looks great but sales are poor, the account is probably optimising for the wrong thing. We run a free review of Meta accounts, covering forms, offers, tracking and follow-up. Talk to our <a href="/meta-ads-agency-ahmedabad/">Meta ads agency in Ahmedabad</a> team, or see <a href="/blog/meta-lead-gen-ads-2026/">how top advertisers run Meta lead ads</a> and <a href="/blog/meta-ads-cost-in-ahmedabad/">what Meta ads cost</a> so you can judge your own account. The same problem happens in search too, as explained in <a href="/blog/google-ads-clicks-but-no-leads-fixes/">our guide on Google Ads clicks but no leads</a>.</p>
+<p>If your cost per lead looks great but sales are poor, the account is probably optimising for the wrong thing. We run a free review of Meta accounts, covering forms, offers, tracking and follow-up. Talk to our <a href="/meta-ads-agency-ahmedabad/">Meta ads agency in Ahmedabad</a> team, or see <a href="/blog/meta-lead-gen-ads-2026/">how top advertisers run Meta lead ads</a> and <a href="/blog/meta-ads-cost-in-ahmedabad/">what Meta ads cost</a> so you can judge your own account. The same problem happens in search too, as explained in <a href="/blog/google-ads-clicks-but-no-leads-fixes/">our guide on Google Ads clicks but no leads</a>. For leads that are tracked all the way to sales on both channels, see our <a href="/google-ads-agency-ahmedabad">Google Ads and PPC services in Ahmedabad</a>.</p>
 `,
     faqs: [
       { q: "Why are my Facebook ad leads low quality?", a: "Common reasons are an instant form that is too easy to submit, an offer that attracts freebie hunters, an ad that hides price or fit, optimisation for form fills rather than good leads, and slow follow-up." },

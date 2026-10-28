@@ -97,6 +97,14 @@ export const CLUSTER_LINKS: Record<Topic, ClusterLink[]> = {
   ],
 };
 
+/** Links shown in the "keep going" box of the digital marketing guides, in place of the SEO-only set. */
+export const DM_CLUSTER_LINKS: ClusterLink[] = [
+  { label: "Digital marketing plans and pricing", href: "/digital-marketing-company-ahmedabad#pricing" },
+  { label: "Free growth audit", href: "/digital-marketing-company-ahmedabad#audit" },
+  { label: "SEO packages and pricing", href: "/seo/pricing-ahmedabad/" },
+  { label: "Google Ads pricing in Ahmedabad", href: "/google-ads-pricing-ahmedabad/" },
+];
+
 /** Blog category -> the most relevant SEO service sub-page, shown first in the blog "keep going" box. */
 export const SEO_SERVICE_BY_CATEGORY: Record<string, ClusterLink> = {
   "Local SEO": { label: "Local SEO services", href: "/services/seo-content-marketing/local-seo/" },

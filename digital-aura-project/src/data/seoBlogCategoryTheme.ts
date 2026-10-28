@@ -1,4 +1,4 @@
-import { TrendingUp, MapPin, FileText, Gauge, ShoppingCart, Bot, MousePointerClick, Megaphone, Instagram, type LucideIcon } from "lucide-react";
+import { TrendingUp, MapPin, FileText, Gauge, ShoppingCart, Bot, MousePointerClick, Megaphone, Instagram, Target, type LucideIcon } from "lucide-react";
 
 export interface CategoryTheme {
   color: string;
@@ -19,6 +19,7 @@ export const categoryTheme: Record<string, CategoryTheme> = {
   "AI Search": { color: "#FF6B2B", ink: "#C2410C", bg: "rgba(255,107,43,0.08)", border: "rgba(255,107,43,0.25)", glow: "rgba(255,107,43,0.14)", Icon: Bot },
   "Google Ads": { color: "#FF6B2B", ink: "#C2410C", bg: "rgba(255,107,43,0.08)", border: "rgba(255,107,43,0.25)", glow: "rgba(255,107,43,0.14)", Icon: MousePointerClick },
   "Meta Ads": { color: "#FF6B2B", ink: "#C2410C", bg: "rgba(255,107,43,0.08)", border: "rgba(255,107,43,0.25)", glow: "rgba(255,107,43,0.14)", Icon: Megaphone },
+  "Digital Marketing": { color: "#FF6B2B", ink: "#C2410C", bg: "rgba(255,107,43,0.08)", border: "rgba(255,107,43,0.25)", glow: "rgba(255,107,43,0.14)", Icon: Target },
   "Social Media": { color: "#FF6B2B", ink: "#C2410C", bg: "rgba(255,107,43,0.08)", border: "rgba(255,107,43,0.25)", glow: "rgba(255,107,43,0.14)", Icon: Instagram },
 };
 

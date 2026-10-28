@@ -15,7 +15,7 @@ export function Hero() {
         {/* LEFT COLUMN */}
         <div className="flex flex-col">
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-navy w-fit shadow-xs"
@@ -24,26 +24,26 @@ export function Hero() {
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 16 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.05 }}
             className="mt-6 max-w-[600px] font-display font-bold leading-[1.22] tracking-[-0.02em] text-navy"
             style={{ fontSize: "clamp(30px, 4.1vw, 48px)" }}
           >
-            Google Ads Agency in Ahmedabad Focused on Leads You Can Track
+            Google Ads & Performance Marketing Agency in Ahmedabad for Leads You Can Track
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="mt-6 text-[17px] md:text-[19px] leading-[1.7] text-muted-foreground max-w-[560px]"
           >
-            Generate more qualified leads with AI-powered Google Ads campaigns, conversion tracking and landing page optimization.
+            We are a Google Ads agency in Ahmedabad and a performance marketing and PPC company. Our campaigns come with conversion tracking and landing page optimization, so more of your clicks turn into qualified leads.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
             className="pillar-btn-row mt-8"
@@ -55,7 +55,7 @@ export function Hero() {
 
         {/* RIGHT COLUMN: campaign dashboard visual (the audit form lives in the final CTA) */}
         <motion.div
-          initial={{ opacity: 0, y: 28, scale: 0.97 }}
+          initial={false}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.1 }}
           className="relative w-full"
@@ -63,6 +63,10 @@ export function Hero() {
           <img
             src="/hero-section-image.webp"
             alt="Google Ads campaign dashboard, GA4 analytics, and Google Search result preview for Digital Aura"
+            width={1536}
+            height={1024}
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-auto drop-shadow-[0_30px_60px_rgba(26,29,54,0.16)]"
           />
         </motion.div>

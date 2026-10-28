@@ -13,6 +13,7 @@ import { CaseStudies } from "../components/sections/CaseStudies";
 import { TrustStrip } from "../components/sections/TrustStrip";
 import { Testimonials } from "../components/sections/Testimonials";
 import { FAQ } from "../components/sections/FAQ";
+import { PerformanceMarketing } from "../components/sections/PerformanceMarketing";
 import { FinalCTA } from "../components/sections/FinalCTA";
 import { Footer } from "../components/sections/Footer";
 import { QuickAnswer, ExploreMore, WhatWeDo, First90Days, VisitUs, AhmedabadMarket, CostBreakdown, SelfCheck, LeakChecks, TrackingByLeadType, AgencyComparison, AdsReels, TeamSection, PeopleSchema, AdsGuides } from "../components/sections/PillarExtras";
@@ -24,12 +25,12 @@ import "../pillar-pages.css";
 export const Route = createFileRoute("/google-ads-agency-ahmedabad")({
   head: () => ({
     meta: [
-      { title: "Google Ads Agency in Ahmedabad | Digital Aura" },
-      { name: "description", content: "Google Ads management in Ahmedabad by a team based at Hanspura, SP Ring Road. Month-to-month, run in your own account, with tracked leads. Get a free audit." },
-      { property: "og:title", content: "Google Ads Agency in Ahmedabad | Digital Aura" },
-      { property: "og:description", content: "Google Ads management in Ahmedabad by a team based at Hanspura, SP Ring Road. Month-to-month, run in your own account, with tracked leads. Get a free audit." },
-      { name: "twitter:title", content: "Google Ads Agency in Ahmedabad | Digital Aura" },
-      { name: "twitter:description", content: "Google Ads management in Ahmedabad by a team based at Hanspura, SP Ring Road. Month-to-month, run in your own account, with tracked leads. Get a free audit." },
+      { title: "Google Ads & Performance Marketing Agency in Ahmedabad | Digital Aura" },
+      { name: "description", content: "Performance marketing agency and Google Ads company in Ahmedabad. PPC management in your own account, with tracked calls and leads. Month-to-month. Get a free audit." },
+      { property: "og:title", content: "Google Ads & Performance Marketing Agency in Ahmedabad | Digital Aura" },
+      { property: "og:description", content: "Performance marketing agency and Google Ads company in Ahmedabad. PPC management in your own account, with tracked calls and leads. Month-to-month. Get a free audit." },
+      { name: "twitter:title", content: "Google Ads & Performance Marketing Agency in Ahmedabad | Digital Aura" },
+      { name: "twitter:description", content: "Performance marketing agency and Google Ads company in Ahmedabad. PPC management in your own account, with tracked calls and leads. Month-to-month. Get a free audit." },
     ],
   }),
   component: LandingPage,
@@ -51,7 +52,7 @@ function PageSchema() {
     name: "Google Ads management in Ahmedabad",
     serviceType: "Google Ads management",
     url: "https://thedigitalaura.com/google-ads-agency-ahmedabad",
-    description: "Google Ads management for Ahmedabad businesses, run in the client's own account with tracked calls, WhatsApp and form leads.",
+    description: "Google Ads management, PPC management and performance marketing for Ahmedabad businesses, run in the client's own account with tracked calls, WhatsApp and form leads.",
     provider: { "@type": "LocalBusiness", "@id": "https://thedigitalaura.com/#localbusiness", name: "Digital Aura" },
     areaServed: { "@type": "City", name: "Ahmedabad" },
     offers: {
@@ -99,6 +100,11 @@ function LandingPage() {
             { id: "what", label: "What an agency does", content: <WhatWeDo /> },
           ]}
         />
+      </PillarSection>
+
+      {/* 2b. Performance marketing / PPC services (Ahmedabad buying-intent keywords) */}
+      <PillarSection id="performance-marketing-wrap" tone="light" bare noHead>
+        <PerformanceMarketing />
       </PillarSection>
 
       {/* 3. Problems we solve */}

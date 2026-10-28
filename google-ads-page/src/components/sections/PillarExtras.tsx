@@ -30,7 +30,7 @@ export function QuickAnswer() {
       <SectionHead
         eyebrow="In 60 seconds"
         title="Google Ads management in Ahmedabad, in plain words"
-        lead="Digital Aura is a Google Ads agency in Hanspura, Ahmedabad. We plan, run and improve your Search, Performance Max, Shopping and YouTube campaigns, set up tracking for calls, WhatsApp and form leads, and send a monthly report that shows enquiries, not just clicks. Campaigns run inside your own Google Ads account."
+        lead="Digital Aura is a Google Ads agency and performance marketing company in Hanspura, Ahmedabad. We plan, run and improve your Search, Performance Max, Shopping and YouTube campaigns, set up tracking for calls, WhatsApp and form leads, and send a monthly report that shows enquiries, not just clicks. Campaigns run inside your own Google Ads account."
       />
       <div className="pillar-cols-2 mx-auto grid max-w-5xl gap-5 md:grid-cols-2">
         <div className={card}>
@@ -456,7 +456,7 @@ export function WhatWeDo() {
       <SectionHead
         eyebrow="What you get"
         title="What a Google Ads agency in Ahmedabad actually does"
-        lead="Whatever you call it, a Google Ads agency, a PPC agency or a management service, the job is the same: run your paid search so the money you spend turns into enquiries you can count."
+        lead="Whatever you call it, a Google Ads agency, a PPC company, a performance marketing agency or a management service, the job is the same: run your paid search so the money you spend turns into enquiries you can count."
       />
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((x) => (

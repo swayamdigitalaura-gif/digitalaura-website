@@ -1616,6 +1616,7 @@ function PriceByService() {
         </Reveal>
         <p className="mx-auto mt-8 max-w-3xl text-center text-sm text-ink-muted">
           Prices are monthly, exclude GST and are for businesses in Ahmedabad. Read what the market charges in our guides to{" "}
+          <a className="font-semibold text-brand-orange underline" href="/blog/digital-marketing-cost-in-ahmedabad/">digital marketing cost in Ahmedabad</a>,{" "}
           <a className="font-semibold text-brand-orange underline" href="/blog/seo-cost-in-ahmedabad/">SEO cost in Ahmedabad</a>,{" "}
           <a className="font-semibold text-brand-orange underline" href="/blog/meta-ads-cost-in-ahmedabad/">Meta ads cost in Ahmedabad</a> and{" "}
           <a className="font-semibold text-brand-orange underline" href="/blog/website-development-cost-ahmedabad-guide/">website development cost in Ahmedabad</a>.
@@ -1889,6 +1890,9 @@ function AreasAndServices() {
 
 function MarketingGuides() {
   const guides = [
+    { t: "Digital marketing cost in Ahmedabad", d: "Packages, monthly fees and what each plan includes.", href: "/blog/digital-marketing-cost-in-ahmedabad/" },
+    { t: "How to choose a digital marketing agency", d: "Ten criteria, red flags and questions to ask before you sign.", href: "/blog/best-digital-marketing-agencies-in-ahmedabad/" },
+    { t: "Digital marketing for small businesses", d: "Where to start, which channel to pick and a 90-day plan.", href: "/blog/digital-marketing-for-small-business-ahmedabad/" },
     { t: "What SEO costs in Ahmedabad", d: "Monthly fees, what decides the price and how to compare quotes.", href: "/blog/seo-cost-in-ahmedabad/" },
     { t: "Meta ads cost in Ahmedabad", d: "Management fee, ad spend and what changes the price.", href: "/blog/meta-ads-cost-in-ahmedabad/" },
     { t: "Website development cost in Ahmedabad", d: "What a website costs and what you should expect for the price.", href: "/blog/website-development-cost-ahmedabad-guide/" },

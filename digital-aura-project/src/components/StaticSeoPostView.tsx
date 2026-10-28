@@ -8,7 +8,7 @@ import { posts as allPosts } from "@/data/seoBlogPosts";
 import { useHiddenBlogSlugs } from "@/hooks/useHiddenBlogs";
 import { getTheme } from "@/data/seoBlogCategoryTheme";
 import { relatedServiceFor } from "@/data/relatedService";
-import { topicForBlog, PILLARS, CLUSTER_LINKS, SEO_SERVICE_BY_CATEGORY } from "@/data/linkMap";
+import { topicForBlog, PILLARS, CLUSTER_LINKS, DM_CLUSTER_LINKS, SEO_SERVICE_BY_CATEGORY } from "@/data/linkMap";
 import { autoLink } from "@/lib/autoLink";
 import AuthorBox from "@/components/AuthorBox";
 import { StickyCtaBar } from "@/components/PageCta";
@@ -49,7 +49,9 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
   const canonicalUrl = `${SITE}/blog/${post.slug}/`;
   const relatedService = relatedServiceFor(post.slug, post.category);
   const topic = topicForBlog(post.slug, post.category);
-  const goDeeper = [...(topic === "seo" && SEO_SERVICE_BY_CATEGORY[post.category] ? [SEO_SERVICE_BY_CATEGORY[post.category]] : []), ...CLUSTER_LINKS[topic]].slice(0, 4);
+  const goDeeper = post.category === "Digital Marketing"
+    ? DM_CLUSTER_LINKS
+    : [...(topic === "seo" && SEO_SERVICE_BY_CATEGORY[post.category] ? [SEO_SERVICE_BY_CATEGORY[post.category]] : []), ...CLUSTER_LINKS[topic]].slice(0, 4);
   const bodyHtml = useMemo(() => autoLink(post.contentHtml, topic, PILLARS[topic].href), [post.contentHtml, topic]);
   // Posts with a cro block get a mid-article CTA band: the body is split at the middle section heading.
   const [bodyFirst, bodySecond] = useMemo(() => {

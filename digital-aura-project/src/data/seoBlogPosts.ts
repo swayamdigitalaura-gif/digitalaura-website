@@ -3032,7 +3032,7 @@ Allow: /</code></pre>
 <p>SEO is not instant. For most businesses, the first signs (more pages indexed, better impressions) show up in the first few months, and enquiries grow as rankings build. The time depends on your starting point and your competition. Treat the monthly fee as an investment over 6 to 12 months, and judge it by calls and enquiries, not by a ranking screenshot. The month-by-month pattern is in <a href="/blog/how-long-does-seo-take-ahmedabad/">how long SEO takes in Ahmedabad</a>, and if you need leads sooner you can compare the two routes in <a href="/blog/seo-vs-paid-ads-which-first-ahmedabad/">SEO or Google Ads first</a>. If you also depend on <a href="/blog/local-seo-strategies-2026/">local SEO for Google Maps</a>, results from a well-kept Business Profile can come sooner than results for broad keywords.</p>
 
 <h2>What to do next</h2>
-<p>The fastest way to a real number is a free audit. We look at your site, your competition and your goals, then send a written quote that lists the work, the monthly fee, the contract terms and how GST applies. If you want an honest view before you commit, <a href="/seo-services-ahmedabad">talk to an SEO company in Ahmedabad</a> that shows its pricing openly. If you need more than SEO, our <a href="/digital-marketing-company-ahmedabad">digital marketing packages in Ahmedabad</a> bundle SEO, ads and social media, with the plan prices listed openly. If you want leads sooner while SEO builds, paid search is the faster route: see our <a href="/google-ads-agency-ahmedabad">Google Ads management team in Ahmedabad</a> for how performance marketing campaigns are run.</p>
+<p>The fastest way to a real number is a free audit. We look at your site, your competition and your goals, then send a written quote that lists the work, the monthly fee, the contract terms and how GST applies. If you want an honest view before you commit, <a href="/seo-services-ahmedabad">talk to an SEO company in Ahmedabad</a> that shows its pricing openly. If you need more than SEO, our <a href="/digital-marketing-company-ahmedabad">digital marketing packages in Ahmedabad</a> bundle SEO, ads and social media, with the plan prices listed openly. If you want leads sooner while SEO builds, paid search is the faster route: see our <a href="/google-ads-agency-ahmedabad">Google Ads management team in Ahmedabad</a> for how performance marketing campaigns are run. For the cost of every channel together, see <a href="/blog/digital-marketing-cost-in-ahmedabad/">digital marketing cost in Ahmedabad</a>.</p>
 `,
     faqs: [
       { q: "How much does SEO cost in Ahmedabad per month?", a: "At Digital Aura, SEO costs ₹15,000 to ₹1,50,000 a month plus GST: SEO Basic ₹15,000 to ₹25,000, SEO Growth ₹25,000 to ₹50,000 and SEO Advance ₹50,000 to ₹1,50,000. These prices are for businesses in Ahmedabad, and the exact fee is written in a quote after a free audit." },
@@ -3197,7 +3197,7 @@ Allow: /</code></pre>
 <p>A good agency spends most of the first call asking about your business: what you sell, who your customers are, which services earn the most and which areas you serve. It then explains what it would check first and what it needs from you. If the call is mostly a sales pitch with a template package, that tells you how the work will feel too.</p>
 
 <h2>Next step</h2>
-<p>Pick two or three agencies, ask the 12 questions, request a written proposal from each and compare them side by side. If you would like to see how we answer them, <a href="/seo-services-ahmedabad">see how we work as an SEO agency in Ahmedabad</a>. If you need SEO, ads and social media together, compare a full-service <a href="/digital-marketing-company-ahmedabad">digital marketing agency in Ahmedabad</a> the same way.</p>
+<p>Pick two or three agencies, ask the 12 questions, request a written proposal from each and compare them side by side. If you would like to see how we answer them, <a href="/seo-services-ahmedabad">see how we work as an SEO agency in Ahmedabad</a>. If you need SEO, ads and social media together, compare a full-service <a href="/digital-marketing-company-ahmedabad">digital marketing agency in Ahmedabad</a> the same way. Our guide on <a href="/blog/best-digital-marketing-agencies-in-ahmedabad/">how to compare and choose a digital marketing agency in Ahmedabad</a> shows how.</p>
 
 <p>Before you meet any agency, run our <a href="/blog/seo-audit-checklist-before-hiring-agency/">25-point SEO audit checklist</a> so you know your own starting point.</p>
 `,
@@ -3267,7 +3267,7 @@ Allow: /</code></pre>
 <li>Your website is new and has no visibility yet.</li>
 <li>You want to test which services and keywords actually bring leads before investing in long-term SEO.</li>
 </ul>
-<p>If this is you, look at our <a href="/google-ads-agency-ahmedabad">Google Ads and PPC management in Ahmedabad</a> page for how campaigns are set up. At Digital Aura, the management fee is ₹15,000 to ₹60,000 a month plus GST, with ad spend paid to Google separately.</p>
+<p>If this is you, look at our <a href="/google-ads-agency-ahmedabad">Google Ads and PPC management in Ahmedabad</a> page for how campaigns are set up. At Digital Aura, the management fee is ₹15,000 to ₹60,000 a month plus GST, with ad spend paid to Google separately. If your budget is small, read <a href="/blog/digital-marketing-for-small-business-ahmedabad/">digital marketing for small businesses in Ahmedabad</a> first.</p>
 
 <h2>When SEO should come first</h2>
 <ul>
@@ -3987,7 +3987,7 @@ Allow: /</code></pre>
 <p>Google Ads suits people who are already searching for what you sell. If your product needs more explaining, or you want to reach people before they search, Meta ads can help. Our comparison of <a href="/blog/google-ads-vs-meta-ads-ahmedabad/">Google Ads and Meta ads for Ahmedabad businesses</a> and our guide to <a href="/blog/seo-vs-paid-ads-which-first-ahmedabad/">SEO or paid ads first</a> will help you decide.</p>
 
 <h2>Ready to talk?</h2>
-<p>If you would like to see how we work, read about our <a href="/services/google-ads/">Google Ads management</a>, or ask for a <a href="/google-ads-audit-ahmedabad/">free Google Ads audit</a>. You will get a written report, you keep your account and you decide what to do next. When you are ready, <a href="/google-ads-agency-ahmedabad">see how we manage Google Ads</a> from set-up to monthly reporting. If you also want SEO and social media handled by one team, see our <a href="/digital-marketing-company-ahmedabad">digital marketing company in Ahmedabad</a> page.</p>
+<p>If you would like to see how we work, read about our <a href="/services/google-ads/">Google Ads management</a>, or ask for a <a href="/google-ads-audit-ahmedabad/">free Google Ads audit</a>. You will get a written report, you keep your account and you decide what to do next. When you are ready, <a href="/google-ads-agency-ahmedabad">see how we manage Google Ads</a> from set-up to monthly reporting. If you also want SEO and social media handled by one team, see our <a href="/digital-marketing-company-ahmedabad">digital marketing company in Ahmedabad</a> page. Comparing agencies across all channels? Read <a href="/blog/best-digital-marketing-agencies-in-ahmedabad/">how to compare digital marketing agencies in Ahmedabad</a>.</p>
 `,
     faqs: [
       { q: "How do I choose a Google Ads agency in Ahmedabad?", a: "Check that you will own your ad account, that the agency asks about your profit and customer value, that it reports leads and cost per lead, that fees are written down separately from ad spend, and that it can show real references in a similar business." },
@@ -4144,7 +4144,7 @@ Allow: /</code></pre>
 <p>Our <a href="/blog/meta-ads-targeting-2026/">Meta ads targeting guide</a> explains how to find the right audiences, and our <a href="/blog/google-ads-strategy-checklist-2026/">Google Ads strategy checklist</a> lists what to set up on the Google side.</p>
 
 <h2>Need help choosing?</h2>
-<p>If you are still unsure, we can look at your business, your customers and your budget and tell you honestly where to start. See how we run <a href="/services/google-ads/">Google Ads campaigns</a>, or talk to our <a href="/meta-ads-agency-ahmedabad/">Meta ads agency in Ahmedabad</a> team if your business suits social platforms better. To have one team plan both alongside SEO, see our <a href="/digital-marketing-company-ahmedabad">digital marketing services in Ahmedabad</a>.</p>
+<p>If you are still unsure, we can look at your business, your customers and your budget and tell you honestly where to start. See how we run <a href="/services/google-ads/">Google Ads campaigns</a>, or talk to our <a href="/meta-ads-agency-ahmedabad/">Meta ads agency in Ahmedabad</a> team if your business suits social platforms better. To have one team plan both alongside SEO, see our <a href="/digital-marketing-company-ahmedabad">digital marketing services in Ahmedabad</a>. Working with a small budget? Read <a href="/blog/digital-marketing-for-small-business-ahmedabad/">where small businesses in Ahmedabad should start</a>.</p>
 `,
     faqs: [
       { q: "Is Google Ads or Meta Ads better for a small business in Ahmedabad?", a: "Neither is better in general. Google Ads suits businesses people already search for, such as clinics, CAs and repair services. Meta ads suit visual, impulse-led or new products. Your business type and budget decide the right first step." },
@@ -4805,7 +4805,7 @@ Allow: /</code></pre>
 </ol>
 
 <h2>Next steps</h2>
-<p>If you want a number for your own business, tell us what you sell, which area you serve and how many leads you need, and we will suggest a budget range and fee. You can also see how our <a href="/meta-ads-agency-ahmedabad/">Meta ads agency in Ahmedabad</a> team works, or read <a href="/blog/meta-lead-gen-ads-2026/">how top advertisers run Meta lead ads</a> to know what good looks like before you speak to anyone. For Meta ads together with SEO and Google Ads under one monthly plan, see our <a href="/digital-marketing-company-ahmedabad">digital marketing agency in Ahmedabad</a> page. If you want Meta and Google Search managed together as one performance marketing plan, see our <a href="/google-ads-agency-ahmedabad">performance marketing agency in Ahmedabad</a> page.</p>
+<p>If you want a number for your own business, tell us what you sell, which area you serve and how many leads you need, and we will suggest a budget range and fee. You can also see how our <a href="/meta-ads-agency-ahmedabad/">Meta ads agency in Ahmedabad</a> team works, or read <a href="/blog/meta-lead-gen-ads-2026/">how top advertisers run Meta lead ads</a> to know what good looks like before you speak to anyone. For Meta ads together with SEO and Google Ads under one monthly plan, see our <a href="/digital-marketing-company-ahmedabad">digital marketing agency in Ahmedabad</a> page. If you want Meta and Google Search managed together as one performance marketing plan, see our <a href="/google-ads-agency-ahmedabad">performance marketing agency in Ahmedabad</a> page. For the cost of every channel together, see <a href="/blog/digital-marketing-cost-in-ahmedabad/">digital marketing cost in Ahmedabad</a>.</p>
 `,
     faqs: [
       { q: "How much do Meta ads cost in Ahmedabad?", a: "There are two costs. The management fee for an agency at Digital Aura ranges from Rs 15,000 to Rs 60,000 a month plus GST, depending on scope. The ad spend is separate, paid to Meta from your own ad account, and you decide the amount." },
@@ -6089,6 +6089,421 @@ Allow: /</code></pre>
     ctaText: "Tell us what you manufacture and who buys it. We will suggest the pages and RFQ form your site needs.",
     ctaButton: "Talk to Our Website Team",
     cro: { href: "/contact/", label: "Talk to our website team", sidebar: "Manufacturer? Ask us for a website plan built to bring RFQs.", bandHeading: "Want more RFQs from your website?", bandText: "Tell us what you make and who buys it. We will suggest the pages and RFQ form your site needs." },
+  },
+  // ────────────────────────────────────────────────────────────────────
+  {
+    slug: "digital-marketing-cost-in-ahmedabad",
+    title: "Digital Marketing Cost in Ahmedabad (2026): Packages, Monthly Fees and What You Get",
+    titleHighlight: "Digital Marketing Cost in Ahmedabad",
+    metaTitle: "Digital Marketing Cost in Ahmedabad (2026): Packages and Fees",
+    metaDescription: "Digital marketing in Ahmedabad costs ₹30,000 to ₹2,70,000 a month for bundled plans, plus GST and ad spend. See what each plan includes and how to compare.",
+    category: "Digital Marketing",
+    date: "2026-10-28",
+    dateDisplay: "Oct 28, 2026",
+    readTime: "10 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "Digital marketing in Ahmedabad costs ₹30,000 to ₹2,70,000 a month at Digital Aura, plus GST. Bundled plans are Starter ₹30,000 to ₹55,000, Growth ₹55,000 to ₹1,00,000 and Advance ₹1,00,000 to ₹2,70,000. Single services cost less: SEO is ₹15,000 to ₹1,50,000, Google Ads management is ₹15,000 to ₹60,000 and Meta Ads management is ₹15,000 to ₹60,000 a month. Your ad spend is separate and is paid to Google or Meta from your own account.",
+    keyTakeaways: [
+      "Bundled digital marketing plans in Ahmedabad run from ₹30,000 to ₹2,70,000 a month at Digital Aura, excluding GST and ad spend.",
+      "Single services are cheaper: SEO from ₹15,000, Google Ads management from ₹15,000 and Meta Ads management from ₹15,000 a month.",
+      "Your ad budget is a separate cost, paid directly to Google or Meta. The agency fee is for planning, running and reporting.",
+      "The price follows the scope: channels, number of services and areas, content, languages and tracking work.",
+      "Ask every agency for a written scope, contract terms, GST treatment and a report sample before you compare prices.",
+    ],
+    contentHtml: `
+<p>If you own a clinic, a shop, a factory or a service business in Ahmedabad, "how much does digital marketing cost?" is usually the first question, and the quotes you collect can look nothing alike. One agency says ₹8,000 a month, another says ₹80,000, and neither says what you actually get for the money. This guide explains what businesses pay for a <a href="/digital-marketing-company-ahmedabad">digital marketing company in Ahmedabad</a>, what each plan includes, what moves the price up or down and how to compare quotes fairly.</p>
+
+<h2>How much does digital marketing cost in Ahmedabad per month?</h2>
+<p>At Digital Aura, bundled digital marketing plans cost ₹30,000 to ₹2,70,000 a month plus GST. The plans combine SEO, paid ads and tracking so one team runs them as one plan.</p>
+<table>
+<tr><th>Plan</th><th>Monthly fee (excl. GST)</th><th>Best for</th></tr>
+<tr><td>Digital Marketing Starter</td><td>₹30,000 – ₹55,000</td><td>A clinic, shop or service business serving one city, with a small site and one main goal</td></tr>
+<tr><td>Digital Marketing Growth</td><td>₹55,000 – ₹1,00,000</td><td>Businesses ready to compete on search and paid ads at the same time</td></tr>
+<tr><td>Digital Marketing Advance</td><td>₹1,00,000 – ₹2,70,000</td><td>Large catalogues, several locations, export projects and crowded markets</td></tr>
+</table>
+<p>These prices are for businesses in Ahmedabad. Fees are monthly and exclude GST, and your exact fee is written in a quote after a free growth audit. The full plan list is on our <a href="/digital-marketing-company-ahmedabad">digital marketing agency in Ahmedabad</a> page.</p>
+
+<h2>What do single services cost?</h2>
+<p>You do not have to buy a bundle. If you only need one channel, these are the published monthly management fees:</p>
+<table>
+<tr><th>Service</th><th>Monthly fee (excl. GST)</th><th>Notes</th></tr>
+<tr><td>SEO</td><td>₹15,000 – ₹1,50,000</td><td>Three plans: Basic, Growth and Advance. See <a href="/seo/pricing-ahmedabad/">SEO packages and pricing in Ahmedabad</a>.</td></tr>
+<tr><td>Google Ads management</td><td>₹15,000 – ₹60,000</td><td>Ad spend is paid to Google separately. See <a href="/google-ads-pricing-ahmedabad/">how Google Ads pricing works</a>.</td></tr>
+<tr><td>Meta Ads management</td><td>₹15,000 – ₹60,000</td><td>Ad spend is paid to Meta separately. See <a href="/meta-ads-agency-ahmedabad/pricing/">Meta ads pricing in Ahmedabad</a>.</td></tr>
+</table>
+<p>For a deeper look at one channel, read our guides on <a href="/blog/seo-cost-in-ahmedabad/">what SEO costs in Ahmedabad</a> and <a href="/blog/meta-ads-cost-in-ahmedabad/">what Meta ads cost in Ahmedabad</a>.</p>
+
+<h2>What does each digital marketing plan include?</h2>
+<p>A good plan names the work. Here is what sits inside each of our three plans.</p>
+<ul>
+<li><strong>Starter:</strong> a growth audit and tracking set-up, SEO Basic scope (key page fixes, Google Business Profile and local citations), one paid channel managed (Google Ads or Meta Ads), a landing page and form check, and a monthly report on calls and enquiries.</li>
+<li><strong>Growth:</strong> everything in Starter, plus SEO Growth scope (new service and location pages every month), both Google Ads and Meta Ads managed, creative testing and conversion improvements, a social media plan scoped in your quote and a monthly review call.</li>
+<li><strong>Advance:</strong> everything in Growth, plus SEO Advance scope (a larger content, link and AI search programme), larger multi-campaign ad management, multi-location or multi-language scope, a named lead and quarterly strategy reviews.</li>
+</ul>
+<p>Some things are quoted separately when you need them: ad spend, paid third-party tools, website development beyond fixes, photography and video, and extra content packs.</p>
+
+<h2>What do other agencies in Ahmedabad charge?</h2>
+<p>Price guides published by Ahmedabad agencies show a very wide spread: from a few thousand rupees a month for a single task, such as posting on social media, to ₹1,50,000 and above for multi-channel programmes with SEO, ads and content. The low end almost always covers one narrow task, not a full plan. When you compare, line up the scope first and only then look at the number. A ₹10,000 quote for posting and a ₹50,000 quote for SEO, ads and tracking are two different products, not two prices for the same thing.</p>
+
+<h2>What decides the price of digital marketing?</h2>
+<p>Digital marketing is a body of work, and the amount of work is what you pay for. These factors change the scope the most:</p>
+<table>
+<tr><th>Cost factor</th><th>Why it changes the price</th></tr>
+<tr><td>Number of channels</td><td>SEO plus one ad channel needs less work than SEO plus Google Ads plus Meta Ads plus social media.</td></tr>
+<tr><td>Number of services and areas</td><td>Each service and each area usually needs its own page, its own ads and its own tracking.</td></tr>
+<tr><td>Competition</td><td>A crowded market such as dentists on SG Highway or property in Bopal needs more effort than a niche with few rivals.</td></tr>
+<tr><td>Content and creative needed</td><td>New pages, ad copy, images and videos take writing, design and testing time every month.</td></tr>
+<tr><td>Languages</td><td>Many customers search in English, Hindi, Gujarati or a mix. Each language needs its own keywords, ads and pages.</td></tr>
+<tr><td>Tracking and reporting</td><td>Counting calls, WhatsApp chats and forms back to the campaign takes set-up and upkeep, and it is what makes the numbers trustworthy.</td></tr>
+<tr><td>Your website</td><td>Slow or hard-to-use pages waste ad spend, so fixing them adds work at the start.</td></tr>
+</table>
+
+<h2>Ad spend and agency fee are two different costs</h2>
+<p>Most confusion about price comes from mixing two bills. The <strong>agency fee</strong> is what you pay the agency to plan, run and report. The <strong>ad spend</strong> is the money Google or Meta charges for clicks and impressions, and it should be paid from your own account to the platform, not through the agency.</p>
+<ul>
+<li>You decide the ad spend. It is usually the larger of the two costs once ads are running.</li>
+<li>We work best with businesses spending ₹50,000 or more a month on Google Ads, because that gives campaigns enough data to learn from. Smaller budgets can work for narrow, local searches.</li>
+<li>GST applies to agency fees and to Google and Meta invoices as per Indian tax rules. Ask your accountant how input credit works for your business.</li>
+</ul>
+
+<h2>How to set a budget for your stage</h2>
+<table>
+<tr><th>Your stage</th><th>A sensible starting point</th></tr>
+<tr><td>New or small business, one city, one main goal</td><td>Starter, or a single service such as Google Ads management or SEO Basic</td></tr>
+<tr><td>Established business that wants leads from search and ads together</td><td>Growth</td></tr>
+<tr><td>Several locations, large catalogue, export or a very crowded market</td><td>Advance</td></tr>
+<tr><td>You are not sure what you need</td><td>A free audit first, then a written quote</td></tr>
+</table>
+<p>If you are still deciding between channels, read <a href="/blog/seo-vs-paid-ads-which-first-ahmedabad/">SEO or Google Ads: which should you start with</a> and <a href="/blog/google-ads-vs-meta-ads-ahmedabad/">Google Ads vs Meta Ads for Ahmedabad businesses</a>. If you run a small business on a tight budget, our guide to <a href="/blog/digital-marketing-for-small-business-ahmedabad/">digital marketing for small businesses in Ahmedabad</a> shows where to start.</p>
+
+<h2>Agency, freelancer or in-house: how the cost compares</h2>
+<table>
+<tr><th>Option</th><th>Cost shape</th><th>Strengths and limits</th></tr>
+<tr><td>Digital marketing agency</td><td>A monthly fee covering a team</td><td>SEO, ads, tracking, design and reporting under one roof, plus cover when someone is away. Costs more than one freelancer.</td></tr>
+<tr><td>Freelancer</td><td>Usually a lower monthly fee</td><td>Flexible and personal, but one person rarely covers SEO, ads, creative and reporting equally well, and leave can pause the work.</td></tr>
+<tr><td>In-house hire</td><td>A salary plus tools, training and management time</td><td>Full focus on your business, but one hire cannot cover every skill and you carry the hiring risk.</td></tr>
+</table>
+
+<h2>What very cheap packages usually leave out</h2>
+<p>A low monthly fee is not always a bargain. When a quote is far below what the work needs, the gap usually shows up in one of these ways:</p>
+<ul>
+<li><strong>No tracking.</strong> Without call, WhatsApp and form tracking, nobody can tell which activity brings customers.</li>
+<li><strong>Copied or thin content.</strong> Pages that add nothing new rarely rank.</li>
+<li><strong>Bought links.</strong> They can look like progress for a few weeks and then hurt your site. Google's guidance warns against link schemes.</li>
+<li><strong>Posting without a plan.</strong> Social posts with no offer, no audience and no follow-up do not produce enquiries.</li>
+<li><strong>Reports that show clicks and likes only.</strong> Clicks and likes do not pay your bills. Calls, forms and enquiries do.</li>
+</ul>
+
+<h2>How to read a digital marketing quote</h2>
+<p>Use this list on every proposal you receive, ours included. For a fuller list of questions, see our guide to <a href="/blog/best-digital-marketing-agencies-in-ahmedabad/">how to compare and choose a digital marketing agency in Ahmedabad</a>.</p>
+<table>
+<tr><th>Ask about</th><th>A good answer sounds like</th><th>A warning sign sounds like</th></tr>
+<tr><td>Scope</td><td>Named deliverables for each month</td><td>Vague lines such as "social media" and "SEO work"</td></tr>
+<tr><td>Contract</td><td>Length and notice period written in the proposal</td><td>A long lock-in that is not explained</td></tr>
+<tr><td>GST and ad spend</td><td>Both stated, with ad spend paid to the platform</td><td>Not mentioned until the invoice, or ad spend routed through the agency</td></tr>
+<tr><td>Ownership</td><td>Your ad accounts, Analytics and Business Profile stay in your name</td><td>Accounts and reports held by the agency</td></tr>
+<tr><td>Reporting</td><td>Calls, forms and enquiries, with a monthly call</td><td>Only rankings, clicks or likes</td></tr>
+<tr><td>Promises</td><td>None. Nobody can guarantee a ranking or a number of leads</td><td>"Page one in 90 days" or a guaranteed ROAS</td></tr>
+</table>
+
+<h2>A simple way to judge whether the fee is worth it</h2>
+<p>Work backwards from what a customer is worth to you. Here is an example only, so replace the numbers with your own. Suppose an average job is worth ₹30,000 and you close one in five enquiries. If your marketing brings 15 extra enquiries a month, that is about 3 extra jobs, or ₹90,000 of work, against an agency fee of ₹40,000 plus your ad spend. The same sum shows quickly when a plan is too expensive for what your business earns per customer.</p>
+<p>The key is to count enquiries, not clicks. Set up call tracking, form tracking and a way to note WhatsApp enquiries before the work starts, so you can see what the money brings.</p>
+
+<h2>How long before digital marketing pays back?</h2>
+<p>Paid ads can bring enquiries within weeks once tracking is set up and campaigns have data. SEO is slower, and most businesses see the first signs in the first few months and growth over 6 to 12 months. A plan judged after four weeks can look expensive because the first months carry the audit, tracking and fixes. Treat the fee as an investment over several months and judge it by calls and enquiries. Our guide on <a href="/blog/how-long-does-seo-take-ahmedabad/">how long SEO takes in Ahmedabad</a> shows the month-by-month pattern.</p>
+
+<h2>What to do next</h2>
+<p>The fastest way to a real number is a free growth audit. We review your website, tracking, search visibility, ad accounts and competitors, then send a written quote that lists the work, the monthly fee, the contract terms and how GST applies. If you only need search ads, see how our team handles <a href="/google-ads-agency-ahmedabad">paid ads management in Ahmedabad</a>. If you need SEO as well, our <a href="/seo-services-ahmedabad">SEO services in Ahmedabad</a> page shows the plans. Prefer to talk first? <a href="/contact/">Contact our team</a> and we will explain the options honestly, including when a smaller plan is enough.</p>
+`,
+    faqs: [
+      { q: "How much does digital marketing cost in Ahmedabad per month?", a: "At Digital Aura, bundled digital marketing plans cost ₹30,000 to ₹2,70,000 a month plus GST: Starter ₹30,000 to ₹55,000, Growth ₹55,000 to ₹1,00,000 and Advance ₹1,00,000 to ₹2,70,000. Single services start lower: SEO from ₹15,000, Google Ads management from ₹15,000 and Meta Ads management from ₹15,000 a month. The exact fee is written in a quote after a free audit." },
+      { q: "Is ad spend included in the digital marketing fee?", a: "No. The agency fee covers planning, running and reporting. Your ad spend is paid directly to Google or Meta from your own account, so it never passes through the agency." },
+      { q: "Is GST included in the monthly fee?", a: "No. The fees quoted are monthly and exclude GST. Your written proposal states how GST applies and how you will be invoiced." },
+      { q: "What is a realistic minimum budget for digital marketing in Ahmedabad?", a: "For a bundled plan, our Starter plan begins at ₹30,000 a month. For Google Ads, we work best with businesses spending ₹50,000 or more a month on ads, because campaigns need data to improve. A smaller business can start with a single service and add more as enquiries grow." },
+      { q: "Why do digital marketing quotes in Ahmedabad vary so much?", a: "Because the scope differs. One agency may quote for posting on social media, another for SEO, ads and tracking. Compare the written scope, the reporting and the contract terms before you compare the price." },
+      { q: "Should I choose a digital marketing package or individual services?", a: "A bundle suits businesses that want search and ads planned together by one team. Individual services suit businesses that need one channel, such as Google Ads or SEO. A free audit tells you which fits your goals and budget." },
+      { q: "Can you guarantee leads or rankings for the fee?", a: "No. Nobody can honestly guarantee a Google ranking, a number of leads or a return on ad spend, because results depend on your market, offer, website and budget. We write the work into your quote and report on calls and enquiries so you can judge the results." },
+      { q: "Is a cheap digital marketing package worth it?", a: "Usually not. A fee far below the work needed often means no tracking, thin content, bought links or very little actual work. Compare quotes by the scope written in the proposal, not by the lowest price." },
+    ],
+    ctaHeading: "Want a Written Digital Marketing Quote for Your Business?",
+    ctaText: "Get a free growth audit and a written quote with the work, the monthly fee, the contract terms and how GST applies.",
+    ctaButton: "Get My Free Growth Audit",
+    cro: { href: "/digital-marketing-company-ahmedabad#audit", label: "Get a free growth audit", sidebar: "Want a written quote for your business? Start with a free growth audit.", bandHeading: "Want a written digital marketing quote?", bandText: "Start with a free growth audit. We will tell you which plan fits and what it should cost." },
+  },
+  // ────────────────────────────────────────────────────────────────────
+  {
+    slug: "best-digital-marketing-agencies-in-ahmedabad",
+    title: "Best Digital Marketing Agencies in Ahmedabad (2026): How to Compare and Choose",
+    titleHighlight: "Digital Marketing Agencies in Ahmedabad",
+    metaTitle: "Best Digital Marketing Agencies in Ahmedabad: How to Choose",
+    metaDescription: "Looking for the best digital marketing agency in Ahmedabad? Use this checklist to shortlist and compare: 10 criteria, red flags and questions to ask.",
+    category: "Digital Marketing",
+    date: "2026-10-28",
+    dateDisplay: "Oct 28, 2026",
+    readTime: "11 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "There is no single best digital marketing agency in Ahmedabad, only the best fit for your business. To choose one, shortlist three agencies from Google Maps reviews, directories and referrals, then compare them on ten points: proof of results, services that match your goal, written pricing, tracking and reporting, who runs your account, account ownership, contract terms, industry fit, communication and honesty about limits. Avoid any agency that guarantees rankings or hides its fees.",
+    keyTakeaways: [
+      "The best agency is the one that fits your goal, budget and industry, not the one at the top of a list.",
+      "Build a shortlist of three from Google Maps reviews, directories and referrals, and remember directories can carry paid placements.",
+      "Compare agencies on ten points: results, services, pricing, tracking, who runs the account, ownership, contract, industry fit, communication and honesty.",
+      "Ask for a written scope, a sample report and contract terms. A good agency shares all three before you pay.",
+      "Walk away from guaranteed rankings, hidden fees and accounts held in the agency's name.",
+    ],
+    contentHtml: `
+<p>Search "best digital marketing agency in Ahmedabad" and you will find directory pages, agencies ranking themselves first and lists with no stated method. None of that tells you which agency is right for a dental clinic on SG Highway, a manufacturer in Naroda or an online shop in Satellite. This guide gives you a way to compare agencies yourself: where to build a shortlist, ten criteria to score, red flags and the questions to ask on the first call. A full list of what each plan costs is in our guide to <a href="/blog/digital-marketing-cost-in-ahmedabad/">digital marketing cost in Ahmedabad</a>.</p>
+<p><strong>A note on bias:</strong> Digital Aura is a digital marketing agency in Ahmedabad, so we have an interest here. We have written the criteria so you can apply them to us as well, and we explain how we answer them near the end.</p>
+
+<h2>What does "best digital marketing agency in Ahmedabad" really mean?</h2>
+<p>"Best" depends on what you need. An agency that is excellent for luxury online brands may be a poor fit for a local clinic that needs phone calls. Before you compare anyone, write down four things:</p>
+<ul>
+<li><strong>Your goal:</strong> calls, form enquiries, store visits, online sales or brand awareness.</li>
+<li><strong>Your budget:</strong> the agency fee and, separately, the ad spend you are willing to commit.</li>
+<li><strong>Your market:</strong> one area, all of Ahmedabad, Gujarat, India or overseas.</li>
+<li><strong>Your industry:</strong> clinics, real estate, manufacturing, education, retail and online stores each need different channels.</li>
+</ul>
+<p>With these four lines written, any agency's pitch becomes easier to judge, because you can ask "how will you help with this goal, at this budget?"</p>
+
+<h2>Where to build a shortlist of three agencies</h2>
+<p>Pick three, not ten. Three proposals are enough to compare and few enough to read properly.</p>
+<table>
+<tr><th>Source</th><th>What it is good for</th><th>What to watch for</th></tr>
+<tr><td>Google Maps and Business Profiles</td><td>Real reviews, location and how the agency answers customers</td><td>Read recent reviews and the agency's replies, not just the star rating</td></tr>
+<tr><td>Directories such as Clutch, GoodFirms and DesignRush</td><td>Client reviews, team size and service lists in one place</td><td>Some listings are sponsored or featured placements, so position is not a ranking of quality</td></tr>
+<tr><td>Referrals from other business owners</td><td>Honest views from people who pay the agency</td><td>Ask what they measured and whether they would hire again</td></tr>
+<tr><td>The agency's own case studies</td><td>Proof of work in your industry</td><td>Look for the problem, the work done and numbers that can be checked</td></tr>
+<tr><td>Google search for your own service</td><td>Shows who ranks for the terms you want to rank for</td><td>An agency that cannot rank itself may struggle to rank you</td></tr>
+</table>
+
+<h2>10 criteria to compare digital marketing agencies</h2>
+<p>Score each shortlisted agency from 1 to 5 on these points. The table also shows how to check each one rather than just taking the agency's word.</p>
+<table>
+<tr><th>Criterion</th><th>What to look for</th><th>How to verify it</th></tr>
+<tr><td>1. Proof of results</td><td>Case studies with the problem, the work and measurable outcomes</td><td>Ask to speak to a client, or read their reviews on Google Maps</td></tr>
+<tr><td>2. Services that match your goal</td><td>SEO, Google Ads, Meta Ads and tracking that fit what you need now</td><td>Ask which one they would start with and why, not just which they sell</td></tr>
+<tr><td>3. Written pricing</td><td>Monthly fee, GST and ad spend stated clearly</td><td>Ask for the quote in writing before any call about "next steps"</td></tr>
+<tr><td>4. Tracking and reporting</td><td>Calls, forms and WhatsApp enquiries counted, with a monthly report</td><td>Ask for a sample report and see whether it shows enquiries or only clicks</td></tr>
+<tr><td>5. Who runs your account</td><td>A named person with real experience, and cover when they are away</td><td>Ask who will do the work and how long they have done it</td></tr>
+<tr><td>6. Account ownership</td><td>Your ad accounts, Analytics and Business Profile stay in your name</td><td>Ask what happens to the accounts if you leave</td></tr>
+<tr><td>7. Contract terms</td><td>Length and notice period written down, with nothing hidden</td><td>Read the proposal for the lock-in period and cancellation terms</td></tr>
+<tr><td>8. Industry and market fit</td><td>Experience with businesses like yours and with Ahmedabad customers</td><td>Ask for examples in your industry and how they handle English, Hindi and Gujarati searches</td></tr>
+<tr><td>9. Communication</td><td>Clear answers, a regular call and plain language, not jargon</td><td>Notice how they respond before you pay anything</td></tr>
+<tr><td>10. Honesty about limits</td><td>They say what they cannot promise and when you do not need them</td><td>Ask what result they cannot guarantee and why</td></tr>
+</table>
+<p>Add up the scores, but treat criteria 3, 6 and 10 as deal breakers. An agency that scores low on price clarity, account ownership or honesty is a risk, however good the rest looks.</p>
+
+<h2>Types of digital marketing agencies you will meet in Ahmedabad</h2>
+<table>
+<tr><th>Type</th><th>Usually good for</th><th>Think about</th></tr>
+<tr><td>Freelancer or consultant</td><td>A small budget and one clear task, such as running Google Ads</td><td>Cover during leave, and whether one person has every skill you need</td></tr>
+<tr><td>Small local agency</td><td>Local businesses that want personal attention and quick replies</td><td>Depth of experience and how many clients the team handles</td></tr>
+<tr><td>Full-service agency</td><td>Businesses that want SEO, ads, social media and tracking planned together</td><td>Ask who actually does each part, in-house or outsourced</td></tr>
+<tr><td>Performance or specialist agency</td><td>Businesses that mainly want leads or sales from paid ads or SEO</td><td>Check that tracking is built in and reporting shows revenue or enquiries</td></tr>
+<tr><td>Large or enterprise agency</td><td>Big brands with large budgets and many locations</td><td>Smaller clients can get less senior attention</td></tr>
+</table>
+<p>If you are not sure which type you need, our guide on <a href="/blog/how-to-choose-seo-company-ahmedabad/">how to choose an SEO company in Ahmedabad</a> and our guide on <a href="/blog/how-to-choose-google-ads-agency-ahmedabad/">how to choose a Google Ads agency</a> go deeper into each channel.</p>
+
+<h2>Red flags when hiring a digital marketing agency</h2>
+<ul>
+<li><strong>Guaranteed rankings, leads or ROAS.</strong> Nobody can promise these, because results depend on your market, offer, website and budget.</li>
+<li><strong>No written scope or price.</strong> If the quote is a single number with no deliverables, you cannot tell what you are buying.</li>
+<li><strong>Ad accounts in the agency's name.</strong> If you leave, you could lose your campaign history and data.</li>
+<li><strong>Ad spend routed through the agency.</strong> You should pay Google and Meta directly so you can see exactly what is spent.</li>
+<li><strong>Reports with only clicks, likes or impressions.</strong> They look busy but say nothing about enquiries or sales.</li>
+<li><strong>Bought links or fake reviews.</strong> These can hurt your site and your reputation.</li>
+<li><strong>High pressure to sign today.</strong> A good agency lets you compare quotes.</li>
+<li><strong>No questions about your business.</strong> A proposal that could be sent to any company is probably a template.</li>
+</ul>
+
+<h2>10 questions to ask on the first call</h2>
+<table>
+<tr><th>Question</th><th>A good answer sounds like</th></tr>
+<tr><td>What is your plan for my goal and budget?</td><td>A specific starting point, with reasons, not a list of every service</td></tr>
+<tr><td>Who will run my account, and for how long have they done it?</td><td>A named person and a clear answer about cover</td></tr>
+<tr><td>What exactly is in the monthly fee?</td><td>Named deliverables, plus what is quoted separately</td></tr>
+<tr><td>How do you count calls, WhatsApp and form enquiries?</td><td>Tracking set up before the campaign starts, with its limits explained</td></tr>
+<tr><td>Can I see a sample report?</td><td>Yes, and it shows enquiries and cost per enquiry</td></tr>
+<tr><td>Who owns the ad accounts and data?</td><td>You do, always</td></tr>
+<tr><td>What are the contract and notice terms?</td><td>Written in the proposal, with nothing hidden</td></tr>
+<tr><td>How do you handle English, Hindi and Gujarati searches?</td><td>Separate keyword research, ads and pages for each language you need</td></tr>
+<tr><td>What results cannot you promise?</td><td>Rankings, a number of leads and a fixed return</td></tr>
+<tr><td>Which clients are most like me, and may I speak to one?</td><td>A relevant example and willingness to arrange a reference</td></tr>
+</table>
+
+<h2>Compare agencies with a simple scorecard</h2>
+<p>Create a table with your three agencies across the top and the ten criteria down the side. Score each from 1 to 5, then add one line of notes. A few rules keep it honest:</p>
+<ul>
+<li>Score only what an agency shows you in writing or on a call, not what it says about itself on its website.</li>
+<li>Give extra weight to price clarity, account ownership and honesty about limits.</li>
+<li>If two agencies score close, pick the one that gave you the clearest written scope.</li>
+<li>Do not choose on price alone. Cheap and vague tends to be the most expensive route, as we explain in our guide to <a href="/blog/digital-marketing-cost-in-ahmedabad/">what digital marketing costs in Ahmedabad</a>.</li>
+</ul>
+
+<h2>How Digital Aura answers these questions</h2>
+<p>You should hold us to the same standard. Here is how we answer the points above.</p>
+<ul>
+<li><strong>Results:</strong> our <a href="/case-studies/">case studies</a> show the problem, the work and the outcome for each client.</li>
+<li><strong>Pricing:</strong> published, not hidden. Bundled plans run from ₹30,000 to ₹2,70,000 a month, SEO from ₹15,000, Google Ads management from ₹15,000 and Meta Ads management from ₹15,000, all excluding GST and ad spend.</li>
+<li><strong>Accounts:</strong> campaigns run inside your own Google Ads and Analytics accounts, so everything stays yours if you leave.</li>
+<li><strong>Google Partner:</strong> Digital Aura is a Google Partner agency, which you can check against Google's own directory.</li>
+<li><strong>Contract:</strong> the length and notice period are written in your proposal before you decide. Our Google Ads management is month-to-month with a 15-day notice.</li>
+<li><strong>Honesty:</strong> we do not guarantee rankings, leads or ROAS. If your budget is very small, or your website cannot turn visitors into enquiries, we will say so and suggest what to fix first.</li>
+<li><strong>Where we are:</strong> our team works from Hanspura, near Sardar Patel Ring Road, Ahmedabad.</li>
+</ul>
+<p>If you are comparing us with other agencies, ask all of them the same ten questions and compare the written answers.</p>
+
+<h2>What to do next</h2>
+<p>Write your goal, budget, market and industry. Shortlist three agencies, ask each the ten questions and score them. If you would like us to be one of the three, <a href="/digital-marketing-company-ahmedabad#audit">request a free growth audit</a> and we will send a written plan and quote you can compare. You can read about how we work on our <a href="/digital-marketing-company-ahmedabad">digital marketing agency in Ahmedabad</a> page, or about starting small in <a href="/blog/digital-marketing-for-small-business-ahmedabad/">digital marketing for small businesses in Ahmedabad</a>.</p>
+`,
+    faqs: [
+      { q: "Which is the best digital marketing agency in Ahmedabad?", a: "There is no single best agency for everyone. The best one is the agency that fits your goal, budget and industry, shows proof of results, gives a written scope and price, and is honest about what it cannot promise. Shortlist three, ask each the same questions and compare their written answers." },
+      { q: "How do I choose a digital marketing agency in Ahmedabad?", a: "Write down your goal, budget, market and industry. Build a shortlist of three from Google Maps reviews, directories and referrals. Score each on results, services, pricing, tracking, who runs the account, ownership, contract terms, industry fit, communication and honesty. Treat unclear pricing, account ownership and guarantees as deal breakers." },
+      { q: "Are directory rankings like Clutch and DesignRush reliable?", a: "They are useful for reading client reviews and comparing team sizes, but some listings are sponsored or featured placements. Treat a directory position as a starting shortlist, not a quality ranking, and check each agency's reviews and work yourself." },
+      { q: "How many agencies should I compare?", a: "Three is enough. It gives you a fair comparison without overwhelming you with proposals. Ask each agency the same questions and compare the written answers side by side." },
+      { q: "What questions should I ask a digital marketing agency?", a: "Ask about your plan for your goal and budget, who runs your account, what is in the monthly fee, how enquiries are tracked, whether you can see a sample report, who owns the accounts, the contract and notice terms, how they handle English, Hindi and Gujarati searches, what they cannot promise and whether you can speak to a similar client." },
+      { q: "Should I hire a local agency in Ahmedabad?", a: "A local agency understands how Ahmedabad customers search, including language, seasons and areas, and is easy to meet. It is not a requirement, but local knowledge helps when your customers are in the city." },
+      { q: "Is a bigger agency always better?", a: "No. A large agency may have more resources, but smaller clients can get less senior attention. Ask who will actually run your account and how many clients that person handles." },
+      { q: "Can a digital marketing agency guarantee results?", a: "No. Nobody can honestly guarantee a Google ranking, a number of leads or a return on ad spend. A good agency writes the work into the quote, tracks enquiries and reports clearly so you can judge the results." },
+    ],
+    ctaHeading: "Want Us to Be One of Your Three?",
+    ctaText: "Request a free growth audit and get a written plan and quote you can compare with other agencies.",
+    ctaButton: "Get My Free Growth Audit",
+    cro: { href: "/digital-marketing-company-ahmedabad#audit", label: "Get a free growth audit", sidebar: "Comparing agencies? Ask us for a written plan and quote to compare.", bandHeading: "Comparing digital marketing agencies?", bandText: "Request a free growth audit and get a written plan and quote you can compare." },
+  },
+  // ────────────────────────────────────────────────────────────────────
+  {
+    slug: "digital-marketing-for-small-business-ahmedabad",
+    title: "Digital Marketing for Small Businesses in Ahmedabad (2026): Where to Start and What to Spend",
+    titleHighlight: "Digital Marketing for Small Businesses in Ahmedabad",
+    metaTitle: "Digital Marketing for Small Business in Ahmedabad: Where to Start",
+    metaDescription: "A practical plan for small businesses in Ahmedabad: what to do first, which channel to pick, a 90-day plan and what to spend. For clinics, shops, services.",
+    category: "Digital Marketing",
+    date: "2026-10-28",
+    dateDisplay: "Oct 28, 2026",
+    readTime: "10 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "A small business in Ahmedabad should start with its Google Business Profile, reviews, a fast website and tracking, then add one channel. In order: set up and verify your Google Business Profile and collect reviews, fix your website so visitors can call or message you in one tap, add tracking for calls, WhatsApp and forms, then pick one channel: Google Search ads or local SEO if people search for what you sell, Meta ads if you need to create demand. Run one channel for 90 days, review the enquiries it brings and only then add another.",
+    keyTakeaways: [
+      "Start with the basics: Google Business Profile, reviews, a mobile-friendly site and tracking, before you pay for more.",
+      "Pick one channel first. Search ads or local SEO suit businesses people already search for. Meta ads suit businesses that must create demand.",
+      "Reply to every enquiry fast, especially on WhatsApp. Slow replies waste the money you spend on marketing.",
+      "Judge marketing by calls, WhatsApp chats and forms, not by clicks or likes.",
+      "Do not buy everything at once. A single service can be enough for the first three months.",
+    ],
+    contentHtml: `
+<p>If you run a clinic, a shop, a repair service, a coaching class or a small factory in Ahmedabad, you probably do not have a marketing team or a large budget. You may also have been told you need SEO, Google Ads, Instagram, a new website and a video channel, all at once. You do not. This guide gives small businesses a simple order of work, a 90-day plan and a sense of what each step costs. If you want a team to run it for you, see our <a href="/digital-marketing-company-ahmedabad">digital marketing services in Ahmedabad</a>.</p>
+
+<h2>Where should a small business in Ahmedabad start with digital marketing?</h2>
+<p>Start with the things that make every other step work. In order:</p>
+<ol>
+<li><strong>Google Business Profile.</strong> Claim it, verify it and fill in your services, hours, phone, WhatsApp number and photos. This is how you appear on Google Maps and in "near me" searches. Our <a href="/blog/google-maps-ranking-ahmedabad-checklist/">Google Maps ranking checklist</a> lists the steps.</li>
+<li><strong>Reviews.</strong> Ask every happy customer for a Google review. Reviews decide who gets the call when two businesses look similar.</li>
+<li><strong>A website that converts.</strong> It should load fast on a phone and put a call button, a WhatsApp button and a short form on every page.</li>
+<li><strong>Tracking.</strong> Count calls, WhatsApp clicks and form submissions from day one. Without it you cannot tell what works.</li>
+<li><strong>One channel.</strong> Pick Google Search ads, local SEO or Meta ads, based on how your customers find you (see the table below).</li>
+<li><strong>Fast follow-up.</strong> Reply to enquiries within minutes, especially on WhatsApp. Marketing that brings a lead nobody answers is wasted money.</li>
+</ol>
+
+<h2>A 90-day plan for a small business</h2>
+<table>
+<tr><th>Period</th><th>What to do</th><th>What you should have by the end</th></tr>
+<tr><td>Weeks 1 to 2</td><td>Claim and complete your Business Profile. Fix obvious website problems. Set up call, WhatsApp and form tracking.</td><td>A complete profile, a working site and numbers you can trust</td></tr>
+<tr><td>Weeks 3 to 4</td><td>Ask past customers for reviews. Write clear service pages. Launch your first channel with a small, controlled budget.</td><td>First reviews and your first tracked enquiries</td></tr>
+<tr><td>Weeks 5 to 8</td><td>Review the search terms or audiences. Stop what wastes money and keep what brings enquiries. Improve the landing page.</td><td>A lower cost per enquiry than in the first month</td></tr>
+<tr><td>Weeks 9 to 12</td><td>Compare enquiries to actual customers. Decide whether to add a second channel or grow the first.</td><td>A clear answer on what one enquiry costs and what a customer is worth</td></tr>
+</table>
+
+<h2>Which channel should you start with?</h2>
+<p>The right first channel depends on whether people already search for what you sell. If they do, start where they search. If they do not, you need to create the demand.</p>
+<table>
+<tr><th>Your business</th><th>Start with</th><th>Why</th></tr>
+<tr><td>Clinic, dentist or specialist doctor</td><td>Google Business Profile, local SEO and Google Search ads</td><td>Patients search "dentist near me" when they need one. Health advertising has stricter rules, so keep claims factual.</td></tr>
+<tr><td>Repair, home or emergency service</td><td>Google Search ads and Google Business Profile</td><td>People call whoever shows up first when something breaks</td></tr>
+<tr><td>Shop or showroom</td><td>Google Business Profile, then Meta ads for offers and new arrivals</td><td>Visual products and seasonal offers suit Instagram and Facebook</td></tr>
+<tr><td>Coaching class, school or fitness studio</td><td>Local search plus Meta lead ads before admission season</td><td>Enquiries bunch into a short window, so campaigns must be live before it opens</td></tr>
+<tr><td>Manufacturer or B2B supplier</td><td>SEO for product and capability pages, plus Google Ads for specific products</td><td>Buyers research for a long time and search for suppliers by product</td></tr>
+<tr><td>Restaurant or event venue</td><td>Google Business Profile and Meta ads</td><td>Photos, reviews and local offers drive bookings</td></tr>
+</table>
+<p>If you are torn between two, read <a href="/blog/seo-vs-paid-ads-which-first-ahmedabad/">SEO or Google Ads: which should you start with</a> and <a href="/blog/google-ads-vs-meta-ads-ahmedabad/">Google Ads vs Meta Ads for Ahmedabad businesses</a>. If you want to build your own search presence over time, our guide to <a href="/blog/how-to-rank-new-website-on-google/">how to rank a new website on Google</a> explains the roadmap.</p>
+
+<h2>What should a small business spend on digital marketing?</h2>
+<p>There is no standard number, because it depends on your market and your goal. These are our published monthly management fees, so you can see what each step costs. They exclude GST, and any ad spend is paid separately to Google or Meta.</p>
+<table>
+<tr><th>Step</th><th>Monthly fee (excl. GST)</th><th>When it fits</th></tr>
+<tr><td>Do the basics yourself (profile, reviews, tracking)</td><td>No agency fee</td><td>You have time and a simple site</td></tr>
+<tr><td>SEO Basic</td><td>₹15,000 – ₹25,000</td><td>A one-city business with a small site that people search for</td></tr>
+<tr><td>Google Ads management</td><td>₹15,000 – ₹60,000</td><td>You want enquiries quickly from people searching now</td></tr>
+<tr><td>Meta Ads management</td><td>₹15,000 – ₹60,000</td><td>You need to create demand with offers and creative</td></tr>
+<tr><td>Digital Marketing Starter</td><td>₹30,000 – ₹55,000</td><td>You want SEO basics and one paid channel run together</td></tr>
+</table>
+<p>For Google Ads, we work best with businesses spending ₹50,000 or more a month on ads, because campaigns need data to improve. A narrow, local search can work on less. See <a href="/blog/digital-marketing-cost-in-ahmedabad/">digital marketing cost in Ahmedabad</a> for the full breakdown, and <a href="/google-ads-pricing-ahmedabad/">how Google Ads pricing works</a> if you are considering ads.</p>
+
+<h2>What to skip in the first three months</h2>
+<ul>
+<li><strong>Every social network at once.</strong> Pick the one or two where your customers actually are.</li>
+<li><strong>A big new website.</strong> Fix what is broken first. A small, fast site with clear buttons often beats an expensive redesign.</li>
+<li><strong>Buying followers, likes or links.</strong> They add numbers, not customers, and can hurt you.</li>
+<li><strong>Several ad channels with tiny budgets.</strong> One well-run channel learns faster than three starved ones.</li>
+<li><strong>Any agency that guarantees results.</strong> Nobody can promise rankings, leads or a fixed return.</li>
+</ul>
+
+<h2>Ahmedabad-specific tips for small businesses</h2>
+<ul>
+<li><strong>Language.</strong> Customers search in English, Hindi, Gujarati or a mix. If you serve all three, write keywords, ads and pages in each.</li>
+<li><strong>Area names.</strong> People search by area, such as Bopal, Satellite, Prahlad Nagar, Maninagar, Naroda or Vastral. Mention the areas you serve on your pages and profile.</li>
+<li><strong>WhatsApp.</strong> Many Ahmedabad customers prefer a WhatsApp message to a form. Put the button on every page and track clicks.</li>
+<li><strong>Seasons.</strong> Navratri and Diwali lift retail and gifting, wedding season lifts venues and jewellery, Uttarayan in January lifts local offers, and admission season drives schools and coaching. Plan campaigns weeks ahead of the peak.</li>
+<li><strong>Maps.</strong> For many local searches, Google Maps is the first thing customers see. A complete profile and recent reviews matter more than a fancy website.</li>
+</ul>
+
+<h2>Should you do it yourself or hire help?</h2>
+<table>
+<tr><th>Do it yourself when</th><th>Hire help when</th></tr>
+<tr><td>You have time to learn and the account is simple</td><td>You do not have time to check search terms, reports and ads every week</td></tr>
+<tr><td>Your budget is very small</td><td>You are already spending on ads and not sure what they bring</td></tr>
+<tr><td>You only need a Business Profile, reviews and basic posts</td><td>You need tracking, landing pages and ads working together</td></tr>
+</table>
+<p>If you hire, ask for a written scope, a sample report and who owns the accounts. Our guide on <a href="/blog/best-digital-marketing-agencies-in-ahmedabad/">how to compare and choose a digital marketing agency in Ahmedabad</a> gives the questions to ask.</p>
+
+<h2>How to measure whether it is working</h2>
+<p>Track three numbers every month:</p>
+<ul>
+<li><strong>Enquiries:</strong> phone calls, WhatsApp chats and form submissions from marketing.</li>
+<li><strong>Cost per enquiry:</strong> what you spent, divided by the number of enquiries.</li>
+<li><strong>Customers won:</strong> how many enquiries became paying customers, and what each customer is worth.</li>
+</ul>
+<p>Here is an example only, so replace the numbers with your own. If you spend ₹30,000 in a month and get 20 enquiries, each enquiry costs ₹1,500. If you win 4 of them and each customer is worth ₹15,000, that is ₹60,000 of business. If you win none, the problem may be follow-up or the offer, not the channel. Clicks and likes alone cannot tell you this.</p>
+
+<h2>What to do next</h2>
+<p>Pick your first channel from the table, complete your Business Profile this week and set up tracking before you spend on ads. If you would like a team to look at your site, profile and competitors and tell you where to start, <a href="/digital-marketing-company-ahmedabad#audit">request a free growth audit</a>. We will send a written plan, say honestly whether a smaller step is enough and quote the fee in writing.</p>
+`,
+    faqs: [
+      { q: "How should a small business in Ahmedabad start with digital marketing?", a: "Start with a verified Google Business Profile and reviews, a mobile-friendly website with call and WhatsApp buttons, and tracking for calls, WhatsApp and forms. Then pick one channel, Google Search ads or local SEO if people search for what you sell, or Meta ads if you need to create demand, and run it for 90 days before adding another." },
+      { q: "How much should a small business spend on digital marketing?", a: "It depends on your market and goal. Our published monthly management fees are SEO Basic ₹15,000 to ₹25,000, Google Ads management ₹15,000 to ₹60,000, Meta Ads management ₹15,000 to ₹60,000 and Digital Marketing Starter ₹30,000 to ₹55,000, all excluding GST and ad spend. You can do the basics yourself at no agency fee." },
+      { q: "Which is better for a small business, SEO or Google Ads?", a: "If you need enquiries quickly from people already searching, Google Ads usually comes first. If you can wait for several months and want a lower cost over time, SEO and Google Business Profile build steadily. Many small businesses start with one and add the other once enquiries are tracked." },
+      { q: "Do I need a website for digital marketing?", a: "Yes, but it does not need to be big. A small, fast site with clear service pages, a call button, a WhatsApp button and a short form is enough to start. Fix what is broken before paying for a redesign." },
+      { q: "Is Instagram or Facebook enough for a small business?", a: "Not usually. Social media is good for showing your work and creating demand, but customers who need a service still search on Google. Most small businesses do better when a Google Business Profile and a website sit behind their social media." },
+      { q: "How long before a small business sees results?", a: "Paid ads can bring enquiries within weeks once tracking is set up and campaigns have data. Local SEO and Google Business Profile usually take a few months to show clear growth. Judge results by calls, WhatsApp chats and forms, not by clicks or likes." },
+      { q: "Should a small business hire an agency or a freelancer?", a: "A freelancer can suit a small budget and one clear task. An agency suits businesses that need SEO, ads, tracking and reporting working together, plus cover when one person is away. Ask either for a written scope, a sample report and account ownership." },
+      { q: "Can you work with a small budget?", a: "Yes. We will tell you honestly if a smaller step, such as fixing your Business Profile and tracking, is enough before you spend on ads. A free growth audit shows where to start and what it should cost." },
+    ],
+    ctaHeading: "Not Sure Where to Start?",
+    ctaText: "Request a free growth audit. We will review your site, profile and competitors and tell you the first step that makes sense for your budget.",
+    ctaButton: "Get My Free Growth Audit",
+    cro: { href: "/digital-marketing-company-ahmedabad#audit", label: "Get a free growth audit", sidebar: "Small business? Ask us where to start and what it should cost.", bandHeading: "Not sure where to start with digital marketing?", bandText: "Request a free growth audit and get an honest first step for your budget." },
   },
 ];
 

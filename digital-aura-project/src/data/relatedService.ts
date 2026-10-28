@@ -16,6 +16,8 @@ const GADS_CTA_BY_SLUG: Record<string, string> = {
 
 export const relatedServiceFor = (slug: string, category?: string | null): RelatedService | null => {
   const key = `${slug} ${category || ""}`.toLowerCase();
+  if (/digital-marketing|digital marketing/.test(key))
+    return { label: "Digital Marketing Company in Ahmedabad", blurb: "SEO, Google Ads and Meta Ads planned as one monthly plan, with tracking for calls, WhatsApp and forms.", cta: "See digital marketing plans and pricing", href: "/digital-marketing-company-ahmedabad", external: true };
   if (/google-ads|local-business-google-ads/.test(key))
     return { label: "Google Ads Agency in Ahmedabad", blurb: "Search, Maps and Performance Max campaigns built around qualified leads, not just clicks.", cta: GADS_CTA_BY_SLUG[slug] ?? "Google Ads and performance marketing in Ahmedabad", href: "/google-ads-agency-ahmedabad", external: true };
   if (/meta|instagram|ugc|video-hooks/.test(key))

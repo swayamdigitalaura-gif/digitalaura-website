@@ -296,6 +296,48 @@ function writeSitemap(succeededRoutes, pageHashes = {}) {
   if (unrecorded.length) console.log(`  ⚠  ${unrecorded.length} URL(s) have no lastmod record (no <lastmod> written): ${unrecorded.slice(0, 12).join(', ')}`);
 }
 
+// Site-wide "Header & Footer Code" (GTM, GA4 via GTM, Search Console / Bing verification, Ahrefs) lives in the Aura
+// Desk settings. Aura Desk only writes it into the static files at the moment someone presses Save, so every deploy
+// (which rebuilds these files) silently removed it from the main site. Injecting it here, between the same
+// DA:HEAD / DA:BODY markers Aura Desk uses, keeps it on every page and lets a later Aura Desk save replace it
+// instead of duplicating it. If the settings API is unreachable we fall back to the GTM container so the tag is
+// never dropped.
+const FALLBACK_HEAD = `<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TB52W9GT');</script>`;
+const FALLBACK_BODY = `<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TB52W9GT"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>`;
+
+async function fetchGlobalCode() {
+  try {
+    const res = await fetch('https://thedigitalaura.com/api/settings', { signal: AbortSignal.timeout(10000) });
+    const d = (await res.json())?.data || {};
+    const headCode = (d.global_head_code || '').trim();
+    const bodyCode = (d.global_body_code || '').trim();
+    if (/GTM-[A-Z0-9]+/.test(headCode)) return { headCode, bodyCode, source: 'Aura Desk settings' };
+    console.log('  ⚠  Aura Desk global head code has no GTM container — using the built-in fallback');
+  } catch (err) {
+    console.log(`  ⚠  Could not read Aura Desk settings (${err.message}) — using the built-in GTM fallback`);
+  }
+  return { headCode: FALLBACK_HEAD, bodyCode: FALLBACK_BODY, source: 'built-in fallback' };
+}
+
+function injectGlobalCode(html, { headCode, bodyCode }) {
+  html = html.replace(/<!-- DA:HEAD:START -->[\s\S]*?<!-- DA:HEAD:END -->\s*/g, '');
+  html = html.replace(/<!-- DA:BODY:START -->[\s\S]*?<!-- DA:BODY:END -->\s*/g, '');
+  if (headCode) html = html.replace('</head>', () => `<!-- DA:HEAD:START -->
+${headCode}
+<!-- DA:HEAD:END -->
+</head>`);
+  if (bodyCode) html = html.replace('</body>', () => `<!-- DA:BODY:START -->
+${bodyCode}
+<!-- DA:BODY:END -->
+</body>`);
+  return html;
+}
+
 async function main() {
   const staticSeoBlogRoutes = getStaticSeoBlogRoutes();
   const blogRoutes = await fetchBlogRoutes();
@@ -309,6 +351,9 @@ async function main() {
   // this shell loads, and the router then renders the NotFound page for the original URL.
   const shell = join(DIST, 'index.html');
   if (existsSync(shell)) copyFileSync(shell, join(DIST, '404.html'));
+
+  const globalCode = await fetchGlobalCode();
+  console.log(`  🏷  Header/footer code (GTM etc.) taken from: ${globalCode.source}`);
 
   const server = await startServer();
 
@@ -387,6 +432,16 @@ async function main() {
         fail++;
       }
     }
+
+    // Inject only AFTER every route is rendered: the local server falls back to dist/index.html for the SPA shell, so
+    // injecting while crawling would make GTM run (and send hits) inside the prerender browser and get serialized
+    // into the saved pages.
+    for (const route of succeededRoutes) {
+      const parts = route === '/' ? [] : route.slice(1).split('/');
+      const file  = join(DIST, ...parts, 'index.html');
+      writeFileSync(file, injectGlobalCode(readFileSync(file, 'utf-8'), globalCode), 'utf-8');
+    }
+    console.log(`  🏷  GTM / header-footer code added to ${succeededRoutes.length} pages`);
 
     console.log(`\n✅  Prerender complete — ${ok} succeeded, ${fail} failed\n`);
     writeSitemap(succeededRoutes, pageHashes);

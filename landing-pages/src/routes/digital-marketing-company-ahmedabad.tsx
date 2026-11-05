@@ -148,7 +148,7 @@ export const Route = createFileRoute("/digital-marketing-company-ahmedabad")({
 const ORG_SAME_AS = [
   "https://www.google.com/maps?cid=14693467769090662076",
   "https://maps.app.goo.gl/rNtQ9RkNtePogkJeA",
-  "https://www.linkedin.com/company/thedigitalaura/",
+  "https://www.linkedin.com/in/sambhav-shah/",
   "https://www.instagram.com/sambhavshah2/",
 ];
 

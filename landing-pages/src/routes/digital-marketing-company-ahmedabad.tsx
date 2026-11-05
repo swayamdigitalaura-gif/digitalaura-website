@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CaseStudySlider, type SliderCase } from "@/components/CaseStudySlider";
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import { RecaptchaBox, RECAPTCHA_SITE_KEY, type RecaptchaHandle } from "@/components/RecaptchaBox";
 import {
   ArrowRight,
   ArrowDown,
@@ -426,9 +427,15 @@ const NEEDS = [
 
 function LeadForm({ idPrefix = "lf", withAnchor = true }: { idPrefix?: string; withAnchor?: boolean }) {
   const [loading, setLoading] = useState(false);
+  const captcha = useRef<RecaptchaHandle>(null);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const captchaToken = RECAPTCHA_SITE_KEY ? captcha.current?.getToken() ?? "" : "";
+    if (RECAPTCHA_SITE_KEY && !captchaToken) {
+      toast.error("Please tick \"I'm not a robot\" before sending.");
+      return;
+    }
     setLoading(true);
     const fd = new FormData(e.currentTarget);
     try {
@@ -443,14 +450,17 @@ function LeadForm({ idPrefix = "lf", withAnchor = true }: { idPrefix?: string; w
           message: `${fd.get("need") || ""} | ${fd.get("website") || ""}`,
           project: "Digital Marketing",
           source: "digital-marketing-company-ahmedabad",
+          recaptchaToken: captchaToken || undefined,
         }),
       });
       if (!res.ok) throw new Error("Server error");
       (e.target as HTMLFormElement).reset();
+      captcha.current?.reset();
       toast.success("Growth audit request received!", {
         description: "A senior digital marketing strategist will reach out within 1 business hour.",
       });
     } catch {
+      captcha.current?.reset();
       toast.error("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
@@ -518,6 +528,8 @@ function LeadForm({ idPrefix = "lf", withAnchor = true }: { idPrefix?: string; w
             </select>
           </div>
         </div>
+
+        <RecaptchaBox ref={captcha} />
 
         <button type="submit" disabled={loading} className="pillar-btn pillar-btn--primary mt-5 w-full disabled:cursor-not-allowed disabled:opacity-70">
           {loading ? (

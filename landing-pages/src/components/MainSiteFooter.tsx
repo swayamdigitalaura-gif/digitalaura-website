@@ -189,7 +189,7 @@ export function MainSiteFooter() {
                   className="flex items-start gap-2 text-[13px] text-white hover:opacity-80 transition-opacity"
                 >
                   <MapPin size={13} className="text-[#FF6B2B] shrink-0 mt-0.5" />
-                  <span>713, Shilp Arcade, Sardar Patel Ring Rd, Ahmedabad, Gujarat 382330</span>
+                  <span>Shilp Arcade, 713, Sardar Patel Ring Rd, Hanspura, Ahmedabad, Gujarat 382330</span>
                 </a>
               </li>
             </ul>

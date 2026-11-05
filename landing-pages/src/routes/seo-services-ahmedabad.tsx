@@ -103,6 +103,7 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { cn } from "@/lib/utils";
+import { RecaptchaBox, RECAPTCHA_SITE_KEY, type RecaptchaHandle } from "@/components/RecaptchaBox";
 import "@/pillar-pages.css";
 import {
   InPillarContext,
@@ -116,32 +117,32 @@ import {
 export const Route = createFileRoute("/seo-services-ahmedabad")({
   head: () => ({
     meta: [
-      { title: "SEO Company in Ahmedabad | Digital Aura" },
+      { title: "SEO Company in Ahmedabad | SEO Services & Packages 2026" },
       {
         name: "description",
         content:
-          "Ahmedabad SEO company for local, technical and AI search. A clear 90-day plan, monthly lead reporting and a free SEO audit. Get yours today.",
+          "SEO company in Ahmedabad for local, technical and AI search. 90-day plan, monthly lead reports, SEO packages from ₹15,000 a month plus GST. Get your free SEO audit.",
       },
       {
         name: "keywords",
         content:
           "Best SEO Company in Ahmedabad, SEO Expert in Ahmedabad, SEO Services Agency in Ahmedabad, SEO Companies in Ahmedabad, Leading SEO Company in Ahmedabad, AI Powered SEO Services in Ahmedabad, AEO SEO Services in Ahmedabad, Search Engine Optimization Company Ahmedabad, Technical SEO Company Ahmedabad, Local SEO Company Ahmedabad, Enterprise SEO Services Ahmedabad",
       },
-      { property: "og:title", content: "SEO Company in Ahmedabad | Digital Aura" },
+      { property: "og:title", content: "SEO Company in Ahmedabad | SEO Services & Packages 2026" },
       {
         property: "og:description",
         content:
-          "Technical SEO, On-Page SEO, AI SEO (AIO) & Generative Engine Optimization (GEO) for Ahmedabad businesses. Get cited on Google and AI search — book your free audit.",
+          "SEO company in Ahmedabad for local, technical and AI search. 90-day plan, monthly lead reports, SEO packages from ₹15,000 a month plus GST. Get your free SEO audit.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://thedigitalaura.com/seo-services-ahmedabad" },
       { property: "og:locale", content: "en_IN" },
       { name: "robots", content: "index,follow" },
-      { name: "twitter:title", content: "SEO Company in Ahmedabad | Digital Aura" },
+      { name: "twitter:title", content: "SEO Company in Ahmedabad | SEO Services & Packages 2026" },
       {
         name: "twitter:description",
         content:
-          "Technical SEO, On-Page SEO, AI SEO (AIO) & Generative Engine Optimization (GEO) for Ahmedabad businesses. Get cited on Google and AI search — book your free audit.",
+          "SEO company in Ahmedabad for local, technical and AI search. 90-day plan, monthly lead reports, SEO packages from ₹15,000 a month plus GST. Get your free SEO audit.",
       },
     ],
     links: [{ rel: "canonical", href: "https://thedigitalaura.com/seo-services-ahmedabad" }],
@@ -151,19 +152,28 @@ export const Route = createFileRoute("/seo-services-ahmedabad")({
 
 /* ---------------- Structured data (LocalBusiness) ---------------- */
 
+const SITE = "https://thedigitalaura.com";
+/** Schema needs absolute URLs; bundled assets resolve to site-relative paths. */
+const absUrl = (p: string) => new URL(p, SITE).href;
+// Google Business Profile listing for the Ahmedabad office (same place as the Maps embed below, and the main site's schema).
+const GBP_MAPS_URL = "https://www.google.com/maps?cid=14693467769090662076";
+
 function LocalBusinessSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
+    "@id": `${SITE}/#organization`,
     name: "Digital Aura",
+    url: `${SITE}/`,
     description:
       "Search engine optimization company in Ahmedabad specializing in Technical SEO, Local SEO, On-Page SEO, AI SEO (AIO) and Generative Engine Optimization (GEO).",
-    image: digitalAuraLogo,
+    image: absUrl(digitalAuraLogo),
+    logo: absUrl(digitalAuraLogo),
     telephone: "+91-81412-00284",
     email: "info@thedigitalaura.com",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "713, Shilp Arcade, Sardar Patel Ring Rd, Hanspura",
+      streetAddress: "Shilp Arcade, 713, Sardar Patel Ring Rd, Hanspura",
       addressLocality: "Ahmedabad",
       addressRegion: "Gujarat",
       postalCode: "382330",
@@ -171,7 +181,19 @@ function LocalBusinessSchema() {
     },
     areaServed: "Ahmedabad, Gujarat, India",
     priceRange: "$$",
-    sameAs: [],
+    hasMap: GBP_MAPS_URL,
+    // Same hours as the Google Business Profile: Monday to Saturday 10 am to 7 pm, Sunday closed.
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        opens: "10:00",
+        closes: "19:00",
+      },
+    ],
+    // Same rating and count as the Google Business Profile (5.0 from 33 Google reviews).
+    aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", bestRating: "5", reviewCount: "33" },
+    sameAs: [GBP_MAPS_URL, "https://maps.app.goo.gl/rNtQ9RkNtePogkJeA", ...FOUNDER_SAME_AS],
   };
   return (
     <script
@@ -188,10 +210,25 @@ function BreadcrumbAndServiceSchema() {
   const breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": `${SITE}/seo-services-ahmedabad#breadcrumb`,
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://thedigitalaura.com/" },
       { "@type": "ListItem", position: 2, name: "SEO Company in Ahmedabad", item: "https://thedigitalaura.com/seo-services-ahmedabad" },
     ],
+  };
+  const webpage = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${SITE}/seo-services-ahmedabad#webpage`,
+    url: `${SITE}/seo-services-ahmedabad`,
+    name: "SEO Company in Ahmedabad | SEO Services & Packages 2026",
+    description: "SEO company in Ahmedabad for local, technical and AI search, with a 90-day plan, monthly lead reports and SEO packages from ₹15,000 a month plus GST.",
+    inLanguage: "en-IN",
+    dateModified: "2026-11-05",
+    isPartOf: { "@type": "WebSite", name: "Digital Aura", url: `${SITE}/` },
+    about: { "@id": `${SITE}/#organization` },
+    reviewedBy: { "@type": "Person", name: FOUNDER.name, jobTitle: "Founder", url: `${SITE}/about/` },
+    breadcrumb: { "@id": `${SITE}/seo-services-ahmedabad#breadcrumb` },
   };
   const service = {
     "@context": "https://schema.org",
@@ -222,6 +259,11 @@ function BreadcrumbAndServiceSchema() {
         type="application/ld+json"
         // Static, hard-coded JSON, no user input.
         dangerouslySetInnerHTML={{ __html: JSON.stringify(service) }}
+      />
+      <script
+        type="application/ld+json"
+        // Static, hard-coded JSON, no user input.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webpage) }}
       />
     </>
   );
@@ -323,7 +365,7 @@ function TeamSection() {
         <SectionHeading
           eyebrow="Our team"
           title="Meet the team that ranks your business"
-          sub="Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. This is the in-house team at our Hanspura office, Ahmedabad, that works on your SEO."
+          sub="Meet the SEO company team in Ahmedabad behind your plan. Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. This is the in-house team at our Hanspura office, Ahmedabad, that works on your SEO."
         />
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {all.map((m, i) => (
@@ -333,11 +375,13 @@ function TeamSection() {
                 <div>
                   <h3 className="font-bold leading-tight">{m.name}</h3>
                   <p className="text-sm font-semibold text-brand-orange">{m.role}</p>
+                  {i === 0 && <p className="text-xs font-medium text-ink-muted">SEO expert in Ahmedabad, 10+ years</p>}
                 </div>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-ink-muted">{m.bio}</p>
               {i === 0 && (
                 <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+                  <a className="font-bold text-brand-orange underline" href="/about/">Full profile</a>
                   <a className="font-bold text-brand-orange underline" href={FOUNDER_SAME_AS[0]} target="_blank" rel="noopener noreferrer">LinkedIn</a>
                   <a className="font-bold text-brand-orange underline" href={FOUNDER_SAME_AS[1]} target="_blank" rel="noopener noreferrer">Instagram</a>
                 </p>
@@ -603,11 +647,17 @@ function Header() {
 
 /* ---------------- Hero + Form ---------------- */
 
-function LeadForm() {
+function LeadForm({ formId = "audit" }: { formId?: string }) {
   const [loading, setLoading] = useState(false);
+  const captcha = useRef<RecaptchaHandle>(null);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const captchaToken = RECAPTCHA_SITE_KEY ? captcha.current?.getToken() ?? "" : "";
+    if (RECAPTCHA_SITE_KEY && !captchaToken) {
+      toast.error("Please tick \"I'm not a robot\" before sending.");
+      return;
+    }
     setLoading(true);
     const fd = new FormData(e.currentTarget);
     try {
@@ -622,14 +672,17 @@ function LeadForm() {
           message: fd.get("website") || "",
           project: "SEO Services",
           source: "seo-services-ahmedabad",
+          recaptchaToken: captchaToken || undefined,
         }),
       });
       if (!res.ok) throw new Error("Server error");
       (e.target as HTMLFormElement).reset();
+      captcha.current?.reset();
       toast.success("Audit request received!", {
         description: "Our senior SEO consultant will reach out within 1 business hour.",
       });
     } catch {
+      captcha.current?.reset();
       toast.error("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
@@ -654,7 +707,7 @@ function LeadForm() {
   return (
     <div>
       <form
-        id="audit"
+        id={formId}
         onSubmit={onSubmit}
         className="da-shadow-card rounded-3xl border border-brand-navy/10 bg-white p-6 md:p-7"
       >
@@ -672,18 +725,18 @@ function LeadForm() {
 
         <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
           <div>
-            <label htmlFor="name" className={labelCls}>Full name</label>
-            <input required id="name" name="name" placeholder="e.g. Raj Patel" className={inputCls} />
+            <label htmlFor={`${formId}-name`} className={labelCls}>Full name</label>
+            <input required id={`${formId}-name`} name="name" placeholder="e.g. Raj Patel" className={inputCls} />
           </div>
           <div>
-            <label htmlFor="business" className={labelCls}>Business name</label>
-            <input required id="business" name="business" placeholder="Your company" className={inputCls} />
+            <label htmlFor={`${formId}-business`} className={labelCls}>Business name</label>
+            <input required id={`${formId}-business`} name="business" placeholder="Your company" className={inputCls} />
           </div>
           <div className="sm:col-span-2">
-            <label htmlFor="website" className={labelCls}>Website URL</label>
+            <label htmlFor={`${formId}-website`} className={labelCls}>Website URL</label>
             <input
               required
-              id="website"
+              id={`${formId}-website`}
               name="website"
               type="text"
               placeholder="yourwebsite.com"
@@ -691,14 +744,16 @@ function LeadForm() {
             />
           </div>
           <div>
-            <label htmlFor="phone" className={labelCls}>Phone number</label>
-            <input required id="phone" name="phone" type="tel" placeholder="+91 98765 43210" className={inputCls} />
+            <label htmlFor={`${formId}-phone`} className={labelCls}>Phone number</label>
+            <input required id={`${formId}-phone`} name="phone" type="tel" placeholder="+91 98765 43210" className={inputCls} />
           </div>
           <div>
-            <label htmlFor="email" className={labelCls}>Work email</label>
-            <input required id="email" name="email" type="email" placeholder="you@business.com" className={inputCls} />
+            <label htmlFor={`${formId}-email`} className={labelCls}>Work email</label>
+            <input required id={`${formId}-email`} name="email" type="email" placeholder="you@business.com" className={inputCls} />
           </div>
         </div>
+
+        <RecaptchaBox ref={captcha} />
 
         <button
           type="submit"
@@ -759,10 +814,15 @@ function Hero() {
             SEO Company in Ahmedabad
           </div>
 
-          <h1 className="mt-6 font-extrabold leading-[1.12] tracking-tight text-brand-navy [font-size:clamp(32px,4vw,48px)]">
-            SEO Company in Ahmedabad Built Around{" "}
-            <span className="text-brand-orange">Leads</span>, Not Rankings Reports
+          <h1 className="mt-6 font-extrabold leading-[1.12] tracking-tight text-brand-orange [font-size:clamp(32px,4vw,48px)]">
+            SEO Company in Ahmedabad.
           </h1>
+
+          <p className="mt-2 font-extrabold leading-[1.15] tracking-tight text-brand-navy [font-size:clamp(26px,3.2vw,38px)]">
+            Built Around Leads,
+            <br />
+            Not Rankings Reports
+          </p>
 
           <p className="mt-6 max-w-md text-lg leading-relaxed text-ink-muted">
             We help Ahmedabad businesses grow qualified organic traffic, generate more leads
@@ -825,6 +885,9 @@ function QuickAnswer() {
             <p className="mt-5 text-[17px] leading-relaxed text-ink-muted">
               An SEO company in Ahmedabad helps your business appear in Google, Google Maps and AI search when customers look for what you sell. At Digital Aura that means fixing technical problems, building pages around real search intent, improving your Google Business Profile and earning relevant links, then reporting on calls, forms and enquiries, not only rankings.
             </p>
+            <p className="mt-4 text-[17px] leading-relaxed text-ink-muted">
+              This is also called a search engine optimization company or SEO agency in Ahmedabad. Our SEO services in Ahmedabad also cover AI search, so your business can be found in Google AI Overviews, ChatGPT and Perplexity answers. Our <a className="font-semibold text-brand-orange underline" href="/seo/pricing-ahmedabad/">SEO packages</a> start at ₹15,000 a month plus GST.
+            </p>
             <ul className="mt-8 flex flex-wrap justify-center gap-3">
               {links.map((l) => (
                 <li key={l.href}>
@@ -839,7 +902,7 @@ function QuickAnswer() {
               ))}
             </ul>
             <p className="mt-6 text-xs text-ink-muted">
-              Published by <a className="underline" href="/about/">Digital Aura</a>. Last updated <time dateTime="2026-10-09">9 October 2026</time>.
+              Published by <a className="underline" href="/about/">Digital Aura</a>. Reviewed by <a className="underline" href="/about/">Sambhav Shah</a>, Founder. Last updated <time dateTime="2026-11-05">5 November 2026</time>.
             </p>
           </div>
         </Reveal>
@@ -1071,7 +1134,7 @@ function Framework() {
 
 function Process() {
   const steps = [
-    { n: "01", t: "Deep audit", d: "Technical, on-page, content, schema & AI-visibility audit on your domain and top competitors." },
+    { n: "01", t: "Deep audit", d: "Technical SEO services in Ahmedabad start here: a technical, on-page, content, schema & AI-visibility audit on your domain and top competitors." },
     { n: "02", t: "Strategy & roadmap", d: "A 90-day priority roadmap mapped to your revenue pages, intent gaps & quick wins." },
     { n: "03", t: "Execution sprints", d: "Bi-weekly sprints: technical fixes, on-page optimization, content production, schema, GEO." },
     { n: "04", t: "Compound & scale", d: "Monthly reporting on rankings, AI citations, traffic, leads — and the next growth lever." },
@@ -1154,22 +1217,22 @@ function SEOToolsWeUse() {
 
 const SEO_CASES: SliderCase[] = [
   {
-    tag: "Industrial B2B · SEO & AEO/GEO",
+    tag: "Ahmedabad · Industrial B2B · SEO & AEO/GEO",
     color: "#22C55E",
-    title: "Prism Calibration Centre",
+    title: "Prism Calibration Centre, Ahmedabad",
     href: "/case-studies/prism-calibration/",
     stats: [
       { num: "70–100", label: "Qualified leads every month" },
       { num: "Top 3", label: "Google rankings on major keywords" },
-      { num: "AI Overview", label: "Featured in Google's AI answers" },
+      { num: "1,860", label: "Organic visits in July 2026, 43.5% of all traffic and up 18.6% on June" },
     ],
     problems: ["Strong expertise, but growth came from word-of-mouth only", "Outdated website with no search-friendly structure", "Enquiries untracked across multiple forms", "Legacy PBN backlinks and weak local signals"],
     solutions: ["Rebuilt the site for speed, SEO and scale", "Service → industry → instrument page architecture", "Pillar content, internal linking, schema and local SEO", "Optimised for AI search with AEO + GEO"],
   },
   {
-    tag: "Healthcare & Fertility · SEO + YouTube",
+    tag: "Ahmedabad · Healthcare & Fertility · SEO + YouTube",
     color: "#7C3AED",
-    title: "IVF Clinic",
+    title: "IVF Clinic, Ahmedabad",
     href: "/case-studies/ivf-clinic/",
     stats: [
       { num: "+76.7%", label: "Organic website traffic growth in 6 months" },
@@ -1383,7 +1446,7 @@ function TrustStrip() {
 
 function Testimonials() {
   // Verified Google reviews from thedigitalaura.com/testimonials.
-  // A 4th review (Navneet Singh) is pending the verified quote — add it here once supplied.
+  // Same verified Google reviews that are shown on the main site's testimonials page.
   const items = [
     {
       q: "Digital Aura's team designed a professional website and executed a highly effective Meta Ads campaign that brought us real, measurable results.",
@@ -1400,16 +1463,39 @@ function Testimonials() {
       n: "Ketan Patel",
       role: "Business Owner",
     },
+    {
+      q: "We partnered with them for website development and lead generation campaigns, and the results were beyond our expectations.",
+      n: "Chintan Joshi",
+      role: "Local Guide · 141 Reviews",
+    },
+    {
+      q: "Their lead generation strategies through Meta Ads were impeccable, delivering high quality leads that swiftly converted into sales.",
+      n: "Tapan Joshi",
+      role: "Invisible Grills Business",
+    },
+    {
+      q: "Digital Aura improved our website user experience and boosted brand visibility, crucial for attracting more customers.",
+      n: "Tirth Patel",
+      role: "Local Guide · 18 Reviews",
+    },
   ];
   const [api, setApi] = useState<CarouselApi>();
   const [selected, setSelected] = useState(0);
+  const [snapCount, setSnapCount] = useState(items.length);
   useEffect(() => {
     if (!api) return;
-    setSelected(api.selectedScrollSnap());
+    // One dot per scroll position (not per card), so the dots stay correct when several cards show at once.
     const onSelect = () => setSelected(api.selectedScrollSnap());
+    const onInit = () => {
+      setSnapCount(api.scrollSnapList().length);
+      onSelect();
+    };
+    onInit();
     api.on("select", onSelect);
+    api.on("reInit", onInit);
     return () => {
       api.off("select", onSelect);
+      api.off("reInit", onInit);
     };
   }, [api]);
   return (
@@ -1426,7 +1512,7 @@ function Testimonials() {
                     ))}
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <img src={googlePlatformLogo} alt="Google" className="h-4 w-auto object-contain" />
+                    <img src={googlePlatformLogo} alt="Google" width={277} height={92} className="h-4 w-auto object-contain" />
                     <span className="inline-flex items-center gap-1 rounded-full bg-brand-orange-soft px-2 py-0.5 text-[10px] font-bold text-brand-orange">
                       <Check className="h-2.5 w-2.5" /> Verified
                     </span>
@@ -1448,9 +1534,9 @@ function Testimonials() {
         <CarouselNext className="right-2 xl:-right-12" />
       </Carousel>
       <div className="pillar-carousel-dots">
-        {items.map((t, i) => (
+        {Array.from({ length: snapCount }).map((_, i) => (
           <button
-            key={t.n}
+            key={i}
             type="button"
             aria-label={`Go to testimonial ${i + 1}`}
             onClick={() => api?.scrollTo(i)}
@@ -1635,6 +1721,7 @@ function Industries() {
         <SectionHeading
           eyebrow="Who we serve"
           title={<>Industries we move the <span className="text-brand-orange">needle</span> for</>}
+          sub={<>As an SEO agency in Ahmedabad we work with <a className="font-semibold text-brand-orange underline" href="/seo/doctors-hospitals-ahmedabad/">clinics and hospitals</a>, <a className="font-semibold text-brand-orange underline" href="/seo/manufacturers-b2b-gujarat/">manufacturers and B2B companies</a>, retailers and services.</>}
         />
         <Reveal className="pillar-cols-4 mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {list.map(({ icon: Icon, t, d }) => (
@@ -1680,7 +1767,7 @@ function Compare() {
           <div className="grid grid-cols-[1.4fr_1fr_1fr] bg-surface-2 px-4 py-4 text-xs font-bold uppercase tracking-wider text-ink-muted md:px-8 md:text-sm">
             <div className="flex items-center">What you get</div>
             <div className="flex h-full items-center justify-center text-brand-navy">
-              <img src={digitalAuraLogo} alt="Digital Aura" className="h-10 w-auto object-contain md:h-12" />
+              <img src={digitalAuraLogo} alt="Digital Aura" width={341} height={220} className="h-10 w-auto object-contain md:h-12" />
             </div>
             <div className="flex items-center justify-center font-bold">Other agency</div>
           </div>
@@ -1728,8 +1815,16 @@ function Compare() {
 
 const FAQS = [
     {
-      q: "Do you do AI search optimisation (AEO and GEO)?",
-      a: "Yes. It is part of our SEO work. We structure pages with clear answers, add schema and entity details, and build topic coverage so your business is easier for Google AI Overviews, ChatGPT, Gemini and Perplexity to understand. Nobody controls what an AI answer says, so we do not promise citations. We track where your brand shows up and improve from there.",
+      q: "Which is the best SEO company in Ahmedabad?",
+      a: "The best SEO company is the one that shows verified results in your industry, explains its work in plain words, reports on leads and not only rankings, and gives prices and terms in writing. Digital Aura publishes plans from ₹15,000 to ₹1,50,000 a month, reports monthly on enquiries and offers a free audit so you can compare us fairly.",
+    },
+    {
+      q: "SEO agency or freelancer in Ahmedabad?",
+      a: "A freelancer can suit a small, simple site. An SEO agency in Ahmedabad suits you better when you need technical, content, local and link work done together, with reporting and cover when one person is away. Either way, ask for a written scope, a sample report and the name of the person who will run your account.",
+    },
+    {
+      q: "Do you offer AEO and AI search optimization in Ahmedabad?",
+      a: "Yes. As an AI SEO company in Ahmedabad, we treat it as part of our SEO work. We structure pages with clear answers, add schema and entity details, and build topic coverage so your business is easier for Google AI Overviews, ChatGPT, Gemini and Perplexity to understand. Nobody controls what an AI answer says, so we do not promise citations. We track where your brand shows up and improve from there.",
     },
     {
       q: "Are there long-term SEO contracts?",
@@ -1757,7 +1852,7 @@ const FAQS = [
     },
     {
       q: "Do you optimise our Google Business Profile?",
-      a: "Yes. Categories, services, posts, photos, Q&A and review strategy are managed as part of Local SEO, alongside citations and Map Pack optimisation for Ahmedabad-based searches.",
+      a: "Yes. Categories, services, posts, photos, Q&A and review strategy are managed as part of our local SEO services, alongside citations and Map Pack optimisation for Ahmedabad-based searches.",
     },
     {
       q: "Can you recover rankings after a Google algorithm update?",
@@ -1789,7 +1884,7 @@ const FAQS = [
     },
     {
       q: "What is the difference between an SEO company, an SEO agency and SEO services?",
-      a: "Mostly the name. What actually matters is what is included each month, who does the work, and how results are measured. Ask every provider for a written scope, a sample report and the name of the person who will run your account.",
+      a: "Mostly the name. A search engine optimization company in Ahmedabad improves how your site is found on Google, Maps and AI search, whatever it calls itself. What actually matters is what is included each month, who does the work, and how results are measured. Ask every provider for a written scope, a sample report and the name of the person who will run your account.",
     },
     {
       q: "Local SEO or national SEO: which do I need in Ahmedabad?",
@@ -1846,7 +1941,7 @@ function AreasAndServices() {
     "Navrangpura & CG Road",
     "Maninagar & Vastral",
     "Naroda & Vatva industrial areas",
-    "Hanspura & SP Ring Road",
+    "Hanspura & Sardar Patel Ring Rd",
     "Gandhinagar & wider Gujarat",
   ];
   const services = [
@@ -1886,7 +1981,7 @@ function AreasAndServices() {
               ))}
             </ul>
             <p className="mt-5 text-sm text-ink-muted">
-              See every city we cover on our <a className="font-semibold text-brand-orange underline" href="/service-areas/">service areas page</a>.
+              Our <a className="font-semibold text-brand-orange underline" href="/services/seo-content-marketing/local-seo/">local SEO services in Ahmedabad</a> cover each of these areas. See every city we cover on our <a className="font-semibold text-brand-orange underline" href="/service-areas/">service areas page</a>.
             </p>
           </div>
           <div>
@@ -2026,9 +2121,9 @@ function ChooseSEO() {
 
 function SEOServicesScope() {
   const items = [
-    { t: "Technical SEO", d: "Crawling, indexing, site speed, Core Web Vitals and schema. We fix these first because they cap everything that comes after.", h: "/services/seo-content-marketing/technical-seo/" },
+    { t: "Technical SEO", d: "Technical SEO services in Ahmedabad: crawling, indexing, site speed, Core Web Vitals and schema. We fix these first because they cap everything that comes after.", h: "/services/seo-content-marketing/technical-seo/" },
     { t: "On-page SEO and content", d: "Pages built around what buyers actually search, with clear headings, internal links and a next step on every page.", h: "/services/seo-content-marketing/on-page-seo/" },
-    { t: "Local SEO", d: "Google Business Profile, citations, reviews and Map Pack work for searches made in and around Ahmedabad.", h: "/services/seo-content-marketing/local-seo/" },
+    { t: "Local SEO", d: "Local SEO services in Ahmedabad: Google Business Profile, citations, reviews and Map Pack work for searches made in and around Ahmedabad.", h: "/services/seo-content-marketing/local-seo/" },
     { t: "Off-page SEO", d: "Earning relevant links and mentions from real sites. We do not buy links or use link farms.", h: "/services/seo-content-marketing/off-page-seo/" },
     { t: "Ecommerce SEO", d: "Category and product page structure, product data and speed, so an online store can be found for what it sells.", h: "/services/seo-content-marketing/ecommerce-seo/" },
     { t: "SEO audit and strategy", d: "A full review of what holds your site back, with a written priority list you can act on, with us or without us.", h: "/seo/free-audit/" },
@@ -2301,7 +2396,7 @@ function OfficeMap() {
           <div className="relative min-h-[300px] bg-surface-2 md:min-h-[420px]">
             <iframe
               src={MAPS_EMBED}
-              title="Digital Aura office on Google Maps: 713, Shilp Arcade, Sardar Patel Ring Road, Hanspura, Ahmedabad"
+              title="Digital Aura office on Google Maps: Shilp Arcade, 713, Sardar Patel Ring Rd, Hanspura, Ahmedabad"
               width="600"
               height="450"
               className="absolute inset-0 h-full w-full"
@@ -2327,7 +2422,7 @@ function OfficeMap() {
               ))}
             </ul>
             <div className="mt-6 space-y-3 border-t border-brand-navy/10 pt-5 text-sm text-ink-muted">
-              <p className="flex items-start gap-3"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" /><span>713, Shilp Arcade, Sardar Patel Ring Road, Hanspura, Ahmedabad, Gujarat 382330</span></p>
+              <p className="flex items-start gap-3"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" /><span>Shilp Arcade, 713, Sardar Patel Ring Rd, Hanspura, Ahmedabad, Gujarat 382330</span></p>
               <p className="flex items-start gap-3"><Clock className="mt-0.5 h-4 w-4 shrink-0 text-brand-orange" /><span>Monday to Saturday, 10 AM to 7 PM. Closed on Sunday.</span></p>
             </div>
             <div className="mt-6 md:mt-auto md:pt-6">
@@ -2401,7 +2496,8 @@ function FinalCTA() {
             <p className="max-w-xl text-[17px] leading-relaxed text-white/80">
               Free, no-obligation audit covering Technical SEO, On-Page SEO, Schema, Core Web Vitals, AI Search
               visibility and GEO readiness. Delivered with a 30-minute strategy walkthrough by a senior consultant —
-              not a junior account manager reading a template.
+              not a junior account manager reading a template. Every one of our SEO services in Ahmedabad starts
+              this way, and it is how a good SEO company in Ahmedabad should begin: with facts about your own site.
             </p>
             <div className="pillar-btn-row mt-7">
               <PrimaryCTA href="#audit">Get My Free SEO Audit</PrimaryCTA>
@@ -2411,7 +2507,7 @@ function FinalCTA() {
             </div>
           </div>
           <div>
-            <LeadForm />
+            <LeadForm formId="audit-footer" />
           </div>
         </div>
         <OfficeMap />
@@ -2486,7 +2582,7 @@ function Footer() {
               <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-brand-orange-soft text-brand-orange">
                 <MapPin className="h-4 w-4" />
               </span>
-              <span className="leading-relaxed">713, Shilp Arcade, Sardar Patel Ring Rd, Hanspura, Ahmedabad, Gujarat 382330</span>
+              <span className="leading-relaxed">Shilp Arcade, 713, Sardar Patel Ring Rd, Hanspura, Ahmedabad, Gujarat 382330</span>
             </li>
             <li className="flex items-center gap-3">
               <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-brand-orange-soft text-brand-orange">
@@ -2630,7 +2726,7 @@ function Index() {
         </PillarSection>
 
         {/* 4. Services */}
-        <PillarSection id="services" tone="white" eyebrow="What's included" title="Our SEO services">
+        <PillarSection id="services" tone="white" eyebrow="What's included" title="Our SEO services in Ahmedabad">
           <PillarTabs
             label="SEO services"
             tabs={[

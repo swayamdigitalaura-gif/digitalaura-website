@@ -6,11 +6,33 @@ const { deriveTrafficSource } = require('../utils/trafficSource');
 const clip = (v, n) => (typeof v === 'string' && v.trim() ? v.trim().slice(0, n) : null);
 const pathOf = (u) => { try { return new URL(u, 'https://x').pathname; } catch { return null; } };
 
+// Google reCAPTCHA v2. Only active when RECAPTCHA_SECRET is set in the environment, so forms keep working
+// until the key is configured. Forms on pages that show the widget send `recaptchaToken`; those sources must pass.
+const RECAPTCHA_SOURCES = ['seo-services-ahmedabad'];
+const recaptchaOk = async (token, source) => {
+  const secret = process.env.RECAPTCHA_SECRET;
+  if (!secret) return true;
+  if (typeof token !== 'string' || !token) return !RECAPTCHA_SOURCES.includes(source);
+  try {
+    const r = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({ secret, response: token }).toString(),
+    });
+    const data = await r.json();
+    return data.success === true;
+  } catch (e) {
+    console.error('reCAPTCHA verify failed, allowing submission:', e.message);
+    return true; // Google unreachable: do not lose a real lead
+  }
+};
+
 exports.submit = async (req, res) => {
   try {
     const body = req.body || {};
     // Honeypot: bots fill this hidden field, humans never see it. Pretend success.
     if (typeof body.company_site === 'string' && body.company_site.trim()) return res.status(201).json({ success: true, message: 'Inquiry submitted!' });
+    if (!(await recaptchaOk(body.recaptchaToken, body.source))) return res.status(400).json({ success: false, message: 'Captcha verification failed. Please try again.' });
     const { name, email, phone, company, project, budget, message, source } = body;
     if (!name || !email) return res.status(400).json({ success: false, message: 'Name and email are required' });
 

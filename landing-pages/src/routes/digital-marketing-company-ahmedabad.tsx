@@ -109,9 +109,9 @@ import {
   useInPillar,
 } from "@/components/pillar/Pillar";
 
-const PAGE_TITLE = "Digital Marketing Company in Ahmedabad | Top Agency | Digital Aura";
+const PAGE_TITLE = "Digital Marketing Company in Ahmedabad | Rated 5.0 on Google";
 const PAGE_DESCRIPTION =
-  "Digital marketing company in Ahmedabad and a full-service agency: SEO, Google Ads, Meta Ads and social media in one plan. Rated 4.9 on Google. From ₹30,000 a month.";
+  "Digital marketing company in Ahmedabad: SEO, Google Ads, Meta Ads and social media in one tracked plan. Packages from ₹30,000 a month plus GST. Book a free audit.";
 const OG_DESCRIPTION =
   "SEO, Google Ads, Meta Ads and social media run as one team by a digital marketing company and agency in Ahmedabad. Clear pricing, monthly lead reporting and a free growth audit.";
 const PAGE_URL = "https://thedigitalaura.com/digital-marketing-company-ahmedabad";

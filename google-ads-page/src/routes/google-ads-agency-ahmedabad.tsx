@@ -25,12 +25,12 @@ import "../pillar-pages.css";
 export const Route = createFileRoute("/google-ads-agency-ahmedabad")({
   head: () => ({
     meta: [
-      { title: "Google Ads & Performance Marketing Agency in Ahmedabad | Digital Aura" },
-      { name: "description", content: "Performance marketing agency and Google Ads company in Ahmedabad. PPC management in your own account, with tracked calls and leads. Month-to-month. Get a free audit." },
-      { property: "og:title", content: "Google Ads & Performance Marketing Agency in Ahmedabad | Digital Aura" },
-      { property: "og:description", content: "Performance marketing agency and Google Ads company in Ahmedabad. PPC management in your own account, with tracked calls and leads. Month-to-month. Get a free audit." },
-      { name: "twitter:title", content: "Google Ads & Performance Marketing Agency in Ahmedabad | Digital Aura" },
-      { name: "twitter:description", content: "Performance marketing agency and Google Ads company in Ahmedabad. PPC management in your own account, with tracked calls and leads. Month-to-month. Get a free audit." },
+      { title: "Google Ads Agency in Ahmedabad | PPC & Lead Generation" },
+      { name: "description", content: "Google Ads agency in Ahmedabad: PPC campaigns in your own account, tracked calls and leads, month-to-month terms. Management fee from ₹15,000 plus GST. Free audit." },
+      { property: "og:title", content: "Google Ads Agency in Ahmedabad | PPC & Lead Generation" },
+      { property: "og:description", content: "Google Ads agency in Ahmedabad: PPC campaigns in your own account, tracked calls and leads, month-to-month terms. Management fee from ₹15,000 plus GST. Free audit." },
+      { name: "twitter:title", content: "Google Ads Agency in Ahmedabad | PPC & Lead Generation" },
+      { name: "twitter:description", content: "Google Ads agency in Ahmedabad: PPC campaigns in your own account, tracked calls and leads, month-to-month terms. Management fee from ₹15,000 plus GST. Free audit." },
     ],
   }),
   component: LandingPage,

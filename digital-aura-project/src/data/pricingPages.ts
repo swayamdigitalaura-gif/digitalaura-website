@@ -69,7 +69,7 @@ const seo: PricingPageConfig = {
   pillar: { href: "/seo-services-ahmedabad", label: "SEO Services in Ahmedabad", short: "SEO services in Ahmedabad" },
   meta: {
     title: "SEO Packages & Pricing in Ahmedabad (2026) | Digital Aura",
-    description: "SEO packages in Ahmedabad from ₹15,000 to ₹1,50,000 a month plus GST: Basic, Growth and Advance plans, what each includes, contract terms and how to get a written quote after a free audit.",
+    description: "SEO packages in Ahmedabad: Basic ₹15,000-25,000, Growth ₹25,000-50,000, Advance ₹50,000-1,50,000 a month plus GST. See what each plan includes. Free SEO audit first.",
   },
   breadcrumbLabel: "SEO Packages and Pricing",
   eyebrow: "SEO Pricing · Ahmedabad",
@@ -264,8 +264,8 @@ const gads: PricingPageConfig = {
   path: "/google-ads-pricing-ahmedabad",
   pillar: { href: "/google-ads-agency-ahmedabad", label: "Google Ads Agency in Ahmedabad", short: "Google Ads agency in Ahmedabad" },
   meta: {
-    title: "Google Ads Pricing in Ahmedabad (2026): Fees & Ad Spend | Digital Aura",
-    description: "Google Ads management in Ahmedabad costs ₹15,000 to ₹60,000 a month plus GST, with ad spend paid to Google separately. See what the fee covers, the budget calculator and how to compare quotes.",
+    title: "Google Ads Pricing in Ahmedabad (2026) | Fees & Ad Spend",
+    description: "Google Ads management in Ahmedabad costs ₹15,000 to ₹60,000 a month plus GST, ad spend paid to Google. See what the fee covers, use the calculator, compare quotes.",
   },
   breadcrumbLabel: "Google Ads Pricing",
   eyebrow: "Google Ads Pricing · Ahmedabad",
@@ -480,8 +480,8 @@ const meta: PricingPageConfig = {
   path: "/meta-ads-agency-ahmedabad/pricing",
   pillar: { href: "/meta-ads-agency-ahmedabad/", label: "Meta Ads Agency in Ahmedabad", short: "Meta ads agency in Ahmedabad" },
   meta: {
-    title: "Meta Ads Pricing in Ahmedabad (2026): Fees & Ad Spend | Digital Aura",
-    description: "Meta (Facebook and Instagram) ads management in Ahmedabad costs ₹15,000 to ₹60,000 a month plus GST, with ad spend paid to Meta separately. See what is included, how to plan your budget and compare quotes.",
+    title: "Meta Ads Pricing in Ahmedabad (2026) | Fees & Ad Spend",
+    description: "Meta ads management in Ahmedabad costs ₹15,000 to ₹60,000 a month plus GST, ad spend paid to Meta. See what is included, plan your budget and compare agency quotes.",
   },
   breadcrumbLabel: "Meta Ads Pricing",
   eyebrow: "Meta Ads Pricing · Ahmedabad",

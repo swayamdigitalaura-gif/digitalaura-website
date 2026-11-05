@@ -22,9 +22,9 @@ import CaseStudies, { CASE_CARDS } from "@/components/CaseStudies";
 import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
 
-const PAGE_TITLE = "Website Development Services in Ahmedabad | Web Development Company";
+const PAGE_TITLE = "Website Development Company in Ahmedabad | Digital Aura";
 const PAGE_DESCRIPTION =
-  "Website development services in Ahmedabad by a web design and development company. Fast, SEO-ready websites that bring leads. Talk to Digital Aura.";
+  "Website development company in Ahmedabad: fast, mobile-friendly, SEO-ready business websites, ecommerce stores and web apps built to bring enquiries. Free quote.";
 const PAGE_URL = "https://thedigitalaura.com/website-development-services-ahmedabad/";
 
 function useBasicSEO() {

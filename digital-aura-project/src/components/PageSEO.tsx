@@ -16,12 +16,12 @@ const DEFAULT_IMAGE = `${SITE_URL}/logos/digital-aura-logo.png`;
 // Per-page SEO defaults — overridden by DB values if set via admin panel
 const PAGE_META: Record<string, { title: string; description: string }> = {
   '/': {
-    title: 'Digital Marketing Agency in Ahmedabad | Digital Aura',
-    description: 'Digital Aura is a data-driven digital marketing agency in Ahmedabad specializing in SEO, Google Ads, Meta Ads & Web Design. 120+ happy clients.',
+    title: "Digital Marketing Agency in Ahmedabad & SEO | Digital Aura",
+    description: "Digital Aura is a digital marketing agency in Ahmedabad: SEO, Google Ads, Meta Ads, websites and AI automation for 120+ businesses. Rated 5.0 on Google. Free audit.",
   },
   '/about': {
-    title: 'About Digital Aura | Our Story, Vision & Expert Team',
-    description: "A decade of digital growth. Learn about Digital Aura's vision, mission, values, and the expert team behind 750+ successful client projects.",
+    title: "About Digital Aura | Digital Marketing Agency, Ahmedabad",
+    description: "Digital Aura is an Ahmedabad digital marketing agency founded by Sambhav Shah. Meet the team behind 750+ projects and 120+ clients in SEO, Google Ads, Meta Ads, web.",
   },
   '/services': {
     title: 'SEO, Ads, Web Dev & AI Services | Digital Aura',
@@ -68,8 +68,8 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     description: "Stay updated with the latest digital marketing trends, SEO tips, Google Ads strategies, and AI insights from the Digital Aura team.",
   },
   '/contact': {
-    title: 'Contact Digital Aura | Get a Free Consultation',
-    description: 'Ready to grow your business? Contact Digital Aura for a free consultation on SEO, Google Ads, web development, and AI marketing solutions.',
+    title: "Contact Digital Aura | Digital Marketing Agency in Ahmedabad",
+    description: "Call +91 81412 00284 or visit Shilp Arcade, 713, Sardar Patel Ring Rd, Hanspura, Ahmedabad. Free consultation on SEO, Google Ads, Meta Ads, web and AI automation.",
   },
   '/careers': {
     title: 'Careers at Digital Aura | Join Our Growing Team',
@@ -213,8 +213,8 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   },
 
   '/service-areas': {
-    title: 'Service Areas | Digital Aura',
-    description: "Digital Aura serves businesses in Ahmedabad, across Gujarat, and internationally with SEO, web development, AI automation, and digital marketing.",
+    title: "Areas We Serve in Ahmedabad & Gujarat | Digital Aura",
+    description: "Digital Aura serves businesses across Ahmedabad (Hanspura, SG Highway, Satellite, Prahlad Nagar, Bopal), Gujarat and abroad with SEO, ads, web and AI automation.",
   },
 
   // ── Previously missing pages (were falling back to homepage title/description) ──
@@ -223,28 +223,28 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     description: "From an Emerging Business Award in 2017 to Growth Partner of the Year in 2025 — Digital Aura's recognition by national and global councils.",
   },
   '/services/seo-content-marketing/ecommerce-seo': {
-    title: 'eCommerce SEO Services | Digital Aura',
-    description: "eCommerce SEO for Shopify and WooCommerce stores — product page optimisation, Product schema, and Google Shopping visibility to turn traffic into sales.",
+    title: "Ecommerce SEO Services in Ahmedabad | Shopify & WooCommerce",
+    description: "Ecommerce SEO services in Ahmedabad for Shopify, WooCommerce, custom stores: category and product page SEO, speed, schema and content that brings buyers. Free audit.",
   },
   '/services/seo-content-marketing/local-seo': {
-    title: 'Local SEO Services | Digital Aura',
-    description: "Local SEO services to rank higher on Google Maps and the local pack — Google Business Profile optimisation, citations, and location page strategy.",
+    title: "Local SEO Services in Ahmedabad | Google Maps Ranking",
+    description: "Local SEO services in Ahmedabad: Google Business Profile, map pack ranking, reviews, citations and local landing pages for clinics, shops and services. Free audit.",
   },
   '/services/seo-content-marketing/off-page-seo': {
     title: 'Off-Page SEO & Link Building Services | Digital Aura',
     description: 'Off-page SEO and link building services — earned backlinks, digital PR, and authority building through manual, relevant outreach, not spam link schemes.',
   },
   '/services/seo-content-marketing/on-page-seo': {
-    title: 'On-Page SEO Services | Digital Aura',
-    description: "On-page SEO services — title tags, headings, content, internal links, and images optimised so search engines rank your pages correctly.",
+    title: "On-Page SEO Services in Ahmedabad | Titles, Content, Links",
+    description: "On-page SEO services in Ahmedabad: keyword mapping, titles and meta tags, headings, content, internal links and schema for every key page. Get a free page review.",
   },
   '/services/seo-content-marketing/seo-audit-strategy': {
     title: 'SEO Audit & Strategy Services | Digital Aura',
     description: 'A full SEO audit and strategy — site crawl, keyword gap analysis, competitor benchmarking, and a prioritised action roadmap tied to your business goals.',
   },
   '/services/seo-content-marketing/technical-seo': {
-    title: 'Technical SEO Services | Digital Aura',
-    description: "Technical SEO services covering site speed, Core Web Vitals, crawlability, structured data, and site health for proper indexing.",
+    title: "Technical SEO Services in Ahmedabad | Speed & Crawl Fixes",
+    description: "Technical SEO services in Ahmedabad: site speed, crawl and index fixes, schema, Core Web Vitals and clean URLs so Google can find and rank your pages. Free audit.",
   },
 
   // ── Local / city landing pages ──
@@ -309,12 +309,12 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     description: "Digital Aura is a Gujarat-based mobile app development company serving Ahmedabad, Surat, Vadodara, and Rajkot with Android, iOS, and Flutter apps.",
   },
   '/google-ads-agency-ahmedabad': {
-    title: 'Google Ads Agency in Ahmedabad | Digital Aura',
-    description: "Digital Aura is a Google Ads agency in Ahmedabad running Search, Display, and Shopping campaigns focused on lowering cost-per-lead.",
+    title: "Google Ads Agency in Ahmedabad | PPC & Lead Generation",
+    description: "Google Ads agency in Ahmedabad: PPC campaigns in your own account, tracked calls and leads, month-to-month terms. Management fee from ₹15,000 plus GST. Free audit.",
   },
   '/seo/free-audit': {
-    title: 'Free SEO Audit in Ahmedabad | Digital Aura',
-    description: 'Free SEO audit in Ahmedabad: enter your website and get technical, on-page, off-page, spam-link, local and AI-search checks with a prioritised fix list.',
+    title: "Free SEO Audit in Ahmedabad | 14-Point Website Check",
+    description: "Free SEO audit in Ahmedabad: enter your website and get a 14-point check of technical SEO, on-page, backlinks, content, CRO and AI search readiness. Reply in a day.",
   },
   '/google-ads-audit-ahmedabad': {
     title: 'Free Google Ads Audit in Ahmedabad | Digital Aura',
@@ -330,8 +330,8 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   },
   '/seo/pricing-ahmedabad': PRICING_PAGES.seo.meta,
   '/seo/doctors-hospitals-ahmedabad': {
-    title: "SEO for Doctors & Hospitals in Ahmedabad",
-    description: "Healthcare SEO for Ahmedabad doctors, clinics and hospitals: treatment pages, local SEO, careful content and appointment tracking. Free audit.",
+    title: "SEO for Doctors & Hospitals in Ahmedabad | Digital Aura",
+    description: "SEO for doctors, clinics and hospitals in Ahmedabad: Google Maps, patient-intent keywords, reviews and medically careful content that brings calls. Free SEO audit.",
   },
   '/seo/manufacturers-b2b-gujarat': {
     title: "SEO for Manufacturers & B2B in Gujarat",
@@ -339,8 +339,8 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   },
   '/google-ads-pricing-ahmedabad': PRICING_PAGES.gads.meta,
   '/google-ads-for-doctors-ahmedabad': {
-    title: "Google Ads for Doctors & Hospitals in Ahmedabad",
-    description: "Google Ads for doctors in Ahmedabad: careful ad copy, service-line campaigns, tracked appointments and a free healthcare review.",
+    title: "Google Ads for Doctors in Ahmedabad | Patient Enquiries",
+    description: "Google Ads for doctors and clinics in Ahmedabad: compliant ad copy, call and appointment tracking, local targeting and a monthly enquiry report. Free account audit.",
   },
   '/meta-ads-agency-ahmedabad/pricing': PRICING_PAGES.meta.meta,
   '/meta-ads-agency-ahmedabad/clinics-doctors': {
@@ -348,8 +348,8 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     description: "Meta ads for doctors and clinics in Ahmedabad: health ad policy limits, WhatsApp lead handling and booked appointments. Free ad review.",
   },
   '/website-development-cost-ahmedabad': {
-    title: "Website Development Cost in Ahmedabad: Price Guide",
-    description: "Website development cost in Ahmedabad: what decides the price, site types, platform choice, running costs and how to compare quotes.",
+    title: "Website Development Cost in Ahmedabad (2026) | Price Guide",
+    description: "Website development cost in Ahmedabad explained: what sets the price, site types, platform choice, running costs and how to compare quotes. Get a written estimate.",
   },
   '/website-design-cost-ahmedabad': {
     title: "Website Design Cost in Ahmedabad: Price Guide",
@@ -368,16 +368,16 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     description: "Website design for manufacturers and exporters in Ahmedabad and Gujarat: product catalogue, RFQ flow, certificates and multilingual SEO.",
   },
   '/social-media-marketing-agency-ahmedabad': {
-    title: 'Social Media Marketing Agency in Ahmedabad',
-    description: 'Social media marketing agency in Ahmedabad: content plans, Reels, community management and paid social, measured on enquiries. Free review.',
+    title: "Social Media Marketing Agency in Ahmedabad | Digital Aura",
+    description: "Social media marketing agency in Ahmedabad: content plans, Reels, community management and paid social measured on enquiries, not likes. Get a free profile review.",
   },
   '/advertising-agency-ahmedabad': {
-    title: 'Advertising Agency in Ahmedabad | Google & Meta Ads',
-    description: 'Advertising agency in Ahmedabad for Google PPC, Meta, YouTube and LinkedIn ads, with tracking for calls, forms and WhatsApp. Free ad plan review.',
+    title: "Advertising Agency in Ahmedabad | Google & Meta Ads",
+    description: "Advertising agency in Ahmedabad for Google, Meta, YouTube and LinkedIn ads. Tracked calls, forms and WhatsApp leads, clear fees, monthly reports. Free plan review.",
   },
   '/meta-ads-agency-ahmedabad': {
-    title: 'Meta Ads Agency in Ahmedabad | Facebook & Instagram Ads',
-    description: "Ahmedabad Meta ads agency for Facebook, Instagram and WhatsApp lead generation. Clear process, lead tracking and a free account review.",
+    title: "Meta Ads Agency in Ahmedabad | Facebook & Instagram Ads",
+    description: "Meta ads agency in Ahmedabad for Facebook, Instagram and WhatsApp lead generation. Lead tracking, creative testing, fees from ₹15,000 plus GST. Free account review.",
   },
   '/digital-marketing-agency-ahmedabad': {
     title: "Digital Marketing Services in Ahmedabad | Digital Aura",

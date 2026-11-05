@@ -195,7 +195,7 @@ export function MainSiteFooter() {
             </ul>
             <div className="flex gap-2.5">
               <a
-                href="https://www.linkedin.com/company/thedigitalaura/"
+                href="https://www.linkedin.com/in/sambhav-shah/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -208,7 +208,7 @@ export function MainSiteFooter() {
                 <Linkedin size={15} />
               </a>
               <a
-                href="https://www.instagram.com/thedigitalaura/"
+                href="https://www.instagram.com/sambhavshah2/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"

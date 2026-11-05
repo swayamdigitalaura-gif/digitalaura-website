@@ -8,7 +8,7 @@ const pathOf = (u) => { try { return new URL(u, 'https://x').pathname; } catch {
 
 // Google reCAPTCHA v2. Only active when RECAPTCHA_SECRET is set in the environment, so forms keep working
 // until the key is configured. Forms on pages that show the widget send `recaptchaToken`; those sources must pass.
-const RECAPTCHA_SOURCES = ['seo-services-ahmedabad'];
+const RECAPTCHA_SOURCES = ['seo-services-ahmedabad', 'digital-marketing-company-ahmedabad'];
 const recaptchaOk = async (token, source) => {
   const secret = process.env.RECAPTCHA_SECRET;
   if (!secret) return true;

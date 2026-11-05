@@ -43,6 +43,16 @@ declare -A NEW_LOCATIONS=(
     gzip_comp_level 5;
     gzip_min_length 1024;
     gzip_types text/css application/javascript text/javascript application/json image/svg+xml text/plain text/xml application/xml;'
+  [WP_410_GONE]='    # Old WordPress URLs with no equivalent on the new site: 410 Gone (permanently
+    # removed), not a redirect to an unrelated page — Google should drop these from
+    # its index rather than keep re-crawling a soft-404.
+    location ~* ^/wp-(content|admin|includes)/ { return 410; }
+    location ~* /feed/?$ { return 410; }
+    location = /author/user/ { return 410; }
+    location = /blog/guide/ { return 410; }
+    location = /links/ { return 410; }
+    location ~ ^/industry/(orthodontists|google-ads-for-orthodontists|local-seo-for-orthodontists|youtube-ads-for-orthodontists|lead-generation-for-chiropractors|local-seo-for-chiropractors|seo-for-chiropractors|social-media-management-for-chiropractors|local-seo-for-ophthalmologists|seo-for-ophthalmologists|youtube-ads-for-ophthalmologists)/?$ { return 410; }
+    location ~ ^/(best-free-keyword-research-tools-for-seo|how-to-do-keyword-research-for-blog-writing|how-to-find-out-what-backlinks-your-website-already-has|how-to-track-your-seo-progress|keyword-research|the-complete-keyword-research-guide|what-is-anchor-text-and-how-can-i-optimize-it|taxi-business-website-features|taxi-cab-business-digital-marketing)/?$ { return 410; }'
 )
 
 # Literal substring (no regex metacharacters) — the insertion point.
@@ -85,7 +95,7 @@ cp "$LIVE" "$WORK"
 CHANGED=0
 
 for path in "${!NEW_LOCATIONS[@]}"; do
-  if grep -qF "location $path {" "$WORK" || { [ "$path" = "REMOVED_AI_FILMMAKING" ] && grep -qF "ai-filmmaking|ai-filmmaking-ahmedabad" "$WORK"; } || { [ "$path" = "DA_COMPRESSION" ] && grep -qE "gzip_types[^;]*(text/css|application/javascript)" "$WORK"; }; then
+  if grep -qF "location $path {" "$WORK" || { [ "$path" = "REMOVED_AI_FILMMAKING" ] && grep -qF "ai-filmmaking|ai-filmmaking-ahmedabad" "$WORK"; } || { [ "$path" = "DA_COMPRESSION" ] && grep -qE "gzip_types[^;]*(text/css|application/javascript)" "$WORK"; } || { [ "$path" = "WP_410_GONE" ] && grep -qF "location = /author/user/ { return 410; }" "$WORK"; }; then
     echo "Already live, skipping: $path"
     continue
   fi

@@ -64,7 +64,7 @@ export function TechStack() {
               className="mt-4 text-muted-foreground"
             >
               {s.wds_techstack_p ||
-                "A brochure site, an online store and a custom web application shouldn't be built the same way. We choose the platform that keeps you fast today and scalable for years."}
+                "A brochure site, an online store and a custom web application shouldn't be built the same way. As a website design company in Ahmedabad, we choose the platform that keeps you fast today and scalable for years."}
             </p>
           </Reveal>
           <Reveal delay={180}>
@@ -160,7 +160,7 @@ export function PerformanceSnapshot() {
               className="mt-4 text-muted-foreground"
             >
               {s.wds_perf_p ||
-                "Speed shapes your rankings, your bounce rate and how much a visitor trusts you before they read a word. We benchmark every build in PageSpeed Insights, Lighthouse and GTmetrix, then tune it until the numbers hold on a real mobile connection."}
+                "Speed shapes your rankings, your bounce rate and how much a visitor trusts you before they read a word. A website development company in Ahmedabad should prove its speed, so we benchmark every build in PageSpeed Insights, Lighthouse and GTmetrix, then tune it until the numbers hold on a real mobile connection."}
             </p>
           </Reveal>
           <Reveal delay={200}>

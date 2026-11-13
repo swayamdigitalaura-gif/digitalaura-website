@@ -419,6 +419,7 @@ export const wave3Extras: Record<string, Enhancement> = {
   },
   /* ───────────── meta-01: pillar ───────────── */
   metaAdsAhmedabad: {
+    lastUpdated: "2026-11-13",
     extraAdd: [
       {
         kind: "cards",

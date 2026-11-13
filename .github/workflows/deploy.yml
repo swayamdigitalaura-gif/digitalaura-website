@@ -76,6 +76,7 @@ jobs:
         env:
           NODE_ENV: production
           VITE_API_BASE: https://thedigitalaura.com
+          VITE_RECAPTCHA_SITE_KEY: 6Ld8XREuAAAAAFDu6ui4Yu_G2R1S8ogzyuAiOpAl
         run: npm run build:live
       - name: Configure SSH
         run: |

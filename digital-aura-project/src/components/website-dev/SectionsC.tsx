@@ -1,6 +1,7 @@
 import { getAttribution } from "@/lib/leadTracking";
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { ArrowRight, Quote, Star } from "lucide-react";
+import { RecaptchaBox, RECAPTCHA_SITE_KEY, type RecaptchaHandle } from "@/components/RecaptchaBox";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -315,10 +316,16 @@ export function FinalCta() {
   ]);
   const [sent, setSent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const captcha = useRef<RecaptchaHandle>(null);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
+    const captchaToken = RECAPTCHA_SITE_KEY ? captcha.current?.getToken() ?? "" : "";
+    if (RECAPTCHA_SITE_KEY && !captchaToken) {
+      toast.error("Please tick \"I'm not a robot\" before sending.");
+      return;
+    }
     const fd = new FormData(form);
     setSubmitting(true);
     try {
@@ -337,14 +344,17 @@ export function FinalCta() {
           message: [fd.get("site"), ...messageParts].filter(Boolean).join(" — "),
           project: fd.get("type") || "Website Development",
           source: "website-development-services-ahmedabad",
+          recaptchaToken: captchaToken || undefined,
           ...getAttribution(),
         }),
       });
       if (!res.ok) throw new Error("Server error");
       setSent(true);
       form.reset();
+      captcha.current?.reset();
       toast.success("Thanks — we'll be in touch within one business day.");
     } catch {
+      captcha.current?.reset();
       toast.error("Something went wrong. Please try again.");
     } finally {
       setSubmitting(false);
@@ -500,6 +510,9 @@ export function FinalCta() {
                 />
               </div>
             </div>
+
+            <RecaptchaBox ref={captcha} />
+
             <Button
               type="submit"
               size="lg"

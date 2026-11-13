@@ -66,6 +66,12 @@ export interface LocalServiceConfig {
   tags: string[];
   parentServiceHref: string;
   parentServiceLabel: string;
+  /** Pillar hero only: hide the "Back to <parent>" link. */
+  hideBackLink?: boolean;
+  /** Optional "Reviewed by" name shown in the page byline. */
+  reviewedBy?: string;
+  /** Pillar hero only: the leading part of h1 shown in the accent colour; the rest stays normal text. */
+  h1Highlight?: string;
 
   differentiatorBadge: string;
   differentiatorHeading: string;

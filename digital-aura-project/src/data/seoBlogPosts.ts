@@ -2887,7 +2887,7 @@ Allow: /</code></pre>
 </ul>
 
 <h2>Get hooks tested against real data</h2>
-<p>At <a href="/">Digital Aura</a>, we script and test openings against watch-time data, not guesswork. See our <a href="/services/digital-marketing/">digital marketing services</a> and our <a href="/meta-ads-agency-ahmedabad/">Meta ads agency in Ahmedabad</a> team for paid video.</p>
+<p>At <a href="/">Digital Aura</a>, we script and test openings against watch-time data, not guesswork. See our <a href="/services/digital-marketing/">digital marketing services</a> and our <a href="/meta-ads-agency-ahmedabad/">Meta ads agency in Ahmedabad</a> team for paid video. For Reels and posts, talk to our <a href="/social-media-marketing-agency-ahmedabad/">social media marketing agency in Ahmedabad</a> team.</p>
 `,
     faqs: [
       { q: "How important are the first few seconds of a video?", a: "Very. A weak opening limits reach regardless of how good the rest is, because viewers who leave early add almost no watch time." },

@@ -186,7 +186,7 @@ function GuideSection({ sec, index }: { sec: ExtraSection; index: number }) {
   const eyebrow = sec.eyebrow;
   const sub = "subtext" in sec ? sec.subtext : undefined;
   const bg = index % 2 === 0 ? "#fff" : "#F8FAFF";
-  const foot = "footnote" in sec && sec.footnote ? <p className="mx-auto mt-6 max-w-3xl text-center text-sm leading-relaxed text-[#6B7280]">{sec.footnote}</p> : null;
+  const foot = "footnote" in sec && sec.footnote ? <p className="mx-auto mt-6 max-w-3xl text-center text-sm leading-relaxed text-[#6B7280]">{renderInline(sec.footnote)}</p> : null;
 
   if (sec.kind === "cards") {
     const items = sec.items;
@@ -227,7 +227,7 @@ function GuideSection({ sec, index }: { sec: ExtraSection; index: number }) {
                     {it.href && !it.cta ? <a href={it.href} className="hover:underline">{it.title}</a> : it.title}
                   </h3>
                 </div>
-                <p className="mt-2 flex-1 text-[14.5px] leading-relaxed text-[#4B5563]">{it.desc}</p>
+                <p className="mt-2 flex-1 text-[14.5px] leading-relaxed text-[#4B5563]">{renderInline(it.desc)}</p>
                 {it.href && it.cta && (
                   <div className="mt-5 max-w-full">
                     <Pill href={it.href} variant="outline" external={/^https?:/.test(it.href)} onClick={() => track("cta_click", { cta_label: it.cta!, cta_location: sec.id })}>
@@ -607,7 +607,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
             {c.lastUpdated && (
               <p className="mt-6 flex items-start gap-2 text-xs leading-relaxed text-[#6B7280]">
                 <Clock size={14} className="mt-0.5 shrink-0" />
-                <span>Published by <a href="/about/" className="underline">Digital Aura</a>. Last updated <time dateTime={c.lastUpdated}>{formatDate(c.lastUpdated)}</time>.</span>
+                <span>Published by <a href="/about/" className="underline">Digital Aura</a>.{c.reviewedBy ? ` Reviewed by ${c.reviewedBy}.` : ""} Last updated <time dateTime={c.lastUpdated}>{formatDate(c.lastUpdated)}</time>.</span>
               </p>
             )}
           </div>
@@ -872,11 +872,13 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
             <div className="pointer-events-none absolute -right-24 -top-24 h-[520px] w-[520px] rounded-full" style={{ background: `radial-gradient(circle, ${ORANGE}1f 0%, transparent 70%)`, filter: "blur(60px)" }} />
             <div className="relative mx-auto grid max-w-[1200px] items-start gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
               <div>
-                <AppLink to={c.parentServiceHref} className="mb-5 inline-flex items-center gap-1 text-xs font-bold hover:underline" style={{ color: ORANGE }}>
-                  ← Back to {c.parentServiceLabel}
-                </AppLink>
+                {!c.hideBackLink && (
+                  <AppLink to={c.parentServiceHref} className="mb-5 inline-flex items-center gap-1 text-xs font-bold hover:underline" style={{ color: ORANGE }}>
+                    ← Back to {c.parentServiceLabel}
+                  </AppLink>
+                )}
                 <div className="mb-5"><Eyebrow><MapPin size={11} className="mr-1 inline -mt-0.5" />{c.eyebrow}</Eyebrow></div>
-                <h1 className="font-bold leading-[1.18] tracking-[-0.02em]" style={{ color: NAVY, fontSize: "clamp(30px, 4vw, 48px)" }}><span data-cms-key={k("h1")} data-cms-label="Hero Heading" data-cms-attr="text">{c.h1}</span></h1>
+                <h1 className="font-bold leading-[1.18] tracking-[-0.02em]" style={{ color: NAVY, fontSize: "clamp(30px, 4vw, 48px)" }}><span data-cms-key={k("h1")} data-cms-label="Hero Heading" data-cms-attr="text">{c.h1Highlight && c.h1 === config.h1 && c.h1.startsWith(c.h1Highlight) ? <><span style={{ color: ORANGE }}>{c.h1Highlight}</span>{" "}<span className="block">{c.h1.slice(c.h1Highlight.length).trim()}</span></> : c.h1}</span></h1>
                 <p className="mt-5 text-[17px] leading-relaxed text-[#4B5563] md:text-lg"><span data-cms-key={k("heroParagraph")} data-cms-label="Hero Paragraph" data-cms-attr="text">{c.heroParagraph}</span></p>
                 {c.heroParagraph2 && (
                   <p className="mt-4 flex gap-2.5 rounded-xl border px-4 py-3 text-[13.5px] leading-relaxed text-[#6B7280]" style={{ borderColor: "#E5E7EB", background: "#F8FAFC" }}>
@@ -940,7 +942,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
           </PillarSection>
 
           {/* 4. Services */}
-          <PillarSection id="services" tone="white" eyebrow="What's included" title="What our Meta ads service includes">
+          <PillarSection id="services" tone="white" eyebrow="What's included" title="Meta ads services in Ahmedabad: what is included">
             <PillarTabs label="Services" tabs={tabs([{ id: "included", label: "What you get", content: IncludedBlock }, gtab("ad-formats"), gtab("monthly-work")])} />
           </PillarSection>
 
@@ -1121,7 +1123,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
               {c.lastUpdated && (
                 <p className="mt-5 flex items-start gap-2 border-t pt-4 text-xs leading-relaxed text-[#6B7280]" style={{ borderColor: "#E5E7EB" }}>
                   <Clock size={14} className="mt-0.5 shrink-0" />
-                  <span>Published by <a href="/about/" className="underline">Digital Aura</a>. Last updated <time dateTime={c.lastUpdated}>{formatDate(c.lastUpdated)}</time>.</span>
+                  <span>Published by <a href="/about/" className="underline">Digital Aura</a>.{c.reviewedBy ? ` Reviewed by ${c.reviewedBy}.` : ""} Last updated <time dateTime={c.lastUpdated}>{formatDate(c.lastUpdated)}</time>.</span>
                 </p>
               )}
             </aside>
@@ -1153,7 +1155,7 @@ export default function IndustryLandingPage({ config, variant = "industry", offi
               {c.lastUpdated && (
                 <p className="mt-6 flex items-start gap-2 text-xs leading-relaxed text-[#6B7280]">
                   <Clock size={14} className="mt-0.5 shrink-0" />
-                  <span>Published by <a href="/about/" className="underline">Digital Aura</a>. Last updated <time dateTime={c.lastUpdated}>{formatDate(c.lastUpdated)}</time>.</span>
+                  <span>Published by <a href="/about/" className="underline">Digital Aura</a>.{c.reviewedBy ? ` Reviewed by ${c.reviewedBy}.` : ""} Last updated <time dateTime={c.lastUpdated}>{formatDate(c.lastUpdated)}</time>.</span>
                 </p>
               )}
             </div>

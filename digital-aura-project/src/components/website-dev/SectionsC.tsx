@@ -1,3 +1,4 @@
+import { renderInline } from "@/lib/inlineLinks";
 import { getAttribution } from "@/lib/leadTracking";
 import { useRef, useState, type FormEvent } from "react";
 import { ArrowRight, Quote, Star } from "lucide-react";
@@ -251,6 +252,14 @@ export const faqs = [
     q: "Do you build websites for businesses outside Ahmedabad?",
     a: "Yes. We are based in Ahmedabad and work with businesses across Gujarat and India, and we build Shopify stores for brands that sell outside India. Calls, reviews and handover all happen online.",
   },
+  {
+    q: "Who is the best web designer in Ahmedabad?",
+    a: "There is no single best web designer in Ahmedabad; the best one is the one that fits your business. Check five things: a portfolio of live websites you can open and test, speed on a real mobile phone, an SEO-ready structure, full ownership of your site and domain, and clear support after launch. As a website design company in Ahmedabad, we are happy to be measured on the same list. Our guide on [how to choose a website development company in Ahmedabad](/blog/how-to-choose-website-development-company-ahmedabad/) lists the questions to ask any agency.",
+  },
+  {
+    q: "How much does a website cost in Ahmedabad?",
+    a: "Website development in Ahmedabad is priced by scope: the number of pages, the platform, ecommerce or custom features, content and integrations. Brochure sites, online stores and custom web applications are priced differently, and any good website design company in Ahmedabad should give you one fixed written quote before work starts. Read the [website cost](/website-development-cost-ahmedabad/) guide to see what drives the price, and compare our [website packages](/website-packages-ahmedabad/).",
+  },
 ];
 
 export function Faq() {
@@ -274,7 +283,7 @@ export function Faq() {
         items={faqs.map((f, i) => ({
           key: f.q,
           q: <span data-cms-key={`wds_faq_${i}_q`} data-cms-label={`FAQ ${i + 1} Question`} data-cms-attr="text">{s[`wds_faq_${i}_q`] || f.q}</span>,
-          a: <span data-cms-key={`wds_faq_${i}_a`} data-cms-label={`FAQ ${i + 1} Answer`} data-cms-attr="text">{s[`wds_faq_${i}_a`] || f.a}</span>,
+          a: <span data-cms-key={`wds_faq_${i}_a`} data-cms-label={`FAQ ${i + 1} Answer`} data-cms-attr="text">{s[`wds_faq_${i}_a`] || renderInline(f.a)}</span>,
         }))}
       />
     </PillarSection>
@@ -393,7 +402,7 @@ export function FinalCta() {
               className="mt-5 max-w-lg text-navy-foreground/70"
             >
               {s.wds_finalcta_p ||
-                "Fill in the form and our team will review your details before we speak. Here's exactly what happens after you submit it:"}
+                "Fill in the form and our team, a website development company in Ahmedabad, will review your details before we speak. Here's exactly what happens after you submit it:"}
             </p>
           </Reveal>
           <Reveal delay={200}>

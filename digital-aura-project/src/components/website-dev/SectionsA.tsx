@@ -1,3 +1,4 @@
+import { renderInline } from "@/lib/inlineLinks";
 import {
   Boxes,
   Braces,
@@ -328,7 +329,7 @@ export function Process() {
               className="mt-4 text-muted-foreground"
             >
               {s.wds_process_p ||
-                "Eight clear stages, fixed checkpoints and one accountable team — from the first call to post-launch growth."}
+                renderInline("Our website development in Ahmedabad runs in eight clear stages, with fixed checkpoints and one accountable team, from the first call to post-launch growth. Your designer works inside that same team, not as a separate vendor. Before you decide, read how [website cost](/website-development-cost-ahmedabad/) is worked out and compare our [packages](/website-packages-ahmedabad/).")}
             </p>
           </Reveal>
         </div>

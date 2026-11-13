@@ -110,7 +110,7 @@ function FaqSchema() {
     mainEntity: faqs.map((f) => ({
       "@type": "Question",
       name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
+      acceptedAnswer: { "@type": "Answer", text: f.a.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") },
     })),
   };
   return (
@@ -252,7 +252,7 @@ const WebsiteDevelopmentServicesPage = () => {
         <PillarSection tone="white" bare noHead>
         <section className="bg-background py-10">
           <div className="mx-auto max-w-7xl px-5 md:px-8">
-            <h2 className="text-center text-2xl font-bold md:text-[34px]">More website services in Ahmedabad</h2>
+            <h2 className="text-center text-2xl font-bold md:text-[34px]">Website design company in Ahmedabad: more website services</h2>
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               <a href="/website-redesign-services-ahmedabad/" className="rounded-2xl border p-5 transition hover:shadow-md">
                 <h3 className="text-lg font-bold">Website redesign services</h3>

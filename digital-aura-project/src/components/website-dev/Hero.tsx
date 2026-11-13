@@ -1,4 +1,4 @@
-import { ArrowRight, Gauge, MapPin, Search, ShieldCheck, Smartphone } from "lucide-react";
+import { ArrowRight, Clock, Gauge, MapPin, Search, ShieldCheck, Smartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Reveal, SectionLabel } from "./Reveal";
@@ -25,8 +25,8 @@ export function Hero({ aside }: { aside?: React.ReactNode } = {}) {
     ...trustItems.map((_, i) => `wds_hero_trust_${i}_text`),
   ]);
   const label = s.wds_hero_label || "Website Development Company · Ahmedabad";
-  const h1Main = s.wds_hero_h1_main || "Website Development Services in Ahmedabad";
-  const h1Highlight = s.wds_hero_h1_highlight || "that win customers.";
+  const h1Main = s.wds_hero_h1_main || "Website Development Company in Ahmedabad";
+  const h1Highlight = s.wds_hero_h1_highlight || "that wins customers.";
   const subtitle =
     s.wds_hero_subtitle ||
     "Digital Aura provides website development services in Ahmedabad as a web development company. Our website developers build fast, SEO-friendly websites designed around one goal: turning visitors into enquiries. Every page is planned around your buyers, built for performance, and measured against real business results.";
@@ -49,17 +49,20 @@ export function Hero({ aside }: { aside?: React.ReactNode } = {}) {
           </Reveal>
 
           <Reveal delay={80}>
-            <h1 className="mt-6 text-display text-foreground">
+            <h1 className="mt-6 text-display text-primary" style={{ fontSize: "clamp(2.1rem, 4.2vw, 3.1rem)" }}>
               <span data-cms-key="wds_hero_h1_main" data-cms-label="Hero H1 Main" data-cms-attr="text">
                 {h1Main}
-              </span>{" "}
-              <span className="relative text-primary">
-                <span data-cms-key="wds_hero_h1_highlight" data-cms-label="Hero H1 Highlight" data-cms-attr="text">
-                  {h1Highlight}
-                </span>
-                <span className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-primary/25" />
               </span>
             </h1>
+            <p className="mt-3 text-xl font-bold leading-snug tracking-tight text-foreground md:text-2xl">
+              <span data-cms-key="wds_hero_h1_highlight" data-cms-label="Hero H1 Highlight" data-cms-attr="text">
+                {h1Highlight}
+              </span>
+            </p>
+            <p className="mt-4 flex items-start gap-2 text-xs leading-relaxed text-muted-foreground">
+              <Clock size={14} className="mt-0.5 shrink-0" />
+              <span>Published by <a href="/about/" className="underline">Digital Aura</a>. Reviewed by Sambhav Shah. Last updated <time dateTime="2026-11-13">13 November 2026</time>.</span>
+            </p>
           </Reveal>
 
           <Reveal delay={160}>

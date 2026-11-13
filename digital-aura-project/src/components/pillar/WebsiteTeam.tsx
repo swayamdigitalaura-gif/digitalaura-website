@@ -29,7 +29,7 @@ export default function WebsiteTeam() {
       tone="white"
       eyebrow="Our team"
       title="Meet the team behind every website we build"
-      intro="Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. This is the in-house team at our Hanspura office, Ahmedabad, that plans, designs and builds your website."
+      intro="Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. This is the in-house team at our Hanspura office, Ahmedabad, that plans, designs and builds your website. Looking for a web designer in Ahmedabad? This is the team you will work with."
     >
       <div className="mx-auto max-w-6xl">
         <div className="pillar-team-founder">

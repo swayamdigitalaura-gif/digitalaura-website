@@ -1,6 +1,6 @@
 const { Op } = require('sequelize');
 const { Career, Application } = require('../models');
-const { sendMail, NOTIFY_EMAIL, HR_EMAIL } = require('../utils/mailer');
+const { sendMail, HR_EMAIL } = require('../utils/mailer');
 const { pushApplicationToHrms } = require('../services/hrmsSync');
 
 function makeSlug(title) {
@@ -93,10 +93,9 @@ exports.applyPublic = async (req, res) => {
 
     const { name, email, phone, experience, linkedin } = req.body;
 
-    // Notify HR
+    // Notify HR only — career applications should not also go to the general admin inbox
     sendMail({
       to: HR_EMAIL,
-      cc: HR_EMAIL.toLowerCase() === NOTIFY_EMAIL.toLowerCase() ? undefined : NOTIFY_EMAIL,
       subject: `💼 New Application — ${career.title} (${name})`,
       html: `
         <h2 style="color:#7C3AED">New Job Application</h2>
@@ -122,7 +121,7 @@ exports.applyPublic = async (req, res) => {
           <h2 style="color:#7C3AED">Application Received!</h2>
           <p style="color:#374151">Hi ${name.split(' ')[0]},</p>
           <p style="color:#374151">Thank you for applying for the <strong>${career.title}</strong> position at Digital Aura. We've received your application and our HR team will review it shortly.</p>
-          <p style="color:#374151">We typically respond within <strong>2–3 business days</strong>. In the meantime, if you have any questions feel free to reach us at <a href="mailto:hr@thedigitalaura.com">hr@thedigitalaura.com</a>.</p>
+          <p style="color:#374151">We typically respond within <strong>2–3 business days</strong>. In the meantime, if you have any questions feel free to reach us at <a href="mailto:${HR_EMAIL}">${HR_EMAIL}</a>.</p>
           <p style="color:#9CA3AF;font-size:12px;margin-top:24px">— HR Team, Digital Aura, Ahmedabad</p>
         </div>
       `,

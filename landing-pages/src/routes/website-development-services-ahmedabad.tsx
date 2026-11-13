@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import { RecaptchaBox, RECAPTCHA_SITE_KEY, type RecaptchaHandle } from "@/components/RecaptchaBox";
 import {
   ArrowRight,
   CheckCircle2,
@@ -380,9 +381,15 @@ const projectTypes = ["New Website", "Website Redesign", "Ecommerce Website", "L
 
 function LeadForm() {
   const [loading, setLoading] = useState(false);
+  const captcha = useRef<RecaptchaHandle>(null);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const captchaToken = RECAPTCHA_SITE_KEY ? captcha.current?.getToken() ?? "" : "";
+    if (RECAPTCHA_SITE_KEY && !captchaToken) {
+      toast.error("Please tick \"I'm not a robot\" before sending.");
+      return;
+    }
     setLoading(true);
     const fd = new FormData(e.currentTarget);
     try {
@@ -397,14 +404,17 @@ function LeadForm() {
           message: [fd.get("website"), fd.get("project")].filter(Boolean).join(" — "),
           project: "Website Development",
           source: "website-development-services-ahmedabad",
+          recaptchaToken: captchaToken || undefined,
         }),
       });
       if (!res.ok) throw new Error("Server error");
       (e.target as HTMLFormElement).reset();
+      captcha.current?.reset();
       toast.success("Request received!", {
         description: "Our website strategist will reach out within 1 business day.",
       });
     } catch {
+      captcha.current?.reset();
       toast.error("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
@@ -479,6 +489,8 @@ function LeadForm() {
             </select>
           </div>
         </div>
+
+        <RecaptchaBox ref={captcha} />
 
         <button
           type="submit"

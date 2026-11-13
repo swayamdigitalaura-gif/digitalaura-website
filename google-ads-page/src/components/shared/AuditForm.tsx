@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ArrowRight, Check } from "lucide-react";
+import { RecaptchaBox, RECAPTCHA_SITE_KEY, type RecaptchaHandle } from "./RecaptchaBox";
 
 const CHECKLIST = [
   "Google Ads Audit",
@@ -16,11 +17,17 @@ export function AuditForm({ id = "audit", compact = false }: { id?: string; comp
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const captcha = useRef<RecaptchaHandle>(null);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setLoading(true);
     setError("");
+    const captchaToken = RECAPTCHA_SITE_KEY ? captcha.current?.getToken() ?? "" : "";
+    if (RECAPTCHA_SITE_KEY && !captchaToken) {
+      setError("Please tick \"I'm not a robot\" before sending.");
+      return;
+    }
+    setLoading(true);
     const fd = new FormData(e.currentTarget);
     try {
       const res = await fetch("/api/contact", {
@@ -34,11 +41,13 @@ export function AuditForm({ id = "audit", compact = false }: { id?: string; comp
           message: fd.get("website") || "",
           project: "Google Ads",
           source: "google-ads-agency-ahmedabad",
+          recaptchaToken: captchaToken || undefined,
         }),
       });
       if (!res.ok) throw new Error("Server error");
       setSent(true);
     } catch {
+      captcha.current?.reset();
       setError("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
@@ -94,6 +103,8 @@ export function AuditForm({ id = "audit", compact = false }: { id?: string; comp
             type="email" name="email" required placeholder="Business Email"
             className={`w-full rounded-xl border border-input bg-background px-3 text-sm text-navy outline-none ring-primary/20 transition focus:border-primary focus:ring-4 ${compact ? "h-10" : "h-11"}`}
           />
+          <RecaptchaBox ref={captcha} />
+
           {error && <p className="text-xs text-red-500">{error}</p>}
           <button
             type="submit" disabled={loading}

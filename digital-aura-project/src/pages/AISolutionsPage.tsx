@@ -1,4 +1,5 @@
 ﻿import { motion, AnimatePresence } from "framer-motion";
+import { track } from "@/lib/track";
 import { Link } from "react-router-dom";
 import { submitLead } from "@/lib/submitLead";
 import { useState } from "react";
@@ -93,7 +94,7 @@ const AIAuditForm = () => {
       honeypot: String(fd.get("company_site") || ""),
     }, "audit-form-ai-solutions");
     setSubmitting(false);
-    if (r.ok) setSubmitted(true);
+    if (r.ok) { setSubmitted(true); track("lead_form_submit", { form_name: "ai_solutions_form" }); track("generate_lead", { form_name: "ai_solutions_form", value: 1 }); }
     else setError(r.error ?? "Something went wrong. Please try again.");
   };
 

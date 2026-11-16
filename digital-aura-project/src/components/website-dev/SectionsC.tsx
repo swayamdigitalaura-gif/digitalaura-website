@@ -1,4 +1,5 @@
 import { renderInline } from "@/lib/inlineLinks";
+import { track } from "@/lib/track";
 import { getAttribution } from "@/lib/leadTracking";
 import { useRef, useState, type FormEvent } from "react";
 import { ArrowRight, Quote, Star } from "lucide-react";
@@ -359,6 +360,7 @@ export function FinalCta() {
       });
       if (!res.ok) throw new Error("Server error");
       setSent(true);
+      track("lead_form_submit", { form_name: "website_dev_form" }); track("generate_lead", { form_name: "website_dev_form", value: 1 });
       form.reset();
       captcha.current?.reset();
       toast.success("Thanks — we'll be in touch within one business day.");

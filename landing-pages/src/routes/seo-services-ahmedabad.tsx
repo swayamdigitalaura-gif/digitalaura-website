@@ -271,7 +271,11 @@ function BreadcrumbAndServiceSchema() {
 
 /* ---------------- Videos and team (owner-supplied, 2026-10-09) ---------------- */
 
-const SEO_REELS = ["DXwAkPRMl9c", "DTktVf7gdFf", "DcoMJiOskzp"];
+const SEO_SHORTS = [
+  { id: "HvEXDy-1IOk", title: "SEO is scam? A short video by Sambhav Shah", thumb: "/videos/seo-is-scam.webp" },
+  { id: "iB-g6aBqkKQ", title: "Why Google does not rank your website: a short video by Sambhav Shah", thumb: "/videos/google-tumko-rank-kyu-nai-karta.webp" },
+  { id: "lLZVPTWT4T4", title: "Hotel organic booking SEO: a short video by Sambhav Shah", thumb: "/videos/hotel-organic-booking-seo.webp" },
+];
 
 const FOUNDER = {
   name: "Sambhav Shah",
@@ -290,67 +294,55 @@ const TEAM_MEMBERS = [
 
 const FOUNDER_SAME_AS = ["https://www.linkedin.com/in/sambhav-shah/", "https://www.instagram.com/sambhavshah2/"];
 
-/** Reel card styled like an Instagram post: thumbnail /reels/seo-<n>.webp, video /reels/seo-<n>.mp4 played in place; Instagram link if the file is missing. */
-function ReelCard({ id, n }: { id: string; n: number }) {
-  const label = `SEO reel ${n}`;
-  const thumb = `/reels/seo-${n}.webp`;
-  const video = `/reels/seo-${n}.mp4`;
-  const [mode, setMode] = useState<"idle" | "playing" | "error">("idle");
+/** YouTube Short card: thumbnail + play button, the video loads (and plays) in place only after the click, so the page stays fast. */
+function YouTubeShortCard({ id, title, thumb, playing, onPlay }: { id: string; title: string; thumb: string; playing: boolean; onPlay: () => void }) {
+  // Custom cover first; if the file is missing, fall back to the frame YouTube provides.
+  const [thumbSrc, setThumbSrc] = useState(thumb);
   const [thumbOk, setThumbOk] = useState(true);
-  const url = `https://www.instagram.com/reel/${id}/`;
+  const watchUrl = `https://www.youtube.com/shorts/${id}`;
   return (
-    <div className="overflow-hidden rounded-lg border bg-white" style={{ borderColor: "#DBDBDB" }}>
+    <div className="w-full max-w-[240px] overflow-hidden rounded-lg border bg-white" style={{ borderColor: "#DBDBDB" }}>
       <div className="flex items-center gap-2 px-3 py-2.5">
         <img src="/reels/sambhav-avatar.jpg" alt="Sambhav Shah" width={28} height={28} loading="lazy" className="h-7 w-7 shrink-0 rounded-full bg-[#EFEFEF] object-cover" />
         <div className="min-w-0 flex-1 leading-tight">
-          <p className="truncate text-[11px] font-semibold text-[#262626]">sambhavshah2</p>
-          <p className="truncate text-[10px] text-[#8E8E8E]">Original audio</p>
+          <p className="truncate text-[11px] font-semibold text-[#262626]">Sambhav Shah</p>
+          <p className="truncate text-[10px] text-[#8E8E8E]">YouTube Shorts</p>
         </div>
-        <a href="https://www.instagram.com/sambhavshah2/" target="_blank" rel="noopener noreferrer" className="rounded px-2.5 py-1 text-[11px] font-semibold text-white" style={{ background: "#4C5FEF" }}>View profile</a>
       </div>
-      <div className="relative w-full overflow-hidden" style={{ aspectRatio: "4 / 5", background: thumbOk ? "#000" : "linear-gradient(160deg, #0A1628, #3a3a5c)" }}>
-        {mode === "playing" ? (
-          <video src={video} poster={thumb} controls autoPlay playsInline preload="auto" className="absolute inset-0 h-full w-full bg-black object-contain" onError={() => setMode("error")} />
-        ) : mode === "error" ? (
-          <a href={url} target="_blank" rel="noopener noreferrer" className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-5 text-center text-white">
-            <span className="text-sm font-bold">This video could not be loaded here</span>
-            <span className="text-xs underline">Watch it on Instagram</span>
-          </a>
+      <div className="relative mx-auto w-[86%] overflow-hidden rounded-md" style={{ aspectRatio: "9 / 16", background: thumbOk ? "#000" : "linear-gradient(160deg, #0A1628, #3a3a5c)" }}>
+        {playing ? (
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1`}
+            title={title}
+            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+            allowFullScreen
+            className="absolute inset-0 h-full w-full border-0 bg-black"
+          />
         ) : (
-          <button type="button" onClick={() => setMode("playing")} aria-label={`Play video: ${label}`} className="group absolute inset-0 block h-full w-full">
-            <img src={thumb} alt={`${label} thumbnail`} loading="lazy" className={`absolute inset-0 h-full w-full object-contain ${thumbOk ? "" : "hidden"}`} onError={() => setThumbOk(false)} />
+          <button type="button" onClick={onPlay} aria-label={`Play video: ${title}`} className="group absolute inset-0 block h-full w-full">
+            <img src={thumbSrc} alt={`${title} (thumbnail)`} loading="lazy" className={`absolute inset-0 h-full w-full object-cover object-top ${thumbOk ? "" : "hidden"}`} onError={() => { if (thumbSrc.startsWith("/videos/")) setThumbSrc(`https://i.ytimg.com/vi/${id}/oar2.jpg`); else setThumbOk(false); }} />
             <span className="absolute inset-0 flex items-center justify-center">
               <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-[#262626] shadow-lg transition-transform group-hover:scale-110"><span className="ml-1">&#9654;</span></span>
             </span>
           </button>
         )}
       </div>
-      <div className="px-3 pb-2 pt-2.5">
-        <a href={url} target="_blank" rel="noopener noreferrer" className="text-[11px] font-medium text-[#3897F0]">View more on Instagram</a>
-      </div>
-      <div className="mx-3 border-t border-[#EFEFEF]" />
-      <div className="flex items-center gap-3 px-3 py-2.5 text-[#262626]" aria-hidden="true">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z" /></svg>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 0 1 3 11.5 8.5 8.5 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z" /></svg>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z" /></svg>
-        <span className="ml-auto"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" /></svg></span>
-      </div>
-      <div className="mx-3 border-t border-[#EFEFEF]" />
-      <div className="flex items-center justify-between px-3 py-2.5 text-[11px] text-[#8E8E8E]" aria-hidden="true">
-        <span>Add a comment...</span>
-        <span className="text-[#262626]"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" /></svg></span>
+      <div className="px-3 pb-3 pt-2.5">
+        <a href={watchUrl} target="_blank" rel="noopener noreferrer" className="text-[11px] font-medium text-[#3897F0]">Watch on YouTube</a>
       </div>
     </div>
   );
 }
 
 function SEOReels() {
+  // Only one video plays at a time; starting another puts the previous one back to its cover image.
+  const [activeId, setActiveId] = useState<string | null>(null);
   return (
     <section id="seo-videos" className="bg-white">
       <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-20">
         <SectionHeading eyebrow="Watch" title="SEO in short videos" sub="Short, practical videos from our founder, Sambhav Shah, on how SEO works for businesses in Ahmedabad." />
-        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {SEO_REELS.map((id, i) => <ReelCard key={id} id={id} n={i + 1} />)}
+        <div className="mt-10 flex flex-wrap justify-center gap-6">
+          {SEO_SHORTS.map((v) => <YouTubeShortCard key={v.id} {...v} playing={activeId === v.id} onPlay={() => setActiveId(v.id)} />)}
         </div>
       </div>
     </section>
@@ -690,9 +682,9 @@ function LeadForm({ formId = "audit" }: { formId?: string }) {
   }
 
   const inputCls =
-    "da-focus-ring w-full rounded-xl border border-brand-navy/14 bg-white px-4 py-2.5 text-base text-ink placeholder:text-ink-muted/70 outline-none transition focus:border-brand-orange";
+    "da-focus-ring w-full rounded-xl border border-brand-navy/14 bg-white px-3.5 py-2 text-[15px] text-ink placeholder:text-ink-muted/70 outline-none transition focus:border-brand-orange";
 
-  const labelCls = "mb-1.5 block text-xs font-bold uppercase tracking-wide text-ink-muted";
+  const labelCls = "mb-1 block text-xs font-bold uppercase tracking-wide text-ink-muted";
 
   const auditIncludes = [
     "SEO Audit",
@@ -709,13 +701,13 @@ function LeadForm({ formId = "audit" }: { formId?: string }) {
       <form
         id={formId}
         onSubmit={onSubmit}
-        className="da-shadow-card rounded-3xl border border-brand-navy/10 bg-white p-6 md:p-7"
+        className="da-shadow-card rounded-3xl border border-brand-navy/10 bg-white p-5 md:p-6"
       >
-        <div className="mb-5">
+        <div className="mb-4">
           <div className="inline-flex items-center gap-2 rounded-full bg-brand-orange-soft px-3 py-1 text-xs font-bold uppercase tracking-wider text-brand-orange">
             <Zap className="h-3.5 w-3.5" /> Free · 48-hour delivery
           </div>
-          <h3 className="mt-3 text-2xl font-extrabold leading-tight md:text-[28px]">
+          <h3 className="mt-2.5 text-xl font-extrabold leading-tight md:text-[24px]">
             Get My Free SEO Audit
           </h3>
           <p className="mt-1.5 text-sm text-ink-muted">
@@ -723,7 +715,7 @@ function LeadForm({ formId = "audit" }: { formId?: string }) {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <div>
             <label htmlFor={`${formId}-name`} className={labelCls}>Full name</label>
             <input required id={`${formId}-name`} name="name" placeholder="e.g. Raj Patel" className={inputCls} />
@@ -758,7 +750,7 @@ function LeadForm({ formId = "audit" }: { formId?: string }) {
         <button
           type="submit"
           disabled={loading}
-          className="pillar-btn pillar-btn--primary mt-5 w-full disabled:cursor-not-allowed disabled:opacity-70"
+          className="pillar-btn pillar-btn--primary mt-4 w-full disabled:cursor-not-allowed disabled:opacity-70"
         >
           {loading ? (
             <>
@@ -774,7 +766,7 @@ function LeadForm({ formId = "audit" }: { formId?: string }) {
         </button>
         <p className="mt-2.5 text-center text-xs text-ink-muted">Takes 45 seconds · No credit card · No spam, ever.</p>
 
-        <ul className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-ink-muted">
+        <ul className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-ink-muted">
           {["No obligation", "100% confidential", "Senior consultant call"].map((t) => (
             <li key={t} className="flex items-center gap-1.5">
               <CheckCircle2 className="h-3.5 w-3.5 text-brand-orange" /> {t}
@@ -806,15 +798,10 @@ function LeadForm({ formId = "audit" }: { formId?: string }) {
 function Hero() {
   return (
     <section id="top" className="da-gradient-hero relative overflow-hidden">
-      <div className="mx-auto grid max-w-7xl items-start gap-12 px-5 pt-14 pb-16 md:px-8 md:pt-20 md:pb-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+      <div className="mx-auto grid max-w-7xl items-start gap-12 px-5 pt-10 pb-16 md:px-8 md:pt-8 md:pb-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
         {/* Left */}
-        <div>
-          <div className="inline-flex items-center gap-2 rounded-full border border-brand-navy/10 bg-white/70 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-brand-navy backdrop-blur">
-            <span className="h-2 w-2 rounded-full bg-brand-orange" />
-            SEO Company in Ahmedabad
-          </div>
-
-          <h1 className="mt-6 font-extrabold leading-[1.12] tracking-tight text-brand-orange [font-size:clamp(32px,4vw,48px)]">
+        <div className="lg:pt-8">
+          <h1 className="font-extrabold leading-[1.12] tracking-tight text-brand-orange [font-size:clamp(32px,4vw,48px)]">
             SEO Company in Ahmedabad.
           </h1>
 
@@ -835,28 +822,28 @@ function Hero() {
             <SecondaryCTA href="#results">View Case Studies</SecondaryCTA>
           </div>
 
-          <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-2.5 text-sm font-semibold text-ink-muted">
+          <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-2.5 text-sm font-semibold text-ink-muted sm:flex-nowrap sm:gap-x-5 sm:whitespace-nowrap">
             <span className="inline-flex items-center gap-1.5">
               <span className="inline-flex items-center gap-0.5 text-brand-orange">
                 {Array.from({ length: 5 }).map((_, s) => (
                   <Star key={s} className="h-3.5 w-3.5 fill-current" />
                 ))}
               </span>
-              5.0 Rated
+              <a className="underline" href="#testimonials">Google reviews</a>
             </span>
             <span className="hidden h-1 w-1 rounded-full bg-brand-navy/20 sm:inline-block" aria-hidden />
             <span className="inline-flex items-center gap-1.5">
-              <Clock className="h-4 w-4 text-brand-orange" /> Years of Experience
+              <Clock className="h-4 w-4 text-brand-orange" /> 10+ years of experience
             </span>
             <span className="hidden h-1 w-1 rounded-full bg-brand-navy/20 sm:inline-block" aria-hidden />
             <span className="inline-flex items-center gap-1.5">
-              <Users className="h-4 w-4 text-brand-orange" /> Businesses Served
+              <Users className="h-4 w-4 text-brand-orange" /> 120+ businesses served
             </span>
           </div>
         </div>
 
         {/* Right — form */}
-        <div className="lg:pt-2">
+        <div className="lg:mx-auto lg:w-full lg:max-w-[500px]">
           <LeadForm />
         </div>
       </div>

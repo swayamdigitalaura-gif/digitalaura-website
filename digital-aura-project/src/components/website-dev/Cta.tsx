@@ -1,4 +1,5 @@
 import { getAttribution } from "@/lib/leadTracking";
+import { track } from "@/lib/track";
 import { useState, type FormEvent } from "react";
 import { ArrowRight, MessageSquareText } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -148,6 +149,7 @@ export function QuickEnquiry({ compact = false }: { compact?: boolean } = {}) {
       });
       if (!res.ok) throw new Error("Server error");
       setSent(true);
+      track("lead_form_submit", { form_name: "website_dev_cta_form" }); track("generate_lead", { form_name: "website_dev_cta_form", value: 1 });
       form.reset();
       toast.success("Thanks — we'll be in touch within one business day.");
     } catch {

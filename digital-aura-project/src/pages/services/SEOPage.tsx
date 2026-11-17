@@ -1,4 +1,5 @@
 ﻿import { motion, AnimatePresence } from "framer-motion";
+import { track } from "@/lib/track";
 import { Link } from "react-router-dom";
 import { StickyCtaBar } from "@/components/PageCta";
 import PillarLinks from "@/components/PillarLinks";
@@ -468,7 +469,7 @@ Goal: ${form.goal}`,
       honeypot: String(fd.get("company_site") || ""),
     }, "audit-form-seo");
     setSubmitting(false);
-    if (r.ok) setSubmitted(true);
+    if (r.ok) { setSubmitted(true); track("lead_form_submit", { form_name: "seo_page_form" }); track("generate_lead", { form_name: "seo_page_form", value: 1 }); }
     else setError(r.error ?? "Something went wrong. Please try again.");
   };
 

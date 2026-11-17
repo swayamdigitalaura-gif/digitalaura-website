@@ -1,4 +1,5 @@
 import { getAttribution } from "@/lib/leadTracking";
+import { track } from "@/lib/track";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, CheckCircle2, Lock, ArrowRight } from "lucide-react";
@@ -107,6 +108,7 @@ const PopupLeadForm = () => {
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Submission failed");
       setSubmitted(true);
+      track("lead_form_submit", { form_name: "popup_lead_form" }); track("generate_lead", { form_name: "popup_lead_form", value: 1 });
     } catch (err: unknown) {
       setFormError(
         err instanceof Error ? err.message : "Something went wrong. Please try again."

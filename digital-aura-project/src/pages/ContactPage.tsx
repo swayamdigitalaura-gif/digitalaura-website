@@ -1,4 +1,5 @@
 import { getAttribution } from "@/lib/leadTracking";
+import { track } from "@/lib/track";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
@@ -90,6 +91,7 @@ const ContactPage = () => {
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Submission failed");
       setSubmitted(true);
+      track("lead_form_submit", { form_name: "contact_page_form" }); track("generate_lead", { form_name: "contact_page_form", value: 1 });
     } catch (err: unknown) {
       setFormError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
     } finally {

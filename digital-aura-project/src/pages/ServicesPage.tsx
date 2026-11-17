@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { track } from "@/lib/track";
 import { submitLead } from "@/lib/submitLead";
 import { motion, AnimatePresence } from "framer-motion";
 import MathCaptcha from "@/components/MathCaptcha";
@@ -87,7 +88,7 @@ const LeadForm = () => {
       honeypot: String(fd.get("company_site") || ""),
     }, "services-page-lead-form");
     setSubmitting(false);
-    if (r.ok) setSubmitted(true);
+    if (r.ok) { setSubmitted(true); track("lead_form_submit", { form_name: "services_page_form" }); track("generate_lead", { form_name: "services_page_form", value: 1 }); }
     else setError(r.error ?? "Something went wrong. Please try again.");
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>

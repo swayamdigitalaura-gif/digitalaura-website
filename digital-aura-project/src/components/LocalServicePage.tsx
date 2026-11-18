@@ -21,7 +21,7 @@ import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
 import AdsCalculator, { type CalculatorVariant } from "@/components/AdsCalculators";
 import PageLeadForm, { type LeadFormConfig } from "@/components/PageLeadForm";
-import { ReelGrid, TeamGrid, FounderLinks, type TeamMember } from "@/components/ReelsAndTeam";
+import { ReelGrid, ShortsGrid, type YouTubeShort, TeamGrid, FounderLinks, type TeamMember } from "@/components/ReelsAndTeam";
 import PriceTable from "@/components/PriceTable";
 import AuthorBox from "@/components/AuthorBox";
 import RelatedGuides from "@/components/RelatedGuides";
@@ -43,6 +43,7 @@ export type ExtraSection = (
   | { kind: "calculator"; id: string; title: string; subtext?: string; variant: CalculatorVariant; footnote?: string }
   | { kind: "checklist"; id: string; title: string; subtext?: string; groups: { title: string; items: string[] }[]; footnote?: string }
   | { kind: "reels"; id: string; title: string; subtext?: string; ids: string[]; topic: string; slug: string; footnote?: string }
+  | { kind: "shorts"; id: string; title: string; subtext?: string; shorts: YouTubeShort[]; footnote?: string }
   | { kind: "team"; id: string; title: string; subtext?: string; members: TeamMember[]; founderLinks?: boolean; footnote?: string }
 ) & {
   /** Small label above the heading. When set, the heading block is centred (same look as the SEO page). */
@@ -158,6 +159,9 @@ const ExtraBlock = ({ section, accent }: { section: ExtraSection; accent: string
   }
   if (section.kind === "reels") {
     return (<div>{heading}<ReelGrid ids={section.ids} accent={accent} topic={section.topic} slug={section.slug} />{note(section.footnote)}</div>);
+  }
+  if (section.kind === "shorts") {
+    return (<div>{heading}<ShortsGrid shorts={section.shorts} />{note(section.footnote)}</div>);
   }
   if (section.kind === "team") {
     return (<div>{heading}<TeamGrid members={section.members} accent={accent} />{section.founderLinks && <FounderLinks accent={accent} />}{note(section.footnote)}</div>);

@@ -454,7 +454,14 @@ export const pillarExtras: Record<string, Enhancement> = {
     },
     relatedServices: rel("metaPricing", "metaClinics", "gadsPillar", "socialAgency", "adAgency", "dmAgency", "seoPillar", "cro"),
     extraAdd: [
-      { kind: "reels", id: "meta-videos", eyebrow: "Videos", title: "Watch: Meta ads in short videos", subtext: "Short, practical videos from our founder, Sambhav Shah, on how Meta ads work for businesses in Ahmedabad.", ids: REELS.meta, topic: "Meta ads", slug: "meta" },
+      {
+        kind: "shorts", id: "meta-videos", eyebrow: "Videos", title: "Watch: Meta ads in short videos", subtext: "Short, practical videos from our founder, Sambhav Shah, on how Meta ads work for businesses in Ahmedabad.",
+        shorts: [
+          { id: "_rf2wUzF0tk", title: "Why your Meta ads are failing: a short video by Sambhav Shah", thumb: "/videos/why-your-meta-ads-failing.webp" },
+          { id: "2FB_iMEpK8A", title: "Meta ads se profit: a short video by Sambhav Shah", thumb: "/videos/meta-ads-se-profit.webp" },
+          { id: "tE0C5o61-2Q", title: "No fake leads from Meta ads: a short video by Sambhav Shah", thumb: "/videos/no-fake-leads-meta.webp" },
+        ],
+      },
       { kind: "team", id: "meta-team", eyebrow: "Our team", title: "Meet the team behind every Meta campaign we run", subtext: "Digital Aura is led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. This is the in-house team at our Hanspura office, Ahmedabad, that plans, builds and reports on your Meta ads.", members: META_PILLAR_TEAM },
     ],
     faqAdd: [

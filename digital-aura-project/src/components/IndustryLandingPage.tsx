@@ -27,7 +27,7 @@ import PillarLinks from "@/components/PillarLinks";
 import { renderInline } from "@/lib/inlineLinks";
 import BlogInsights from "@/components/BlogInsights";
 import AdsCalculator from "@/components/AdsCalculators";
-import { ReelGrid, FounderLinks, MemberLinks } from "@/components/ReelsAndTeam";
+import { ReelGrid, ShortsGrid, FounderLinks, MemberLinks } from "@/components/ReelsAndTeam";
 import OfficeMap from "@/components/OfficeMap";
 import VisitUs from "@/components/pillar/VisitUs";
 import { useSettings } from "@/hooks/useSettings";
@@ -317,6 +317,16 @@ function GuideSection({ sec, index }: { sec: ExtraSection; index: number }) {
       <Wrap id={sec.id} bg={bg}>
         <Head eyebrow={eyebrow} title={sec.title} sub={sub} />
         <ReelGrid ids={sec.ids} accent={ORANGE} topic={sec.topic} slug={sec.slug} />
+        {foot}
+      </Wrap>
+    );
+  }
+
+  if (sec.kind === "shorts") {
+    return (
+      <Wrap id={sec.id} bg={bg}>
+        <Head eyebrow={eyebrow} title={sec.title} sub={sub} />
+        <ShortsGrid shorts={sec.shorts} />
         {foot}
       </Wrap>
     );

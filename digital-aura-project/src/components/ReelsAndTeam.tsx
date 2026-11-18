@@ -72,6 +72,58 @@ export const ReelGrid = ({ ids, accent, topic, slug }: { ids: string[]; accent: 
   </div>
 );
 
+/** YouTube Short card: cover + play button; the video loads (and plays) in place only after the click, so the page stays fast. Same look as the SEO pillar page. */
+const YouTubeShortCard = ({ id, title, thumb, playing, onPlay }: { id: string; title: string; thumb: string; playing: boolean; onPlay: () => void }) => {
+  // Self-hosted cover first; if the file is missing, fall back to the frame YouTube provides.
+  const [thumbSrc, setThumbSrc] = useState(thumb);
+  const [thumbOk, setThumbOk] = useState(true);
+  const watchUrl = `https://www.youtube.com/shorts/${id}`;
+  return (
+    <div className="w-full max-w-[240px] overflow-hidden rounded-lg border bg-white" style={{ borderColor: "#DBDBDB" }}>
+      <div className="flex items-center gap-2 px-3 py-2.5">
+        <img src="/reels/sambhav-avatar.jpg" alt="Sambhav Shah" width={28} height={28} loading="lazy" className="h-7 w-7 shrink-0 rounded-full bg-[#EFEFEF] object-cover" />
+        <div className="min-w-0 flex-1 leading-tight">
+          <p className="truncate text-[11px] font-semibold text-[#262626]">Sambhav Shah</p>
+          <p className="truncate text-[10px] text-[#8E8E8E]">YouTube Shorts</p>
+        </div>
+      </div>
+      <div className="relative mx-auto w-[86%] overflow-hidden rounded-md" style={{ aspectRatio: "9 / 16", background: thumbOk ? "#000" : "linear-gradient(160deg, #0A1628, #3a3a5c)" }}>
+        {playing ? (
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1`}
+            title={title}
+            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+            allowFullScreen
+            className="absolute inset-0 h-full w-full border-0 bg-black"
+          />
+        ) : (
+          <button type="button" onClick={onPlay} aria-label={`Play video: ${title}`} className="group absolute inset-0 block h-full w-full">
+            <img src={thumbSrc} alt={`${title} (thumbnail)`} loading="lazy" className={`absolute inset-0 h-full w-full object-cover object-top ${thumbOk ? "" : "hidden"}`} onError={() => { if (thumbSrc.startsWith("/videos/")) setThumbSrc(`https://i.ytimg.com/vi/${id}/oar2.jpg`); else setThumbOk(false); }} />
+            <span className="absolute inset-0 flex items-center justify-center">
+              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-[#262626] shadow-lg transition-transform group-hover:scale-110"><span className="ml-1">&#9654;</span></span>
+            </span>
+          </button>
+        )}
+      </div>
+      <div className="px-3 pb-3 pt-2.5">
+        <a href={watchUrl} target="_blank" rel="noopener noreferrer" className="text-[11px] font-medium text-[#3897F0]">Watch on YouTube</a>
+      </div>
+    </div>
+  );
+};
+
+export interface YouTubeShort { id: string; title: string; thumb: string; }
+
+/** Row of YouTube Short cards; only one plays at a time. */
+export const ShortsGrid = ({ shorts }: { shorts: YouTubeShort[] }) => {
+  const [activeId, setActiveId] = useState<string | null>(null);
+  return (
+    <div className="flex flex-wrap justify-center gap-6">
+      {shorts.map((v) => <YouTubeShortCard key={v.id} {...v} playing={activeId === v.id} onPlay={() => setActiveId(v.id)} />)}
+    </div>
+  );
+};
+
 export const TeamGrid = ({ members, accent }: { members: TeamMember[]; accent: string }) => (
   <div className={`grid gap-5 ${members.length > 3 ? "sm:grid-cols-2 lg:grid-cols-3" : "md:grid-cols-3"}`}>
     {members.map((m) => (

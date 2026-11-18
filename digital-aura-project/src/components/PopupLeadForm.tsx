@@ -1,9 +1,9 @@
 import { getAttribution } from "@/lib/leadTracking";
 import { track } from "@/lib/track";
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, CheckCircle2, Lock, ArrowRight } from "lucide-react";
-import MathCaptcha from "@/components/MathCaptcha";
+import { RecaptchaBox, RECAPTCHA_SITE_KEY, type RecaptchaHandle } from "@/components/RecaptchaBox";
 
 const SESSION_KEY = "da_popup_shown";
 // FloatingElements.tsx's cookie banner (the one actually mounted in the app)
@@ -31,7 +31,7 @@ const PopupLeadForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [formError, setFormError] = useState("");
-  const [captchaOk, setCaptchaOk] = useState(false);
+  const captcha = useRef<RecaptchaHandle>(null);
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -87,6 +87,8 @@ const PopupLeadForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const captchaToken = RECAPTCHA_SITE_KEY ? captcha.current?.getToken() ?? "" : "";
+    if (RECAPTCHA_SITE_KEY && !captchaToken) return;
     setSubmitting(true);
     setFormError("");
     try {
@@ -102,14 +104,17 @@ const PopupLeadForm = () => {
           project: form.service,
           message: "",
           source: "popup-lead-form",
+          recaptchaToken: captchaToken || undefined,
           ...getAttribution(),
         }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Submission failed");
       setSubmitted(true);
+      captcha.current?.reset();
       track("lead_form_submit", { form_name: "popup_lead_form" }); track("generate_lead", { form_name: "popup_lead_form", value: 1 });
     } catch (err: unknown) {
+      captcha.current?.reset();
       setFormError(
         err instanceof Error ? err.message : "Something went wrong. Please try again."
       );
@@ -262,7 +267,7 @@ const PopupLeadForm = () => {
                   </select>
                 </div>
 
-                <MathCaptcha onVerify={setCaptchaOk} inputClass={inputClass} />
+                <RecaptchaBox ref={captcha} />
 
                 {formError && (
                   <p className="text-xs text-red-500 text-center">{formError}</p>
@@ -270,7 +275,7 @@ const PopupLeadForm = () => {
 
                 <button
                   type="submit"
-                  disabled={!captchaOk || submitting}
+                  disabled={submitting}
                   className="btn-orange w-full py-3.5 text-sm gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {submitting ? "Submitting..." : "Get My Free Growth Plan"}

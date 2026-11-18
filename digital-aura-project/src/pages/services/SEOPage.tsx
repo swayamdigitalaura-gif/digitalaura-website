@@ -10,8 +10,8 @@ import {
   Target, Zap, Bot, Brain, Layers, Cpu, Network, Mic,
   ArrowRight, Lock, CheckCircle2, ShoppingCart, ChevronLeft,
 } from "lucide-react";
-import { useState, useEffect } from "react";
-import MathCaptcha from "@/components/MathCaptcha";
+import { useState, useEffect, useRef } from "react";
+import { RecaptchaBox, RECAPTCHA_SITE_KEY, type RecaptchaHandle } from "@/components/RecaptchaBox";
 import PageLayout from "@/components/PageLayout";
 import CMSIcon from "@/components/CMSIcon";
 import { useSettings } from "@/hooks/useSettings";
@@ -451,7 +451,7 @@ const inputClass = "w-full px-4 py-3 rounded-xl text-sm text-[#0A1628] outline-n
 
 const SEOAuditForm = () => {
   const [submitted, setSubmitted] = useState(false);
-  const [captchaOk, setCaptchaOk] = useState(false);
+  const captcha = useRef<RecaptchaHandle>(null);
   const [form, setForm] = useState({ name: "", business: "", email: "", phone: "", website: "", goal: "" });
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
     setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
@@ -459,6 +459,8 @@ const SEOAuditForm = () => {
   const [error, setError] = useState("");
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const captchaToken = RECAPTCHA_SITE_KEY ? captcha.current?.getToken() ?? "" : "";
+    if (RECAPTCHA_SITE_KEY && !captchaToken) return;
     const fd = new FormData(e.currentTarget);
     setSubmitting(true);
     setError("");
@@ -467,10 +469,11 @@ const SEOAuditForm = () => {
       project: form.goal, message: `Website: ${form.website}
 Goal: ${form.goal}`,
       honeypot: String(fd.get("company_site") || ""),
+      recaptchaToken: captchaToken || undefined,
     }, "audit-form-seo");
     setSubmitting(false);
-    if (r.ok) { setSubmitted(true); track("lead_form_submit", { form_name: "seo_page_form" }); track("generate_lead", { form_name: "seo_page_form", value: 1 }); }
-    else setError(r.error ?? "Something went wrong. Please try again.");
+    if (r.ok) { setSubmitted(true); captcha.current?.reset(); track("lead_form_submit", { form_name: "seo_page_form" }); track("generate_lead", { form_name: "seo_page_form", value: 1 }); }
+    else { setError(r.error ?? "Something went wrong. Please try again."); captcha.current?.reset(); }
   };
 
   return (
@@ -523,10 +526,10 @@ Goal: ${form.goal}`,
               <option>Full SEO strategy & roadmap</option>
             </select>
           </div>
-          <MathCaptcha onVerify={setCaptchaOk} inputClass={inputClass} />
+          <RecaptchaBox ref={captcha} />
           <input name="company_site" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
           {error && <p className="text-sm text-red-600">{error}</p>}
-          <button type="submit" disabled={!captchaOk || submitting} className="w-full py-4 rounded-xl text-base font-bold text-white flex items-center justify-center gap-2 transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+          <button type="submit" disabled={submitting} className="w-full py-4 rounded-xl text-base font-bold text-white flex items-center justify-center gap-2 transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
             style={{ background: "linear-gradient(135deg, #22C55E, #16a34a)" }}>
             Get My Free SEO Audit <ArrowRight size={18} />
           </button>

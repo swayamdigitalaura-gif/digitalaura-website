@@ -1,7 +1,7 @@
 import { getAttribution } from "@/lib/leadTracking";
 import { track } from "@/lib/track";
-import { useState, useCallback, type FormEvent } from "react";
-import MathCaptcha from "@/components/MathCaptcha";
+import { useState, useRef, type FormEvent } from "react";
+import { RecaptchaBox, RECAPTCHA_SITE_KEY, type RecaptchaHandle } from "@/components/RecaptchaBox";
 import { ArrowRight, MessageSquareText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -128,12 +128,12 @@ export function QuickEnquiry({ compact = false }: { compact?: boolean } = {}) {
   ]);
   const [sent, setSent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [captchaOk, setCaptchaOk] = useState(false);
-  const handleCaptcha = useCallback((v: boolean) => setCaptchaOk(v), []);
+  const captcha = useRef<RecaptchaHandle>(null);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!captchaOk) return;
+    const captchaToken = RECAPTCHA_SITE_KEY ? captcha.current?.getToken() ?? "" : "";
+    if (RECAPTCHA_SITE_KEY && !captchaToken) return;
     const form = e.currentTarget;
     const fd = new FormData(form);
     setSubmitting(true);
@@ -148,15 +148,18 @@ export function QuickEnquiry({ compact = false }: { compact?: boolean } = {}) {
           message: fd.get("site") || "",
           project: fd.get("type") || "Website Development",
           source: "website-development-services-ahmedabad",
+          recaptchaToken: captchaToken || undefined,
           ...getAttribution(),
         }),
       });
       if (!res.ok) throw new Error("Server error");
       setSent(true);
+      captcha.current?.reset();
       track("lead_form_submit", { form_name: "website_dev_cta_form" }); track("generate_lead", { form_name: "website_dev_cta_form", value: 1 });
       form.reset();
       toast.success("Thanks — we'll be in touch within one business day.");
     } catch {
+      captcha.current?.reset();
       toast.error("Something went wrong. Please try again.");
     } finally {
       setSubmitting(false);
@@ -247,13 +250,11 @@ export function QuickEnquiry({ compact = false }: { compact?: boolean } = {}) {
                 </Select>
               </div>
             </div>
-            <div className="mt-4">
-              <MathCaptcha onVerify={handleCaptcha} />
-            </div>
+            <RecaptchaBox ref={captcha} />
             <Button
               type="submit"
               size="lg"
-              disabled={submitting || !captchaOk}
+              disabled={submitting}
               className="group mt-6 h-[3.25rem] w-full rounded-full text-base font-bold shadow-[var(--shadow-glow)] transition-transform hover:-translate-y-0.5"
             >
               {sent ? (

@@ -1,9 +1,9 @@
-﻿import React from "react";
+﻿import React, { useRef } from "react";
 import ClientLogoSection from "@/components/ClientLogoSection";
 import { StickyCtaBar } from "@/components/PageCta";
 import { submitLead } from "@/lib/submitLead";
 import { motion, AnimatePresence } from "framer-motion";
-import MathCaptcha from "@/components/MathCaptcha";
+import { RecaptchaBox, RECAPTCHA_SITE_KEY, type RecaptchaHandle } from "@/components/RecaptchaBox";
 import { Link, useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
@@ -164,11 +164,13 @@ const inputClass = "w-full px-4 py-3 rounded-xl text-sm text-[#0A1628] outline-n
 
 const AppAuditForm = () => {
   const [submitted, setSubmitted] = useState(false);
-  const [captchaOk, setCaptchaOk] = useState(false);
+  const captcha = useRef<RecaptchaHandle>(null);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const captchaToken = RECAPTCHA_SITE_KEY ? captcha.current?.getToken() ?? "" : "";
+    if (RECAPTCHA_SITE_KEY && !captchaToken) return;
     const fd = new FormData(e.currentTarget);
     setSubmitting(true);
     setError("");
@@ -177,10 +179,11 @@ const AppAuditForm = () => {
       project: "Mobile App Development", message: `Platform: ${fd.get("platform")}
 Category: ${fd.get("category")}`,
       honeypot: String(fd.get("company_site") || ""),
+      recaptchaToken: captchaToken || undefined,
     }, "audit-form-mobile-app");
     setSubmitting(false);
-    if (r.ok) setSubmitted(true);
-    else setError(r.error ?? "Something went wrong. Please try again.");
+    if (r.ok) { setSubmitted(true); captcha.current?.reset(); }
+    else { captcha.current?.reset(); setError(r.error ?? "Something went wrong. Please try again."); }
   };
 
   return (
@@ -230,10 +233,10 @@ Category: ${fd.get("category")}`,
                </select>
             </div>
           </div>
-          <MathCaptcha onVerify={setCaptchaOk} inputClass={inputClass} />
+          <RecaptchaBox ref={captcha} />
           <input name="company_site" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
           {error && <p className="text-sm text-red-600">{error}</p>}
-          <button type="submit" disabled={!captchaOk || submitting} className="w-full py-4 rounded-xl text-base font-bold text-white flex items-center justify-center gap-2 transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed" style={{ background: accentGradient }}>
+          <button type="submit" disabled={submitting} className="w-full py-4 rounded-xl text-base font-bold text-white flex items-center justify-center gap-2 transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed" style={{ background: accentGradient }}>
             Book Strategy Call <ArrowRight size={18} />
           </button>
           <p className="text-center text-xs text-[#6B7280] flex items-center justify-center gap-1.5 mt-2">

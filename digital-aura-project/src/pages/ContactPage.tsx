@@ -1,9 +1,9 @@
 import { getAttribution } from "@/lib/leadTracking";
 import { track } from "@/lib/track";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
-import MathCaptcha from "@/components/MathCaptcha";
+import { RecaptchaBox, RECAPTCHA_SITE_KEY, type RecaptchaHandle } from "@/components/RecaptchaBox";
 import {
   Mail, Phone, MapPin, Clock, CheckCircle2, ArrowRight,
   MessageSquare, Instagram, Linkedin, Star, Send,
@@ -69,7 +69,7 @@ const ContactPage = () => {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [formError, setFormError] = useState("");
-  const [captchaOk, setCaptchaOk] = useState(false);
+  const captcha = useRef<RecaptchaHandle>(null);
   const [form, setForm] = useState({
     name: "", company: "", email: "", phone: "", project: "", budget: "", message: "",
   });
@@ -79,6 +79,8 @@ const ContactPage = () => {
 
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const captchaToken = RECAPTCHA_SITE_KEY ? captcha.current?.getToken() ?? "" : "";
+    if (RECAPTCHA_SITE_KEY && !captchaToken) return;
     setSubmitting(true);
     setFormError("");
     try {
@@ -86,13 +88,15 @@ const ContactPage = () => {
       const res = await fetch(`${API}/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, ...getAttribution() }),
+        body: JSON.stringify({ ...form, recaptchaToken: captchaToken || undefined, ...getAttribution() }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Submission failed");
       setSubmitted(true);
+      captcha.current?.reset();
       track("lead_form_submit", { form_name: "contact_page_form" }); track("generate_lead", { form_name: "contact_page_form", value: 1 });
     } catch (err: unknown) {
+      captcha.current?.reset();
       setFormError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
     } finally {
       setSubmitting(false);
@@ -411,9 +415,9 @@ const ContactPage = () => {
                         rows={4} className={inputClass + " resize-none"} />
                     </div>
 
-                    <MathCaptcha onVerify={setCaptchaOk} inputClass={inputClass} />
+                    <RecaptchaBox ref={captcha} />
                     {formError && <p className="text-xs text-red-500 text-center font-semibold">{formError}</p>}
-                    <button type="submit" disabled={!captchaOk || submitting}
+                    <button type="submit" disabled={submitting}
                       className="w-full py-4 rounded-xl text-white font-black text-base flex items-center justify-center gap-2 transition-all hover:gap-3 hover:opacity-95 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
                       style={{ background: "linear-gradient(135deg,#FF6B2B,#e85a1a)", boxShadow: "0 4px 24px rgba(255,107,43,0.4)" }}>
                       {submitting ? "Sending…" : <>Send My Project Brief <Send size={16} /></>}

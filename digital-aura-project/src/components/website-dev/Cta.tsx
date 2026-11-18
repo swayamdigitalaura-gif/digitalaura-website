@@ -1,6 +1,7 @@
 import { getAttribution } from "@/lib/leadTracking";
 import { track } from "@/lib/track";
-import { useState, type FormEvent } from "react";
+import { useState, useCallback, type FormEvent } from "react";
+import MathCaptcha from "@/components/MathCaptcha";
 import { ArrowRight, MessageSquareText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -127,9 +128,12 @@ export function QuickEnquiry({ compact = false }: { compact?: boolean } = {}) {
   ]);
   const [sent, setSent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [captchaOk, setCaptchaOk] = useState(false);
+  const handleCaptcha = useCallback((v: boolean) => setCaptchaOk(v), []);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (!captchaOk) return;
     const form = e.currentTarget;
     const fd = new FormData(form);
     setSubmitting(true);
@@ -243,10 +247,13 @@ export function QuickEnquiry({ compact = false }: { compact?: boolean } = {}) {
                 </Select>
               </div>
             </div>
+            <div className="mt-4">
+              <MathCaptcha onVerify={handleCaptcha} />
+            </div>
             <Button
               type="submit"
               size="lg"
-              disabled={submitting}
+              disabled={submitting || !captchaOk}
               className="group mt-6 h-[3.25rem] w-full rounded-full text-base font-bold shadow-[var(--shadow-glow)] transition-transform hover:-translate-y-0.5"
             >
               {sent ? (

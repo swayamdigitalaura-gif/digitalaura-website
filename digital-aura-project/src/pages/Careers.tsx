@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
-import MathCaptcha from "@/components/MathCaptcha";
+import { RecaptchaBox, RECAPTCHA_SITE_KEY, type RecaptchaHandle } from "@/components/RecaptchaBox";
 import { Link } from "react-router-dom";
 import { STATIC_JOBS } from "@/data/jobs";
 import PageLayout from "@/components/PageLayout";
@@ -21,7 +21,7 @@ const ApplyModal = ({ job, onClose, color = "#7C3AED" }: { job: Record<string, s
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
-  const [captchaOk, setCaptchaOk] = useState(false);
+  const captcha = useRef<RecaptchaHandle>(null);
   const [dragging, setDragging] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
@@ -48,18 +48,23 @@ const ApplyModal = ({ job, onClose, color = "#7C3AED" }: { job: Record<string, s
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const captchaToken = RECAPTCHA_SITE_KEY ? captcha.current?.getToken() ?? "" : "";
+    if (RECAPTCHA_SITE_KEY && !captchaToken) return;
     setSubmitting(true);
     setError("");
     try {
       const fd = new FormData();
       Object.entries(form).forEach(([k, v]) => fd.append(k, v));
       if (cvFile) fd.append("cv", cvFile);
+      if (captchaToken) fd.append("recaptchaToken", captchaToken);
       const API = import.meta.env.VITE_API_BASE || "http://localhost:5000";
       const res = await fetch(`${API}/api/careers/${job.id}/apply`, { method: "POST", body: fd });
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Submission failed");
       setSubmitted(true);
+      captcha.current?.reset();
     } catch (err: unknown) {
+      captcha.current?.reset();
       setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
     } finally {
       setSubmitting(false);
@@ -189,9 +194,9 @@ const ApplyModal = ({ job, onClose, color = "#7C3AED" }: { job: Record<string, s
                     className={inputClass + " resize-none"} />
                 </div>
                 {/* Captcha + Submit */}
-                <MathCaptcha onVerify={setCaptchaOk} inputClass={inputClass} />
+                <RecaptchaBox ref={captcha} />
                 {error && <p className="text-xs text-red-500 text-center font-semibold">{error}</p>}
-                <button type="submit" disabled={!captchaOk || submitting}
+                <button type="submit" disabled={submitting}
                   className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl text-white font-bold text-sm transition-all hover:gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
                   style={{ background: `linear-gradient(135deg, ${color}, ${color}cc)`, boxShadow: `0 4px 20px ${color}35` }}>
                   {submitting ? "Submitting…" : <>Submit Application <ArrowRight size={15} /></>}

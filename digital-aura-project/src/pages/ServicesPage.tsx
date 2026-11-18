@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { track } from "@/lib/track";
 import { submitLead } from "@/lib/submitLead";
 import { motion, AnimatePresence } from "framer-motion";
-import MathCaptcha from "@/components/MathCaptcha";
+import { RecaptchaBox, RECAPTCHA_SITE_KEY, type RecaptchaHandle } from "@/components/RecaptchaBox";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import ServicesSection from "@/components/Services";
@@ -73,12 +73,14 @@ const inputClass = "w-full px-4 py-3 rounded-xl text-sm text-[#0A1628] outline-n
 const LeadForm = () => {
   const [selected, setSelected] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
-  const [captchaOk, setCaptchaOk] = useState(false);
+  const captcha = useRef<RecaptchaHandle>(null);
   const [form, setForm] = useState({ name: "", email: "", phone: "", idea: "" });
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const captchaToken = RECAPTCHA_SITE_KEY ? captcha.current?.getToken() ?? "" : "";
+    if (RECAPTCHA_SITE_KEY && !captchaToken) return;
     const fd = new FormData(e.currentTarget);
     setSubmitting(true);
     setError("");
@@ -86,10 +88,11 @@ const LeadForm = () => {
       name: form.name, email: form.email, phone: form.phone,
       project: selected || undefined, message: form.idea,
       honeypot: String(fd.get("company_site") || ""),
+      recaptchaToken: captchaToken || undefined,
     }, "services-page-lead-form");
     setSubmitting(false);
-    if (r.ok) { setSubmitted(true); track("lead_form_submit", { form_name: "services_page_form" }); track("generate_lead", { form_name: "services_page_form", value: 1 }); }
-    else setError(r.error ?? "Something went wrong. Please try again.");
+    if (r.ok) { setSubmitted(true); captcha.current?.reset(); track("lead_form_submit", { form_name: "services_page_form" }); track("generate_lead", { form_name: "services_page_form", value: 1 }); }
+    else { setError(r.error ?? "Something went wrong. Please try again."); captcha.current?.reset(); }
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm(p => ({ ...p, [e.target.name]: e.target.value }));
@@ -155,10 +158,10 @@ const LeadForm = () => {
         />
       </div>
 
-      <MathCaptcha onVerify={setCaptchaOk} inputClass={inputClass} />
+      <RecaptchaBox ref={captcha} />
       <input name="company_site" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
       {error && <p className="text-sm text-red-600">{error}</p>}
-      <button type="submit" disabled={!captchaOk || submitting} className="btn-orange w-full py-4 text-base gap-2 disabled:opacity-50 disabled:cursor-not-allowed" style={{ background: "linear-gradient(135deg,#7C3AED,#6d28d9)", boxShadow: "0 4px 18px rgba(124,58,237,0.35)" }}>
+      <button type="submit" disabled={submitting} className="btn-orange w-full py-4 text-base gap-2 disabled:opacity-50 disabled:cursor-not-allowed" style={{ background: "linear-gradient(135deg,#7C3AED,#6d28d9)", boxShadow: "0 4px 18px rgba(124,58,237,0.35)" }}>
         Send My Project Brief <ArrowRight size={18} />
       </button>
       <p className="text-center text-xs text-[#6B7280]"><span data-cms-key="svc_pg_p_34" data-cms-label="Body Text" data-cms-attr="text">No commitment. We'll respond with a tailored proposal within 2 hours.</span></p>

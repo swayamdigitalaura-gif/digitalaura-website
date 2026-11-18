@@ -9,7 +9,7 @@
 import { motion } from "framer-motion";
 import { submitLead } from "@/lib/submitLead";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import PageLayout from "@/components/PageLayout";
 import { renderInline } from "@/lib/inlineLinks";
 import { useSettings } from "@/hooks/useSettings";
@@ -18,7 +18,7 @@ import CaseStudies from "@/components/CaseStudies";
 import { CASES_BY_CATEGORY } from "@/components/caseCards";
 import BlogInsights from "@/components/BlogInsights";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
-import MathCaptcha from "@/components/MathCaptcha";
+import { RecaptchaBox, RECAPTCHA_SITE_KEY, type RecaptchaHandle } from "@/components/RecaptchaBox";
 import {
   ArrowRight, ChevronDown, Check, MapPin, Star,
   Building2, Navigation, MessageSquare, ListChecks,
@@ -145,7 +145,7 @@ interface AuditFormProps {
 
 const AuditForm = ({ formTitle, formSubtext, submitLabel, disclaimer, successTitle, successText }: AuditFormProps) => {
   const [submitted, setSubmitted] = useState(false);
-  const [captchaOk, setCaptchaOk] = useState(false);
+  const captcha = useRef<RecaptchaHandle>(null);
   const [form, setForm] = useState({ name: "", business: "", email: "", phone: "", website: "", goal: "" });
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
     setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
@@ -153,6 +153,8 @@ const AuditForm = ({ formTitle, formSubtext, submitLabel, disclaimer, successTit
   const [error, setError] = useState("");
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const captchaToken = RECAPTCHA_SITE_KEY ? captcha.current?.getToken() ?? "" : "";
+    if (RECAPTCHA_SITE_KEY && !captchaToken) return;
     const fd = new FormData(e.currentTarget);
     setSubmitting(true);
     setError("");
@@ -161,10 +163,11 @@ const AuditForm = ({ formTitle, formSubtext, submitLabel, disclaimer, successTit
       project: form.goal, message: `Website: ${form.website}
 Goal: ${form.goal}`,
       honeypot: String(fd.get("company_site") || ""),
+      recaptchaToken: captchaToken || undefined,
     }, "audit-form-localseo");
     setSubmitting(false);
-    if (r.ok) setSubmitted(true);
-    else setError(r.error ?? "Something went wrong. Please try again.");
+    if (r.ok) { setSubmitted(true); captcha.current?.reset(); }
+    else { captcha.current?.reset(); setError(r.error ?? "Something went wrong. Please try again."); }
   };
 
   return (
@@ -217,10 +220,10 @@ Goal: ${form.goal}`,
               <option>Full SEO strategy &amp; roadmap</option>
             </select>
           </div>
-          <MathCaptcha onVerify={setCaptchaOk} inputClass={inputClass} />
+          <RecaptchaBox ref={captcha} />
           <input name="company_site" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
           {error && <p className="text-sm text-red-600">{error}</p>}
-          <button type="submit" disabled={!captchaOk || submitting} className="w-full py-4 rounded-xl text-base font-bold text-white flex items-center justify-center gap-2 transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+          <button type="submit" disabled={submitting} className="w-full py-4 rounded-xl text-base font-bold text-white flex items-center justify-center gap-2 transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
             style={{ background: "linear-gradient(135deg, #22C55E, #16a34a)" }}>
             {submitLabel} <ArrowRight size={18} />
           </button>

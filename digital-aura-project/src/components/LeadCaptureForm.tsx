@@ -1,9 +1,9 @@
 ﻿import { getAttribution } from "@/lib/leadTracking";
 import { track } from "@/lib/track";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { CheckCircle2, Lock, ArrowRight } from "lucide-react";
-import MathCaptcha from "@/components/MathCaptcha";
+import { RecaptchaBox, RECAPTCHA_SITE_KEY, type RecaptchaHandle } from "@/components/RecaptchaBox";
 import { useSettings } from "@/hooks/useSettings";
 
 const challenges = [
@@ -30,7 +30,7 @@ const LeadCaptureForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [formError, setFormError] = useState("");
-  const [captchaOk, setCaptchaOk] = useState(false);
+  const captcha = useRef<RecaptchaHandle>(null);
   const [form, setForm] = useState({
     name: "", business: "", email: "", phone: "", website: "", challenge: "",
   });
@@ -40,6 +40,8 @@ const LeadCaptureForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const captchaToken = RECAPTCHA_SITE_KEY ? captcha.current?.getToken() ?? "" : "";
+    if (RECAPTCHA_SITE_KEY && !captchaToken) return;
     setSubmitting(true);
     setFormError("");
     try {
@@ -55,14 +57,17 @@ const LeadCaptureForm = () => {
           project: form.challenge,
           message: form.website ? `Website: ${form.website}` : "",
           source: "home-strategy-session",
+          recaptchaToken: captchaToken || undefined,
           ...getAttribution(),
         }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Submission failed");
       setSubmitted(true);
+      captcha.current?.reset();
       track("lead_form_submit", { form_name: "home_lead_form" }); track("generate_lead", { form_name: "home_lead_form", value: 1 });
     } catch (err: unknown) {
+      captcha.current?.reset();
       setFormError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
     } finally {
       setSubmitting(false);
@@ -182,9 +187,9 @@ const LeadCaptureForm = () => {
                       {challenges.map((c) => <option key={c} value={c}>{c}</option>)}
                     </select>
                   </div>
-                  <MathCaptcha onVerify={setCaptchaOk} inputClass={inputClass} />
+                  <RecaptchaBox ref={captcha} />
                   {formError && <p className="text-xs text-red-500 text-center">{formError}</p>}
-                  <button type="submit" disabled={!captchaOk || submitting} className="btn-orange w-full py-4 text-base gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                  <button type="submit" disabled={submitting} className="btn-orange w-full py-4 text-base gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
                     {submitting ? "Submitting..." : "Claim My Free Strategy Session"} <ArrowRight size={18} />
                   </button>
                   <p className="text-center text-xs text-[#6B7280] flex items-center justify-center gap-1.5">

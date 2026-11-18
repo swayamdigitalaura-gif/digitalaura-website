@@ -2,8 +2,8 @@
 import { track } from "@/lib/track";
 import { Link } from "react-router-dom";
 import { submitLead } from "@/lib/submitLead";
-import { useState } from "react";
-import MathCaptcha from "@/components/MathCaptcha";
+import { useState, useRef } from "react";
+import { RecaptchaBox, RECAPTCHA_SITE_KEY, type RecaptchaHandle } from "@/components/RecaptchaBox";
 import PageLayout from "@/components/PageLayout";
 import CaseStudies from "@/components/CaseStudies";
 import { CASES_BY_CATEGORY } from "@/components/caseCards";
@@ -80,11 +80,13 @@ const inputClass = "w-full px-4 py-3 rounded-xl text-sm text-[#0A1628] outline-n
 
 const AIAuditForm = () => {
   const [submitted, setSubmitted] = useState(false);
-  const [captchaOk, setCaptchaOk] = useState(false);
+  const captcha = useRef<RecaptchaHandle>(null);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const captchaToken = RECAPTCHA_SITE_KEY ? captcha.current?.getToken() ?? "" : "";
+    if (RECAPTCHA_SITE_KEY && !captchaToken) return;
     const fd = new FormData(e.currentTarget);
     setSubmitting(true);
     setError("");
@@ -92,10 +94,11 @@ const AIAuditForm = () => {
       name: String(fd.get("name") || ""), email: String(fd.get("email") || ""),
       project: "AI Solutions", message: `Primary challenge: ${fd.get("challenge")}`,
       honeypot: String(fd.get("company_site") || ""),
+      recaptchaToken: captchaToken || undefined,
     }, "audit-form-ai-solutions");
     setSubmitting(false);
-    if (r.ok) { setSubmitted(true); track("lead_form_submit", { form_name: "ai_solutions_form" }); track("generate_lead", { form_name: "ai_solutions_form", value: 1 }); }
-    else setError(r.error ?? "Something went wrong. Please try again.");
+    if (r.ok) { setSubmitted(true); captcha.current?.reset(); track("lead_form_submit", { form_name: "ai_solutions_form" }); track("generate_lead", { form_name: "ai_solutions_form", value: 1 }); }
+    else { setError(r.error ?? "Something went wrong. Please try again."); captcha.current?.reset(); }
   };
 
   return (
@@ -133,10 +136,10 @@ const AIAuditForm = () => {
               <option>Other</option>
             </select>
           </div>
-          <MathCaptcha onVerify={setCaptchaOk} inputClass={inputClass} />
+          <RecaptchaBox ref={captcha} />
           <input name="company_site" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
           {error && <p className="text-sm text-red-600">{error}</p>}
-          <button type="submit" disabled={!captchaOk || submitting} className="w-full py-4 rounded-xl text-base font-bold text-white flex items-center justify-center gap-2 transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed" style={{ background: accentGradient }}>
+          <button type="submit" disabled={submitting} className="w-full py-4 rounded-xl text-base font-bold text-white flex items-center justify-center gap-2 transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed" style={{ background: accentGradient }}>
             Request Full Report <ArrowRight size={18} />
           </button>
           <p className="text-center text-xs text-[#6B7280] flex items-center justify-center gap-1.5 mt-2">

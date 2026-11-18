@@ -3,9 +3,9 @@
  * Posts to /api/contact through submitLead (honeypot + math captcha, same as the other forms).
  * The website field is what "enter your website for the audit" refers to.
  */
-import { useState, useCallback } from "react";
+import { useState, useRef } from "react";
 import { CheckCircle2, Lock } from "lucide-react";
-import MathCaptcha from "@/components/MathCaptcha";
+import { RecaptchaBox, RECAPTCHA_SITE_KEY, type RecaptchaHandle } from "@/components/RecaptchaBox";
 import { submitLead } from "@/lib/submitLead";
 import { track, PHONE_DISPLAY, PHONE_TEL, whatsappLink } from "@/lib/track";
 
@@ -56,11 +56,10 @@ export function normaliseWebsite(raw: string): string | null {
 
 const PageLeadForm = ({ cfg, accent, embedded = false, idPrefix = "plf" }: { cfg: LeadFormConfig; accent: string; embedded?: boolean; /** Prefix for the field ids; give a second form on the same page a different one. */ idPrefix?: string }) => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", website: "", business: "", city: "", competitor: "", businessType: "", notes: "", hp: "" });
-  const [captchaOk, setCaptchaOk] = useState(false);
+  const captcha = useRef<RecaptchaHandle>(null);
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState(false);
   const [error, setError] = useState("");
-  const onVerify = useCallback((v: boolean) => setCaptchaOk(v), []);
   const [started, setStarted] = useState(false);
   const onStart = () => { if (!started) { setStarted(true); track("lead_form_start", { form_name: cfg.formName }); } };
 
@@ -76,7 +75,8 @@ const PageLeadForm = ({ cfg, accent, embedded = false, idPrefix = "plf" }: { cfg
       if (cfg.website === "required" && !site) return setError("Please enter your website address, for example yourbusiness.com");
       if (form.website.trim() && !site) return setError("That website address does not look right. Example: yourbusiness.com");
     }
-    if (!captchaOk) return setError("Please answer the verification question.");
+    const captchaToken = RECAPTCHA_SITE_KEY ? captcha.current?.getToken() ?? "" : "";
+    if (RECAPTCHA_SITE_KEY && !captchaToken) return setError("Please complete the reCAPTCHA verification.");
     setBusy(true);
     const lines = [
       site ? `Website: ${site}` : "",
@@ -87,16 +87,17 @@ const PageLeadForm = ({ cfg, accent, embedded = false, idPrefix = "plf" }: { cfg
       `Page: ${window.location.pathname}`,
     ].filter(Boolean);
     const res = await submitLead(
-      { name: form.name, email: form.email, phone: form.phone, company: form.business, project: cfg.service, message: lines.join("\n"), honeypot: form.hp },
+      { name: form.name, email: form.email, phone: form.phone, company: form.business, project: cfg.service, message: lines.join("\n"), honeypot: form.hp, recaptchaToken: captchaToken || undefined },
       cfg.formName,
     );
     setBusy(false);
     if (res.ok) {
       setDone(true);
+      captcha.current?.reset();
       track("lead_form_submit", { form_name: cfg.formName });
       track("generate_lead", { form_name: cfg.formName, value: 1 });
     }
-    else setError(res.error || "Something went wrong. Please try again.");
+    else { captcha.current?.reset(); setError(res.error || "Something went wrong. Please try again."); }
   };
 
   const Outer = embedded ? "div" : "section";
@@ -181,7 +182,7 @@ const PageLeadForm = ({ cfg, accent, embedded = false, idPrefix = "plf" }: { cfg
               <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
                 <label>Leave this empty<input tabIndex={-1} autoComplete="off" name="company_site" value={form.hp} onChange={set("hp")} /></label>
               </div>
-              <MathCaptcha onVerify={onVerify} inputClass={inputClass} />
+              <RecaptchaBox ref={captcha} />
               {error && <p role="alert" className="text-sm font-semibold text-[#DC2626]">{error}</p>}
               <button type="submit" disabled={busy} className="w-full sm:w-auto px-8 py-3.5 rounded-full text-sm font-bold text-white transition-all disabled:opacity-60"
                 style={{ background: accent, boxShadow: `0 8px 24px ${accent}40` }}>

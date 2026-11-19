@@ -14,6 +14,7 @@ import SolutionsSection from "@/components/SolutionsSection";
 import CaseStudies from "@/components/CaseStudies";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Testimonials from "@/components/Testimonials";
+import HomeVideoTestimonials from "@/components/HomeVideoTestimonials";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
 import BlogInsights from "@/components/BlogInsights";
 import TechStack from "@/components/TechStack";
@@ -98,6 +99,7 @@ const Index = () => {
         <CaseStudies />
         <WhyChooseUs />
         <Testimonials />
+        <HomeVideoTestimonials />
         <LeadCaptureForm />
         <BlogInsights />
         <TechStack />

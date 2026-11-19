@@ -680,3 +680,17 @@ export function TrackingByLeadType() {
     </Section>
   );
 }
+
+/** One client video testimonial, shown right below the Testimonials section. Same card as the Google Ads shorts. */
+export function AdsVideoTestimonial() {
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const v = { id: "YpdcZLLOEK8", title: "Client video testimonial: bike rental company scaled 5X", thumb: "/videos/testimonial-bike-rental-5x.webp" };
+  return (
+    <div className="mx-auto max-w-7xl px-5 pb-16 pt-14 sm:px-8">
+      <h3 className="mb-8 text-center text-2xl font-bold tracking-tight text-[#0A1628] md:text-[28px]">Watch: Clients Share Their Experience</h3>
+      <div className="flex flex-wrap justify-center gap-6">
+        <YouTubeShortCard {...v} playing={activeId === v.id} onPlay={() => setActiveId(v.id)} />
+      </div>
+    </div>
+  );
+}

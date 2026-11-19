@@ -21,6 +21,7 @@ import "@/pillar-pages.css";
 import CaseStudies, { CASE_CARDS } from "@/components/CaseStudies";
 import { useSettings } from "@/hooks/useSettings";
 import { useCMSEditor } from "@/hooks/useCMSEditor";
+import HomeVideoTestimonials, { TESTIMONIAL_SHORTS } from "@/components/HomeVideoTestimonials";
 
 const PAGE_TITLE = "Website Development Company in Ahmedabad | Digital Aura";
 const PAGE_DESCRIPTION =
@@ -228,6 +229,9 @@ const WebsiteDevelopmentServicesPage = () => {
         <PillarSection tone="white" bare noHead>
           <Testimonials />
         </PillarSection>
+        <div className="bg-cream">
+          <HomeVideoTestimonials shorts={[TESTIMONIAL_SHORTS[1], TESTIMONIAL_SHORTS[0]]} background="transparent" />
+        </div>
 
         {/* 10. Comparison */}
         <PillarSection id="pricing" tone="light" bare noHead>

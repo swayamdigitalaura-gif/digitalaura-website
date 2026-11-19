@@ -16,7 +16,7 @@ import { FAQ } from "../components/sections/FAQ";
 import { PerformanceMarketing } from "../components/sections/PerformanceMarketing";
 import { FinalCTA } from "../components/sections/FinalCTA";
 import { Footer } from "../components/sections/Footer";
-import { QuickAnswer, ExploreMore, WhatWeDo, First90Days, VisitUs, AhmedabadMarket, CostBreakdown, SelfCheck, LeakChecks, TrackingByLeadType, AgencyComparison, AdsReels, TeamSection, PeopleSchema, AdsGuides } from "../components/sections/PillarExtras";
+import { QuickAnswer, ExploreMore, WhatWeDo, First90Days, VisitUs, AhmedabadMarket, CostBreakdown, SelfCheck, LeakChecks, TrackingByLeadType, AgencyComparison, AdsReels, AdsVideoTestimonial, TeamSection, PeopleSchema, AdsGuides } from "../components/sections/PillarExtras";
 import { FeeTable, AdLanguages } from "../components/sections/PricingAndLanguages";
 import { StickyMobileCTA } from "../components/sections/StickyMobileCTA";
 import { PillarSection, PillarSubNav, PillarTabs } from "../components/shared/Pillar";
@@ -170,6 +170,7 @@ function LandingPage() {
       {/* 9. Testimonials */}
       <PillarSection tone="white" bare noHead>
         <Testimonials />
+        <AdsVideoTestimonial />
       </PillarSection>
 
       {/* 10. Pricing & comparison */}

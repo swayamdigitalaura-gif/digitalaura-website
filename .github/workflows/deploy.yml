@@ -60,7 +60,7 @@ jobs:
   main-site:
     needs: detect
     if: ${{ needs.detect.outputs.main_site == 'true' || github.event.inputs.target == 'main-site' || github.event.inputs.target == 'all' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

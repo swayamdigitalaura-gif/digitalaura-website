@@ -35,6 +35,42 @@ const PILLARS: Record<string, Pillar> = {
     blurb: "Business websites built to load fast, rank on Google and convert visitors.",
     href: "/website-development-services-ahmedabad/",
   },
+  aiWorkflow: {
+    key: "aiWorkflow",
+    label: "AI workflow automation",
+    blurb: "Automate lead routing, CRM updates, reporting and follow-ups so your team stops repeating manual work.",
+    href: "/services/ai/workflow-automation/",
+  },
+  aiPredictive: {
+    key: "aiPredictive",
+    label: "Predictive analytics",
+    blurb: "Forecast demand, churn and campaign results from your own data before you spend the budget.",
+    href: "/services/ai/predictive-analytics/",
+  },
+  aiLlm: {
+    key: "aiLlm",
+    label: "LLM-powered apps",
+    blurb: "Custom apps built on large language models, from support assistants to document search.",
+    href: "/services/ai/llm-powered-apps/",
+  },
+  reactNative: {
+    key: "reactNative",
+    label: "React Native app development",
+    blurb: "One codebase for iOS and Android apps that feel native and ship faster.",
+    href: "/services/react-native-apps/",
+  },
+  mobileApp: {
+    key: "mobileApp",
+    label: "Mobile app development",
+    blurb: "iOS and Android apps planned around what your users need to do.",
+    href: "/services/mobile-app-development/",
+  },
+  androidApp: {
+    key: "androidApp",
+    label: "Android app development",
+    blurb: "Native Android apps built with Kotlin for speed, stability and Play Store readiness.",
+    href: "/services/android-development/",
+  },
 };
 
 // service slug -> pillars shown (own pillar excluded on purpose)
@@ -54,7 +90,20 @@ const BY_SLUG: Record<string, string[]> = {
   "shopify-development": ["web", "seo"],
   "woocommerce-development": ["web", "seo"],
   "bigcommerce-development": ["web", "seo"],
-  "custom-ai-web-solutions": ["web"],
+  "custom-ai-web-solutions": ["web", "aiLlm", "aiWorkflow"],
+  // AI + mobile cross-links (own page excluded)
+  "workflow-automation": ["aiPredictive", "aiLlm"],
+  "predictive-analytics": ["aiWorkflow", "aiLlm"],
+  "llm-powered-apps": ["aiWorkflow", "aiPredictive"],
+  "api-integration": ["aiWorkflow", "aiLlm"],
+  "ai-automation": ["aiWorkflow", "aiPredictive", "aiLlm"],
+  "ai-chatbot-assistant": ["aiLlm", "aiWorkflow"],
+  "chatbots-assistants": ["aiLlm", "aiWorkflow"],
+  "custom-ml-models": ["aiPredictive", "aiLlm"],
+  "ai-powered-web-apps": ["aiLlm", "aiWorkflow"],
+  "mobile-app-development": ["reactNative", "androidApp"],
+  "android-development": ["reactNative", "mobileApp"],
+  "react-native-apps": ["mobileApp", "androidApp"],
   // city / country variants of the service pages
   "shopify-website-design-ahmedabad": ["web", "seo"],
   "shopify-development-international": ["web", "seo"],

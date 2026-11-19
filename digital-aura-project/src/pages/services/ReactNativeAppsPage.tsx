@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { ArrowRight, Code2, Settings, Layers, Database, Zap, Shield, ChevronDown, Target, Rocket, Smartphone } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
+import PillarLinks from "@/components/PillarLinks";
 import ClientLogoSection from "@/components/ClientLogoSection";
 import CaseStudies from "@/components/CaseStudies";
 import { CASES_BY_CATEGORY } from "@/components/caseCards";
@@ -253,6 +254,7 @@ const ReactNativeAppsPage = () => (
         </motion.div>
       </div>
     </section>
+    <PillarLinks slug="react-native-apps" />
   </PageLayout>
 );
 

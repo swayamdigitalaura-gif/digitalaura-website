@@ -53,6 +53,24 @@ declare -A NEW_LOCATIONS=(
     location = /links/ { return 410; }
     location ~ ^/industry/(orthodontists|google-ads-for-orthodontists|local-seo-for-orthodontists|youtube-ads-for-orthodontists|lead-generation-for-chiropractors|local-seo-for-chiropractors|seo-for-chiropractors|social-media-management-for-chiropractors|local-seo-for-ophthalmologists|seo-for-ophthalmologists|youtube-ads-for-ophthalmologists)/?$ { return 410; }
     location ~ ^/(best-free-keyword-research-tools-for-seo|how-to-do-keyword-research-for-blog-writing|how-to-find-out-what-backlinks-your-website-already-has|how-to-track-your-seo-progress|keyword-research|the-complete-keyword-research-guide|what-is-anchor-text-and-how-can-i-optimize-it|taxi-business-website-features|taxi-cab-business-digital-marketing)/?$ { return 410; }'
+  [SPA_SHELL_REDIRECTS]='    # GSC "Crawled - currently not indexed" cleanup (2026-11-19): old root-level service URLs that never existed on this site
+    # served the homepage shell with 200 + canonical "/" (soft-404). 301 to the real page; slash/no-slash both covered.
+    location ~ ^/full-stack-development/?$ { return 301 /services/full-stack-development/; }
+    location ~ ^/ai-automation/?$ { return 301 /services/ai-automation/; }
+    location ~ ^/woocommerce-development/?$ { return 301 /services/woocommerce-development/; }
+    location ~ ^/email-whatsapp-marketing/?$ { return 301 /services/email-whatsapp-marketing/; }
+    location ~ ^/linkedin-youtube-ads/?$ { return 301 /services/linkedin-youtube-ads/; }
+    location ~ ^/wordpress-development/?$ { return 301 /services/wordpress-development/; }
+    location ~ ^/android-development/?$ { return 301 /services/android-development/; }
+    location ~ ^/shopify-development/?$ { return 301 /services/shopify-development/; }
+    location ~ ^/ai-chatbot-assistant/?$ { return 301 /services/ai-chatbot-assistant/; }
+    location ~ ^/design-branding/?$ { return 301 /services/design-branding/; }
+    location ~ ^/workflow-automation/?$ { return 301 /services/ai/workflow-automation/; }
+    location ~ ^/predictive-analytics/?$ { return 301 /services/ai/predictive-analytics/; }
+    location ~ ^/react-native-apps/?$ { return 301 /services/react-native-apps/; }
+    location ~ ^/ai-api-integration/?$ { return 301 /services/ai/api-integration/; }
+    location ~ ^/google-ads/?$ { return 301 /google-ads-agency-ahmedabad/; }
+    location ~ ^/(careers/2|industry/chiropractor|industry/seo-for-orthodontists|blog/seo)/?$ { return 410; }'
 )
 
 # Literal substring (no regex metacharacters) — the insertion point.
@@ -95,7 +113,7 @@ cp "$LIVE" "$WORK"
 CHANGED=0
 
 for path in "${!NEW_LOCATIONS[@]}"; do
-  if grep -qF "location $path {" "$WORK" || { [ "$path" = "REMOVED_AI_FILMMAKING" ] && grep -qF "ai-filmmaking|ai-filmmaking-ahmedabad" "$WORK"; } || { [ "$path" = "DA_COMPRESSION" ] && grep -qE "gzip_types[^;]*(text/css|application/javascript)" "$WORK"; } || { [ "$path" = "WP_410_GONE" ] && grep -qF "location = /author/user/ { return 410; }" "$WORK"; }; then
+  if grep -qF "location $path {" "$WORK" || { [ "$path" = "REMOVED_AI_FILMMAKING" ] && grep -qF "ai-filmmaking|ai-filmmaking-ahmedabad" "$WORK"; } || { [ "$path" = "DA_COMPRESSION" ] && grep -qE "gzip_types[^;]*(text/css|application/javascript)" "$WORK"; } || { [ "$path" = "WP_410_GONE" ] && grep -qF "location = /author/user/ { return 410; }" "$WORK"; } || { [ "$path" = "SPA_SHELL_REDIRECTS" ] && grep -qF "return 301 /services/full-stack-development/;" "$WORK"; }; then
     echo "Already live, skipping: $path"
     continue
   fi

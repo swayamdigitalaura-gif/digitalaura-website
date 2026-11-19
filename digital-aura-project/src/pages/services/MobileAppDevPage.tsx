@@ -7,6 +7,7 @@ import { RecaptchaBox, RECAPTCHA_SITE_KEY, type RecaptchaHandle } from "@/compon
 import { Link, useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
+import PillarLinks from "@/components/PillarLinks";
 import CMSIcon from "@/components/CMSIcon";
 import { useSettings } from "@/hooks/useSettings";
 import CaseStudies from "@/components/CaseStudies";
@@ -553,6 +554,7 @@ const MobileAppDevPage = () => {
 
   <div className="h-16 md:hidden" aria-hidden="true" />
     <StickyCtaBar accent="#FF6B2B" label="Get a free app consultation" href="#app-audit" topic="mobile app development" />
+    <PillarLinks slug="mobile-app-development" />
   </PageLayout>
   );
 };

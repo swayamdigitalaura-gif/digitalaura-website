@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { ArrowRight, Smartphone, Rocket, Palette, Database, Zap, Shield, Check, ChevronDown, Target, Code2 } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
+import PillarLinks from "@/components/PillarLinks";
 import ClientLogoSection from "@/components/ClientLogoSection";
 import CaseStudies from "@/components/CaseStudies";
 import { CASES_BY_CATEGORY } from "@/components/caseCards";
@@ -253,6 +254,7 @@ const AndroidDevelopmentPage = () => (
         </motion.div>
       </div>
     </section>
+    <PillarLinks slug="android-development" />
   </PageLayout>
 );
 

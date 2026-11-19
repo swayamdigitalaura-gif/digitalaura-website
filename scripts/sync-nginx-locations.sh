@@ -71,6 +71,8 @@ declare -A NEW_LOCATIONS=(
     location ~ ^/ai-api-integration/?$ { return 301 /services/ai/api-integration/; }
     location ~ ^/google-ads/?$ { return 301 /google-ads-agency-ahmedabad/; }
     location ~ ^/(careers/2|industry/chiropractor|industry/seo-for-orthodontists|blog/seo)/?$ { return 410; }'
+  [GONE_UNWANTED_BLOGS]='    # Owner decision 2026-11-19: these 3 blogs are not wanted -> 410 Gone
+    location ~ ^/blog/(ai-film-making-in-ahmedabad|in-house-hire-vs-digital-marketing-agency-ahmedabad|best-google-ads-agency-for-chiropractors)/?$ { return 410; }'
 )
 
 # Literal substring (no regex metacharacters) — the insertion point.
@@ -113,7 +115,7 @@ cp "$LIVE" "$WORK"
 CHANGED=0
 
 for path in "${!NEW_LOCATIONS[@]}"; do
-  if grep -qF "location $path {" "$WORK" || { [ "$path" = "REMOVED_AI_FILMMAKING" ] && grep -qF "ai-filmmaking|ai-filmmaking-ahmedabad" "$WORK"; } || { [ "$path" = "DA_COMPRESSION" ] && grep -qE "gzip_types[^;]*(text/css|application/javascript)" "$WORK"; } || { [ "$path" = "WP_410_GONE" ] && grep -qF "location = /author/user/ { return 410; }" "$WORK"; } || { [ "$path" = "SPA_SHELL_REDIRECTS" ] && grep -qF "return 301 /services/full-stack-development/;" "$WORK"; }; then
+  if grep -qF "location $path {" "$WORK" || { [ "$path" = "REMOVED_AI_FILMMAKING" ] && grep -qF "ai-filmmaking|ai-filmmaking-ahmedabad" "$WORK"; } || { [ "$path" = "DA_COMPRESSION" ] && grep -qE "gzip_types[^;]*(text/css|application/javascript)" "$WORK"; } || { [ "$path" = "WP_410_GONE" ] && grep -qF "location = /author/user/ { return 410; }" "$WORK"; } || { [ "$path" = "SPA_SHELL_REDIRECTS" ] && grep -qF "return 301 /services/full-stack-development/;" "$WORK"; } || { [ "$path" = "GONE_UNWANTED_BLOGS" ] && grep -qF "best-google-ads-agency-for-chiropractors" "$WORK"; }; then
     echo "Already live, skipping: $path"
     continue
   fi

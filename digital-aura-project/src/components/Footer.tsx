@@ -48,6 +48,7 @@ const servicesRight = [
     { label: "Digital Marketing Company", href: "/digital-marketing-company-ahmedabad", hard: true },
     { label: "Email & WhatsApp Marketing", href: "/services/email-whatsapp-marketing/" },
     { label: "LinkedIn & YouTube Ads", href: "/services/linkedin-youtube-ads/" },
+    { label: "Amazon Marketing", href: "/services/amazon-marketing" },
   ]},
   { heading: "Mobile App Development", headingHref: "/mobile-apps/", color: "#EC4899", items: [
     { label: "Android Development",           href: "/services/mobile-app-development/?type=android" },

@@ -48,12 +48,21 @@ const servicesRight = [
     { label: "Digital Marketing Company", href: "/digital-marketing-company-ahmedabad", hard: true },
     { label: "Email & WhatsApp Marketing", href: "/services/email-whatsapp-marketing/" },
     { label: "LinkedIn & YouTube Ads", href: "/services/linkedin-youtube-ads/" },
-    { label: "Amazon Marketing", href: "/services/amazon-marketing" },
   ]},
   { heading: "Mobile App Development", headingHref: "/mobile-apps/", color: "#EC4899", items: [
     { label: "Android Development",           href: "/services/mobile-app-development/?type=android" },
     { label: "Flutter App Development",       href: "/services/mobile-app-development/?type=flutter" },
     { label: "React Native App Development",  href: "/services/mobile-app-development/?type=reactnative" },
+  ]},
+];
+
+const servicesAmazon = [
+  { heading: "Amazon Marketing", color: "#FF9900", items: [
+    { label: "Amazon Marketing",        href: "/services/amazon-marketing" },
+    { label: "Amazon PPC Management",   href: "/services/amazon-marketing" },
+    { label: "Listing Optimisation",    href: "/services/amazon-marketing" },
+    { label: "A+ Content & Storefront", href: "/services/amazon-marketing" },
+    { label: "Seller Account Management", href: "/services/amazon-marketing" },
   ]},
 ];
 
@@ -90,7 +99,7 @@ const Footer = () => {
       style={{ background: "radial-gradient(circle, #FF6B2B, transparent)", filter: "blur(60px)" }} />
 
     <div className="max-w-7xl mx-auto px-4 md:px-8 pt-12 pb-6 relative z-10">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
 
         {/* Quick Links */}
         <div>
@@ -102,12 +111,12 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Our Services — heading centered over both sub-columns */}
-        <div className="sm:col-span-2 lg:col-span-2">
-          <h4 className="text-white font-bold text-[11px] uppercase tracking-[0.12em] mb-4 flex items-center gap-2 lg:justify-center lg:pr-[18%]">
+        {/* Our Services — heading centered over all sub-columns */}
+        <div className="sm:col-span-2 lg:col-span-3">
+          <h4 className="text-white font-bold text-[11px] uppercase tracking-[0.12em] mb-4 flex items-center gap-2">
             <span className="w-3 h-px bg-[#7C3AED]" /> Our Services
           </h4>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Left sub-column */}
             <div className="space-y-4">
               {servicesLeft.map(group => (
@@ -123,7 +132,7 @@ const Footer = () => {
                 </div>
               ))}
             </div>
-            {/* Right sub-column */}
+            {/* Middle sub-column */}
             <div className="space-y-4">
               {servicesRight.map(group => (
                 <div key={group.heading}>
@@ -132,6 +141,17 @@ const Footer = () => {
                   ) : (
                     <p className="text-[11px] font-bold uppercase tracking-wide mb-2" style={{ color: group.color }}>{group.heading}</p>
                   )}
+                  <ul className="space-y-2">
+                    {group.items.map(l => <LinkItem key={l.label} {...l} dot={group.color} />)}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            {/* Amazon sub-column */}
+            <div className="space-y-4">
+              {servicesAmazon.map(group => (
+                <div key={group.heading}>
+                  <p className="text-[11px] font-bold uppercase tracking-wide mb-2" style={{ color: group.color }}>{group.heading}</p>
                   <ul className="space-y-2">
                     {group.items.map(l => <LinkItem key={l.label} {...l} dot={group.color} />)}
                   </ul>

@@ -17,6 +17,7 @@ import WebAppDevPage from "./pages/services/WebAppDevPage.tsx";
 import DigitalMarketingPage from "./pages/services/DigitalMarketingPage.tsx";
 import AmazonMarketingPage from "./pages/services/AmazonMarketingPage.tsx";
 import AmazonAccountManagementPage from "./pages/services/AmazonAccountManagementPage.tsx";
+import AmazonPpcPage from "./pages/services/AmazonPpcPage.tsx";
 import DesignBrandingPage from "./pages/services/DesignBrandingPage.tsx";
 import ShopifyPage from "./pages/services/ShopifyPage.tsx";
 import WooCommercePage from "./pages/services/WooCommercePage.tsx";
@@ -132,6 +133,7 @@ const App = () => (
           <Route path="/services/digital-marketing" element={<DigitalMarketingPage />} />
           <Route path="/services/amazon-marketing" element={<AmazonMarketingPage />} />
           <Route path="/services/amazon-account-management" element={<AmazonAccountManagementPage />} />
+          <Route path="/services/amazon-ppc" element={<AmazonPpcPage />} />
           <Route path="/services/design-branding" element={<DesignBrandingPage />} />
           <Route path="/services/shopify-development" element={<ShopifyPage />} />
           <Route path="/services/woocommerce-development" element={<WooCommercePage />} />

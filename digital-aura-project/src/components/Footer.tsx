@@ -59,7 +59,7 @@ const servicesRight = [
 const servicesAmazon = [
   { heading: "Amazon Marketing", color: "#FF9900", items: [
     { label: "Amazon Marketing",          href: "/services/amazon-marketing" },
-    { label: "Amazon PPC Management",     href: "/services/amazon-marketing" },
+    { label: "Amazon PPC Management",     href: "/services/amazon-ppc" },
     { label: "Listing Optimisation",      href: "/services/amazon-marketing" },
     { label: "A+ Content & Storefront",   href: "/services/amazon-marketing" },
     { label: "Seller Account Management", href: "/services/amazon-account-management" },

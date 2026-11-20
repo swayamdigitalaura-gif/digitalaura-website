@@ -14,7 +14,7 @@ import {
   FileText, Package, RefreshCw, MessageSquare,
 } from "lucide-react";
 import { useState, useRef } from "react";
-import { RecaptchaBox, RECAPTCHA_SITE_KEY, type RecaptchaHandle } from "@/components/RecaptchaBox";
+import { RecaptchaBox, type RecaptchaHandle } from "@/components/RecaptchaBox";
 import PageLayout from "@/components/PageLayout";
 import { useSettings } from "@/hooks/useSettings";
 
@@ -291,8 +291,8 @@ function SeoAuditForm() {
     if (status === "loading") return;
     setStatus("loading");
     try {
-      const token = await recaptchaRef.current?.execute();
-      await submitLead({ ...form, source: "amazon-seo-consultant-form", recaptchaToken: token ?? "" });
+      const token = recaptchaRef.current?.getToken() ?? "";
+      await submitLead({ ...form, source: "amazon-seo-consultant-form", recaptchaToken: token });
       track("amazon_seo_lead");
       setStatus("ok");
     } catch {
@@ -333,7 +333,7 @@ function SeoAuditForm() {
         <option value="AE">Amazon UAE (AE)</option>
         <option value="Other">Other Marketplace</option>
       </select>
-      <RecaptchaBox ref={recaptchaRef} siteKey={RECAPTCHA_SITE_KEY} />
+      <RecaptchaBox ref={recaptchaRef} />
       <button type="submit" disabled={status === "loading"}
         className="w-full py-3.5 rounded-xl font-semibold text-white text-sm transition-all"
         style={{ background: `linear-gradient(135deg,${accent2Color},#1558c0)`, opacity: status === "loading" ? 0.7 : 1 }}>

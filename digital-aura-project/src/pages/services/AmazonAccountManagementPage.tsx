@@ -18,10 +18,10 @@ import { RecaptchaBox, RECAPTCHA_SITE_KEY, type RecaptchaHandle } from "@/compon
 import PageLayout from "@/components/PageLayout";
 import { useSettings } from "@/hooks/useSettings";
 
-const accentColor  = "#FF9900";
+const accentColor  = "#FF6B2B";
 const accent2Color = "#1A6FE8";
 const purpleColor  = "#7C3AED";
-const glowAmber    = "rgba(255,153,0,0.10)";
+const glowOrange   = "rgba(255,107,43,0.10)";
 const glowBlue     = "rgba(26,111,232,0.08)";
 const glowPurple   = "rgba(124,58,237,0.08)";
 
@@ -32,7 +32,7 @@ const serviceCards = [
     Icon: ShoppingBag,
     category: "Setup & Registration",
     color: accentColor,
-    bg: glowAmber,
+    bg: glowOrange,
     title: "Amazon Seller Registration",
     desc: "Complete new seller account setup — business documentation, GST and PAN verification, bank linking, category approval, and GTIN exemption requests handled start to finish.",
     tags: ["Account Setup", "Category Approval", "GTIN Exemption"],
@@ -41,7 +41,7 @@ const serviceCards = [
     Icon: Layers,
     category: "Setup & Registration",
     color: accentColor,
-    bg: glowAmber,
+    bg: glowOrange,
     title: "FBA Enrolment & Setup",
     desc: "Amazon FBA (Fulfilment by Amazon) enrolment, shipment plan creation, labelling compliance, and inventory placement strategy so your stock reaches fulfilment centres correctly.",
     tags: ["FBA Setup", "Shipment Plans", "Labelling"],
@@ -50,7 +50,7 @@ const serviceCards = [
     Icon: Shield,
     category: "Setup & Registration",
     color: accentColor,
-    bg: glowAmber,
+    bg: glowOrange,
     title: "Brand Registry & Protection",
     desc: "Amazon Brand Registry application, IP violation reporting, and ongoing brand protection to prevent counterfeiters, hijackers, and suppressed listings on your ASINs.",
     tags: ["Brand Registry", "IP Protection", "Hijacker Removal"],
@@ -123,7 +123,7 @@ const serviceCards = [
 ];
 
 const serviceTabs = [
-  { key: "setup",    label: "Setup & Registration",   color: accentColor,  bg: glowAmber,  gradient: `linear-gradient(135deg,${accentColor},#cc7a00)` },
+  { key: "setup",    label: "Setup & Registration",   color: accentColor,  bg: glowOrange,  gradient: `linear-gradient(135deg,${accentColor},#e85a1a)` },
   { key: "ongoing",  label: "Ongoing Management",      color: accent2Color, bg: glowBlue,   gradient: `linear-gradient(135deg,${accent2Color},#1558c0)` },
   { key: "recovery", label: "Recovery & Reinstatement",color: purpleColor,  bg: glowPurple, gradient: `linear-gradient(135deg,${purpleColor},#6d28d9)` },
 ];
@@ -140,7 +140,7 @@ const cardsByTab: Record<string, typeof serviceCards> = {
 const AccountHealthIllustration = () => (
   <div className="relative w-full max-w-[420px] mx-auto select-none" aria-hidden="true">
     <div className="absolute inset-0 rounded-3xl pointer-events-none"
-      style={{ background: `radial-gradient(ellipse at 60% 40%, rgba(255,153,0,0.18) 0%, transparent 70%)`, filter: "blur(32px)" }} />
+      style={{ background: `radial-gradient(ellipse at 60% 40%, rgba(255,107,43,0.18) 0%, transparent 70%)`, filter: "blur(32px)" }} />
     <div className="relative rounded-2xl border border-[#E5E7EB] bg-white overflow-hidden"
       style={{ boxShadow: "0 24px 64px rgba(0,0,0,0.12)" }}>
       {/* Top bar */}
@@ -215,7 +215,7 @@ const AccountHealthIllustration = () => (
     </div>
     {/* Floating badge */}
     <div className="absolute -top-3 -right-3 rounded-xl px-3 py-2 shadow-lg border border-white"
-      style={{ background: `linear-gradient(135deg, ${accentColor}, #cc7a00)` }}>
+      style={{ background: `linear-gradient(135deg, ${accentColor}, #e85a1a)` }}>
       <p className="text-[10px] font-black text-white tracking-widest uppercase">Rating</p>
       <p className="text-lg font-black text-white leading-none">↑ 92</p>
     </div>
@@ -260,12 +260,12 @@ const InventoryIllustration = () => (
         ))}
       </div>
       <div className="mx-5 mb-4 p-3 rounded-xl flex items-center justify-between"
-        style={{ background: "rgba(255,153,0,0.06)", border: `1px solid rgba(255,153,0,0.15)` }}>
+        style={{ background: "rgba(255,107,43,0.06)", border: `1px solid rgba(255,107,43,0.15)` }}>
         <div>
           <p className="text-[10px] font-bold text-[#9CA3AF] uppercase tracking-wider">IPI Score</p>
           <p className="text-[18px] font-black" style={{ color: accentColor }}>680 / 800</p>
         </div>
-        <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: glowAmber }}>
+        <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: glowOrange }}>
           <Package size={18} style={{ color: accentColor }} />
         </div>
       </div>
@@ -284,7 +284,7 @@ const processSteps = [
 
 // ── Tool groups ───────────────────────────────────────────────────────────────
 const toolGroups = [
-  { label: "Seller Central", color: accentColor,  bg: glowAmber,  pills: ["Seller Central", "Vendor Central", "FBA Dashboard"] },
+  { label: "Seller Central", color: accentColor,  bg: glowOrange,  pills: ["Seller Central", "Vendor Central", "FBA Dashboard"] },
   { label: "Inventory",      color: accent2Color, bg: glowBlue,   pills: ["Inventory Planner", "Restock Pro", "FBA Toolkit"] },
   { label: "Analytics",      color: purpleColor,  bg: glowPurple, pills: ["Brand Analytics", "Search Query Perf.", "ARA Basic"] },
   { label: "Case & Comms",   color: "#F59E0B",    bg: "rgba(245,158,11,0.08)", pills: ["Seller Support", "Case Log Manager"] },
@@ -372,7 +372,7 @@ const ServiceCardTabs = () => {
       <div className="max-w-5xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-4"
-            style={{ background: glowAmber, color: accentColor, border: `1px solid rgba(255,153,0,0.3)` }}>
+            style={{ background: glowOrange, color: accentColor, border: `1px solid rgba(255,107,43,0.3)` }}>
             <Settings size={12} /> Account Management Services
           </div>
           <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2">Everything Your Amazon Account Needs</h2>
@@ -431,7 +431,7 @@ const ServiceCardTabs = () => {
 };
 
 // ── Lead form ─────────────────────────────────────────────────────────────────
-const inputClass = "w-full px-4 py-3 rounded-xl text-sm text-[#0A1628] outline-none focus:ring-2 transition-all placeholder-[#9CA3AF] border border-[#E5E7EB] bg-[#F8FAFF] focus:bg-white focus:ring-[#FF9900]";
+const inputClass = "w-full px-4 py-3 rounded-xl text-sm text-[#0A1628] outline-none focus:ring-2 transition-all placeholder-[#9CA3AF] border border-[#E5E7EB] bg-[#F8FAFF] focus:bg-white focus:ring-[#FF6B2B]";
 
 const AccountAuditForm = () => {
   const [submitted, setSubmitted]   = useState(false);
@@ -470,7 +470,7 @@ const AccountAuditForm = () => {
 
   if (submitted) return (
     <div className="rounded-2xl p-8 bg-white text-center py-10" style={{ boxShadow: "0 24px 64px rgba(0,0,0,0.18)" }}>
-      <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: glowAmber }}>
+      <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: glowOrange }}>
         <CheckCircle2 size={32} style={{ color: accentColor }} />
       </div>
       <h3 className="text-xl font-bold text-[#0A1628] mb-2">Audit Request Received!</h3>
@@ -524,7 +524,7 @@ const AccountAuditForm = () => {
         {error && <p className="text-sm text-red-600">{error}</p>}
         <button type="submit" disabled={submitting}
           className="w-full py-4 rounded-xl text-base font-bold text-white flex items-center justify-center gap-2 transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
-          style={{ background: `linear-gradient(135deg, ${accentColor}, #cc7a00)` }}>
+          style={{ background: `linear-gradient(135deg, ${accentColor}, #e85a1a)` }}>
           Get My Free Account Audit <ArrowRight size={18} />
         </button>
         <p className="text-center text-xs text-[#6B7280] flex items-center justify-center gap-1.5">
@@ -558,7 +558,7 @@ const AmazonAccountManagementPage = () => {
       <section className="relative pt-[72px] overflow-hidden" style={{ background: "#fff" }}>
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute rounded-full"
-            style={{ width: 600, height: 600, top: "-20%", right: "-10%", background: `radial-gradient(circle, ${glowAmber} 0%, transparent 70%)`, filter: "blur(70px)" }} />
+            style={{ width: 600, height: 600, top: "-20%", right: "-10%", background: `radial-gradient(circle, ${glowOrange} 0%, transparent 70%)`, filter: "blur(70px)" }} />
           <div className="absolute rounded-full"
             style={{ width: 400, height: 400, bottom: "0%", left: "-5%", background: `radial-gradient(circle, ${glowBlue} 0%, transparent 70%)`, filter: "blur(60px)" }} />
           <div className="absolute inset-0 dot-pattern opacity-20" />
@@ -572,7 +572,7 @@ const AmazonAccountManagementPage = () => {
               </Link>
               <div className="mb-6">
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase"
-                  style={{ background: glowAmber, color: accentColor, border: `1px solid rgba(255,153,0,0.3)` }}>
+                  style={{ background: glowOrange, color: accentColor, border: `1px solid rgba(255,107,43,0.3)` }}>
                   <ShoppingBag size={12} /> Amazon Seller Account Management
                 </span>
               </div>
@@ -590,7 +590,7 @@ const AmazonAccountManagementPage = () => {
               <div className="flex flex-wrap gap-2 mb-8">
                 {["Seller Central", "Vendor Central", "FBA Management", "Brand Registry", "Suspension Help", "Case Resolution"].map(tag => (
                   <span key={tag} className="text-[11px] font-bold px-3 py-1 rounded-full"
-                    style={{ background: glowAmber, color: accentColor, border: `1px solid rgba(255,153,0,0.25)` }}>
+                    style={{ background: glowOrange, color: accentColor, border: `1px solid rgba(255,107,43,0.25)` }}>
                     {tag}
                   </span>
                 ))}
@@ -598,7 +598,7 @@ const AmazonAccountManagementPage = () => {
               <div className="flex flex-wrap gap-3">
                 <Link to="#account-audit"
                   className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
-                  style={{ background: `linear-gradient(135deg, ${accentColor}, #cc7a00)`, boxShadow: `0 8px 24px rgba(255,153,0,0.4)` }}>
+                  style={{ background: `linear-gradient(135deg, ${accentColor}, #e85a1a)`, boxShadow: `0 8px 24px rgba(255,107,43,0.4)` }}>
                   <span data-cms-key="amzn_acct_cta_btn" data-cms-label="CTA Button" data-cms-attr="text">{sp.amzn_acct_cta_btn || "Get a Free Account Audit"}</span>
                   <ArrowRight size={15} />
                 </Link>
@@ -623,7 +623,7 @@ const AmazonAccountManagementPage = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <span className="text-[11px] font-black uppercase tracking-[0.14em] px-3 py-1.5 rounded-full mb-6 inline-block"
-                style={{ background: glowAmber, color: accentColor }}>
+                style={{ background: glowOrange, color: accentColor }}>
                 The Real Cost of Unmanaged Amazon Accounts
               </span>
               <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] tracking-tight mb-5 leading-tight">
@@ -653,7 +653,7 @@ const AmazonAccountManagementPage = () => {
                 ))}
               </div>
               <div className="rounded-xl px-5 py-4 border-l-4 flex items-start gap-3"
-                style={{ background: glowAmber, borderLeftColor: accentColor }}>
+                style={{ background: glowOrange, borderLeftColor: accentColor }}>
                 <AlertTriangle size={18} className="mt-0.5 shrink-0" style={{ color: accentColor }} />
                 <p className="text-[14.5px] font-semibold text-[#374151] leading-relaxed">
                   Amazon's Seller Support is not proactive. It won't tell you about lost inventory, suppressed listings, or rising ODR — you have to find and act on every issue yourself.
@@ -739,7 +739,7 @@ const AmazonAccountManagementPage = () => {
                   initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
                   className="flex gap-6 items-start">
                   <div className="relative shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center font-black text-lg z-10"
-                    style={{ background: i % 2 === 0 ? `linear-gradient(135deg, ${accentColor}, #cc7a00)` : `linear-gradient(135deg, ${accent2Color}, #1558c0)`, color: "#fff", boxShadow: `0 4px 16px ${i % 2 === 0 ? "rgba(255,153,0,0.35)" : "rgba(26,111,232,0.25)"}` }}>
+                    style={{ background: i % 2 === 0 ? `linear-gradient(135deg, ${accentColor}, #e85a1a)` : `linear-gradient(135deg, ${accent2Color}, #1558c0)`, color: "#fff", boxShadow: `0 4px 16px ${i % 2 === 0 ? "rgba(255,107,43,0.35)" : "rgba(26,111,232,0.25)"}` }}>
                     {step.num}
                   </div>
                   <div className="flex-1 p-5 rounded-2xl bg-white border border-[#E5E7EB]" style={{ boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
@@ -777,7 +777,7 @@ const AmazonAccountManagementPage = () => {
               {whatWeDo.map((item, i) => (
                 <motion.div key={item.label} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
                   className="flex items-center gap-3 p-3.5 rounded-xl" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: glowAmber }}>
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: glowOrange }}>
                     <item.Icon size={15} style={{ color: accentColor }} />
                   </div>
                   <span className="text-[14.5px] text-[#374151]">{item.label}</span>
@@ -876,12 +876,12 @@ const AmazonAccountManagementPage = () => {
       {/* ── Final CTA ── */}
       <section className="py-16 px-4 md:px-8 relative overflow-hidden text-center" style={{ background: "#0A1628" }}>
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
-          style={{ width: 800, height: 800, background: "radial-gradient(circle, rgba(255,153,0,0.08) 0%, rgba(26,111,232,0.06) 40%, transparent 70%)" }} />
+          style={{ width: 800, height: 800, background: "radial-gradient(circle, rgba(255,107,43,0.08) 0%, rgba(26,111,232,0.06) 40%, transparent 70%)" }} />
         <div className="absolute top-0 left-0 right-0 h-1" style={{ background: `linear-gradient(90deg, ${accentColor}, #7C3AED, #1A6FE8)` }} />
         <div className="max-w-3xl mx-auto relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mb-6 tracking-widest uppercase"
-              style={{ background: glowAmber, border: `1px solid rgba(255,153,0,0.3)`, color: accentColor }}>
+              style={{ background: glowOrange, border: `1px solid rgba(255,107,43,0.3)`, color: accentColor }}>
               Let's Talk Account Management
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4">
@@ -893,7 +893,7 @@ const AmazonAccountManagementPage = () => {
             </p>
             <Link to="#account-audit"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
-              style={{ background: `linear-gradient(135deg, ${accentColor}, #cc7a00)`, boxShadow: `0 4px 20px rgba(255,153,0,0.4)` }}>
+              style={{ background: `linear-gradient(135deg, ${accentColor}, #e85a1a)`, boxShadow: `0 4px 20px rgba(255,107,43,0.4)` }}>
               Book My Free Account Audit <ArrowRight size={16} />
             </Link>
           </motion.div>

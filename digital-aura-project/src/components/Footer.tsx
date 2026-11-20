@@ -34,9 +34,8 @@ const servicesLeft = [
     { label: "Design & Branding",      href: "/services/design-branding/" },
   ]},
   { heading: "E-Commerce Solutions", color: "#FF6B2B", items: [
-    { label: "Shopify Development",          href: "/services/shopify-development/" },
-    { label: "WooCommerce Development",      href: "/services/woocommerce-development/" },
-    { label: "Product Photography",          href: "/services/ecommerce-product-photography" },
+    { label: "Shopify Development",    href: "/services/shopify-development/" },
+    { label: "WooCommerce Development",href: "/services/woocommerce-development/" },
   ]},
 ];
 
@@ -66,6 +65,7 @@ const servicesAmazon = [
     { label: "Ranking Strategies",         href: "/services/amazon-ranking-strategies" },
     { label: "SEO Consultant",             href: "/services/amazon-seo-consultant" },
     { label: "Storefront Design",          href: "/services/amazon-storefront-design" },
+    { label: "Product Photography",        href: "/services/ecommerce-product-photography" },
     { label: "Seller Account Management", href: "/services/amazon-account-management" },
   ]},
 ];

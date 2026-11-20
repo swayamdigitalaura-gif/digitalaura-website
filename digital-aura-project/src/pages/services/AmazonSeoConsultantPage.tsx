@@ -19,7 +19,8 @@ import PageLayout from "@/components/PageLayout";
 import { useSettings } from "@/hooks/useSettings";
 
 const accentColor  = "#FF6B2B";
-const accent2Color = "#1A6FE8";
+const accent2Color = "#FF6B2B"; // primary page accent — orange
+const blueColor    = "#1A6FE8"; // used only inside Off-Page tab cards
 const purpleColor  = "#7C3AED";
 const glowOrange   = "rgba(255,107,43,0.10)";
 const glowBlue     = "rgba(26,111,232,0.08)";
@@ -59,7 +60,7 @@ const serviceCards = [
   {
     Icon: Globe2,
     category: "Off-Page & Authority",
-    color: accent2Color,
+    color: blueColor,
     bg: glowBlue,
     title: "A+ Content & Brand Story",
     desc: "We design rich A+ Content layouts with comparison tables, brand story modules, and persuasive copy that dramatically reduces returns and lifts conversion — turning browsers into buyers.",
@@ -68,7 +69,7 @@ const serviceCards = [
   {
     Icon: Star,
     category: "Off-Page & Authority",
-    color: accent2Color,
+    color: blueColor,
     bg: glowBlue,
     title: "Review Strategy & Early Traction",
     desc: "We implement compliant early-review programmes and best-practice follow-up sequences to accelerate your review velocity — building the social proof that fuels organic rank growth.",
@@ -77,7 +78,7 @@ const serviceCards = [
   {
     Icon: TrendingUp,
     category: "Off-Page & Authority",
-    color: accent2Color,
+    color: blueColor,
     bg: glowBlue,
     title: "Google SEO for Amazon Listings",
     desc: "Amazon listings can rank on Google too. We structure your copy, metadata, and external backlinks so your products capture traffic from both Amazon's internal search and Google's results pages.",
@@ -115,7 +116,7 @@ const serviceCards = [
 
 const tabMeta: Record<string, { color: string; gradient: string; bg: string; desc: string }> = {
   "On-Page SEO":           { color: accentColor,  gradient: `linear-gradient(135deg,${accentColor},#e85a1a)`,   bg: glowOrange,  desc: "Optimise every element buyers and algorithms see" },
-  "Off-Page & Authority":  { color: accent2Color, gradient: `linear-gradient(135deg,${accent2Color},#1558c0)`, bg: glowBlue,    desc: "Build the authority that earns lasting organic rank" },
+  "Off-Page & Authority":  { color: blueColor,    gradient: `linear-gradient(135deg,${blueColor},#1558c0)`,   bg: glowBlue,    desc: "Build the authority that earns lasting organic rank" },
   "Operations & Reporting":{ color: purpleColor,  gradient: "linear-gradient(135deg,#7C3AED,#6d28d9)",         bg: glowPurple,  desc: "Data-led decisions that compound your SEO results" },
 };
 const tabs = Object.keys(tabMeta);
@@ -123,20 +124,20 @@ const tabs = Object.keys(tabMeta);
 // ── Why Us cards ──────────────────────────────────────────────────────────────
 const whyUs = [
   { Icon: Award,        color: accentColor,  title: "Accredited Amazon Consultants",    desc: "Our team holds active Amazon certifications and updates its methodology every quarter to stay ahead of A9 and A10 algorithm changes." },
-  { Icon: Target,       color: accent2Color, title: "ROI-First Approach",               desc: "Every recommendation is tied to a revenue metric. We don't optimise vanity stats — we optimise sessions, conversion rate, and attributed sales." },
+  { Icon: Target,       color: accentColor,  title: "ROI-First Approach",               desc: "Every recommendation is tied to a revenue metric. We don't optimise vanity stats — we optimise sessions, conversion rate, and attributed sales." },
   { Icon: Globe2,       color: purpleColor,  title: "Multi-Marketplace Expertise",       desc: "Whether you sell on Amazon India, US, UK, Europe, or UAE, we build market-specific strategies that account for local search behaviour and buying patterns." },
   { Icon: Users,        color: accentColor,  title: "Dedicated Account Manager",         desc: "One point of contact who knows your catalogue, your goals, and your brand — not a rotating support ticket queue." },
-  { Icon: BarChart3,    color: accent2Color, title: "Transparent Monthly Reporting",     desc: "Full-visibility dashboards and plain-language reports so you understand exactly where your SEO spend is going and what it's returning." },
+  { Icon: BarChart3,    color: accentColor,  title: "Transparent Monthly Reporting",     desc: "Full-visibility dashboards and plain-language reports so you understand exactly where your SEO spend is going and what it's returning." },
   { Icon: Shield,       color: purpleColor,  title: "Policy-Safe Strategies Only",       desc: "Every tactic we use is fully compliant with Amazon's Terms of Service — no black-hat shortcuts that risk suspension or listing removal." },
 ];
 
 // ── 5-step process ────────────────────────────────────────────────────────────
 const steps = [
   { step: "01", color: accentColor,  title: "Discovery & Audit",         desc: "Full audit of your current listings, keyword coverage, competitor landscape, and account health to establish a clear baseline." },
-  { step: "02", color: accent2Color, title: "Strategy Blueprint",         desc: "We build a prioritised SEO roadmap — keyword targets, listing rewrites, content plan, and quick-win opportunities — tailored to your category." },
+  { step: "02", color: accentColor,  title: "Strategy Blueprint",         desc: "We build a prioritised SEO roadmap — keyword targets, listing rewrites, content plan, and quick-win opportunities — tailored to your category." },
   { step: "03", color: purpleColor,  title: "On-Page Implementation",     desc: "Titles, bullets, descriptions, backend keywords, and A+ Content are all updated to our agreed strategy in a single coordinated rollout." },
   { step: "04", color: accentColor,  title: "Authority & Off-Page Build", desc: "Review programmes, external traffic strategies, and Google SEO tactics are layered on top to amplify the on-page gains." },
-  { step: "05", color: accent2Color, title: "Monitor, Report & Iterate",  desc: "Monthly reporting, rank monitoring, and iterative refreshes keep your SEO compound-growing rather than stagnating after launch." },
+  { step: "05", color: accentColor,  title: "Monitor, Report & Iterate",  desc: "Monthly reporting, rank monitoring, and iterative refreshes keep your SEO compound-growing rather than stagnating after launch." },
 ];
 
 // ── Stats bar ─────────────────────────────────────────────────────────────────
@@ -189,43 +190,52 @@ const faqs = [
 // ── Illustrations ─────────────────────────────────────────────────────────────
 function SeoRankIllustration() {
   return (
-    <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-      <rect width="400" height="300" rx="16" fill="rgba(26,111,232,0.06)" />
-      {/* Browser chrome */}
-      <rect x="20" y="20" width="360" height="260" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(26,111,232,0.2)" strokeWidth="1" />
-      <rect x="20" y="20" width="360" height="36" rx="10" fill="rgba(26,111,232,0.10)" />
-      <circle cx="40" cy="38" r="5" fill="rgba(255,107,43,0.4)" />
-      <circle cx="58" cy="38" r="5" fill="rgba(255,185,0,0.4)" />
-      <circle cx="76" cy="38" r="5" fill="rgba(34,197,94,0.4)" />
-      <rect x="100" y="30" width="220" height="16" rx="8" fill="rgba(255,255,255,0.08)" />
-      {/* Amazon search bar */}
-      <rect x="40" y="72" width="320" height="32" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,107,43,0.3)" strokeWidth="1.5" />
-      <text x="56" y="92" fill="rgba(255,255,255,0.5)" fontSize="11" fontFamily="monospace">organic face wash for sensitive skin</text>
-      <rect x="330" y="76" width="24" height="24" rx="6" fill={accentColor} />
-      <circle cx="338" cy="84" r="4" stroke="white" strokeWidth="1.5" fill="none" />
-      <line x1="341" y1="87" x2="344" y2="90" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-      {/* Rank result rows */}
-      {[0,1,2,3].map((i) => (
-        <g key={i} transform={`translate(0, ${i * 42})`}>
-          <rect x="40" y="118" width="320" height="34" rx="6"
-            fill={i === 0 ? "rgba(255,107,43,0.12)" : "rgba(255,255,255,0.03)"}
-            stroke={i === 0 ? "rgba(255,107,43,0.3)" : "transparent"} strokeWidth="1" />
-          <text x="56" y="134" fill={i === 0 ? accentColor : "rgba(255,255,255,0.3)"} fontSize="9" fontWeight="bold">#{i+1}</text>
-          <rect x="72" y="124" width={i === 0 ? 160 : 100 + i*10} height="8" rx="4"
-            fill={i === 0 ? "rgba(255,107,43,0.4)" : "rgba(255,255,255,0.08)"} />
-          <rect x="72" y="136" width={i === 0 ? 100 : 60 + i*8} height="5" rx="3"
-            fill={i === 0 ? "rgba(255,107,43,0.2)" : "rgba(255,255,255,0.05)"} />
-          {i === 0 && <text x="348" y="138" fill={accentColor} fontSize="8" textAnchor="end">YOUR PRODUCT</text>}
+    <svg viewBox="0 0 480 340" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-xl">
+      {/* Card background */}
+      <rect width="480" height="340" rx="20" fill="#fff" stroke="#E5E7EB" strokeWidth="1.5" />
+      {/* Amazon-style top bar */}
+      <rect width="480" height="52" rx="20" fill="#232F3E" />
+      <rect x="0" y="32" width="480" height="20" fill="#232F3E" />
+      {/* Amazon logo area */}
+      <rect x="16" y="14" width="68" height="24" rx="4" fill="rgba(255,255,255,0.15)" />
+      <text x="50" y="31" fill="#FF9900" fontSize="13" fontWeight="bold" textAnchor="middle" fontFamily="Arial">amazon</text>
+      {/* Search bar */}
+      <rect x="96" y="12" width="296" height="28" rx="4" fill="#fff" />
+      <text x="108" y="30" fill="#9CA3AF" fontSize="10" fontFamily="Arial">organic face wash for sensitive skin</text>
+      <rect x="392" y="12" width="36" height="28" rx="4" fill="#FF9900" />
+      <circle cx="405" cy="23" r="5" stroke="#232F3E" strokeWidth="1.5" fill="none" />
+      <line x1="408" y1="27" x2="412" y2="31" stroke="#232F3E" strokeWidth="1.5" strokeLinecap="round" />
+      {/* Sponsored label */}
+      <text x="16" y="72" fill="#6B7280" fontSize="8" fontFamily="Arial">Results for "organic face wash for sensitive skin"</text>
+      {/* Product rows */}
+      {[
+        { rank: 1, name: "Your Product — Organic Face Wash 200ml", price: "₹349", rating: "4.8", reviews: "2,847", highlight: true },
+        { rank: 2, name: "Competitor A — Natural Face Wash 150ml",  price: "₹299", rating: "4.3", reviews: "912",   highlight: false },
+        { rank: 3, name: "Competitor B — Gentle Cleanser 100ml",    price: "₹275", rating: "4.1", reviews: "504",   highlight: false },
+      ].map(({ rank, name, price, rating, reviews, highlight }, i) => (
+        <g key={rank} transform={`translate(0,${84 + i * 76})`}>
+          <rect x="12" y="0" width="456" height="68" rx="8"
+            fill={highlight ? "rgba(255,107,43,0.06)" : "#FAFAFA"}
+            stroke={highlight ? "#FF6B2B" : "#E5E7EB"} strokeWidth={highlight ? 1.5 : 1} />
+          {/* Product image placeholder */}
+          <rect x="22" y="8" width="52" height="52" rx="6" fill={highlight ? "rgba(255,107,43,0.12)" : "#F3F4F6"} />
+          {highlight && <text x="48" y="38" fill="#FF6B2B" fontSize="18" textAnchor="middle">#1</text>}
+          {!highlight && <text x="48" y="38" fill="#9CA3AF" fontSize="12" textAnchor="middle">#{rank}</text>}
+          {/* Product info */}
+          <text x="84" y="20" fill={highlight ? "#0A1628" : "#374151"} fontSize="10" fontWeight={highlight ? "bold" : "normal"} fontFamily="Arial">{name}</text>
+          <text x="84" y="36" fill="#FF9900" fontSize="10" fontFamily="Arial">{"★".repeat(Math.floor(Number(rating)))} {rating}</text>
+          <text x="84" y="36" fill="#6B7280" fontSize="9" fontFamily="Arial" dx="56">({reviews} reviews)</text>
+          <text x="84" y="52" fill="#B12704" fontSize="12" fontWeight="bold" fontFamily="Arial">{price}</text>
+          {highlight && <rect x="380" y="20" width="76" height="24" rx="12" fill="#FF6B2B" />}
+          {highlight && <text x="418" y="36" fill="#fff" fontSize="9" fontWeight="bold" textAnchor="middle" fontFamily="Arial">YOUR LISTING</text>}
         </g>
       ))}
-      {/* Rank trend line */}
-      <g transform="translate(40, 190)">
-        <rect width="320" height="68" rx="8" fill="rgba(26,111,232,0.06)" />
-        <text x="12" y="16" fill="rgba(255,255,255,0.4)" fontSize="8">Rank Movement (30 days)</text>
-        <polyline points="10,52 50,45 90,38 130,30 170,24 210,18 250,14 290,10 310,8"
-          stroke={accent2Color} strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="310" cy="8" r="4" fill={accent2Color} />
-        <text x="315" y="12" fill={accent2Color} fontSize="8">#1</text>
+      {/* Rank trend mini-chart */}
+      <g transform="translate(12, 318)">
+        <rect width="456" height="4" rx="2" fill="#F3F4F6" />
+        <rect width="380" height="4" rx="2" fill="#FF6B2B" opacity="0.6" />
+        <text x="0" y="-4" fill="#9CA3AF" fontSize="8" fontFamily="Arial">Organic rank improvement — 30 days</text>
+        <text x="456" y="-4" fill="#FF6B2B" fontSize="8" fontFamily="Arial" textAnchor="end">↑ Page 1 achieved</text>
       </g>
     </svg>
   );
@@ -233,46 +243,34 @@ function SeoRankIllustration() {
 
 function AuditIllustration() {
   return (
-    <svg viewBox="0 0 400 280" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-      <rect width="400" height="280" rx="16" fill="rgba(124,58,237,0.06)" />
-      {/* Audit checklist card */}
-      <rect x="20" y="20" width="170" height="240" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(124,58,237,0.2)" strokeWidth="1" />
-      <text x="34" y="44" fill="rgba(255,255,255,0.7)" fontSize="11" fontWeight="bold">SEO Audit</text>
+    <svg viewBox="0 0 460 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-xl">
+      {/* Outer card */}
+      <rect width="460" height="300" rx="20" fill="#fff" stroke="#E5E7EB" strokeWidth="1.5" />
+      {/* Header */}
+      <rect width="460" height="48" rx="20" fill="#FFF7F3" />
+      <rect x="0" y="28" width="460" height="20" fill="#FFF7F3" />
+      <text x="20" y="30" fill="#FF6B2B" fontSize="12" fontWeight="bold" fontFamily="Arial">Amazon SEO Audit Report</text>
+      <rect x="360" y="12" width="84" height="24" rx="12" fill="#FF6B2B" />
+      <text x="402" y="28" fill="#fff" fontSize="9" fontWeight="bold" textAnchor="middle" fontFamily="Arial">Free Audit</text>
+      {/* Scores */}
       {[
-        { label: "Keyword Coverage",  pct: 82, color: accentColor },
-        { label: "Listing Quality",   pct: 61, color: accent2Color },
-        { label: "A+ Content",        pct: 45, color: purpleColor },
+        { label: "Keyword Coverage",  pct: 82, color: "#FF6B2B" },
+        { label: "Listing Quality",   pct: 61, color: "#F59E0B" },
+        { label: "A+ Content",        pct: 45, color: "#EF4444" },
         { label: "Review Health",     pct: 90, color: "#22C55E" },
-        { label: "Image Compliance",  pct: 55, color: accentColor },
+        { label: "Image Compliance",  pct: 68, color: "#FF6B2B" },
       ].map(({ label, pct, color }, i) => (
-        <g key={label} transform={`translate(34, ${62 + i * 38})`}>
-          <text x="0" y="10" fill="rgba(255,255,255,0.5)" fontSize="8">{label}</text>
-          <rect x="0" y="16" width="136" height="6" rx="3" fill="rgba(255,255,255,0.08)" />
-          <rect x="0" y="16" width={136 * pct / 100} height="6" rx="3" fill={color} opacity="0.8" />
-          <text x="140" y="22" fill={color} fontSize="7" textAnchor="end">{pct}%</text>
+        <g key={label} transform={`translate(20, ${64 + i * 42})`}>
+          <text x="0" y="12" fill="#374151" fontSize="10" fontFamily="Arial">{label}</text>
+          <text x="420" y="12" fill={color} fontSize="10" fontWeight="bold" textAnchor="end" fontFamily="Arial">{pct}%</text>
+          <rect x="0" y="18" width="420" height="8" rx="4" fill="#F3F4F6" />
+          <rect x="0" y="18" width={420 * pct / 100} height="8" rx="4" fill={color} opacity="0.8" />
         </g>
       ))}
-      {/* Score badge */}
-      <circle cx="105" cy="236" r="18" fill="rgba(255,107,43,0.15)" stroke={accentColor} strokeWidth="1.5" />
-      <text x="105" y="241" fill={accentColor} fontSize="12" fontWeight="bold" textAnchor="middle">67</text>
-      {/* Action plan card */}
-      <rect x="210" y="20" width="170" height="240" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,107,43,0.2)" strokeWidth="1" />
-      <text x="224" y="44" fill="rgba(255,255,255,0.7)" fontSize="11" fontWeight="bold">Action Plan</text>
-      {[
-        { label: "Rewrite title",        priority: "HIGH",  color: "#EF4444" },
-        { label: "Add backend KWs",      priority: "HIGH",  color: "#EF4444" },
-        { label: "Create A+ Content",    priority: "MED",   color: "#F59E0B" },
-        { label: "Request 10 reviews",   priority: "MED",   color: "#F59E0B" },
-        { label: "Optimise images",      priority: "LOW",   color: "#22C55E" },
-        { label: "Google off-page",      priority: "LOW",   color: "#22C55E" },
-      ].map(({ label, priority, color }, i) => (
-        <g key={label} transform={`translate(224, ${58 + i * 32})`}>
-          <rect x="0" y="0" width="140" height="22" rx="5" fill="rgba(255,255,255,0.03)" />
-          <circle cx="10" cy="11" r="4" fill={color} opacity="0.8" />
-          <text x="20" y="14" fill="rgba(255,255,255,0.6)" fontSize="8">{label}</text>
-          <text x="140" y="14" fill={color} fontSize="7" textAnchor="end" fontWeight="bold">{priority}</text>
-        </g>
-      ))}
+      {/* Overall score badge */}
+      <circle cx="230" cy="272" r="22" fill="#FFF7F3" stroke="#FF6B2B" strokeWidth="2" />
+      <text x="230" y="276" fill="#FF6B2B" fontSize="13" fontWeight="bold" textAnchor="middle" fontFamily="Arial">69</text>
+      <text x="230" y="288" fill="#9CA3AF" fontSize="7" textAnchor="middle" fontFamily="Arial">Overall Score</text>
     </svg>
   );
 }
@@ -399,14 +397,17 @@ export default function AmazonSeoConsultantPage() {
                 All Amazon Services
               </Link>
             </div>
-            <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto">
+            <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto mb-10">
               {[{ v: "400+", l: "Listings Optimised" }, { v: "2.4×", l: "Avg Conversion Lift" }, { v: "72hr", l: "Audit Turnaround" }].map(({ v, l }) => (
                 <div key={l} className="text-center p-3 rounded-xl" style={{ background: "#F8FAFF", border: "1px solid #E5E7EB" }}>
-                  <div className="text-2xl font-extrabold" style={{ color: accent2Color }}>{v}</div>
+                  <div className="text-2xl font-extrabold" style={{ color: accentColor }}>{v}</div>
                   <div className="text-[#6B7280] text-xs mt-0.5">{l}</div>
                 </div>
               ))}
             </div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="max-w-2xl mx-auto px-4">
+            <SeoRankIllustration />
           </motion.div>
         </div>
       </section>

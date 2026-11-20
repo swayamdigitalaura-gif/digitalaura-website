@@ -1,6 +1,6 @@
 import { getAttribution } from "@/lib/leadTracking";
 import { track } from "@/lib/track";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, CheckCircle2, Lock, ArrowRight } from "lucide-react";
 import { RecaptchaBox, RECAPTCHA_SITE_KEY, type RecaptchaHandle } from "@/components/RecaptchaBox";

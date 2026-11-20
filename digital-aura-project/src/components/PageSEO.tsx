@@ -226,6 +226,10 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: "Ecommerce SEO Services in Ahmedabad | Shopify & WooCommerce",
     description: "Ecommerce SEO services in Ahmedabad for Shopify, WooCommerce, custom stores: category and product page SEO, speed, schema and content that brings buyers. Free audit.",
   },
+  '/services/amazon-marketing': {
+    title: "Amazon Marketing & Account Management Services | Digital Aura",
+    description: "Expert Amazon marketing services: seller registration, listing optimisation, PPC management, A+ content, Brand Registry and full account management. Free Amazon audit.",
+  },
   '/services/seo-content-marketing/local-seo': {
     title: "Local SEO Services in Ahmedabad | Google Maps Ranking",
     description: "Local SEO services in Ahmedabad: Google Business Profile, map pack ranking, reviews, citations and local landing pages for clinics, shops and services. Free audit.",
@@ -678,6 +682,23 @@ const PAGE_SCHEMA: Record<string, object | object[]> = {
   // ── Previously missing pages ──
   '/awards': { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Awards & Recognition | Digital Aura', url: `${SITE_URL}/awards/`,
     description: "From an Emerging Business Award in 2017 to Growth Partner of the Year in 2025, Digital Aura's work is recognised by national and global councils." },
+  '/services/amazon-marketing': [
+    { '@context': 'https://schema.org', '@type': 'Service', name: 'Amazon Marketing & Account Management Services', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Amazon Marketing', areaServed: 'Worldwide', url: `${SITE_URL}/services/amazon-marketing/` },
+    { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [
+      { '@type': 'Question', name: 'Do you work with new Amazon sellers or only established ones?', acceptedAnswer: { '@type': 'Answer', text: 'Both. We handle everything from first-time seller registration and account setup all the way to full ongoing management and PPC scaling for established brands. The scope is defined in a discovery call.' } },
+      { '@type': 'Question', name: 'How is Amazon PPC different from Google Ads?', acceptedAnswer: { '@type': 'Answer', text: "Amazon PPC shows ads to buyers who are already searching on Amazon with high purchase intent — it operates within the A9 algorithm, so keyword and product relevance signals are different from Google's auction." } },
+      { '@type': 'Question', name: 'What is A+ Content and do I need it?', acceptedAnswer: { '@type': 'Answer', text: "A+ Content replaces the plain product description with rich images, comparison tables, and brand storytelling. Amazon's own data shows it can increase conversions by up to 20%. It requires Brand Registry, which we can apply for on your behalf." } },
+      { '@type': 'Question', name: 'How long before I see results from Amazon account management?', acceptedAnswer: { '@type': 'Answer', text: 'Listing and content improvements can show organic ranking movement within 2–4 weeks. PPC improvements in ACOS typically stabilise within the first 60–90 days. Meaningful revenue growth usually builds over 3–6 months as rankings and reviews compound.' } },
+      { '@type': 'Question', name: 'Do you manage Amazon for Indian sellers or international sellers too?', acceptedAnswer: { '@type': 'Answer', text: 'We manage accounts on Amazon India (amazon.in), Amazon UAE, and Amazon Global, including US and UK marketplaces. Cross-border expansion strategy is also available.' } },
+      { '@type': 'Question', name: 'Can you rescue a suspended Amazon account?', acceptedAnswer: { '@type': 'Answer', text: "Yes — account suspension reinstatement is a service we offer. We analyse the root cause, prepare a Plan of Action, and handle the appeal process with Amazon's Seller Performance team." } },
+      { '@type': 'Question', name: 'What does your Amazon account management include day to day?', acceptedAnswer: { '@type': 'Answer', text: 'Inventory monitoring, listing suppression fixes, pricing updates, PPC bid management, case handling with Amazon support, review monitoring, and a monthly performance review — the full Seller Central workload taken off your plate.' } },
+    ]},
+    { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE_URL}/services/` },
+      { '@type': 'ListItem', position: 3, name: 'Amazon Marketing', item: `${SITE_URL}/services/amazon-marketing/` },
+    ]},
+  ],
   '/services/seo-content-marketing/ecommerce-seo': [
     { '@context': 'https://schema.org', '@type': 'Service', name: 'eCommerce SEO Services', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'eCommerce SEO', areaServed: 'Worldwide', url: `${SITE_URL}/services/seo-content-marketing/ecommerce-seo/` },
     { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [

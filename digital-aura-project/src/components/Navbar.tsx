@@ -86,7 +86,7 @@ const megaCategories = [
       { icon: ShoppingBag, title: "Amazon Marketing",          desc: "Full account management & growth on Amazon",          route: "/services/amazon-marketing" },
       { icon: Target,      title: "Amazon PPC Management",   desc: "Sponsored ads to lower ACOS and boost sales",         route: "/services/amazon-ppc" },
       { icon: BarChart3,   title: "Listing Optimisation",    desc: "Keyword-rich listings that rank and convert",         route: "/services/amazon-listing-optimisation" },
-      { icon: Package,     title: "A+ Content & Storefront", desc: "Enhanced brand content and custom store design",      route: "/services/amazon-aplus-content" },
+      { icon: Package,     title: "A+ Content", desc: "Enhanced brand content and custom store design",      route: "/services/amazon-aplus-content" },
       { icon: Settings,    title: "Seller Account Management",desc: "Full Seller Central managed service end to end",     route: "/services/amazon-account-management" },
     ],
   },

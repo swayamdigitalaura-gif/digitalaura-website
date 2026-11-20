@@ -1,5 +1,5 @@
 /**
- * SERVICE PAGE — Amazon A+ Content & Storefront
+ * SERVICE PAGE — Amazon A+ Content
  * Route: /services/amazon-aplus-content
  */
 import { motion, AnimatePresence } from "framer-motion";
@@ -400,7 +400,7 @@ export default function AmazonAPlusContentPage() {
               <div className="mb-6">
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase"
                   style={{ background: glowOrange, color: accentColor, border: `1px solid rgba(255,107,43,0.3)` }}>
-                  <Layout size={12} /> Amazon A+ Content & Storefront
+                  <Layout size={12} /> Amazon A+ Content
                 </span>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-[52px] font-black leading-[1.1] text-[#0A1628] mb-5 tracking-tight">
@@ -491,7 +491,7 @@ export default function AmazonAPlusContentPage() {
               style={{ background: glowOrange, color: accentColor, border: `1px solid rgba(255,107,43,0.3)` }}>
               <Layout size={12} /> Our Services
             </div>
-            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2">Our Complete A+ Content & Storefront Services</h2>
+            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2">Our Complete A+ Content Services</h2>
             <p className="text-[#6B7280] max-w-2xl mx-auto text-[15px] leading-relaxed">From image editing and EBC design through storefront build and submission management — everything your brand needs to stand out on Amazon.</p>
           </motion.div>
 

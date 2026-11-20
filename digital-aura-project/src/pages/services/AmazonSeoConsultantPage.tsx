@@ -356,9 +356,10 @@ export default function AmazonSeoConsultantPage() {
   return (
     <PageLayout>
       <StickyCtaBar
-        message="Your listings are invisible to buyers who want exactly what you sell."
-        ctaLabel="Get Free SEO Audit"
-        ctaHref="#seo-audit-form"
+        accent={accent2Color}
+        label="Get Free SEO Audit"
+        href="#seo-audit-form"
+        topic="Amazon SEO Consultant"
       />
 
       {/* ── HERO ── */}

@@ -410,12 +410,12 @@ export default function AmazonSeoConsultantPage() {
       </section>
 
       {/* ── PROBLEM STATEMENT ── */}
-      <section className="py-16" style={{ background: "#F8FAFF" }}>
+      <section className="py-16" style={{ background: "linear-gradient(135deg,#0B1535,#0D1A40)" }}>
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Poor Listing SEO Is Giving Your Sales to Competitors — Every Single Day
           </h2>
-          <p className="text-gray-500 text-lg mb-10">
+          <p className="text-white/50 text-lg mb-10">
             If your products aren't optimised for Amazon's algorithm, you're invisible to buyers who are actively searching for exactly what you sell.
           </p>
           <div className="grid sm:grid-cols-2 gap-4 text-left">
@@ -425,11 +425,11 @@ export default function AmazonSeoConsultantPage() {
               "High PPC spend masking the absence of any organic rank",
               "Competitor products with inferior quality outranking you due to better SEO",
             ].map(pt => (
-              <div key={pt} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-gray-100 shadow-sm">
-                <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5" style={{ background: "rgba(239,68,68,0.1)" }}>
+              <div key={pt} className="flex items-start gap-3 p-4 rounded-xl" style={{ background: "rgba(239,68,68,0.06)", border: "1px solid rgba(239,68,68,0.15)" }}>
+                <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5" style={{ background: "rgba(239,68,68,0.15)" }}>
                   <div className="w-2 h-2 rounded-full bg-red-400" />
                 </div>
-                <span className="text-gray-700 text-sm">{pt}</span>
+                <span className="text-white/70 text-sm">{pt}</span>
               </div>
             ))}
           </div>

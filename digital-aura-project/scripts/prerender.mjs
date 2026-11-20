@@ -75,6 +75,7 @@ const HARDCODED_ROUTES = [
   '/services/amazon-ppc',
   '/services/amazon-listing-optimisation',
   '/services/amazon-aplus-content',
+  '/services/amazon-ranking-strategies',
   '/services/design-branding',
   '/services/shopify-development',
   '/services/woocommerce-development',

@@ -287,6 +287,7 @@ function SeoAuditForm() {
     setForm(f => ({ ...f, [k]: e.target.value }));
 
   const handleSubmit = async (e: React.FormEvent) => {
+
     e.preventDefault();
     if (status === "loading") return;
     setStatus("loading");
@@ -300,22 +301,23 @@ function SeoAuditForm() {
     }
   };
 
-  const inputCls = "w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-white/30 focus:outline-none focus:border-[#1A6FE8]/60 transition-colors";
+
+  const inputCls = "w-full px-4 py-3 rounded-xl text-sm text-[#0A1628] outline-none focus:ring-2 transition-all placeholder-[#9CA3AF] border border-[#E5E7EB] bg-[#F8FAFF] focus:bg-white";
 
   if (status === "ok") return (
     <div className="text-center py-16">
-      <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: glowBlue, border: `1.5px solid ${accent2Color}` }}>
+      <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: `${accent2Color}12`, border: `1.5px solid ${accent2Color}` }}>
         <CheckCircle2 size={28} style={{ color: accent2Color }} />
       </div>
-      <p className="text-white font-semibold text-lg mb-1">Audit Request Received!</p>
-      <p className="text-white/50 text-sm">We'll deliver your free SEO audit within 72 hours.</p>
+      <p className="text-[#0A1628] font-semibold text-lg mb-1">Audit Request Received!</p>
+      <p className="text-[#6B7280] text-sm">We'll deliver your free SEO audit within 72 hours.</p>
     </div>
   );
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <input className={inputCls} placeholder="Your Name *" value={form.name} onChange={set("name")} required />
+        <input className={inputCls} style={{ ["--tw-ring-color" as string]: accent2Color }} placeholder="Your Name *" value={form.name} onChange={set("name")} required />
         <input className={inputCls} placeholder="Business / Brand Name *" value={form.business} onChange={set("business")} required />
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -335,11 +337,11 @@ function SeoAuditForm() {
       </select>
       <RecaptchaBox ref={recaptchaRef} />
       <button type="submit" disabled={status === "loading"}
-        className="w-full py-3.5 rounded-xl font-semibold text-white text-sm transition-all"
-        style={{ background: `linear-gradient(135deg,${accent2Color},#1558c0)`, opacity: status === "loading" ? 0.7 : 1 }}>
+        className="w-full py-3.5 rounded-full font-bold text-white text-sm transition-all"
+        style={{ background: `linear-gradient(135deg,${accent2Color},#1558c0)`, boxShadow: `0 8px 24px ${accent2Color}40`, opacity: status === "loading" ? 0.7 : 1 }}>
         {status === "loading" ? "Submitting…" : "Get My Free SEO Audit →"}
       </button>
-      {status === "err" && <p className="text-red-400 text-xs text-center">Something went wrong — please try again or email us directly.</p>}
+      {status === "err" && <p className="text-red-500 text-xs text-center">Something went wrong — please try again or email us directly.</p>}
     </form>
   );
 }
@@ -363,73 +365,74 @@ export default function AmazonSeoConsultantPage() {
       />
 
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28" style={{ background: "#060D1F" }}>
-        <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
-          style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.6) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.6) 1px,transparent 1px)", backgroundSize: "50px 50px" }} />
-        <div className="absolute top-20 right-10 w-96 h-96 rounded-full pointer-events-none" style={{ background: `radial-gradient(circle,${glowBlue},transparent)`, filter: "blur(80px)" }} />
-        <div className="absolute bottom-10 left-10 w-72 h-72 rounded-full pointer-events-none" style={{ background: `radial-gradient(circle,${glowOrange},transparent)`, filter: "blur(80px)" }} />
-
-        <div className="max-w-7xl mx-auto px-4 md:px-8 grid lg:grid-cols-2 gap-12 items-center">
+      <section className="relative pt-[72px] overflow-hidden" style={{ background: "#fff" }}>
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute rounded-full" style={{ width: 600, height: 600, top: "-20%", right: "-10%", background: `radial-gradient(circle,${glowBlue},transparent)`, filter: "blur(70px)" }} />
+          <div className="absolute rounded-full" style={{ width: 400, height: 400, bottom: "0%", left: "-5%", background: `radial-gradient(circle,${glowOrange},transparent)`, filter: "blur(60px)" }} />
+        </div>
+        <div className="max-w-4xl mx-auto px-4 md:px-8 text-center relative z-10 pt-20 pb-8">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold mb-6"
-              style={{ background: glowBlue, border: `1px solid ${accent2Color}30`, color: accent2Color }}>
-              <Search size={12} /> Amazon SEO Consultant
+            <div className="flex justify-center mb-6">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase"
+                style={{ background: `${accent2Color}12`, color: accent2Color, border: `1px solid ${accent2Color}30` }}>
+                <Search size={12} /> Amazon SEO Consultant
+              </span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6"
+            <h1 className="text-4xl md:text-5xl lg:text-[54px] font-black leading-[1.1] text-[#0A1628] mb-5 tracking-tight"
               data-cms-key="amzn_seo_hero_h1">
-              {s.amzn_seo_hero_h1 || <>Rank Higher on Amazon.<br /><span style={{ color: accent2Color }}>Sell More.</span> Pay Less Per Sale.</>}
+              {s.amzn_seo_hero_h1 || (<>Rank Higher on Amazon.<br />
+              <span style={{ color: accent2Color }}>Sell More. Pay Less Per Sale.</span></>)}
             </h1>
-            <p className="text-white/60 text-lg mb-8 max-w-lg" data-cms-key="amzn_seo_hero_sub">
+            <p className="text-lg md:text-xl text-[#4B5563] max-w-2xl mx-auto mb-8 leading-relaxed" data-cms-key="amzn_seo_hero_sub">
               {s.amzn_seo_hero_sub || "Expert Amazon SEO consulting that moves your products from page 3 to page 1 — building organic visibility that compounds, so you spend less on ads every month."}
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-3 justify-center mb-10">
               <a href="#seo-audit-form"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white text-sm transition-all hover:scale-105"
-                style={{ background: `linear-gradient(135deg,${accent2Color},#1558c0)` }}
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white transition-all hover:gap-3"
+                style={{ background: `linear-gradient(135deg,${accent2Color},#1558c0)`, boxShadow: `0 8px 24px ${accent2Color}40` }}
                 data-cms-key="amzn_seo_cta_btn">
                 {s.amzn_seo_cta_btn || "Get a Free SEO Audit"} <ArrowRight size={15} />
               </a>
               <Link to="/services/amazon-marketing"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white/80 text-sm border border-white/10 hover:border-white/30 transition-all">
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold border-2 text-[#0A1628] hover:bg-[#0A1628] hover:text-white transition-all"
+                style={{ borderColor: "#0A1628" }}>
                 All Amazon Services
               </Link>
             </div>
-            <div className="grid grid-cols-3 gap-4 mt-10">
+            <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto">
               {[{ v: "400+", l: "Listings Optimised" }, { v: "2.4×", l: "Avg Conversion Lift" }, { v: "72hr", l: "Audit Turnaround" }].map(({ v, l }) => (
-                <div key={l} className="text-center p-3 rounded-xl" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}>
+                <div key={l} className="text-center p-3 rounded-xl" style={{ background: "#F8FAFF", border: "1px solid #E5E7EB" }}>
                   <div className="text-2xl font-extrabold" style={{ color: accent2Color }}>{v}</div>
-                  <div className="text-white/40 text-xs mt-0.5">{l}</div>
+                  <div className="text-[#6B7280] text-xs mt-0.5">{l}</div>
                 </div>
               ))}
             </div>
-          </motion.div>
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.15 }} className="hidden lg:block h-80">
-            <SeoRankIllustration />
           </motion.div>
         </div>
       </section>
 
       {/* ── PROBLEM STATEMENT ── */}
-      <section className="py-16" style={{ background: "#060D1F" }}>
-        <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+      <section className="py-16 px-4 md:px-8 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <span className="text-[11px] font-black uppercase tracking-[0.14em] px-3 py-1.5 rounded-full mb-6 inline-block" style={{ background: "rgba(239,68,68,0.08)", color: "#EF4444" }}>
+            The Problem
+          </span>
+          <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] tracking-tight mb-5 leading-tight">
             Poor Listing SEO Is Giving Your Sales to Competitors — Every Single Day
           </h2>
-          <p className="text-white/50 text-lg mb-10">
+          <p className="text-[#4B5563] max-w-3xl leading-relaxed mb-8">
             If your products aren't optimised for Amazon's algorithm, you're invisible to buyers who are actively searching for exactly what you sell.
           </p>
-          <div className="grid sm:grid-cols-2 gap-4 text-left">
+          <div className="grid sm:grid-cols-2 gap-3 max-w-3xl">
             {[
               "Products buried on page 3+ despite being the best in category",
               "Listings stuffed with wrong or low-volume keywords that no one searches",
               "High PPC spend masking the absence of any organic rank",
               "Competitor products with inferior quality outranking you due to better SEO",
             ].map(pt => (
-              <div key={pt} className="flex items-start gap-3 p-4 rounded-xl" style={{ background: "rgba(239,68,68,0.06)", border: "1px solid rgba(239,68,68,0.15)" }}>
-                <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5" style={{ background: "rgba(239,68,68,0.15)" }}>
-                  <div className="w-2 h-2 rounded-full bg-red-400" />
-                </div>
-                <span className="text-white/70 text-sm">{pt}</span>
+              <div key={pt} className="flex items-start gap-3 p-4 rounded-xl" style={{ background: "rgba(239,68,68,0.05)", border: "1px solid rgba(239,68,68,0.18)" }}>
+                <span className="text-[#EF4444] font-black text-base leading-none mt-0.5 shrink-0">✕</span>
+                <p className="text-[13.5px] font-semibold text-[#0A1628] leading-snug">{pt}</p>
               </div>
             ))}
           </div>
@@ -437,14 +440,16 @@ export default function AmazonSeoConsultantPage() {
       </section>
 
       {/* ── SERVICE TABS ── */}
-      <section className="py-20" style={{ background: "#060D1F" }}>
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Our Amazon SEO Services</h2>
-            <p className="text-white/50 max-w-xl mx-auto">End-to-end SEO consulting across every layer of Amazon's ranking system</p>
+      <section className="py-16 px-4 md:px-8" style={{ background: "#F8FAFF" }}>
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-10">
+            <span className="text-[11px] font-black uppercase tracking-[0.14em] px-3 py-1.5 rounded-full mb-4 inline-block" style={{ background: `${accent2Color}12`, color: accent2Color }}>
+              Our Services
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] tracking-tight mb-2">Our Amazon SEO Services</h2>
+            <p className="text-[#4B5563]">End-to-end SEO consulting across every layer of Amazon's ranking system</p>
           </div>
-          {/* Tabs */}
-          <div className="flex flex-wrap justify-center gap-3 mb-10">
+          <div className="flex flex-wrap gap-3 mb-8">
             {tabs.map(tab => {
               const m = tabMeta[tab];
               const active = tab === activeTab;
@@ -452,31 +457,25 @@ export default function AmazonSeoConsultantPage() {
                 <button key={tab} onClick={() => setActiveTab(tab)}
                   className="px-5 py-2.5 rounded-full text-sm font-semibold transition-all"
                   style={active
-                    ? { background: m.gradient, color: "#fff", boxShadow: `0 0 20px ${m.color}50` }
-                    : { background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.5)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                    ? { background: m.gradient, color: "#fff", boxShadow: `0 4px 14px ${m.color}40` }
+                    : { background: "#fff", color: "#374151", border: "1.5px solid #E5E7EB" }}>
                   {tab}
                 </button>
               );
             })}
           </div>
-          <div className="text-center mb-8">
-            <span className="text-sm font-medium px-4 py-1.5 rounded-full"
-              style={{ background: meta.bg, color: meta.color, border: `1px solid ${meta.color}30` }}>
-              {meta.desc}
-            </span>
-          </div>
           <AnimatePresence mode="wait">
             <motion.div key={activeTab} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.3 }}
-              className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {visibleCards.map(({ Icon, title, desc, tags, color, bg }) => (
-                <div key={title} className="rounded-2xl p-6 flex flex-col gap-4 transition-transform hover:-translate-y-1"
-                  style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${color}20` }}>
+                <div key={title} className="rounded-2xl p-6 flex flex-col gap-4 bg-white transition-transform hover:-translate-y-1"
+                  style={{ border: "1px solid #E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
                   <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style={{ background: bg, border: `1px solid ${color}30` }}>
                     <Icon size={20} style={{ color }} />
                   </div>
                   <div>
-                    <h3 className="text-white font-semibold text-base mb-1">{title}</h3>
-                    <p className="text-white/50 text-sm leading-relaxed">{desc}</p>
+                    <h3 className="text-[#0A1628] font-semibold text-base mb-1">{title}</h3>
+                    <p className="text-[#4B5563] text-sm leading-relaxed">{desc}</p>
                   </div>
                   <div className="flex flex-wrap gap-2 mt-auto">
                     {tags.map(t => (
@@ -491,40 +490,40 @@ export default function AmazonSeoConsultantPage() {
       </section>
 
       {/* ── AUDIT SECTION ── */}
-      <section className="py-20" style={{ background: "#060D1F" }}>
-        <div className="max-w-7xl mx-auto px-4 md:px-8 grid lg:grid-cols-2 gap-14 items-center">
+      <section className="py-16 px-4 md:px-8 bg-white">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
           <div className="h-72 lg:h-80">
             <AuditIllustration />
           </div>
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold mb-5"
-              style={{ background: glowOrange, border: `1px solid ${accentColor}30`, color: accentColor }}>
-              <Award size={12} /> Free Amazon SEO Audit
-            </div>
-            <h2 className="text-3xl font-bold text-white mb-4">Know Exactly Where Your Listings Are Losing Rank</h2>
-            <p className="text-white/50 mb-6 text-sm leading-relaxed">
+            <span className="text-[11px] font-black uppercase tracking-[0.14em] px-3 py-1.5 rounded-full mb-5 inline-block"
+              style={{ background: `${accentColor}12`, color: accentColor }}>
+              Free Amazon SEO Audit
+            </span>
+            <h2 className="text-3xl font-black text-[#0A1628] mb-4">Know Exactly Where Your Listings Are Losing Rank</h2>
+            <p className="text-[#4B5563] mb-6 text-sm leading-relaxed">
               Our 72-hour audit covers every ranking signal — keyword gaps, listing quality, A+ Content, review health, image compliance, and advertising efficiency — delivered as a prioritised action report.
             </p>
             <div className="space-y-3 mb-8">
               {[
-                { label: "Content Evaluation",        desc: "Listings, descriptions, images, compliance score" },
-                { label: "Keyword Gap Analysis",      desc: "Missing high-volume terms vs top competitors" },
-                { label: "Advertising Review",        desc: "Campaign efficiency and keyword bid waste" },
-                { label: "Review Health Check",       desc: "Velocity, recency, and rating benchmarks" },
-                { label: "SKU & Backend Audit",       desc: "Backend search terms, categorisation, inventory" },
+                { label: "Content Evaluation",   desc: "Listings, descriptions, images, compliance score" },
+                { label: "Keyword Gap Analysis", desc: "Missing high-volume terms vs top competitors" },
+                { label: "Advertising Review",   desc: "Campaign efficiency and keyword bid waste" },
+                { label: "Review Health Check",  desc: "Velocity, recency, and rating benchmarks" },
+                { label: "SKU & Backend Audit",  desc: "Backend search terms, categorisation, inventory" },
               ].map(({ label, desc }) => (
-                <div key={label} className="flex items-start gap-3">
+                <div key={label} className="flex items-start gap-3 p-3 rounded-xl" style={{ background: "#F8FAFF", border: "1px solid #E5E7EB" }}>
                   <CheckCircle2 size={16} style={{ color: accentColor }} className="shrink-0 mt-0.5" />
                   <div>
-                    <span className="text-white text-sm font-medium">{label}</span>
-                    <span className="text-white/40 text-sm"> — {desc}</span>
+                    <span className="text-[#0A1628] text-sm font-semibold">{label}</span>
+                    <span className="text-[#9CA3AF] text-sm"> — {desc}</span>
                   </div>
                 </div>
               ))}
             </div>
             <a href="#seo-audit-form"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white text-sm transition-all hover:scale-105"
-              style={{ background: `linear-gradient(135deg,${accentColor},#e85a1a)` }}>
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-white text-sm transition-all hover:gap-3"
+              style={{ background: `linear-gradient(135deg,${accentColor},#e85a1a)`, boxShadow: `0 8px 24px ${accentColor}40` }}>
               Get My Free Audit <ArrowRight size={15} />
             </a>
           </div>
@@ -532,21 +531,24 @@ export default function AmazonSeoConsultantPage() {
       </section>
 
       {/* ── WHY US ── */}
-      <section className="py-20" style={{ background: "#060D1F" }}>
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Why Choose Digital Aura as Your Amazon SEO Consultant</h2>
-            <p className="text-white/50 max-w-xl mx-auto">We don't offer generic SEO advice — we deliver marketplace-specific strategies that move real products up real rankings.</p>
+      <section className="py-16 px-4 md:px-8" style={{ background: "#F8FAFF" }}>
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-10">
+            <span className="text-[11px] font-black uppercase tracking-[0.14em] px-3 py-1.5 rounded-full mb-4 inline-block" style={{ background: `${purpleColor}12`, color: purpleColor }}>
+              Why Choose Us
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] tracking-tight mb-2">Why Choose Digital Aura as Your Amazon SEO Consultant</h2>
+            <p className="text-[#4B5563] max-w-xl">We don't offer generic SEO advice — we deliver marketplace-specific strategies that move real products up real rankings.</p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {whyUs.map(({ Icon, color, title, desc }) => (
-              <div key={title} className="p-6 rounded-2xl transition-transform hover:-translate-y-1"
-                style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${color}20` }}>
-                <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style={{ background: `${color}15`, border: `1px solid ${color}30` }}>
+              <div key={title} className="p-6 rounded-2xl bg-white transition-transform hover:-translate-y-1"
+                style={{ border: "1px solid #E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style={{ background: `${color}12`, border: `1px solid ${color}25` }}>
                   <Icon size={20} style={{ color }} />
                 </div>
-                <h3 className="text-white font-semibold text-base mb-2">{title}</h3>
-                <p className="text-white/50 text-sm leading-relaxed">{desc}</p>
+                <h3 className="text-[#0A1628] font-semibold text-base mb-2">{title}</h3>
+                <p className="text-[#4B5563] text-sm leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
@@ -554,26 +556,29 @@ export default function AmazonSeoConsultantPage() {
       </section>
 
       {/* ── PROCESS ── */}
-      <section className="py-20" style={{ background: "#060D1F" }}>
-        <div className="max-w-4xl mx-auto px-4 md:px-8">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">How Our Amazon SEO Process Works</h2>
-            <p className="text-white/50">From first audit to continuously compounding organic rank</p>
+      <section className="py-16 px-4 md:px-8 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-12">
+            <span className="text-[11px] font-black uppercase tracking-[0.14em] px-3 py-1.5 rounded-full mb-4 inline-block" style={{ background: `${accent2Color}12`, color: accent2Color }}>
+              Our Process
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] tracking-tight mb-2">How Our Amazon SEO Process Works</h2>
+            <p className="text-[#4B5563]">From first audit to continuously compounding organic rank</p>
           </div>
           <div className="relative">
             <div className="absolute left-8 top-0 bottom-0 w-px hidden md:block"
               style={{ background: "linear-gradient(to bottom,transparent,#FF6B2B,#1A6FE8,#7C3AED,transparent)" }} />
-            <div className="space-y-8">
+            <div className="space-y-6">
               {steps.map(({ step, color, title, desc }, i) => (
                 <motion.div key={step} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
                   className="flex gap-6 items-start md:pl-20 relative">
                   <div className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 font-bold text-lg md:absolute md:left-0 md:w-16 md:h-16"
-                    style={{ background: `${color}15`, border: `1.5px solid ${color}40`, color }}>
+                    style={{ background: `${color}12`, border: `1.5px solid ${color}35`, color }}>
                     {step}
                   </div>
-                  <div className="p-5 rounded-2xl flex-1" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}>
-                    <h3 className="text-white font-semibold text-base mb-1">{title}</h3>
-                    <p className="text-white/50 text-sm leading-relaxed">{desc}</p>
+                  <div className="p-5 rounded-2xl flex-1" style={{ background: "#F8FAFF", border: "1px solid #E5E7EB" }}>
+                    <h3 className="text-[#0A1628] font-semibold text-base mb-1">{title}</h3>
+                    <p className="text-[#4B5563] text-sm leading-relaxed">{desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -583,37 +588,40 @@ export default function AmazonSeoConsultantPage() {
       </section>
 
       {/* ── STATS BAR ── */}
-      <section className="py-14" style={{ background: "#060D1F", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-        <div className="max-w-5xl mx-auto px-4 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <section className="py-14 px-4 md:px-8" style={{ background: "#F8FAFF", borderTop: "1px solid #F3F4F6", borderBottom: "1px solid #F3F4F6" }}>
+        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {stats.map(({ value, label }) => (
-            <div key={label} className="p-5 rounded-2xl" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}>
+            <div key={label} className="p-5 rounded-2xl bg-white" style={{ border: "1px solid #E5E7EB", boxShadow: `0 4px 20px ${accent2Color}08` }}>
               <div className="text-3xl font-extrabold mb-1" style={{ color: accent2Color }}>{value}</div>
-              <div className="text-white/40 text-xs">{label}</div>
+              <div className="text-[#6B7280] text-xs">{label}</div>
             </div>
           ))}
         </div>
       </section>
 
       {/* ── FAQ ── */}
-      <section className="py-20" style={{ background: "#060D1F" }}>
-        <div className="max-w-3xl mx-auto px-4 md:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-3">Frequently Asked Questions</h2>
-            <p className="text-white/50">Everything you need to know before hiring an Amazon SEO consultant</p>
+      <section className="py-16 px-4 md:px-8 bg-white">
+        <div className="max-w-3xl mx-auto">
+          <div className="mb-10">
+            <span className="text-[11px] font-black uppercase tracking-[0.14em] px-3 py-1.5 rounded-full mb-4 inline-block" style={{ background: `${accent2Color}12`, color: accent2Color }}>
+              FAQs
+            </span>
+            <h2 className="text-3xl font-black text-[#0A1628] mb-2">Frequently Asked Questions</h2>
+            <p className="text-[#4B5563]">Everything you need to know before hiring an Amazon SEO consultant</p>
           </div>
           <div className="space-y-3">
             {faqs.map(({ key, q, a }) => {
               const open = openFaq === key;
               return (
-                <div key={key} className="rounded-2xl overflow-hidden" style={{ border: `1px solid ${open ? accent2Color + "40" : "rgba(255,255,255,0.08)"}`, background: open ? "rgba(26,111,232,0.05)" : "rgba(255,255,255,0.02)" }}>
+                <div key={key} className="rounded-2xl overflow-hidden" style={{ border: `1px solid ${open ? accent2Color + "50" : "#E5E7EB"}`, background: open ? `${accent2Color}06` : "#fff" }}>
                   <button onClick={() => setOpenFaq(open ? null : key)} className="w-full flex items-center justify-between gap-4 px-6 py-4 text-left">
-                    <span className="text-white text-sm font-medium leading-snug" data-cms-key={key}>{q}</span>
-                    {open ? <MinusCircle size={18} style={{ color: accent2Color }} className="shrink-0" /> : <PlusCircle size={18} className="text-white/30 shrink-0" />}
+                    <span className="text-[#0A1628] text-sm font-semibold leading-snug" data-cms-key={key}>{q}</span>
+                    {open ? <MinusCircle size={18} style={{ color: accent2Color }} className="shrink-0" /> : <PlusCircle size={18} className="text-[#9CA3AF] shrink-0" />}
                   </button>
                   <AnimatePresence>
                     {open && (
                       <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }}>
-                        <p className="px-6 pb-5 text-white/50 text-sm leading-relaxed">{a}</p>
+                        <p className="px-6 pb-5 text-[#4B5563] text-sm leading-relaxed">{a}</p>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -625,17 +633,17 @@ export default function AmazonSeoConsultantPage() {
       </section>
 
       {/* ── LEAD FORM ── */}
-      <section id="seo-audit-form" className="py-20" style={{ background: "#060D1F" }}>
-        <div className="max-w-6xl mx-auto px-4 md:px-8 grid lg:grid-cols-2 gap-12 items-start">
+      <section id="seo-audit-form" className="pt-16 pb-8 px-4 md:px-8" style={{ background: "#F8FAFF" }}>
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold mb-5"
-              style={{ background: glowBlue, border: `1px solid ${accent2Color}30`, color: accent2Color }}>
-              <Zap size={12} /> Free — No Commitment
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <span className="text-[11px] font-black uppercase tracking-[0.14em] px-3 py-1.5 rounded-full mb-5 inline-block"
+              style={{ background: `${accent2Color}12`, color: accent2Color }}>
+              Free — No Commitment
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] mb-4">
               Get Your Free Amazon SEO Audit in 72 Hours
             </h2>
-            <p className="text-white/50 mb-8 leading-relaxed">
+            <p className="text-[#4B5563] mb-8 leading-relaxed">
               Tell us your ASIN and marketplace and we'll audit your listings, keyword coverage, and ranking gaps — delivered as a clear action report. No sales pitch. Just data.
             </p>
             <div className="space-y-3">
@@ -646,14 +654,14 @@ export default function AmazonSeoConsultantPage() {
                 "Review health benchmarking",
                 "Prioritised action report within 72 hours",
               ].map(pt => (
-                <div key={pt} className="flex items-center gap-3">
+                <div key={pt} className="flex items-center gap-3 p-3 rounded-xl" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
                   <Check size={15} style={{ color: accent2Color }} className="shrink-0" />
-                  <span className="text-white/70 text-sm">{pt}</span>
+                  <span className="text-[#374151] text-sm">{pt}</span>
                 </div>
               ))}
             </div>
           </div>
-          <div className="p-7 rounded-2xl" style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${accent2Color}20` }}>
+          <div className="p-7 rounded-2xl bg-white" style={{ border: `1px solid ${accent2Color}30`, boxShadow: `0 8px 40px ${accent2Color}15` }}>
             <SeoAuditForm />
           </div>
         </div>

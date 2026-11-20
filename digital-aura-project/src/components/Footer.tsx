@@ -34,8 +34,9 @@ const servicesLeft = [
     { label: "Design & Branding",      href: "/services/design-branding/" },
   ]},
   { heading: "E-Commerce Solutions", color: "#FF6B2B", items: [
-    { label: "Shopify Development",    href: "/services/shopify-development/" },
-    { label: "WooCommerce Development",href: "/services/woocommerce-development/" },
+    { label: "Shopify Development",          href: "/services/shopify-development/" },
+    { label: "WooCommerce Development",      href: "/services/woocommerce-development/" },
+    { label: "Product Photography",          href: "/services/ecommerce-product-photography" },
   ]},
 ];
 

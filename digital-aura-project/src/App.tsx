@@ -73,6 +73,7 @@ import AmazonAPlusContentPage from "./pages/services/AmazonAPlusContentPage.tsx"
 import AmazonRankingStrategiesPage from "./pages/services/AmazonRankingStrategiesPage.tsx";
 import AmazonSeoConsultantPage from "./pages/services/AmazonSeoConsultantPage.tsx";
 import AmazonStorefrontDesignPage from "./pages/services/AmazonStorefrontDesignPage.tsx";
+import EcommerceProductPhotographyPage from "./pages/services/EcommerceProductPhotographyPage.tsx";
 import SEOAuditStrategyPage from "./pages/services/seo/SEOAuditStrategyPage.tsx";
 import OnPageSEOPage from "./pages/services/seo/OnPageSEOPage.tsx";
 import TechnicalSEOPage from "./pages/services/seo/TechnicalSEOPage.tsx";
@@ -144,6 +145,7 @@ const App = () => (
           <Route path="/services/amazon-ranking-strategies" element={<AmazonRankingStrategiesPage />} />
           <Route path="/services/amazon-seo-consultant" element={<AmazonSeoConsultantPage />} />
           <Route path="/services/amazon-storefront-design" element={<AmazonStorefrontDesignPage />} />
+          <Route path="/services/ecommerce-product-photography" element={<EcommerceProductPhotographyPage />} />
           <Route path="/services/design-branding" element={<DesignBrandingPage />} />
           <Route path="/services/shopify-development" element={<ShopifyPage />} />
           <Route path="/services/woocommerce-development" element={<WooCommercePage />} />

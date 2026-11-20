@@ -78,6 +78,7 @@ const HARDCODED_ROUTES = [
   '/services/amazon-ranking-strategies',
   '/services/amazon-seo-consultant',
   '/services/amazon-storefront-design',
+  '/services/ecommerce-product-photography',
   '/services/design-branding',
   '/services/shopify-development',
   '/services/woocommerce-development',

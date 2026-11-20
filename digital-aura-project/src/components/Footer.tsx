@@ -63,6 +63,7 @@ const servicesAmazon = [
     { label: "Listing Optimisation",      href: "/services/amazon-listing-optimisation" },
     { label: "A+ Content",   href: "/services/amazon-aplus-content" },
     { label: "Ranking Strategies",         href: "/services/amazon-ranking-strategies" },
+    { label: "SEO Consultant",             href: "/services/amazon-seo-consultant" },
     { label: "Seller Account Management", href: "/services/amazon-account-management" },
   ]},
 ];

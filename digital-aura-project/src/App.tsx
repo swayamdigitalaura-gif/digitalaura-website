@@ -71,6 +71,7 @@ import { CASE_CARDS } from "./components/CaseStudies";
 import WebsiteDevelopmentServicesPage from "./pages/WebsiteDevelopmentServicesPage.tsx";
 import AmazonAPlusContentPage from "./pages/services/AmazonAPlusContentPage.tsx";
 import AmazonRankingStrategiesPage from "./pages/services/AmazonRankingStrategiesPage.tsx";
+import AmazonSeoConsultantPage from "./pages/services/AmazonSeoConsultantPage.tsx";
 import SEOAuditStrategyPage from "./pages/services/seo/SEOAuditStrategyPage.tsx";
 import OnPageSEOPage from "./pages/services/seo/OnPageSEOPage.tsx";
 import TechnicalSEOPage from "./pages/services/seo/TechnicalSEOPage.tsx";
@@ -140,6 +141,7 @@ const App = () => (
           <Route path="/services/amazon-listing-optimisation" element={<AmazonListingOptimisationPage />} />
           <Route path="/services/amazon-aplus-content" element={<AmazonAPlusContentPage />} />
           <Route path="/services/amazon-ranking-strategies" element={<AmazonRankingStrategiesPage />} />
+          <Route path="/services/amazon-seo-consultant" element={<AmazonSeoConsultantPage />} />
           <Route path="/services/design-branding" element={<DesignBrandingPage />} />
           <Route path="/services/shopify-development" element={<ShopifyPage />} />
           <Route path="/services/woocommerce-development" element={<WooCommercePage />} />

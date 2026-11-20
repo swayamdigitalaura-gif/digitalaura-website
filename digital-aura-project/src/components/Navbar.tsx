@@ -5,7 +5,7 @@ import { Menu, X, Phone, ChevronDown,
   ShoppingCart, Store, CreditCard,
   Search, Share2, Target, Hash,
   Smartphone, AppWindow, Layers,
-  ArrowRight,
+  ArrowRight, ShoppingBag, BarChart3, Package,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
@@ -78,6 +78,18 @@ const megaCategories = [
     ],
   },
   {
+    key: "amazon",
+    label: "Amazon",
+    color: "#FF9900",
+    bg: "rgba(255,153,0,0.07)",
+    items: [
+      { icon: ShoppingBag, title: "Amazon Marketing",       desc: "Full account management & growth on Amazon",          route: "/services/amazon-marketing" },
+      { icon: Target,      title: "Amazon PPC Management",  desc: "Sponsored ads to lower ACOS and boost sales",         route: "/services/amazon-marketing" },
+      { icon: BarChart3,   title: "Listing Optimisation",   desc: "Keyword-rich listings that rank and convert",         route: "/services/amazon-marketing" },
+      { icon: Package,     title: "A+ Content & Storefront",desc: "Enhanced brand content and custom store design",      route: "/services/amazon-marketing" },
+    ],
+  },
+  {
     key: "mobile",
     label: "Mobile Apps",
     color: "#EC4899",
@@ -111,9 +123,9 @@ const MegaMenu = ({ onClose }: { onClose: () => void }) => (
     }}
   >
     <div className="max-w-7xl mx-auto px-4 md:px-6">
-    <div className="grid grid-cols-5 divide-x divide-gray-100">
+    <div className="grid grid-cols-6 divide-x divide-gray-100">
       {megaCategories.map((cat) => (
-        <div key={cat.key} className="p-4">
+        <div key={cat.key} className="p-3">
           {/* Category header */}
           <div className="flex items-center gap-2 mb-3 px-1">
             <span className="w-2 h-2 rounded-full shrink-0" style={{ background: cat.color }} />

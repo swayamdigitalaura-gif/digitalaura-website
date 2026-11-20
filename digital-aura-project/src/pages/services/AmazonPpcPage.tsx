@@ -18,11 +18,11 @@ import { RecaptchaBox, RECAPTCHA_SITE_KEY, type RecaptchaHandle } from "@/compon
 import PageLayout from "@/components/PageLayout";
 import { useSettings } from "@/hooks/useSettings";
 
-const accentColor  = "#FF9900";
-const accent2Color = "#1A6FE8";
+const accentColor  = "#1A6FE8";   // blue — PPC / data / targeting
+const accent2Color = "#FF9900";   // amber — Amazon brand secondary
 const purpleColor  = "#7C3AED";
-const glowAmber    = "rgba(255,153,0,0.10)";
-const glowBlue     = "rgba(26,111,232,0.08)";
+const glowBlue     = "rgba(26,111,232,0.10)";
+const glowAmber    = "rgba(255,153,0,0.08)";
 const glowPurple   = "rgba(124,58,237,0.08)";
 
 // ── Service card data by tab ───────────────────────────────────────────────────
@@ -304,11 +304,11 @@ function PpcAuditForm() {
     } catch { setStatus("err"); }
   }
 
-  const inputCls = "w-full bg-[#0A1628] border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#FF9900]/60 transition-colors";
+  const inputCls = "w-full bg-[#0A1628] border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#1A6FE8]/60 transition-colors";
 
   if (status === "ok") return (
     <div className="text-center py-10">
-      <CheckCircle2 className="mx-auto mb-3 text-[#FF9900]" size={40} />
+      <CheckCircle2 className="mx-auto mb-3 text-[#1A6FE8]" size={40} />
       <p className="text-white font-semibold text-lg">Request received!</p>
       <p className="text-white/60 text-sm mt-1">We'll be in touch within 24 hours with your free PPC audit.</p>
     </div>
@@ -335,7 +335,7 @@ function PpcAuditForm() {
       <RecaptchaBox siteKey={RECAPTCHA_SITE_KEY} ref={recaptchaRef} onToken={setToken} />
       <button type="submit" disabled={status === "loading"}
         className="w-full py-3 rounded-lg font-semibold text-sm transition-all"
-        style={{ background: status === "loading" ? "#666" : accentColor, color: "#000" }}>
+        style={{ background: status === "loading" ? "#666" : accentColor, color: "#fff" }}>
         {status === "loading" ? "Sending…" : "Get My Free PPC Audit →"}
       </button>
       {status === "err" && <p className="text-red-400 text-xs text-center">Something went wrong — please try again.</p>}
@@ -366,7 +366,7 @@ export default function AmazonPpcPage() {
               ← Back to Amazon Services
             </Link>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium mb-5"
-              style={{ background: "rgba(255,153,0,0.12)", color: accentColor, border: `1px solid ${accentColor}30` }}>
+              style={{ background: "rgba(26,111,232,0.12)", color: accentColor, border: `1px solid ${accentColor}30` }}>
               <Target size={12} /> Amazon PPC Management
             </div>
             <h1 className="text-4xl md:text-5xl font-black text-white leading-tight mb-4">
@@ -381,7 +381,7 @@ export default function AmazonPpcPage() {
             </p>
             <div className="flex flex-wrap gap-3">
               <Link to="/contact" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm transition-all hover:opacity-90"
-                style={{ background: accentColor, color: "#000" }}>
+                style={{ background: accentColor, color: "#fff" }}>
                 <span data-cms-key="amzn_ppc_cta_btn">{s.amzn_ppc_cta_btn || "Get a Free PPC Audit"}</span>
                 <ArrowRight size={15} />
               </Link>
@@ -463,7 +463,7 @@ export default function AmazonPpcPage() {
                 <button key={tab} onClick={() => setActiveTab(tab)}
                   className="px-5 py-2.5 rounded-full text-sm font-semibold transition-all"
                   style={active
-                    ? { background: color, color: tab === "Campaign Setup" ? "#000" : "#fff" }
+                    ? { background: color, color: "#fff" }
                     : { background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.6)", border: "1px solid rgba(255,255,255,0.1)" }}>
                   {tab}
                 </button>
@@ -526,7 +526,7 @@ export default function AmazonPpcPage() {
             <p className="text-white/55 text-sm">A structured process from first audit to ongoing scale.</p>
           </div>
           <div className="relative">
-            <div className="hidden md:block absolute left-[2.35rem] top-6 bottom-6 w-px" style={{ background: "linear-gradient(180deg,#FF9900,#1A6FE8,#7C3AED)" }} />
+            <div className="hidden md:block absolute left-[2.35rem] top-6 bottom-6 w-px" style={{ background: "linear-gradient(180deg,#1A6FE8,#FF9900,#7C3AED)" }} />
             <div className="space-y-8">
               {steps.map(({ n, title, desc }, i) => {
                 const colors = [accentColor, accent2Color, purpleColor, accent2Color, accentColor];
@@ -597,7 +597,7 @@ export default function AmazonPpcPage() {
       {/* ── Lead form ── */}
       <section id="ppc-form" className="py-20" style={{ background: "#080F1E" }}>
         <div className="max-w-2xl mx-auto px-4 md:px-8">
-          <div className="rounded-2xl p-8 border border-white/10" style={{ background: "rgba(255,153,0,0.04)" }}>
+          <div className="rounded-2xl p-8 border border-white/10" style={{ background: "rgba(26,111,232,0.04)" }}>
             <div className="text-center mb-8">
               <div className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4" style={{ background: glowAmber }}>
                 <Target size={22} style={{ color: accentColor }} />

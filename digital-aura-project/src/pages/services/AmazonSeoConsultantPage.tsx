@@ -363,7 +363,7 @@ export default function AmazonSeoConsultantPage() {
       />
 
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28" style={{ background: "linear-gradient(135deg,#060D1F 0%,#0B1535 60%,#0D1A40 100%)" }}>
+      <section className="relative overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28" style={{ background: "#060D1F" }}>
         <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
           style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.6) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.6) 1px,transparent 1px)", backgroundSize: "50px 50px" }} />
         <div className="absolute top-20 right-10 w-96 h-96 rounded-full pointer-events-none" style={{ background: `radial-gradient(circle,${glowBlue},transparent)`, filter: "blur(80px)" }} />
@@ -410,7 +410,7 @@ export default function AmazonSeoConsultantPage() {
       </section>
 
       {/* ── PROBLEM STATEMENT ── */}
-      <section className="py-16" style={{ background: "linear-gradient(135deg,#0B1535,#0D1A40)" }}>
+      <section className="py-16" style={{ background: "#060D1F" }}>
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Poor Listing SEO Is Giving Your Sales to Competitors — Every Single Day
@@ -491,7 +491,7 @@ export default function AmazonSeoConsultantPage() {
       </section>
 
       {/* ── AUDIT SECTION ── */}
-      <section className="py-20" style={{ background: "linear-gradient(135deg,#0B1535,#0D1A40)" }}>
+      <section className="py-20" style={{ background: "#060D1F" }}>
         <div className="max-w-7xl mx-auto px-4 md:px-8 grid lg:grid-cols-2 gap-14 items-center">
           <div className="h-72 lg:h-80">
             <AuditIllustration />
@@ -554,7 +554,7 @@ export default function AmazonSeoConsultantPage() {
       </section>
 
       {/* ── PROCESS ── */}
-      <section className="py-20" style={{ background: "linear-gradient(135deg,#0B1535,#0D1A40)" }}>
+      <section className="py-20" style={{ background: "#060D1F" }}>
         <div className="max-w-4xl mx-auto px-4 md:px-8">
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">How Our Amazon SEO Process Works</h2>
@@ -595,7 +595,7 @@ export default function AmazonSeoConsultantPage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="py-20" style={{ background: "linear-gradient(135deg,#0B1535,#0D1A40)" }}>
+      <section className="py-20" style={{ background: "#060D1F" }}>
         <div className="max-w-3xl mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-3">Frequently Asked Questions</h2>

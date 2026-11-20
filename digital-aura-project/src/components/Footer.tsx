@@ -62,6 +62,7 @@ const servicesAmazon = [
     { label: "Amazon PPC Management",     href: "/services/amazon-ppc" },
     { label: "Listing Optimisation",      href: "/services/amazon-listing-optimisation" },
     { label: "A+ Content",   href: "/services/amazon-aplus-content" },
+    { label: "Ranking Strategies",         href: "/services/amazon-ranking-strategies" },
     { label: "Seller Account Management", href: "/services/amazon-account-management" },
   ]},
 ];

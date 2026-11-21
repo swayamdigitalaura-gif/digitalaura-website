@@ -419,10 +419,10 @@ export default function AmazonSeoConsultantPage() {
             The Problem
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] tracking-tight mb-5 leading-tight">
-            Poor Listing SEO Is Giving Your Sales to Competitors — Every Single Day
+            <span data-cms-key="amseo_problem_h2" data-cms-label="Problem H2" data-cms-attr="text">Poor Listing SEO Is Giving Your Sales to Competitors — Every Single Day</span>
           </h2>
           <p className="text-[#4B5563] max-w-3xl leading-relaxed mb-8">
-            If your products aren't optimised for Amazon's algorithm, you're invisible to buyers who are actively searching for exactly what you sell.
+            <span data-cms-key="amseo_problem_body" data-cms-label="Problem Body" data-cms-attr="text">If your products aren't optimised for Amazon's algorithm, you're invisible to buyers who are actively searching for exactly what you sell.</span>
           </p>
           <div className="grid sm:grid-cols-2 gap-3 max-w-3xl">
             {[
@@ -447,8 +447,8 @@ export default function AmazonSeoConsultantPage() {
             <span className="text-[11px] font-black uppercase tracking-[0.14em] px-3 py-1.5 rounded-full mb-4 inline-block" style={{ background: `${accent2Color}12`, color: accent2Color }}>
               Our Services
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] tracking-tight mb-2">Our Amazon SEO Services</h2>
-            <p className="text-[#4B5563]">End-to-end SEO consulting across every layer of Amazon's ranking system</p>
+            <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] tracking-tight mb-2"><span data-cms-key="amseo_services_h2" data-cms-label="Services H2" data-cms-attr="text">Our Amazon SEO Services</span></h2>
+            <p className="text-[#4B5563]"><span data-cms-key="amseo_services_sub" data-cms-label="Services Sub" data-cms-attr="text">End-to-end SEO consulting across every layer of Amazon's ranking system</span></p>
           </div>
           <div className="flex flex-wrap gap-3 mb-8">
             {tabs.map(tab => {
@@ -468,19 +468,19 @@ export default function AmazonSeoConsultantPage() {
           <AnimatePresence mode="wait">
             <motion.div key={activeTab} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.3 }}
               className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {visibleCards.map(({ Icon, title, desc, tags, color, bg }) => (
+              {visibleCards.map(({ Icon, title, desc, tags, color, bg }, i) => (
                 <div key={title} className="rounded-2xl p-6 flex flex-col gap-4 bg-white transition-transform hover:-translate-y-1"
                   style={{ border: "1px solid #E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
                   <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style={{ background: bg, border: `1px solid ${color}30` }}>
                     <Icon size={20} style={{ color }} />
                   </div>
                   <div>
-                    <h3 className="text-[#0A1628] font-semibold text-base mb-1">{title}</h3>
-                    <p className="text-[#4B5563] text-sm leading-relaxed">{desc}</p>
+                    <h3 className="text-[#0A1628] font-semibold text-base mb-1"><span data-cms-key={`amseo_card_${i}_title`} data-cms-label="Card Title" data-cms-attr="text">{title}</span></h3>
+                    <p className="text-[#4B5563] text-sm leading-relaxed"><span data-cms-key={`amseo_card_${i}_desc`} data-cms-label="Card Desc" data-cms-attr="text">{desc}</span></p>
                   </div>
                   <div className="flex flex-wrap gap-2 mt-auto">
-                    {tags.map(t => (
-                      <span key={t} className="text-[10px] px-2.5 py-1 rounded-full font-medium" style={{ background: bg, color, border: `1px solid ${color}20` }}>{t}</span>
+                    {tags.map((t, ti) => (
+                      <span key={t} className="text-[10px] px-2.5 py-1 rounded-full font-medium" style={{ background: bg, color, border: `1px solid ${color}20` }}><span data-cms-key={`amseo_card_${i}_tag_${ti}`} data-cms-label="Card Tag" data-cms-attr="text">{t}</span></span>
                     ))}
                   </div>
                 </div>
@@ -538,18 +538,18 @@ export default function AmazonSeoConsultantPage() {
             <span className="text-[11px] font-black uppercase tracking-[0.14em] px-3 py-1.5 rounded-full mb-4 inline-block" style={{ background: `${purpleColor}12`, color: purpleColor }}>
               Why Choose Us
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] tracking-tight mb-2">Why Choose Digital Aura as Your Amazon SEO Consultant</h2>
-            <p className="text-[#4B5563] max-w-xl">We don't offer generic SEO advice — we deliver marketplace-specific strategies that move real products up real rankings.</p>
+            <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] tracking-tight mb-2"><span data-cms-key="amseo_whyus_h2" data-cms-label="Why Us H2" data-cms-attr="text">Why Choose Digital Aura as Your Amazon SEO Consultant</span></h2>
+            <p className="text-[#4B5563] max-w-xl"><span data-cms-key="amseo_whyus_sub" data-cms-label="Why Us Sub" data-cms-attr="text">We don't offer generic SEO advice — we deliver marketplace-specific strategies that move real products up real rankings.</span></p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {whyUs.map(({ Icon, color, title, desc }) => (
+            {whyUs.map(({ Icon, color, title, desc }, i) => (
               <div key={title} className="p-6 rounded-2xl bg-white transition-transform hover:-translate-y-1"
                 style={{ border: "1px solid #E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
                 <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style={{ background: `${color}12`, border: `1px solid ${color}25` }}>
                   <Icon size={20} style={{ color }} />
                 </div>
-                <h3 className="text-[#0A1628] font-semibold text-base mb-2">{title}</h3>
-                <p className="text-[#4B5563] text-sm leading-relaxed">{desc}</p>
+                <h3 className="text-[#0A1628] font-semibold text-base mb-2"><span data-cms-key={`amseo_why_${i}_title`} data-cms-label="Why Us Title" data-cms-attr="text">{title}</span></h3>
+                <p className="text-[#4B5563] text-sm leading-relaxed"><span data-cms-key={`amseo_why_${i}_desc`} data-cms-label="Why Us Desc" data-cms-attr="text">{desc}</span></p>
               </div>
             ))}
           </div>
@@ -563,8 +563,8 @@ export default function AmazonSeoConsultantPage() {
             <span className="text-[11px] font-black uppercase tracking-[0.14em] px-3 py-1.5 rounded-full mb-4 inline-block" style={{ background: `${accent2Color}12`, color: accent2Color }}>
               Our Process
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] tracking-tight mb-2">How Our Amazon SEO Process Works</h2>
-            <p className="text-[#4B5563]">From first audit to continuously compounding organic rank</p>
+            <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] tracking-tight mb-2"><span data-cms-key="amseo_process_h2" data-cms-label="Process H2" data-cms-attr="text">How Our Amazon SEO Process Works</span></h2>
+            <p className="text-[#4B5563]"><span data-cms-key="amseo_process_sub" data-cms-label="Process Sub" data-cms-attr="text">From first audit to continuously compounding organic rank</span></p>
           </div>
           <div className="relative">
             <div className="absolute left-8 top-0 bottom-0 w-px hidden md:block"
@@ -578,8 +578,8 @@ export default function AmazonSeoConsultantPage() {
                     {step}
                   </div>
                   <div className="p-5 rounded-2xl flex-1" style={{ background: "#F8FAFF", border: "1px solid #E5E7EB" }}>
-                    <h3 className="text-[#0A1628] font-semibold text-base mb-1">{title}</h3>
-                    <p className="text-[#4B5563] text-sm leading-relaxed">{desc}</p>
+                    <h3 className="text-[#0A1628] font-semibold text-base mb-1"><span data-cms-key={`amseo_step_${i}_title`} data-cms-label="Step Title" data-cms-attr="text">{title}</span></h3>
+                    <p className="text-[#4B5563] text-sm leading-relaxed"><span data-cms-key={`amseo_step_${i}_desc`} data-cms-label="Step Desc" data-cms-attr="text">{desc}</span></p>
                   </div>
                 </motion.div>
               ))}
@@ -591,10 +591,10 @@ export default function AmazonSeoConsultantPage() {
       {/* ── STATS BAR ── */}
       <section className="py-14 px-4 md:px-8" style={{ background: "#F8FAFF", borderTop: "1px solid #F3F4F6", borderBottom: "1px solid #F3F4F6" }}>
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          {stats.map(({ value, label }) => (
+          {stats.map(({ value, label }, si) => (
             <div key={label} className="p-5 rounded-2xl bg-white" style={{ border: "1px solid #E5E7EB", boxShadow: `0 4px 20px ${accent2Color}08` }}>
-              <div className="text-3xl font-extrabold mb-1" style={{ color: accent2Color }}>{value}</div>
-              <div className="text-[#6B7280] text-xs">{label}</div>
+              <div className="text-3xl font-extrabold mb-1" style={{ color: accent2Color }}><span data-cms-key={`amseo_stat_${si}_val`} data-cms-label="Stat Value" data-cms-attr="text">{value}</span></div>
+              <div className="text-[#6B7280] text-xs"><span data-cms-key={`amseo_stat_${si}_label`} data-cms-label="Stat Label" data-cms-attr="text">{label}</span></div>
             </div>
           ))}
         </div>
@@ -607,8 +607,8 @@ export default function AmazonSeoConsultantPage() {
             <span className="text-[11px] font-black uppercase tracking-[0.14em] px-3 py-1.5 rounded-full mb-4 inline-block" style={{ background: `${accent2Color}12`, color: accent2Color }}>
               FAQs
             </span>
-            <h2 className="text-3xl font-black text-[#0A1628] mb-2">Frequently Asked Questions</h2>
-            <p className="text-[#4B5563]">Everything you need to know before hiring an Amazon SEO consultant</p>
+            <h2 className="text-3xl font-black text-[#0A1628] mb-2"><span data-cms-key="amseo_faq_h2" data-cms-label="FAQ H2" data-cms-attr="text">Frequently Asked Questions</span></h2>
+            <p className="text-[#4B5563]"><span data-cms-key="amseo_faq_sub" data-cms-label="FAQ Sub" data-cms-attr="text">Everything you need to know before hiring an Amazon SEO consultant</span></p>
           </div>
           <div className="space-y-3">
             {faqs.map(({ key, q, a }) => {
@@ -622,7 +622,7 @@ export default function AmazonSeoConsultantPage() {
                   <AnimatePresence>
                     {open && (
                       <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }}>
-                        <p className="px-6 pb-5 text-[#4B5563] text-sm leading-relaxed">{a}</p>
+                        <p className="px-6 pb-5 text-[#4B5563] text-sm leading-relaxed"><span data-cms-key={`${key}_a`} data-cms-label="FAQ Answer" data-cms-attr="text">{a}</span></p>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -642,10 +642,10 @@ export default function AmazonSeoConsultantPage() {
               Free — No Commitment
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] mb-4">
-              Get Your Free Amazon SEO Audit in 72 Hours
+              <span data-cms-key="amseo_cta_h2" data-cms-label="CTA H2" data-cms-attr="text">Get Your Free Amazon SEO Audit in 72 Hours</span>
             </h2>
             <p className="text-[#4B5563] mb-8 leading-relaxed">
-              Tell us your ASIN and marketplace and we'll audit your listings, keyword coverage, and ranking gaps — delivered as a clear action report. No sales pitch. Just data.
+              <span data-cms-key="amseo_cta_body" data-cms-label="CTA Body" data-cms-attr="text">Tell us your ASIN and marketplace and we'll audit your listings, keyword coverage, and ranking gaps — delivered as a clear action report. No sales pitch. Just data.</span>
             </p>
             <div className="space-y-3">
               {[

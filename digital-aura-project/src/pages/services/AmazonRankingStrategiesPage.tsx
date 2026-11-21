@@ -463,10 +463,10 @@ export default function AmazonRankingStrategiesPage() {
               <Search size={12} /> The Ranking Problem
             </div>
             <h2 className="text-3xl font-black text-[#0A1628] mb-5 leading-tight">
-              A Poor Keyword Strategy Is Costing You Organic Sales Every Day
+              <span data-cms-key="amrank_problem_h2" data-cms-label="Problem H2" data-cms-attr="text">A Poor Keyword Strategy Is Costing You Organic Sales Every Day</span>
             </h2>
             <p className="text-[#6B7280] mb-6 leading-relaxed">
-              Most Amazon sellers aren't invisible because their product is inferior — they're invisible because their keyword strategy is broken. Missing high-volume terms, wrong keyword placement, and unfilled backend fields leave your products buried on page 3 while near-identical listings rank on page 1.
+              <span data-cms-key="amrank_problem_body" data-cms-label="Problem Body" data-cms-attr="text">Most Amazon sellers aren't invisible because their product is inferior — they're invisible because their keyword strategy is broken. Missing high-volume terms, wrong keyword placement, and unfilled backend fields leave your products buried on page 3 while near-identical listings rank on page 1.</span>
             </p>
             <ul className="space-y-3 mb-8">
               {[
@@ -496,8 +496,8 @@ export default function AmazonRankingStrategiesPage() {
               style={{ background: glowOrange, color: accentColor, border: `1px solid rgba(255,107,43,0.3)` }}>
               <TrendingUp size={12} /> Our Services
             </div>
-            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2">Our Complete Amazon Ranking Services</h2>
-            <p className="text-[#6B7280] max-w-2xl mx-auto text-[15px] leading-relaxed">From keyword discovery and competitive analysis through listing structure and multi-marketplace coverage — everything your product needs to rank organically.</p>
+            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2"><span data-cms-key="amrank_services_h2" data-cms-label="Services H2" data-cms-attr="text">Our Complete Amazon Ranking Services</span></h2>
+            <p className="text-[#6B7280] max-w-2xl mx-auto text-[15px] leading-relaxed"><span data-cms-key="amrank_services_sub" data-cms-label="Services Sub" data-cms-attr="text">From keyword discovery and competitive analysis through listing structure and multi-marketplace coverage — everything your product needs to rank organically.</span></p>
           </motion.div>
 
           {/* Tabs */}
@@ -532,11 +532,11 @@ export default function AmazonRankingStrategiesPage() {
                     </div>
                     <span className="text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full" style={{ background: tab.bg, color: tab.color }}>{card.category}</span>
                   </div>
-                  <h3 className="text-[15px] font-bold text-[#0A1628] mb-2">{card.title}</h3>
-                  <p className="text-[13px] text-[#6B7280] leading-relaxed mb-4">{card.desc}</p>
+                  <h3 className="text-[15px] font-bold text-[#0A1628] mb-2"><span data-cms-key={`amrank_card_${i}_title`} data-cms-label="Card Title" data-cms-attr="text">{card.title}</span></h3>
+                  <p className="text-[13px] text-[#6B7280] leading-relaxed mb-4"><span data-cms-key={`amrank_card_${i}_desc`} data-cms-label="Card Desc" data-cms-attr="text">{card.desc}</span></p>
                   <div className="flex flex-wrap gap-1.5">
-                    {card.tags.map(tag => (
-                      <span key={tag} className="text-[11px] font-semibold px-2.5 py-1 rounded-full" style={{ background: tab.bg, color: tab.color }}>{tag}</span>
+                    {card.tags.map((tag, ti) => (
+                      <span key={tag} className="text-[11px] font-semibold px-2.5 py-1 rounded-full" style={{ background: tab.bg, color: tab.color }}><span data-cms-key={`amrank_card_${i}_tag_${ti}`} data-cms-label="Card Tag" data-cms-attr="text">{tag}</span></span>
                     ))}
                   </div>
                 </motion.div>
@@ -554,17 +554,17 @@ export default function AmazonRankingStrategiesPage() {
               style={{ background: glowOrange, color: accentColor, border: `1px solid rgba(255,107,43,0.3)` }}>
               <Star size={12} /> Why Choose Us
             </div>
-            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2">Why Choose Digital Aura for Amazon Ranking?</h2>
-            <p className="text-[#6B7280] max-w-xl mx-auto text-[15px]">We treat keyword strategy as a growth lever, not a one-time content exercise.</p>
+            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2"><span data-cms-key="amrank_whyus_h2" data-cms-label="Why Us H2" data-cms-attr="text">Why Choose Digital Aura for Amazon Ranking?</span></h2>
+            <p className="text-[#6B7280] max-w-xl mx-auto text-[15px]"><span data-cms-key="amrank_whyus_sub" data-cms-label="Why Us Sub" data-cms-attr="text">We treat keyword strategy as a growth lever, not a one-time content exercise.</span></p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {whyUs.map(({ Icon, color, title, desc }) => (
+            {whyUs.map(({ Icon, color, title, desc }, i) => (
               <div key={title} className="rounded-2xl p-6 border bg-white" style={{ borderColor: "#E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: `${color}15` }}>
                   <Icon size={18} style={{ color }} />
                 </div>
-                <h3 className="text-[#0A1628] font-semibold mb-2">{title}</h3>
-                <p className="text-[#6B7280] text-sm leading-relaxed">{desc}</p>
+                <h3 className="text-[#0A1628] font-semibold mb-2"><span data-cms-key={`amrank_why_${i}_title`} data-cms-label="Why Us Title" data-cms-attr="text">{title}</span></h3>
+                <p className="text-[#6B7280] text-sm leading-relaxed"><span data-cms-key={`amrank_why_${i}_desc`} data-cms-label="Why Us Desc" data-cms-attr="text">{desc}</span></p>
               </div>
             ))}
           </div>
@@ -579,8 +579,8 @@ export default function AmazonRankingStrategiesPage() {
               style={{ background: glowBlue, color: accent2Color, border: `1px solid rgba(26,111,232,0.3)` }}>
               <Layers size={12} /> Our Process
             </div>
-            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2">How We Improve Your Amazon Rankings</h2>
-            <p className="text-[#6B7280] text-[15px]">A structured process from keyword audit to compounding organic growth.</p>
+            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2"><span data-cms-key="amrank_process_h2" data-cms-label="Process H2" data-cms-attr="text">How We Improve Your Amazon Rankings</span></h2>
+            <p className="text-[#6B7280] text-[15px]"><span data-cms-key="amrank_process_sub" data-cms-label="Process Sub" data-cms-attr="text">A structured process from keyword audit to compounding organic growth.</span></p>
           </div>
           <div className="relative">
             <div className="hidden md:block absolute left-[2.35rem] top-6 bottom-6 w-px"
@@ -597,8 +597,8 @@ export default function AmazonRankingStrategiesPage() {
                       {n}
                     </div>
                     <div className="pt-2">
-                      <h3 className="text-[#0A1628] font-bold mb-1">{title}</h3>
-                      <p className="text-[#6B7280] text-sm leading-relaxed">{desc}</p>
+                      <h3 className="text-[#0A1628] font-bold mb-1"><span data-cms-key={`amrank_step_${i}_title`} data-cms-label="Step Title" data-cms-attr="text">{title}</span></h3>
+                      <p className="text-[#6B7280] text-sm leading-relaxed"><span data-cms-key={`amrank_step_${i}_desc`} data-cms-label="Step Desc" data-cms-attr="text">{desc}</span></p>
                     </div>
                   </motion.div>
                 );
@@ -616,10 +616,10 @@ export default function AmazonRankingStrategiesPage() {
             { val: "31",   label: "Avg rank positions gained", color: accent2Color },
             { val: "20%",  label: "Avg organic traffic lift",  color: purpleColor },
             { val: "48hr", label: "Keyword audit turnaround",  color: accentColor },
-          ].map(({ val, label, color }) => (
+          ].map(({ val, label, color }, si) => (
             <div key={label}>
-              <p className="text-3xl font-black mb-1" style={{ color }}>{val}</p>
-              <p className="text-[#6B7280] text-sm">{label}</p>
+              <p className="text-3xl font-black mb-1" style={{ color }}><span data-cms-key={`amrank_stat_${si}_val`} data-cms-label="Stat Value" data-cms-attr="text">{val}</span></p>
+              <p className="text-[#6B7280] text-sm"><span data-cms-key={`amrank_stat_${si}_label`} data-cms-label="Stat Label" data-cms-attr="text">{label}</span></p>
             </div>
           ))}
         </div>
@@ -633,7 +633,7 @@ export default function AmazonRankingStrategiesPage() {
               style={{ background: glowOrange, color: accentColor, border: `1px solid rgba(255,107,43,0.3)` }}>
               <Search size={12} /> FAQs
             </div>
-            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628]">Frequently Asked Questions</h2>
+            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628]"><span data-cms-key="amrank_faq_h2" data-cms-label="FAQ H2" data-cms-attr="text">Frequently Asked Questions</span></h2>
           </div>
           <div className="space-y-0">
             {faqs.map(({ key, q, a }) => {
@@ -649,7 +649,7 @@ export default function AmazonRankingStrategiesPage() {
                   <AnimatePresence>
                     {open && (
                       <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }}>
-                        <p className="mt-3 text-[15.5px] leading-relaxed text-[#4B5563]">{a}</p>
+                        <p className="mt-3 text-[15.5px] leading-relaxed text-[#4B5563]"><span data-cms-key={`${key}_a`} data-cms-label="FAQ Answer" data-cms-attr="text">{a}</span></p>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -668,8 +668,8 @@ export default function AmazonRankingStrategiesPage() {
               style={{ background: glowOrange, color: accentColor, border: `1px solid rgba(255,107,43,0.3)` }}>
               <TrendingUp size={12} /> Free Audit
             </div>
-            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2">Get Your Free Amazon Ranking Audit</h2>
-            <p className="text-[#6B7280] text-[15px]">We'll review your current keyword coverage and show you exactly where your rankings are being left on the table — no obligation.</p>
+            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2"><span data-cms-key="amrank_cta_h2" data-cms-label="CTA H2" data-cms-attr="text">Get Your Free Amazon Ranking Audit</span></h2>
+            <p className="text-[#6B7280] text-[15px]"><span data-cms-key="amrank_cta_sub" data-cms-label="CTA Sub" data-cms-attr="text">We'll review your current keyword coverage and show you exactly where your rankings are being left on the table — no obligation.</span></p>
           </div>
           <RankingAuditForm />
         </div>

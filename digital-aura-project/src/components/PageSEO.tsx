@@ -8,6 +8,7 @@ import { phase2WebPages } from '../data/localPagesPhase2Web';
 import { phase3Pages } from '../data/localPagesPhase3';
 import { phase4Pages, phase4Entries } from '../data/localPagesPhase4';
 import { TEAM } from '../data/pageExtras';
+import { workflowFaqs, predictiveFaqs, llmAppsFaqs } from '../data/aiServiceFaqs';
 
 const API_BASE  = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
 const SITE_URL  = 'https://thedigitalaura.com';
@@ -496,7 +497,7 @@ function monthlyOffer(minPrice: number, maxPrice: number, description: string) {
   return { '@type': 'Offer', priceCurrency: 'INR', description, priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'INR', minPrice, maxPrice, unitText: 'MONTH' } };
 }
 
-function serviceSchema(path: string, name: string, serviceType: string, description: string, free = false, offers?: object) {
+function serviceSchema(path: string, name: string, serviceType: string, description: string, free = false, offers?: object, areaServed: object | string = { '@type': 'City', name: 'Ahmedabad' }) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -506,7 +507,7 @@ function serviceSchema(path: string, name: string, serviceType: string, descript
     description,
     url: `${SITE_URL}${path}/`,
     provider: ORG_REF,
-    areaServed: { '@type': 'City', name: 'Ahmedabad' },
+    areaServed,
     ...(free ? { offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR', description: 'Free, no obligation' } } : {}),
     ...(offers ? { offers } : {}),
   };
@@ -621,10 +622,22 @@ const PAGE_SCHEMA: Record<string, object | object[]> = {
   '/services/ai-chatbot-assistant':     { '@context': 'https://schema.org', '@type': 'Service', name: 'AI Chatbot & Assistant', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'AI Development', areaServed: 'Worldwide', url: `${SITE_URL}/services/ai-chatbot-assistant/` },
   '/services/ai-powered-web-apps':      { '@context': 'https://schema.org', '@type': 'Service', name: 'AI-Powered Web Apps', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'AI Development', areaServed: 'Worldwide', url: `${SITE_URL}/services/ai-powered-web-apps/` },
   '/services/custom-ai-web-solutions':  { '@context': 'https://schema.org', '@type': 'Service', name: 'Custom AI Web Solutions', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'AI Development', areaServed: 'Worldwide', url: `${SITE_URL}/services/custom-ai-web-solutions/` },
-  '/services/ai/llm-powered-apps':      { '@context': 'https://schema.org', '@type': 'Service', name: 'LLM-Powered App Development', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'AI Development', areaServed: 'Worldwide', url: `${SITE_URL}/services/ai/llm-powered-apps/` },
+  '/services/ai/llm-powered-apps': [
+    serviceSchema('/services/ai/llm-powered-apps', 'LLM-Powered App Development', 'AI Development', 'Custom applications powered by large language models such as GPT-4, Claude and Gemini, including retrieval-augmented generation, private deployments and integration with existing products.', false, undefined, 'Worldwide'),
+    faqPageSchema(llmAppsFaqs),
+    breadcrumbSchema([['Home', '/'], ['Services', '/services/'], ['LLM-Powered App Development', '/services/ai/llm-powered-apps/']]),
+  ],
   '/services/ai/chatbots-assistants':   { '@context': 'https://schema.org', '@type': 'Service', name: 'AI Chatbots & Assistants', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'AI Development', areaServed: 'Worldwide', url: `${SITE_URL}/services/ai/chatbots-assistants/` },
-  '/services/ai/workflow-automation':   { '@context': 'https://schema.org', '@type': 'Service', name: 'AI Workflow Automation', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'AI Automation', areaServed: 'Worldwide', url: `${SITE_URL}/services/ai/workflow-automation/` },
-  '/services/ai/predictive-analytics':  { '@context': 'https://schema.org', '@type': 'Service', name: 'Predictive Analytics', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Data Analytics', areaServed: 'Worldwide', url: `${SITE_URL}/services/ai/predictive-analytics/` },
+  '/services/ai/workflow-automation': [
+    serviceSchema('/services/ai/workflow-automation', 'AI Workflow Automation', 'AI Automation', 'AI workflow automation using n8n, Make, Zapier and custom pipelines that connect your business tools and remove repetitive manual work.', false, undefined, 'Worldwide'),
+    faqPageSchema(workflowFaqs),
+    breadcrumbSchema([['Home', '/'], ['Services', '/services/'], ['AI Workflow Automation', '/services/ai/workflow-automation/']]),
+  ],
+  '/services/ai/predictive-analytics': [
+    serviceSchema('/services/ai/predictive-analytics', 'Predictive Analytics', 'Data Analytics', 'AI-driven forecasting, churn and demand prediction, and customer behaviour analysis built on your own business data.', false, undefined, 'Worldwide'),
+    faqPageSchema(predictiveFaqs),
+    breadcrumbSchema([['Home', '/'], ['Services', '/services/'], ['Predictive Analytics', '/services/ai/predictive-analytics/']]),
+  ],
   '/services/ai/api-integration':       { '@context': 'https://schema.org', '@type': 'Service', name: 'AI API Integration', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'AI Development', areaServed: 'Worldwide', url: `${SITE_URL}/services/ai/api-integration/` },
   '/services/ai/custom-ml-models':      { '@context': 'https://schema.org', '@type': 'Service', name: 'Custom ML Model Development', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Machine Learning', areaServed: 'Worldwide', url: `${SITE_URL}/services/ai/custom-ml-models/` },
 

@@ -76,6 +76,7 @@ const PAGE_URLS = {
   'seo-agency-ahmedabad': `${SITE}/seo-agency-ahmedabad`,
   'seo-company-gujarat': `${SITE}/seo-company-gujarat`,
   'seo-agency-international': `${SITE}/seo-agency-international`,
+  'ecommerce-product-photography': `${SITE}/services/ecommerce-product-photography`,
   'amazon-marketing': `${SITE}/services/amazon-marketing`,
   'amazon-account-management': `${SITE}/services/amazon-account-management`,
   'amazon-ppc': `${SITE}/services/amazon-ppc`,

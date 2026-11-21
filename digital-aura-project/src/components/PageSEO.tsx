@@ -230,6 +230,38 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: "Amazon Marketing & Account Management Services | Digital Aura",
     description: "Expert Amazon marketing services: seller registration, listing optimisation, PPC management, A+ content, Brand Registry and full account management. Free Amazon audit.",
   },
+  '/services/amazon-account-management': {
+    title: "Amazon Account Management Services | Seller Central Experts",
+    description: "Full Amazon Seller Central management: FBA setup, inventory, Brand Registry, account health monitoring, suspension reinstatement and day-to-day case handling. Free audit.",
+  },
+  '/services/amazon-ppc': {
+    title: "Amazon PPC Management Services | Sponsored Ads Experts",
+    description: "Amazon PPC management: Sponsored Products, Brands & Display campaigns, keyword bid optimisation, negative keyword harvesting and monthly performance reporting. Reduce ACoS.",
+  },
+  '/services/amazon-listing-optimisation': {
+    title: "Amazon Listing Optimisation Services | A9 SEO Experts",
+    description: "Amazon listing optimisation: keyword research, SEO-friendly titles, bullet points, backend search terms, A+ Content and image guidance to rank higher and convert more buyers.",
+  },
+  '/services/amazon-aplus-content': {
+    title: "Amazon A+ Content & Enhanced Brand Content Services",
+    description: "Professional Amazon A+ Content design: comparison charts, lifestyle imagery, brand story modules and Storefront pages that lift conversions by up to 20%. Brand Registry required.",
+  },
+  '/services/amazon-ranking-strategies': {
+    title: "Amazon Ranking Strategies | A9 Algorithm Optimisation",
+    description: "Data-driven Amazon ranking strategies: reverse ASIN lookups, autocomplete mining, low-competition keyword targeting and ongoing rank monitoring to grow organic sales.",
+  },
+  '/services/amazon-seo-consultant': {
+    title: "Amazon SEO Consultant Services | Listing & Rank Experts",
+    description: "Expert Amazon SEO consulting: keyword strategy, listing optimisation, A+ Content, review strategy, Google SEO for Amazon listings and ongoing rank monitoring. Free consultation.",
+  },
+  '/services/amazon-storefront-design': {
+    title: "Amazon Storefront Design Services | Custom Brand Store",
+    description: "Custom Amazon Storefront design: multi-page store architecture, branded hero banners, lifestyle imagery, Amazon Posts and storefront traffic strategy to grow brand sales.",
+  },
+  '/services/ecommerce-product-photography': {
+    title: "Ecommerce Product Photography Services | Amazon-Ready Images",
+    description: "Professional ecommerce product photography: white background shots, lifestyle images, 360° photography, Amazon infographics and marketplace-ready image editing and delivery.",
+  },
   '/services/seo-content-marketing/local-seo': {
     title: "Local SEO Services in Ahmedabad | Google Maps Ranking",
     description: "Local SEO services in Ahmedabad: Google Business Profile, map pack ranking, reviews, citations and local landing pages for clinics, shops and services. Free audit.",

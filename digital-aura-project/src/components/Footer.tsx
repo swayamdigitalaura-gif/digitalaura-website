@@ -58,15 +58,15 @@ const servicesRight = [
 
 const servicesAmazon = [
   { heading: "Amazon Marketing", color: "#FF9900", items: [
-    { label: "Amazon Marketing",          href: "/services/amazon-marketing" },
-    { label: "Amazon PPC Management",     href: "/services/amazon-ppc" },
-    { label: "Listing Optimisation",      href: "/services/amazon-listing-optimisation" },
-    { label: "A+ Content",   href: "/services/amazon-aplus-content" },
-    { label: "Ranking Strategies",         href: "/services/amazon-ranking-strategies" },
-    { label: "SEO Consultant",             href: "/services/amazon-seo-consultant" },
-    { label: "Storefront Design",          href: "/services/amazon-storefront-design" },
-    { label: "Product Photography",        href: "/services/ecommerce-product-photography" },
-    { label: "Seller Account Management", href: "/services/amazon-account-management" },
+    { label: "Amazon Marketing",          href: "/services/amazon-marketing/" },
+    { label: "Amazon PPC Management",     href: "/services/amazon-ppc/" },
+    { label: "Listing Optimisation",      href: "/services/amazon-listing-optimisation/" },
+    { label: "A+ Content",   href: "/services/amazon-aplus-content/" },
+    { label: "Ranking Strategies",         href: "/services/amazon-ranking-strategies/" },
+    { label: "SEO Consultant",             href: "/services/amazon-seo-consultant/" },
+    { label: "Storefront Design",          href: "/services/amazon-storefront-design/" },
+    { label: "Product Photography",        href: "/services/ecommerce-product-photography/" },
+    { label: "Seller Account Management", href: "/services/amazon-account-management/" },
   ]},
 ];
 

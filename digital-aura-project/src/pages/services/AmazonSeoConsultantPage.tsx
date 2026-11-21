@@ -391,7 +391,7 @@ export default function AmazonSeoConsultantPage() {
                 data-cms-key="amzn_seo_cta_btn">
                 {s.amzn_seo_cta_btn || "Get a Free SEO Audit"} <ArrowRight size={15} />
               </a>
-              <Link to="/services/amazon-marketing"
+              <Link to="/services/amazon-marketing/"
                 className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold border-2 text-[#0A1628] hover:bg-[#0A1628] hover:text-white transition-all"
                 style={{ borderColor: "#0A1628" }}>
                 All Amazon Services

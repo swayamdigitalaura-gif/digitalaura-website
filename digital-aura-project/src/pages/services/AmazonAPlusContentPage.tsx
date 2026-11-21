@@ -394,7 +394,7 @@ export default function AmazonAPlusContentPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left: copy */}
             <motion.div initial={{ opacity: 0, x: -24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
-              <Link to="/services/amazon-marketing" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: accentColor }}>
+              <Link to="/services/amazon-marketing/" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: accentColor }}>
                 ← Back to Amazon Services
               </Link>
               <div className="mb-6">
@@ -414,7 +414,7 @@ export default function AmazonAPlusContentPage() {
                 </span>
               </p>
               <div className="flex flex-wrap gap-3 mb-10">
-                <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold transition-all hover:opacity-90"
+                <Link to="/contact/" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold transition-all hover:opacity-90"
                   style={{ background: `linear-gradient(135deg, ${accentColor}, #e85a1a)`, boxShadow: `0 8px 24px rgba(255,107,43,0.4)`, color: "#fff" }}>
                   <span data-cms-key="amzn_aplus_cta_btn">{s.amzn_aplus_cta_btn || "Get a Free A+ Content Audit"}</span>
                   <ArrowRight size={15} />
@@ -674,7 +674,7 @@ export default function AmazonAPlusContentPage() {
         headline="Your product page is losing buyers to better-looking listings."
         sub="Get a free A+ Content consultation and see the difference design makes."
         cta="Get Free Consultation"
-        href="/contact"
+        href="/contact/"
         accent={accentColor}
       />
     </PageLayout>

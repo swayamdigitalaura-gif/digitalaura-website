@@ -37,7 +37,7 @@ const NotFound = () => {
     { icon: Home,         label: "Home",         to: "/",           color: "#FF6B2B" },
     { icon: Globe,        label: "Services",      to: "/services",   color: "#7C3AED" },
     { icon: Zap,          label: "Case Studies",  to: "/case-studies", color: "#1A6FE8" },
-    { icon: MessageSquare,label: "Contact Us",    to: "/contact",    color: "#22C55E" },
+    { icon: MessageSquare,label: "Contact Us",    to: "/contact/",    color: "#22C55E" },
   ];
 
   return (

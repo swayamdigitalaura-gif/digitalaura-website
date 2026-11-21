@@ -407,7 +407,7 @@ export default function AmazonStorefrontDesignPage() {
                 onClick={() => track("cta_click", { page: "amazon-storefront-design", cta: "hero_primary" })}>
                 Get Free Storefront Audit <ArrowRight size={16} />
               </a>
-              <Link to="/services/amazon-marketing"
+              <Link to="/services/amazon-marketing/"
                 className="px-8 py-4 rounded-xl font-semibold text-sm border flex items-center justify-center gap-2 transition hover:bg-[#F8FAFF] text-[#0A1628] border-[#E5E7EB]">
                 View All Amazon Services
               </Link>
@@ -617,12 +617,12 @@ export default function AmazonStorefrontDesignPage() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {[
-              { label: "Amazon Marketing",          href: "/services/amazon-marketing",            color: accentColor },
-              { label: "PPC Management",            href: "/services/amazon-ppc",                  color: blueColor },
-              { label: "Listing Optimisation",      href: "/services/amazon-listing-optimisation", color: purpleColor },
-              { label: "A+ Content",                href: "/services/amazon-aplus-content",        color: accentColor },
-              { label: "Ranking Strategies",        href: "/services/amazon-ranking-strategies",   color: blueColor },
-              { label: "SEO Consultant",            href: "/services/amazon-seo-consultant",       color: purpleColor },
+              { label: "Amazon Marketing",          href: "/services/amazon-marketing/",            color: accentColor },
+              { label: "PPC Management",            href: "/services/amazon-ppc/",                  color: blueColor },
+              { label: "Listing Optimisation",      href: "/services/amazon-listing-optimisation/", color: purpleColor },
+              { label: "A+ Content",                href: "/services/amazon-aplus-content/",        color: accentColor },
+              { label: "Ranking Strategies",        href: "/services/amazon-ranking-strategies/",   color: blueColor },
+              { label: "SEO Consultant",            href: "/services/amazon-seo-consultant/",       color: purpleColor },
             ].map(({ label, href, color }) => (
               <Link key={label} to={href}
                 className="rounded-xl p-3 text-center text-xs font-semibold border border-[#E5E7EB] bg-white hover:shadow-sm transition-shadow text-[#374151] hover:text-[#0A1628]">

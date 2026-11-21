@@ -16,6 +16,7 @@ import CaseStudies from "@/components/CaseStudies";
 import { CASES_BY_CATEGORY } from "@/components/caseCards";
 import BlogInsights from "@/components/BlogInsights";
 
+import { predictiveFaqs } from "@/data/aiServiceFaqs";
 const accent = "#22C55E";
 const accentLight = "rgba(34,197,94,0.1)";
 const accentBorder = "rgba(34,197,94,0.25)";
@@ -105,14 +106,7 @@ const results = [
   { Icon: Zap, text: "Real time insights where decisions happen" },
 ];
 
-const faqs = [
-  { q: "How much historical data do I need for predictive analytics?", a: "It depends on the use case. Churn models typically need 12+ months of customer behaviour data. Demand forecasting works best with 2+ years of sales history to capture seasonality. Fraud detection can work with less if the signal is strong. We always audit your data first and tell you honestly what's achievable before building anything." },
-  { q: "Will the predictions actually be accurate for my business?", a: "Accuracy depends on data quality, data volume, and how predictable your domain is. We validate every model on held out test data and report honest accuracy metrics before deployment. If the data isn't sufficient for reliable predictions, we'll tell you and suggest what data collection would improve it rather than deploying a model that will mislead decisions." },
-  { q: "How do I access the predictions?", a: "We deploy predictions where you make decisions. This might mean a column in your CRM showing churn risk, a dashboard widget showing next month's demand, an API your app calls in real time, or an automated trigger that fires when a customer crosses a risk threshold. The delivery format is designed around your actual workflow." },
-  { q: "Do you build custom models or use off-the-shelf tools?", a: "Both, depending on your needs. For standard use cases (churn, demand, CLV), we start with proven ML frameworks and adapt them to your data. For novel or highly specialised problems, we build fully custom models from scratch. We choose based on accuracy requirements, cost, and your timeline not to showcase complexity." },
-  { q: "Can you connect to our existing data warehouse?", a: "Yes. We connect to BigQuery, Snowflake, Redshift, PostgreSQL, MySQL, and most other SQL-based warehouses. We also build data pipelines to collect and transform data from your CRM, marketing tools, and operational systems if a warehouse isn't in place yet." },
-  { q: "How do you handle model drift over time?", a: "All production models are monitored for accuracy degradation, data drift, and prediction quality. We set up automated alerts when performance degrades below acceptable thresholds and schedule periodic retraining cycles typically quarterly for stable domains, monthly for rapidly changing ones." },
-];
+
 
 const FAQItem = ({ q, a, idx = 0 }: { q: string; a: string; idx?: number }) => {
   // Plain question and answer, always open (same FAQ look on every page).
@@ -365,7 +359,7 @@ const PredictiveAnalyticsPage = () => {
           </h2>
         </motion.div>
         <div className="space-y-3">
-          {faqs.map((faq, idx) => (
+          {predictiveFaqs.map((faq, idx) => (
             <motion.div key={faq.q} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.06 }}>
               <FAQItem q={faq.q} a={faq.a} idx={idx} />
             </motion.div>

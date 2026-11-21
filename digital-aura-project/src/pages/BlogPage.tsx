@@ -178,7 +178,7 @@ const BlogPage = () => {
               return (
                 <motion.div key={p.slug || p.n} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: (i % 6) * 0.05 }}>
                   <Link
-                    to={p.slug ? `/blog/${p.slug}` : "#"}
+                    to={p.slug ? `/blog/${p.slug}/` : "#"}
                     className="group flex flex-col h-full rounded-2xl border bg-white overflow-hidden card-hover"
                     style={{ borderColor: "#E5E7EB" }}
                   >

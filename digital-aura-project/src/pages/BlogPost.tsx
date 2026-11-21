@@ -270,7 +270,7 @@ const BlogPost = () => {
                     {related.map((b) => {
                       const bTheme = getBlogTheme(b.category);
                       return (
-                        <Link key={b.id} to={`/blog/${b.slug}`} className="block p-3 rounded-xl border-l-4 border transition-all" style={{ borderColor: "#E5E7EB", borderLeftColor: bTheme.color }}>
+                        <Link key={b.id} to={`/blog/${b.slug}/`} className="block p-3 rounded-xl border-l-4 border transition-all" style={{ borderColor: "#E5E7EB", borderLeftColor: bTheme.color }}>
                           <p className="text-sm font-bold leading-snug" style={{ color: HEADING }}>{b.title}</p>
                           {b.category && <p className="text-xs mt-1 font-semibold" style={{ color: bTheme.color }}>{b.category}</p>}
                         </Link>
@@ -302,7 +302,7 @@ function LatestPosts({ items }: { items: Blog[] }) {
             const bTheme = getBlogTheme(b.category);
             const Icon = bTheme.Icon;
             return (
-              <Link key={b.id} to={`/blog/${b.slug}`} className="group flex flex-col h-full overflow-hidden rounded-2xl border border-[#E5E7EB] bg-white transition-all hover:-translate-y-1 hover:shadow-lg" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
+              <Link key={b.id} to={`/blog/${b.slug}/`} className="group flex flex-col h-full overflow-hidden rounded-2xl border border-[#E5E7EB] bg-white transition-all hover:-translate-y-1 hover:shadow-lg" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
                 <div className="h-20 flex items-center justify-center relative overflow-hidden" style={{ background: bTheme.bg }}>
                   <div className="absolute inset-0 dot-pattern opacity-20" />
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center relative" style={{ background: "#fff", border: `1px solid ${bTheme.border}` }}>

@@ -567,7 +567,7 @@ const AmazonAccountManagementPage = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left: copy */}
             <motion.div initial={{ opacity: 0, x: -24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
-              <Link to="/services/amazon-marketing" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: accentColor }}>
+              <Link to="/services/amazon-marketing/" className="inline-flex items-center gap-1 text-xs font-semibold mb-5 hover:underline" style={{ color: accentColor }}>
                 ← Back to Amazon Services
               </Link>
               <div className="mb-6">

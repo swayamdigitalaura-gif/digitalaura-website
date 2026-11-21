@@ -284,7 +284,7 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
                   {relatedPosts.map((p, idx) => {
                     const pTheme = getTheme(p.category);
                     return (
-                      <AppLink key={p.slug} to={`/blog/${p.slug}`} className={`block p-2.5 rounded-xl border-l-4 border transition-all group ${idx >= 2 ? "[@media(max-height:820px)]:hidden" : idx === 1 ? "[@media(max-height:680px)]:hidden" : ""}`} style={{ borderColor: "#E5E7EB", borderLeftColor: pTheme.color }}>
+                      <AppLink key={p.slug} to={`/blog/${p.slug}/`} className={`block p-2.5 rounded-xl border-l-4 border transition-all group ${idx >= 2 ? "[@media(max-height:820px)]:hidden" : idx === 1 ? "[@media(max-height:680px)]:hidden" : ""}`} style={{ borderColor: "#E5E7EB", borderLeftColor: pTheme.color }}>
                         <p className="text-sm font-bold leading-snug transition-colors" style={{ color: "#0A1628" }}>{p.title}</p>
                         <p className="text-xs mt-1 font-semibold" style={{ color: pTheme.ink }}>{p.category}</p>
                       </AppLink>

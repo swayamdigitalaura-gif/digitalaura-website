@@ -74,8 +74,9 @@ exports.getSitemap = async (req, res) => {
 
     const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>`;
 
-    try { fs.writeFileSync(path.join(WEB_ROOT, 'sitemap.xml'), xml, 'utf8'); } catch {}
-
+    // NOTE: never write sitemap.xml here. The live sitemap is built at deploy time by
+    // digital-aura-project/scripts/prerender.mjs (all pages + <lastmod>). Writing it from the
+    // admin overwrote that file with a 41-URL list without <lastmod>. This endpoint is preview only.
     res.set('Content-Type', 'application/xml');
     res.send(xml);
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
@@ -97,8 +98,8 @@ exports.generateSitemap = async (req, res) => {
     });
 
     const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>`;
-    fs.writeFileSync(path.join(WEB_ROOT, 'sitemap.xml'), xml, 'utf8');
-    res.json({ success: true, message: 'sitemap.xml generated', url: `${SITE_URL}/sitemap.xml`, xml });
+    // Intentionally does NOT write sitemap.xml (see getSitemap). Preview only; the live file comes from the deploy build.
+    res.json({ success: true, message: 'Preview only. The live sitemap.xml is generated automatically at deploy time and was not changed.', url: `${SITE_URL}/sitemap.xml`, xml });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };
 

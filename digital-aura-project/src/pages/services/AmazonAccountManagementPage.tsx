@@ -375,8 +375,8 @@ const ServiceCardTabs = () => {
             style={{ background: glowOrange, color: accentColor, border: `1px solid rgba(255,107,43,0.3)` }}>
             <Settings size={12} /> Account Management Services
           </div>
-          <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2">Everything Your Amazon Account Needs</h2>
-          <p className="text-[#6B7280] max-w-2xl mx-auto text-[15px] leading-relaxed">From seller registration to full ongoing management and suspension reinstatement — we run your Seller Central so you don't have to.</p>
+          <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2"><span data-cms-key="amacct_services_h2" data-cms-label="Services H2" data-cms-attr="text">Everything Your Amazon Account Needs</span></h2>
+          <p className="text-[#6B7280] max-w-2xl mx-auto text-[15px] leading-relaxed"><span data-cms-key="amacct_services_sub" data-cms-label="Services Sub" data-cms-attr="text">From seller registration to full ongoing management and suspension reinstatement — we run your Seller Central so you don't have to.</span></p>
         </motion.div>
 
         {/* Tabs */}
@@ -411,11 +411,11 @@ const ServiceCardTabs = () => {
                   </div>
                   <span className="text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full" style={{ background: tab.bg, color: tab.color }}>{card.category}</span>
                 </div>
-                <h3 className="text-[15px] font-bold text-[#0A1628] mb-2">{card.title}</h3>
-                <p className="text-[13px] text-[#6B7280] leading-relaxed mb-4">{card.desc}</p>
+                <h3 className="text-[15px] font-bold text-[#0A1628] mb-2"><span data-cms-key={`amacct_card_${i}_title`} data-cms-label="Card Title" data-cms-attr="text">{card.title}</span></h3>
+                <p className="text-[13px] text-[#6B7280] leading-relaxed mb-4"><span data-cms-key={`amacct_card_${i}_desc`} data-cms-label="Card Desc" data-cms-attr="text">{card.desc}</span></p>
                 <div className="flex flex-wrap gap-1.5 mb-4">
-                  {card.tags.map(tag => (
-                    <span key={tag} className="text-[11px] font-semibold px-2.5 py-1 rounded-full" style={{ background: tab.bg, color: tab.color }}>{tag}</span>
+                  {card.tags.map((tag, ti) => (
+                    <span key={tag} className="text-[11px] font-semibold px-2.5 py-1 rounded-full" style={{ background: tab.bg, color: tab.color }}><span data-cms-key={`amacct_card_${i}_tag_${ti}`} data-cms-label="Card Tag" data-cms-attr="text">{tag}</span></span>
                   ))}
                 </div>
                 <Link to="/contact/" className="inline-flex items-center gap-1.5 text-[12.5px] font-semibold transition-all hover:gap-2.5" style={{ color: tab.color }}>
@@ -681,7 +681,7 @@ const AmazonAccountManagementPage = () => {
             <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center gap-2">
               <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> Our Account Management Approach
             </h2>
-            <p className="text-[#6B7280] mt-2 text-sm max-w-lg">We manage proactively — fixing issues before they become crises and recovering revenue most sellers leave behind.</p>
+            <p className="text-[#6B7280] mt-2 text-sm max-w-lg"><span data-cms-key="amacct_approach_sub" data-cms-label="Approach Sub" data-cms-attr="text">We manage proactively — fixing issues before they become crises and recovering revenue most sellers leave behind.</span></p>
           </motion.div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {approach.map((item, i) => (
@@ -689,7 +689,7 @@ const AmazonAccountManagementPage = () => {
                 className="flex items-start gap-3 p-4 rounded-2xl"
                 style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
                 <Check size={16} className="mt-0.5 shrink-0" style={{ color: accentColor }} />
-                <span className="text-[14px] text-[#374151]">{item}</span>
+                <span className="text-[14px] text-[#374151]"><span data-cms-key={`amacct_approach_${i}`} data-cms-label="Approach Item" data-cms-attr="text">{item}</span></span>
               </motion.div>
             ))}
           </div>
@@ -703,16 +703,16 @@ const AmazonAccountManagementPage = () => {
             <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center gap-2">
               <span className="w-4 h-0.5 rounded-full" style={{ background: accent2Color }} /> Tools & Platforms We Work With
             </h2>
-            <p className="text-[#6B7280] mt-2 text-sm">Native Amazon tools and third-party platforms for account management and monitoring.</p>
+            <p className="text-[#6B7280] mt-2 text-sm"><span data-cms-key="amacct_tools_sub" data-cms-label="Tools Sub" data-cms-attr="text">Native Amazon tools and third-party platforms for account management and monitoring.</span></p>
           </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {toolGroups.map((g, i) => (
               <motion.div key={g.label} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
                 className="rounded-2xl p-5" style={{ background: "#F8FAFF", border: "1px solid #E5E7EB", boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
-                <p className="text-[11px] font-bold uppercase tracking-wider mb-3" style={{ color: g.color }}>{g.label}</p>
+                <p className="text-[11px] font-bold uppercase tracking-wider mb-3" style={{ color: g.color }}><span data-cms-key={`amacct_tool_${i}_label`} data-cms-label="Tool Group Label" data-cms-attr="text">{g.label}</span></p>
                 <div className="flex flex-wrap gap-2">
-                  {g.pills.map(p => (
-                    <span key={p} className="text-[12px] font-semibold px-2.5 py-1 rounded-full" style={{ background: g.bg, color: g.color }}>{p}</span>
+                  {g.pills.map((p, pi) => (
+                    <span key={p} className="text-[12px] font-semibold px-2.5 py-1 rounded-full" style={{ background: g.bg, color: g.color }}><span data-cms-key={`amacct_tool_${i}_pill_${pi}`} data-cms-label="Tool Pill" data-cms-attr="text">{p}</span></span>
                   ))}
                 </div>
               </motion.div>
@@ -729,7 +729,7 @@ const AmazonAccountManagementPage = () => {
               <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> How We Onboard and Manage Your Account
               <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} />
             </h2>
-            <p className="text-[#4B5563] max-w-xl mx-auto text-sm">A five-step process from initial audit to full ongoing management.</p>
+            <p className="text-[#4B5563] max-w-xl mx-auto text-sm"><span data-cms-key="amacct_process_sub" data-cms-label="Process Sub" data-cms-attr="text">A five-step process from initial audit to full ongoing management.</span></p>
           </motion.div>
           <div className="relative">
             <div className="hidden md:block absolute left-7 top-8 bottom-8 w-0.5" style={{ background: "linear-gradient(to bottom, transparent, #E5E7EB, transparent)" }} />
@@ -743,8 +743,8 @@ const AmazonAccountManagementPage = () => {
                     {step.num}
                   </div>
                   <div className="flex-1 p-5 rounded-2xl bg-white border border-[#E5E7EB]" style={{ boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
-                    <h3 className="font-bold text-[#0A1628] text-base mb-1">{step.title}</h3>
-                    <p className="text-[14px] text-[#4B5563] leading-relaxed">{step.desc}</p>
+                    <h3 className="font-bold text-[#0A1628] text-base mb-1"><span data-cms-key={`amacct_step_${i}_title`} data-cms-label="Step Title" data-cms-attr="text">{step.title}</span></h3>
+                    <p className="text-[14px] text-[#4B5563] leading-relaxed"><span data-cms-key={`amacct_step_${i}_desc`} data-cms-label="Step Desc" data-cms-attr="text">{step.desc}</span></p>
                   </div>
                 </motion.div>
               ))}
@@ -761,10 +761,10 @@ const AmazonAccountManagementPage = () => {
               <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> Why Choose Digital Aura for Account Management
             </h2>
             <ul className="space-y-3">
-              {whyUs.map(w => (
+              {whyUs.map((w, i) => (
                 <li key={w} className="flex items-start gap-3 p-3.5 rounded-xl" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
                   <Check size={16} className="mt-0.5 shrink-0" style={{ color: accentColor }} />
-                  <span className="text-[14.5px] text-[#374151]">{w}</span>
+                  <span className="text-[14.5px] text-[#374151]"><span data-cms-key={`amacct_why_${i}`} data-cms-label="Why Us Item" data-cms-attr="text">{w}</span></span>
                 </li>
               ))}
             </ul>
@@ -780,7 +780,7 @@ const AmazonAccountManagementPage = () => {
                   <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: glowOrange }}>
                     <item.Icon size={15} style={{ color: accentColor }} />
                   </div>
-                  <span className="text-[14.5px] text-[#374151]">{item.label}</span>
+                  <span className="text-[14.5px] text-[#374151]"><span data-cms-key={`amacct_whatwedo_${i}`} data-cms-label="What We Do Item" data-cms-attr="text">{item.label}</span></span>
                 </motion.div>
               ))}
             </div>
@@ -796,9 +796,9 @@ const AmazonAccountManagementPage = () => {
               <motion.div key={s.label}
                 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
                 className="text-center">
-                <div className="text-3xl md:text-4xl font-black mb-1" style={{ color: accentColor }}>{s.stat}</div>
-                <div className="text-white font-bold text-sm mb-1">{s.label}</div>
-                <div className="text-[#94A3B8] text-xs">{s.sub}</div>
+                <div className="text-3xl md:text-4xl font-black mb-1" style={{ color: accentColor }}><span data-cms-key={`amacct_stat_${i}_val`} data-cms-label="Stat Value" data-cms-attr="text">{s.stat}</span></div>
+                <div className="text-white font-bold text-sm mb-1"><span data-cms-key={`amacct_stat_${i}_label`} data-cms-label="Stat Label" data-cms-attr="text">{s.label}</span></div>
+                <div className="text-[#94A3B8] text-xs"><span data-cms-key={`amacct_stat_${i}_sub`} data-cms-label="Stat Sub" data-cms-attr="text">{s.sub}</span></div>
               </motion.div>
             ))}
           </div>
@@ -834,13 +834,13 @@ const AmazonAccountManagementPage = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-5 bg-white/20 text-white">
-                Free Amazon Account Audit
+                <span data-cms-key="amacct_audit_badge" data-cms-label="Audit Badge" data-cms-attr="text">Free Amazon Account Audit</span>
               </span>
               <h2 className="text-3xl md:text-[40px] font-black text-white leading-tight mb-6">
-                Find Out What Your Amazon Account<br />Is Costing You Without You Knowing
+                <span data-cms-key="amacct_audit_h2" data-cms-label="Audit H2" data-cms-attr="text">Find Out What Your Amazon Account<br />Is Costing You Without You Knowing</span>
               </h2>
               <p className="text-white/80 text-lg mb-8">
-                We'll audit your account health, FBA reimbursement claims, suppressed listings, and policy standing — then give you a clear action plan at no charge.
+                <span data-cms-key="amacct_audit_body" data-cms-label="Audit Body" data-cms-attr="text">We'll audit your account health, FBA reimbursement claims, suppressed listings, and policy standing — then give you a clear action plan at no charge.</span>
               </p>
               <div className="space-y-3 mb-8">
                 {[
@@ -849,10 +849,10 @@ const AmazonAccountManagementPage = () => {
                   "Suppressed and inactive ASIN check",
                   "Policy violation and compliance review",
                   "Inventory position and IPI score review",
-                ].map(b => (
+                ].map((b, bi) => (
                   <div key={b} className="flex items-center gap-3">
                     <CheckCircle2 size={18} className="text-white shrink-0" />
-                    <span className="text-white font-medium">{b}</span>
+                    <span className="text-white font-medium"><span data-cms-key={`amacct_audit_bullet_${bi}`} data-cms-label="Audit Bullet" data-cms-attr="text">{b}</span></span>
                   </div>
                 ))}
               </div>
@@ -882,19 +882,19 @@ const AmazonAccountManagementPage = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mb-6 tracking-widest uppercase"
               style={{ background: glowOrange, border: `1px solid rgba(255,107,43,0.3)`, color: accentColor }}>
-              Let's Talk Account Management
+              <span data-cms-key="amacct_finalcta_badge" data-cms-label="Final CTA Badge" data-cms-attr="text">Let's Talk Account Management</span>
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4">
-              Ready to Take Seller Central<br />
-              <span style={{ color: accentColor }}>Off Your Plate?</span>
+              <span data-cms-key="amacct_finalcta_h2" data-cms-label="Final CTA H2" data-cms-attr="text">Ready to Take Seller Central<br />
+              <span style={{ color: accentColor }}>Off Your Plate?</span></span>
             </h2>
             <p className="text-[#E2E8F0] mb-8 leading-relaxed">
-              Book a free Amazon account audit. We'll review your current account health, identify revenue leaks, and show you exactly what full account management looks like for your brand.
+              <span data-cms-key="amacct_finalcta_body" data-cms-label="Final CTA Body" data-cms-attr="text">Book a free Amazon account audit. We'll review your current account health, identify revenue leaks, and show you exactly what full account management looks like for your brand.</span>
             </p>
             <Link to="#account-audit"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
               style={{ background: `linear-gradient(135deg, ${accentColor}, #e85a1a)`, boxShadow: `0 4px 20px rgba(255,107,43,0.4)` }}>
-              Book My Free Account Audit <ArrowRight size={16} />
+              <span data-cms-key="amacct_finalcta_btn" data-cms-label="Final CTA Button" data-cms-attr="text">Book My Free Account Audit</span> <ArrowRight size={16} />
             </Link>
           </motion.div>
         </div>

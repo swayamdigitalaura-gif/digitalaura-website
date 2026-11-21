@@ -448,10 +448,10 @@ export default function AmazonPpcPage() {
               <AlertTriangle size={12} /> The ACoS Problem
             </div>
             <h2 className="text-3xl font-black text-[#0A1628] mb-5 leading-tight">
-              High ACoS Is Silently Eating Your Profit
+              <span data-cms-key="ppc_problem_h2" data-cms-label="Problem Section H2" data-cms-attr="text">High ACoS Is Silently Eating Your Profit</span>
             </h2>
             <p className="text-[#6B7280] mb-6 leading-relaxed">
-              Most Amazon sellers running their own PPC spend 30–50% of ad revenue on wasted clicks — broad keywords with no buyer intent, missing negative keywords, and campaigns that never get properly reviewed. The result is high spend, mediocre sales, and no idea which levers to pull.
+              <span data-cms-key="ppc_problem_body" data-cms-label="Problem Section Body" data-cms-attr="text">Most Amazon sellers running their own PPC spend 30–50% of ad revenue on wasted clicks — broad keywords with no buyer intent, missing negative keywords, and campaigns that never get properly reviewed. The result is high spend, mediocre sales, and no idea which levers to pull.</span>
             </p>
             <ul className="space-y-3 mb-8">
               {[
@@ -481,8 +481,8 @@ export default function AmazonPpcPage() {
               style={{ background: glowOrange, color: accentColor, border: `1px solid rgba(255,107,43,0.3)` }}>
               <Target size={12} /> Amazon PPC Services
             </div>
-            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2">Our Complete PPC Management Services</h2>
-            <p className="text-[#6B7280] max-w-2xl mx-auto text-[15px] leading-relaxed">End-to-end Amazon advertising — from initial campaign builds through daily optimisation and monthly strategy reviews.</p>
+            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2"><span data-cms-key="ppc_services_h2" data-cms-label="Services Section H2" data-cms-attr="text">Our Complete PPC Management Services</span></h2>
+            <p className="text-[#6B7280] max-w-2xl mx-auto text-[15px] leading-relaxed"><span data-cms-key="ppc_services_sub" data-cms-label="Services Section Sub" data-cms-attr="text">End-to-end Amazon advertising — from initial campaign builds through daily optimisation and monthly strategy reviews.</span></p>
           </motion.div>
 
           {/* Tabs */}
@@ -517,11 +517,11 @@ export default function AmazonPpcPage() {
                     </div>
                     <span className="text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full" style={{ background: tab.bg, color: tab.color }}>{card.category}</span>
                   </div>
-                  <h3 className="text-[15px] font-bold text-[#0A1628] mb-2">{card.title}</h3>
-                  <p className="text-[13px] text-[#6B7280] leading-relaxed mb-4">{card.desc}</p>
+                  <h3 className="text-[15px] font-bold text-[#0A1628] mb-2"><span data-cms-key={`ppc_card_${i}_title`} data-cms-label="Card Title" data-cms-attr="text">{card.title}</span></h3>
+                  <p className="text-[13px] text-[#6B7280] leading-relaxed mb-4"><span data-cms-key={`ppc_card_${i}_desc`} data-cms-label="Card Desc" data-cms-attr="text">{card.desc}</span></p>
                   <div className="flex flex-wrap gap-1.5">
-                    {card.tags.map(tag => (
-                      <span key={tag} className="text-[11px] font-semibold px-2.5 py-1 rounded-full" style={{ background: tab.bg, color: tab.color }}>{tag}</span>
+                    {card.tags.map((tag, ti) => (
+                      <span key={tag} className="text-[11px] font-semibold px-2.5 py-1 rounded-full" style={{ background: tab.bg, color: tab.color }}><span data-cms-key={`ppc_card_${i}_tag_${ti}`} data-cms-label="Card Tag" data-cms-attr="text">{tag}</span></span>
                     ))}
                   </div>
                 </motion.div>
@@ -539,17 +539,17 @@ export default function AmazonPpcPage() {
               style={{ background: glowOrange, color: accentColor, border: `1px solid rgba(255,107,43,0.3)` }}>
               <Star size={12} /> Why Choose Us
             </div>
-            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2">Why Choose Digital Aura for Amazon PPC?</h2>
-            <p className="text-[#6B7280] max-w-xl mx-auto text-[15px]">We manage PPC as a growth engine — not just a cost centre.</p>
+            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2"><span data-cms-key="ppc_whyus_h2" data-cms-label="Why Us H2" data-cms-attr="text">Why Choose Digital Aura for Amazon PPC?</span></h2>
+            <p className="text-[#6B7280] max-w-xl mx-auto text-[15px]"><span data-cms-key="ppc_whyus_sub" data-cms-label="Why Us Sub" data-cms-attr="text">We manage PPC as a growth engine — not just a cost centre.</span></p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {whyUs.map(({ Icon, color, title, desc }) => (
+            {whyUs.map(({ Icon, color, title, desc }, i) => (
               <div key={title} className="rounded-2xl p-6 border bg-white" style={{ borderColor: "#E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: `${color}15` }}>
                   <Icon size={18} style={{ color }} />
                 </div>
-                <h3 className="text-[#0A1628] font-semibold mb-2">{title}</h3>
-                <p className="text-[#6B7280] text-sm leading-relaxed">{desc}</p>
+                <h3 className="text-[#0A1628] font-semibold mb-2"><span data-cms-key={`ppc_why_${i}_title`} data-cms-label="Why Us Title" data-cms-attr="text">{title}</span></h3>
+                <p className="text-[#6B7280] text-sm leading-relaxed"><span data-cms-key={`ppc_why_${i}_desc`} data-cms-label="Why Us Desc" data-cms-attr="text">{desc}</span></p>
               </div>
             ))}
           </div>
@@ -564,8 +564,8 @@ export default function AmazonPpcPage() {
               style={{ background: glowBlue, color: accent2Color, border: `1px solid rgba(26,111,232,0.3)` }}>
               <Layers size={12} /> Our Process
             </div>
-            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2">How We Manage Your PPC</h2>
-            <p className="text-[#6B7280] text-[15px]">A structured process from first audit to ongoing scale.</p>
+            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2"><span data-cms-key="ppc_process_h2" data-cms-label="Process H2" data-cms-attr="text">How We Manage Your PPC</span></h2>
+            <p className="text-[#6B7280] text-[15px]"><span data-cms-key="ppc_process_sub" data-cms-label="Process Sub" data-cms-attr="text">A structured process from first audit to ongoing scale.</span></p>
           </div>
           <div className="relative">
             <div className="hidden md:block absolute left-[2.35rem] top-6 bottom-6 w-px"
@@ -582,8 +582,8 @@ export default function AmazonPpcPage() {
                       {n}
                     </div>
                     <div className="pt-2">
-                      <h3 className="text-[#0A1628] font-bold mb-1">{title}</h3>
-                      <p className="text-[#6B7280] text-sm leading-relaxed">{desc}</p>
+                      <h3 className="text-[#0A1628] font-bold mb-1"><span data-cms-key={`ppc_step_${i}_title`} data-cms-label="Step Title" data-cms-attr="text">{title}</span></h3>
+                      <p className="text-[#6B7280] text-sm leading-relaxed"><span data-cms-key={`ppc_step_${i}_desc`} data-cms-label="Step Desc" data-cms-attr="text">{desc}</span></p>
                     </div>
                   </motion.div>
                 );
@@ -601,10 +601,10 @@ export default function AmazonPpcPage() {
             { val: "3.8×", label: "Average ROAS",          color: accent2Color },
             { val: "80+",  label: "Amazon brands managed", color: purpleColor },
             { val: "48hr", label: "Campaign live time",    color: accentColor },
-          ].map(({ val, label, color }) => (
+          ].map(({ val, label, color }, si) => (
             <div key={label}>
-              <p className="text-3xl font-black mb-1" style={{ color }}>{val}</p>
-              <p className="text-[#6B7280] text-sm">{label}</p>
+              <p className="text-3xl font-black mb-1" style={{ color }}><span data-cms-key={`ppc_stat_${si}_val`} data-cms-label="Stat Value" data-cms-attr="text">{val}</span></p>
+              <p className="text-[#6B7280] text-sm"><span data-cms-key={`ppc_stat_${si}_label`} data-cms-label="Stat Label" data-cms-attr="text">{label}</span></p>
             </div>
           ))}
         </div>
@@ -618,7 +618,7 @@ export default function AmazonPpcPage() {
               style={{ background: glowOrange, color: accentColor, border: `1px solid rgba(255,107,43,0.3)` }}>
               <FileText size={12} /> FAQs
             </div>
-            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628]">Frequently Asked Questions</h2>
+            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628]"><span data-cms-key="ppc_faq_h2" data-cms-label="FAQ H2" data-cms-attr="text">Frequently Asked Questions</span></h2>
           </div>
           <div className="space-y-0">
             {faqs.map(({ key, q, a }) => {
@@ -634,7 +634,7 @@ export default function AmazonPpcPage() {
                   <AnimatePresence>
                     {open && (
                       <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }}>
-                        <p className="mt-3 text-[15.5px] leading-relaxed text-[#4B5563]">{a}</p>
+                        <p className="mt-3 text-[15.5px] leading-relaxed text-[#4B5563]"><span data-cms-key={`${key}_a`} data-cms-label="FAQ Answer" data-cms-attr="text">{a}</span></p>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -653,8 +653,8 @@ export default function AmazonPpcPage() {
               style={{ background: glowOrange, color: accentColor, border: `1px solid rgba(255,107,43,0.3)` }}>
               <Target size={12} /> Free Audit
             </div>
-            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2">Get Your Free Amazon PPC Audit</h2>
-            <p className="text-[#6B7280] text-[15px]">We'll review your current campaigns and show you exactly where your budget is leaking — no obligation.</p>
+            <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2"><span data-cms-key="ppc_audit_h2" data-cms-label="Audit CTA H2" data-cms-attr="text">Get Your Free Amazon PPC Audit</span></h2>
+            <p className="text-[#6B7280] text-[15px]"><span data-cms-key="ppc_audit_sub" data-cms-label="Audit CTA Sub" data-cms-attr="text">We'll review your current campaigns and show you exactly where your budget is leaking — no obligation.</span></p>
           </div>
           <PpcAuditForm />
         </div>

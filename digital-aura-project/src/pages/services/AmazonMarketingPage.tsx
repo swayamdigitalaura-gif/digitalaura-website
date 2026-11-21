@@ -404,8 +404,8 @@ const AmazonCardTabs = () => {
             style={{ background: glowOrange, color: accentColor, border: `1px solid rgba(255,107,43,0.3)` }}>
             <ShoppingBag size={12} /> Amazon Marketing Services
           </div>
-          <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2">Everything Your Amazon Business Needs to Grow</h2>
-          <p className="text-[#6B7280] max-w-2xl mx-auto text-[15px] leading-relaxed">From seller account setup to full ongoing management — we handle every part of Amazon so you can focus on your product.</p>
+          <h2 className="text-2xl md:text-3xl font-black text-[#0A1628] mb-2"><span data-cms-key="amzn_s10_h2" data-cms-label="Section Heading" data-cms-attr="text">Everything Your Amazon Business Needs to Grow</span></h2>
+          <p className="text-[#6B7280] max-w-2xl mx-auto text-[15px] leading-relaxed"><span data-cms-key="amzn_s10_sub" data-cms-label="Section Subtext" data-cms-attr="text">From seller account setup to full ongoing management — we handle every part of Amazon so you can focus on your product.</span></p>
         </motion.div>
 
         {/* Tabs */}
@@ -416,7 +416,7 @@ const AmazonCardTabs = () => {
               style={activeTab === t.key
                 ? { background: t.gradient, color: "#fff", boxShadow: `0 4px 14px ${t.color}40` }
                 : { background: "#F8FAFF", color: "#374151", border: "1.5px solid #E5E7EB" }}>
-              {t.label}
+              <span data-cms-key={`amzn_tab_${t.key}_label`} data-cms-label="Tab Label" data-cms-attr="text">{t.label}</span>
             </button>
           ))}
         </div>
@@ -440,11 +440,11 @@ const AmazonCardTabs = () => {
                   </div>
                   <span className="text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full" style={{ background: tab.bg, color: tab.color }}>{card.category}</span>
                 </div>
-                <h3 className="text-[15px] font-bold text-[#0A1628] mb-2">{card.title}</h3>
-                <p className="text-[13px] text-[#6B7280] leading-relaxed mb-4">{card.desc}</p>
+                <h3 className="text-[15px] font-bold text-[#0A1628] mb-2"><span data-cms-key={`amzn_card_${activeTab}_${i}_title`} data-cms-label="Card Title" data-cms-attr="text">{card.title}</span></h3>
+                <p className="text-[13px] text-[#6B7280] leading-relaxed mb-4"><span data-cms-key={`amzn_card_${activeTab}_${i}_desc`} data-cms-label="Card Desc" data-cms-attr="text">{card.desc}</span></p>
                 <div className="flex flex-wrap gap-1.5 mb-4">
-                  {card.tags.map(tag => (
-                    <span key={tag} className="text-[11px] font-semibold px-2.5 py-1 rounded-full" style={{ background: tab.bg, color: tab.color }}>{tag}</span>
+                  {card.tags.map((tag, ti) => (
+                    <span key={tag} className="text-[11px] font-semibold px-2.5 py-1 rounded-full" style={{ background: tab.bg, color: tab.color }}><span data-cms-key={`amzn_card_${activeTab}_${i}_tag_${ti}`} data-cms-label="Card Tag" data-cms-attr="text">{tag}</span></span>
                   ))}
                 </div>
                 <Link to="/contact/" className="inline-flex items-center gap-1.5 text-[12.5px] font-semibold transition-all hover:gap-2.5" style={{ color: tab.color }}>
@@ -653,30 +653,30 @@ const AmazonMarketingPage = () => {
             <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <span className="text-[11px] font-black uppercase tracking-[0.14em] px-3 py-1.5 rounded-full mb-6 inline-block"
                 style={{ background: "rgba(255,107,43,0.08)", color: accentColor }}>
-                Not Your Typical Amazon Agency
+                <span data-cms-key="amzn_cmp_badge" data-cms-label="Comparison Badge" data-cms-attr="text">Not Your Typical Amazon Agency</span>
               </span>
               <h2 className="text-3xl md:text-4xl font-black text-[#0A1628] tracking-tight mb-5 leading-tight">
-                Any Freelancer Can Create Listings.<br className="hidden md:block" />
-                Very Few Can Move Your Organic Rank.
+                <span data-cms-key="amzn_cmp_h2" data-cms-label="Comparison Heading" data-cms-attr="text">Any Freelancer Can Create Listings.<br className="hidden md:block" />
+                Very Few Can Move Your Organic Rank.</span>
               </h2>
               <p className="text-[#4B5563] leading-relaxed mb-8">
-                Most "Amazon agencies" paste keyword-stuffed titles and launch PPC campaigns with no negative keyword strategy. The result is mediocre rankings, rising ACOS, and no compound growth. We use a data-backed A9 optimisation process that builds rankings over time — not just ad dependency.
+                <span data-cms-key="amzn_cmp_body" data-cms-label="Comparison Body" data-cms-attr="text">Most "Amazon agencies" paste keyword-stuffed titles and launch PPC campaigns with no negative keyword strategy. The result is mediocre rankings, rising ACOS, and no compound growth. We use a data-backed A9 optimisation process that builds rankings over time — not just ad dependency.</span>
               </p>
               <p className="text-[11px] font-black uppercase tracking-[0.14em] text-[#EF4444] mb-4 flex items-center gap-2">
-                <span className="w-4 h-0.5 rounded-full bg-[#EF4444]" /> What Most Amazon Agencies Deliver
+                <span className="w-4 h-0.5 rounded-full bg-[#EF4444]" /> <span data-cms-key="amzn_cmp_lbl" data-cms-label="Pain Label" data-cms-attr="text">What Most Amazon Agencies Deliver</span>
               </p>
               <div className="grid sm:grid-cols-1 gap-3 mb-8">
                 {[
-                  { pain: "Generic listing templates recycled across clients", detail: "No keyword specificity per ASIN" },
-                  { pain: "PPC campaigns set and forgotten with no bid management", detail: "ACOS climbs, profit disappears" },
-                  { pain: "No brand protection or Buy Box monitoring", detail: "Hijackers suppress your account" },
-                ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-3 p-4 rounded-xl"
+                  { pain: "Generic listing templates recycled across clients", detail: "No keyword specificity per ASIN", pi: 0 },
+                  { pain: "PPC campaigns set and forgotten with no bid management", detail: "ACOS climbs, profit disappears", pi: 1 },
+                  { pain: "No brand protection or Buy Box monitoring", detail: "Hijackers suppress your account", pi: 2 },
+                ].map((item) => (
+                  <div key={item.pi} className="flex items-start gap-3 p-4 rounded-xl"
                     style={{ background: "rgba(239,68,68,0.05)", border: "1px solid rgba(239,68,68,0.18)" }}>
                     <span className="text-[#EF4444] font-black text-base leading-none mt-0.5 shrink-0">✕</span>
                     <div>
-                      <p className="text-[13.5px] font-semibold text-[#0A1628] leading-snug mb-1">{item.pain}</p>
-                      <p className="text-[11.5px] text-[#9CA3AF]">{item.detail}</p>
+                      <p className="text-[13.5px] font-semibold text-[#0A1628] leading-snug mb-1"><span data-cms-key={`amzn_pain_${item.pi}_title`} data-cms-label="Pain Point" data-cms-attr="text">{item.pain}</span></p>
+                      <p className="text-[11.5px] text-[#9CA3AF]"><span data-cms-key={`amzn_pain_${item.pi}_detail`} data-cms-label="Pain Detail" data-cms-attr="text">{item.detail}</span></p>
                     </div>
                   </div>
                 ))}
@@ -685,7 +685,7 @@ const AmazonMarketingPage = () => {
                 style={{ background: "rgba(255,107,43,0.06)", borderLeftColor: accentColor }}>
                 <span className="text-lg font-black mt-0.5 shrink-0" style={{ color: accentColor }}>⚠</span>
                 <p className="text-[14.5px] font-semibold text-[#374151] leading-relaxed">
-                  If your Amazon agency reports impressions and clicks but can't show organic rank improvement and ACOS trends, they're burning your budget — not building your brand.
+                  <span data-cms-key="amzn_cmp_warn" data-cms-label="Warning Text" data-cms-attr="text">If your Amazon agency reports impressions and clicks but can't show organic rank improvement and ACOS trends, they're burning your budget — not building your brand.</span>
                 </p>
               </div>
             </motion.div>
@@ -708,9 +708,9 @@ const AmazonMarketingPage = () => {
         <div className="max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8">
             <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center gap-2">
-              <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> Our Amazon Growth Approach
+              <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> <span data-cms-key="amzn_h2lbl_approach" data-cms-label="Section Label" data-cms-attr="text">Our Amazon Growth Approach</span>
             </h2>
-            <p className="text-[#6B7280] mt-2 text-sm max-w-lg">We focus on compound, sustainable Amazon growth using data-backed decisions and A9-aligned content structures.</p>
+            <p className="text-[#6B7280] mt-2 text-sm max-w-lg"><span data-cms-key="amzn_approach_sub" data-cms-label="Approach Subtext" data-cms-attr="text">We focus on compound, sustainable Amazon growth using data-backed decisions and A9-aligned content structures.</span></p>
           </motion.div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {approach.map((item, i) => (
@@ -718,7 +718,7 @@ const AmazonMarketingPage = () => {
                 className="flex items-start gap-3 p-4 rounded-2xl"
                 style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
                 <Check size={16} className="mt-0.5 shrink-0" style={{ color: accentColor }} />
-                <span className="text-[14px] text-[#374151]">{item}</span>
+                <span className="text-[14px] text-[#374151]"><span data-cms-key={`amzn_approach_${i}`} data-cms-label="Approach Item" data-cms-attr="text">{item}</span></span>
               </motion.div>
             ))}
           </div>
@@ -730,18 +730,18 @@ const AmazonMarketingPage = () => {
         <div className="max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8">
             <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center gap-2">
-              <span className="w-4 h-0.5 rounded-full" style={{ background: accent2Color }} /> Tools & Technologies We Use
+              <span className="w-4 h-0.5 rounded-full" style={{ background: accent2Color }} /> <span data-cms-key="amzn_h2lbl_tools" data-cms-label="Section Label" data-cms-attr="text">Tools & Technologies We Use</span>
             </h2>
-            <p className="text-[#6B7280] mt-2 text-sm">Industry-leading Amazon tools for research, optimisation, and campaign management.</p>
+            <p className="text-[#6B7280] mt-2 text-sm"><span data-cms-key="amzn_tools_sub" data-cms-label="Tools Subtext" data-cms-attr="text">Industry-leading Amazon tools for research, optimisation, and campaign management.</span></p>
           </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {toolGroups.map((g, i) => (
               <motion.div key={g.label} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
                 className="rounded-2xl p-5" style={{ background: "#F8FAFF", border: "1px solid #E5E7EB", boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
-                <p className="text-[11px] font-bold uppercase tracking-wider mb-3" style={{ color: g.color }}>{g.label}</p>
+                <p className="text-[11px] font-bold uppercase tracking-wider mb-3" style={{ color: g.color }}><span data-cms-key={`amzn_tool_${i}_label`} data-cms-label="Tool Group Label" data-cms-attr="text">{g.label}</span></p>
                 <div className="flex flex-wrap gap-2">
-                  {g.pills.map(p => (
-                    <span key={p} className="text-[12px] font-semibold px-2.5 py-1 rounded-full" style={{ background: g.bg, color: g.color }}>{p}</span>
+                  {g.pills.map((p, pi) => (
+                    <span key={p} className="text-[12px] font-semibold px-2.5 py-1 rounded-full" style={{ background: g.bg, color: g.color }}><span data-cms-key={`amzn_tool_${i}_pill_${pi}`} data-cms-label="Tool Pill" data-cms-attr="text">{p}</span></span>
                   ))}
                 </div>
               </motion.div>
@@ -755,10 +755,10 @@ const AmazonMarketingPage = () => {
         <div className="max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12 text-center">
             <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] mb-3 flex items-center justify-center gap-2">
-              <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> How We Grow Your Amazon Business
+              <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> <span data-cms-key="amzn_h2lbl_process" data-cms-label="Section Label" data-cms-attr="text">How We Grow Your Amazon Business</span>
               <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} />
             </h2>
-            <p className="text-[#4B5563] max-w-xl mx-auto text-sm">A five-step process built around measurable outcomes — from audit to scale.</p>
+            <p className="text-[#4B5563] max-w-xl mx-auto text-sm"><span data-cms-key="amzn_process_sub" data-cms-label="Process Subtext" data-cms-attr="text">A five-step process built around measurable outcomes — from audit to scale.</span></p>
           </motion.div>
           <div className="relative">
             <div className="hidden md:block absolute left-7 top-8 bottom-8 w-0.5" style={{ background: "linear-gradient(to bottom, transparent, #E5E7EB, transparent)" }} />
@@ -772,8 +772,8 @@ const AmazonMarketingPage = () => {
                     {step.num}
                   </div>
                   <div className="flex-1 p-5 rounded-2xl bg-white border border-[#E5E7EB]" style={{ boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
-                    <h3 className="font-bold text-[#0A1628] text-base mb-1">{step.title}</h3>
-                    <p className="text-[14px] text-[#4B5563] leading-relaxed">{step.desc}</p>
+                    <h3 className="font-bold text-[#0A1628] text-base mb-1"><span data-cms-key={`amzn_step_${i}_title`} data-cms-label="Step Title" data-cms-attr="text">{step.title}</span></h3>
+                    <p className="text-[14px] text-[#4B5563] leading-relaxed"><span data-cms-key={`amzn_step_${i}_desc`} data-cms-label="Step Desc" data-cms-attr="text">{step.desc}</span></p>
                   </div>
                 </motion.div>
               ))}
@@ -787,20 +787,20 @@ const AmazonMarketingPage = () => {
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
           <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] mb-6 flex items-center gap-2">
-              <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> Why Choose Digital Aura for Amazon
+              <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> <span data-cms-key="amzn_h2lbl_why" data-cms-label="Section Label" data-cms-attr="text">Why Choose Digital Aura for Amazon</span>
             </h2>
             <ul className="space-y-3">
               {whyUs.map((w, i) => (
                 <li key={w} className="flex items-start gap-3 p-3.5 rounded-xl" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
                   <Check size={16} className="mt-0.5 shrink-0" style={{ color: accentColor }} />
-                  <span className="text-[14.5px] text-[#374151]">{w}</span>
+                  <span className="text-[14.5px] text-[#374151]"><span data-cms-key={`amzn_why_${i}`} data-cms-label="Why Us Item" data-cms-attr="text">{w}</span></span>
                 </li>
               ))}
             </ul>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] mb-6 flex items-center gap-2">
-              <span className="w-4 h-0.5 rounded-full" style={{ background: accent2Color }} /> What We Can Do for Your Amazon Business
+              <span className="w-4 h-0.5 rounded-full" style={{ background: accent2Color }} /> <span data-cms-key="amzn_h2lbl_whatwedo" data-cms-label="Section Label" data-cms-attr="text">What We Can Do for Your Amazon Business</span>
             </h2>
             <div className="grid grid-cols-1 gap-3">
               {whatWeDo.map((item, i) => (
@@ -809,7 +809,7 @@ const AmazonMarketingPage = () => {
                   <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: glowOrange }}>
                     <item.Icon size={15} style={{ color: accentColor }} />
                   </div>
-                  <span className="text-[14.5px] text-[#374151]">{item.label}</span>
+                  <span className="text-[14.5px] text-[#374151]"><span data-cms-key={`amzn_whatwedo_${i}`} data-cms-label="What We Do Item" data-cms-attr="text">{item.label}</span></span>
                 </motion.div>
               ))}
             </div>
@@ -822,7 +822,7 @@ const AmazonMarketingPage = () => {
         <div className="max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8">
             <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center gap-2">
-              <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> Results You Can Expect
+              <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} /> <span data-cms-key="amzn_h2lbl_results" data-cms-label="Section Label" data-cms-attr="text">Results You Can Expect</span>
             </h2>
           </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -833,7 +833,7 @@ const AmazonMarketingPage = () => {
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: glowOrange }}>
                   <r.Icon size={22} style={{ color: accentColor }} />
                 </div>
-                <span className="text-[13.5px] font-medium text-[#374151] leading-snug">{r.text}</span>
+                <span className="text-[13.5px] font-medium text-[#374151] leading-snug"><span data-cms-key={`amzn_result_${i}`} data-cms-label="Result Item" data-cms-attr="text">{r.text}</span></span>
               </motion.div>
             ))}
           </div>
@@ -848,9 +848,9 @@ const AmazonMarketingPage = () => {
               <motion.div key={s.label}
                 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
                 className="text-center">
-                <div className="text-3xl md:text-4xl font-black mb-1" style={{ color: accentColor }}>+{s.stat}</div>
-                <div className="text-white font-bold text-sm mb-1">{s.label}</div>
-                <div className="text-[#94A3B8] text-xs">{s.sub}</div>
+                <div className="text-3xl md:text-4xl font-black mb-1" style={{ color: accentColor }}>+<span data-cms-key={`amzn_stat_${i}_val`} data-cms-label="Stat Value" data-cms-attr="text">{s.stat}</span></div>
+                <div className="text-white font-bold text-sm mb-1"><span data-cms-key={`amzn_stat_${i}_label`} data-cms-label="Stat Label" data-cms-attr="text">{s.label}</span></div>
+                <div className="text-[#94A3B8] text-xs"><span data-cms-key={`amzn_stat_${i}_sub`} data-cms-label="Stat Sub" data-cms-attr="text">{s.sub}</span></div>
               </motion.div>
             ))}
           </div>
@@ -863,7 +863,7 @@ const AmazonMarketingPage = () => {
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8 text-center">
             <h2 className="text-[13px] font-black uppercase tracking-[0.14em] text-[#0A1628] flex items-center justify-center gap-2">
               <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} />
-              Frequently Asked Questions
+              <span data-cms-key="amzn_h2lbl_faq" data-cms-label="Section Label" data-cms-attr="text">Frequently Asked Questions</span>
               <span className="w-4 h-0.5 rounded-full" style={{ background: accentColor }} />
             </h2>
           </motion.div>
@@ -886,19 +886,25 @@ const AmazonMarketingPage = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-5 bg-white/20 text-white">
-                Free Amazon Account Audit
+                <span data-cms-key="amzn_audit_badge" data-cms-label="Audit Badge" data-cms-attr="text">Free Amazon Account Audit</span>
               </span>
               <h2 className="text-3xl md:text-[40px] font-black text-white leading-tight mb-6">
-                Find Out Exactly What's Holding<br />Your Amazon Sales Back
+                <span data-cms-key="amzn_audit_h2" data-cms-label="Audit Heading" data-cms-attr="text">Find Out Exactly What's Holding<br />Your Amazon Sales Back</span>
               </h2>
               <p className="text-white/80 text-lg mb-8">
-                We'll audit your listings, PPC spend, account health, and ranking potential — then give you a prioritised action plan. No obligation, completely free.
+                <span data-cms-key="amzn_audit_body" data-cms-label="Audit Body" data-cms-attr="text">We'll audit your listings, PPC spend, account health, and ranking potential — then give you a prioritised action plan. No obligation, completely free.</span>
               </p>
               <div className="space-y-3 mb-8">
-                {["Full listing quality and keyword audit", "PPC campaign structure and ACOS review", "Account health and suspension risk check", "Competitor ranking gap analysis", "A+ Content and Brand Registry opportunities"].map(b => (
-                  <div key={b} className="flex items-center gap-3">
+                {[
+                  { text: "Full listing quality and keyword audit", bi: 0 },
+                  { text: "PPC campaign structure and ACOS review", bi: 1 },
+                  { text: "Account health and suspension risk check", bi: 2 },
+                  { text: "Competitor ranking gap analysis", bi: 3 },
+                  { text: "A+ Content and Brand Registry opportunities", bi: 4 },
+                ].map(b => (
+                  <div key={b.bi} className="flex items-center gap-3">
                     <CheckCircle2 size={18} className="text-white shrink-0" />
-                    <span className="text-white font-medium">{b}</span>
+                    <span className="text-white font-medium"><span data-cms-key={`amzn_audit_bullet_${b.bi}`} data-cms-label="Audit Bullet" data-cms-attr="text">{b.text}</span></span>
                   </div>
                 ))}
               </div>
@@ -932,20 +938,20 @@ const AmazonMarketingPage = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold mb-6 tracking-widest uppercase"
               style={{ background: "rgba(255,107,43,0.12)", border: "1px solid rgba(255,107,43,0.3)", color: accentColor }}>
-              Let's Build Together
+              <span data-cms-key="amzn_finalcta_badge" data-cms-label="Final CTA Badge" data-cms-attr="text">Let's Build Together</span>
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-4">
-              Ready to <span style={{ color: accentColor }}>Scale</span> on Amazon?
+              <span data-cms-key="amzn_finalcta_h2" data-cms-label="Final CTA Heading" data-cms-attr="text">Ready to <span style={{ color: accentColor }}>Scale</span> on Amazon?</span>
             </h2>
             <p className="text-[#E2E8F0] mb-8 leading-relaxed">
-              Book a free Amazon strategy call. We'll review your current account, identify your biggest growth opportunities, and show you exactly what a results-driven Amazon plan looks like for your brand.
+              <span data-cms-key="amzn_finalcta_body" data-cms-label="Final CTA Body" data-cms-attr="text">Book a free Amazon strategy call. We'll review your current account, identify your biggest growth opportunities, and show you exactly what a results-driven Amazon plan looks like for your brand.</span>
             </p>
             <Link to="#amazon-audit"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all hover:gap-3"
               style={{ background: `linear-gradient(135deg, ${accentColor}, #e85a1a)`, boxShadow: `0 4px 20px rgba(255,107,43,0.4)` }}>
-              Book My Free Amazon Audit <ArrowRight size={16} />
+              <span data-cms-key="amzn_finalcta_btn" data-cms-label="Final CTA Button" data-cms-attr="text">Book My Free Amazon Audit</span> <ArrowRight size={16} />
             </Link>
-            <p className="text-[#9CA3AF] text-xs mt-4">No ACOS promises — a real strategy built around organic rank, conversions, and sustainable revenue.</p>
+            <p className="text-[#9CA3AF] text-xs mt-4"><span data-cms-key="amzn_finalcta_fine" data-cms-label="Fine Print" data-cms-attr="text">No ACOS promises — a real strategy built around organic rank, conversions, and sustainable revenue.</span></p>
           </motion.div>
         </div>
       </section>

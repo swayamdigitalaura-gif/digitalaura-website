@@ -425,8 +425,8 @@ export default function AmazonStorefrontDesignPage() {
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="text-center mb-10">
             <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: accentColor }}>What We Do</p>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#0A1628]">Storefront Services</h2>
-            <p className="text-[#4B5563] mt-3 max-w-2xl mx-auto">From first wireframe to live storefront — every element designed, written, and built to reflect your brand and maximise conversions.</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-[#0A1628]"><span data-cms-key="amsf_services_h2" data-cms-label="Services H2" data-cms-attr="text">Storefront Services</span></h2>
+            <p className="text-[#4B5563] mt-3 max-w-2xl mx-auto"><span data-cms-key="amsf_services_sub" data-cms-label="Services Sub" data-cms-attr="text">From first wireframe to live storefront — every element designed, written, and built to reflect your brand and maximise conversions.</span></p>
           </div>
           {/* Tab pills */}
           <div className="flex flex-wrap justify-center gap-3 mb-10">
@@ -452,17 +452,17 @@ export default function AmazonStorefrontDesignPage() {
           <AnimatePresence mode="wait">
             <motion.div key={activeTab} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.25 }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {visibleCards.map(({ Icon, title, desc, tags, color, bg }) => (
+              {visibleCards.map(({ Icon, title, desc, tags, color, bg }, i) => (
                 <div key={title} className="rounded-2xl p-6 border border-[#E5E7EB] bg-white hover:shadow-md transition-shadow">
                   <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style={{ background: bg }}>
                     <Icon size={22} style={{ color }} />
                   </div>
-                  <h3 className="font-bold text-[#0A1628] mb-2">{title}</h3>
-                  <p className="text-sm text-[#4B5563] mb-4 leading-relaxed">{desc}</p>
+                  <h3 className="font-bold text-[#0A1628] mb-2"><span data-cms-key={`amsf_card_${i}_title`} data-cms-label="Card Title" data-cms-attr="text">{title}</span></h3>
+                  <p className="text-sm text-[#4B5563] mb-4 leading-relaxed"><span data-cms-key={`amsf_card_${i}_desc`} data-cms-label="Card Desc" data-cms-attr="text">{desc}</span></p>
                   <div className="flex flex-wrap gap-1.5">
-                    {tags.map(tag => (
+                    {tags.map((tag, ti) => (
                       <span key={tag} className="text-[11px] px-2 py-0.5 rounded-full font-medium"
-                        style={{ background: bg, color }}>{tag}</span>
+                        style={{ background: bg, color }}><span data-cms-key={`amsf_card_${i}_tag_${ti}`} data-cms-label="Card Tag" data-cms-attr="text">{tag}</span></span>
                     ))}
                   </div>
                 </div>
@@ -477,18 +477,18 @@ export default function AmazonStorefrontDesignPage() {
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
             <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: accentColor }}>Why DigitalAura</p>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#0A1628]">What Makes Us Different</h2>
-            <p className="text-[#4B5563] mt-3 max-w-2xl mx-auto">We don't just make storefronts look good. We build brand destinations that drive real, measurable results.</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-[#0A1628]"><span data-cms-key="amsf_whyus_h2" data-cms-label="Why Us H2" data-cms-attr="text">What Makes Us Different</span></h2>
+            <p className="text-[#4B5563] mt-3 max-w-2xl mx-auto"><span data-cms-key="amsf_whyus_sub" data-cms-label="Why Us Sub" data-cms-attr="text">We don't just make storefronts look good. We build brand destinations that drive real, measurable results.</span></p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {whyUs.map(({ Icon, color, title, desc }) => (
+            {whyUs.map(({ Icon, color, title, desc }, i) => (
               <div key={title} className="rounded-2xl p-6 border border-[#E5E7EB] bg-[#F8FAFF]">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
                   style={{ background: `${color}15` }}>
                   <Icon size={20} style={{ color }} />
                 </div>
-                <h3 className="font-bold text-[#0A1628] mb-1">{title}</h3>
-                <p className="text-sm text-[#4B5563] leading-relaxed">{desc}</p>
+                <h3 className="font-bold text-[#0A1628] mb-1"><span data-cms-key={`amsf_why_${i}_title`} data-cms-label="Why Us Title" data-cms-attr="text">{title}</span></h3>
+                <p className="text-sm text-[#4B5563] leading-relaxed"><span data-cms-key={`amsf_why_${i}_desc`} data-cms-label="Why Us Desc" data-cms-attr="text">{desc}</span></p>
               </div>
             ))}
           </div>
@@ -501,9 +501,9 @@ export default function AmazonStorefrontDesignPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: accentColor }}>Free Storefront Audit</p>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-[#0A1628] mb-5">We Audit Your Store<br />Before We Design It</h2>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-[#0A1628] mb-5"><span data-cms-key="amsf_audit_h2" data-cms-label="Audit H2" data-cms-attr="text">We Audit Your Store<br />Before We Design It</span></h2>
               <p className="text-[#4B5563] mb-6 leading-relaxed">
-                Every engagement starts with a free storefront health audit. We review your navigation, visual consistency, product placement, brand story, and mobile experience — then show you exactly what's costing you sales before we start designing.
+                <span data-cms-key="amsf_audit_body" data-cms-label="Audit Body" data-cms-attr="text">Every engagement starts with a free storefront health audit. We review your navigation, visual consistency, product placement, brand story, and mobile experience — then show you exactly what's costing you sales before we start designing.</span>
               </p>
               <ul className="space-y-3 mb-8">
                 {[
@@ -537,8 +537,8 @@ export default function AmazonStorefrontDesignPage() {
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
             <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: accentColor }}>How It Works</p>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#0A1628]">From Brief to Live Store</h2>
-            <p className="text-[#4B5563] mt-3 max-w-xl mx-auto">Our proven 5-step process takes your brand from discovery to a fully live Amazon Storefront — typically in under 3 weeks.</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-[#0A1628]"><span data-cms-key="amsf_process_h2" data-cms-label="Process H2" data-cms-attr="text">From Brief to Live Store</span></h2>
+            <p className="text-[#4B5563] mt-3 max-w-xl mx-auto"><span data-cms-key="amsf_process_sub" data-cms-label="Process Sub" data-cms-attr="text">Our proven 5-step process takes your brand from discovery to a fully live Amazon Storefront — typically in under 3 weeks.</span></p>
           </div>
           <div className="relative">
             {/* connector line */}
@@ -552,8 +552,8 @@ export default function AmazonStorefrontDesignPage() {
                       style={{ background: `${stepColor}15`, border: `2px solid ${stepColor}30` }}>
                       <span className="text-xl font-extrabold" style={{ color: stepColor }}>{n}</span>
                     </div>
-                    <h3 className="font-bold text-[#0A1628] mb-2 text-sm">{title}</h3>
-                    <p className="text-xs text-[#6B7280] leading-relaxed">{desc}</p>
+                    <h3 className="font-bold text-[#0A1628] mb-2 text-sm"><span data-cms-key={`amsf_step_${i}_title`} data-cms-label="Step Title" data-cms-attr="text">{title}</span></h3>
+                    <p className="text-xs text-[#6B7280] leading-relaxed"><span data-cms-key={`amsf_step_${i}_desc`} data-cms-label="Step Desc" data-cms-attr="text">{desc}</span></p>
                   </div>
                 );
               })}
@@ -567,7 +567,7 @@ export default function AmazonStorefrontDesignPage() {
         <div className="max-w-3xl mx-auto px-4 md:px-8">
           <div className="text-center mb-10">
             <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: accentColor }}>FAQ</p>
-            <h2 className="text-3xl font-extrabold text-[#0A1628]">Storefront Design FAQs</h2>
+            <h2 className="text-3xl font-extrabold text-[#0A1628]"><span data-cms-key="amsf_faq_h2" data-cms-label="FAQ H2" data-cms-attr="text">Storefront Design FAQs</span></h2>
           </div>
           <div className="space-y-3">
             {faqs.map(({ key, q, a }) => {
@@ -576,7 +576,7 @@ export default function AmazonStorefrontDesignPage() {
                 <div key={key} className="rounded-xl border border-[#E5E7EB] bg-white overflow-hidden">
                   <button className="w-full flex items-center justify-between gap-4 p-5 text-left"
                     onClick={() => setOpenFaq(open ? null : key)}>
-                    <span className="font-semibold text-[#0A1628] text-sm">{q}</span>
+                    <span className="font-semibold text-[#0A1628] text-sm" data-cms-key={key}>{q}</span>
                     {open
                       ? <MinusCircle size={18} className="shrink-0" style={{ color: accentColor }} />
                       : <PlusCircle size={18} className="shrink-0 text-[#9CA3AF]" />}
@@ -585,7 +585,7 @@ export default function AmazonStorefrontDesignPage() {
                     {open && (
                       <motion.div key="body" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }} className="overflow-hidden">
-                        <p className="px-5 pb-5 text-sm text-[#4B5563] leading-relaxed">{a}</p>
+                        <p className="px-5 pb-5 text-sm text-[#4B5563] leading-relaxed"><span data-cms-key={`${key}_a`} data-cms-label="FAQ Answer" data-cms-attr="text">{a}</span></p>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -601,8 +601,8 @@ export default function AmazonStorefrontDesignPage() {
         <div className="max-w-2xl mx-auto px-4 md:px-8">
           <div className="text-center mb-8">
             <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: accentColor }}>Free Audit</p>
-            <h2 className="text-3xl font-extrabold text-[#0A1628]">Request Your Free Storefront Audit</h2>
-            <p className="text-[#4B5563] mt-2">Tell us about your brand and we'll review your storefront (or build a strategy from scratch) within 24 hours.</p>
+            <h2 className="text-3xl font-extrabold text-[#0A1628]"><span data-cms-key="amsf_cta_h2" data-cms-label="CTA H2" data-cms-attr="text">Request Your Free Storefront Audit</span></h2>
+            <p className="text-[#4B5563] mt-2"><span data-cms-key="amsf_cta_sub" data-cms-label="CTA Sub" data-cms-attr="text">Tell us about your brand and we'll review your storefront (or build a strategy from scratch) within 24 hours.</span></p>
           </div>
           <StorefrontAuditForm />
         </div>

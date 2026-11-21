@@ -210,9 +210,8 @@ router.post('/sitemap/regenerate', async (req, res) => {
       urls.map((u) => `  <url><loc>${u}</loc></url>`).join('\n') +
       `\n</urlset>\n`;
 
-    const outPath = process.env.SITEMAP_PATH || path.join(__dirname, '../../../public/sitemap.xml');
-    fs.writeFileSync(outPath, xml, 'utf8');
-    res.json({ status: 'ok', urlCount: urls.length, wrote: outPath });
+    // Does NOT write the file any more: the live sitemap.xml is built at deploy time (prerender.mjs, with <lastmod>).
+    res.json({ status: 'ok', urlCount: urls.length, wrote: null, note: 'preview only, sitemap.xml not changed' });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

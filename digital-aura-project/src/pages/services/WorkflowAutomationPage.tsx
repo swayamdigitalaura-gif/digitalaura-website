@@ -16,6 +16,7 @@ import CaseStudies from "@/components/CaseStudies";
 import { CASES_BY_CATEGORY } from "@/components/caseCards";
 import BlogInsights from "@/components/BlogInsights";
 
+import { workflowFaqs } from "@/data/aiServiceFaqs";
 const accent = "#FF6B2B";
 const accentLight = "rgba(255,107,43,0.1)";
 const accentBorder = "rgba(255,107,43,0.25)";
@@ -105,14 +106,7 @@ const results = [
   { Icon: CheckCircle2, text: "Real time sync across all your tools" },
 ];
 
-const faqs = [
-  { q: "What's the difference between n8n, Make, and Zapier?", a: "Zapier is the easiest but most expensive and limited for complex logic. Make (formerly Integromat) is more powerful with better data transformation. n8n is open-source, self-hostable, and the most powerful for complex enterprise workflows we typically recommend n8n for businesses that want full control and no per-task pricing. We choose the right tool based on your complexity, budget, and infrastructure preferences." },
-  { q: "Can you automate workflows that involve AI decisions?", a: "Yes this is where we add the most value. We build 'smart' automations where AI classifies incoming data, decides which workflow path to take, drafts content, or extracts information from unstructured documents before the next step runs. This combines the reliability of structured automation with the intelligence of LLMs." },
-  { q: "What tools can you connect?", a: "We can connect almost any tool with an API including Salesforce, HubSpot, Shopify, WooCommerce, Xero, QuickBooks, Slack, Teams, Gmail, Outlook, Google Sheets, Airtable, Notion, Stripe, WhatsApp Business, and hundreds more. If it has a webhook or API, we can automate it." },
-  { q: "How long does it take to build a workflow?", a: "Simple automations (e.g., form submission → CRM entry → email notification) can be live in 1-3 days. Complex multi-step workflows with AI, conditional logic, and multiple integrations typically take 1-3 weeks. We always start with your highest impact workflow first." },
-  { q: "What happens if an automation breaks?", a: "We build error handling and alerting into every workflow. If a step fails, the system logs the error, sends an alert to your team, and retries intelligently rather than silently dropping data. We also provide post launch support and monitoring to catch issues before they impact your business." },
-  { q: "Can you automate processes that currently require human judgment?", a: "Yes, to a significant degree. AI can classify incoming requests, route based on sentiment or content, draft responses for human review, and make decisions based on predefined rules. For processes requiring genuine judgment, we build human in the loop workflows where AI handles 80% and a human approves the exceptions." },
-];
+
 
 const FAQItem = ({ q, a, idx = 0 }: { q: string; a: string; idx?: number }) => {
   // Plain question and answer, always open (same FAQ look on every page).
@@ -365,7 +359,7 @@ const WorkflowAutomationPage = () => {
           </h2>
         </motion.div>
         <div className="space-y-3">
-          {faqs.map((faq, idx) => (
+          {workflowFaqs.map((faq, idx) => (
             <motion.div key={faq.q} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.06 }}>
               <FAQItem q={faq.q} a={faq.a} idx={idx} />
             </motion.div>

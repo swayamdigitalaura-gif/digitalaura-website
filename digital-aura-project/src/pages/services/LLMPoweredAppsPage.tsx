@@ -15,6 +15,7 @@ import CaseStudies from "@/components/CaseStudies";
 import { CASES_BY_CATEGORY } from "@/components/caseCards";
 import BlogInsights from "@/components/BlogInsights";
 
+import { llmAppsFaqs } from "@/data/aiServiceFaqs";
 const accent = "#7C3AED";
 const accentLight = "rgba(124,58,237,0.1)";
 const accentBorder = "rgba(124,58,237,0.25)";
@@ -97,14 +98,7 @@ const results = [
   { Icon: CheckCircle2, text: "Production-ready in weeks, not months" },
 ];
 
-const faqs = [
-  { q: "Which LLM should I use for my app GPT-4, Claude, or Gemini?", a: "The best model depends on your use case, budget, and data privacy requirements. GPT-4o excels at general reasoning and code; Claude 3.5 Sonnet is outstanding for long document analysis and nuanced writing; Gemini Pro is strong for multimodal and Google Workspace integration. We assess your needs and recommend the right fit or run a comparison." },
-  { q: "How do you prevent the AI from hallucinating wrong answers?", a: "We implement Retrieval-Augmented Generation (RAG) which grounds every answer in your actual documents and data. The LLM is instructed to only answer from retrieved context and to say 'I don't know' when information isn't available. This dramatically reduces hallucination in enterprise use cases." },
-  { q: "Can you build on top of my existing product or website?", a: "Yes. We integrate LLM features into existing products via API no need to rebuild your platform. We add AI layers on top of your current tech stack using REST APIs, webhooks, or direct database connections." },
-  { q: "What if I don't want my data sent to OpenAI or Google?", a: "We can deploy fully private LLMs (Llama 3, Mistral, Qwen) on your own AWS, Azure, or on-premise servers. Your data never leaves your infrastructure. This is particularly common for legal, healthcare, and financial clients." },
-  { q: "How long does it take to build an LLM powered app?", a: "A basic prototype can be ready in 1-2 weeks. A production-ready app with authentication, database integration, and a polished UI typically takes 4-8 weeks depending on complexity. We always build a working prototype first so you can validate before full investment." },
-  { q: "Do I need a large dataset to train a custom model?", a: "Usually not. Most business applications are best served by RAG (using your existing documents) rather than fine tuning, which requires significant labelled data. Fine tuning is only recommended for specific style or format requirements where RAG alone isn't sufficient." },
-];
+
 
 const FAQItem = ({ q, a, idx = 0 }: { q: string; a: string; idx?: number }) => {
   // Plain question and answer, always open (same FAQ look on every page).
@@ -350,7 +344,7 @@ const LLMPoweredAppsPage = () => {
           </h2>
         </motion.div>
         <div className="space-y-3">
-          {faqs.map((faq, idx) => (
+          {llmAppsFaqs.map((faq, idx) => (
             <motion.div key={faq.q} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.06 }}>
               <FAQItem q={faq.q} a={faq.a} idx={idx} />
             </motion.div>

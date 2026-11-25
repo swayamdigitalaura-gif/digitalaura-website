@@ -1,3 +1,5 @@
+import { isPublished } from "./publishGate";
+
 export interface FaqItem { q: string; a: string; }
 
 export interface BlogPost {
@@ -40,7 +42,7 @@ const AUTHOR_DEEPAK_BIO = "Deepak works alongside the AI development team on Dig
 const AUTHOR_DEEPAK_TAGS = ["AI Development", "Full-Stack Engineering", "API Integrations", "AI Automation", "Backend Engineering"];
 
 
-export const posts: BlogPost[] = [
+const ALL_POSTS: BlogPost[] = [
   // ────────────────────────────────────────────────────────────────────
   {
     slug: "seo-in-2026-ai-era",
@@ -6505,6 +6507,3493 @@ Allow: /</code></pre>
     ctaButton: "Get My Free Growth Audit",
     cro: { href: "/digital-marketing-company-ahmedabad#audit", label: "Get a free growth audit", sidebar: "Small business? Ask us where to start and what it should cost.", bandHeading: "Not sure where to start with digital marketing?", bandText: "Request a free growth audit and get an honest first step for your budget." },
   },
+  // >>> NOV-2026-GREEN-BLOGS START
+  {
+    slug: "why-website-not-showing-on-google-ahmedabad",
+    title: "Why Your Website Is Not Showing on Google: 12 Checks for Ahmedabad Businesses",
+    titleHighlight: "Not Showing on Google",
+    metaTitle: "Website Not Showing on Google? 12 Checks and Fixes for 2026!",
+    metaDescription: "Website not showing on Google? Run these 12 checks for indexing, noindex, robots.txt, canonicals and thin pages, then see when to call an SEO expert in Ahmedabad.",
+    category: "SEO Strategy",
+    date: "2026-11-26",
+    dateDisplay: "Nov 26, 2026",
+    readTime: "9 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "A website is missing from Google because it is not indexed, or because it is indexed but ranks too low to be seen. Check indexing first with the URL Inspection tool in Google Search Console, then look for a noindex tag, a robots.txt block, a wrong canonical, thin or duplicate pages and rendering problems. If the pages are indexed, the problem is relevance and authority, which is an SEO strategy job.",
+    keyTakeaways: [
+      "Not indexed and not ranking are different problems. Fix indexing first, then work on rankings.",
+      "The URL Inspection tool in Google Search Console tells you whether Google has a page, and why not if it does not.",
+      "Most indexing failures come from a noindex tag, a robots.txt block, a wrong canonical or pages Google judged too thin.",
+      "A new website can take days to weeks to be found. Submit a sitemap instead of waiting.",
+      "If every check passes and you still do not appear, the gap is relevance and trust, and that needs an SEO plan, not another fix.",
+    ],
+    contentHtml: `
+<p>You type your business name into Google and your website is nowhere. Or you search for your service and a competitor appears ten times while you appear never. Before you spend money on anything, work out which of two problems you have: <strong>Google does not know your page exists</strong> (an indexing problem), or <strong>Google knows it but does not think it deserves a top position</strong> (a ranking problem). The fixes are completely different. This guide walks through 12 checks in the order we use them on client sites, and tells you when it is time to hire an <a href="/seo-services-ahmedabad">SEO company in Ahmedabad</a>.</p>
+
+<h2>First, find out whether Google has indexed your website</h2>
+<p>Open <a href="https://search.google.com/search-console" rel="noopener">Google Search Console</a>, paste the page address into the top bar and read the result of the URL Inspection tool. It will say either "URL is on Google" or "URL is not on Google" and give a reason. A quick check without any account is to search <em>site:yourdomain.com</em>. It is not exact, but if it returns nothing at all, you almost certainly have an indexing problem.</p>
+<table>
+<tr><th>What you see</th><th>What it means</th><th>Go to</th></tr>
+<tr><td>"URL is not on Google"</td><td>Indexing problem</td><td>Checks 1 to 9</td></tr>
+<tr><td>"URL is on Google" but you cannot find it for your service</td><td>Ranking problem</td><td>Checks 10 to 12</td></tr>
+<tr><td>"Discovered, currently not indexed" or "Crawled, currently not indexed"</td><td>Google found it but chose not to store it yet</td><td>Checks 7 and 8</td></tr>
+</table>
+
+<h2>The 12 checks</h2>
+
+<h3>1. Is the site brand new?</h3>
+<p>A page published a few days ago may simply not have been crawled yet. Submit your sitemap in Search Console and use "Request indexing" on your most important pages. Google gives no guarantee on timing, but a verified site with a sitemap is found faster than one left alone.</p>
+
+<h3>2. Is there a noindex tag?</h3>
+<p>A line such as <em>meta name="robots" content="noindex"</em> tells Google to keep the page out. It is often left switched on after a website redesign, or ticked by accident in a WordPress setting called "Discourage search engines from indexing this site". Look at the page source or the URL Inspection result for "Indexing allowed? No".</p>
+
+<h3>3. Is robots.txt blocking Google?</h3>
+<p>Open <em>yourdomain.com/robots.txt</em>. A line saying <em>Disallow: /</em> under <em>User-agent: *</em> blocks the whole site. Developers sometimes add it on a test server and forget to remove it when the site goes live.</p>
+
+<h3>4. Is Search Console showing a coverage or indexing error?</h3>
+<p>Open the Pages report. It groups every URL Google knows about by status and reason, such as "Excluded by noindex tag", "Page with redirect", "Not found (404)" or "Duplicate without user-selected canonical". One reason repeated across many pages points to a site-wide setting rather than many separate problems.</p>
+
+<h3>5. Is a sitemap submitted and clean?</h3>
+<p>Your sitemap should list only the pages you want in Google: live, indexable, returning a normal page and not redirecting. A sitemap full of redirected, deleted or noindexed URLs wastes crawl attention and sends mixed signals.</p>
+
+<h3>6. Does the page have a wrong canonical?</h3>
+<p>A canonical tag tells Google which version of a page is the main one. If it points to a different page, or to the old domain after a move, Google may drop yours. Each page should normally point to itself.</p>
+
+<h3>7. Is the page too thin or too similar to others?</h3>
+<p>Pages with a few lines of text, or many near-identical pages that only swap a place or service name, are often marked "Crawled, currently not indexed". Google is saying it saw the page and decided it adds little. The fix is real content: specific details, examples, prices where you can state them and answers to the questions a customer asks.</p>
+
+<h3>8. Can Google see your content without running scripts?</h3>
+<p>Some websites load their text only after JavaScript runs. Google can render JavaScript, but it is slower and less reliable. If the page source shows an empty container instead of your text, ask your developer about server-side rendering or pre-rendering. This is common on modern single-page websites.</p>
+
+<h3>9. Does your site have crawl and link problems?</h3>
+<p>Pages that no other page links to ("orphan pages") are hard for Google to find. Link every important page from your menu, your service pages or a relevant article. Fix broken internal links and long redirect chains while you are there.</p>
+
+<h3>10. Are you indexed but not relevant for the search?</h3>
+<p>If the page is in Google but invisible for your service, compare it with the pages that do rank. Does yours name the service and the city in the title, the main heading and the first paragraph? Does it answer what the searcher wants, or is it a general "About us" page? Our <a href="/blog/on-page-seo-checklist-2026/">on-page SEO checklist</a> covers every element.</p>
+
+<h3>11. Is the competition simply stronger?</h3>
+<p>For a crowded search such as "SEO company in Ahmedabad" or "digital marketing agency in Ahmedabad", established sites with years of links and reviews hold the top spots. A new or small site will not displace them quickly. Choose narrower searches you can win first, and read <a href="/blog/how-to-rank-new-website-on-google/">how to rank a new website on Google</a>.</p>
+
+<h3>12. Is there a penalty or security problem?</h3>
+<p>In Search Console, open "Manual actions" and "Security issues". A manual action is rare, but a hacked site injecting spam pages is not. If either appears, fix it before anything else.</p>
+
+<h2>Quick diagnosis table</h2>
+<table>
+<tr><th>Symptom</th><th>Most likely cause</th><th>Who fixes it</th></tr>
+<tr><td>Nothing returns for site:yourdomain.com</td><td>noindex, robots.txt block or brand new site</td><td>Developer or SEO</td></tr>
+<tr><td>"Crawled, currently not indexed" on many pages</td><td>Thin, duplicate or low-value pages</td><td>Content and SEO</td></tr>
+<tr><td>Home page indexed, inner pages not</td><td>Weak internal links or JavaScript rendering</td><td>Developer and SEO</td></tr>
+<tr><td>Indexed but on page 5 or later</td><td>Relevance, links and authority gap</td><td>SEO strategy</td></tr>
+<tr><td>Dropped suddenly after a redesign</td><td>Redirects missing, noindex left on or URLs changed</td><td>Developer and SEO</td></tr>
+</table>
+
+<h2>How to read the Pages report in Search Console, step by step</h2>
+<ol>
+<li>Open Search Console, choose your property and click <strong>Pages</strong> under Indexing.</li>
+<li>Look at the two totals: pages that are indexed and pages that are not. Compare them with the number of pages you expect to be in Google.</li>
+<li>Scroll to "Why pages aren't indexed" and click the largest reason first.</li>
+<li>Open one example URL, run the URL Inspection tool and read what Google says about it.</li>
+<li>Fix the cause, then use "Validate fix" so Google re-checks the whole group.</li>
+</ol>
+<table>
+<tr><th>Reason shown</th><th>What it means</th><th>Usual fix</th></tr>
+<tr><td>Excluded by "noindex" tag</td><td>The page asks Google to keep it out</td><td>Remove the tag if the page should be public</td></tr>
+<tr><td>Blocked by robots.txt</td><td>Google is not allowed to crawl it</td><td>Edit robots.txt, then re-test the URL</td></tr>
+<tr><td>Page with redirect</td><td>The address forwards somewhere else</td><td>Normal for old URLs; make sure the final page is indexed and linked</td></tr>
+<tr><td>Soft 404</td><td>The page looks empty or like an error but returns a normal status</td><td>Add real content or return a proper 404 or 410</td></tr>
+<tr><td>Duplicate, Google chose different canonical</td><td>Google thinks another page is the main version</td><td>Make the pages genuinely different, or point canonicals correctly</td></tr>
+<tr><td>Server error (5xx)</td><td>Your server failed when Google visited</td><td>Ask your host; check uptime and heavy plugins</td></tr>
+</table>
+
+<h2>Different website builders, different traps</h2>
+<table>
+<tr><th>Platform</th><th>Common reason pages go missing</th></tr>
+<tr><td>WordPress</td><td>"Discourage search engines" ticked, an SEO plugin set to noindex a page type, or a staging copy left public</td></tr>
+<tr><td>Wix or Squarespace</td><td>Pages hidden from search in page settings, or duplicate URLs from older versions</td></tr>
+<tr><td>Shopify</td><td>Thin collection and tag pages, duplicate product URLs and unsold or hidden products</td></tr>
+<tr><td>React or other JavaScript sites</td><td>Content built only in the browser, so the first HTML Google receives is empty</td></tr>
+<tr><td>Custom sites</td><td>Staging rules copied to the live server, missing canonicals or a sitemap that lists the wrong URLs</td></tr>
+</table>
+
+<h2>A seven-day plan once you have found the cause</h2>
+<ul>
+<li><strong>Day 1:</strong> remove any noindex or robots.txt block and check the result in URL Inspection.</li>
+<li><strong>Day 2:</strong> clean the sitemap and submit it in Search Console.</li>
+<li><strong>Day 3:</strong> link your top pages from the menu and from each other, and fix broken links.</li>
+<li><strong>Day 4:</strong> rewrite any thin page that matters, or merge it into a stronger one.</li>
+<li><strong>Day 5:</strong> request indexing for your five most important pages.</li>
+<li><strong>Day 6:</strong> confirm your Google Business Profile details match your site.</li>
+<li><strong>Day 7:</strong> write down what changed and re-check Search Console in two weeks, not tomorrow.</li>
+</ul>
+<p>Avoid the temptation to change everything at once. One change at a time lets you see which fix worked.</p>
+
+<h2>What a free fix looks like, and when it is not enough</h2>
+<p>Checks 1 to 6 cost nothing and often take under an hour. Check 7 onwards usually needs content and technical work. If you have gone through all twelve and the pages are indexed but still invisible for the searches that bring customers, you have moved from a fault to a strategy question: which searches to target, what to publish and how to earn trust. That is the work of <a href="/services/seo-content-marketing/seo-audit-strategy/">an SEO audit and strategy</a>, and our <a href="/seo/pricing-ahmedabad/">SEO plans start at ₹15,000 a month plus GST</a>.</p>
+
+<h2>How Digital Aura can help</h2>
+<p>We start with a <a href="/seo/free-audit/">free SEO audit</a> that answers the first question in this article: is the problem indexing, relevance or authority? You get a written list of what we found and which fixes come first. If your site only needs a technical correction, we will say so instead of selling a monthly plan. Our team works from Hanspura, near Sardar Patel Ring Road, Ahmedabad, and our <a href="/services/seo-content-marketing/technical-seo/">technical SEO</a> team can handle noindex, canonical and rendering fixes directly.</p>
+`,
+    faqs: [
+      { q: "Why is my website not showing on Google?", a: "Either Google has not indexed it, or it is indexed but ranks too low to be seen. Check the URL Inspection tool in Search Console. If it says the URL is not on Google, look for a noindex tag, a robots.txt block, a wrong canonical, thin content or a rendering problem. If it is on Google, the issue is relevance and authority." },
+      { q: "How long does Google take to show a new website?", a: "Anywhere from a few days to a few weeks. Submitting a sitemap in Google Search Console and requesting indexing for your key pages helps Google find the site sooner, but there is no guaranteed timeline." },
+      { q: "How do I check if my website is indexed on Google?", a: "Paste the page address into the URL Inspection tool in Google Search Console, or search site:yourdomain.com. Search Console is the reliable answer, because the site: search is only a rough guide." },
+      { q: "What does 'Crawled, currently not indexed' mean?", a: "Google visited the page but decided not to store it, usually because the page is thin, very similar to other pages or adds little value. Improve the content with real, specific information and strengthen internal links to the page." },
+      { q: "Can a noindex tag remove my website from Google?", a: "Yes. A noindex tag tells Google to keep a page out of search results. It is often left on after a redesign or set by a WordPress setting that discourages search engines. Remove it and request indexing again." },
+      { q: "Why is my website on Google but not on the first page?", a: "Being indexed only means Google has the page. Ranking depends on how relevant the page is to the search, how much trust the site has and how strong the competition is. Narrow your target searches, improve the page and build trust with reviews and quality links." },
+      { q: "Will paying for Google Ads make my website appear in organic results?", a: "No. Google Ads and organic results are separate. Ads can bring visitors quickly, but they do not change where your page ranks in organic search." },
+      { q: "When should I hire an SEO expert in Ahmedabad?", a: "Hire help when you have fixed the basic indexing problems and the site still does not appear for the searches that matter, or when you do not have time to diagnose and fix technical issues yourself. A good agency starts with an audit and shows you what it found in writing." },
+    ],
+    ctaHeading: "Not Sure Why Google Is Ignoring Your Site?",
+    ctaText: "Get a free SEO audit that checks indexing, content and links, and tells you what to fix first.",
+    ctaButton: "Get My Free SEO Audit",
+    cro: { href: "/seo/free-audit/", label: "Get a free SEO audit", sidebar: "Website missing from Google? Get a free audit that finds the cause.", bandHeading: "Is your website missing from Google?", bandText: "Request a free SEO audit and get a written list of what to fix first." },
+  },
+  {
+    slug: "b2b-seo-manufacturers-gujarat-guide",
+    title: "B2B SEO for Manufacturers in Gujarat: Getting RFQs From Google",
+    titleHighlight: "RFQs From Google",
+    metaTitle: "B2B SEO Services for Manufacturers in Gujarat: Get More RFQs",
+    metaDescription: "B2B SEO services for Gujarat manufacturers: how buyers search, which pages to build, how to capture RFQs and what an SEO agency should deliver. Plain and practical.",
+    category: "SEO Strategy",
+    date: "2026-11-27",
+    dateDisplay: "Nov 27, 2026",
+    readTime: "10 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "B2B SEO for manufacturers means making your factory findable when buyers search for a product, material, specification or supplier. It works by building pages for each product and application, showing capabilities and certifications, making spec sheets crawlable, and adding a simple RFQ form that you track. Gujarat manufacturers usually need product and category pages, industry pages, export-ready content and clear contact paths, built over months, not weeks.",
+    keyTakeaways: [
+      "Industrial buyers search for products, specifications, materials and suppliers, not for brand names. Build pages for those searches.",
+      "Every product or product family needs its own page with specifications, applications and a clear RFQ path.",
+      "Trust signals decide the enquiry: certifications, plant photos, client logos you may use and real contact details.",
+      "Track RFQs, not visits. Count forms, calls, WhatsApp and emailed enquiries separately.",
+      "Expect three to six months before steady results, and be wary of any agency that guarantees rankings.",
+    ],
+    contentHtml: `
+<p>A buyer in Germany, Dubai or Mumbai needs a hydraulic fitting, a stainless steel flange or a packaging machine. They do not search for your company name. They search for the product, the grade, the size or "manufacturer in Gujarat". If your website does not answer that search, the RFQ goes to someone else. This guide explains how <strong>B2B SEO services for manufacturers</strong> work in practice, what to build first and what to expect. If you want the service itself, see our <a href="/seo/manufacturers-b2b-gujarat/">SEO for manufacturers in Gujarat</a> page.</p>
+
+<h2>How industrial buyers actually search</h2>
+<p>B2B buyers search differently from consumers. They are specific, they compare several suppliers and they often work from a technical requirement.</p>
+<table>
+<tr><th>Search type</th><th>Example</th><th>What the buyer wants</th></tr>
+<tr><td>Product</td><td>"cnc turned components manufacturer"</td><td>A page that shows exactly this product</td></tr>
+<tr><td>Specification</td><td>"ss 316 flange dimensions"</td><td>Data they can use, and a supplier who understands it</td></tr>
+<tr><td>Application</td><td>"pumps for chemical plants"</td><td>Proof you have served their industry</td></tr>
+<tr><td>Supplier or location</td><td>"valve manufacturer in Gujarat"</td><td>A named, contactable company</td></tr>
+<tr><td>Export</td><td>"exporter of textile machinery India"</td><td>Certifications, shipping and payment terms</td></tr>
+</table>
+<p>If your site has only a home page, an about page and one long "products" page, it cannot match most of these searches. Each search needs a page built for it.</p>
+
+<h2>The pages a manufacturer's website needs</h2>
+<ul>
+<li><strong>Product or product family pages.</strong> One page per product group with specifications, materials, sizes, applications, photos and an RFQ button. Do not bury everything in a PDF.</li>
+<li><strong>Industry or application pages.</strong> "Valves for oil and gas" or "Components for the pharma industry" speaks to the buyer's own sector.</li>
+<li><strong>Capabilities and infrastructure.</strong> Machines, capacity, quality control, inspection and the size of your plant. Buyers use this to judge whether you can handle their order.</li>
+<li><strong>Certifications and compliance.</strong> ISO, CE, material test reports or export licences, where you genuinely hold them, shown clearly.</li>
+<li><strong>Case studies or project examples.</strong> What the customer needed, what you made and the outcome, with permission.</li>
+<li><strong>Contact and RFQ page.</strong> A short form, a phone number, a WhatsApp link and your address.</li>
+</ul>
+<p>Our <a href="/blog/manufacturer-website-checklist-b2b-buyers/">manufacturer website checklist</a> goes through how to structure the site itself, and <a href="/blog/manufacturing-website-rfq-enquiries/">how to turn manufacturing website visitors into RFQs</a> covers the conversion side.</p>
+
+<h2>On-page and technical work that matters most</h2>
+<h3>Write for the specification, not the slogan</h3>
+<p>A page titled "Our Quality Products" ranks for nothing. A page titled "Stainless Steel Flanges Manufacturer in Gujarat" with a table of sizes, grades and standards matches what the buyer typed. Put the product name and, where it is true, the location in the title, heading and opening paragraph.</p>
+<h3>Make spec sheets and catalogues crawlable</h3>
+<p>PDFs can be indexed, but a page of HTML text with the key specifications, plus a downloadable PDF, works better. Use descriptive file names and link each PDF from the matching product page.</p>
+<h3>Use structured data carefully</h3>
+<p>Organization, LocalBusiness and Product markup help Google understand who you are and what you sell. Add only information that is visible on the page, and see our guide to <a href="/blog/faq-and-local-business-schema-guide/">FAQ and LocalBusiness schema</a> for what each type does.</p>
+<h3>Speed and mobile</h3>
+<p>Many buyers open your site on a phone, between meetings, from a search result. Heavy photos and slow pages lose them. Read <a href="/blog/website-speed-core-web-vitals-ahmedabad-businesses/">how slow pages cost you enquiries</a> for the fixes.</p>
+
+<h2>Local, national and export visibility</h2>
+<p>A factory is also a local business. Set up a Google Business Profile with the factory address, product categories, photos and working hours, so searches like "manufacturer near me" or "supplier in Naroda" can find you. For export buyers, state the countries you serve, your certifications and your minimum order terms in plain words. Our <a href="/services/seo-content-marketing/local-seo/">local SEO</a> team handles the profile and citations, and the <a href="/blog/how-to-choose-seo-company-ahmedabad/">guide to choosing an SEO company</a> shows what to ask any agency before you sign.</p>
+
+<h2>Turning visits into RFQs</h2>
+<p>Ranking only helps if the page produces an enquiry. Put an RFQ button high on every product page, keep the form to four or five fields (name, company, product, quantity, contact) and add a click-to-call and WhatsApp option. Then count what happens: how many forms, calls and WhatsApp messages came from which page. Without that, you will not know whether SEO is working.</p>
+<table>
+<tr><th>What to track</th><th>Why it matters</th></tr>
+<tr><td>RFQ form submissions by page</td><td>Shows which products bring real enquiries</td></tr>
+<tr><td>Calls and WhatsApp clicks</td><td>Many buyers contact by phone first</td></tr>
+<tr><td>Search queries in Search Console</td><td>Shows which product searches already bring impressions</td></tr>
+<tr><td>Enquiry quality</td><td>Right product, right quantity, right country</td></tr>
+</table>
+
+<h2>Finding the searches your buyers use</h2>
+<p>Industrial search terms rarely show big numbers in keyword tools, because each phrase is specific. Do not judge a product page by tool volume alone. Better sources are:</p>
+<ul>
+<li><strong>Your own RFQ emails and calls.</strong> The words buyers use in enquiries are the words to put on pages.</li>
+<li><strong>Your sales team.</strong> Ask which questions come up before every order.</li>
+<li><strong>Search Console.</strong> If the site already has impressions, the queries show what Google connects you with.</li>
+<li><strong>Competitor catalogues and category pages.</strong> Note how they group and name products.</li>
+<li><strong>Standards and grades.</strong> Material codes, standards numbers and size ranges are what engineers type.</li>
+</ul>
+
+<h2>Content that builds trust with technical buyers</h2>
+<p>Purchasing teams and engineers are cautious. They are looking for reasons to shortlist you and reasons to drop you.</p>
+<table>
+<tr><th>Content</th><th>What it shows the buyer</th></tr>
+<tr><td>Specification tables and tolerances</td><td>You understand the product, not just the brochure</td></tr>
+<tr><td>Process pages: how a part is made and inspected</td><td>You have controls and can repeat quality</td></tr>
+<tr><td>Plant and machine photos taken by you</td><td>The factory is real, and its size matches your claims</td></tr>
+<tr><td>Certifications you actually hold</td><td>You meet the standards their industry expects</td></tr>
+<tr><td>FAQs on minimum order, lead time, packaging and shipping</td><td>Fewer back-and-forth emails before an RFQ</td></tr>
+<tr><td>Short case studies with permission</td><td>Others like them have trusted you</td></tr>
+</table>
+
+<h2>Common B2B SEO mistakes we see on factory websites</h2>
+<ul>
+<li>Putting every product on one page, so no product can rank for its own search.</li>
+<li>Hiding specifications inside images or PDFs that cannot be read as text.</li>
+<li>Listing certifications you do not hold, or old ones that expired. Buyers check.</li>
+<li>No clear contact path on product pages, so interested buyers leave.</li>
+<li>Copying manufacturer descriptions or competitor text, which Google treats as duplicate content.</li>
+<li>Ignoring the marketplace profile. If you sell through B2B directories, keep your details there identical to your website.</li>
+</ul>
+
+<h2>What results to expect, and what it costs</h2>
+<p>B2B searches have lower volume than consumer ones, but each enquiry can be worth far more. Early movement can show in the first two to three months as pages are indexed and start earning impressions. Steady RFQ growth usually takes three to six months or longer in a crowded category. Our SEO plans run from ₹15,000 to ₹1,50,000 a month plus GST, and larger catalogues, export projects and multi-language sites sit at the upper end. See <a href="/seo/pricing-ahmedabad/">SEO packages and pricing</a> for what each plan includes. No honest agency promises a specific ranking.</p>
+
+<h2>A simple starting plan</h2>
+<ol>
+<li>List your top five products by margin, not by volume.</li>
+<li>Check whether each has its own page with specifications and an RFQ path.</li>
+<li>Fix technical issues: indexing, speed, mobile and broken links.</li>
+<li>Add capabilities, certifications and two project examples.</li>
+<li>Set up RFQ tracking before you change anything else.</li>
+</ol>
+<p>If you would like us to review your site against this list, request a <a href="/seo/free-audit/">free SEO audit</a>.</p>
+`,
+    faqs: [
+      { q: "What is B2B SEO for manufacturers?", a: "It is the work of making your factory's products and capabilities findable on Google by industrial buyers. It includes product and application pages, technical fixes, spec sheets that search engines can read, trust signals such as certifications and a tracked RFQ process." },
+      { q: "How do manufacturers get RFQs from Google?", a: "By ranking for the product, specification and supplier searches buyers use, and by giving each product page a short RFQ form, phone and WhatsApp option. Then track which pages produce enquiries and improve those first." },
+      { q: "How long does SEO take for a manufacturing company?", a: "Early movement such as indexing and impressions can appear in two to three months. Steady RFQ growth usually takes three to six months or longer in a crowded category. Results depend on your site, your competition and how much you publish." },
+      { q: "Which pages should a manufacturing website have?", a: "Product or product family pages, industry or application pages, a capabilities page, certifications, case studies or project examples and a contact and RFQ page. Each should target specific searches and link to the others." },
+      { q: "Is local SEO useful for a factory?", a: "Yes. A Google Business Profile with the factory address, product categories and photos helps with searches such as manufacturer near me or supplier in your area, and supports trust for buyers who check Maps." },
+      { q: "Can SEO help me get export enquiries?", a: "It can. Show the countries you serve, certifications, shipping and payment terms in clear text, and publish product pages in English that match how overseas buyers search. Add language versions only when you can support them." },
+      { q: "How much does SEO for manufacturers cost in Ahmedabad?", a: "Our SEO plans run from ₹15,000 to ₹1,50,000 a month plus GST. Large catalogues, several product lines or export projects sit toward the upper end. The exact fee is written after a free audit." },
+      { q: "Can an agency guarantee RFQs or rankings?", a: "No. Nobody can honestly guarantee a ranking or a number of enquiries. A good agency lists the work it will do, tracks enquiries and reports progress so you can judge it." },
+    ],
+    ctaHeading: "Want More RFQs From Google?",
+    ctaText: "Request a free SEO audit and see which product pages can bring industrial enquiries.",
+    ctaButton: "Get My Free SEO Audit",
+    cro: { href: "/seo/free-audit/", label: "Get a free SEO audit", sidebar: "Manufacturer in Gujarat? Get a free audit of your product pages.", bandHeading: "Want RFQs from Google?", bandText: "Request a free SEO audit and see which product pages can bring industrial enquiries." },
+  },
+  {
+    slug: "local-seo-citation-building-ahmedabad",
+    title: "Local SEO Citation Building for Ahmedabad Businesses: A Practical Guide",
+    titleHighlight: "Citation Building",
+    metaTitle: "Local SEO Services: Citation Building Guide for Ahmedabad Firms",
+    metaDescription: "Local SEO services start with clean citations. Learn what citations are, which directories matter in India, how to keep NAP consistent and when to ask for help.",
+    category: "Local SEO",
+    date: "2026-11-27",
+    dateDisplay: "Nov 27, 2026",
+    readTime: "9 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "A citation is any mention of your business name, address and phone number (NAP) on another website. Citation building means creating and cleaning those listings so every one shows identical details. For an Ahmedabad business, start with Google Business Profile, Bing Places, Apple Business Connect and the main India directories, fix duplicates, and keep the details consistent. Quality and accuracy matter more than the number of listings.",
+    keyTakeaways: [
+      "A citation is a mention of your name, address and phone number on another site. Consistency across them builds trust with Google.",
+      "Start with the listings that matter: Google Business Profile, Bing Places, Apple Business Connect and a few relevant Indian directories.",
+      "Wrong or duplicate listings do more harm than missing ones. Audit before you create anything.",
+      "Ten accurate, relevant citations beat a hundred copied from a bulk list.",
+      "Citations support local rankings but do not replace reviews, a strong profile and a good website.",
+    ],
+    contentHtml: `
+<p>When Google decides which businesses to show in the local pack, it checks whether the business details it sees on your profile match the details it sees elsewhere. If your phone number is one thing on JustDial, another on Facebook and a third on your website, it has reason to doubt which is right. <strong>Citation building</strong> is the job of making those details match everywhere. It is a core part of <a href="/services/seo-content-marketing/local-seo/">local SEO services</a>, and this guide explains it without jargon.</p>
+
+<h2>What is a citation, and what is NAP?</h2>
+<p>A <strong>citation</strong> is any online mention of your business with some or all of your contact details. <strong>NAP</strong> means Name, Address and Phone number, the three details that must match everywhere. There are two kinds:</p>
+<ul>
+<li><strong>Structured citations:</strong> listings in directories and platforms with set fields, such as Google Business Profile, Bing Places, JustDial or Sulekha.</li>
+<li><strong>Unstructured citations:</strong> mentions in news articles, blog posts, event pages or partner websites.</li>
+</ul>
+
+<h2>Why citations still matter in 2026</h2>
+<p>Citations are one of several signals Google uses for local results, alongside your Google Business Profile, reviews, website relevance and distance. They will not carry a weak profile alone, but inconsistent details can hold a good one back. They also matter beyond Google: AI assistants and map apps pull business details from listings they trust. Our <a href="/blog/local-seo-strategies-2026/">local SEO strategies guide</a> shows where citations fit in the bigger picture.</p>
+
+<h2>Step 1: Decide your one correct NAP</h2>
+<p>Write down the exact business name, address and phone number you will use everywhere, then copy it character for character. Small differences count.</p>
+<table>
+<tr><th>Detail</th><th>Do this</th><th>Avoid this</th></tr>
+<tr><td>Name</td><td>Use your real business name, the same as your signboard</td><td>Adding keywords, such as "Best SEO Company Ahmedabad"</td></tr>
+<tr><td>Address</td><td>Same format every time, including landmark and pin code</td><td>Mixing "Rd", "Road" and "Marg" in different places</td></tr>
+<tr><td>Phone</td><td>One main number in the same format</td><td>Different numbers on different directories</td></tr>
+<tr><td>Website</td><td>One address, the https version without tracking codes</td><td>Listing a short link or an old domain</td></tr>
+<tr><td>Category</td><td>The closest real category on each platform</td><td>Choosing a popular category that does not describe you</td></tr>
+</table>
+
+<h2>Step 2: Audit what already exists</h2>
+<p>Search your business name, your phone number and your address on Google. Note every listing, then mark each as correct, wrong or duplicate. Old addresses from a previous office and a former phone number are the most common problems. Claim wrong or duplicate listings and correct or merge them, rather than creating a new one on top.</p>
+
+<h2>Step 3: Build the listings that matter</h2>
+<table>
+<tr><th>Priority</th><th>Where</th><th>Why</th></tr>
+<tr><td>Must have</td><td>Google Business Profile</td><td>Drives the local pack and Maps</td></tr>
+<tr><td>Must have</td><td>Bing Places and Apple Business Connect</td><td>Feed Bing, Apple Maps and several AI tools</td></tr>
+<tr><td>Should have</td><td>Facebook, Instagram and LinkedIn business pages</td><td>Used to confirm your details and brand</td></tr>
+<tr><td>Should have</td><td>Relevant Indian directories such as JustDial and Sulekha for consumer services</td><td>Widely used and often rank for local searches</td></tr>
+<tr><td>Industry specific</td><td>A directory for your own trade, for example a B2B or manufacturers' directory</td><td>Relevant listings carry more weight than generic ones</td></tr>
+<tr><td>Local</td><td>Ahmedabad business associations and local news or chamber pages</td><td>Real local mentions are hard to fake</td></tr>
+</table>
+<p>If you are still setting up your main profile, start with our <a href="/blog/google-business-profile-seo-checklist/">Google Business Profile SEO checklist</a> and the <a href="/blog/google-maps-ranking-ahmedabad-checklist/">Google Maps ranking checklist for Ahmedabad</a>.</p>
+
+<h2>What to avoid</h2>
+<ul>
+<li><strong>Bulk submission to hundreds of directories.</strong> Many are low quality, copy each other and will not help.</li>
+<li><strong>Using a different address to look closer to the city centre.</strong> It breaks consistency and can lead to suspension.</li>
+<li><strong>Virtual offices and fake addresses.</strong> They put your profile at risk.</li>
+<li><strong>Paying for guaranteed "citation packages" with no list of sites.</strong> Ask which directories, and check them.</li>
+</ul>
+
+<h2>Which citations matter for which kind of business</h2>
+<table>
+<tr><th>Business type</th><th>Prioritise</th><th>Skip</th></tr>
+<tr><td>Manufacturer or B2B supplier</td><td>Google Business Profile, a respected B2B or trade directory, industry association pages, LinkedIn</td><td>Consumer review sites that your buyers never use</td></tr>
+<tr><td>Online store with a physical showroom</td><td>Google Business Profile, Bing Places, Apple Business Connect, Facebook, shopping and retail directories</td><td>Directories for unrelated categories</td></tr>
+<tr><td>Service company with several areas</td><td>Google Business Profile for each real location, local directories, area-specific pages on your site</td><td>Profiles for towns where you have no staff or address</td></tr>
+<tr><td>Multi-branch brand</td><td>One profile per branch with its own phone and address, a store locator page, consistent naming</td><td>One shared profile for every branch</td></tr>
+</table>
+
+<h2>A simple citation audit sheet</h2>
+<p>Make a table in any spreadsheet with these columns and fill one row per listing you find. It takes an hour for most businesses and shows exactly where the problems are.</p>
+<table>
+<tr><th>Column</th><th>What to write</th></tr>
+<tr><td>Site or platform</td><td>For example, JustDial or Bing Places</td></tr>
+<tr><td>Listing link</td><td>The exact page address</td></tr>
+<tr><td>Name, address, phone as shown</td><td>Copy exactly what the listing says</td></tr>
+<tr><td>Status</td><td>Correct, wrong, duplicate or missing</td></tr>
+<tr><td>Who owns the login</td><td>Many old listings were created by an ex-employee or agency</td></tr>
+<tr><td>Date fixed</td><td>So you can show what changed and when</td></tr>
+</table>
+
+<h2>How to clean up duplicate listings</h2>
+<ol>
+<li>Search for your phone number and former numbers, and for old addresses.</li>
+<li>Claim each listing, or use the platform's "report a problem" or "suggest an edit" option if you cannot.</li>
+<li>Ask the platform to merge or remove duplicates, and keep the one with the most history and reviews.</li>
+<li>Update the correct listing with the full details and photos.</li>
+<li>Re-check in a month, because old data can reappear from aggregators.</li>
+</ol>
+
+<h2>Keep citations clean over time</h2>
+<p>When you move, change your number or rename the business, update the main listings first, then the rest. Review your listings every quarter, and reply to reviews wherever they appear. Add the same details to your own website footer and contact page, and to your <a href="/blog/faq-and-local-business-schema-guide/">LocalBusiness schema</a>, so everything agrees.</p>
+
+<h2>How long until citations help?</h2>
+<p>Corrections can be picked up in a few weeks, but local ranking changes depend on many other factors, so give it two to three months before judging. Citations are one input, not a shortcut. For a full local plan that includes profile optimisation, reviews, pages for each area and tracking, see our <a href="/seo-services-ahmedabad">SEO services in Ahmedabad</a>.</p>
+
+<h2>How Digital Aura can help</h2>
+<p>We audit your current listings, list what is wrong, fix the main ones and set up a tracking sheet so you can see what changed. Local SEO sits inside our SEO plans, which run from ₹15,000 a month plus GST. Start with a <a href="/seo/free-audit/">free SEO audit</a> and we will tell you whether citations are your real problem or something else is.</p>
+`,
+    faqs: [
+      { q: "What is citation building in local SEO?", a: "It is the process of creating, correcting and maintaining mentions of your business name, address and phone number on directories, maps and other websites so the details match everywhere. Consistent details help Google trust your business information." },
+      { q: "What does NAP stand for?", a: "NAP stands for Name, Address and Phone number. These three details should be identical on your website, Google Business Profile and every directory listing." },
+      { q: "Which citations matter most for an Ahmedabad business?", a: "Start with Google Business Profile, Bing Places and Apple Business Connect, then your Facebook, Instagram and LinkedIn pages, then a few relevant Indian directories and an industry directory for your trade. Accuracy matters more than quantity." },
+      { q: "How many citations do I need?", a: "There is no magic number. A small set of accurate, relevant listings is better than hundreds of low-quality ones. Focus on the platforms customers actually use and your own industry." },
+      { q: "Do citations still affect Google local rankings?", a: "Yes, as one of several signals alongside your Google Business Profile, reviews, website content and proximity. Inconsistent citations can hold a good profile back, but citations alone will not rank a weak one." },
+      { q: "Can wrong citations hurt my business?", a: "Yes. An old address or number can send customers to the wrong place and confuse Google about which details are correct. Audit and correct them before creating new listings." },
+      { q: "Is it better to build citations myself or hire an agency?", a: "You can build the main ones yourself if you have time and keep a record. An agency helps when there are many wrong or duplicate listings, several branches or a need to track everything over time." },
+      { q: "How long do citations take to work?", a: "Corrections may be picked up within weeks, but ranking changes depend on other factors too. Give it two to three months before judging the effect." },
+    ],
+    ctaHeading: "Are Your Business Listings Consistent?",
+    ctaText: "Get a free SEO audit that checks your Google profile, your listings and your local rankings.",
+    ctaButton: "Get My Free SEO Audit",
+    cro: { href: "/seo/free-audit/", label: "Get a free SEO audit", sidebar: "Wrong listings online? Get a free audit of your local SEO.", bandHeading: "Are your listings costing you local customers?", bandText: "Request a free SEO audit and get a written list of listing fixes." },
+  },
+  {
+    slug: "faq-and-local-business-schema-guide",
+    title: "FAQ and LocalBusiness Schema Markup: A Simple Guide for Business Owners",
+    titleHighlight: "Schema Markup",
+    metaTitle: "Schema Markup Services: FAQ and LocalBusiness Schema Guide 2026",
+    metaDescription: "Schema markup services explained: what FAQ and LocalBusiness schema do, what Google actually shows today, which fields to fill and how to test it. A plain guide.",
+    category: "Technical SEO",
+    date: "2026-11-29",
+    dateDisplay: "Nov 29, 2026",
+    readTime: "8 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "Schema markup is code added to a page that tells search engines exactly what the page is about, using the shared vocabulary of Schema.org. LocalBusiness schema describes your business details, such as name, address, phone and hours. FAQPage schema describes questions and answers on a page. Since August 2023, Google shows FAQ rich results only for well-known government and health sites, so FAQ schema will not give most businesses a visible result, but it still helps machines read the page.",
+    keyTakeaways: [
+      "Schema is a label for search engines. It does not make a weak page rank, but it removes guesswork about what the page is.",
+      "LocalBusiness schema is worth adding to the home and contact page, and it must match your visible details and Google Business Profile.",
+      "Google limited FAQ rich results in August 2023 to well-known government and health sites, so do not expect FAQ stars or dropdowns in search.",
+      "Only mark up what visitors can see on the page. Invented reviews or hidden answers can lead to a manual action.",
+      "Test every page with Google's Rich Results Test and the Schema Markup Validator.",
+    ],
+    contentHtml: `
+<p>You may have heard that schema markup "improves SEO" or "gets you rich results". Some of that is true and some is out of date. This guide explains what schema is, what <strong>LocalBusiness</strong> and <strong>FAQPage</strong> schema do today, which fields matter and how to check your work. If you would rather have it done for you, our <a href="/services/seo-content-marketing/technical-seo/">technical SEO</a> team adds and tests schema as part of a plan.</p>
+
+<h2>What is schema markup?</h2>
+<p>Schema markup is a block of code, usually in a format called JSON-LD, placed in a page. It uses the vocabulary at Schema.org to say things like "this is a local business, here is its address" or "this page has these questions and answers". Visitors do not see it. Search engines and AI tools read it to understand the page faster and with less guessing.</p>
+
+<h2>LocalBusiness schema: what to include</h2>
+<p>LocalBusiness (or a more specific type, such as ProfessionalService or Store) describes the business behind the website. It belongs on your home page and your contact page.</p>
+<table>
+<tr><th>Field</th><th>What to put</th><th>Common mistake</th></tr>
+<tr><td>name</td><td>Your business name exactly as on your signboard and Google profile</td><td>Adding keywords to the name</td></tr>
+<tr><td>address</td><td>Street, area, city, state, pin code and country</td><td>A different format from the profile</td></tr>
+<tr><td>telephone</td><td>Your main number with the country code</td><td>Listing several different numbers</td></tr>
+<tr><td>url and logo</td><td>Your main website address and a logo image</td><td>Pointing to an old domain</td></tr>
+<tr><td>openingHours</td><td>The real hours, including days you are closed</td><td>Leaving old or seasonal hours</td></tr>
+<tr><td>geo</td><td>Latitude and longitude of the premises</td><td>Approximate or copied coordinates</td></tr>
+<tr><td>sameAs</td><td>Links to your real social profiles and Google profile</td><td>Linking to profiles that are not yours</td></tr>
+<tr><td>areaServed</td><td>The city or areas you serve</td><td>Listing places you do not serve</td></tr>
+</table>
+<p>Every value must match what is visible on the page and what is on your <a href="/blog/google-business-profile-seo-checklist/">Google Business Profile</a>. Consistency matters as much as the code, as we explain in our guide to <a href="/blog/local-seo-citation-building-ahmedabad/">citation building</a>.</p>
+
+<h2>FAQPage schema: what Google shows now</h2>
+<p>FAQPage schema marks up questions and answers that appear on a page. For some years it produced expandable questions under the search listing. In August 2023, Google limited those FAQ rich results to well-known, authoritative government and health websites. For most business sites, you will no longer see the dropdowns in search.</p>
+<p>So is it still worth adding? Often yes, for a different reason. Clear question-and-answer content, marked up properly, is easy for search engines and AI assistants to read and quote. The value is machine understanding, not a visual badge. Do not add it to pages with no real FAQ, and do not mark up questions that are not on the page.</p>
+
+<h2>Other schema types worth knowing</h2>
+<table>
+<tr><th>Type</th><th>Use it for</th></tr>
+<tr><td>Organization</td><td>Your company details, logo and social profiles</td></tr>
+<tr><td>Service</td><td>A service page, with provider and area served</td></tr>
+<tr><td>BreadcrumbList</td><td>The path shown above a page, such as Home, Blog, Article</td></tr>
+<tr><td>Article or BlogPosting</td><td>Blog posts, with author and dates</td></tr>
+<tr><td>Product and Offer</td><td>Online store product pages, with price and availability</td></tr>
+<tr><td>Review or AggregateRating</td><td>Only for real, visible reviews of that item, never invented</td></tr>
+</table>
+
+<h2>How to add schema</h2>
+<ol>
+<li><strong>Choose the right type</strong> for each page, rather than one type for the whole site.</li>
+<li><strong>Write it in JSON-LD</strong>, the format Google recommends, using a plugin, your CMS or a developer.</li>
+<li><strong>Match the visible page.</strong> Every claim in the code should be visible to a visitor.</li>
+<li><strong>Test it.</strong> Use Google's Rich Results Test and the Schema Markup Validator, then watch Search Console for errors.</li>
+<li><strong>Keep it updated</strong> when hours, numbers or addresses change.</li>
+</ol>
+
+<h2>What a finished LocalBusiness block says, in plain words</h2>
+<p>If you read the code for a well-built home page, it says something like this: "This is a professional service business called Digital Aura. Its address is in Hanspura, Ahmedabad, Gujarat. Its phone number is this one. It is open on these days and hours. Its website is this address, and these are its official social profiles. It serves Ahmedabad." Nothing is exaggerated and nothing is hidden. If your own block cannot be read aloud that way and matched against your visible page, something needs fixing.</p>
+
+<h2>Which pages need which schema</h2>
+<table>
+<tr><th>Page</th><th>Schema to consider</th><th>Reason</th></tr>
+<tr><td>Home page</td><td>Organization or LocalBusiness</td><td>Tells search engines who you are</td></tr>
+<tr><td>Contact page</td><td>LocalBusiness with address and hours</td><td>Repeats the same trusted details</td></tr>
+<tr><td>Service page</td><td>Service, plus FAQPage if real FAQs are shown</td><td>Describes what you offer and where</td></tr>
+<tr><td>Blog post</td><td>BlogPosting, BreadcrumbList, FAQPage if relevant</td><td>Shows author, dates and structure</td></tr>
+<tr><td>Product page</td><td>Product and Offer</td><td>Price, availability and reviews where real</td></tr>
+</table>
+
+<h2>How schema, content and AI search work together</h2>
+<p>AI assistants and search engines both look for clear, well-labelled facts. A page that states its answer in plain sentences, repeats the same details everywhere and carries matching schema is easier to quote than one that makes a reader or a machine guess. That is why schema work sits alongside <a href="/blog/how-to-list-your-business-on-chatgpt/">getting your business found on ChatGPT</a> in a modern SEO plan.</p>
+
+<h2>Mistakes that cause problems</h2>
+<ul>
+<li>Adding review stars for reviews that are not shown on the page.</li>
+<li>Marking up content that is hidden from visitors.</li>
+<li>Using several plugins that each add the same schema, creating duplicates.</li>
+<li>Different business details in the schema and on the page.</li>
+<li>Expecting schema to rank a page by itself. It describes a page; it does not replace good content.</li>
+</ul>
+
+<h2>Where schema fits in your SEO</h2>
+<p>Schema is a small part of technical SEO. It helps most when the page is already useful, fast and indexed. Our <a href="/blog/technical-seo-practices-2026/">technical SEO practices guide</a> shows what to fix first, and <a href="/blog/aeo-vs-geo-vs-llmo-explained/">AEO vs GEO vs LLMO</a> explains how structured, answer-first pages help in AI search.</p>
+
+<h2>How Digital Aura can help</h2>
+<p>We add and test Organization, LocalBusiness, Service, FAQPage and breadcrumb schema as part of our <a href="/seo-services-ahmedabad">SEO services in Ahmedabad</a>, and we check that every value matches the visible page. A <a href="/seo/free-audit/">free SEO audit</a> will list any schema errors and duplicates already on your site.</p>
+`,
+    faqs: [
+      { q: "What is schema markup?", a: "Schema markup is code, usually JSON-LD, that tells search engines what a page is about using the Schema.org vocabulary. It helps Google and AI tools understand your business, services and content without guessing." },
+      { q: "What is LocalBusiness schema?", a: "LocalBusiness schema describes a business with a physical location or service area: name, address, phone, hours, website and more. Add it to the home and contact pages and keep it identical to your visible details and your Google Business Profile." },
+      { q: "Does FAQ schema still give rich results on Google?", a: "For most websites, no. Since August 2023, Google shows FAQ rich results only for well-known government and health websites. FAQ schema can still help search engines and AI tools understand your question-and-answer content." },
+      { q: "Does schema markup improve rankings?", a: "Not directly. Schema does not make a weak page rank. It helps search engines interpret a page and can make eligible pages appear with extra detail, so it works best on pages that are already useful and indexed." },
+      { q: "Where should I put LocalBusiness schema?", a: "On your home page and your contact page, and on location pages if you have several branches. Each location should have its own accurate details." },
+      { q: "How do I test my schema?", a: "Use Google's Rich Results Test and the Schema Markup Validator on each page, then watch the Enhancements and Pages reports in Search Console for errors." },
+      { q: "Can wrong schema hurt my website?", a: "It can. Markup that does not match visible content, such as invented reviews, can lead to a manual action, and duplicate or conflicting schema from several plugins can confuse search engines." },
+      { q: "Should I use a plugin or custom code for schema?", a: "A good SEO plugin is fine for basic types. Custom JSON-LD gives more control for services, locations and products. Whichever you use, avoid duplicates and test every page." },
+    ],
+    ctaHeading: "Is Your Schema Set Up Correctly?",
+    ctaText: "Get a free SEO audit that checks your schema, indexing and technical health.",
+    ctaButton: "Get My Free SEO Audit",
+    cro: { href: "/seo/free-audit/", label: "Get a free SEO audit", sidebar: "Not sure your schema is right? Get a free technical audit.", bandHeading: "Want your schema checked?", bandText: "Request a free SEO audit and get a list of schema errors and fixes." },
+  },
+  {
+    slug: "how-to-list-your-business-on-chatgpt",
+    title: "How to List Your Business on ChatGPT: Steps for Ahmedabad Businesses",
+    titleHighlight: "List Your Business on ChatGPT",
+    metaTitle: "ChatGPT SEO Services: How to List Your Business on ChatGPT 2026",
+    metaDescription: "ChatGPT SEO services explained: you cannot submit your business, but you can be found. Eight simple steps for Ahmedabad firms, from Bing to reviews and tracking.",
+    category: "AI Search",
+    date: "2026-11-28",
+    dateDisplay: "Nov 28, 2026",
+    readTime: "9 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "You cannot submit your business to ChatGPT or pay to be listed. ChatGPT answers from the web, including search results from partners such as Bing, and from pages its crawlers can read. To be mentioned, make your site crawlable, keep your business details consistent across the web, publish clear answer-first pages, collect genuine reviews and earn mentions on other sites. Then test with real prompts and track visits from chatgpt.com in your analytics.",
+    keyTakeaways: [
+      "There is no form to submit your business to ChatGPT. Visibility comes from being easy to find, read and trust on the open web.",
+      "Allow OpenAI's search crawler in robots.txt and make sure your pages are indexed in Bing as well as Google.",
+      "Consistent business details, real reviews and mentions on other websites help AI tools decide you exist and are reliable.",
+      "Pages that answer a question directly in the first lines are easier to quote.",
+      "Measure by testing prompts and tracking referral visits, and treat any promise of guaranteed ChatGPT rankings as a red flag.",
+    ],
+    contentHtml: `
+<p>Business owners in Ahmedabad are starting to ask a new question: "If someone asks ChatGPT for the best dentist, builder or SEO agency in Ahmedabad, will it mention me?" Many agencies promise to "list your business on ChatGPT". That wording is misleading. There is no directory to join. What you can do is make your business <em>easy for AI tools to find, understand and trust</em>, and that is what <strong>ChatGPT SEO services</strong> really mean. This guide gives eight steps you can follow, and is the practical companion to our explainer on <a href="/blog/how-to-rank-chatgpt-perplexity-ai-overviews/">how to rank in ChatGPT, Perplexity and AI Overviews</a>.</p>
+
+<h2>How ChatGPT finds businesses</h2>
+<p>ChatGPT answers in two ways. From its training it knows general information about well-known brands. For up-to-date or local questions, it can search the web and read pages, and the search results it uses come from partners, including Bing. OpenAI also runs crawlers; <em>OAI-SearchBot</em> is used for search features and <em>GPTBot</em> for gathering training data. This is why ordinary SEO work, such as being indexed, clear and trusted, carries over directly.</p>
+
+<h2>Eight steps to be easier for ChatGPT to find</h2>
+
+<h3>1. Do not block the crawlers you want</h3>
+<p>Open your robots.txt file and check that you are not blocking OAI-SearchBot or all bots. You decide separately whether to allow GPTBot, which relates to training. If your site sits behind a firewall or bot-protection setting that blocks unknown crawlers, check that too.</p>
+
+<h3>2. Get indexed in Bing as well as Google</h3>
+<p>Because ChatGPT search draws on Bing results, a page missing from Bing is harder for it to surface. Verify your site in Bing Webmaster Tools, submit your sitemap and consider IndexNow so new pages are noticed quickly.</p>
+
+<h3>3. Make your business details consistent everywhere</h3>
+<p>Use the same name, address, phone number and website on your site, Google Business Profile, Bing Places, social pages and directories. Conflicting details make it harder for any system to trust who you are. Our guide to <a href="/blog/local-seo-citation-building-ahmedabad/">citation building</a> shows how.</p>
+
+<h3>4. Write answer-first pages</h3>
+<p>Put the direct answer in the first one or two sentences, then explain. Use clear headings that match how people ask, such as "How much does X cost in Ahmedabad?", and add real prices or ranges where you can state them. Tools quote pages that answer cleanly.</p>
+
+<h3>5. Show who you are</h3>
+<p>Have a real About page, named authors, a physical address, case studies and contact details. AI tools lean on pages that look like a real, accountable business. Add structured data to describe the business, as covered in our <a href="/blog/faq-and-local-business-schema-guide/">schema markup guide</a>.</p>
+
+<h3>6. Earn mentions and genuine reviews</h3>
+<p>AI answers often reflect what others say about you. Reviews on Google, mentions in local news and listings in respected directories all help. Do not buy reviews or write fake ones; they can hurt you in every channel.</p>
+
+<h3>7. Cover the questions buyers actually ask</h3>
+<p>Build service pages and articles for searches like "best manufacturer of X in Gujarat" or "how much does a website cost in Ahmedabad". Be honest about who you suit and who you do not, because balanced pages get cited more than pure sales copy.</p>
+
+<h3>8. Test and track</h3>
+<p>Ask ChatGPT the questions your customers would, in English, Hindi and Gujarati, and note whether you appear and what it says. In Google Analytics 4, look at referral traffic from chatgpt.com, and tag it so you can count enquiries from it. Repeat monthly; answers change.</p>
+
+<h2>A 30-day starting plan</h2>
+<table>
+<tr><th>Week</th><th>Do this</th></tr>
+<tr><td>1</td><td>Check robots.txt, confirm your pages are indexed, verify Bing Webmaster Tools and fix any blocks</td></tr>
+<tr><td>2</td><td>Make your name, address, phone and website identical on your site, Google profile, Bing Places and social pages</td></tr>
+<tr><td>3</td><td>Rewrite your top service pages so the first two sentences answer the question a buyer asks; add real FAQs</td></tr>
+<tr><td>4</td><td>Ask recent customers for honest Google reviews, set up GA4 tracking for chatgpt.com visits and run your first set of test prompts</td></tr>
+</table>
+
+<h2>Prompts to test every month</h2>
+<ul>
+<li>"Which companies offer [your service] in Ahmedabad?"</li>
+<li>"How much does [your service] cost in Ahmedabad?"</li>
+<li>"What should I ask before hiring a [your service] company in Gujarat?"</li>
+<li>"Is [your business name] a good choice for [your service]?"</li>
+</ul>
+<p>Write down the date, the exact prompt and whether you were mentioned. If the answer contains something wrong about your business, fix the page or listing it probably came from. If you are not mentioned, look at who is, and compare their pages with yours.</p>
+
+<h2>What does not work</h2>
+<table>
+<tr><th>Claim you may hear</th><th>Reality</th></tr>
+<tr><td>"We will list your business on ChatGPT"</td><td>There is no listing. Ask what they will actually change on your site and elsewhere.</td></tr>
+<tr><td>"Guaranteed to appear in ChatGPT answers"</td><td>Nobody controls the answers. Treat this as a red flag.</td></tr>
+<tr><td>"Publish hundreds of AI-written pages"</td><td>Thin, repetitive pages harm trust in search and in AI tools.</td></tr>
+<tr><td>"Stuff your pages with prompts"</td><td>Hidden or manipulative text can get a site penalised.</td></tr>
+</table>
+
+<h2>What it costs and how long it takes</h2>
+<p>For most businesses, the work is part of good SEO: technical fixes, clear pages, listings and reviews. AI search (AEO and GEO) work sits inside our SEO Advance plan, which runs from ₹50,000 to ₹1,50,000 a month plus GST; see <a href="/seo/pricing-ahmedabad/">SEO pricing in Ahmedabad</a>. Changes in AI answers can take weeks to months, and there is no promised result.</p>
+
+<h2>How Digital Aura can help</h2>
+<p>We audit how your business appears in Google, Bing and AI tools, fix crawl and consistency problems, and build answer-first pages with proper schema. Start with a <a href="/seo/free-audit/">free SEO audit</a>, or read about <a href="/seo-services-ahmedabad">our SEO services in Ahmedabad</a>. For the bigger picture of how searches are changing, read <a href="/blog/seo-zero-click-search-ai-answers/">SEO in 2027 and zero-click search</a>.</p>
+`,
+    faqs: [
+      { q: "Can I submit my business to ChatGPT?", a: "No. There is no form or directory to submit a business to. ChatGPT draws on training data and, for current questions, on web search and pages it can read. Visibility comes from being crawlable, consistent, clear and trusted online." },
+      { q: "How do I get my business mentioned in ChatGPT answers?", a: "Make your site crawlable and indexed in Google and Bing, keep your business details consistent, publish clear answer-first pages, collect genuine reviews and earn mentions on other reputable sites. Then test with real prompts and track referral visits." },
+      { q: "Does ChatGPT use Bing?", a: "ChatGPT's search feature uses search results from partners, including Bing, so being indexed in Bing helps. Verify your site in Bing Webmaster Tools and submit your sitemap." },
+      { q: "Should I block or allow GPTBot?", a: "GPTBot relates to gathering training data and OAI-SearchBot to search features. You can allow search crawling while deciding separately about training. Check your robots.txt and any firewall rules so you do not block what you want." },
+      { q: "How can I track visitors from ChatGPT?", a: "In Google Analytics 4, check referral or source traffic from chatgpt.com and compare it with enquiries. Also keep a monthly log of your test prompts and what ChatGPT said." },
+      { q: "Can an agency guarantee ChatGPT rankings?", a: "No. Nobody controls AI answers. An honest agency will list the work it does, such as technical fixes, content, listings and tracking, and will not promise a specific outcome." },
+      { q: "Is ChatGPT visibility different from Google SEO?", a: "They overlap heavily. Good technical SEO, clear content, trust signals and reviews help in both. AI tools add emphasis on direct answers, consistent entity details and mentions on other sites." },
+      { q: "How long does it take to show up?", a: "It varies. Technical fixes can be picked up within weeks, but being cited depends on your market, your competitors and how much trusted information exists about you. Expect months, not days." },
+    ],
+    ctaHeading: "Want Your Business Found in AI Answers?",
+    ctaText: "Get a free SEO audit that checks how Google, Bing and AI tools see your business.",
+    ctaButton: "Get My Free SEO Audit",
+    cro: { href: "/seo/free-audit/", label: "Get a free SEO audit", sidebar: "Want to show up in AI answers? Start with a free audit.", bandHeading: "Is your business visible to AI tools?", bandText: "Request a free SEO audit and see what AI search can and cannot find." },
+  },
+  {
+    slug: "google-november-2026-core-update-ahmedabad",
+    title: "Google November 2026 Core Update: What Ahmedabad Businesses Should Do",
+    titleHighlight: "Core Update",
+    metaTitle: "Google November 2026 Core Update: SEO Recovery Steps to Take",
+    metaDescription: "Traffic dropped after the Google November 2026 core update? Learn how to check, what not to change, and the SEO recovery steps for Ahmedabad business websites now.",
+    category: "SEO Strategy",
+    date: "2026-11-28",
+    dateDisplay: "Nov 28, 2026",
+    readTime: "10 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "Google began rolling out its November 2026 core update on 10 November 2026, and core updates can take up to two weeks to finish. Do not make big changes while it is rolling out. Wait until it ends, then compare a full week after against the week before in Google Search Console. If you lost traffic, audit your content for usefulness and trust rather than hunting for a single fix, because a core update is not a penalty.",
+    keyTakeaways: [
+      "The November 2026 core update started on 10 November 2026 and can take up to two weeks to finish rolling out.",
+      "A core update is a re-evaluation of content quality across the web, not a penalty, and there is usually no single thing to fix.",
+      "Wait until the rollout ends, then compare a full week after it with the week before in Search Console.",
+      "Check whether your drop started before the update, because other causes such as technical faults can look similar.",
+      "Recovery comes from clearer, more helpful, better-supported pages, and it often shows up at the next core update, not overnight.",
+    ],
+    contentHtml: `
+<p>If your website lost enquiries in the last two weeks, you may be wondering whether Google's latest update is to blame. Google began rolling out the <strong>November 2026 core update</strong> on 10 November 2026, and it said the rollout could take up to two weeks. This guide explains what a core update is, how to tell whether it hit you, what to leave alone, and the steps we use for <strong>SEO recovery</strong> on client sites in Ahmedabad. For the bigger picture, see our <a href="/blog/seo-in-2026-ai-era/">SEO in 2026 strategy guide</a>.</p>
+
+<h2>What is a Google core update?</h2>
+<p>A core update is a broad change to how Google's systems judge which pages best answer a search. It is not aimed at one website or one tactic, and it is not a manual penalty. Pages can move up or down because other pages are now judged more helpful, more trustworthy or more complete. Google gives no checklist of "fixes" for a core update; its guidance is to focus on helpful, reliable, people-first content.</p>
+<table>
+<tr><th>Core update</th><th>Manual action</th><th>Technical fault</th></tr>
+<tr><td>Broad, across many sites</td><td>Applied to one site for breaking a rule</td><td>Caused by your own site changes</td></tr>
+<tr><td>No notice in Search Console</td><td>Notice appears under Manual actions</td><td>Often shows as errors in the Pages report</td></tr>
+<tr><td>Improves by raising overall quality</td><td>Fix the issue, then request a review</td><td>Fix the bug and re-crawl</td></tr>
+</table>
+
+<h2>Step 1: Wait for the rollout to finish</h2>
+<p>Rankings can swing up and down while an update rolls out. Check the <a href="https://status.search.google.com/" rel="noopener">Google Search Status Dashboard</a> for the end date. Judging your site during the rollout, or rewriting pages in the middle of it, makes it impossible to tell what caused any change. A sensible rule is to wait until the update is marked complete, then wait about another week before comparing.</p>
+
+<h2>Step 2: Check whether you were really affected</h2>
+<p>Open Search Console, go to Performance and compare two periods: the full week after the update finishes against the week before 10 November. Look at clicks, impressions and average position, then at the pages and queries that moved.</p>
+<table>
+<tr><th>What you see</th><th>Likely meaning</th></tr>
+<tr><td>Clicks and impressions both fell on many pages starting around 10 November</td><td>Possibly the update</td></tr>
+<tr><td>The drop started before 10 November</td><td>Another cause: a site change, tracking issue, seasonality or an earlier problem</td></tr>
+<tr><td>Impressions steady but clicks fell</td><td>More AI answers or competing results above you; see <a href="/blog/seo-zero-click-search-ai-answers/">SEO in 2027 and zero-click search</a></td></tr>
+<tr><td>One page or section fell, the rest is fine</td><td>A page-level problem, not a site-wide re-evaluation</td></tr>
+<tr><td>Brand searches steady, non-brand searches fell</td><td>Visibility for general searches dropped, so content quality and relevance are the focus</td></tr>
+</table>
+<p>Also check that nothing broke on your own site: indexing errors, a new noindex tag, slow pages or tracking changes. Our guide on <a href="/blog/why-website-not-showing-on-google-ahmedabad/">why a website is not showing on Google</a> lists the checks.</p>
+
+<h2>What not to do right now</h2>
+<ul>
+<li><strong>Do not rewrite every page in a panic.</strong> Changing hundreds of pages at once hides what is working.</li>
+<li><strong>Do not delete pages hastily.</strong> Removing pages can lose traffic you still have.</li>
+<li><strong>Do not buy links or hire anyone promising a quick "recovery".</strong> There is no switch to flip.</li>
+<li><strong>Do not change URLs or restructure the site</strong> during the rollout.</li>
+<li><strong>Do not trust one tool's "visibility score".</strong> Use your own Search Console and enquiries.</li>
+</ul>
+
+<h2>Step 3: Audit pages that lost the most</h2>
+<p>Pick the ten pages that lost the most clicks and review each honestly, as a customer would.</p>
+<table>
+<tr><th>Question</th><th>If the answer is no</th></tr>
+<tr><td>Does the page answer the search clearly, in the first few lines?</td><td>Rewrite the opening and add a direct answer</td></tr>
+<tr><td>Does it show real experience, such as your own examples, prices, photos or process?</td><td>Add first-hand detail only you can provide</td></tr>
+<tr><td>Is it better than the pages now ranking above it?</td><td>Identify what they cover that you do not</td></tr>
+<tr><td>Is the information current and accurate?</td><td>Update dates, prices and facts, and remove claims you cannot support</td></tr>
+<tr><td>Is it clear who wrote it and who the business is?</td><td>Add an author, an About page and contact details</td></tr>
+<tr><td>Is the page fast and easy to use on a phone?</td><td>Fix speed and layout problems</td></tr>
+<tr><td>Is it one of many near-identical pages?</td><td>Merge or differentiate them, keeping one strong page</td></tr>
+</table>
+
+<h2>Step 4: Look at your site as a whole</h2>
+<p>Core updates assess a site's overall usefulness as well as individual pages. A site with many thin, templated or repetitive pages can drag down the good ones. Review whether you have groups of pages that were published in bulk with only a place name or a service name changed. If you find them, plan to improve, merge or noindex the weakest, in small batches, with the reason written down for each.</p>
+
+<h2>Step 5: Improve, then measure</h2>
+<ol>
+<li>Make a list of the pages to improve and rank them by business value, not by how far they fell.</li>
+<li>Improve a small group, keep notes on what you changed and when.</li>
+<li>Wait several weeks, then compare against a similar group you did not touch.</li>
+<li>Repeat with the next group.</li>
+</ol>
+<p>Google has said that content improvements may take time to be reflected, and sometimes a full recovery needs a later core update. Set your expectations in months, not days.</p>
+
+<h2>Three common situations, and what each means</h2>
+<table>
+<tr><th>Situation</th><th>What it usually means</th><th>First move</th></tr>
+<tr><td>A service page that used to rank in the top five now sits on page two</td><td>Competing pages are now judged more complete or more trusted</td><td>Compare it with the pages above it and add what is missing: prices, process, proof, clearer answers</td></tr>
+<tr><td>Many blog posts lost traffic together</td><td>The posts may be thin, generic or repetitive across the site</td><td>Keep the strongest, improve the middle, merge or retire the weakest, in small batches</td></tr>
+<tr><td>Traffic is flat but enquiries fell</td><td>Visitors are less qualified, or the page no longer converts</td><td>Check the form, phone and WhatsApp paths, and the search terms bringing visits</td></tr>
+</table>
+
+<h2>A realistic recovery timeline</h2>
+<table>
+<tr><th>When</th><th>What to do</th></tr>
+<tr><td>Rollout in progress</td><td>Watch, note dates and make no large changes</td></tr>
+<tr><td>Rollout ends, then about a week</td><td>Compare the week after with the week before in Search Console</td></tr>
+<tr><td>Weeks 1 to 4 after</td><td>Audit the pages that lost most and fix technical faults</td></tr>
+<tr><td>Months 1 to 3</td><td>Improve content in batches and add real proof and experience</td></tr>
+<tr><td>Months 3 to 6</td><td>Measure against untouched pages and expect gains to build, sometimes at a later update</td></tr>
+</table>
+
+<h2>What we check first on a client site</h2>
+<table>
+<tr><th>Area</th><th>What we look at</th></tr>
+<tr><td>Timeline</td><td>When the drop began, against site changes, releases and update dates</td></tr>
+<tr><td>Queries and pages</td><td>Which searches and pages lost the most, brand against non-brand</td></tr>
+<tr><td>Content</td><td>Depth, accuracy, experience, duplication and thin pages</td></tr>
+<tr><td>Trust</td><td>About, authors, reviews, contact, claims that need proof</td></tr>
+<tr><td>Technical</td><td>Indexing, speed, mobile, structured data and internal links; see our <a href="/blog/technical-seo-practices-2026/">technical SEO practices</a></td></tr>
+<tr><td>Links</td><td>Whether unnatural or spammy links point to the site</td></tr>
+</table>
+
+<h2>When to ask for help, and what it costs</h2>
+<p>If you cannot tell whether the update, a technical problem or something else caused your drop, an outside review saves time. Our <a href="/services/seo-content-marketing/seo-audit-strategy/">SEO audit and strategy</a> work ends with a written list of what to fix and in what order. Our SEO plans run from ₹15,000 to ₹1,50,000 a month plus GST, as set out on our <a href="/seo/pricing-ahmedabad/">SEO pricing page</a>. We do not promise a recovery date or a ranking.</p>
+
+<h2>How Digital Aura can help</h2>
+<p>Request a <a href="/seo/free-audit/">free SEO audit</a> and we will tell you whether your drop lines up with the update, what we found and which pages to improve first. You can also read about our <a href="/seo-services-ahmedabad">SEO services in Ahmedabad</a>.</p>
+`,
+    faqs: [
+      { q: "When did the Google November 2026 core update start?", a: "Google began rolling it out on 10 November 2026 and said it could take up to two weeks to finish. Check the Google Search Status Dashboard for the confirmed end date before judging your results." },
+      { q: "Is a core update a penalty?", a: "No. A core update is a broad change to how Google's systems assess content quality and helpfulness. It does not target one site, and there is no manual action or notice. Sites can move up or down as other pages are judged more or less useful." },
+      { q: "How do I know if my traffic drop is from the core update?", a: "Compare the full week after the rollout ends with the week before 10 November in Search Console. If clicks and impressions fell on many pages starting around that date, it may be the update. If the drop began earlier, look for other causes such as technical faults or site changes." },
+      { q: "Should I change my website while the update is rolling out?", a: "Avoid large changes until the rollout finishes. Rankings move during an update, and changing many things at once makes it impossible to see what worked." },
+      { q: "How long does recovery take after a core update?", a: "There is no fixed time. Improvements can take weeks or months to show, and sometimes a fuller recovery appears at a later core update. Focus on steady, measurable improvements to your pages." },
+      { q: "Can an SEO agency guarantee recovery?", a: "No. Nobody can promise a recovery or a ranking date. A good agency will audit your site, list what to improve, make changes in measured batches and report the results honestly." },
+      { q: "What kind of pages lose rankings in core updates?", a: "Pages that are thin, repetitive, out of date, unsupported by real experience or less helpful than competing pages. Large groups of near-identical pages can also weaken a site overall." },
+      { q: "Is it worth publishing new content during an update?", a: "You can keep publishing genuinely useful content, but avoid bulk or templated publishing. A few well-researched pages that show real experience are safer than many thin ones." },
+    ],
+    ctaHeading: "Did Your Traffic Drop in November?",
+    ctaText: "Get a free SEO audit that checks whether the core update, a technical fault or your content caused the drop.",
+    ctaButton: "Get My Free SEO Audit",
+    cro: { href: "/seo/free-audit/", label: "Get a free SEO audit", sidebar: "Traffic dropped in November? Get a free audit to find the cause.", bandHeading: "Did the core update hit your website?", bandText: "Request a free SEO audit and get a written list of what to fix first." },
+  },
+  {
+    slug: "seo-zero-click-search-ai-answers",
+    title: "SEO in 2027: How to Win Leads When Customers Get Answers Without Clicking",
+    titleHighlight: "Without Clicking",
+    metaTitle: "AI SEO Services: SEO in 2027 When Searches End Without Clicks",
+    metaDescription: "AI SEO services for a zero-click world: how AI Overviews change clicks, what to measure instead, and seven ways to earn leads when people get answers on Google.",
+    category: "AI Search",
+    date: "2026-11-29",
+    dateDisplay: "Nov 29, 2026",
+    readTime: "9 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "Zero-click search means a person gets an answer on the results page and never visits a website. It happens in AI Overviews, snippets and map listings. To win leads anyway, be the source the answer quotes, make your brand the thing people search for, own your Google Business Profile, and put the next step, such as a call or WhatsApp, where people already are. Measure enquiries and brand searches, not only clicks.",
+    keyTakeaways: [
+      "Zero-click means the answer appears on Google or in an AI tool, so the click never happens.",
+      "Simple informational questions lose the most clicks. High-intent, local and comparison searches still send visitors.",
+      "Being quoted or named in an answer builds trust and brand searches, even without a visit.",
+      "Measure enquiries, calls, brand searches and Business Profile actions, not clicks alone.",
+      "Pages that give a direct answer first, then depth and proof, work for both people and AI tools.",
+    ],
+    contentHtml: `
+<p>More searches now end on the results page. A person asks Google a question, reads an AI Overview, a featured snippet or a map result, and leaves with an answer. If your marketing only counts website visits, that looks like a loss. In reality, it is a change in <em>where</em> customers decide. This guide explains zero-click search in plain words and gives seven things Ahmedabad businesses can do about it. For the technical background on AI answers, see our guide to <a href="/blog/aeo-vs-geo-vs-llmo-explained/">AEO, GEO and LLMO</a>.</p>
+
+<h2>What is zero-click search?</h2>
+<p>A zero-click search is one where the searcher gets what they need without clicking any result. It happens in several places:</p>
+<ul>
+<li><strong>AI Overviews</strong> that summarise an answer above the normal results.</li>
+<li><strong>Featured snippets</strong> that quote a paragraph or list from a page.</li>
+<li><strong>Local packs and map results</strong> that show a phone number, hours and reviews.</li>
+<li><strong>Knowledge panels</strong> and "People also ask" boxes.</li>
+<li><strong>AI assistants</strong> such as ChatGPT, which answer in the chat window.</li>
+</ul>
+
+<h2>Which searches lose clicks, and which keep them</h2>
+<table>
+<tr><th>Type of search</th><th>Click risk</th><th>Why</th></tr>
+<tr><td>"What is" and simple facts</td><td>High</td><td>An answer fits in a sentence</td></tr>
+<tr><td>How-to with short steps</td><td>Medium to high</td><td>Steps can be summarised</td></tr>
+<tr><td>Local searches, such as "SEO company in Ahmedabad"</td><td>Medium</td><td>People call from the map listing, but compare options too</td></tr>
+<tr><td>Comparison and "best" searches</td><td>Lower</td><td>People want detail, proof and prices</td></tr>
+<tr><td>Price and cost searches with real ranges</td><td>Lower</td><td>Specific numbers and context need a full page</td></tr>
+<tr><td>Searches that end in a purchase or enquiry</td><td>Lower</td><td>The buyer must visit, call or message</td></tr>
+</table>
+<p>The practical lesson is to stop investing in pages that only repeat a fact anyone can find, and to invest in pages that help someone make a decision.</p>
+
+<h2>Seven ways to earn leads in a zero-click world</h2>
+
+<h3>1. Lead each page with the answer</h3>
+<p>Put a clear, one- or two-sentence answer in the first lines, then explain, give examples and show proof. Pages built this way are easier for AI tools and snippets to quote, and the depth below gives people a reason to click. We covered this in <a href="/blog/how-to-rank-chatgpt-perplexity-ai-overviews/">how to rank in ChatGPT, Perplexity and AI Overviews</a>.</p>
+
+<h3>2. Publish things only you can publish</h3>
+<p>A summary can repeat common knowledge. It cannot invent your price ranges, your process, your results or your photographs. Add real figures you can stand behind, your own examples and your team's experience. These make your page worth citing and worth visiting.</p>
+
+<h3>3. Build a brand people search for by name</h3>
+<p>If someone sees your name in an AI answer, a review, a video or a recommendation, the next thing they may do is search for you directly. Brand searches are a strong signal and are hard for a summary to intercept. Be consistent about your name and details everywhere, as we explain in our <a href="/blog/local-seo-citation-building-ahmedabad/">citation building guide</a>.</p>
+
+<h3>4. Win the map, not just the website</h3>
+<p>Many local searches end on a Google Business Profile: a tap to call, a request for directions or a WhatsApp message. Complete your profile, add real photos, answer questions, ask happy customers for reviews and reply to every review. Our <a href="/blog/google-business-profile-seo-checklist/">Business Profile checklist</a> shows how.</p>
+
+<h3>5. Make the next step easy where people already are</h3>
+<p>Put click-to-call, WhatsApp and a short enquiry form on every key page, and make sure the profile does the same. When the decision is made on the results page, the shortest path to you wins.</p>
+
+<h3>6. Aim for decision-stage searches</h3>
+<p>Prioritise pages for prices, comparisons, "best for" lists, case studies and "how to choose" guides, because these still need a visit. For example, our guides on <a href="/blog/seo-cost-in-ahmedabad/">SEO cost in Ahmedabad</a> and <a href="/blog/best-seo-company-in-ahmedabad-how-to-compare/">how to compare SEO companies in Ahmedabad</a> exist for readers who are about to decide.</p>
+
+<h3>7. Use more than one channel</h3>
+<p>Do not depend on one source of discovery. Pair SEO with Google Ads for the searches where AI answers push organic results down, and with Meta Ads, email and WhatsApp for people who already know you. A mix means a change in one channel does not empty your pipeline.</p>
+
+<h2>A 60-day plan for a zero-click world</h2>
+<table>
+<tr><th>Days</th><th>Action</th></tr>
+<tr><td>1 to 10</td><td>List your 20 most important searches. For each, note what Google shows: AI Overview, snippet, map pack or only links</td></tr>
+<tr><td>11 to 20</td><td>Rewrite the top pages so the first sentences answer the question, and add your own prices, process and examples</td></tr>
+<tr><td>21 to 30</td><td>Complete your Google Business Profile, add photos and ask for reviews</td></tr>
+<tr><td>31 to 45</td><td>Add click-to-call, WhatsApp and a short form to every key page, and set up tracking for each</td></tr>
+<tr><td>46 to 60</td><td>Publish two decision-stage pages, such as a cost guide and a comparison, and re-test your prompts and searches</td></tr>
+</table>
+
+<h2>What to measure instead of clicks alone</h2>
+<table>
+<tr><th>Measure</th><th>Where to find it</th><th>What it tells you</th></tr>
+<tr><td>Enquiries by source</td><td>Your CRM, forms, calls and WhatsApp</td><td>Business results, the number that matters</td></tr>
+<tr><td>Brand searches</td><td>Search Console, queries containing your name</td><td>Whether your name is spreading</td></tr>
+<tr><td>Impressions against clicks</td><td>Search Console</td><td>How often you are shown, and the click-through rate</td></tr>
+<tr><td>Business Profile actions</td><td>Google Business Profile insights</td><td>Calls, direction requests and website taps</td></tr>
+<tr><td>AI referrals</td><td>GA4 source and referral reports</td><td>Visits from AI tools, which are small but growing</td></tr>
+<tr><td>Mentions in AI answers</td><td>Monthly test prompts you log yourself</td><td>Whether tools name or quote you</td></tr>
+</table>
+
+<h2>What not to do</h2>
+<ul>
+<li>Do not panic-publish hundreds of AI-written pages. Thin, repetitive content weakens trust everywhere.</li>
+<li>Do not abandon SEO. Pages that rank are the sources AI answers draw from.</li>
+<li>Do not stuff pages with hidden text or prompts aimed at AI tools.</li>
+<li>Do not trust anyone who guarantees a place in AI answers.</li>
+</ul>
+
+<h2>How Digital Aura can help</h2>
+<p>Our <a href="/seo-services-ahmedabad">SEO services in Ahmedabad</a> include AEO and GEO work on key pages in our SEO Advance plan, along with tracking of calls, forms and WhatsApp so you can see enquiries instead of only clicks. Plans run from ₹15,000 to ₹1,50,000 a month plus GST; see <a href="/seo/pricing-ahmedabad/">SEO pricing</a>. Start with a <a href="/seo/free-audit/">free SEO audit</a>.</p>
+`,
+    faqs: [
+      { q: "What is zero-click search?", a: "A zero-click search is one where the person gets their answer on the results page, such as in an AI Overview, featured snippet or map listing, and does not click through to any website." },
+      { q: "Will AI Overviews kill SEO?", a: "No. AI answers draw on pages that rank and are trusted, so SEO remains the foundation. What changes is that simple informational queries send fewer clicks, so you need to focus on decision-stage content, brand and conversion." },
+      { q: "How can I get my business quoted in AI answers?", a: "Lead pages with a clear answer, add real figures and first-hand detail, keep your business details consistent across the web, earn genuine reviews and mentions, and make sure your pages are crawlable and indexed." },
+      { q: "Which keywords still bring clicks?", a: "Searches close to a decision, such as prices, comparisons, best-for lists, how-to-choose guides and local service searches, still send visitors because the person needs detail, proof or a conversation." },
+      { q: "How do I measure SEO if clicks fall?", a: "Track enquiries by source, brand searches, impressions against clicks in Search Console, Google Business Profile actions and referral visits from AI tools. Business results matter more than clicks alone." },
+      { q: "Do I still need a website?", a: "Yes. It is where trust, proof, pricing and enquiries come together, and it is the source search engines and AI tools quote. A strong profile and good reviews support it but do not replace it." },
+      { q: "Should I use Google Ads if organic clicks drop?", a: "Ads can help for high-intent searches where AI answers push organic results down. Use them alongside SEO and track enquiries, not just clicks." },
+      { q: "Can you guarantee AI search visibility?", a: "No. Nobody controls AI answers. We list the work, such as technical fixes, answer-first content, listings and tracking, and report the results honestly." },
+    ],
+    ctaHeading: "Want Leads Even When Clicks Fall?",
+    ctaText: "Get a free SEO audit that checks your answers, profile and conversion paths for AI-era search.",
+    ctaButton: "Get My Free SEO Audit",
+    cro: { href: "/seo/free-audit/", label: "Get a free SEO audit", sidebar: "Clicks falling? Get a free audit of your AI-era search readiness.", bandHeading: "Ready for zero-click search?", bandText: "Request a free SEO audit and see where your leads can come from next." },
+  },
+  {
+    slug: "ecommerce-seo-mistakes-and-fixes",
+    title: "10 Common Ecommerce SEO Mistakes and How to Fix Them",
+    titleHighlight: "Ecommerce SEO Mistakes",
+    metaTitle: "Ecommerce SEO Services: 10 Common Mistakes and How to Fix Them",
+    metaDescription: "Ecommerce SEO services start with fixing the basics. See 10 common online store mistakes, from duplicate pages to thin categories, and how to fix each one today.",
+    category: "eCommerce SEO",
+    date: "2026-11-26",
+    dateDisplay: "Nov 26, 2026",
+    readTime: "10 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "The most common ecommerce SEO mistakes are duplicate URLs and thin category pages. Others are copied descriptions, missing product schema, slow images, weak titles, poor internal links, mishandled out-of-stock pages and no reviews. Each is fixable, and fixing category pages, duplicates and speed first usually gives the quickest gains for an online store.",
+    keyTakeaways: [
+      "Category pages usually bring more search traffic than single products, so thin category pages are the costliest mistake.",
+      "Filters, sorting and variants can create thousands of near-duplicate URLs that waste Google's attention.",
+      "Copied manufacturer descriptions give Google no reason to rank your product over everyone else's.",
+      "Product schema, fast images and clean internal links are technical basics that many stores skip.",
+      "Fix mistakes in order of impact, measure each change, and avoid changing everything at once.",
+    ],
+    contentHtml: `
+<p>Most online stores lose sales to a handful of avoidable SEO problems. The store looks good, the products are fine, but Google cannot tell which page to rank, or finds hundreds of near-identical pages and loses interest. This guide lists ten mistakes we see on Shopify, WooCommerce and custom stores, with the fix for each. If you want a full audit, see our <a href="/services/seo-content-marketing/ecommerce-seo/">ecommerce SEO services</a>.</p>
+
+<h2>Mistake 1: Thin or empty category pages</h2>
+<p>Category pages are usually your best chance to rank, because people search for "cotton kurtis for women" or "industrial gloves" before they search for one product. Many stores show only a title and a grid of products. <strong>Fix:</strong> add a short, useful introduction above the products (two or three sentences), helpful buying guidance below them, links to related categories and a short FAQ, all written for shoppers and not stuffed with keywords.</p>
+
+<h2>Mistake 2: Duplicate URLs from filters, sorting and variants</h2>
+<p>Colour, size, price filters and sort options can each produce a new address with almost the same products. Variants can do the same. Google then has hundreds of near-copies to choose from. <strong>Fix:</strong> decide which filtered pages deserve to rank (for example, a popular category plus colour), set canonical tags on the rest to point to the main page, and stop low-value combinations from being crawled.</p>
+
+<h2>Mistake 3: Copied manufacturer descriptions</h2>
+<p>If your product text is the same as the supplier's and 50 other stores', Google has no reason to prefer yours. <strong>Fix:</strong> write original descriptions for your best-selling and highest-margin products first: what it is, who it suits, materials, sizing, care, delivery and returns. Add your own photographs where you can.</p>
+
+<h2>Mistake 4: No product schema</h2>
+<p>Product structured data tells Google the product name, price, availability and reviews, and can make listings eligible for richer results. <strong>Fix:</strong> add Product and Offer schema, plus review data only if real reviews are visible on the page. Most Shopify themes and WooCommerce set up basic schema, but it is often incomplete or duplicated by plugins. See <a href="/blog/faq-and-local-business-schema-guide/">our schema guide</a>.</p>
+
+<h2>Mistake 5: Slow pages and heavy images</h2>
+<p>Large product photos slow mobile pages, and shoppers leave. <strong>Fix:</strong> compress images, use modern formats such as WebP, set image sizes, lazy-load images below the first screen and remove apps or plugins you do not use. Our guide to <a href="/blog/website-speed-core-web-vitals-ahmedabad-businesses/">website speed and Core Web Vitals</a> goes deeper.</p>
+
+<h2>Mistake 6: Weak titles and headings</h2>
+<p>Titles such as "Product 1234 | Store Name" tell neither Google nor shoppers anything. <strong>Fix:</strong> use a clear pattern, for example the product type, the key feature and the brand: "Men's Cotton Kurta, Regular Fit | Brand". Keep it natural and unique for each page.</p>
+
+<h2>Mistake 7: Mishandling out-of-stock and discontinued products</h2>
+<p>Deleting a page that has traffic or links loses both. Leaving a dead page with no guidance frustrates shoppers.</p>
+<table>
+<tr><th>Situation</th><th>What to do</th></tr>
+<tr><td>Temporarily out of stock</td><td>Keep the page, say when it returns and offer a back-in-stock alert and related products</td></tr>
+<tr><td>Permanently discontinued, a close replacement exists</td><td>301 redirect to the replacement or the category</td></tr>
+<tr><td>Permanently discontinued, no replacement</td><td>Redirect to the category, or return a proper 410 if the page has no value</td></tr>
+</table>
+
+<h2>Mistake 8: Poor internal linking</h2>
+<p>If products are only reachable by search or a deep filter, Google may not find them. <strong>Fix:</strong> link from home to main categories, from categories to subcategories and top products, and from products to related products and the parent category. Add breadcrumbs.</p>
+
+<h2>Mistake 9: Ignoring reviews and customer questions</h2>
+<p>Reviews are fresh, unique content, and they help buyers decide. <strong>Fix:</strong> ask customers for reviews after delivery, show them on the page and answer questions publicly. Never invent reviews.</p>
+
+<h2>Mistake 10: Letting Google crawl pages that should not rank</h2>
+<p>Cart, checkout, account, internal search results and thank-you pages should not be indexed. <strong>Fix:</strong> noindex them, keep them out of the sitemap and make sure your robots.txt does not block anything you want indexed.</p>
+
+<h2>A 30-minute self-check for your store</h2>
+<ol>
+<li>Search <em>site:yourstore.com</em> and compare the result count with the number of products you sell. A much higher number suggests duplicate or junk URLs.</li>
+<li>Open your top category in a private window. Is there a clear heading, an introduction and helpful text, or only a grid?</li>
+<li>Open one product page and view the page source. Is there product schema, a unique title and a canonical tag?</li>
+<li>Run the home page and one product page through PageSpeed Insights on mobile.</li>
+<li>In Search Console, open the Pages report and look for "Duplicate" and "Crawled, currently not indexed" reasons.</li>
+<li>Check that cart and checkout pages are not in your sitemap or search results.</li>
+</ol>
+
+<h2>Which fixes to do first</h2>
+<table>
+<tr><th>Priority</th><th>Fix</th><th>Why first</th></tr>
+<tr><td>1</td><td>Category page content and titles</td><td>Highest search demand, easiest wins</td></tr>
+<tr><td>2</td><td>Duplicate and filter URLs</td><td>Frees Google's attention for your best pages</td></tr>
+<tr><td>3</td><td>Speed and images</td><td>Helps rankings and conversion</td></tr>
+<tr><td>4</td><td>Product schema and descriptions for top sellers</td><td>Improves quality and click appeal</td></tr>
+<tr><td>5</td><td>Internal links and redirects</td><td>Spreads authority and rescues lost pages</td></tr>
+</table>
+<p>For a step-by-step list, use our <a href="/blog/ecommerce-seo-checklist-2026/">ecommerce SEO checklist</a>. Running WooCommerce? Read our <a href="/blog/woocommerce-seo-guide-2026/">WooCommerce SEO guide</a>, and for Shopify our <a href="/blog/shopify-seo-tutorial-2026/">Shopify SEO tutorial</a>. For general technical health, see <a href="/blog/technical-seo-practices-2026/">technical SEO practices</a>.</p>
+
+<h2>What to expect, and what it costs</h2>
+<p>Technical fixes can be picked up in weeks; ranking gains usually build over three to six months. Online stores with large catalogues sit in our SEO Advance plan, which includes category and product optimisation and runs from ₹50,000 to ₹1,50,000 a month plus GST. Smaller stores may start lower; see <a href="/seo/pricing-ahmedabad/">SEO pricing</a>. We never promise rankings.</p>
+
+<h2>How Digital Aura can help</h2>
+<p>We review your store for these ten problems, list what we find with the business impact of each and agree a fix order with you. Start with a <a href="/seo/free-audit/">free SEO audit</a>. If your store needs a rebuild, our <a href="/shopify-website-design-ahmedabad/">Shopify</a> and <a href="/woocommerce-website-design-ahmedabad/">WooCommerce</a> teams can help.</p>
+`,
+    faqs: [
+      { q: "What are the most common ecommerce SEO mistakes?", a: "Thin category pages, duplicate URLs from filters and variants, copied manufacturer descriptions, missing product schema, slow images, weak titles, poor internal links, mishandled out-of-stock pages, no reviews and letting cart or search pages be indexed." },
+      { q: "Which ecommerce SEO fix should I do first?", a: "Start with category pages and duplicate URLs. Categories usually bring the most search demand, and duplicates waste Google's attention on pages you do not want ranked." },
+      { q: "How do I fix duplicate product pages?", a: "Decide which URL should rank, set canonical tags on the others, avoid creating separate pages for minor variants and stop low-value filter combinations from being crawled or indexed." },
+      { q: "Should I delete out-of-stock product pages?", a: "No. Keep temporarily unavailable pages with clear information. For permanently discontinued products, 301 redirect to a close replacement or the category, or return a 410 if the page has no value." },
+      { q: "Do I need product schema?", a: "It is strongly recommended. Product and Offer schema describe price and availability and can make pages eligible for richer results. Add review markup only if real reviews are visible on the page." },
+      { q: "How long does ecommerce SEO take to work?", a: "Technical fixes can be picked up in weeks, but ranking and traffic gains usually build over three to six months or more depending on competition and catalogue size." },
+      { q: "Is Shopify or WooCommerce better for SEO?", a: "Both can rank well. Results depend on how the store is set up: clean URLs, fast pages, good content and correct technical settings. Choose the platform for your business needs, then configure it properly." },
+      { q: "How much does ecommerce SEO cost in Ahmedabad?", a: "Our SEO plans run from ₹15,000 to ₹1,50,000 a month plus GST. Stores with large catalogues usually need the higher plan with category and product optimisation. The exact fee is written after a free audit." },
+    ],
+    ctaHeading: "Is Your Online Store Making These Mistakes?",
+    ctaText: "Get a free SEO audit and see which ecommerce problems are costing you traffic and sales.",
+    ctaButton: "Get My Free SEO Audit",
+    cro: { href: "/seo/free-audit/", label: "Get a free SEO audit", sidebar: "Online store not ranking? Get a free audit of the 10 common problems.", bandHeading: "Is your online store losing sales to SEO mistakes?", bandText: "Request a free SEO audit and get a ranked fix list for your store." },
+  },
+  {
+    slug: "woocommerce-seo-guide-2026",
+    title: "WooCommerce SEO Guide 2026 for Ahmedabad Online Stores",
+    titleHighlight: "WooCommerce SEO",
+    metaTitle: "WooCommerce SEO Services: 2026 Guide for Ahmedabad Online Stores",
+    metaDescription: "WooCommerce SEO services explained: settings, categories, product pages, schema, speed and plugins that matter, plus when to hire a WooCommerce SEO agency in India.",
+    category: "eCommerce SEO",
+    date: "2026-11-27",
+    dateDisplay: "Nov 27, 2026",
+    readTime: "10 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "WooCommerce SEO means setting up your WordPress store so Google can crawl, understand and rank your categories and products. The essentials are clean permalinks, strong category pages, original product content, correct canonicals for variations, product schema, fast hosting and images, noindexed cart and checkout pages, and an SEO plugin configured properly. Most stores gain most from fixing categories and speed first.",
+    keyTakeaways: [
+      "WooCommerce is flexible but needs configuration: permalinks, canonicals, schema and speed do not come perfect out of the box.",
+      "Category pages deserve the most attention because they match the broader searches shoppers make first.",
+      "Variable products, filters and tags can create duplicate content, so set canonicals and noindex deliberately.",
+      "Hosting, caching and image size decide most of your speed, and speed affects both rankings and sales.",
+      "One well-configured SEO plugin is enough. Two plugins doing the same job create duplicate tags and schema.",
+    ],
+    contentHtml: `
+<p>WooCommerce runs a large share of online stores because it is flexible and sits on top of WordPress. That flexibility is also the risk: two WooCommerce stores can behave completely differently in Google, depending on how they were set up. This guide covers the settings and habits that matter for <strong>WooCommerce SEO</strong>, in the order we would fix them. If you are planning a new store, see our <a href="/woocommerce-website-design-ahmedabad/">WooCommerce website design in Ahmedabad</a>, and for broader mistakes read <a href="/blog/ecommerce-seo-mistakes-and-fixes/">10 common ecommerce SEO mistakes</a>.</p>
+
+<h2>1. Set up the basics correctly</h2>
+<h3>Permalinks</h3>
+<p>In Settings, Permalinks, choose "Post name" and set the product base to something short, such as <em>/product/</em> or none. Avoid dates or long category paths in product URLs. Changing permalinks on a live store needs redirects, so get this right before launch.</p>
+<h3>Visibility</h3>
+<p>Under Settings, Reading, make sure "Discourage search engines from indexing this site" is not ticked. This single setting is a frequent reason new stores do not appear.</p>
+<h3>HTTPS and www</h3>
+<p>Use one version of your address (https, with or without www) and redirect the others to it.</p>
+
+<h2>2. Build category pages that can rank</h2>
+<p>Shoppers search categories first ("steel water bottles", "cotton sarees online"). Each WooCommerce category page should have:</p>
+<ul>
+<li>A clear title and heading using the real category name.</li>
+<li>A short introduction above the products, in plain language.</li>
+<li>Helpful buying guidance below the products: sizes, materials, how to choose.</li>
+<li>Links to subcategories and related categories.</li>
+<li>A few frequently asked questions answered properly.</li>
+</ul>
+<p>Keep the category hierarchy shallow, ideally no more than two levels, so every product is a few clicks from the home page.</p>
+
+<h2>3. Write product pages that do their own selling</h2>
+<table>
+<tr><th>Element</th><th>What to do</th></tr>
+<tr><td>Title</td><td>Product type, key feature and brand, in natural words</td></tr>
+<tr><td>Description</td><td>Original text: who it suits, materials, size, care, delivery and returns</td></tr>
+<tr><td>Images</td><td>Your own photos, compressed, with descriptive file names and alt text</td></tr>
+<tr><td>Price and stock</td><td>Accurate and consistent with the schema</td></tr>
+<tr><td>Reviews</td><td>Real customer reviews shown on the page</td></tr>
+<tr><td>Internal links</td><td>To the parent category and related products</td></tr>
+</table>
+
+<h2>4. Handle variations, filters and tags carefully</h2>
+<p>WooCommerce can generate many near-duplicate URLs. Decide which pages deserve to rank and control the rest.</p>
+<ul>
+<li><strong>Variable products:</strong> keep one main product page; avoid separate pages for each size or colour unless people truly search for them.</li>
+<li><strong>Filter and sort URLs:</strong> canonical them to the main category, or stop them being crawled.</li>
+<li><strong>Product tags:</strong> noindex tag archives unless each has real content and demand.</li>
+<li><strong>Cart, checkout and account pages:</strong> noindex, and keep them out of the sitemap.</li>
+</ul>
+
+<h2>5. Structured data</h2>
+<p>WooCommerce adds basic Product schema, and SEO plugins add more. Check what is output with Google's Rich Results Test. Make sure price, availability and currency match the page, include review markup only for real visible reviews, and avoid two plugins adding the same schema. Our <a href="/blog/faq-and-local-business-schema-guide/">schema markup guide</a> explains the types.</p>
+
+<h2>6. Speed: hosting, caching and images</h2>
+<p>WooCommerce is heavier than a brochure site. The biggest speed gains usually come from:</p>
+<table>
+<tr><th>Area</th><th>Action</th></tr>
+<tr><td>Hosting</td><td>Use a host sized for WooCommerce, with current PHP and server-level caching</td></tr>
+<tr><td>Caching</td><td>Page caching, with cart and checkout excluded</td></tr>
+<tr><td>Images</td><td>Compress, serve WebP, lazy-load and set sizes</td></tr>
+<tr><td>Plugins</td><td>Remove unused ones; each adds scripts and database queries</td></tr>
+<tr><td>Theme</td><td>Use a lightweight, maintained theme</td></tr>
+</table>
+<p>Read <a href="/blog/website-speed-core-web-vitals-ahmedabad-businesses/">how slow pages cost you enquiries</a> for what to measure.</p>
+
+<h2>7. Choose one SEO plugin and configure it</h2>
+<p>Yoast SEO and Rank Math are both widely used. Pick one. Configure titles and meta descriptions for products and categories, enable breadcrumbs, set the sitemap to include only pages you want indexed and review the "noindex" settings for archives. Do not rely on automatic titles alone; write them for your top categories and products.</p>
+
+<h2>8. Local and Maps visibility for stores with a showroom</h2>
+<p>If you have a shop or warehouse in Ahmedabad, set up a Google Business Profile with accurate details and link it to your store. Local searches such as "buy [product] in Ahmedabad" often show the map first. See our <a href="/blog/google-business-profile-seo-checklist/">Business Profile checklist</a>.</p>
+
+<h2>Plugins that cause SEO trouble</h2>
+<table>
+<tr><th>Problem</th><th>How it shows</th><th>Fix</th></tr>
+<tr><td>Two SEO plugins active</td><td>Duplicate titles, canonicals or schema</td><td>Keep one and disable the other's SEO output</td></tr>
+<tr><td>A filter or search plugin</td><td>Thousands of crawlable parameter URLs</td><td>Canonical or noindex low-value combinations</td></tr>
+<tr><td>Page builder bloat</td><td>Heavy scripts and slow pages</td><td>Use lightweight templates for product and category pages</td></tr>
+<tr><td>Image plugin set to the wrong size</td><td>Huge images on mobile</td><td>Set correct sizes and compress</td></tr>
+</table>
+
+<h2>Before you redesign or migrate a WooCommerce store</h2>
+<p>A new theme or platform can wipe out years of rankings if URLs change without redirects. Before any move, export every current URL with its traffic from Search Console, keep URLs the same where you can, map each old address to its new one with 301 redirects, check titles and schema on a staging copy and watch Search Console closely for the first weeks. Our <a href="/blog/website-redesign-checklist-protect-traffic/">website redesign checklist</a> covers the full process.</p>
+
+<h2>A WooCommerce SEO checklist</h2>
+<ul>
+<li>Search visibility setting is off, permalinks set, one URL version.</li>
+<li>Category pages have introductions, guidance and links.</li>
+<li>Top 20 products have original descriptions and good photos.</li>
+<li>Canonicals, noindex and sitemap rules are set for filters, tags and cart pages.</li>
+<li>Product schema tested, with no duplicates.</li>
+<li>Core Web Vitals checked on mobile.</li>
+<li>Reviews collected and shown.</li>
+<li>Search Console and analytics connected, with purchases tracked.</li>
+</ul>
+<p>For the full version, use our <a href="/blog/ecommerce-seo-checklist-2026/">ecommerce SEO checklist</a>.</p>
+
+<h2>How Digital Aura can help</h2>
+<p>We audit WooCommerce stores for the settings above, fix the technical issues and improve category and product pages in a planned order. Large catalogues sit in our SEO Advance plan; see <a href="/seo/pricing-ahmedabad/">SEO pricing</a>, from ₹15,000 to ₹1,50,000 a month plus GST. For store builds and fixes, see <a href="/services/woocommerce-development/">WooCommerce development</a>. Begin with a <a href="/seo/free-audit/">free SEO audit</a>.</p>
+`,
+    faqs: [
+      { q: "Is WooCommerce good for SEO?", a: "Yes, when it is configured well. WooCommerce sits on WordPress, which is flexible for SEO, but you need to set up permalinks, canonicals, schema, speed and category content properly." },
+      { q: "Which SEO plugin is best for WooCommerce?", a: "Yoast SEO and Rank Math are both widely used and capable. Choose one, configure it carefully and avoid running two plugins that both add titles, canonicals or schema." },
+      { q: "Should I noindex product tags?", a: "Usually yes. Tag archives often thin out and duplicate your category pages. Index a tag page only if it has unique content and real search demand." },
+      { q: "How do I handle variable products for SEO?", a: "Keep one main product page for the product and its variations, with clear options. Avoid creating a separate page for every size or colour unless shoppers genuinely search for each one." },
+      { q: "Does WooCommerce add product schema automatically?", a: "It adds basic Product schema, and SEO plugins add more. It is often incomplete or duplicated, so test your pages with Google's Rich Results Test and fix mismatches in price, availability and reviews." },
+      { q: "Why is my WooCommerce store slow?", a: "Common causes are weak hosting, no caching, large images, too many plugins and a heavy theme. Fix hosting and images first, then remove unused plugins." },
+      { q: "How long does WooCommerce SEO take?", a: "Technical fixes can be picked up in weeks. Ranking and sales growth usually build over three to six months or more, depending on competition and your catalogue." },
+      { q: "Can you fix SEO on an existing WooCommerce store?", a: "Yes. We audit settings, categories, products, schema and speed, then fix them in a priority order without redoing the store, unless the audit shows a rebuild is the better route." },
+    ],
+    ctaHeading: "Want Your WooCommerce Store to Rank?",
+    ctaText: "Get a free SEO audit of your WooCommerce store and a ranked list of fixes.",
+    ctaButton: "Get My Free SEO Audit",
+    cro: { href: "/seo/free-audit/", label: "Get a free SEO audit", sidebar: "WooCommerce store not ranking? Get a free audit.", bandHeading: "Is your WooCommerce store set up for SEO?", bandText: "Request a free SEO audit and get a ranked fix list for your store." },
+  },
+  {
+    slug: "best-seo-company-in-ahmedabad-how-to-compare",
+    title: "Best SEO Company in Ahmedabad: How to Compare and Shortlist (Criteria Checklist)",
+    titleHighlight: "Best SEO Company in Ahmedabad",
+    metaTitle: "Best SEO Company in Ahmedabad: How to Compare and Shortlist One",
+    metaDescription: "Searching for the best SEO company in Ahmedabad? Use this scorecard to compare agencies on proof, pricing, reporting and ownership, and shortlist the right one.",
+    category: "SEO Strategy",
+    date: "2026-11-25",
+    dateDisplay: "Nov 25, 2026",
+    readTime: "14 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "There is no single best SEO company in Ahmedabad, only the best fit for your business. To shortlist one, pick three agencies, then score each from 1 to 5 on proof of results, SEO done on their own site, written scope and pricing, tracking and reporting, who does the work, ownership of accounts, contract terms and honesty about limits. Treat guaranteed rankings, hidden fees and refusal to share a sample report as reasons to walk away.",
+    keyTakeaways: [
+      "A list titled 'best SEO company' is an opinion, often paid for. Build your own shortlist with a scorecard.",
+      "Score agencies on proof, their own rankings, written scope, price clarity, reporting, ownership and honesty.",
+      "Ask for a sample report and a written quote before any call about next steps.",
+      "SEO plans in Ahmedabad vary widely. Our own range is ₹15,000 to ₹1,50,000 a month plus GST, written after an audit.",
+      "Walk away from guaranteed rankings, hidden fees and accounts held in the agency's name.",
+    ],
+    contentHtml: `
+<p>Search "best SEO company in Ahmedabad" and you will see directory lists, agency blogs ranking themselves first and pages with no stated method. None of them tells you which company is right for <em>your</em> website, goal and budget. This guide gives you a scorecard you can apply yourself, a table of what to check and how, and an honest note on where we fit. If you want a question list to use on the first call, read our companion guide, <a href="/blog/how-to-choose-seo-company-ahmedabad/">how to choose an SEO company in Ahmedabad</a>. This article is the scorecard that goes with it.</p>
+<p><strong>A note on bias:</strong> Digital Aura is an SEO company in Ahmedabad, so we have an interest. We wrote the criteria so you can apply them to us as well.</p>
+
+<h2>Why "best SEO company" lists are hard to trust</h2>
+<ul>
+<li><strong>Self-ranked lists.</strong> Agencies publish "Top 10" lists with themselves at number one.</li>
+<li><strong>Paid placements.</strong> Some directories sell featured spots, so position may reflect spend, not quality.</li>
+<li><strong>No method.</strong> If a list does not say how agencies were scored, it is an opinion.</li>
+<li><strong>Different needs.</strong> A great agency for online stores may be wrong for a manufacturer, and the other way round.</li>
+</ul>
+<p>Use lists to find names, not to decide.</p>
+
+<h2>How to check an agency's own SEO in ten minutes</h2>
+<ol>
+<li>Search the service and city you are considering, such as "SEO company in Ahmedabad", and see whether the agency appears without ads.</li>
+<li>Open its blog. Look for original, specific posts with real numbers and examples, not copied or thin articles.</li>
+<li>Check its Google Business Profile: review count, review dates and whether the owner replies.</li>
+<li>Read two or three case studies. Do they state the starting problem, the work and a result that could be verified?</li>
+<li>Check that its website loads quickly on a phone and the contact details are clear.</li>
+</ol>
+
+<h2>Step 1: Write down what you need</h2>
+<p>Before comparing anyone, write four lines:</p>
+<ul>
+<li><strong>Goal:</strong> calls, enquiries, RFQs, online sales or brand visibility.</li>
+<li><strong>Market:</strong> Ahmedabad, Gujarat, India or export.</li>
+<li><strong>Budget:</strong> a monthly fee you can sustain for at least six months.</li>
+<li><strong>Site:</strong> what you have today, and whether it can be changed.</li>
+</ul>
+
+<h2>Step 2: Build a shortlist of three</h2>
+<table>
+<tr><th>Source</th><th>Useful for</th><th>Watch for</th></tr>
+<tr><td>Google Maps and profiles</td><td>Real reviews, how the agency replies</td><td>Read recent reviews, not just the star rating</td></tr>
+<tr><td>Directories (Clutch, GoodFirms, DesignRush)</td><td>Client reviews and team size</td><td>Featured placements can be paid</td></tr>
+<tr><td>Referrals</td><td>Honest views from clients</td><td>Ask what was measured</td></tr>
+<tr><td>Google search for the service</td><td>Which agencies rank for what you want</td><td>An agency that cannot rank itself may struggle to rank you</td></tr>
+</table>
+
+<h2>Step 3: Score each agency on eight criteria</h2>
+<table>
+<tr><th>Criterion</th><th>Strong answer</th><th>How to check</th></tr>
+<tr><td>1. Proof of results</td><td>Case studies with the starting problem, the work and numbers that can be verified</td><td>Ask to speak to a client; compare claims with Search Console screenshots</td></tr>
+<tr><td>2. Their own SEO</td><td>The agency ranks for relevant searches without paid ads</td><td>Search for its service and city, and check its blog quality</td></tr>
+<tr><td>3. Written scope and price</td><td>Monthly fee, GST, what is included and what is extra</td><td>Request the quote in writing before any "next steps" call</td></tr>
+<tr><td>4. Tracking and reporting</td><td>Calls, forms and WhatsApp counted, reported monthly</td><td>Ask for a sample report; see whether it shows enquiries or only rankings</td></tr>
+<tr><td>5. Who does the work</td><td>A named person, with real experience and cover for absence</td><td>Ask who will run your account and how many clients they handle</td></tr>
+<tr><td>6. Ownership</td><td>Your Search Console, Analytics and Business Profile stay in your name</td><td>Ask what happens to the accounts if you leave</td></tr>
+<tr><td>7. Contract terms</td><td>Length and notice period written down, no hidden lock-in</td><td>Read the proposal for cancellation terms</td></tr>
+<tr><td>8. Honesty</td><td>States what cannot be promised and when SEO is not the right first step</td><td>Ask which results they cannot guarantee and why</td></tr>
+</table>
+<p>Add up the scores, but treat criteria 3, 6 and 8 as deal breakers. An agency that is vague on price, holds your accounts or guarantees rankings is a risk however good the rest looks.</p>
+
+<h2>What SEO companies in Ahmedabad charge</h2>
+<p>Prices vary because scope varies. Treat any quote as meaningless unless it lists the work. For reference, our own plans are:</p>
+<table>
+<tr><th>Plan</th><th>Monthly fee (plus GST)</th><th>Best for</th></tr>
+<tr><td>SEO Basic</td><td>₹15,000 to ₹25,000</td><td>One city, a small site</td></tr>
+<tr><td>SEO Growth</td><td>₹25,000 to ₹50,000</td><td>More services and areas</td></tr>
+<tr><td>SEO Advance</td><td>₹50,000 to ₹1,50,000</td><td>Large catalogues, several locations, export or crowded markets</td></tr>
+</table>
+<p>See <a href="/seo/pricing-ahmedabad/">SEO packages and pricing in Ahmedabad</a> for what each includes, and <a href="/blog/seo-cost-in-ahmedabad/">SEO cost in Ahmedabad</a> for what changes the price. A very low quote is not always a bargain: low prices often mean thin work or outsourced work.</p>
+
+<h2>Red flags when hiring an SEO company</h2>
+<ul>
+<li><strong>Guaranteed rankings or "first page in 30 days".</strong> Nobody controls Google.</li>
+<li><strong>Bought links or private blog networks.</strong> These can harm your site.</li>
+<li><strong>No audit before the quote.</strong> A price without looking at your site is a guess.</li>
+<li><strong>Accounts in the agency's name.</strong> You may lose your data if you leave.</li>
+<li><strong>Reports with only keyword positions.</strong> Rankings are not enquiries.</li>
+<li><strong>Pressure to sign today.</strong> A good agency lets you compare.</li>
+</ul>
+<p>Our <a href="/blog/seo-audit-checklist-before-hiring-agency/">SEO audit checklist before hiring an agency</a> shows what you can check on your own site first.</p>
+
+<h2>How Digital Aura answers the scorecard</h2>
+<ul>
+<li><strong>Proof:</strong> see our <a href="/case-studies/">case studies</a> for the problem, work and outcome.</li>
+<li><strong>Pricing:</strong> published, as above, with the exact fee written after a free audit.</li>
+<li><strong>Reporting:</strong> monthly reports on calls and enquiries, not only rankings.</li>
+<li><strong>Ownership:</strong> Search Console, Analytics and your Business Profile remain yours.</li>
+<li><strong>Honesty:</strong> we do not guarantee rankings. If SEO is not your best first step, we say so.</li>
+<li><strong>Where we are:</strong> our team works from Hanspura, near Sardar Patel Ring Road, Ahmedabad.</li>
+</ul>
+<p>Judge us on the same eight points, and do the same for every agency on your shortlist. Read about our approach on our <a href="/seo-services-ahmedabad">SEO services in Ahmedabad</a> page.</p>
+
+<h2>A sample scorecard</h2>
+<table>
+<tr><th>Criterion (score 1 to 5)</th><th>Agency A</th><th>Agency B</th><th>Agency C</th></tr>
+<tr><td>Proof of results</td><td></td><td></td><td></td></tr>
+<tr><td>Their own SEO</td><td></td><td></td><td></td></tr>
+<tr><td>Written scope and price (deal breaker)</td><td></td><td></td><td></td></tr>
+<tr><td>Tracking and reporting</td><td></td><td></td><td></td></tr>
+<tr><td>Who does the work</td><td></td><td></td><td></td></tr>
+<tr><td>Ownership (deal breaker)</td><td></td><td></td><td></td></tr>
+<tr><td>Contract terms</td><td></td><td></td><td></td></tr>
+<tr><td>Honesty (deal breaker)</td><td></td><td></td><td></td></tr>
+<tr><td>Total</td><td></td><td></td><td></td></tr>
+</table>
+<p>Score only what an agency shows you in writing or on a call, not what its website says about itself. If two agencies score close, choose the one that gave the clearest written scope.</p>
+
+<h2>What a good SEO proposal should contain</h2>
+<p>A proposal is the best early test of an agency. A strong one is specific to your site, and it reads like a plan rather than a brochure.</p>
+<table>
+<tr><th>Section</th><th>What it should say</th><th>Warning sign if missing</th></tr>
+<tr><td>Findings from your site</td><td>Specific issues found on your own pages: indexing, speed, titles, content gaps, local profile</td><td>A generic proposal that could go to any company</td></tr>
+<tr><td>Goal and target searches</td><td>Which services and areas you want to rank for, and why those searches matter to your business</td><td>A long list of keywords with no link to your goals</td></tr>
+<tr><td>Work plan by month</td><td>What will be done in month one, month two and month three, in plain words</td><td>"Ongoing optimisation" with no detail</td></tr>
+<tr><td>What is not included</td><td>Content writing, design, paid tools or link costs, if they are extra</td><td>A surprise bill after you sign</td></tr>
+<tr><td>Reporting</td><td>What you will see each month and when the review call takes place</td><td>No mention of how progress is shown</td></tr>
+<tr><td>Timeline and honesty</td><td>When early signs appear and when results usually build, with no guaranteed positions</td><td>"Page one in 30 days"</td></tr>
+<tr><td>Price and terms</td><td>Fee, GST, contract length and notice period</td><td>A single number and pressure to sign</td></tr>
+</table>
+
+<h2>How to read an agency's case study</h2>
+<p>Every agency shows case studies. Not all of them prove anything. Read each one for five things:</p>
+<ol>
+<li><strong>The starting point.</strong> A growth story with no starting number is just a statement.</li>
+<li><strong>The work done.</strong> Look for specifics such as "rebuilt category pages" or "fixed indexing on 400 URLs", not "we optimised the website".</li>
+<li><strong>The time frame.</strong> Results over a few weeks on a tiny base can be luck; steady gains over months mean more.</li>
+<li><strong>The type of result.</strong> Enquiries, calls and sales matter more than impressions or rankings for random keywords.</li>
+<li><strong>Whether you can check it.</strong> Ask to speak to the client, or to see a Search Console screenshot with the dates visible.</li>
+</ol>
+
+<h2>What to ask for, by type of business</h2>
+<table>
+<tr><th>Your business</th><th>Ask the agency</th></tr>
+<tr><td>Manufacturer or B2B supplier</td><td>How will you build product and application pages, and how will RFQs be tracked? See our <a href="/blog/b2b-seo-manufacturers-gujarat-guide/">B2B SEO for manufacturers</a> guide.</td></tr>
+<tr><td>Online store</td><td>How will you handle category pages, duplicate URLs and product schema? See <a href="/blog/ecommerce-seo-checklist-2026/">the ecommerce SEO checklist</a>.</td></tr>
+<tr><td>Service company with several areas</td><td>How will you build area and service pages without thin, repeated content?</td></tr>
+<tr><td>Company serving customers overseas</td><td>How will you target other countries and languages, and which markets do you recommend first?</td></tr>
+<tr><td>A business with an old site that lost traffic</td><td>Can you tell me whether the drop is technical, content, a core update or something else, before quoting?</td></tr>
+</table>
+
+<h2>Local agency or national agency?</h2>
+<p>Both can do good work. An Ahmedabad agency tends to understand local search behaviour, English, Hindi and Gujarati queries, seasonal patterns and local directories, and is easy to meet. A national or international agency may bring larger teams and tools but can be less personal. What matters more than location is whether the team shows relevant proof and whether you can reach the person who does the work.</p>
+
+<h2>Timeline and budget: what to expect</h2>
+<table>
+<tr><th>Period</th><th>Typical progress</th></tr>
+<tr><td>Month 1</td><td>Audit, tracking, technical fixes and a content plan; little change in traffic yet</td></tr>
+<tr><td>Months 2 and 3</td><td>Pages improved or created; more impressions; first movement on easier searches</td></tr>
+<tr><td>Months 4 to 6</td><td>Rankings and enquiries start to build for target searches</td></tr>
+<tr><td>Months 6 to 12</td><td>Steadier growth, more pages ranking, lower reliance on ads</td></tr>
+</table>
+<p>These are typical ranges, not promises. Your own timeline depends on competition, your website's health and how much is published. Budget for at least six months before judging SEO, and compare it honestly with paid ads; our guide on <a href="/blog/seo-vs-paid-ads-which-first-ahmedabad/">SEO or paid ads first</a> explains when each makes sense.</p>
+
+<h2>What to do next</h2>
+<p>Write your four lines, shortlist three agencies, ask each for a written scope, price and sample report, and score them. If you would like us to be one of the three, request a <a href="/seo/free-audit/">free SEO audit</a> and compare it with the others.</p>
+`,
+    faqs: [
+      { q: "Which is the best SEO company in Ahmedabad?", a: "There is no single best company for everyone. The best one is the agency that fits your goal, budget and industry, shows proof of results, gives a written scope and price, and is honest about limits. Shortlist three and score them on the same criteria." },
+      { q: "How do I compare SEO companies in Ahmedabad?", a: "Score each from 1 to 5 on proof of results, their own SEO, written scope and price, tracking and reporting, who does the work, ownership of accounts, contract terms and honesty. Treat price clarity, ownership and honesty as deal breakers." },
+      { q: "Are 'top SEO companies in Ahmedabad' lists reliable?", a: "Use them to find names, not to decide. Many are self-ranked or include paid placements and do not explain their method. Check reviews, case studies and reports yourself." },
+      { q: "How much does an SEO company in Ahmedabad charge?", a: "It varies with scope. Our plans run from ₹15,000 to ₹1,50,000 a month plus GST: Basic ₹15,000 to ₹25,000, Growth ₹25,000 to ₹50,000 and Advance ₹50,000 to ₹1,50,000. The exact fee is written after a free audit." },
+      { q: "Should I choose the cheapest SEO company?", a: "Not on price alone. Very low quotes often mean thin or outsourced work. Compare what is included, how results are reported and who does the work." },
+      { q: "Can an SEO company guarantee first-page rankings?", a: "No. Nobody can honestly guarantee a ranking, because search results depend on competition, your site and Google's systems. Be cautious of anyone who does." },
+      { q: "What should an SEO report include?", a: "Enquiries from calls, forms and WhatsApp, the pages and searches that grew, work completed that month, issues found and next steps. A report that shows only keyword positions is not enough." },
+      { q: "Should I hire a local SEO company in Ahmedabad?", a: "A local agency understands how Ahmedabad customers search, including language and areas, and is easy to meet. It is not essential, but local knowledge helps when your customers are in the city." },
+    ],
+    ctaHeading: "Want Us to Be One of Your Three?",
+    ctaText: "Request a free SEO audit and get a written plan and quote you can compare with other agencies.",
+    ctaButton: "Get My Free SEO Audit",
+    cro: { href: "/seo/free-audit/", label: "Get a free SEO audit", sidebar: "Comparing SEO companies? Get a written audit and quote to compare.", bandHeading: "Comparing SEO companies in Ahmedabad?", bandText: "Request a free SEO audit and get a written plan and quote you can compare." },
+  },
+  {
+    slug: "ecommerce-seo-checklist-2026",
+    title: "Ecommerce SEO Checklist for Online Stores (2026): 40 Checks Before You Hire Anyone",
+    titleHighlight: "Ecommerce SEO Checklist",
+    metaTitle: "Ecommerce SEO Checklist 2026: 40 Checks for Your Online Store",
+    metaDescription: "Use this ecommerce SEO checklist to audit your whole online store: technical, category, product, content, links and tracking checks, plus what to fix first and why.",
+    category: "eCommerce SEO",
+    date: "2026-11-28",
+    dateDisplay: "Nov 28, 2026",
+    readTime: "11 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "An ecommerce SEO checklist covers six areas: technical health, structure, product pages, content, links and tracking. Start with crawling and indexing, then category pages, then product pages for your best sellers. Run through the checks in order, note what fails, and fix the highest-impact items first rather than changing everything at once.",
+    keyTakeaways: [
+      "Audit in six areas: technical, structure and categories, products, content, links and trust, tracking.",
+      "Category pages and indexing problems usually cost the most traffic, so check them first.",
+      "Fix the top 20 products and top 10 categories before you touch the long tail.",
+      "Set up tracking for orders and enquiries before you change anything, so you can see what worked.",
+      "A checklist finds problems. An audit explains which ones matter and in what order to fix them.",
+    ],
+    contentHtml: `
+<p>Online stores break in predictable ways. Pages that should be in Google are missing, pages that should not be there are everywhere, product text is copied and mobile pages crawl. This <strong>ecommerce SEO checklist</strong> lists the 40 checks we run on a store, grouped so you can work through it in a weekend. For the story behind the most common failures, read <a href="/blog/ecommerce-seo-mistakes-and-fixes/">10 common ecommerce SEO mistakes</a>. If you would rather have it audited for you, see our <a href="/services/seo-content-marketing/ecommerce-seo/">ecommerce SEO services</a>.</p>
+
+<h2>How to use this checklist</h2>
+<p>Copy the lists into a spreadsheet with three columns: <em>Check</em>, <em>Pass or fail</em> and <em>Notes</em>. Work top to bottom. Do not fix anything until you have finished a section, so you can rank the fixes by impact.</p>
+
+<h2>1. Technical health (10 checks)</h2>
+<table>
+<tr><th>#</th><th>Check</th><th>How to test</th></tr>
+<tr><td>1</td><td>The store is on one address (https, one version of www)</td><td>Type each version; all should redirect to one</td></tr>
+<tr><td>2</td><td>No site-wide noindex or robots.txt block</td><td>Open yourstore.com/robots.txt and check page source</td></tr>
+<tr><td>3</td><td>XML sitemap lists only indexable pages</td><td>Open the sitemap; no cart, search or redirected URLs</td></tr>
+<tr><td>4</td><td>Sitemap submitted in Search Console</td><td>Search Console, Sitemaps</td></tr>
+<tr><td>5</td><td>Pages report shows few errors</td><td>Search Console, Pages</td></tr>
+<tr><td>6</td><td>Cart, checkout and account pages are noindexed</td><td>View source of each page</td></tr>
+<tr><td>7</td><td>Mobile pages load in a few seconds</td><td>PageSpeed Insights on mobile</td></tr>
+<tr><td>8</td><td>Core Web Vitals pass on key templates</td><td>Search Console, Core Web Vitals</td></tr>
+<tr><td>9</td><td>Product and category text is in the HTML, not loaded only by script</td><td>View source and search for a product name</td></tr>
+<tr><td>10</td><td>No long redirect chains or broken internal links</td><td>A crawler such as Screaming Frog</td></tr>
+</table>
+
+<h2>2. Structure and category pages (8 checks)</h2>
+<table>
+<tr><th>#</th><th>Check</th><th>What good looks like</th></tr>
+<tr><td>11</td><td>Every product is within three clicks of home</td><td>Shallow hierarchy with clear categories</td></tr>
+<tr><td>12</td><td>Category URLs are short and readable</td><td>/mens-kurtas/ not /cat?id=482</td></tr>
+<tr><td>13</td><td>Each category has a unique title and heading</td><td>Includes the real category name</td></tr>
+<tr><td>14</td><td>Each top category has an introduction above the products</td><td>Two or three useful sentences</td></tr>
+<tr><td>15</td><td>Each top category has buying guidance below the products</td><td>Sizes, materials, how to choose, delivery</td></tr>
+<tr><td>16</td><td>Breadcrumbs show the path</td><td>Home, Category, Product</td></tr>
+<tr><td>17</td><td>Filter and sort URLs are canonicalised or blocked</td><td>No thousands of near-duplicate URLs</td></tr>
+<tr><td>18</td><td>Pagination works and is crawlable</td><td>Links to page 2 and beyond exist</td></tr>
+</table>
+
+<h2>3. Product pages (10 checks)</h2>
+<table>
+<tr><th>#</th><th>Check</th><th>What good looks like</th></tr>
+<tr><td>19</td><td>Unique title per product</td><td>Type, key feature, brand</td></tr>
+<tr><td>20</td><td>Unique meta description for top products</td><td>Benefit, delivery and a reason to click</td></tr>
+<tr><td>21</td><td>Original description for best sellers</td><td>Not copied from the supplier</td></tr>
+<tr><td>22</td><td>One H1 per page</td><td>The product name</td></tr>
+<tr><td>23</td><td>Product schema with price and availability</td><td>Passes the Rich Results Test</td></tr>
+<tr><td>24</td><td>Images are compressed, with descriptive file names and alt text</td><td>Fast on mobile</td></tr>
+<tr><td>25</td><td>Several photo angles, ideally your own</td><td>Shoppers can judge the product</td></tr>
+<tr><td>26</td><td>Variants share one page where sensible</td><td>No separate page for each colour unless searched for</td></tr>
+<tr><td>27</td><td>Out-of-stock rules are defined</td><td>Keep, redirect or 410, not delete blindly</td></tr>
+<tr><td>28</td><td>Delivery, returns and size information is visible</td><td>Answers the questions shoppers ask</td></tr>
+</table>
+
+<h2>4. Content (4 checks)</h2>
+<ul>
+<li><strong>29.</strong> Buying guides exist for your main categories, such as "how to choose" and "size guide".</li>
+<li><strong>30.</strong> A blog or guide section answers questions your customers ask before buying.</li>
+<li><strong>31.</strong> Content links to relevant categories and products with natural anchor text.</li>
+<li><strong>32.</strong> Old, thin or duplicate pages have been merged, improved or redirected.</li>
+</ul>
+
+<h2>5. Links, trust and local (4 checks)</h2>
+<ul>
+<li><strong>33.</strong> Real reviews appear on product pages, and you reply to feedback.</li>
+<li><strong>34.</strong> Contact details, an About page, GST or business details, and policies are easy to find.</li>
+<li><strong>35.</strong> If you have a showroom or warehouse, your Google Business Profile is complete; see our <a href="/blog/google-business-profile-seo-checklist/">Business Profile checklist</a>.</li>
+<li><strong>36.</strong> Links from other sites come from relevant, real sources, not bought lists.</li>
+</ul>
+
+<h2>6. Tracking (4 checks)</h2>
+<ul>
+<li><strong>37.</strong> Google Search Console is connected and verified.</li>
+<li><strong>38.</strong> Google Analytics 4 records orders, revenue and key events.</li>
+<li><strong>39.</strong> Organic traffic is separated from paid in your reports.</li>
+<li><strong>40.</strong> You record a monthly baseline: organic clicks, impressions, top category rankings and organic orders.</li>
+</ul>
+
+<h2>What to fix first</h2>
+<table>
+<tr><th>If these fail</th><th>Do this first</th><th>Why</th></tr>
+<tr><td>Checks 1 to 6</td><td>Indexing and crawling fixes</td><td>If Google cannot index the right pages, nothing else matters</td></tr>
+<tr><td>Checks 12 to 17</td><td>Category page work</td><td>Categories match the broader searches that bring most traffic</td></tr>
+<tr><td>Checks 7 to 9</td><td>Speed and rendering</td><td>Slow pages lose shoppers and rankings</td></tr>
+<tr><td>Checks 19 to 25</td><td>Product pages for the top 20 sellers</td><td>Improves the pages that earn the most money</td></tr>
+<tr><td>Checks 37 to 40</td><td>Tracking, in parallel with everything</td><td>You cannot prove progress without a baseline</td></tr>
+</table>
+
+<h2>Platform notes</h2>
+<p>The same checks apply on every platform, but the fixes differ. Shopify stores often need attention on duplicate collection URLs and app bloat; see our <a href="/blog/shopify-seo-tutorial-2026/">Shopify SEO tutorial</a>. WooCommerce stores need attention on permalinks, filters and plugins; see our <a href="/blog/woocommerce-seo-guide-2026/">WooCommerce SEO guide</a>. Fashion and apparel stores have their own category and image needs, covered in <a href="/blog/seo-for-fashion-apparel-ecommerce/">SEO for fashion and apparel stores</a>. For general technical depth, see <a href="/blog/technical-seo-practices-2026/">technical SEO practices</a>.</p>
+
+<h2>How Digital Aura can help</h2>
+<p>We run this checklist as part of a free audit, score each check and send a written list ranked by impact. Ecommerce SEO sits in our SEO Advance plan when a store has a large catalogue, from ₹50,000 to ₹1,50,000 a month plus GST; smaller stores can begin on a lower plan. See <a href="/seo/pricing-ahmedabad/">SEO pricing</a> and request a <a href="/seo/free-audit/">free SEO audit</a>.</p>
+`,
+    faqs: [
+      { q: "What should an ecommerce SEO checklist include?", a: "Technical health, site structure and category pages, product pages, content, links and trust signals, and tracking. Work through them in that order and fix the highest-impact failures first." },
+      { q: "How often should I audit my online store for SEO?", a: "Do a full audit once or twice a year and after any redesign, platform change or big catalogue update. Review Search Console monthly for new errors." },
+      { q: "Which pages should I optimise first on an ecommerce site?", a: "Start with your top 10 categories and top 20 products by revenue. Categories match broad searches, and top products earn the most, so improvements there pay back fastest." },
+      { q: "Do I need product schema?", a: "Yes, it is strongly recommended. Product and Offer schema describe price and availability and can make listings eligible for richer search results. Test it with Google's Rich Results Test." },
+      { q: "Should I noindex filter pages?", a: "Usually yes, or canonicalise them to the main category. Allow a filtered page to rank only when there is real search demand for it, such as a popular category plus colour, and give it its own content." },
+      { q: "Can I do an ecommerce SEO audit myself?", a: "You can run the basic checks yourself using Search Console, PageSpeed Insights and a crawler. A specialist helps prioritise fixes and spot problems the tools do not explain." },
+      { q: "How long until ecommerce SEO fixes show results?", a: "Technical fixes can be picked up in weeks. Rankings and organic sales usually build over three to six months, depending on competition and the size of your catalogue." },
+      { q: "How much does ecommerce SEO cost in Ahmedabad?", a: "Our SEO plans run from ₹15,000 to ₹1,50,000 a month plus GST. Large catalogues need the Advance plan. The exact fee is written after a free audit." },
+    ],
+    ctaHeading: "Want Us to Run This Checklist on Your Store?",
+    ctaText: "Get a free SEO audit and a ranked list of fixes for your online store.",
+    ctaButton: "Get My Free SEO Audit",
+    cro: { href: "/seo/free-audit/", label: "Get a free SEO audit", sidebar: "Want this checklist run on your store? Get a free audit.", bandHeading: "Want your online store audited?", bandText: "Request a free SEO audit and get a ranked fix list for your store." },
+  },
+  {
+    slug: "seo-for-fashion-apparel-ecommerce",
+    title: "SEO for Fashion and Apparel Online Stores: Category Pages, Images, Product Schema",
+    titleHighlight: "Fashion and Apparel Online Stores",
+    metaTitle: "Fashion SEO Agency Guide: Category Pages, Images and Schema 2026",
+    metaDescription: "A fashion SEO agency guide for apparel stores: category structure, size guides, image SEO, product schema, seasonal collections and the results to expect in India.",
+    category: "eCommerce SEO",
+    date: "2026-11-29",
+    dateDisplay: "Nov 29, 2026",
+    readTime: "10 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "Fashion store SEO rests on three things: category pages that match how shoppers search, rich product pages and correct product schema. That means original descriptions, size information, several quality images, and colour, size and material data. Handle seasonal collections on stable URLs, show real reviews, and keep variants on one page, so your best categories keep their rankings all year.",
+    keyTakeaways: [
+      "Fashion shoppers search by type, occasion, fabric, fit and price, so categories should mirror those searches.",
+      "Images carry fashion SEO. Use several angles, descriptive file names, alt text and compressed modern formats.",
+      "Size guides, fabric care and return information answer questions that reduce returns and help rankings.",
+      "Keep seasonal and festive collections on permanent URLs and refresh them, instead of creating new pages every year.",
+      "Product schema with colour, size, material, price and availability helps Google understand each item.",
+    ],
+    contentHtml: `
+<p>Fashion is one of the most competitive ecommerce categories, and also one of the most visual. A shopper who searches "cotton kurti for office wear" wants to see products, not an essay. This guide shows how apparel stores in Ahmedabad and across India can structure categories, images and data so that Google, and the shopper, can tell exactly what each page sells. If you are choosing a <strong>fashion SEO agency</strong>, the checks below also show what good work looks like. For the general checklist, start with our <a href="/blog/ecommerce-seo-checklist-2026/">ecommerce SEO checklist</a>.</p>
+
+<h2>How fashion shoppers search</h2>
+<table>
+<tr><th>Search pattern</th><th>Example</th><th>Page that should answer it</th></tr>
+<tr><td>Type</td><td>"women's cotton kurta"</td><td>A category page</td></tr>
+<tr><td>Occasion</td><td>"wedding sherwani for men"</td><td>An occasion category or collection</td></tr>
+<tr><td>Fabric</td><td>"pure silk saree"</td><td>A fabric category or filtered landing page</td></tr>
+<tr><td>Fit or size</td><td>"plus size party dress"</td><td>A size category or guide</td></tr>
+<tr><td>Brand or collection</td><td>"[your brand] summer collection"</td><td>A brand or collection page</td></tr>
+<tr><td>Specific product</td><td>"[product name] blue"</td><td>The product page</td></tr>
+</table>
+<p>Most of these are best answered by category pages, not individual products. That is where fashion SEO is won or lost.</p>
+
+<h2>Build a category structure that matches the searches</h2>
+<ul>
+<li>Use two or three levels: department, type, then a refinement such as occasion or fabric.</li>
+<li>Give every important category a unique title, heading, short introduction and buying guidance below the products.</li>
+<li>Create landing pages for refinements that people really search, such as "cotton sarees" or "bridal lehengas", rather than letting filters create thousands of thin pages.</li>
+<li>Link related categories to each other and show breadcrumbs.</li>
+</ul>
+
+<h2>Product pages that sell and rank</h2>
+<table>
+<tr><th>Element</th><th>What to include</th></tr>
+<tr><td>Title</td><td>Product type, key feature and brand, for example "Women's Cotton Kurta, A-Line | Brand"</td></tr>
+<tr><td>Description</td><td>Fabric, fit, length, occasion, care, and styling suggestions, in your own words</td></tr>
+<tr><td>Size information</td><td>A size chart with measurements, and a note on model height and size worn</td></tr>
+<tr><td>Delivery and returns</td><td>Clear, visible, and accurate</td></tr>
+<tr><td>Reviews</td><td>Real reviews, ideally with fit feedback such as "runs small"</td></tr>
+<tr><td>Related items</td><td>Complete the look and similar styles, linked as normal links</td></tr>
+</table>
+
+<h2>Image SEO for fashion</h2>
+<p>Images drive fashion decisions and also appear in Google Images and Lens. Treat them as content.</p>
+<ul>
+<li>Show the front, back, detail, fabric close-up and a model shot.</li>
+<li>Use descriptive file names, such as <em>blue-cotton-kurta-front.webp</em>, not <em>IMG_4821.jpg</em>.</li>
+<li>Write alt text that describes the image in plain words, not a list of keywords.</li>
+<li>Compress images and use modern formats so category grids load quickly on mobile. See <a href="/blog/website-speed-core-web-vitals-ahmedabad-businesses/">website speed and Core Web Vitals</a>.</li>
+<li>Set image width and height so pages do not shift while loading.</li>
+</ul>
+
+<h2>Product schema for apparel</h2>
+<p>Add Product and Offer structured data with the product name, image, description, brand, price, currency and availability. For apparel, include colour, size, material and, where you have them, GTIN or SKU codes. Only add review markup for real reviews visible on the page. Test pages with Google's Rich Results Test. Our <a href="/blog/faq-and-local-business-schema-guide/">schema guide</a> explains each type.</p>
+
+<h2>Handling variants, sizes and colours</h2>
+<table>
+<tr><th>Situation</th><th>Recommended approach</th></tr>
+<tr><td>One kurta in five sizes</td><td>One product page with a size selector</td></tr>
+<tr><td>One kurta in three colours</td><td>One page with colour options, unless shoppers search for each colour by name</td></tr>
+<tr><td>Different fabrics or cuts</td><td>Separate pages, because they are different products</td></tr>
+<tr><td>Colour with real search demand</td><td>A filtered landing page with its own content, or a separate page with a unique description</td></tr>
+</table>
+
+<h2>Seasonal and festive collections</h2>
+<p>Festive, wedding and summer searches spike every year. Do not create a new "Diwali collection 2026" page each year and abandon the old one. Keep one permanent page, such as <em>/festive-collection/</em>, refresh its products and text before each season and link to it early. Pages that keep their address keep their history and rankings.</p>
+
+<h2>Content that helps shoppers decide</h2>
+<ul>
+<li>Size and fit guides, including how to measure.</li>
+<li>Fabric guides: cotton, linen, silk, georgette, what they feel like and how to wash them.</li>
+<li>Occasion guides: what to wear to an office, a wedding or a festival.</li>
+<li>Care and return information in plain language.</li>
+</ul>
+<p>These pages attract buyers at the research stage and link naturally to categories. For stores that sell through Meta ads as well, see how <a href="/meta-ads-agency-ahmedabad/ecommerce/">Meta ads for ecommerce</a> can work alongside SEO, and for the wider marketing mix see <a href="/blog/digital-marketing-for-ecommerce-textile-brands-ahmedabad/">digital marketing for ecommerce and textile brands in Ahmedabad</a>.</p>
+
+<h2>Common fashion SEO mistakes</h2>
+<ul>
+<li>Copying supplier descriptions and size charts.</li>
+<li>Photos too large for mobile, so grids load slowly.</li>
+<li>No category text, only a grid.</li>
+<li>New seasonal pages every year, discarding old ones.</li>
+<li>Out-of-stock styles deleted instead of redirected to the closest alternative.</li>
+</ul>
+
+<h2>What to expect, and how to choose help</h2>
+<p>Fashion categories are crowded, so rankings usually build over three to six months or longer. When choosing a fashion SEO agency, ask to see category pages it has improved, how it handles images and variants and how it reports organic orders. Our plans run from ₹15,000 to ₹1,50,000 a month plus GST; large catalogues need the Advance plan. See <a href="/seo/pricing-ahmedabad/">SEO pricing</a>.</p>
+
+<h2>How Digital Aura can help</h2>
+<p>We audit apparel stores on category structure, image weight, schema and variants, and list the fixes in order of impact. Learn more about our <a href="/services/seo-content-marketing/ecommerce-seo/">ecommerce SEO services</a> or start with a <a href="/seo/free-audit/">free SEO audit</a>. For stores on Shopify, our <a href="/blog/shopify-seo-tutorial-2026/">Shopify SEO tutorial</a> covers platform specifics.</p>
+`,
+    faqs: [
+      { q: "How is SEO for fashion different from other ecommerce SEO?", a: "Fashion is visual and seasonal. Category structure by type, occasion and fabric, strong image SEO, size and fit information, and stable seasonal pages matter more than in many other categories." },
+      { q: "What are the most important pages for a fashion store?", a: "Category pages, such as type, occasion and fabric categories, usually bring the most search traffic. Then your top-selling product pages and size, fabric and care guides." },
+      { q: "How should I handle sizes and colours?", a: "Keep sizes on one product page with a selector. Keep colours on the same page too, unless shoppers search for a specific colour by name, in which case give that colour its own content or landing page." },
+      { q: "Do images really matter for fashion SEO?", a: "Yes. Shoppers decide with photos, and images appear in Google Images and visual search. Use several angles, descriptive file names, alt text and compressed formats so pages load quickly." },
+      { q: "Should I make a new page for each festive season?", a: "No. Keep one permanent collection page and refresh its products and text each season. A page that keeps its address keeps its rankings and links." },
+      { q: "Do I need product schema for clothes?", a: "Yes. Product and Offer schema with price, availability, colour, size and material help Google understand each item. Add review markup only when real reviews are visible." },
+      { q: "How long does SEO take for a fashion brand?", a: "Expect early technical gains within weeks and ranking growth over three to six months or longer, depending on how crowded your categories are and the size of your catalogue." },
+      { q: "What should I ask a fashion SEO agency?", a: "Ask for examples of improved category pages, how they handle images, variants and seasonal pages, how they report organic orders and what is included in the monthly fee. Avoid anyone who guarantees rankings." },
+    ],
+    ctaHeading: "Want Your Fashion Store to Rank?",
+    ctaText: "Get a free SEO audit of your category pages, images and product data.",
+    ctaButton: "Get My Free SEO Audit",
+    cro: { href: "/seo/free-audit/", label: "Get a free SEO audit", sidebar: "Fashion or apparel store? Get a free audit of your categories and images.", bandHeading: "Is your apparel store ready to rank?", bandText: "Request a free SEO audit and get a ranked fix list for your categories and images." },
+  },
+  {
+    slug: "how-long-does-ecommerce-seo-take",
+    title: "How Long Does Ecommerce SEO Take to Show Results? Timeline, Cost and Packages",
+    titleHighlight: "Ecommerce SEO",
+    metaTitle: "Ecommerce SEO Packages: How Long Results Take and What It Costs",
+    metaDescription: "How long does ecommerce SEO take? See a realistic timeline by month, what changes the speed, what ecommerce SEO packages include and what they cost in India today.",
+    category: "eCommerce SEO",
+    date: "2026-11-30",
+    dateDisplay: "Nov 30, 2026",
+    readTime: "9 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "Ecommerce SEO shows technical gains in 4 to 8 weeks, ranking movement in 3 to 4 months and sales growth in 6 to 12. The speed depends on competition, catalogue size, site health, content and links. Our SEO plans run from ₹15,000 to ₹1,50,000 a month plus GST, with large catalogues on the Advance plan. No honest agency guarantees a date.",
+    keyTakeaways: [
+      "Expect technical fixes to register in weeks, rankings in three to four months and sales growth in six to twelve.",
+      "Speed depends on competition, catalogue size, site health, content depth and the links you earn.",
+      "Ecommerce SEO packages should list the work: audit, category and product optimisation, technical fixes, content, links and reporting.",
+      "Measure organic orders and revenue, not only keyword rankings.",
+      "If you need sales this month, run paid ads alongside SEO, and treat SEO as a compounding asset.",
+    ],
+    contentHtml: `
+<p>The first question most store owners ask is "how long until I see results?" The honest answer is that it depends, but not randomly. There is a typical path, and there are clear factors that make it shorter or longer. This guide gives a realistic timeline, explains what moves it, and sets out what <strong>ecommerce SEO packages</strong> should include and cost in India. For the general answer, see <a href="/blog/how-long-does-seo-take-ahmedabad/">how long SEO takes in Ahmedabad</a>.</p>
+
+<h2>A realistic ecommerce SEO timeline</h2>
+<table>
+<tr><th>Period</th><th>What happens</th><th>What you may see</th></tr>
+<tr><td>Weeks 1 to 4</td><td>Audit, tracking set-up, technical fixes, priority category and product list</td><td>Little traffic change; errors drop and pages are re-crawled</td></tr>
+<tr><td>Months 2 to 3</td><td>Category pages improved, top products rewritten, schema and speed work</td><td>More impressions in Search Console, first movement for long searches</td></tr>
+<tr><td>Months 3 to 6</td><td>Content and links build; more categories optimised</td><td>Rising clicks, some category pages reach page one, first organic orders from new pages</td></tr>
+<tr><td>Months 6 to 12</td><td>Wider catalogue, seasonal pages, authority growth</td><td>Steadier organic revenue, lower dependence on ads</td></tr>
+<tr><td>After 12 months</td><td>Compounding: older pages keep earning while new ones add</td><td>Organic becomes a reliable sales channel</td></tr>
+</table>
+<p>These are typical ranges, not promises. A new store in a crowded niche can take longer, and a store with a strong brand and clean site can move faster.</p>
+
+<h2>What makes ecommerce SEO faster or slower</h2>
+<table>
+<tr><th>Factor</th><th>Faster when</th><th>Slower when</th></tr>
+<tr><td>Competition</td><td>You sell a niche or local product</td><td>You compete with large marketplaces and national brands</td></tr>
+<tr><td>Site health</td><td>The site is clean and fast</td><td>There are duplicates, errors and slow pages to fix first</td></tr>
+<tr><td>Catalogue size</td><td>A focused range with clear categories</td><td>Thousands of products with thin or copied content</td></tr>
+<tr><td>Content</td><td>Original descriptions, guides and strong category pages</td><td>Supplier text and empty category grids</td></tr>
+<tr><td>Authority and links</td><td>A known brand with real mentions and reviews</td><td>A new domain with few links</td></tr>
+<tr><td>Consistency</td><td>Work continues monthly</td><td>Work stops and starts</td></tr>
+</table>
+
+<h2>What ecommerce SEO packages should include</h2>
+<ul>
+<li><strong>A baseline and audit:</strong> traffic, rankings, errors and a written list of fixes.</li>
+<li><strong>Technical fixes:</strong> indexing, duplicates, redirects, speed and mobile.</li>
+<li><strong>Category optimisation:</strong> titles, introductions, buying guidance and internal links.</li>
+<li><strong>Product optimisation:</strong> titles, descriptions, images and schema for priority products.</li>
+<li><strong>Content:</strong> buying guides and answers to shopper questions.</li>
+<li><strong>Link and mention building</strong> from relevant, real sources.</li>
+<li><strong>Tracking and reporting:</strong> organic orders and revenue, not only keyword positions.</li>
+</ul>
+<p>Be wary of packages that list only "100 keywords" or "20 backlinks". Quantity is not a strategy.</p>
+
+<h2>What ecommerce SEO costs in India</h2>
+<p>Costs vary by agency and scope. For reference, our own plans for businesses in Ahmedabad are below, each exclusive of GST.</p>
+<table>
+<tr><th>Plan</th><th>Monthly fee</th><th>Suits</th></tr>
+<tr><td>SEO Basic</td><td>₹15,000 to ₹25,000</td><td>A small store with a limited range, one market</td></tr>
+<tr><td>SEO Growth</td><td>₹25,000 to ₹50,000</td><td>A growing store with more categories and regular content</td></tr>
+<tr><td>SEO Advance</td><td>₹50,000 to ₹1,50,000</td><td>Large catalogues, category and product optimisation, AI search work, several markets</td></tr>
+</table>
+<p>See <a href="/seo/pricing-ahmedabad/">SEO packages and pricing in Ahmedabad</a> for what each includes. The exact fee is written after a free audit and covers the work, not a promise of rankings.</p>
+
+<h2>How to measure whether ecommerce SEO is working</h2>
+<table>
+<tr><th>Measure</th><th>Where</th><th>Healthy sign</th></tr>
+<tr><td>Non-brand clicks</td><td>Search Console</td><td>Rising month on month</td></tr>
+<tr><td>Category page rankings</td><td>Search Console or a rank tool</td><td>Moving toward page one</td></tr>
+<tr><td>Organic orders and revenue</td><td>GA4 or your store reports</td><td>Growing, with a stable conversion rate</td></tr>
+<tr><td>Indexed pages</td><td>Search Console Pages report</td><td>Wanted pages indexed, junk reduced</td></tr>
+<tr><td>Speed and Core Web Vitals</td><td>Search Console</td><td>More URLs passing</td></tr>
+</table>
+
+<h2>Should I wait for SEO, or run ads too?</h2>
+<p>SEO is slower than paid ads, but it compounds and does not charge per click. If you need sales now, run Google Shopping or search ads and Meta ads alongside SEO, then lean on organic as it grows. See <a href="/blog/seo-vs-paid-ads-which-first-ahmedabad/">SEO or paid ads, which first</a>.</p>
+
+<h2>Warning signs that something is wrong</h2>
+<ul>
+<li>No report after three months showing what was done.</li>
+<li>Rankings improve only for brand or unrelated terms.</li>
+<li>The agency changes many things at once and cannot say what worked.</li>
+<li>Promises of page-one rankings in 30 or 60 days.</li>
+</ul>
+
+<h2>How Digital Aura can help</h2>
+<p>We set a baseline, agree a fix order and report monthly on organic clicks, rankings and orders. See our <a href="/services/seo-content-marketing/ecommerce-seo/">ecommerce SEO services</a>, run the <a href="/blog/ecommerce-seo-checklist-2026/">ecommerce SEO checklist</a> yourself, or request a <a href="/seo/free-audit/">free SEO audit</a>.</p>
+`,
+    faqs: [
+      { q: "How long does ecommerce SEO take to show results?", a: "Technical gains can appear in 4 to 8 weeks, first ranking movement in 3 to 4 months and meaningful organic sales in 6 to 12 months. The timeline depends on competition, catalogue size, site health, content and links." },
+      { q: "Why is ecommerce SEO slower than ads?", a: "Search engines must find, assess and trust your pages, and your site must earn authority. Ads show immediately but stop when you stop paying. SEO takes longer but builds assets that keep earning." },
+      { q: "What is included in ecommerce SEO packages?", a: "A baseline and audit, technical fixes, category and product optimisation, content, link and mention building, and reporting on organic orders and revenue. Ask for the work to be listed in writing." },
+      { q: "How much do ecommerce SEO packages cost in India?", a: "It varies by agency and scope. Our plans for businesses in Ahmedabad run from ₹15,000 to ₹1,50,000 a month plus GST, with large catalogues on the Advance plan. The exact fee is written after a free audit." },
+      { q: "Can an agency guarantee ecommerce SEO rankings?", a: "No. Nobody controls Google. An honest agency lists its work, reports progress on clicks, rankings and orders and does not promise a date or position." },
+      { q: "Should I run ads while waiting for SEO?", a: "If you need sales now, yes. Run search or shopping ads and Meta ads while SEO builds, then rely more on organic as it grows. Track both separately." },
+      { q: "How do I know ecommerce SEO is working?", a: "Look for rising non-brand clicks, category pages moving up, more indexed pages you want, better Core Web Vitals and growing organic orders and revenue." },
+      { q: "Does a new store take longer to rank?", a: "Usually, yes. A new domain has no history or links, so authority takes time. Start with a clean technical set-up, strong category pages and a few genuine mentions and reviews." },
+    ],
+    ctaHeading: "Want a Realistic Ecommerce SEO Plan?",
+    ctaText: "Get a free SEO audit with a timeline, fix order and written quote for your store.",
+    ctaButton: "Get My Free SEO Audit",
+    cro: { href: "/seo/free-audit/", label: "Get a free SEO audit", sidebar: "Want a realistic timeline for your store? Get a free audit.", bandHeading: "How long will SEO take for your store?", bandText: "Request a free SEO audit and get a timeline, fix order and written quote." },
+  },
+  {
+    slug: "google-ads-cost-in-ahmedabad",
+    title: "Google Ads Cost in Ahmedabad (2026): Agency Fee vs Ad Budget, What to Pay",
+    titleHighlight: "Google Ads Cost in Ahmedabad",
+    metaTitle: "Google Ads Cost in Ahmedabad 2026: Agency Fee vs Ad Budget Guide",
+    metaDescription: "Google Ads cost in Ahmedabad has three parts: ad spend, the agency fee and GST. See typical fees, Planner bid ranges, a budget example and what to pay in 2026 (INR).",
+    category: "Google Ads",
+    date: "2026-11-25",
+    dateDisplay: "Nov 25, 2026",
+    readTime: "14 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "Google Ads cost has three parts: your ad spend paid to Google, the agency fee and GST on that fee. Our management fee is ₹15,000 to ₹60,000 a month, and you decide the ad budget. Cost per click depends on the search: Google's own Planner estimates for Ahmedabad service searches range from a few rupees to several hundred rupees.",
+    keyTakeaways: [
+      "Google Ads cost is three separate things: ad spend paid to Google, the agency fee and GST on the fee.",
+      "Our Google Ads management fee runs from ₹15,000 to ₹60,000 a month. You choose the ad spend.",
+      "Cost per click varies by search and competition. Check Google's estimates before you set a budget.",
+      "A cheap click is not a cheap lead. Judge Google Ads by cost per enquiry and cost per customer.",
+      "Never let an agency hide its fee inside your ad spend, and keep the ad account in your own name.",
+    ],
+    contentHtml: `
+<p>"How much does Google Ads cost?" has no single answer, because the cost has three parts and each is decided differently. This guide separates them, shows real bid estimates from Google's Keyword Planner for Ahmedabad searches, walks through a budget example and explains what a fair management fee looks like. For our own fees, see <a href="/google-ads-pricing-ahmedabad/">Google Ads pricing in Ahmedabad</a>, and for what the service includes, our <a href="/google-ads-agency-ahmedabad">Google Ads agency in Ahmedabad</a> page.</p>
+
+<h2>The three parts of Google Ads cost</h2>
+<table>
+<tr><th>Part</th><th>Who gets it</th><th>Who decides it</th></tr>
+<tr><td>Ad spend (the click budget)</td><td>Google, paid from your own account</td><td>You</td></tr>
+<tr><td>Management fee</td><td>The agency or freelancer running the campaigns</td><td>Agreed in writing; ours is ₹15,000 to ₹60,000 a month</td></tr>
+<tr><td>GST</td><td>The government, added to the management fee</td><td>Indian tax rules</td></tr>
+</table>
+<p>A quote that mixes them into one number makes it impossible to compare. Ask for all three separately.</p>
+
+<h2>How Google charges you: cost per click</h2>
+<p>Most Google Ads search campaigns charge per click. The price of a click is set in an auction and depends on how many advertisers want the search, how relevant your ad and page are, your Quality Score and your bids. Google's own Keyword Planner gives an estimate of the "top of page" bid range. Here are estimates for Ahmedabad searches, pulled from Keyword Planner on 25 November 2026:</p>
+<table>
+<tr><th>Search</th><th>Searches a month in Ahmedabad</th><th>Top-of-page bid estimate</th></tr>
+<tr><td>seo company ahmedabad</td><td>2,900</td><td>₹49 to ₹234</td></tr>
+<tr><td>digital marketing agency in ahmedabad</td><td>5,400</td><td>₹26 to ₹106</td></tr>
+<tr><td>social media marketing agency in ahmedabad</td><td>1,000</td><td>₹22 to ₹93</td></tr>
+<tr><td>meta ads agency</td><td>50</td><td>₹48 to ₹109</td></tr>
+<tr><td>ai seo services</td><td>50</td><td>₹60 to ₹196</td></tr>
+<tr><td>local seo services</td><td>140</td><td>₹4 to ₹67</td></tr>
+</table>
+<p>These are Google's estimates of what advertisers bid, not what you will definitely pay, and your real cost per click may be lower or higher. They show why the same budget buys very different numbers of clicks depending on the search.</p>
+
+<h2>A budget example with clear assumptions</h2>
+<p>This is an illustration, not a promise. Say you spend ₹30,000 a month on ads and your average cost per click is ₹60, and 4 in every 100 visitors send an enquiry.</p>
+<table>
+<tr><th>Step</th><th>Calculation</th><th>Result</th></tr>
+<tr><td>Clicks</td><td>₹30,000 ÷ ₹60</td><td>500 clicks</td></tr>
+<tr><td>Enquiries</td><td>500 × 4%</td><td>20 enquiries</td></tr>
+<tr><td>Cost per enquiry</td><td>₹30,000 ÷ 20</td><td>₹1,500</td></tr>
+<tr><td>If 1 in 5 enquiries becomes a customer</td><td>20 ÷ 5</td><td>4 customers, ₹7,500 ad cost each</td></tr>
+</table>
+<p>Change the assumptions and the answer changes: a better page that converts at 6% cuts the cost per enquiry to ₹1,000, and a cheaper click lowers it further. The numbers that matter are cost per enquiry and cost per customer, and your own tracking will show them.</p>
+
+<h2>What a Google Ads management fee covers</h2>
+<ul>
+<li>Account and campaign set-up around your services and areas.</li>
+<li>Keyword research, ad copy and extensions.</li>
+<li>Conversion tracking for forms, calls and WhatsApp clicks.</li>
+<li>Ongoing optimisation of search terms, bids, budgets and ads.</li>
+<li>Landing page advice, so more clicks become enquiries.</li>
+<li>A monthly report on enquiries and cost per enquiry.</li>
+</ul>
+<p>It does <em>not</em> include the money Google charges for clicks, GST, a new landing page build or a call-tracking subscription, unless your quote says so.</p>
+
+<h2>What decides the fee you will be quoted</h2>
+<table>
+<tr><th>Towards the lower end</th><th>Towards the upper end</th></tr>
+<tr><td>One service or location</td><td>Several services, branches or cities</td></tr>
+<tr><td>Search campaigns only</td><td>Search, Performance Max, Shopping and YouTube together</td></tr>
+<tr><td>One language</td><td>English, Hindi and Gujarati campaigns</td></tr>
+<tr><td>Tracking already in place</td><td>New tracking and landing page work</td></tr>
+<tr><td>A modest ad budget</td><td>A large budget with many campaigns to manage</td></tr>
+</table>
+
+<h2>Common ways Google Ads costs go wrong</h2>
+<ul>
+<li><strong>Broad keywords with no negatives.</strong> You pay for clicks from people who never wanted your service.</li>
+<li><strong>Sending clicks to the home page.</strong> A page built for the search converts better.</li>
+<li><strong>No conversion tracking.</strong> Without it, you cannot tell which clicks became enquiries.</li>
+<li><strong>Setting a tiny budget across many campaigns.</strong> Nothing gets enough data to improve.</li>
+<li><strong>Ad spend passed through the agency.</strong> You lose sight of what is actually spent.</li>
+</ul>
+<p>Our <a href="/blog/google-ads-clicks-but-no-leads-fixes/">guide to Google Ads clicks with no leads</a> and the <a href="/blog/7-google-ads-mistakes-2026/">7 Google Ads mistakes</a> post explain the fixes.</p>
+
+<h2>How to compare Google Ads quotes</h2>
+<ol>
+<li>Ask for the management fee, GST and ad spend written separately.</li>
+<li>Check the ad account will be in your own name.</li>
+<li>Ask how enquiries (forms, calls, WhatsApp) will be counted.</li>
+<li>Ask for a sample monthly report.</li>
+<li>Read the contract terms. Our Google Ads management is month to month with a 15-day notice.</li>
+<li>Be cautious of promises of a fixed number of leads or a guaranteed return.</li>
+</ol>
+<p>Our guide on <a href="/blog/how-to-choose-google-ads-agency-ahmedabad/">how to choose a Google Ads agency</a> has the full question list, and <a href="/blog/google-ads-vs-meta-ads-ahmedabad/">Google Ads vs Meta Ads</a> helps you split a budget.</p>
+
+<h2>Campaign types and what each costs you</h2>
+<table>
+<tr><th>Campaign type</th><th>What it does</th><th>Cost pattern</th><th>Good for</th></tr>
+<tr><td>Search</td><td>Text ads when someone searches your service</td><td>Cost per click, set by the auction</td><td>Lead generation for services and B2B</td></tr>
+<tr><td>Performance Max</td><td>Runs across Search, YouTube, Display, Maps and more from one campaign</td><td>Budget-led, with Google choosing placements</td><td>Stores with a product feed, and lead campaigns with good tracking</td></tr>
+<tr><td>Shopping</td><td>Product ads with image and price</td><td>Cost per click on products</td><td>Online stores</td></tr>
+<tr><td>YouTube and Demand Gen</td><td>Video and image ads for awareness and demand</td><td>Often cost per view or per thousand views</td><td>Building awareness, not usually the first campaign</td></tr>
+<tr><td>Display</td><td>Banner ads across websites</td><td>Usually cheaper clicks, lower intent</td><td>Remarketing to past visitors</td></tr>
+</table>
+<p>Most lead-focused businesses start with Search, because it catches people already looking for the service. Add other types once Search is tracked and working.</p>
+
+<h2>How to decide your own budget</h2>
+<ol>
+<li><strong>Set the goal:</strong> for example, 20 enquiries a month.</li>
+<li><strong>Estimate the enquiry rate:</strong> the share of clicks that become enquiries. A fast, focused page often converts better than a generic one; start with a modest assumption and replace it with real data after a month.</li>
+<li><strong>Work out clicks needed:</strong> enquiries divided by enquiry rate.</li>
+<li><strong>Check the cost per click</strong> in Keyword Planner for your searches and area.</li>
+<li><strong>Multiply:</strong> clicks times cost per click is the monthly budget.</li>
+<li><strong>Compare with value:</strong> if an average customer is worth ₹X to you, and about one enquiry in five becomes a customer, what can you afford to pay per enquiry?</li>
+</ol>
+<p>If the number is larger than you can spend, narrow the targeting, choose cheaper searches or fix the landing page before adding budget. Our guide on <a href="/blog/ppc-landing-pages-and-web-design-ahmedabad/">PPC landing pages</a> shows how a better page lowers cost per enquiry.</p>
+
+<h2>What the first three months usually look like</h2>
+<table>
+<tr><th>Month</th><th>What happens</th><th>What to watch</th></tr>
+<tr><td>1</td><td>Campaigns launch; Google learns; cost per click and cost per enquiry are uneven</td><td>Search terms, tracking accuracy and early enquiry quality</td></tr>
+<tr><td>2</td><td>Negative keywords and ads are refined; budget moves to what works</td><td>Cost per enquiry should start to settle</td></tr>
+<tr><td>3</td><td>Clearer data; landing pages and bids improve; scaling decisions begin</td><td>Cost per customer, not just per enquiry</td></tr>
+</table>
+<p>Judge Google Ads over at least two or three months with proper tracking, rather than the first week.</p>
+
+<h2>Ten ways to bring cost per enquiry down</h2>
+<ul>
+<li>Add negative keywords weekly, to stop paying for irrelevant searches.</li>
+<li>Send each ad group to a page that repeats the search.</li>
+<li>Write ads that name the service, the area and a real reason to choose you.</li>
+<li>Use location and schedule settings so ads show where and when you can answer.</li>
+<li>Count calls, forms and WhatsApp clicks so bidding learns from real enquiries.</li>
+<li>Improve Quality Score through relevance and page speed.</li>
+<li>Test two or three ads per group and keep the best.</li>
+<li>Pause keywords that spend without enquiries after enough data.</li>
+<li>Reply to every enquiry fast; a slow reply wastes the click you paid for.</li>
+<li>Review the account monthly with someone who can read the numbers.</li>
+</ul>
+
+<h2>Billing and tax points to check</h2>
+<ul>
+<li>Pay Google directly from your own account so you can see every charge.</li>
+<li>Google's invoice for ad spend can include GST under Indian tax rules, so check your billing summary when planning budget.</li>
+<li>Our management fee is invoiced separately and carries GST as applicable.</li>
+<li>Set a monthly budget cap in the account so spend cannot run past your plan.</li>
+</ul>
+
+<h2>How Digital Aura can help</h2>
+<p>We start with a <a href="/google-ads-audit-ahmedabad/">free Google Ads audit</a> and a written quote that lists the management fee, GST and a suggested ad budget range, so you can compare before you commit. Campaigns run in your own accounts, and we never promise leads or a return on ad spend. See <a href="/google-ads-pricing-ahmedabad/">Google Ads pricing</a> for our fee range.</p>
+`,
+    faqs: [
+      { q: "How much does Google Ads cost in Ahmedabad?", a: "There are three parts: ad spend paid to Google, which you decide; the agency management fee, which is ₹15,000 to ₹60,000 a month at Digital Aura; and GST on the fee. Cost per click depends on the search and competition." },
+      { q: "What is a good Google Ads budget for a business in Ahmedabad?", a: "It depends on your cost per click, your conversion rate and how many enquiries you need. Work backwards: target enquiries, divided by conversion rate, gives clicks, and clicks times cost per click gives budget. A free audit can estimate it for your searches." },
+      { q: "Is the agency fee included in the ad spend?", a: "No. The ad spend goes to Google and the management fee goes to the agency. Avoid anyone who hides their fee inside your ad spend." },
+      { q: "What is the cost per click for Google Ads in India?", a: "It varies widely, from a few rupees to several hundred rupees. Google's Keyword Planner shows an estimated top-of-page bid range for each search. These are estimates, and your actual cost depends on your ads, page and competition." },
+      { q: "Why are my Google Ads clicks expensive?", a: "Common reasons are high competition, low Quality Score, broad keywords, weak ads or a landing page that does not match the search. Fixing relevance and tracking often lowers cost per enquiry." },
+      { q: "Do I need to pay a minimum ad budget?", a: "Google has no fixed minimum, but a budget too small to collect enough clicks makes it hard to learn what works. We discuss a realistic range for your searches in the audit." },
+      { q: "Can a Google Ads agency guarantee leads?", a: "No. Nobody can honestly guarantee a number of leads or a return on ad spend. A good agency sets up tracking, optimises and reports cost per enquiry clearly." },
+      { q: "Are Google Ads contracts long-term?", a: "Not necessarily. Our Google Ads management is month to month with a 15-day notice. Read the contract of any agency you consider, and make sure the ad account stays in your name." },
+    ],
+    ctaHeading: "Want a Written Google Ads Quote?",
+    ctaText: "Get a free Google Ads audit and a written quote with fee, GST and a suggested budget range.",
+    ctaButton: "Get My Free Google Ads Audit",
+    cro: { href: "/google-ads-audit-ahmedabad/", label: "Get a free Google Ads audit", sidebar: "Want to know what Google Ads should cost you? Get a free audit.", bandHeading: "What should Google Ads cost your business?", bandText: "Request a free Google Ads audit and get a written quote you can compare." },
+  },
+  {
+    slug: "how-to-choose-meta-ads-agency-ahmedabad",
+    title: "How to Choose a Meta Ads Agency in Ahmedabad: Questions, Red Flags, Fees",
+    titleHighlight: "Meta Ads Agency in Ahmedabad",
+    metaTitle: "How to Choose a Meta Ads Agency in Ahmedabad: Fees and Flags",
+    metaDescription: "Choosing a Meta ads agency in Ahmedabad? Compare fees, tracking, creative, account ownership and red flags with this checklist and 12 questions for the first call.",
+    category: "Meta Ads",
+    date: "2026-11-25",
+    dateDisplay: "Nov 25, 2026",
+    readTime: "10 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "To choose a Meta ads agency in Ahmedabad, shortlist three and compare creative, tracking, ownership, reporting and fees. Management fees usually run from ₹15,000 to ₹60,000 a month, separate from ad spend. Avoid guaranteed lead numbers, hidden fees and accounts held in the agency's name.",
+    keyTakeaways: [
+      "A good Meta agency is judged by lead quality and cost per qualified enquiry, not by likes or reach.",
+      "Ask who makes the creative, how often it is tested and how leads are tracked.",
+      "Your ad account, Business Manager and pixel should be in your name, always.",
+      "Management fees are separate from ad spend. Ours run from ₹15,000 to ₹60,000 a month plus GST.",
+      "Walk away from guaranteed lead numbers, hidden fees and no sample report.",
+    ],
+    contentHtml: `
+<p>Facebook and Instagram ads can bring steady enquiries, but they punish weak setups. Poor creative, loose targeting and untracked leads can burn a budget in weeks. Picking the right agency matters more than the platform's settings. This guide gives you a way to compare <strong>Meta ads agencies in Ahmedabad</strong>: the criteria, the fees, the red flags and 12 questions for the first call. For the service itself, see our <a href="/meta-ads-agency-ahmedabad/">Meta ads agency in Ahmedabad</a> page.</p>
+<p><strong>A note on bias:</strong> Digital Aura runs Meta ads, so we have an interest. We wrote this so you can use it on us too.</p>
+
+<h2>What a Meta ads agency should actually do</h2>
+<ul>
+<li><strong>Plan the offer and audience</strong> before building anything.</li>
+<li><strong>Make or direct creative:</strong> images, short videos and copy that fit each stage of the buyer's decision.</li>
+<li><strong>Set up tracking</strong> so leads, calls and WhatsApp messages are counted.</li>
+<li><strong>Run and test</strong> audiences, creatives and placements continuously.</li>
+<li><strong>Protect lead quality,</strong> not just volume.</li>
+<li><strong>Report honestly</strong> on cost per qualified enquiry.</li>
+</ul>
+<p>See also our guides on <a href="/blog/meta-ad-creative-testing-lead-generation/">creative testing for lead generation</a> and <a href="/blog/fix-low-quality-leads-facebook-instagram-ads/">fixing low-quality leads</a>.</p>
+
+<h2>Eight criteria to compare agencies</h2>
+<table>
+<tr><th>Criterion</th><th>Strong answer</th><th>How to check</th></tr>
+<tr><td>1. Proof of results</td><td>Case studies with the problem, the work and verified results</td><td>Ask to speak to a client or see an account screenshot</td></tr>
+<tr><td>2. Creative process</td><td>A named person makes creative, with a testing plan</td><td>Ask for examples and how often new creative is made</td></tr>
+<tr><td>3. Tracking</td><td>Pixel and conversions API, with leads from forms, calls and WhatsApp counted</td><td>Ask what is counted and how</td></tr>
+<tr><td>4. Lead quality</td><td>Qualifying questions, follow-up advice and feedback loops</td><td>Ask what they do when leads are poor</td></tr>
+<tr><td>5. Account ownership</td><td>Your Business Manager, ad account and pixel are in your name</td><td>Ask what happens if you leave</td></tr>
+<tr><td>6. Pricing</td><td>Fee, GST and ad spend written separately</td><td>Request the quote in writing</td></tr>
+<tr><td>7. Reporting</td><td>Monthly report on enquiries and cost per enquiry</td><td>Ask for a sample</td></tr>
+<tr><td>8. Honesty</td><td>States what cannot be promised</td><td>Ask which results they will not guarantee</td></tr>
+</table>
+<p>Treat criteria 5, 6 and 8 as deal breakers.</p>
+
+<h2>What Meta ads agencies charge in Ahmedabad</h2>
+<p>There are two costs: the management fee, paid to the agency, and the ad spend, paid to Meta from your own account. Our Meta ads management fee runs from ₹15,000 to ₹60,000 a month plus GST, written in the quote after an audit. The fee depends on how many campaigns, audiences and creatives there are to manage, whether tracking needs building, and how many creatives are produced. Ad spend is your decision. For the breakdown, read <a href="/blog/meta-ads-cost-in-ahmedabad/">Meta ads cost in Ahmedabad</a> and our <a href="/meta-ads-agency-ahmedabad/pricing/">Meta ads pricing</a> page.</p>
+
+<h2>Red flags</h2>
+<ul>
+<li><strong>Guaranteed leads or ROAS.</strong> Results depend on your offer, price, creative and market.</li>
+<li><strong>Ad accounts in the agency's name.</strong> You could lose your data and pixel history.</li>
+<li><strong>Ad spend paid through the agency with no receipts.</strong> Pay Meta directly.</li>
+<li><strong>Reports built on likes, reach or impressions only.</strong> These do not show leads.</li>
+<li><strong>One creative, never tested.</strong> Creative fatigue is a common reason costs rise.</li>
+<li><strong>Fake or purchased leads.</strong> Low cost per lead means nothing if nobody picks up the phone.</li>
+<li><strong>No questions about your offer or sales process.</strong> Ads cannot fix a weak offer.</li>
+</ul>
+
+<h2>Twelve questions to ask on the first call</h2>
+<table>
+<tr><th>Question</th><th>A good answer sounds like</th></tr>
+<tr><td>What will you do first for my goal and budget?</td><td>A specific starting plan with reasons</td></tr>
+<tr><td>Who makes the creative, and how often is it refreshed?</td><td>A named person and a regular testing plan</td></tr>
+<tr><td>How will you track leads from forms, calls and WhatsApp?</td><td>Pixel and conversions API, with limits explained</td></tr>
+<tr><td>How do you keep lead quality up?</td><td>Qualifying questions, audience tests and feedback from your team</td></tr>
+<tr><td>Who owns the ad account and pixel?</td><td>You do</td></tr>
+<tr><td>What is in the monthly fee, and what costs extra?</td><td>Named deliverables, plus any production costs</td></tr>
+<tr><td>How do I pay for ad spend?</td><td>Directly to Meta from your own account</td></tr>
+<tr><td>Can I see a sample report?</td><td>Yes, showing enquiries and cost per enquiry</td></tr>
+<tr><td>What are the contract and notice terms?</td><td>Written in the proposal</td></tr>
+<tr><td>How do you handle ad rejections or account restrictions?</td><td>A clear process, with advice on policy; see <a href="/blog/why-meta-disables-ad-accounts-2026/">why Meta disables ad accounts</a></td></tr>
+<tr><td>Which results can you not promise?</td><td>Lead numbers, cost per lead and return on ad spend</td></tr>
+<tr><td>Which clients are like me, and may I speak to one?</td><td>A relevant example and a willingness to arrange it</td></tr>
+</table>
+
+<h2>Agency, freelancer or in-house?</h2>
+<p>A freelancer can suit a small budget and a single task. An agency suits businesses that need creative, tracking and optimisation handled together, with cover for absence. In-house suits large, constant spend. Our guide on <a href="/blog/digital-marketing-agency-vs-freelancer-vs-in-house-ahmedabad/">agency, freelancer or in-house</a> covers the trade-offs.</p>
+
+<h2>How to compare, step by step</h2>
+<ol>
+<li>Write your goal, offer, area and monthly ad budget.</li>
+<li>Shortlist three agencies from reviews, directories and referrals.</li>
+<li>Ask each the twelve questions and request a written scope, price and sample report.</li>
+<li>Score them 1 to 5 on the eight criteria.</li>
+<li>Choose the one with the clearest written plan, and start with a short test period if you can.</li>
+</ol>
+
+<h2>How Digital Aura can help</h2>
+<p>We start with a free review of your offer, audience and tracking, then send a written plan and quote showing the management fee, GST and a suggested ad budget. Campaigns run in your own accounts, and we do not guarantee leads or returns. Learn more about our <a href="/meta-ads-agency-ahmedabad/">Meta ads services</a>, or request a <a href="/digital-marketing-company-ahmedabad#audit">free growth audit</a>.</p>
+`,
+    faqs: [
+      { q: "How do I choose a Meta ads agency in Ahmedabad?", a: "Shortlist three and compare them on proof of results, creative process, lead tracking, lead quality, account ownership, pricing, reporting and honesty. Ask for a written scope, price and sample report from each." },
+      { q: "How much does a Meta ads agency charge in Ahmedabad?", a: "Management fees vary by scope. Ours run from ₹15,000 to ₹60,000 a month plus GST, written in the quote. Ad spend is separate and paid to Meta from your own account." },
+      { q: "Who should own the Facebook ad account?", a: "You should. Your Business Manager, ad account and pixel should be in your name so you keep your data and history if you change agencies." },
+      { q: "What results should a Meta ads agency report?", a: "Leads or enquiries from forms, calls and WhatsApp, cost per enquiry, and, where possible, how many became customers. Likes and reach alone are not enough." },
+      { q: "Can a Meta ads agency guarantee leads?", a: "No. Results depend on your offer, price, creative, market and budget. Be cautious of guaranteed lead numbers or returns." },
+      { q: "Why are my Facebook ad leads poor quality?", a: "Common reasons are a vague offer, broad targeting, instant forms with no qualifying questions and slow follow-up. Better questions, tighter audiences and faster calls usually help." },
+      { q: "Is it better to hire an agency or a freelancer for Meta ads?", a: "A freelancer can suit a small budget and one task. An agency suits businesses that need creative, tracking and optimisation together, and cover for absence." },
+      { q: "How long before Meta ads show results?", a: "You can see leads within days of launch, but it usually takes several weeks of testing to find the audiences and creatives that work and to stabilise cost per enquiry." },
+    ],
+    ctaHeading: "Comparing Meta Ads Agencies?",
+    ctaText: "Request a free growth audit and get a written plan and quote you can compare.",
+    ctaButton: "Get My Free Growth Audit",
+    cro: { href: "/digital-marketing-company-ahmedabad#audit", label: "Get a free growth audit", sidebar: "Comparing Meta ads agencies? Ask for a written plan and quote.", bandHeading: "Choosing a Meta ads agency?", bandText: "Request a free growth audit and get a written plan and quote you can compare." },
+  },
+  {
+    slug: "meta-ads-real-estate-ahmedabad-playbook",
+    title: "Meta Ads for Real Estate in Ahmedabad: Playbook for Builders and Brokers",
+    titleHighlight: "Meta Ads for Real Estate",
+    metaTitle: "Facebook Ads for Real Estate in Ahmedabad: A Builder Playbook",
+    metaDescription: "Facebook ads for real estate in Ahmedabad: how builders and brokers get site visits, which offers and creatives work, how to check lead quality and what it costs.",
+    category: "Meta Ads",
+    date: "2026-11-26",
+    dateDisplay: "Nov 26, 2026",
+    readTime: "11 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "Meta ads for real estate work when each campaign aims at one clear goal, such as a booked site visit. They also need a project-specific offer, walkthrough video, a lead form with qualifying questions and fast follow-up calls. Target by area and income signals, not interests alone. Builders in Ahmedabad should judge success by cost per qualified site visit, not cost per lead.",
+    keyTakeaways: [
+      "Aim ads at a booked site visit, not just a form fill. Site visits are what sales teams can close.",
+      "Use project-specific offers and real visuals: walkthrough videos, location, floor plans and price starting points.",
+      "Add qualifying questions to lead forms (budget, configuration, timeline) to improve lead quality.",
+      "Call leads quickly. Slow follow-up wastes more real estate budget than weak targeting.",
+      "Track qualified leads and site visits, not only cost per lead, and keep RERA details in your ads where required.",
+    ],
+    contentHtml: `
+<p>A builder in Ahmedabad can spend lakhs on Facebook and Instagram ads and still end up with a phone full of enquiries from people who will never buy. Real estate is a high-value, long-consideration purchase, so the usual "get leads cheaply" playbook fails. This guide sets out what works for builders, brokers and project marketers using <strong>Facebook ads for real estate</strong>: the funnel, creative, targeting, lead forms, follow-up and measurement. See also our <a href="/meta-ads-agency-ahmedabad/real-estate/">Meta ads for real estate</a> service page and the companion guide on <a href="/blog/google-ads-real-estate-ahmedabad-guide/">Google Ads for real estate in Ahmedabad</a>.</p>
+
+<h2>Start with the goal: a booked site visit</h2>
+<p>A lead form filled on a phone while scrolling is a weak signal. A person who agrees to visit the site or sample flat is a real prospect. Design every campaign around one action:</p>
+<table>
+<tr><th>Funnel stage</th><th>Goal</th><th>Typical content</th></tr>
+<tr><td>Awareness</td><td>People in your target areas know the project</td><td>Walkthrough video, location highlights, amenities</td></tr>
+<tr><td>Consideration</td><td>Interested people ask for details</td><td>Floor plans, price starting points, comparisons, testimonials</td></tr>
+<tr><td>Action</td><td>Qualified people book a site visit or call</td><td>Offer to visit, limited-time benefits that are real</td></tr>
+<tr><td>Retargeting</td><td>Bring back people who showed interest</td><td>Reminders, new inventory, event invitations</td></tr>
+</table>
+
+<h2>Know what you are selling</h2>
+<p>One campaign per project and configuration works better than one general "Our projects" campaign. State the basics clearly in the ad: location or micro-market (for example, a named area of Ahmedabad), configuration (2 BHK, 3 BHK, villas, plots), a starting price range if you are willing to show one, possession stage and the main reason to buy. Where the law requires it, display the project's RERA registration details in your advertising; confirm the exact requirement with your legal adviser.</p>
+
+<h2>Creative that works for real estate</h2>
+<table>
+<tr><th>Format</th><th>Use it for</th><th>Tip</th></tr>
+<tr><td>Short walkthrough video</td><td>Showing the project and building trust</td><td>Show real spaces, not only renders; keep the first three seconds strong</td></tr>
+<tr><td>Carousel</td><td>Configurations, floor plans and amenities</td><td>One card per feature, with a clear call to action on the last card</td></tr>
+<tr><td>Location video or map</td><td>Showing nearby roads, schools and business areas</td><td>Name real places and approximate travel times only if accurate</td></tr>
+<tr><td>Testimonial video</td><td>Reducing doubt</td><td>Use real buyers with permission</td></tr>
+<tr><td>Static image with offer</td><td>Retargeting and quick reminders</td><td>One offer, one button</td></tr>
+</table>
+<p>Refresh creative regularly; the same ad shown to the same people for weeks loses effect. Our guide to <a href="/blog/meta-ad-creative-testing-lead-generation/">creative testing for lead generation</a> shows how.</p>
+
+<h2>Targeting for builders and brokers</h2>
+<ul>
+<li><strong>Location:</strong> target the areas where your buyers live or work, and consider nearby cities for investors and NRIs if relevant.</li>
+<li><strong>Broad audiences with strong creative</strong> often work well on Meta today, letting the system find likely buyers instead of narrow interest guesses. See <a href="/blog/meta-ads-targeting-2026/">our Meta ads targeting guide</a>.</li>
+<li><strong>Custom audiences</strong> from your own customer or enquiry list, uploaded safely with consent, and lookalikes built from real buyers rather than all leads.</li>
+<li><strong>Exclusions:</strong> remove existing leads and current residents so you do not waste spend.</li>
+</ul>
+
+<h2>Lead forms that filter, not just collect</h2>
+<p>Instant forms make it easy to submit, which brings volume and also noise. Add two or three qualifying questions:</p>
+<table>
+<tr><th>Question</th><th>Why it helps</th></tr>
+<tr><td>Which configuration are you looking for?</td><td>Matches the lead to the right inventory</td></tr>
+<tr><td>What is your budget range?</td><td>Filters out people far outside your price</td></tr>
+<tr><td>When are you planning to buy?</td><td>Prioritises serious buyers</td></tr>
+<tr><td>Preferred time to call</td><td>Improves contact rate</td></tr>
+</table>
+<p>For a higher quality route, send people to a project landing page with details and a short form, or to a click-to-WhatsApp conversation. More on this in <a href="/blog/fix-low-quality-leads-facebook-instagram-ads/">fixing low-quality leads from Facebook and Instagram ads</a>.</p>
+
+<h2>Follow-up decides the result</h2>
+<ul>
+<li>Call new leads as fast as you can, ideally within minutes, and send a WhatsApp message with the brochure.</li>
+<li>Use a script that asks about needs and confirms a site visit time.</li>
+<li>Track every lead in a simple sheet or CRM with status: contacted, interested, visit booked, visited, booked.</li>
+<li>Give the ad team feedback weekly on which leads were real, so campaigns can improve.</li>
+</ul>
+
+<h2>What to measure</h2>
+<table>
+<tr><th>Metric</th><th>Why it matters</th></tr>
+<tr><td>Cost per lead</td><td>A starting number only</td></tr>
+<tr><td>Cost per qualified lead</td><td>Shows whether leads match your buyer</td></tr>
+<tr><td>Cost per site visit</td><td>The most useful number for sales teams</td></tr>
+<tr><td>Cost per booking</td><td>The final business result, over a longer time</td></tr>
+<tr><td>Contact rate</td><td>Reveals follow-up problems</td></tr>
+</table>
+
+<h2>What it costs</h2>
+<p>Our Meta ads management fee runs from ₹15,000 to ₹60,000 a month plus GST. Ad spend is separate and is your decision; real estate budgets are usually larger because the purchase is high value. See <a href="/blog/meta-ads-cost-in-ahmedabad/">Meta ads cost in Ahmedabad</a> and our <a href="/meta-ads-agency-ahmedabad/pricing/">Meta ads pricing</a> page. We do not guarantee leads, site visits or sales.</p>
+
+<h2>Combine Meta with other channels</h2>
+<p>Meta builds awareness and demand, while Google captures people searching for "2 BHK in [area]". Together with a good project page, they work better than either alone. For the full approach, see <a href="/blog/digital-marketing-for-real-estate-builders-ahmedabad/">digital marketing for real estate builders in Ahmedabad</a>.</p>
+
+<h2>How Digital Aura can help</h2>
+<p>We build project-specific funnels, tracked lead forms and a reporting sheet that shows cost per qualified lead and site visit. Start with a <a href="/digital-marketing-company-ahmedabad#audit">free growth audit</a> and a written plan.</p>
+`,
+    faqs: [
+      { q: "Do Facebook ads work for real estate in Ahmedabad?", a: "Yes, when built around a clear goal such as a site visit, with a strong project offer, good video or walkthrough creative, qualifying questions in the form and fast follow-up. Without those, they bring many low-quality leads." },
+      { q: "What should a real estate Meta ad campaign aim for?", a: "A booked site visit is the best target. It is a stronger signal than a form fill and is what sales teams can close. Measure cost per qualified lead and cost per site visit, not only cost per lead." },
+      { q: "Which ad creative works best for builders?", a: "Short walkthrough videos of real spaces, carousels of configurations and floor plans, location videos, and real buyer testimonials with permission. Refresh creative often to avoid fatigue." },
+      { q: "How do I stop getting low-quality real estate leads?", a: "Add qualifying questions on budget, configuration and timeline, use project landing pages or click-to-WhatsApp, exclude existing leads and call every lead quickly with a clear script." },
+      { q: "Should I use lead forms or a landing page?", a: "Instant forms give volume with more noise. A project landing page or WhatsApp conversation filters better. Many builders use both and compare cost per qualified lead." },
+      { q: "How much does real estate Meta advertising cost in Ahmedabad?", a: "Our management fee runs from ₹15,000 to ₹60,000 a month plus GST. Ad spend is separate and depends on your project size, area and goals." },
+      { q: "Do I need to show RERA details in ads?", a: "Real estate advertising rules can require the project's RERA registration details. Confirm the exact requirements for your project with your legal adviser and include them in your creatives and pages." },
+      { q: "Can an agency guarantee site visits or sales?", a: "No. Results depend on your project, price, location, creative and follow-up. A good agency sets up tracking, tests creative and reports honestly." },
+    ],
+    ctaHeading: "Want More Qualified Site Visits?",
+    ctaText: "Request a free growth audit and get a written plan for your project's Meta ads.",
+    ctaButton: "Get My Free Growth Audit",
+    cro: { href: "/digital-marketing-company-ahmedabad#audit", label: "Get a free growth audit", sidebar: "Builder or broker? Ask for a written Meta ads plan for your project.", bandHeading: "Want qualified site visits, not just leads?", bandText: "Request a free growth audit and get a written Meta ads plan for your project." },
+  },
+  {
+    slug: "website-speed-core-web-vitals-ahmedabad-businesses",
+    title: "Website Speed and Core Web Vitals: How Slow Pages Cost Ahmedabad Businesses Enquiries",
+    titleHighlight: "Slow Pages Cost",
+    metaTitle: "Website Speed Optimization Services: Core Web Vitals Guide 2026",
+    metaDescription: "Website speed optimization services explained: what Core Web Vitals measure, how to test your site, the fixes that matter most and when to hire a developer in India.",
+    category: "Website Development",
+    date: "2026-11-25",
+    dateDisplay: "Nov 25, 2026",
+    readTime: "10 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "A slow website loses visitors before they read a word, and Google also uses page experience, including Core Web Vitals, as a ranking signal. Core Web Vitals measure how fast the main content loads (LCP, aim for 2.5 seconds or less), how quickly the page responds to taps (INP, 200 milliseconds or less) and how stable the layout is (CLS, 0.1 or less). Fix images, scripts, hosting and fonts first.",
+    keyTakeaways: [
+      "Core Web Vitals are three measures: LCP for loading, INP for responsiveness and CLS for visual stability.",
+      "Google's 'good' thresholds are LCP 2.5 seconds or less, INP 200 milliseconds or less and CLS 0.1 or less.",
+      "Test with PageSpeed Insights and the Core Web Vitals report in Search Console, and test on mobile first.",
+      "Heavy images, too many scripts, weak hosting and unoptimised fonts cause most slow sites.",
+      "Speed is part of lead generation: a faster page keeps more visitors long enough to enquire.",
+    ],
+    contentHtml: `
+<p>A visitor taps your link from Google on a phone, in a lift or on a bus. If the page is still blank after a few seconds, they go back and tap the next result, which may be your competitor. That is the cost of a slow website, and it is why <strong>website speed optimization services</strong> are worth understanding even if you are not technical. This guide explains Core Web Vitals in plain words, how to test your site, which fixes matter most and what to ask a developer. For the wider technical picture, see our <a href="/blog/technical-seo-practices-2026/">technical SEO practices guide</a>.</p>
+
+<h2>What are Core Web Vitals?</h2>
+<p>Core Web Vitals are three measurements Google uses to describe how a page feels to a real visitor.</p>
+<table>
+<tr><th>Measure</th><th>What it means</th><th>Good result</th></tr>
+<tr><td>LCP, Largest Contentful Paint</td><td>How long until the biggest thing on screen, usually a hero image or main heading, appears</td><td>2.5 seconds or less</td></tr>
+<tr><td>INP, Interaction to Next Paint</td><td>How quickly the page responds when someone taps or clicks</td><td>200 milliseconds or less</td></tr>
+<tr><td>CLS, Cumulative Layout Shift</td><td>How much the page jumps around while loading</td><td>0.1 or less</td></tr>
+</table>
+<p>Google assesses these using data from real Chrome users where enough exists, so your site is judged on how it performs on the phones and networks your customers actually use.</p>
+
+<h2>Why speed affects enquiries and rankings</h2>
+<ul>
+<li><strong>Visitors leave slow pages.</strong> The longer someone waits, the more likely they are to go back to the results.</li>
+<li><strong>Forms and buttons that lag lose enquiries.</strong> A page that looks loaded but does not respond frustrates visitors.</li>
+<li><strong>Google uses page experience as a signal.</strong> It is one of many, and great content still matters most, but between similar pages a faster one has an advantage.</li>
+<li><strong>Paid traffic gets more expensive.</strong> If you run Google Ads, a slow landing page lowers the share of clicks that become enquiries; see <a href="/blog/ppc-landing-pages-and-web-design-ahmedabad/">PPC landing pages and web design</a>.</li>
+</ul>
+
+<h2>How to test your website</h2>
+<ol>
+<li>Open <a href="https://pagespeed.web.dev/" rel="noopener">PageSpeed Insights</a>, paste your address and look at the <strong>mobile</strong> result first.</li>
+<li>Read the field data at the top (real users) before the lab score. If there is no field data, your site may have too little traffic to be measured, and lab data is the guide.</li>
+<li>Open Search Console and check the Core Web Vitals report to see which groups of pages are "Poor" or "Needs improvement".</li>
+<li>Test your home page, a service page and a blog post separately, because each may have different problems.</li>
+<li>Re-test after each change, and record the date and result.</li>
+</ol>
+
+<h2>The most common causes and their fixes</h2>
+<table>
+<tr><th>Cause</th><th>How it shows</th><th>Fix</th></tr>
+<tr><td>Large, uncompressed images</td><td>Slow LCP; big page weight</td><td>Compress, resize to the display size, use WebP or AVIF, and lazy-load images below the first screen</td></tr>
+<tr><td>The hero image loads late</td><td>Poor LCP</td><td>Preload the main image, do not lazy-load it and give it a fixed size</td></tr>
+<tr><td>Too many scripts (chat, tracking, sliders)</td><td>Poor INP; long loading</td><td>Remove what you do not use, delay non-essential scripts and limit tag manager clutter</td></tr>
+<tr><td>Render-blocking CSS and fonts</td><td>Blank text for a moment</td><td>Inline critical CSS, load only needed fonts, use font-display swap</td></tr>
+<tr><td>Weak or distant hosting</td><td>Slow server response</td><td>Use quality hosting, a CDN and caching; see <a href="/blog/website-hosting-security-questions-to-ask/">hosting questions to ask</a></td></tr>
+<tr><td>No set sizes for images and ads</td><td>Page jumps; high CLS</td><td>Set width and height for images, videos and embeds</td></tr>
+<tr><td>Heavy themes and plugins</td><td>Slow everything</td><td>Use a lightweight theme and remove unused plugins</td></tr>
+<tr><td>Client-side rendering only</td><td>Blank page until scripts run</td><td>Use server-side rendering or pre-rendering for key pages</td></tr>
+</table>
+
+<h2>Speed for different kinds of sites</h2>
+<ul>
+<li><strong>Brochure or service websites:</strong> usually quick wins from images, fonts and a good host.</li>
+<li><strong>Online stores:</strong> product photos and apps are the main weight. See <a href="/blog/ecommerce-seo-mistakes-and-fixes/">ecommerce SEO mistakes</a> and the <a href="/blog/woocommerce-seo-guide-2026/">WooCommerce SEO guide</a>.</li>
+<li><strong>Manufacturer and catalogue sites:</strong> big photo galleries and PDF downloads need compression and careful loading.</li>
+<li><strong>Single-page and JavaScript sites:</strong> script size and rendering decide speed and indexing; see <a href="/blog/why-website-not-showing-on-google-ahmedabad/">why a website is not showing on Google</a>.</li>
+</ul>
+
+<h2>A practical order of work</h2>
+<table>
+<tr><th>Step</th><th>Task</th><th>Typical effect</th></tr>
+<tr><td>1</td><td>Compress and resize images; fix the hero image</td><td>Biggest LCP gains</td></tr>
+<tr><td>2</td><td>Remove unused plugins, scripts and fonts</td><td>Better INP and load time</td></tr>
+<tr><td>3</td><td>Add caching and a CDN; check hosting</td><td>Faster server response</td></tr>
+<tr><td>4</td><td>Set image and embed sizes</td><td>Lower CLS</td></tr>
+<tr><td>5</td><td>Tidy CSS and JavaScript loading</td><td>Smoother first screen</td></tr>
+<tr><td>6</td><td>Monitor monthly</td><td>Catch regressions after updates</td></tr>
+</table>
+
+<h2>What not to chase</h2>
+<p>A perfect 100 score is not the goal. Chase a site that passes Core Web Vitals on the pages that bring enquiries, and that loads comfortably on a mid-range phone on mobile data. Do not install five "speed" plugins that fight each other; one good caching setup and image workflow beats many tools.</p>
+
+<h2>What it costs</h2>
+<p>Speed work is part of building or maintaining a site properly. We scope it as part of a <a href="/website-development-services-ahmedabad/">website project</a>, a <a href="/website-redesign-services-ahmedabad/">redesign</a> or a <a href="/website-maintenance-amc-ahmedabad/">maintenance plan</a>, and quote it in writing after reviewing your site. We do not promise a specific score, because it depends on your platform, content and hosting.</p>
+
+<h2>How Digital Aura can help</h2>
+<p>Share your website link and we will test the key pages, list what is slowing them and which fixes will help most. See our <a href="/website-development-services-ahmedabad/">website development services in Ahmedabad</a> or <a href="/contact/">ask for a website review</a>.</p>
+`,
+    faqs: [
+      { q: "What are Core Web Vitals?", a: "Core Web Vitals are three measurements of page experience: LCP for how fast the main content loads, INP for how quickly the page responds to taps and clicks, and CLS for how much the layout jumps while loading." },
+      { q: "What is a good Core Web Vitals score?", a: "Google's 'good' thresholds are LCP of 2.5 seconds or less, INP of 200 milliseconds or less and CLS of 0.1 or less, measured on real user data where available." },
+      { q: "How do I test my website speed?", a: "Use PageSpeed Insights, starting with the mobile result and the field data at the top, and check the Core Web Vitals report in Google Search Console for groups of pages that need work." },
+      { q: "Does website speed affect Google rankings?", a: "Page experience, including Core Web Vitals, is one ranking signal among many. Helpful content matters most, but between similar pages a faster, more stable page has an advantage, and speed also affects how many visitors stay to enquire." },
+      { q: "Why is my website slow on mobile?", a: "Common causes are large images, too many scripts, weak hosting, heavy themes or plugins and render-blocking fonts and CSS. Mobile networks and phones magnify each of these." },
+      { q: "Can I fix website speed myself?", a: "You can often compress images, remove unused plugins and enable caching yourself. Deeper issues such as script loading, rendering and server configuration usually need a developer." },
+      { q: "How long does speed optimisation take?", a: "Simple fixes on a small site can take a few days. Larger sites with many templates, apps or rendering issues take longer. Results in Search Console's field data can take weeks to update." },
+      { q: "Do you offer website speed optimization services in Ahmedabad?", a: "Yes. We test your key pages, list the causes and fix them as part of a website build, redesign or maintenance plan, with the scope and price written in advance." },
+    ],
+    ctaHeading: "Is a Slow Website Costing You Enquiries?",
+    ctaText: "Share your website link and get a written list of what is slowing it down and what to fix first.",
+    ctaButton: "Get a Website Review",
+    cro: { href: "/contact/", label: "Get a website review", sidebar: "Website feels slow? Ask for a quick speed review.", bandHeading: "Is your website too slow?", bandText: "Share your website link. We will test the key pages and tell you what to fix first." },
+  },
+  {
+    slug: "website-hosting-security-questions-to-ask",
+    title: "Website Hosting and Security: Questions to Ask Before You Sign",
+    titleHighlight: "Website Hosting and Security",
+    metaTitle: "Website Security Services and Hosting: Questions to Ask First",
+    metaDescription: "Website security services and hosting explained: backups, SSL, updates, firewalls, domain ownership and 15 questions to ask a web company before you sign a deal.",
+    category: "Website Development",
+    date: "2026-11-28",
+    dateDisplay: "Nov 28, 2026",
+    readTime: "10 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "Before you sign with a web company or host, check who owns the domain, how backups work and how security is handled. Ask about updates, firewalls, uptime, server location, email protection and what happens if you leave. Hosting and security are part of your business, so the accounts should be in your name with written terms.",
+    keyTakeaways: [
+      "You should own your domain, hosting account and website files. Never let a vendor register them in their name.",
+      "Ask for daily backups stored off the server, and ask whether a restore has been tested.",
+      "Security is ongoing: updates, a firewall, malware scanning, strong logins and two-factor authentication.",
+      "Server location, caching and a CDN affect speed for visitors in India.",
+      "Get hosting, security and support terms in writing, including what happens if you leave.",
+    ],
+    contentHtml: `
+<p>Most business owners only think about hosting and security when something goes wrong: the site is down on the day of a campaign, a hacked page sends visitors to spam or the person who built the site cannot be reached. These problems are avoidable if you ask the right questions before you sign. This guide explains hosting and <strong>website security services</strong> in plain words, and gives 15 questions to put to any web company. For ongoing care, see our <a href="/blog/website-maintenance-checklist-for-business/">website maintenance checklist</a>.</p>
+
+<h2>What hosting actually is</h2>
+<p>Hosting is the computer that stores your website and delivers it to visitors. The type of hosting decides how fast, reliable and secure that is.</p>
+<table>
+<tr><th>Type</th><th>What it is</th><th>Good for</th><th>Watch for</th></tr>
+<tr><td>Shared hosting</td><td>Many sites share one server</td><td>Small brochure sites</td><td>Slow when neighbours use more resources</td></tr>
+<tr><td>Managed WordPress hosting</td><td>Hosting tuned for WordPress, with caching and updates</td><td>Business sites on WordPress</td><td>Check what is included in the plan</td></tr>
+<tr><td>VPS</td><td>A private slice of a server</td><td>Busy sites and custom apps</td><td>You or someone must manage it</td></tr>
+<tr><td>Cloud hosting</td><td>Resources spread across servers and scaled as needed</td><td>Online stores and growing sites</td><td>Costs can rise without limits being set</td></tr>
+<tr><td>Dedicated server</td><td>A whole server for you</td><td>Large, high-traffic sites</td><td>Needs expert management</td></tr>
+</table>
+
+<h2>Domain and account ownership</h2>
+<p>This is the first thing to settle, because it decides who is in control.</p>
+<ul>
+<li>The <strong>domain name</strong> should be registered in your business name, with your email as the owner contact.</li>
+<li>The <strong>hosting account</strong> should be in your name, or you should hold admin access.</li>
+<li>You should have <strong>copies of the site files and database</strong>, or at least the right to receive them.</li>
+<li>You should know where <strong>DNS</strong> is managed, because changing it moves the website and the email.</li>
+</ul>
+<p>If a vendor holds your domain or hosting and you part ways, you can be stuck. Ask for details in writing now.</p>
+
+<h2>Backups: the question that matters most</h2>
+<table>
+<tr><th>Question</th><th>Good answer</th></tr>
+<tr><td>How often are backups taken?</td><td>Daily for sites that change often, at least weekly for static ones</td></tr>
+<tr><td>Where are they stored?</td><td>Off the server, so a server failure does not take them too</td></tr>
+<tr><td>How long are they kept?</td><td>At least 14 to 30 days</td></tr>
+<tr><td>Has a restore ever been tested?</td><td>Yes, and they can tell you how long it takes</td></tr>
+<tr><td>Who can restore, and how fast?</td><td>A named support route with a stated response time</td></tr>
+</table>
+
+<h2>Security basics every business site needs</h2>
+<ul>
+<li><strong>SSL certificate (https):</strong> encrypts data between visitors and the site, and browsers warn people if it is missing.</li>
+<li><strong>Software updates:</strong> the CMS, themes and plugins must be updated, because old versions are the usual way sites are hacked.</li>
+<li><strong>Firewall and malware scanning:</strong> to block known attacks and detect infected files.</li>
+<li><strong>Strong logins:</strong> unique passwords, limited login attempts and two-factor authentication for admin users.</li>
+<li><strong>User roles:</strong> give people only the access they need and remove former staff and vendors.</li>
+<li><strong>Spam protection on forms:</strong> a CAPTCHA or similar, so forms are not flooded.</li>
+</ul>
+
+<h2>Speed, location and uptime</h2>
+<p>If your customers are in India, a server located in or near India usually responds faster than one on another continent, and a CDN spreads copies of your files closer to visitors. Ask about caching too. Speed is part of how your site performs for visitors and for Google; see <a href="/blog/website-speed-core-web-vitals-ahmedabad-businesses/">website speed and Core Web Vitals</a>. Uptime promises are usually stated as a percentage; ask what the host does when it is missed.</p>
+
+<h2>Email and domain security</h2>
+<p>Business email often shares the same domain, so protect it. Ask whether SPF, DKIM and DMARC records are set up, because they reduce the chance of your emails landing in spam or being faked. Use a dedicated business email service rather than the web host's basic mail if email is important to your sales.</p>
+
+<h2>Fifteen questions to ask before you sign</h2>
+<table>
+<tr><th>#</th><th>Question</th></tr>
+<tr><td>1</td><td>Who owns the domain, and in whose name is it registered?</td></tr>
+<tr><td>2</td><td>Who owns the hosting account, and do I have admin access?</td></tr>
+<tr><td>3</td><td>What type of hosting is included, and what are its limits?</td></tr>
+<tr><td>4</td><td>Where is the server located?</td></tr>
+<tr><td>5</td><td>How often are backups taken, and where are they stored?</td></tr>
+<tr><td>6</td><td>Has a restore been tested, and how long does it take?</td></tr>
+<tr><td>7</td><td>Is SSL included and renewed automatically?</td></tr>
+<tr><td>8</td><td>Who applies software and plugin updates, and how often?</td></tr>
+<tr><td>9</td><td>What firewall and malware scanning is in place?</td></tr>
+<tr><td>10</td><td>Is two-factor authentication used for admin logins?</td></tr>
+<tr><td>11</td><td>What uptime is promised, and what happens if it is not met?</td></tr>
+<tr><td>12</td><td>How is email set up and protected?</td></tr>
+<tr><td>13</td><td>What happens if the site is hacked, who fixes it and is it included?</td></tr>
+<tr><td>14</td><td>What does support cover, and what are response times?</td></tr>
+<tr><td>15</td><td>If I leave, will I receive the files, database and access, and how soon?</td></tr>
+</table>
+
+<h2>Red flags</h2>
+<ul>
+<li>The vendor registers your domain or hosting in their own name.</li>
+<li>"Unlimited everything" with no stated limits.</li>
+<li>No backups, or backups stored only on the same server.</li>
+<li>Admin passwords shared by email or never changed.</li>
+<li>No mention of updates or security in the proposal.</li>
+<li>A refusal to give you access to your own site.</li>
+</ul>
+
+<h2>If your site is hacked</h2>
+<ol>
+<li>Do not panic and do not delete files blindly.</li>
+<li>Contact your host or developer, and take the site offline or put it in maintenance mode if it is harming visitors.</li>
+<li>Restore from a clean backup, update everything and change all passwords.</li>
+<li>Find and close the way in, then check Google Search Console for security notices.</li>
+</ol>
+
+<h2>How Digital Aura can help</h2>
+<p>We set up hosting, SSL, backups and security with your accounts in your name and the terms in writing. Our <a href="/website-maintenance-amc-ahmedabad/">website maintenance and AMC plans</a> cover updates, monitoring and fixes, and our <a href="/website-development-services-ahmedabad/">website development team</a> can review a site you already have. <a href="/contact/">Ask for a hosting and security review</a>.</p>
+`,
+    faqs: [
+      { q: "What should I ask a web company about hosting and security?", a: "Who owns the domain and hosting, how often backups run and where they are stored, who applies updates, what firewall and malware scanning is in place, what uptime is promised, how email is protected and what happens if you leave." },
+      { q: "Who should own my domain name and hosting?", a: "You should. Register the domain in your business name and keep admin access to the hosting account. If a vendor holds them, you can lose control of your site and email if the relationship ends." },
+      { q: "How often should a website be backed up?", a: "Daily for sites that change often, such as stores, and at least weekly for mostly static sites. Backups should be stored off the server and a restore should have been tested." },
+      { q: "Is SSL enough to keep my website secure?", a: "No. SSL encrypts the connection, but you also need software updates, a firewall, malware scanning, strong logins with two-factor authentication and good backups." },
+      { q: "Does hosting location matter?", a: "For visitors in India, a server in or near India and a CDN usually give faster response times than a distant server. Speed also affects rankings and enquiries." },
+      { q: "What do website security services include?", a: "Typically updates, a firewall, malware scanning, backups, login protection, uptime monitoring and a process for cleaning and restoring a hacked site. Ask for the list in writing." },
+      { q: "What should I do if my website is hacked?", a: "Contact your host or developer, take the site offline if needed, restore a clean backup, update all software, change passwords, close the way in and check Search Console for security warnings." },
+      { q: "Do you offer hosting and website maintenance in Ahmedabad?", a: "Yes. We set up hosting and security with your accounts in your name, and offer maintenance plans covering updates, backups and monitoring, with terms written in advance." },
+    ],
+    ctaHeading: "Not Sure Who Controls Your Website?",
+    ctaText: "Share your site details and get a written review of hosting, backups and security.",
+    ctaButton: "Ask for a Security Review",
+    cro: { href: "/contact/", label: "Ask for a security review", sidebar: "Unsure who owns your domain and backups? Ask for a quick review.", bandHeading: "Is your website safe and in your control?", bandText: "Share your website link. We will review hosting, backups and security and tell you what to fix." },
+  },
+  {
+    slug: "ppc-landing-pages-and-web-design-ahmedabad",
+    title: "PPC Landing Pages and Web Design: How They Work Together to Lower Lead Cost",
+    titleHighlight: "PPC Landing Pages",
+    metaTitle: "Landing Page Design Agency Guide: PPC Pages That Cut Lead Cost",
+    metaDescription: "A landing page design agency guide to PPC pages: what to put on the page, message match, forms, speed and tracking, and how better pages cut your cost per lead.",
+    category: "Website Development",
+    date: "2026-11-26",
+    dateDisplay: "Nov 26, 2026",
+    readTime: "10 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "A PPC landing page is a page built for one ad and one action, such as a form fill or a call. It lowers your cost per lead because it matches the search, loads fast on mobile, shows proof and makes the next step obvious. Sending ad clicks to a general home page usually wastes budget. The best results come when the ad, the page and the tracking are designed together.",
+    keyTakeaways: [
+      "Each landing page should match one search or ad group and ask for one action.",
+      "Message match matters: the headline should repeat what the person searched for.",
+      "Speed, mobile layout, short forms and visible trust signals raise the share of clicks that become enquiries.",
+      "Track calls, forms and WhatsApp clicks as conversions, or you cannot tell which pages work.",
+      "Google judges landing page experience as part of Quality Score, so a better page can lower your cost per click as well.",
+    ],
+    contentHtml: `
+<p>Many businesses spend money on Google Ads, pay for every click and then send those visitors to a home page designed to describe the whole company. The visitor wanted one thing, finds ten and leaves. A better page for the same traffic often does more to lower cost per lead than any change inside the ad account. This guide explains how <strong>PPC landing pages</strong> and web design work together, what a good page contains and how to test it. For the cost side, read <a href="/blog/google-ads-cost-in-ahmedabad/">Google Ads cost in Ahmedabad</a>, and for common failures, <a href="/blog/google-ads-clicks-but-no-leads-fixes/">Google Ads clicks but no leads</a>.</p>
+
+<h2>Landing page versus website page</h2>
+<table>
+<tr><th></th><th>Normal website page</th><th>PPC landing page</th></tr>
+<tr><td>Purpose</td><td>Inform, explain and guide to many pages</td><td>Get one action from one kind of visitor</td></tr>
+<tr><td>Navigation</td><td>Full menu</td><td>Minimal or none</td></tr>
+<tr><td>Message</td><td>About the company</td><td>Matches the search or ad</td></tr>
+<tr><td>Call to action</td><td>Several</td><td>One main action</td></tr>
+<tr><td>Measurement</td><td>Pages and traffic</td><td>Conversion rate and cost per lead</td></tr>
+</table>
+<p>Both are needed. A landing page converts paid traffic; the rest of your site builds trust and helps people who want to explore. Our <a href="/blog/website-features-that-generate-leads/">website features that generate leads</a> guide covers the site as a whole.</p>
+
+<h2>What a good PPC landing page contains</h2>
+<ol>
+<li><strong>A headline that repeats the search.</strong> If someone searched "website design company in Ahmedabad", the headline should say that, not "Welcome to our company".</li>
+<li><strong>A short supporting line</strong> that states the benefit and who the offer is for.</li>
+<li><strong>The main action above the fold:</strong> a short form, a call button or a WhatsApp button, visible on a phone without scrolling.</li>
+<li><strong>Proof:</strong> real client logos you may show, reviews, case study snippets and numbers you can verify.</li>
+<li><strong>What you get and how it works:</strong> three to five clear points or steps.</li>
+<li><strong>Price or price range</strong> where you can state it; people trust pages that do.</li>
+<li><strong>Objection handling:</strong> a few FAQs on cost, time, guarantees and next steps.</li>
+<li><strong>A repeat of the action</strong> at the end of the page.</li>
+</ol>
+
+<h2>Message match: the ad and page must agree</h2>
+<p>Create a separate page, or at least a separate headline, for each group of searches.</p>
+<table>
+<tr><th>Search</th><th>Ad promise</th><th>Landing page headline</th></tr>
+<tr><td>"google ads agency ahmedabad"</td><td>Google Ads agency with written pricing</td><td>Google Ads Agency in Ahmedabad: Fees in Writing</td></tr>
+<tr><td>"ecommerce website cost"</td><td>Get a written ecommerce quote</td><td>Ecommerce Website Cost: Get an Itemised Quote</td></tr>
+<tr><td>"seo audit"</td><td>Free SEO audit</td><td>Free SEO Audit: Find What Holds Your Site Back</td></tr>
+</table>
+<p>A page that repeats the visitor's own words tells them they are in the right place, and Google rewards relevance through Quality Score.</p>
+
+<h2>Forms that get filled in</h2>
+<ul>
+<li>Ask only for what you need: name, phone number and one qualifying question is often enough.</li>
+<li>Label fields clearly and make them easy to tap on a phone.</li>
+<li>Add spam protection that does not annoy real visitors.</li>
+<li>Show a clear thank-you page that tells the person what happens next and when.</li>
+<li>Offer a call or WhatsApp option for people who dislike forms.</li>
+</ul>
+
+<h2>Speed and mobile design</h2>
+<p>Most paid clicks come from phones. The page should load quickly, use readable text and big buttons and avoid pop-ups that cover the form. A heavy page loses clicks you already paid for; see <a href="/blog/website-speed-core-web-vitals-ahmedabad-businesses/">website speed and Core Web Vitals</a>.</p>
+
+<h2>Tracking: what to count</h2>
+<table>
+<tr><th>Action</th><th>How to count it</th></tr>
+<tr><td>Form submission</td><td>A conversion event fired on the thank-you page or form success</td></tr>
+<tr><td>Click-to-call</td><td>A click event on the phone number, plus call tracking if you use it</td></tr>
+<tr><td>WhatsApp click</td><td>A click event on the WhatsApp button</td></tr>
+<tr><td>Lead quality</td><td>Mark enquiries as qualified in a sheet or CRM, and compare by campaign</td></tr>
+</table>
+<p>Connect these to Google Ads so the system can learn which clicks lead to enquiries. A page without tracking is a guess.</p>
+
+<h2>How to test and improve a page</h2>
+<ol>
+<li>Record the starting conversion rate and cost per lead.</li>
+<li>Change one thing at a time: headline, form length, button text or the hero image.</li>
+<li>Run each test long enough to collect a meaningful number of visits.</li>
+<li>Keep the version that produces more qualified enquiries, not just more clicks.</li>
+</ol>
+<p>Our <a href="/services/cro/">conversion rate optimisation</a> team works this way.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>Sending all ads to the home page.</li>
+<li>A headline about the company, not the visitor's need.</li>
+<li>A long form on a small screen.</li>
+<li>No phone number or WhatsApp option.</li>
+<li>Stock photos with no real proof.</li>
+<li>No conversion tracking.</li>
+</ul>
+
+<h2>What it costs, and how we work</h2>
+<p>A landing page is quoted as part of a website or campaign project, in writing, with what is and is not included. Google Ads management fees run from ₹15,000 to ₹60,000 a month plus GST; see <a href="/google-ads-pricing-ahmedabad/">Google Ads pricing</a>. We do not promise a particular conversion rate.</p>
+
+<h2>How Digital Aura can help</h2>
+<p>We design landing pages together with the campaign, set up tracking and test improvements. See our <a href="/google-ads-agency-ahmedabad">Google Ads agency in Ahmedabad</a> and <a href="/website-development-services-ahmedabad/">website development services</a>, or <a href="/contact/">get a written quote for a landing page</a>.</p>
+`,
+    faqs: [
+      { q: "What is a PPC landing page?", a: "A PPC landing page is a page built for one ad group and one action, such as a form fill or call. It matches the search, loads fast on mobile, shows proof and makes the next step obvious." },
+      { q: "Why not send Google Ads traffic to my home page?", a: "A home page tries to serve everyone, so visitors who wanted one thing must search for it. A focused landing page usually converts more clicks into enquiries and can improve Quality Score." },
+      { q: "How do landing pages lower cost per lead?", a: "A higher share of clicks becomes enquiries, so the same ad spend produces more leads. Better relevance can also lower your cost per click through Quality Score." },
+      { q: "What should be above the fold on a landing page?", a: "A headline that matches the search, a short supporting line, the main action (form, call or WhatsApp) and one piece of proof. On mobile, the action should be visible without scrolling." },
+      { q: "How long should a landing page form be?", a: "As short as possible. Name, phone number and one qualifying question are often enough. Add more fields only if they improve lead quality enough to justify fewer submissions." },
+      { q: "How do I track conversions on a landing page?", a: "Fire conversion events for form submissions, click-to-call and WhatsApp clicks, and connect them to Google Ads. Also mark enquiries as qualified in a sheet or CRM to compare lead quality by campaign." },
+      { q: "Do landing pages affect Quality Score?", a: "Yes. Landing page experience, including relevance, speed and usability, is part of how Google rates your ads, and a better score can lower your costs." },
+      { q: "Do you design landing page for Google Ads in Ahmedabad?", a: "Yes. We design landing pages together with Google Ads campaigns, set up tracking and test improvements, with the scope and price written in advance." },
+    ],
+    ctaHeading: "Paying for Clicks That Do Not Convert?",
+    ctaText: "Share your ad and page. We will tell you what to change so more clicks become enquiries.",
+    ctaButton: "Get a Landing Page Quote",
+    cro: { href: "/contact/", label: "Get a landing page quote", sidebar: "Paying for clicks but few enquiries? Ask about a landing page.", bandHeading: "Want more enquiries from the same ad spend?", bandText: "Share your ad and page link. We will say what to change and quote it in writing." },
+  },
+  {
+    slug: "manufacturing-website-rfq-enquiries",
+    title: "How to Turn Manufacturing Website Visitors Into RFQs and Qualified Enquiries",
+    titleHighlight: "RFQs and Qualified Enquiries",
+    metaTitle: "Manufacturing Website Design: Turn Visitors Into RFQs Faster",
+    metaDescription: "Manufacturing website design that wins RFQs: RFQ form fields, product page layout, trust signals, response times and tracking for manufacturers in Gujarat and India.",
+    category: "Website Development",
+    date: "2026-11-27",
+    dateDisplay: "Nov 27, 2026",
+    readTime: "10 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "A manufacturing website wins RFQs when every product page has a clear quote path, a short form and visible trust signals. Add a fast reply promise and tracking that shows which pages produce enquiries. Add phone and WhatsApp options, confirm receipt automatically and respond within one working day.",
+    keyTakeaways: [
+      "The RFQ path should be one click from every product page, on desktop and mobile.",
+      "Ask for product, quantity, specification, delivery location and contact details. Fewer fields produce more RFQs, but too few produce unusable ones.",
+      "Certifications, plant photos and named contacts reduce a buyer's risk and raise enquiries.",
+      "Reply fast and tell the buyer what happens next. Slow replies lose RFQs that SEO and ads already paid for.",
+      "Track RFQs by page and source so you know which products and channels bring real orders.",
+    ],
+    contentHtml: `
+<p>Many manufacturers get traffic to their website and still hear nothing. The visitors are there, but the site gives them no easy way to ask for a price, or asks for too much, or never answers. Getting more RFQs is often a <em>design and process</em> problem, not a traffic problem. This guide covers the page layout, the form, the follow-up and the tracking behind <strong>manufacturing website design</strong> that produces requests for quotation. For the full site structure, read our <a href="/blog/manufacturer-website-checklist-b2b-buyers/">manufacturer website checklist</a>, and for ranking, <a href="/blog/b2b-seo-manufacturers-gujarat-guide/">B2B SEO for manufacturers in Gujarat</a>.</p>
+
+<h2>What an industrial buyer is thinking</h2>
+<p>A buyer comparing suppliers wants to answer five questions fast:</p>
+<ol>
+<li>Do they make what I need, in my size and material?</li>
+<li>Can they meet my quality standard and certifications?</li>
+<li>Are they a real, established company?</li>
+<li>Will they reply quickly and clearly?</li>
+<li>Can I ask for a quote without a long process?</li>
+</ol>
+<p>Your site should answer these on the product page itself, without making the buyer hunt.</p>
+
+<h2>The product page that earns RFQs</h2>
+<table>
+<tr><th>Element</th><th>What to include</th></tr>
+<tr><td>Headline</td><td>The product name, material and main use, in the buyer's words</td></tr>
+<tr><td>Specification table</td><td>Sizes, grades, tolerances, standards and finishes as readable text</td></tr>
+<tr><td>Photos</td><td>Real product and process photos, not only catalogue renders</td></tr>
+<tr><td>Applications</td><td>Industries and uses, so buyers see they fit</td></tr>
+<tr><td>Trust strip</td><td>Certifications you hold, years in business, export countries if true</td></tr>
+<tr><td>RFQ button</td><td>Visible near the top and again below the specifications; fixed on mobile</td></tr>
+<tr><td>Alternatives</td><td>Phone, WhatsApp and email, for buyers who prefer them</td></tr>
+<tr><td>Downloads</td><td>A datasheet or catalogue link, ideally without forcing a form</td></tr>
+</table>
+
+<h2>The RFQ form: what to ask</h2>
+<p>An RFQ form has a hard job. It should be short enough to finish on a phone, and detailed enough that your sales team can quote without chasing.</p>
+<table>
+<tr><th>Field</th><th>Why</th><th>Required?</th></tr>
+<tr><td>Name and company</td><td>Who you are speaking to</td><td>Yes</td></tr>
+<tr><td>Phone or WhatsApp number</td><td>The fastest way to reach them</td><td>Yes</td></tr>
+<tr><td>Email</td><td>To send the quotation</td><td>Yes</td></tr>
+<tr><td>Product or item</td><td>Prefilled from the page they came from</td><td>Yes, prefilled</td></tr>
+<tr><td>Quantity or monthly requirement</td><td>Shows whether the order fits</td><td>Yes</td></tr>
+<tr><td>Specification or drawing</td><td>Lets you check feasibility; allow file upload</td><td>Optional</td></tr>
+<tr><td>Delivery location, city or country</td><td>For freight and export terms</td><td>Yes</td></tr>
+<tr><td>Message</td><td>Anything else the buyer wants to say</td><td>Optional</td></tr>
+</table>
+<p>Prefill the product, keep it to six or seven visible fields and use spam protection that does not block real buyers.</p>
+
+<h2>After the form: the confirmation and the reply</h2>
+<ul>
+<li><strong>Thank-you page:</strong> confirm receipt, say when they will hear from you ("within one working day") and what to expect next, such as a call or a quotation by email.</li>
+<li><strong>Automatic email:</strong> repeat the same message and include your phone number and a catalogue link.</li>
+<li><strong>Internal alert:</strong> send each RFQ instantly to the right person by email and WhatsApp.</li>
+<li><strong>Response rule:</strong> reply the same day where possible, and always within one working day.</li>
+</ul>
+<p>A buyer sending RFQs to five suppliers often goes with the first clear reply. Speed is a competitive advantage that costs nothing.</p>
+
+<h2>Trust signals that matter to buyers</h2>
+<ul>
+<li>Certifications and test reports you actually hold, with dates.</li>
+<li>Photos of your plant, machines, inspection and packaging.</li>
+<li>Named contacts with phone numbers and a real address.</li>
+<li>Client types or logos, only where you have permission.</li>
+<li>Export experience: countries served, shipping and payment terms.</li>
+<li>Short case studies describing the problem you solved.</li>
+</ul>
+
+<h2>Mobile matters more than you think</h2>
+<p>Many buyers first open your page on a phone. Check that tables scroll, buttons are tappable, the RFQ button stays visible and pages load quickly. See <a href="/blog/website-speed-core-web-vitals-ahmedabad-businesses/">website speed and Core Web Vitals</a>.</p>
+
+<h2>Tracking: know where RFQs come from</h2>
+<table>
+<tr><th>What to track</th><th>How</th></tr>
+<tr><td>RFQ form submissions by product page</td><td>A conversion event with the page and product recorded</td></tr>
+<tr><td>Calls and WhatsApp clicks</td><td>Click events on the phone and WhatsApp buttons</td></tr>
+<tr><td>Source of each RFQ</td><td>Record the campaign, search or referral, for example from SEO, Google Ads or a directory</td></tr>
+<tr><td>RFQ status</td><td>In a sheet or CRM: received, quoted, negotiating, won, lost</td></tr>
+<tr><td>Conversion rate by product</td><td>RFQs divided by visits to that page</td></tr>
+</table>
+<p>With this, you can see that, say, one product family brings most RFQs and decide where to invest in SEO or ads. Our guide to <a href="/blog/digital-marketing-for-manufacturers-exporters-ahmedabad/">digital marketing for manufacturers and exporters</a> shows how channels fit together.</p>
+
+<h2>Common mistakes on manufacturer sites</h2>
+<ul>
+<li>A single contact page that is the only way to ask for a quote.</li>
+<li>A long form asking for a full company profile before any price.</li>
+<li>Specifications trapped in images or a PDF the buyer must download.</li>
+<li>No reply for days, or no confirmation at all.</li>
+<li>No tracking, so nobody knows what works.</li>
+<li>Out-of-date certificates and product lists.</li>
+</ul>
+
+<h2>A 30-day improvement plan</h2>
+<table>
+<tr><th>Week</th><th>Action</th></tr>
+<tr><td>1</td><td>Add an RFQ button and short form to the top 10 products, with tracking</td></tr>
+<tr><td>2</td><td>Add specification tables, photos and a trust strip to those pages</td></tr>
+<tr><td>3</td><td>Set up the thank-you page, auto-reply and internal alerts, and agree a reply time</td></tr>
+<tr><td>4</td><td>Review RFQs by source, improve the best pages and fix the worst</td></tr>
+</table>
+
+<h2>How Digital Aura can help</h2>
+<p>We design and build manufacturer websites with RFQ paths, tracking and fast pages. See our <a href="/website-design-for-manufacturers-ahmedabad/">website design for manufacturers</a>, our <a href="/seo/manufacturers-b2b-gujarat/">SEO for manufacturers</a> and <a href="/website-development-services-ahmedabad/">website development services</a>, or <a href="/contact/">tell us what you make</a> and we will suggest the pages and RFQ form your site needs.</p>
+`,
+    faqs: [
+      { q: "How do I get more RFQs from my manufacturing website?", a: "Give every product page a visible RFQ path, a short form that asks for product, quantity, specification and location, add trust signals such as certifications and plant photos, reply within one working day and track RFQs by page and source." },
+      { q: "What should an RFQ form ask for?", a: "Name and company, phone or WhatsApp, email, the product (prefilled), quantity, delivery location and optionally a specification or drawing upload. Keep it to six or seven visible fields." },
+      { q: "How fast should I reply to an RFQ?", a: "Ideally the same day, and always within one working day. Buyers often send RFQs to several suppliers and respond to the first clear reply." },
+      { q: "Should catalogue downloads need a form?", a: "Where possible, let buyers download datasheets without a form, and offer the RFQ form next to it. Forcing a form for basic information can lose serious buyers." },
+      { q: "How can I tell which pages produce RFQs?", a: "Fire conversion events for form submissions, calls and WhatsApp clicks, record the page and source, and keep a sheet or CRM of RFQ status. Then compare conversion rate by product page." },
+      { q: "Do certifications really help conversions?", a: "Yes, when they are real and current. Buyers use certifications, plant photos and named contacts to judge risk, and showing them on product pages helps decisions." },
+      { q: "Is SEO or the website more important for RFQs?", a: "Both matter. SEO brings the right buyers, and the website converts them. Traffic without an RFQ path wastes SEO and ad spend." },
+      { q: "Can you build a manufacturing website in Ahmedabad?", a: "Yes. We design manufacturer websites with product pages, RFQ forms, tracking and speed, and quote the scope and price in writing after you share your products and goals." },
+    ],
+    ctaHeading: "Want More RFQs From Your Website?",
+    ctaText: "Tell us what you make and who buys it. We will suggest the pages and RFQ form your site needs.",
+    ctaButton: "Talk to Our Website Team",
+    cro: { href: "/contact/", label: "Talk to our website team", sidebar: "Manufacturer? Ask for an RFQ-focused website plan.", bandHeading: "Visitors but no RFQs?", bandText: "Share your website link. We will say what to change so more buyers send an RFQ." },
+  },
+  {
+    slug: "digital-marketing-agency-vs-freelancer-vs-in-house-ahmedabad",
+    title: "Digital Marketing Agency vs Freelancer vs In-House: What Ahmedabad Businesses Should Pick",
+    titleHighlight: "Agency vs Freelancer vs In-House",
+    metaTitle: "Digital Marketing Agency vs Freelancer vs In-House: Which to Hire",
+    metaDescription: "Digital marketing agency vs freelancer vs in-house team: compare cost, skills, speed and risk, and learn which option fits your business and budget in Ahmedabad.",
+    category: "Digital Marketing",
+    date: "2026-11-26",
+    dateDisplay: "Nov 26, 2026",
+    readTime: "10 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "Pick a freelancer for one task, an agency for several skills, and in-house for constant, large work. Many Ahmedabad businesses start with an agency, then add one in-house coordinator. Compare real cost, not just fees: salaries, tools, management time and the risk of one person leaving.",
+    keyTakeaways: [
+      "A freelancer suits one well-defined task. An agency suits a connected plan across several channels. In-house suits constant, large-scale work.",
+      "Compare the full cost: fees or salaries, software, ad tools, management time and cover for absence.",
+      "The biggest risks are a single point of failure with freelancers, junior staff with agencies and slow hiring with in-house teams.",
+      "A hybrid works well: an agency for specialist skills, with one internal person who owns goals and approvals.",
+      "Whichever you choose, keep ad accounts, analytics and the website in your own name.",
+    ],
+    contentHtml: `
+<p>Sooner or later every growing business asks the same question: do we hire a freelancer, an agency or our own marketing person? There is no universal answer, but there is a clear way to decide. This guide compares the three on what matters (cost, skills, speed, control and risk) and tells you which fits which situation. If you are further along and comparing agencies, see <a href="/blog/best-digital-marketing-agencies-in-ahmedabad/">how to compare digital marketing agencies in Ahmedabad</a>.</p>
+
+<h2>The three options in one table</h2>
+<table>
+<tr><th></th><th>Freelancer</th><th>Agency</th><th>In-house</th></tr>
+<tr><td>Best for</td><td>One defined task, small budget</td><td>Several channels planned together</td><td>Constant, large, central marketing</td></tr>
+<tr><td>Skills</td><td>Deep in one or two areas</td><td>A team across SEO, ads, creative, tracking</td><td>Whatever you hire, usually generalists</td></tr>
+<tr><td>Speed to start</td><td>Fast</td><td>Fast, with a clear onboarding plan</td><td>Slow: hiring, training, tools</td></tr>
+<tr><td>Cost pattern</td><td>Lower monthly fee</td><td>Monthly fee, often with plans</td><td>Salary plus software, training and management time</td></tr>
+<tr><td>Main risk</td><td>One person: illness, workload, leaving</td><td>Junior staff on your account; weak accountability</td><td>Limited skills; dependency on one hire</td></tr>
+<tr><td>Control</td><td>High, if the accounts are yours</td><td>Depends on contract and ownership</td><td>Highest</td></tr>
+</table>
+
+<h2>When a freelancer is the right choice</h2>
+<ul>
+<li>You need one thing done well, such as setting up Google Ads, writing blog posts or managing one social profile.</li>
+<li>Your budget is small and your needs are narrow.</li>
+<li>You can brief and review the work yourself.</li>
+<li>You are testing a channel before committing.</li>
+</ul>
+<p><strong>Watch for:</strong> cover during leave, whether one person can really do SEO, ads and design, and who owns the accounts. A freelancer who is brilliant in ads may be weak at tracking, and you may not notice until results stall.</p>
+
+<h2>When an agency is the right choice</h2>
+<ul>
+<li>You want SEO, Google Ads, Meta Ads, tracking and content planned as one system.</li>
+<li>You need specialists without hiring each one.</li>
+<li>You want reporting, cover for absence and a process.</li>
+<li>Your budget supports a monthly fee plus ad spend.</li>
+</ul>
+<p><strong>Watch for:</strong> who actually works on your account, how many clients they handle and whether work is outsourced. Ask for a named lead and a sample report, and use our <a href="/blog/how-to-choose-digital-marketing-agency-ahmedabad/">guide to choosing a digital marketing agency</a>. For reference, our bundled plans run from ₹30,000 to ₹2,70,000 a month plus GST, with ad spend separate; see <a href="/blog/digital-marketing-cost-in-ahmedabad/">digital marketing cost in Ahmedabad</a>.</p>
+
+<h2>When in-house is the right choice</h2>
+<ul>
+<li>Marketing is a daily, constant job: many campaigns, content and approvals.</li>
+<li>You have budget for a team, tools and training.</li>
+<li>You want everything closely tied to sales and operations.</li>
+</ul>
+<p><strong>Watch for:</strong> the true cost (salary, tools, training, recruitment, management time) and the risk of hiring one person for six skills. One in-house marketer cannot be an SEO expert, a paid ads specialist, a designer and an analyst at once.</p>
+
+<h2>Compare the real cost, not just the fee</h2>
+<table>
+<tr><th>Cost item</th><th>Freelancer</th><th>Agency</th><th>In-house</th></tr>
+<tr><td>Fee or salary</td><td>Monthly or project fee</td><td>Monthly fee</td><td>Salary, plus bonuses and benefits</td></tr>
+<tr><td>Tools and software</td><td>Often yours or extra</td><td>Often included or quoted separately</td><td>You pay for every tool</td></tr>
+<tr><td>Recruitment and training</td><td>None</td><td>None</td><td>Yes</td></tr>
+<tr><td>Management time</td><td>Yours, to brief and review</td><td>Some, for approvals and reports</td><td>A lot, as a line manager</td></tr>
+<tr><td>Cover for absence</td><td>Rarely</td><td>Usually</td><td>You arrange it</td></tr>
+<tr><td>Ad spend</td><td colspan="3">Separate in every case, paid directly to Google and Meta from your own account</td></tr>
+</table>
+
+<h2>A simple decision guide</h2>
+<table>
+<tr><th>If this is true</th><th>Lean towards</th></tr>
+<tr><td>One channel, one task, small budget</td><td>Freelancer</td></tr>
+<tr><td>You want SEO, ads and tracking working together</td><td>Agency</td></tr>
+<tr><td>Marketing is full-time work every day</td><td>In-house, with specialist support</td></tr>
+<tr><td>You do not know what you need yet</td><td>Agency audit first, then decide</td></tr>
+<tr><td>You need both specialists and daily coordination</td><td>Hybrid: agency plus one internal owner</td></tr>
+</table>
+
+<h2>The hybrid model that works for many businesses</h2>
+<p>A common and effective setup is an agency for the specialist work (SEO, Google Ads, Meta Ads, tracking) plus one person inside the business who owns goals, approvals and sales feedback. The agency brings skill; the internal owner brings context and speed. This also reduces risk, because knowledge does not sit in one head.</p>
+
+<h2>Protect yourself whichever you choose</h2>
+<ul>
+<li><strong>Ownership:</strong> ad accounts, Analytics, Search Console, Business Profile and the website should be in your name.</li>
+<li><strong>Scope in writing:</strong> deliverables, reporting dates and exclusions.</li>
+<li><strong>Reports on enquiries,</strong> not only clicks or rankings.</li>
+<li><strong>Notice terms</strong> you can live with.</li>
+<li><strong>No guarantees:</strong> be cautious of anyone promising rankings, leads or a fixed return.</li>
+</ul>
+<p>The same questions apply to channel specialists; see our guides on <a href="/blog/how-to-choose-seo-company-ahmedabad/">choosing an SEO company</a>, <a href="/blog/how-to-choose-google-ads-agency-ahmedabad/">choosing a Google Ads agency</a> and <a href="/blog/how-to-choose-meta-ads-agency-ahmedabad/">choosing a Meta ads agency</a>.</p>
+
+<h2>How Digital Aura fits</h2>
+<p>We work as an agency with separate SEO, Google Ads and Meta Ads teams, and we are open about when a smaller step is enough. If a freelancer or an internal hire is the better fit for your budget, we will say so. See our <a href="/digital-marketing-company-ahmedabad">digital marketing agency in Ahmedabad</a> page, or request a <a href="/digital-marketing-company-ahmedabad#audit">free growth audit</a> and compare our written plan with a freelancer's quote or an internal hiring cost.</p>
+`,
+    faqs: [
+      { q: "Should I hire a digital marketing agency or a freelancer?", a: "Hire a freelancer for one clear task on a small budget, and an agency when you need several skills such as SEO, ads, tracking and creative working together, with reporting and cover for absence." },
+      { q: "Is an in-house marketing team better than an agency?", a: "In-house suits constant, large-scale marketing that is central to the business. It is slower to build and one hire rarely covers every skill, so many businesses use an agency for specialist work with one internal owner." },
+      { q: "Which is cheapest: agency, freelancer or in-house?", a: "A freelancer usually has the lowest monthly fee, but compare the full cost. In-house adds salary, tools, training and management time, and an agency fee covers a team and tools. Ad spend is separate in every case." },
+      { q: "What are the risks of hiring a freelancer?", a: "Dependence on one person, limited breadth of skills, no cover during leave and accounts or files held by the freelancer. Reduce the risk with written scope, your own accounts and documented work." },
+      { q: "What are the risks of hiring an agency?", a: "Junior staff on your account, outsourced work, vague reporting and contracts that are hard to exit. Ask who will do the work, request a sample report and read the contract terms." },
+      { q: "Can I combine an agency with an in-house person?", a: "Yes. It is a common model: the agency handles specialist work and one internal person owns goals, approvals and feedback from sales." },
+      { q: "How do I choose between them if my budget is small?", a: "Start with the single channel most likely to bring enquiries, and consider a freelancer or a focused agency plan. Fix tracking and your website basics first so any spend is measurable." },
+      { q: "Does Digital Aura work with freelancers or in-house teams?", a: "Yes. We can work with your internal owner. If a freelancer or an internal hire suits your budget better, we will say so honestly in a free audit." },
+    ],
+    ctaHeading: "Not Sure Which Option Fits?",
+    ctaText: "Request a free growth audit and get a written plan you can compare with a freelancer quote or an in-house hire.",
+    ctaButton: "Get My Free Growth Audit",
+    cro: { href: "/digital-marketing-company-ahmedabad#audit", label: "Get a free growth audit", sidebar: "Agency, freelancer or in-house? Get a written plan to compare.", bandHeading: "Deciding who should run your marketing?", bandText: "Request a free growth audit and get a written plan and quote to compare." },
+  },
+  {
+    slug: "digital-marketing-for-real-estate-builders-ahmedabad",
+    title: "Digital Marketing for Real Estate Builders in Ahmedabad",
+    titleHighlight: "Real Estate Builders in Ahmedabad",
+    metaTitle: "Real Estate Digital Marketing Agency Guide for Ahmedabad Builders",
+    metaDescription: "Real estate digital marketing for Ahmedabad builders: the channels that bring site visits, a funnel plan, lead follow-up, tracking and what an agency should deliver.",
+    category: "Digital Marketing",
+    date: "2026-11-27",
+    dateDisplay: "Nov 27, 2026",
+    readTime: "11 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "Real estate digital marketing works best as one funnel: search, social ads, a project page and fast follow-up. Use Google Ads to catch buyers searching for flats or plots, Meta ads to build demand with walkthrough videos, a project page with RERA details and a short form, and WhatsApp and call follow-up. Judge the plan by cost per site visit and booking, not cost per lead.",
+    keyTakeaways: [
+      "A real estate buyer researches for weeks, so you need to be present at search, social and follow-up stages.",
+      "Google Ads catches active buyers, Meta ads builds demand and retargets, SEO and Business Profile build lasting trust.",
+      "Every project needs its own landing page with configurations, location, price range, RERA details and a clear site-visit call to action.",
+      "Speed of follow-up decides results: contact leads fast and track them to site visit and booking.",
+      "Measure cost per qualified lead, per site visit and per booking, not just cost per lead.",
+    ],
+    contentHtml: `
+<p>Selling a flat or villa is different from selling most products. The buyer spends weeks comparing projects, asks family, visits several sites and commits a large amount of money. Marketing has to be present across that whole journey. This guide sets out how a builder in Ahmedabad can use digital channels to bring qualified site visits, based on how <strong>real estate digital marketing</strong> works in practice. For the two main paid channels in depth, read <a href="/blog/google-ads-real-estate-ahmedabad-guide/">Google Ads for real estate in Ahmedabad</a> and <a href="/blog/meta-ads-real-estate-ahmedabad-playbook/">the Meta ads playbook for real estate</a>.</p>
+
+<h2>The real estate buyer journey</h2>
+<table>
+<tr><th>Stage</th><th>What the buyer does</th><th>Where you should be</th></tr>
+<tr><td>Dream and awareness</td><td>Thinks about moving; sees projects on Instagram or Facebook</td><td>Meta ads, YouTube, local content</td></tr>
+<tr><td>Research</td><td>Searches "2 BHK in [area]", compares prices and amenities</td><td>Google search ads, SEO, project page</td></tr>
+<tr><td>Shortlist</td><td>Reads reviews, watches walkthroughs, asks for a brochure</td><td>Landing page, Business Profile, video, WhatsApp</td></tr>
+<tr><td>Visit</td><td>Books a site or sample flat visit</td><td>Fast call, WhatsApp, a clear site-visit offer</td></tr>
+<tr><td>Decision</td><td>Compares, negotiates, arranges finance</td><td>Sales follow-up, retargeting reminders</td></tr>
+</table>
+
+<h2>The channels, and the job of each</h2>
+<h3>Google Ads: catch buyers who are searching</h3>
+<p>Search ads capture people typing things like "3 BHK flats in [area]" or "villas near [landmark]". Build campaigns around areas, configurations and project names, use location extensions and call buttons and send clicks to a project page, not your home page. See also <a href="/blog/ppc-landing-pages-and-web-design-ahmedabad/">PPC landing pages</a>. Google Ads management with us runs from ₹15,000 to ₹60,000 a month plus GST; see <a href="/blog/google-ads-cost-in-ahmedabad/">Google Ads cost in Ahmedabad</a>.</p>
+<h3>Meta ads: build demand and bring people back</h3>
+<p>Facebook and Instagram let you show walkthrough videos, location highlights and offers to people in the right areas and income profiles, then retarget those who watched or visited your page. Fee and ad spend are separate; see <a href="/blog/meta-ads-cost-in-ahmedabad/">Meta ads cost in Ahmedabad</a>.</p>
+<h3>SEO and Business Profile: build lasting trust</h3>
+<p>Project pages, area guides and a complete Google Business Profile for the sales office help you show up for searches that never go away and give buyers a way to check you are real. Our <a href="/blog/google-business-profile-seo-checklist/">Business Profile checklist</a> shows the details to complete.</p>
+<h3>YouTube and video</h3>
+<p>Walkthroughs, site progress updates and location videos build trust and are reused across ads, your page and WhatsApp.</p>
+<h3>WhatsApp and calls</h3>
+<p>Most buyers expect a quick WhatsApp message with the brochure and a call to arrange a visit. This is where many campaigns win or lose.</p>
+<h3>Property portals</h3>
+<p>Portals can add enquiries, but they are shared with every competing project and you do not control the customer relationship. Treat them as a supplement, and build your own pages, audience lists and follow-up so you are not dependent on them.</p>
+
+<h2>The project landing page</h2>
+<p>Each project needs a page built for conversion:</p>
+<ul>
+<li>Project name, location, configurations and a starting price range or "price on request" with a clear reason to ask.</li>
+<li>Photos, a walkthrough video, floor plans and an amenities list.</li>
+<li>Map with nearby roads, schools, hospitals and business areas, stated accurately.</li>
+<li>RERA registration details where required; confirm the requirements with your legal adviser.</li>
+<li>A short form (name, phone, configuration, budget) plus call and WhatsApp buttons.</li>
+<li>Possession stage, builder background and reviews you can verify.</li>
+</ul>
+
+<h2>Lead follow-up: where the money is won</h2>
+<table>
+<tr><th>Practice</th><th>Why it matters</th></tr>
+<tr><td>Call every lead quickly, ideally within minutes</td><td>Interest fades fast, and competitors are also calling</td></tr>
+<tr><td>Send a WhatsApp message with brochure and map</td><td>Gives the buyer something to share with family</td></tr>
+<tr><td>Use a call script with qualifying questions</td><td>Budget, configuration, timeline and purpose (own use or investment)</td></tr>
+<tr><td>Offer a specific site visit time</td><td>Moves the buyer to the stage that matters</td></tr>
+<tr><td>Record status in a sheet or CRM</td><td>Lets marketing see which leads were real</td></tr>
+<tr><td>Follow up after the visit</td><td>Most decisions need several touches</td></tr>
+</table>
+
+<h2>What to measure</h2>
+<table>
+<tr><th>Metric</th><th>What it tells you</th></tr>
+<tr><td>Cost per lead</td><td>The first, shallow number</td></tr>
+<tr><td>Cost per qualified lead</td><td>Whether leads match your buyer</td></tr>
+<tr><td>Cost per site visit</td><td>The most useful marketing metric</td></tr>
+<tr><td>Cost per booking</td><td>The final result, which takes longer to appear</td></tr>
+<tr><td>Source of each booking</td><td>Which channel deserves more budget</td></tr>
+</table>
+
+<h2>A starting plan for a new project</h2>
+<ol>
+<li>Build the project page and set up tracking for forms, calls and WhatsApp.</li>
+<li>Launch Google search campaigns for area and configuration searches.</li>
+<li>Launch Meta campaigns with walkthrough video and a site-visit offer, then retarget visitors.</li>
+<li>Complete the Business Profile for the sales office and ask early visitors for reviews.</li>
+<li>Review weekly with the sales team: which leads were real, which were not, and why.</li>
+</ol>
+
+<h2>What an agency should deliver, and what it costs</h2>
+<p>A good agency gives you the project page, tracking, campaigns on both channels, creative, a lead sheet, weekly feedback and a monthly report on qualified leads and site visits. Our digital marketing plans run from ₹30,000 to ₹2,70,000 a month plus GST, with ad spend separate; see <a href="/blog/digital-marketing-cost-in-ahmedabad/">digital marketing cost in Ahmedabad</a>. We do not guarantee leads, site visits or bookings.</p>
+
+<h2>How Digital Aura can help</h2>
+<p>We plan the funnel, run Google and Meta campaigns and report on cost per site visit. See our <a href="/meta-ads-agency-ahmedabad/real-estate/">Meta ads for real estate</a> and <a href="/digital-marketing-company-ahmedabad">digital marketing agency in Ahmedabad</a>, or request a <a href="/digital-marketing-company-ahmedabad#audit">free growth audit</a>.</p>
+`,
+    faqs: [
+      { q: "What digital marketing works best for real estate builders in Ahmedabad?", a: "A combination: Google Ads for people searching for flats or plots, Meta ads for demand and retargeting, a project landing page, a complete Business Profile and fast WhatsApp and call follow-up, with tracking to site visits and bookings." },
+      { q: "Is Google Ads or Facebook better for real estate?", a: "They do different jobs. Google Ads captures buyers actively searching, while Meta ads builds demand and brings people back. Most builders benefit from both, tracked separately." },
+      { q: "How do I get more site visits for my project?", a: "Send traffic to a project page with a clear site-visit call to action, add qualifying questions to forms, call leads within minutes, send a WhatsApp brochure and track which sources produce visits." },
+      { q: "What should a real estate landing page include?", a: "Project name and location, configurations, a price range or a clear reason to ask, photos, a walkthrough video, floor plans, amenities, a map, RERA details where required, a short form and call and WhatsApp buttons." },
+      { q: "Should builders rely on property portals?", a: "Portals can add enquiries but are shared with competitors, so they should supplement your own pages, ads and follow-up, not replace them." },
+      { q: "How do I measure real estate digital marketing?", a: "Track cost per qualified lead, cost per site visit and cost per booking, and record the source of each booking. Cost per lead alone can mislead." },
+      { q: "How much does real estate digital marketing cost in Ahmedabad?", a: "Our plans run from ₹30,000 to ₹2,70,000 a month plus GST, with ad spend separate. Google Ads and Meta ads management are also available separately from ₹15,000 a month plus GST." },
+      { q: "Can an agency guarantee bookings?", a: "No. Bookings depend on your project, price, location and sales process. A good agency sets up tracking, runs campaigns and reports honestly on qualified leads and site visits." },
+    ],
+    ctaHeading: "Launching or Selling a Project?",
+    ctaText: "Request a free growth audit and get a written funnel plan for your project.",
+    ctaButton: "Get My Free Growth Audit",
+    cro: { href: "/digital-marketing-company-ahmedabad#audit", label: "Get a free growth audit", sidebar: "Builder in Ahmedabad? Ask for a written plan for your project.", bandHeading: "Want more qualified site visits?", bandText: "Request a free growth audit and get a written funnel plan for your project." },
+  },
+  {
+    slug: "digital-marketing-for-restaurants-cafes-ahmedabad",
+    title: "Digital Marketing for Restaurants and Cafes in Ahmedabad",
+    titleHighlight: "Restaurants and Cafes in Ahmedabad",
+    metaTitle: "Digital Marketing Agency for Restaurants in Ahmedabad: Guide",
+    metaDescription: "A digital marketing agency guide for restaurants and cafes in Ahmedabad: Google profile, Instagram, local ads, reviews and direct orders, with a simple monthly plan.",
+    category: "Digital Marketing",
+    date: "2026-11-30",
+    dateDisplay: "Nov 30, 2026",
+    readTime: "10 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "Restaurant marketing in Ahmedabad starts with a complete Google Business Profile, because diners check Maps first. Add regular Instagram reels and photos, local Meta ads around your area, steady review collection, and a direct ordering or booking route through WhatsApp and phone. Measure calls, direction requests, bookings and orders, not just followers.",
+    keyTakeaways: [
+      "A complete Google Business Profile with menu, photos, hours and reviews does more for most restaurants than any other single channel.",
+      "Instagram is the visual shop window: reels, dishes, the space and events, posted consistently.",
+      "Local Meta ads within a few kilometres turn followers and passers-by into visitors.",
+      "Reviews and replies decide choices. Ask for them every day and answer every one.",
+      "Build direct orders and bookings by WhatsApp and phone, so you depend less on delivery platforms.",
+    ],
+    contentHtml: `
+<p>People choose where to eat in a few taps. They search "best cafe near me", open the map, look at photos and ratings and decide. Your restaurant or cafe has to look good, be easy to find and make the next step simple. This guide covers the channels that matter for <strong>restaurant digital marketing</strong> in Ahmedabad, in the order we would set them up, with a plan you can follow monthly. For the Meta side in depth, see our page on <a href="/meta-ads-agency-ahmedabad/restaurants/">Meta ads for restaurants</a>.</p>
+
+<h2>How diners choose</h2>
+<table>
+<tr><th>Moment</th><th>What the diner does</th><th>What you need</th></tr>
+<tr><td>Discovery</td><td>Searches near me, sees an Instagram reel, hears from a friend</td><td>Maps visibility, reels, word of mouth</td></tr>
+<tr><td>Checking</td><td>Reads reviews, looks at photos and the menu</td><td>Good photos, current menu, recent reviews</td></tr>
+<tr><td>Deciding</td><td>Compares distance, price, ambience, hours</td><td>Accurate hours and details</td></tr>
+<tr><td>Action</td><td>Calls, books, gets directions or orders</td><td>Easy call, directions, booking or order link</td></tr>
+<tr><td>After</td><td>Posts, reviews, returns</td><td>A review request and a reason to come back</td></tr>
+</table>
+
+<h2>Step 1: Make your Google Business Profile complete</h2>
+<p>For most restaurants, this is the single most important page. Check each item:</p>
+<ul>
+<li>Correct name, address, phone number and opening hours, including festival changes.</li>
+<li>The right categories, for example "Cafe" or "Gujarati restaurant".</li>
+<li>Photos: food, interior, exterior, menu and team. Add new ones every week.</li>
+<li>Menu, with prices, and links to booking or ordering.</li>
+<li>Attributes such as outdoor seating, vegetarian options, parking, family friendly.</li>
+<li>Posts about offers and events.</li>
+<li>Replies to every review, positive and negative.</li>
+</ul>
+<p>Our <a href="/blog/google-business-profile-seo-checklist/">Business Profile checklist</a> and the <a href="/blog/local-seo-citation-building-ahmedabad/">citation building guide</a> cover consistency across listings.</p>
+
+<h2>Step 2: Collect and use reviews</h2>
+<ul>
+<li>Ask happy guests while they are still at the table, with a QR code that opens your review page.</li>
+<li>Reply within a day, thanking guests by name where possible.</li>
+<li>Respond to criticism calmly and offer to make it right.</li>
+<li>Never buy or write fake reviews.</li>
+</ul>
+<p>Review count, recency and your replies all influence who chooses you.</p>
+
+<h2>Step 3: Instagram as your shop window</h2>
+<table>
+<tr><th>Content</th><th>Why it works</th></tr>
+<tr><td>Short reels of dishes being made</td><td>Shows quality and makes people hungry</td></tr>
+<tr><td>Ambience and seating clips</td><td>Helps people picture the visit</td></tr>
+<tr><td>Staff and chef stories</td><td>Builds a personal connection</td></tr>
+<tr><td>Offers and events</td><td>Gives a reason to visit now</td></tr>
+<tr><td>Guest photos and reposts, with permission</td><td>Social proof and fresh content</td></tr>
+</table>
+<p>Aim for consistent posting rather than occasional bursts, and use your location tag. See our <a href="/blog/instagram-growth-2026/">Instagram growth guide</a> for what works now.</p>
+
+<h2>Step 4: Local Meta ads</h2>
+<p>Instagram and Facebook ads can reach people within a few kilometres of your outlet. Use them for new openings, festive menus, weekday offers and events. Keep creative simple: a short video, a clear offer and a button to call, get directions or send a WhatsApp message. Track offers with a code or a phrase staff ask for, so you can see what the ads brought. Ad fees and ad spend are separate; see <a href="/blog/meta-ads-cost-in-ahmedabad/">Meta ads cost in Ahmedabad</a>.</p>
+
+<h2>Step 5: Build direct orders and bookings</h2>
+<p>Delivery apps bring customers, and also take commission and own the customer relationship. Reduce dependence by building direct routes:</p>
+<ul>
+<li>A WhatsApp number for orders, bookings and catering enquiries, with a saved reply and your menu.</li>
+<li>A simple booking or order link on your profile and Instagram.</li>
+<li>A WhatsApp list for regular guests who have agreed to hear about offers.</li>
+<li>Offers for direct orders, such as a free item, where your margins allow.</li>
+</ul>
+
+<h2>Step 6: Local search on your website</h2>
+<p>A simple website with your menu, photos, location, hours and a booking or order link helps with searches and gives Google more to understand. It does not need to be elaborate, but it must load fast on a phone; see <a href="/blog/website-speed-core-web-vitals-ahmedabad-businesses/">website speed and Core Web Vitals</a>.</p>
+
+<h2>A simple monthly plan</h2>
+<table>
+<tr><th>Week</th><th>Do this</th></tr>
+<tr><td>1</td><td>Update Business Profile photos, hours, menu and posts; review last month's reviews and reply</td></tr>
+<tr><td>2</td><td>Post four to five reels or photos; run a local offer ad</td></tr>
+<tr><td>3</td><td>Promote an event or special; message the WhatsApp list</td></tr>
+<tr><td>4</td><td>Check calls, direction requests, bookings and offer redemptions; plan next month</td></tr>
+</table>
+
+<h2>What to measure</h2>
+<ul>
+<li>Calls, direction requests and website taps from the Business Profile.</li>
+<li>Bookings and direct orders, by source.</li>
+<li>Offer code or phrase redemptions.</li>
+<li>Review count and average rating over time.</li>
+<li>Followers matter far less than visits and orders.</li>
+</ul>
+
+<h2>How Digital Aura can help</h2>
+<p>We set up and manage the Business Profile, content, local ads and tracking as one plan. Our digital marketing plans start at ₹30,000 a month plus GST, with ad spend separate; see <a href="/blog/digital-marketing-cost-in-ahmedabad/">digital marketing cost in Ahmedabad</a>. We never guarantee footfall or orders. See our <a href="/digital-marketing-company-ahmedabad">digital marketing agency in Ahmedabad</a> page or request a <a href="/digital-marketing-company-ahmedabad#audit">free growth audit</a>.</p>
+`,
+    faqs: [
+      { q: "What digital marketing works best for restaurants in Ahmedabad?", a: "A complete Google Business Profile, regular Instagram reels and photos, local Meta ads, a steady flow of reviews and direct ordering or booking by WhatsApp and phone. Measure calls, directions, bookings and orders." },
+      { q: "How can a cafe get more customers from Google Maps?", a: "Complete every part of the profile, add fresh photos weekly, keep hours and the menu accurate, collect reviews and reply to all of them, and use posts for offers and events." },
+      { q: "Is Instagram important for restaurants?", a: "Yes. It is a visual shop window. Consistent reels of dishes, the space and events help people decide, and local ads can reach people within a few kilometres of your outlet." },
+      { q: "How do I get more Google reviews for my restaurant?", a: "Ask happy guests at the table with a QR code that opens your review page, reply to every review and never buy or write fake reviews." },
+      { q: "How can I reduce dependence on delivery apps?", a: "Build direct routes: a WhatsApp number for orders and bookings, a booking or order link on your profile and Instagram, a list of guests who opted in and offers for direct orders." },
+      { q: "Do restaurants need a website?", a: "A simple, fast website with the menu, photos, location, hours and a booking or order link helps with searches and trust, even if most customers find you on Maps and Instagram." },
+      { q: "How much does restaurant digital marketing cost in Ahmedabad?", a: "Our digital marketing plans start at ₹30,000 a month plus GST, with ad spend separate. Meta ads management is also available separately from ₹15,000 a month plus GST. Scope is written after a free audit." },
+      { q: "Can an agency guarantee more footfall?", a: "No. Footfall depends on your food, service, location and price as well as marketing. A good agency sets up tracking, runs campaigns and reports calls, directions and orders honestly." },
+    ],
+    ctaHeading: "Want More Guests Through the Door?",
+    ctaText: "Request a free growth audit and get a written plan for your restaurant or cafe.",
+    ctaButton: "Get My Free Growth Audit",
+    cro: { href: "/digital-marketing-company-ahmedabad#audit", label: "Get a free growth audit", sidebar: "Restaurant or cafe? Ask for a written marketing plan.", bandHeading: "Want more guests from Google and Instagram?", bandText: "Request a free growth audit and get a written plan for your outlet." },
+  },
+  {
+    slug: "digital-marketing-for-ecommerce-textile-brands-ahmedabad",
+    title: "Digital Marketing for Ecommerce and Textile Brands in Ahmedabad",
+    titleHighlight: "Ecommerce and Textile Brands",
+    metaTitle: "Ecommerce Marketing Agency Ahmedabad: Textile Brand Guide 2026",
+    metaDescription: "An ecommerce marketing agency guide for Ahmedabad textile and fashion brands: SEO, Shopping ads, Meta catalog ads, WhatsApp, marketplaces and the metrics to watch.",
+    category: "Digital Marketing",
+    date: "2026-11-29",
+    dateDisplay: "Nov 29, 2026",
+    readTime: "11 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "Ecommerce and textile brands grow fastest by combining category SEO, Shopping and search ads, Meta ads and WhatsApp or email. Add marketplaces where they make sense. Track revenue, cost per order, return on ad spend and repeat purchase rate. Textile manufacturers selling to businesses need an RFQ-based approach instead.",
+    keyTakeaways: [
+      "Treat D2C stores and B2B textile suppliers as different problems: one sells products online, the other generates quotation requests.",
+      "SEO for category pages, Shopping and search ads, Meta catalog ads and WhatsApp and email make the core growth mix for stores.",
+      "Track revenue, cost per order, return on ad spend, average order value and repeat purchase rate, not clicks.",
+      "A fast, trustworthy store with clear delivery and returns converts better than any ad can fix.",
+      "Marketplaces add reach but reduce margin and control. Use them deliberately.",
+    ],
+    contentHtml: `
+<p>Ahmedabad is one of India's textile and garment centres, and many brands here sell online, from sarees and kurtas to home textiles and technical fabrics. Marketing a store and marketing a fabric manufacturer are different jobs, but both need a clear mix of channels and honest numbers. This guide, written for brands and sellers, explains what an <strong>ecommerce marketing agency</strong> should plan and measure. For the SEO depth, see <a href="/blog/seo-for-fashion-apparel-ecommerce/">SEO for fashion and apparel stores</a> and the <a href="/blog/ecommerce-seo-checklist-2026/">ecommerce SEO checklist</a>.</p>
+
+<h2>First, which kind of business are you?</h2>
+<table>
+<tr><th>Type</th><th>Who buys</th><th>Main goal</th><th>Main channels</th></tr>
+<tr><td>D2C store (sarees, kurtas, home textiles)</td><td>Consumers</td><td>Orders and repeat purchases</td><td>SEO, Shopping and search ads, Meta, WhatsApp, email</td></tr>
+<tr><td>Marketplace seller</td><td>Consumers, through a platform</td><td>Sales and rankings on the platform</td><td>Marketplace listing and ads, plus your own store</td></tr>
+<tr><td>B2B textile supplier or exporter</td><td>Retailers, traders, importers</td><td>RFQs and repeat orders</td><td>SEO, Google Ads, LinkedIn, directories, email</td></tr>
+</table>
+<p>If you are the third type, read <a href="/blog/digital-marketing-for-manufacturers-exporters-ahmedabad/">digital marketing for manufacturers and exporters</a>. The rest of this article focuses on stores.</p>
+
+<h2>The growth mix for an online store</h2>
+<h3>1. SEO: category pages that bring buyers for free</h3>
+<p>Category and product pages that match what shoppers search can bring steady traffic without paying per click. It takes months, so start early. Our guides on <a href="/blog/ecommerce-seo-mistakes-and-fixes/">ecommerce SEO mistakes</a> and <a href="/blog/how-long-does-ecommerce-seo-take/">how long ecommerce SEO takes</a> set expectations.</p>
+<h3>2. Google Shopping and search ads: catch people ready to buy</h3>
+<p>Shopping ads show your products with image and price when someone searches for them, and need a product feed in Google Merchant Center. Search ads catch intent such as "buy cotton sarees online". Both need accurate prices, stock and delivery information, and conversion tracking set up on the store.</p>
+<h3>3. Meta ads: discovery and retargeting</h3>
+<p>Instagram and Facebook suit visual products. Use catalog ads to show products to people who viewed them, short videos for new collections and offers around festivals and seasons. See <a href="/meta-ads-agency-ahmedabad/ecommerce/">Meta ads for ecommerce</a>.</p>
+<h3>4. WhatsApp and email: repeat sales</h3>
+<p>Getting a repeat purchase costs far less than winning a new customer. Collect consent, send order updates, new arrivals and offers, and ask for reviews. Our <a href="/services/email-whatsapp-marketing/">email and WhatsApp marketing</a> service covers set-up.</p>
+<h3>5. Marketplaces: reach, with trade-offs</h3>
+<p>Selling on marketplaces gives access to ready traffic, but you pay commissions, follow their rules and often cannot reach the customer later. Use marketplaces for reach and keep your own store for brand and repeat sales. We also help with <a href="/services/amazon-marketing/">Amazon marketing</a>.</p>
+
+<h2>Make the store convert before you buy more traffic</h2>
+<ul>
+<li>Fast pages on mobile; see <a href="/blog/website-speed-core-web-vitals-ahmedabad-businesses/">website speed and Core Web Vitals</a>.</li>
+<li>Clear photos from several angles, with fabric close-ups and size details.</li>
+<li>Delivery time, shipping cost and returns policy visible before checkout.</li>
+<li>Simple checkout with UPI, cards and cash on delivery where it suits you.</li>
+<li>Real reviews and ratings on product pages.</li>
+<li>WhatsApp or phone help for buyers who have questions.</li>
+</ul>
+<p>If your store needs rebuilding, our <a href="/services/shopify-development/">Shopify</a> and <a href="/services/woocommerce-development/">WooCommerce</a> teams can help.</p>
+
+<h2>The numbers that matter</h2>
+<table>
+<tr><th>Metric</th><th>What it means</th><th>Why it matters</th></tr>
+<tr><td>Revenue and orders</td><td>What the store earned</td><td>The real result</td></tr>
+<tr><td>Cost per order (CPA)</td><td>Ad spend divided by orders</td><td>Shows if acquisition is affordable</td></tr>
+<tr><td>Return on ad spend (ROAS)</td><td>Revenue from ads divided by ad spend</td><td>Compare against your margin, not a general target</td></tr>
+<tr><td>Average order value</td><td>Revenue per order</td><td>Bundles and offers can raise it</td></tr>
+<tr><td>Conversion rate</td><td>Orders divided by visits</td><td>Shows whether the store is working</td></tr>
+<tr><td>Repeat purchase rate</td><td>Customers who buy again</td><td>Drives long-term profit</td></tr>
+<tr><td>Return rate</td><td>Share of orders sent back</td><td>Important in fashion; affects real margin</td></tr>
+</table>
+<p>Work out your break-even ROAS from your margins, including shipping and returns, before judging any campaign.</p>
+
+<h2>Seasonality: plan the festive calendar early</h2>
+<p>Festivals, weddings and seasons create peaks. Prepare pages, stock, creative and ad accounts weeks ahead, keep permanent collection pages that you refresh each season and retarget past buyers early.</p>
+
+<h2>A 90-day starting plan</h2>
+<table>
+<tr><th>Days</th><th>Focus</th></tr>
+<tr><td>1 to 30</td><td>Tracking, product feed, speed fixes, top category and product pages, policy pages</td></tr>
+<tr><td>31 to 60</td><td>Launch Shopping and search ads, Meta catalog and retargeting, set up WhatsApp and email flows</td></tr>
+<tr><td>61 to 90</td><td>Optimise by product and audience, add content and reviews, plan the next season</td></tr>
+</table>
+
+<h2>What it costs and how we work</h2>
+<p>Our digital marketing plans run from ₹30,000 to ₹2,70,000 a month plus GST, with ad spend separate; see <a href="/blog/digital-marketing-cost-in-ahmedabad/">digital marketing cost in Ahmedabad</a>. Ecommerce SEO sits in our SEO Advance plan for large catalogues. We never guarantee sales or return on ad spend.</p>
+
+<h2>How Digital Aura can help</h2>
+<p>We plan the mix, set up tracking and the product feed, run the campaigns and report on orders and margin. See our <a href="/digital-marketing-company-ahmedabad">digital marketing agency in Ahmedabad</a> or request a <a href="/digital-marketing-company-ahmedabad#audit">free growth audit</a>.</p>
+`,
+    faqs: [
+      { q: "What is the best digital marketing for ecommerce brands in Ahmedabad?", a: "A mix of SEO for category pages, Google Shopping and search ads, Meta catalog and video ads, WhatsApp and email for repeat sales, and marketplaces where they make sense, all tracked to orders and margin." },
+      { q: "How is marketing a textile manufacturer different from a D2C store?", a: "A D2C store sells to consumers and aims for orders and repeat purchases. A B2B textile supplier or exporter aims for quotation requests and repeat business orders, using SEO, Google Ads, LinkedIn and directories." },
+      { q: "What is a good ROAS for an online store?", a: "It depends on your margins, shipping and returns. Calculate your break-even ROAS from your own numbers first, then aim above it. There is no single good number for every store." },
+      { q: "Do I need Google Merchant Center?", a: "For Google Shopping ads and free product listings, yes. You upload a product feed with accurate prices, stock and delivery information." },
+      { q: "Should I sell on marketplaces or only my own store?", a: "Many brands use both. Marketplaces give reach but cost commission and limit customer contact. Your own store builds brand and repeat sales." },
+      { q: "How do I increase repeat purchases?", a: "Collect consent for WhatsApp and email, send order updates and new arrivals, ask for reviews, offer relevant bundles and retarget past buyers with new collections." },
+      { q: "How much does ecommerce marketing cost in Ahmedabad?", a: "Our plans run from ₹30,000 to ₹2,70,000 a month plus GST, with ad spend separate. The exact fee is written after a free audit." },
+      { q: "Can an agency guarantee ecommerce sales?", a: "No. Sales depend on your products, price, store experience and market as well as marketing. A good agency sets up tracking, optimises and reports honestly on orders and margin." },
+    ],
+    ctaHeading: "Want to Grow Your Online Store?",
+    ctaText: "Request a free growth audit and get a written plan for your ecommerce or textile brand.",
+    ctaButton: "Get My Free Growth Audit",
+    cro: { href: "/digital-marketing-company-ahmedabad#audit", label: "Get a free growth audit", sidebar: "Online store or textile brand? Ask for a written growth plan.", bandHeading: "Want more orders from your store?", bandText: "Request a free growth audit and get a written plan for your brand." },
+  },
+  {
+    slug: "how-to-choose-digital-marketing-agency-ahmedabad",
+    title: "How to Choose a Digital Marketing Agency in Ahmedabad: 10 Red Flags and What to Ask",
+    titleHighlight: "Digital Marketing Agency in Ahmedabad",
+    metaTitle: "Digital Marketing Agency in Ahmedabad: 10 Red Flags to Avoid",
+    metaDescription: "Choosing a digital marketing agency in Ahmedabad? Spot 10 red flags, check contract terms, ask the right questions and know what the first 90 days should look like.",
+    category: "Digital Marketing",
+    date: "2026-11-25",
+    dateDisplay: "Nov 25, 2026",
+    readTime: "13 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "Watch for ten red flags when choosing a digital marketing agency in Ahmedabad. They are guaranteed results, no written scope or price, accounts held in the agency's name, ad spend routed through the agency, vanity-metric reports, bought links or fake reviews, pressure to sign quickly, no questions about your business, a junior team behind a senior pitch and no clear exit terms. Then ask for a written plan, sample report and contract before you pay.",
+    keyTakeaways: [
+      "Ten red flags: guarantees, vague pricing, agency-owned accounts, routed ad spend, vanity reports, fake reviews, pressure, a template pitch, hidden juniors and no exit terms.",
+      "Your ad accounts, Analytics, Search Console, Business Profile and website should always be in your name.",
+      "Contract terms matter as much as price: length, notice period, what is included and what costs extra.",
+      "The first 90 days should show tracking set up, a clear plan, first results and an honest report.",
+      "Compare written plans from three agencies instead of choosing from a list.",
+    ],
+    contentHtml: `
+<p>There are hundreds of agencies in Ahmedabad, and most pitches sound the same: "we will grow your business". The difference shows up later, in contracts, reports and accounts you cannot access. This guide focuses on <strong>red flags and terms</strong>, so you can avoid the common mistakes before you pay. If you want the comparison method with scorecards, read <a href="/blog/best-digital-marketing-agencies-in-ahmedabad/">how to compare digital marketing agencies</a>. For the numbers, see <a href="/blog/digital-marketing-cost-in-ahmedabad/">digital marketing cost in Ahmedabad</a>.</p>
+<p><strong>A note on bias:</strong> Digital Aura is a digital marketing agency in Ahmedabad. We have listed the flags so you can check us too.</p>
+
+<h2>Ten red flags when hiring a digital marketing agency</h2>
+<table>
+<tr><th>#</th><th>Red flag</th><th>Why it matters</th><th>What to ask instead</th></tr>
+<tr><td>1</td><td>Guaranteed rankings, leads or ROAS</td><td>Nobody controls Google or Meta or your market</td><td>"What can you promise, and what can you not?"</td></tr>
+<tr><td>2</td><td>No written scope or price</td><td>You cannot compare or hold anyone to it</td><td>"Please send the scope, fee and exclusions in writing."</td></tr>
+<tr><td>3</td><td>Ad and analytics accounts in the agency's name</td><td>You lose history and data if you leave</td><td>"Will everything stay in my name?"</td></tr>
+<tr><td>4</td><td>Ad spend paid through the agency</td><td>You cannot see what is really spent</td><td>"May I pay Google and Meta directly?"</td></tr>
+<tr><td>5</td><td>Reports that show clicks, likes and impressions only</td><td>They look busy and say nothing about enquiries</td><td>"Show me a sample report with enquiries and cost per enquiry."</td></tr>
+<tr><td>6</td><td>Bought links, fake reviews or fake followers</td><td>These can harm your site and reputation</td><td>"How will you earn links and reviews?"</td></tr>
+<tr><td>7</td><td>Pressure to sign today</td><td>A good agency lets you compare</td><td>"I will decide after comparing three proposals."</td></tr>
+<tr><td>8</td><td>A template pitch with no questions about your business</td><td>A plan that fits everyone fits no one</td><td>"What did you learn about my business from my website?"</td></tr>
+<tr><td>9</td><td>A senior pitch, but juniors do the work</td><td>Quality drops after the contract</td><td>"Who exactly will run my account?"</td></tr>
+<tr><td>10</td><td>No clear exit terms</td><td>You can be locked in</td><td>"What are the notice period and the handover terms?"</td></tr>
+</table>
+
+<h2>Contract and terms: read these lines</h2>
+<table>
+<tr><th>Term</th><th>What to look for</th></tr>
+<tr><td>Length and notice</td><td>The minimum period, notice needed, and any penalty for leaving. Ours for Google Ads management is month to month with a 15-day notice.</td></tr>
+<tr><td>Scope and deliverables</td><td>What is included each month, in specifics: pages, posts, campaigns, reports, calls</td></tr>
+<tr><td>Extra costs</td><td>Tools, content, landing pages, call tracking, design and ad spend</td></tr>
+<tr><td>Ownership</td><td>Accounts, content, creative files and data belong to you</td></tr>
+<tr><td>Reporting</td><td>How often, in what form, and with what metrics</td></tr>
+<tr><td>Handover</td><td>What you receive, and when, if you end the contract</td></tr>
+<tr><td>Confidentiality and subcontractors</td><td>Whether work is outsourced, and to whom</td></tr>
+</table>
+
+<h2>Questions worth asking on the first call</h2>
+<ul>
+<li>What would you do first for my goal and budget, and why?</li>
+<li>Who will work on my account, and how many other clients do they handle?</li>
+<li>How will calls, forms and WhatsApp enquiries be counted?</li>
+<li>What does the monthly fee include, and what is quoted separately?</li>
+<li>Can I speak to a client with a similar business?</li>
+<li>What would make you tell me that digital marketing is not the right step yet?</li>
+</ul>
+<p>The last one is a useful test. An honest agency can name situations where it would advise waiting, such as a website that cannot take enquiries.</p>
+
+<h2>What the first 90 days should look like</h2>
+<table>
+<tr><th>Period</th><th>You should see</th></tr>
+<tr><td>Days 1 to 15</td><td>Access agreed, goals written down, tracking checked or built, a plan with priorities</td></tr>
+<tr><td>Days 16 to 45</td><td>First work live: fixes, pages, campaigns or content, with notes on what changed</td></tr>
+<tr><td>Days 46 to 75</td><td>First data: enquiries, cost per enquiry, early rankings or impressions, and what is being tested</td></tr>
+<tr><td>Days 76 to 90</td><td>A review: what worked, what did not, what changes next and what to expect in the next quarter</td></tr>
+</table>
+<p>SEO takes longer to show results than paid ads. A good agency tells you this at the start and shows the leading signs (indexing, impressions, better pages) while you wait.</p>
+
+<h2>Price: low is not always cheap</h2>
+<p>A very low fee usually means thin work, outsourced work or hidden costs later. Compare what is included, not the headline number. For reference, our own prices are published: SEO from ₹15,000, Google Ads management from ₹15,000, Meta Ads management from ₹15,000 and bundled digital marketing plans from ₹30,000 to ₹2,70,000 a month, all plus GST and excluding ad spend. See our <a href="/seo/pricing-ahmedabad/">SEO pricing</a>, <a href="/google-ads-pricing-ahmedabad/">Google Ads pricing</a> and <a href="/meta-ads-agency-ahmedabad/pricing/">Meta ads pricing</a> pages.</p>
+
+<h2>How agencies price their work</h2>
+<table>
+<tr><th>Model</th><th>How it works</th><th>Good for</th><th>Watch for</th></tr>
+<tr><td>Monthly retainer</td><td>A fixed monthly fee for a defined scope</td><td>Ongoing SEO, ads management and content</td><td>A vague scope; ask for the monthly task list</td></tr>
+<tr><td>Project fee</td><td>One price for a defined piece of work, such as a website or a landing page</td><td>Builds and one-off fixes</td><td>Change requests billed without limits</td></tr>
+<tr><td>Percentage of ad spend</td><td>A share of what you spend on ads</td><td>Large, steady budgets</td><td>The agency earns more when you spend more, so keep goals tied to enquiries</td></tr>
+<tr><td>Performance-based</td><td>Fees tied to leads or sales</td><td>Businesses that can measure outcomes closely</td><td>Disputes about what counts as a lead; check the definition in writing</td></tr>
+</table>
+<p>Whatever the model, ask for the monthly fee, GST and ad spend written separately.</p>
+
+<h2>What to give the agency, and what to keep</h2>
+<table>
+<tr><th>Item</th><th>What to do</th></tr>
+<tr><td>Google Ads and Meta ad accounts</td><td>Keep them in your name and add the agency as a user</td></tr>
+<tr><td>Google Analytics and Search Console</td><td>You stay owner; give the agency access</td></tr>
+<tr><td>Google Business Profile</td><td>You stay owner; add the agency as a manager</td></tr>
+<tr><td>Website and hosting logins</td><td>Give access only to what is needed, and remove it when work ends</td></tr>
+<tr><td>Payment method for ads</td><td>Your own card or account, not the agency's</td></tr>
+<tr><td>Brand files and photos</td><td>Share them, and keep your own copies</td></tr>
+</table>
+
+<h2>What a good monthly report looks like</h2>
+<ul>
+<li><strong>Summary:</strong> enquiries from calls, forms and WhatsApp this month against last month.</li>
+<li><strong>By channel:</strong> which of SEO, Google Ads and Meta Ads produced what, with cost per enquiry for paid channels.</li>
+<li><strong>Work done:</strong> a plain list of what was changed or published.</li>
+<li><strong>What is being tested</strong> and what was learned.</li>
+<li><strong>Problems and risks,</strong> stated honestly.</li>
+<li><strong>Next month's plan,</strong> with priorities.</li>
+</ul>
+<p>If a report is a long list of charts with no explanation, ask for a one-page summary in plain words.</p>
+
+<h2>When to end an agency relationship</h2>
+<ul>
+<li>Three months or more pass with no clear tracking or report.</li>
+<li>You cannot get a straight answer on where the money went.</li>
+<li>The person you met has been replaced and no one knows your business.</li>
+<li>Results fall and nobody can explain why or propose a fix.</li>
+<li>You are asked to sign longer terms to "see results".</li>
+</ul>
+<p>Before ending, ask for a handover: access to every account, copies of creative and content, a list of what was done and the tracking set-up. This is easy if accounts were always in your name.</p>
+
+<h2>Specialist guides for each channel</h2>
+<ul>
+<li><a href="/blog/how-to-choose-seo-company-ahmedabad/">How to choose an SEO company</a> and <a href="/blog/best-seo-company-in-ahmedabad-how-to-compare/">how to compare SEO companies</a></li>
+<li><a href="/blog/how-to-choose-google-ads-agency-ahmedabad/">How to choose a Google Ads agency</a></li>
+<li><a href="/blog/how-to-choose-meta-ads-agency-ahmedabad/">How to choose a Meta ads agency</a></li>
+<li><a href="/blog/digital-marketing-agency-vs-freelancer-vs-in-house-ahmedabad/">Agency, freelancer or in-house</a></li>
+<li><a href="/blog/full-service-vs-specialist-digital-agency-ahmedabad/">Full-service or specialist agency</a></li>
+</ul>
+
+<h2>How Digital Aura answers these flags</h2>
+<ul>
+<li><strong>Guarantees:</strong> we do not promise rankings, leads or ROAS.</li>
+<li><strong>Scope and price:</strong> written, after a free audit, with exclusions listed.</li>
+<li><strong>Ownership:</strong> campaigns run inside your own accounts.</li>
+<li><strong>Ad spend:</strong> paid to Google and Meta directly by you.</li>
+<li><strong>Reporting:</strong> enquiries and cost per enquiry, not only clicks.</li>
+<li><strong>Where we are:</strong> our team works from Hanspura, near Sardar Patel Ring Road, Ahmedabad.</li>
+</ul>
+<p>Read about our work on our <a href="/digital-marketing-company-ahmedabad">digital marketing agency in Ahmedabad</a> page, see <a href="/case-studies/">case studies</a>, or request a <a href="/digital-marketing-company-ahmedabad#audit">free growth audit</a> and compare our written plan with the others.</p>
+`,
+    faqs: [
+      { q: "What are the red flags of a bad digital marketing agency?", a: "Guaranteed results, no written scope or price, accounts in the agency's name, ad spend paid through the agency, reports showing only clicks and likes, bought links or fake reviews, pressure to sign quickly, a template pitch, junior staff behind a senior pitch and no clear exit terms." },
+      { q: "How do I choose a digital marketing agency in Ahmedabad?", a: "Shortlist three, ask each for a written scope, price, sample report and contract terms, check that accounts stay in your name and compare them on proof, tracking, reporting and honesty rather than choosing from a list." },
+      { q: "Should an agency own my ad accounts?", a: "No. Ad accounts, Analytics, Search Console, your Business Profile and your website should be in your name so you keep your data and history if you change agencies." },
+      { q: "Why shouldn't I pay ad spend through the agency?", a: "Paying Google and Meta directly lets you see exactly what is spent and keeps the agency's fee separate. Routed spend can hide charges and makes comparison difficult." },
+      { q: "What should a monthly digital marketing report include?", a: "Enquiries from calls, forms and WhatsApp, cost per enquiry, which channels and pages produced them, work done that month, what is being tested and next steps. Reports with only clicks or likes are not enough." },
+      { q: "How long should the contract be?", a: "Prefer clear, short terms with a stated notice period. For example, our Google Ads management is month to month with a 15-day notice. Read any lock-in and handover terms before signing." },
+      { q: "Is a cheaper agency a bad sign?", a: "Not always, but a very low fee often means thin or outsourced work. Compare what is included, who does the work and how results are reported." },
+      { q: "What will the first 90 days with an agency look like?", a: "Access and goals agreed, tracking checked, a priority plan, first work live by about day 45, first data by day 75 and a review at day 90 covering what worked and what changes next." },
+    ],
+    ctaHeading: "Want to Compare Us With Other Agencies?",
+    ctaText: "Request a free growth audit and get a written plan, scope and price you can compare.",
+    ctaButton: "Get My Free Growth Audit",
+    cro: { href: "/digital-marketing-company-ahmedabad#audit", label: "Get a free growth audit", sidebar: "Comparing agencies? Ask for a written plan, scope and price.", bandHeading: "Choosing a digital marketing agency?", bandText: "Request a free growth audit and get a written plan you can compare." },
+  },
+  {
+    slug: "digital-marketing-for-manufacturers-exporters-ahmedabad",
+    title: "Digital Marketing for Manufacturers and Exporters in Ahmedabad: Getting RFQs and Export Enquiries",
+    titleHighlight: "Manufacturers and Exporters in Ahmedabad",
+    metaTitle: "Digital Marketing for Manufacturers in Ahmedabad: Get More RFQs",
+    metaDescription: "Digital marketing for manufacturers and exporters in Ahmedabad: SEO, Google Ads, LinkedIn, website RFQ paths and lead tracking to win RFQs and export enquiries.",
+    category: "Digital Marketing",
+    date: "2026-11-28",
+    dateDisplay: "Nov 28, 2026",
+    readTime: "11 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "Manufacturer marketing works when the website, SEO, Google Ads and LinkedIn follow how industrial buyers search. Build product and industry pages, add a clear RFQ path, run Google Ads on buying-intent searches, use LinkedIn to reach decision makers and track every RFQ from source to order. Expect a longer sales cycle than consumer marketing, and measure RFQs and orders, not visits.",
+    keyTakeaways: [
+      "Industrial buyers search by product, specification, material and supplier, so product and application pages are the foundation.",
+      "SEO builds steady RFQs over months. Google Ads brings buyers who are searching now. LinkedIn reaches decision makers directly.",
+      "Export buyers need proof: certifications, plant photos, shipping and payment terms, and clear English content.",
+      "Every product page needs an RFQ path, and every RFQ needs a fast, tracked reply.",
+      "Sales cycles are longer, so track RFQs, quotations and orders by source, not just clicks.",
+    ],
+    contentHtml: `
+<p>Ahmedabad and Gujarat have thousands of manufacturers, from engineering and chemicals to textiles, plastics and packaging. Most of them still rely on trade shows, agents and old customers, while overseas and domestic buyers increasingly search online first. This guide explains how to build a digital system that produces <strong>RFQs and export enquiries</strong>, covering <strong>digital marketing for manufacturers</strong> from the website to the follow-up. For deep dives, read <a href="/blog/b2b-seo-manufacturers-gujarat-guide/">B2B SEO for manufacturers</a> and <a href="/blog/manufacturing-website-rfq-enquiries/">turning visitors into RFQs</a>.</p>
+
+<h2>How B2B and export buyers find suppliers</h2>
+<table>
+<tr><th>Source</th><th>What buyers do</th><th>Your job</th></tr>
+<tr><td>Google search</td><td>Search by product, grade, standard or "manufacturer in Gujarat"</td><td>Product pages and SEO; Google Ads on buying searches</td></tr>
+<tr><td>B2B directories and marketplaces</td><td>Browse listings and send enquiries</td><td>Complete, consistent listings that point to your site</td></tr>
+<tr><td>LinkedIn</td><td>Look up suppliers and decision makers, check credibility</td><td>A company page and active, relevant content and outreach</td></tr>
+<tr><td>Referrals and trade shows</td><td>Ask peers and meet suppliers in person</td><td>Follow up fast, and send them to a strong website</td></tr>
+<tr><td>YouTube and video</td><td>Watch product demos and factory tours</td><td>Short, real videos that show capability</td></tr>
+</table>
+
+<h2>The foundation: a website built for RFQs</h2>
+<p>All channels send buyers to your website, so fix this first.</p>
+<ul>
+<li>A page for each product family with specification tables, photos and applications.</li>
+<li>Industry pages that show you understand each sector you serve.</li>
+<li>A capabilities and certifications page with real documents.</li>
+<li>A short RFQ form with phone, WhatsApp and email alternatives.</li>
+<li>Fast, mobile-friendly pages; see <a href="/blog/website-speed-core-web-vitals-ahmedabad-businesses/">website speed and Core Web Vitals</a>.</li>
+</ul>
+<p>Our <a href="/website-design-for-manufacturers-ahmedabad/">website design for manufacturers</a> service and the <a href="/blog/manufacturer-website-checklist-b2b-buyers/">manufacturer website checklist</a> show what to build.</p>
+
+<h2>SEO: steady RFQs that compound</h2>
+<p>SEO puts your product pages in front of buyers searching for what you make. It is slower than ads, but each ranking page keeps working. Focus on product and industry pages, technical health, spec content that can be read as text and local and export signals. See our <a href="/seo/manufacturers-b2b-gujarat/">SEO for manufacturers in Gujarat</a> page. Our SEO plans run from ₹15,000 to ₹1,50,000 a month plus GST.</p>
+
+<h2>Google Ads: buyers who are searching now</h2>
+<p>Search ads are well suited to B2B. Bid on product, material and supplier searches, use negative keywords to remove job seekers and DIY searches, and send clicks to the matching product page with an RFQ form. Track each RFQ by campaign. Management fees run from ₹15,000 to ₹60,000 a month plus GST, separate from ad spend; see <a href="/blog/google-ads-cost-in-ahmedabad/">Google Ads cost in Ahmedabad</a>.</p>
+
+<h2>LinkedIn: reaching decision makers</h2>
+<p>LinkedIn lets you reach purchasing heads, engineers and business owners by job title, industry and company size. Use it for targeted ads to specific roles, for company-page content that shows your plant and capabilities, and for careful outreach to relevant buyers. Our <a href="/services/linkedin-youtube-ads/">LinkedIn and YouTube ads</a> service covers set-up. Costs per click are higher than on other platforms, so use LinkedIn when an order is large enough to justify it.</p>
+
+<h2>Export-specific needs</h2>
+<table>
+<tr><th>Need</th><th>What to do</th></tr>
+<tr><td>Trust from overseas buyers</td><td>Show certifications, test reports, plant photos, export history and a real address</td></tr>
+<tr><td>Clear terms</td><td>State minimum order quantity, lead time, packaging, shipping and payment terms</td></tr>
+<tr><td>Language</td><td>Clear, professional English; add other languages only for markets you can serve</td></tr>
+<tr><td>Time zones</td><td>Offer WhatsApp and email replies that cover overseas working hours</td></tr>
+<tr><td>Market targeting</td><td>Target countries you can serve, in ads and in content</td></tr>
+<tr><td>Compliance</td><td>Mention relevant standards and documentation honestly</td></tr>
+</table>
+<p>Our <a href="/seo-agency-international/">international SEO</a> service covers overseas visibility.</p>
+
+<h2>Email, WhatsApp and follow-up</h2>
+<p>Industrial sales cycles are long. Keep a list of enquiries and past buyers and follow up with updates, new products and useful information. Respond to RFQs within a working day, and ask for feedback when you lose an order. Our <a href="/services/email-whatsapp-marketing/">email and WhatsApp marketing</a> service helps set this up.</p>
+
+<h2>Track the full journey</h2>
+<table>
+<tr><th>Stage</th><th>What to record</th></tr>
+<tr><td>Visit</td><td>Source (Google search, ad, LinkedIn, directory), landing page</td></tr>
+<tr><td>RFQ received</td><td>Product, quantity, country, source</td></tr>
+<tr><td>Quotation sent</td><td>Date, value, who sent it</td></tr>
+<tr><td>Negotiation and sample</td><td>Status and next step</td></tr>
+<tr><td>Order won or lost</td><td>Value and reason</td></tr>
+</table>
+<p>With this, you can calculate cost per RFQ, cost per quotation and cost per order by channel, which is the only way to decide where to invest.</p>
+
+<h2>A starting plan</h2>
+<ol>
+<li>Pick your top five products by margin and capacity.</li>
+<li>Give each a strong page with specifications and an RFQ form, and set up tracking.</li>
+<li>Fix technical SEO and speed, and complete your Business Profile and directory listings.</li>
+<li>Launch Google Ads for the top products, with RFQ tracking by campaign.</li>
+<li>Add LinkedIn for the biggest accounts and a follow-up routine for every RFQ.</li>
+<li>Review monthly: RFQs, quotations, orders and cost by channel.</li>
+</ol>
+
+<h2>What it costs, and what to expect</h2>
+<p>Our digital marketing plans run from ₹30,000 to ₹2,70,000 a month plus GST, with ad spend separate; see <a href="/blog/digital-marketing-cost-in-ahmedabad/">digital marketing cost in Ahmedabad</a>. Ads can bring RFQs within weeks, while SEO usually takes three to six months to build. We do not guarantee RFQs or orders.</p>
+
+<h2>How Digital Aura can help</h2>
+<p>We build the website, SEO, ads and tracking as one system and report on RFQs and quotations. See our <a href="/digital-marketing-company-ahmedabad">digital marketing agency in Ahmedabad</a> page or request a <a href="/digital-marketing-company-ahmedabad#audit">free growth audit</a>.</p>
+`,
+    faqs: [
+      { q: "How can manufacturers get RFQs online?", a: "Build product and industry pages with specifications, add a clear RFQ path on every product page, run SEO and Google Ads on buying-intent searches, use LinkedIn for decision makers and track each RFQ from source to order." },
+      { q: "Is SEO or Google Ads better for manufacturers?", a: "They do different jobs. Ads bring buyers searching now and can produce RFQs within weeks. SEO builds steady, lower-cost RFQs over months. Most manufacturers benefit from both." },
+      { q: "Does LinkedIn work for manufacturers?", a: "It can, especially for reaching purchasing managers, engineers and owners in specific industries. Costs per click are higher, so it suits businesses where each order is large." },
+      { q: "What do export buyers look for on a website?", a: "Certifications, plant photos, a real address and contacts, clear minimum order quantity, lead time and shipping and payment terms, and professional English content." },
+      { q: "How do I measure digital marketing for a manufacturing business?", a: "Track RFQs, quotations and orders by source and campaign, then calculate cost per RFQ, per quotation and per order. Visits and clicks are only early signals." },
+      { q: "How long does it take to get RFQs from SEO?", a: "Early movement can show in two to three months, and steady RFQ growth usually takes three to six months or longer in a crowded category." },
+      { q: "How much does digital marketing for a manufacturer cost in Ahmedabad?", a: "Our plans run from ₹30,000 to ₹2,70,000 a month plus GST, with ad spend separate. SEO alone runs from ₹15,000 to ₹1,50,000 a month plus GST. The exact fee is written after a free audit." },
+      { q: "Can an agency guarantee RFQs or export orders?", a: "No. Results depend on your product, price, capacity and market. A good agency sets up tracking, runs campaigns and reports RFQs and orders honestly." },
+    ],
+    ctaHeading: "Want RFQs and Export Enquiries?",
+    ctaText: "Request a free growth audit and get a written plan for your manufacturing business.",
+    ctaButton: "Get My Free Growth Audit",
+    cro: { href: "/digital-marketing-company-ahmedabad#audit", label: "Get a free growth audit", sidebar: "Manufacturer or exporter? Ask for a written plan for RFQs.", bandHeading: "Want more RFQs and export enquiries?", bandText: "Request a free growth audit and get a written plan for your business." },
+  },
+  {
+    slug: "digital-marketing-for-retail-businesses-ahmedabad",
+    title: "Digital Marketing for Retail Businesses in Ahmedabad: Footfall and Online Sales",
+    titleHighlight: "Retail Businesses in Ahmedabad",
+    metaTitle: "Retail Marketing Agency Guide: Footfall and Online Sales 2026",
+    metaDescription: "A retail marketing agency guide for Ahmedabad stores: Google profile, local ads, WhatsApp, offers, tracking footfall and building online sales alongside the shop.",
+    category: "Digital Marketing",
+    date: "2026-11-29",
+    dateDisplay: "Nov 29, 2026",
+    readTime: "10 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "Digital marketing for retail businesses in Ahmedabad should bring people into the store and also build online sales. Start with a complete Google Business Profile for each outlet, run local Google and Meta ads around your area, use WhatsApp for offers and repeat customers, and track footfall with offers, call tracking and direction requests. Add an online catalogue or store once the basics work.",
+    keyTakeaways: [
+      "For a physical store, the Google Business Profile is the digital front door. Keep it complete and current for every outlet.",
+      "Local ads within a few kilometres, tied to real offers, bring footfall you can measure.",
+      "WhatsApp is a powerful retail channel for offers, catalogues and repeat customers when used with permission.",
+      "Measure what happens in the shop: offer redemptions, calls, direction requests and walk-ins, not just clicks.",
+      "Online sales are an addition to the shop, not a replacement. Add a catalogue or store when you can fulfil orders well.",
+    ],
+    contentHtml: `
+<p>For a retail business, the question is not "online or offline". It is how to use online channels to bring more people to the shop, and to sell to those who cannot visit. A well-run <strong>retail marketing</strong> plan connects the two: someone searches on their phone, finds the store, visits, buys and returns. This guide covers each step and how to measure it, for stores in Ahmedabad of any size. For local ranking details, see our <a href="/blog/local-seo-strategies-2026/">local SEO strategies guide</a> and <a href="/blog/google-maps-ranking-ahmedabad-checklist/">Google Maps ranking checklist</a>.</p>
+
+<h2>The retail customer journey</h2>
+<table>
+<tr><th>Step</th><th>What the shopper does</th><th>What you need</th></tr>
+<tr><td>Need</td><td>Searches "[product] shop near me" or sees an offer</td><td>Google Business Profile, local ads, social posts</td></tr>
+<tr><td>Check</td><td>Looks at photos, reviews, hours and stock</td><td>Complete profile, recent photos, honest reviews</td></tr>
+<tr><td>Contact</td><td>Calls or messages to ask about stock and price</td><td>Click-to-call, WhatsApp, quick replies</td></tr>
+<tr><td>Visit</td><td>Gets directions and comes to the store</td><td>Accurate map pin and hours, parking details</td></tr>
+<tr><td>Return</td><td>Hears about offers and new arrivals</td><td>WhatsApp list, reviews, loyalty offers</td></tr>
+</table>
+
+<h2>Step 1: Google Business Profile for every outlet</h2>
+<ul>
+<li>A separate, accurate profile for each store, with its own phone number, address and hours.</li>
+<li>Categories that match what you sell, and a product list with photos and prices where possible.</li>
+<li>Fresh photos of the shopfront, inside the store and best sellers.</li>
+<li>Posts about offers, new arrivals and festival timings.</li>
+<li>Replies to every review.</li>
+<li>Festival and holiday hours updated in advance.</li>
+</ul>
+<p>Our <a href="/blog/google-business-profile-seo-checklist/">Business Profile checklist</a> lists every field, and the <a href="/blog/local-seo-citation-building-ahmedabad/">citation building guide</a> helps keep your details consistent.</p>
+
+<h2>Step 2: Local ads that bring people in</h2>
+<h3>Google Ads for nearby searches</h3>
+<p>Search and Performance Max campaigns with location and store visit goals can show your shop to people searching for what you sell nearby. Read <a href="/blog/local-business-google-ads-maps-2026/">local business marketing with Google Ads and Maps</a>. Where you have an online catalogue, product feeds can show your items and, with the right set-up, availability at nearby stores.</p>
+<h3>Meta ads for offers and awareness</h3>
+<p>Facebook and Instagram let you reach people within a chosen radius with simple offers: a festival sale, a new collection or a free gift with a visit. Use video of the shop and products, a clear offer and a button to call, get directions or message on WhatsApp. For fees, see <a href="/blog/meta-ads-cost-in-ahmedabad/">Meta ads cost in Ahmedabad</a>.</p>
+
+<h2>Step 3: WhatsApp for offers and repeat customers</h2>
+<ul>
+<li>Use a business number with a catalogue of your products.</li>
+<li>Build a list of customers who have agreed to receive messages, for example at billing or through a QR code.</li>
+<li>Send useful updates: new arrivals, festival offers, restocks, not constant promotions.</li>
+<li>Reply fast, with prices and availability, and offer to hold an item for pickup.</li>
+</ul>
+<p>Our <a href="/services/email-whatsapp-marketing/">email and WhatsApp marketing</a> service sets this up.</p>
+
+<h2>Step 4: Measure what happens in the shop</h2>
+<table>
+<tr><th>Method</th><th>How it works</th></tr>
+<tr><td>Offer codes or phrases</td><td>Ads or messages carry a code or phrase staff ask for at billing</td></tr>
+<tr><td>Call tracking</td><td>A tracking number on ads and the profile counts calls</td></tr>
+<tr><td>Direction requests</td><td>Business Profile insights show how many asked for directions</td></tr>
+<tr><td>WhatsApp enquiries</td><td>Count messages that mention an offer</td></tr>
+<tr><td>Ask at billing</td><td>A one-question check: "How did you hear about us?"</td></tr>
+<tr><td>Repeat buyers</td><td>A phone number at billing shows who comes back</td></tr>
+</table>
+<p>Without some of these, marketing results in retail are guesses. Even a simple tally sheet beats nothing.</p>
+
+<h2>Step 5: Add online sales when you are ready</h2>
+<p>An online catalogue or store lets you sell to people outside your area and keeps the shop open at night. Start small: your best sellers, clear photos, delivery rules and a way to take orders (WhatsApp, a form or a store). Grow into Shopping ads, SEO and Meta catalog ads when fulfilment is smooth. Read <a href="/blog/digital-marketing-for-ecommerce-textile-brands-ahmedabad/">digital marketing for ecommerce and textile brands</a> for the next stage. Our <a href="/services/shopify-development/">Shopify development</a> team can help build a store.</p>
+
+<h2>A simple monthly rhythm</h2>
+<table>
+<tr><th>Week</th><th>Do this</th></tr>
+<tr><td>1</td><td>Update profile photos, offers and hours; reply to reviews</td></tr>
+<tr><td>2</td><td>Launch or refresh the local offer ad; send a WhatsApp update</td></tr>
+<tr><td>3</td><td>Promote a new arrival or event; ask recent buyers for reviews</td></tr>
+<tr><td>4</td><td>Count calls, direction requests, offer redemptions and repeat buyers; plan next month</td></tr>
+</table>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>Outdated hours or phone numbers, especially during festivals.</li>
+<li>Running ads without an offer or a way to measure visits.</li>
+<li>Sending too many promotional messages and losing the list.</li>
+<li>Promoting stock you do not have.</li>
+<li>Selling online without clear delivery and returns rules.</li>
+</ul>
+
+<h2>What it costs</h2>
+<p>Our digital marketing plans run from ₹30,000 to ₹2,70,000 a month plus GST, with ad spend separate; Google Ads and Meta ads management are available separately from ₹15,000 a month plus GST. See <a href="/blog/digital-marketing-cost-in-ahmedabad/">digital marketing cost in Ahmedabad</a>. We do not guarantee footfall or sales.</p>
+
+<h2>How Digital Aura can help</h2>
+<p>We set up your profiles, local ads, WhatsApp and tracking, and report on calls, directions and offer redemptions. See our <a href="/digital-marketing-company-ahmedabad">digital marketing agency in Ahmedabad</a> page or request a <a href="/digital-marketing-company-ahmedabad#audit">free growth audit</a>.</p>
+`,
+    faqs: [
+      { q: "What digital marketing works best for retail stores in Ahmedabad?", a: "A complete Google Business Profile for each outlet, local Google and Meta ads with real offers, WhatsApp for offers and repeat customers and simple tracking of calls, directions and offer redemptions. Add online sales once fulfilment is smooth." },
+      { q: "How can I track footfall from digital marketing?", a: "Use offer codes or phrases at billing, a tracking phone number, Business Profile direction requests, WhatsApp enquiries that mention an offer and a simple question asking customers how they heard about you." },
+      { q: "Is Google Business Profile important for shops?", a: "Yes. It is often the first thing a nearby shopper sees. Keep hours, photos, products, offers and reviews current for every outlet." },
+      { q: "Should a retail shop sell online too?", a: "It can help you reach buyers outside your area and sell after hours. Start small with best sellers, clear delivery and returns rules and a simple order route, then grow into ads and SEO." },
+      { q: "How do I use WhatsApp for retail marketing?", a: "Use a business number with a catalogue, build a list with permission, send useful updates such as new arrivals and offers without overdoing it and reply quickly with prices and availability." },
+      { q: "How much does retail digital marketing cost in Ahmedabad?", a: "Our plans run from ₹30,000 to ₹2,70,000 a month plus GST, with ad spend separate. Google Ads and Meta ads management are also available from ₹15,000 a month plus GST." },
+      { q: "How long does it take to see results for a store?", a: "Local ads and profile fixes can show calls and visits within weeks. SEO and reviews take longer, usually a few months, to build steady results." },
+      { q: "Can an agency guarantee more customers?", a: "No. Footfall depends on your products, prices, location and service as well as marketing. A good agency sets up tracking, runs campaigns and reports calls, directions and offers honestly." },
+    ],
+    ctaHeading: "Want More Customers Walking In?",
+    ctaText: "Request a free growth audit and get a written plan for your retail business.",
+    ctaButton: "Get My Free Growth Audit",
+    cro: { href: "/digital-marketing-company-ahmedabad#audit", label: "Get a free growth audit", sidebar: "Retail business? Ask for a written plan to bring more customers.", bandHeading: "Want more footfall and online sales?", bandText: "Request a free growth audit and get a written plan for your stores." },
+  },
+  {
+    slug: "full-service-vs-specialist-digital-agency-ahmedabad",
+    title: "Full-Service Agency vs Specialist Agency: Which Delivers Better ROI?",
+    titleHighlight: "Full-Service Agency vs Specialist Agency",
+    metaTitle: "Full Service Digital Marketing Agency vs Specialist: Better ROI?",
+    metaDescription: "Full service digital marketing agency or a specialist? Compare cost, depth, coordination and ROI, see when each wins and the questions to ask before you hire it.",
+    category: "Digital Marketing",
+    date: "2026-11-30",
+    dateDisplay: "Nov 30, 2026",
+    readTime: "9 min read",
+    author: AUTHOR,
+    authorRole: AUTHOR_ROLE,
+    authorBio: AUTHOR_BIO,
+    authorTags: AUTHOR_TAGS,
+    authorLink: AUTHOR_LINK,
+    directAnswer: "A full-service agency suits businesses needing several channels planned together. A specialist suits one clear priority that needs deep expertise. Neither delivers better ROI by itself. ROI depends on whether the agency matches your goal, tracks enquiries and sales, and tells you honestly where to spend. Ask who actually does the work.",
+    keyTakeaways: [
+      "Full-service agencies coordinate channels. Specialists go deeper in one. The right choice depends on your goal, budget and how many channels you need.",
+      "Ask who does the work and whether it is done in-house or outsourced. Breadth without depth is a risk.",
+      "ROI comes from tracking and honest reporting, not from the agency type.",
+      "Many businesses combine them: a specialist for the main channel and a coordinated plan for the rest.",
+      "Beware of any agency that says it does everything equally well, or that never recommends doing less.",
+    ],
+    contentHtml: `
+<p>When you start comparing agencies, you meet two descriptions: "full-service" (we do everything) and "specialist" (we do one thing very well). Each sounds appealing, and each can be a poor fit. This guide explains the real differences, when each tends to work better and how to judge them by return on investment, not labels. If you are also weighing freelancers and in-house teams, read <a href="/blog/digital-marketing-agency-vs-freelancer-vs-in-house-ahmedabad/">agency, freelancer or in-house</a>.</p>
+
+<h2>What each model means</h2>
+<table>
+<tr><th></th><th>Full-service agency</th><th>Specialist agency</th></tr>
+<tr><td>Focus</td><td>Many channels: SEO, ads, social, content, web, tracking</td><td>One channel or discipline, such as SEO or Google Ads</td></tr>
+<tr><td>Strength</td><td>Coordination, one point of contact, a combined plan</td><td>Depth, current techniques, focused experience</td></tr>
+<tr><td>Risk</td><td>Spread thin; some services outsourced or junior</td><td>Gaps between channels; you coordinate them yourself</td></tr>
+<tr><td>Best when</td><td>You need several channels working together</td><td>One channel is your clear priority</td></tr>
+<tr><td>Pricing pattern</td><td>Bundled plans or retainers</td><td>Per-service fees</td></tr>
+</table>
+
+<h2>When a full-service agency tends to win</h2>
+<ul>
+<li>You need SEO, paid ads and tracking planned together, so that each supports the others.</li>
+<li>You do not have an internal marketer to coordinate several vendors.</li>
+<li>You want one report and one team that sees the whole funnel.</li>
+<li>Your website, tracking and landing pages need work alongside campaigns.</li>
+</ul>
+
+<h2>When a specialist tends to win</h2>
+<ul>
+<li>One channel brings most of your enquiries and needs expert attention, for example Google Ads for a lead-driven service.</li>
+<li>You face a technical problem, such as a migration, a traffic drop or a complex catalogue.</li>
+<li>You already have a team handling other channels and want an expert in one.</li>
+<li>Your budget supports one channel done well, not four done thinly.</li>
+</ul>
+
+<h2>How to judge ROI, whichever you pick</h2>
+<table>
+<tr><th>Question</th><th>A good answer</th></tr>
+<tr><td>How will you measure results?</td><td>Calls, forms, WhatsApp and, where possible, sales, by channel</td></tr>
+<tr><td>What did you do for a client like me?</td><td>A case study with the problem, the work and verified results</td></tr>
+<tr><td>What will you do first, and what will you not do?</td><td>A focused starting plan with clear priorities</td></tr>
+<tr><td>Where would you tell me not to spend?</td><td>An honest answer, including when to wait</td></tr>
+<tr><td>How will you report?</td><td>Monthly, on enquiries and cost per enquiry, not only clicks</td></tr>
+</table>
+<p>An agency that cannot answer these is selling a label. The label does not produce ROI; tracking, focus and honesty do.</p>
+
+<h2>The questions that expose depth</h2>
+<ul>
+<li><strong>Who does the work?</strong> Ask for the names and experience of the people on your account.</li>
+<li><strong>Is it in-house or outsourced?</strong> Many full-service agencies outsource some channels, which is fine if disclosed and managed.</li>
+<li><strong>How many clients does each person handle?</strong></li>
+<li><strong>Which channel are you strongest in?</strong> Honest full-service agencies have a clear answer.</li>
+<li><strong>How do you coordinate channels?</strong> Look for shared tracking and a single plan.</li>
+</ul>
+
+<h2>The hybrid approach</h2>
+<p>You do not have to choose purely. A common model is a specialist for the channel that matters most, plus a lighter, coordinated plan for supporting channels, or a full-service agency with named specialist leads. What matters is that someone owns the whole picture: tracking, goals and the way channels feed each other. Our guides on <a href="/blog/seo-vs-paid-ads-which-first-ahmedabad/">SEO or paid ads, which first</a> and <a href="/blog/google-ads-vs-meta-ads-ahmedabad/">Google Ads vs Meta Ads</a> show how to decide priorities.</p>
+
+<h2>Cost: compare scope, not labels</h2>
+<p>Full-service plans bundle several services at one price, specialist fees cover one. For reference, our bundled digital marketing plans run from ₹30,000 to ₹2,70,000 a month plus GST, and our single-channel fees are SEO from ₹15,000 and Google Ads or Meta Ads management from ₹15,000, plus GST, with ad spend separate. See <a href="/blog/digital-marketing-cost-in-ahmedabad/">digital marketing cost in Ahmedabad</a>.</p>
+
+<h2>Red flags on both sides</h2>
+<ul>
+<li>"We do everything equally well" with no clear strongest area.</li>
+<li>"We only do one thing" but you really need three, and no one to coordinate them.</li>
+<li>Guaranteed results or no written scope.</li>
+<li>An unwillingness to recommend doing less or waiting.</li>
+<li>Accounts held in the agency's name.</li>
+</ul>
+<p>For the full list, read <a href="/blog/how-to-choose-digital-marketing-agency-ahmedabad/">how to choose a digital marketing agency in Ahmedabad</a>.</p>
+
+<h2>How Digital Aura works</h2>
+<p>We run separate SEO, Google Ads and Meta Ads teams under one plan, so you get specialist depth with shared tracking and one report. If your priority is a single channel, we will say so and scope only that. See our <a href="/services/digital-marketing/">digital marketing services</a> and <a href="/digital-marketing-company-ahmedabad">digital marketing agency in Ahmedabad</a>, or request a <a href="/digital-marketing-company-ahmedabad#audit">free growth audit</a>.</p>
+`,
+    faqs: [
+      { q: "What is the difference between a full-service and a specialist digital marketing agency?", a: "A full-service agency covers many channels such as SEO, ads, social and tracking in one coordinated plan. A specialist focuses on one channel and goes deeper. The right one depends on your goal, budget and need for coordination." },
+      { q: "Which delivers better ROI, full-service or specialist?", a: "Neither automatically. ROI comes from matching the agency to your goal, tracking enquiries and sales and reporting honestly. Judge by proof, measurement and clarity, not by the label." },
+      { q: "When should I choose a specialist agency?", a: "When one channel brings most of your enquiries, when you have a specific technical problem, when you already have a team for other channels or when your budget supports one channel done well." },
+      { q: "When should I choose a full-service agency?", a: "When you need SEO, ads, tracking and content planned together, have no internal marketer to coordinate vendors and want one team and one report." },
+      { q: "Is it a problem if a full-service agency outsources work?", a: "Not necessarily, if it is disclosed and managed well. Ask who does each part, how they are supervised and who is accountable for results." },
+      { q: "Can I use both a specialist and a full-service agency?", a: "Yes, but make sure one party owns tracking and goals so channels do not clash. A hybrid model often works when one channel is clearly the priority." },
+      { q: "How much does a full-service digital marketing agency cost in Ahmedabad?", a: "Our bundled plans run from ₹30,000 to ₹2,70,000 a month plus GST, with ad spend separate. Single-channel fees start at ₹15,000 a month plus GST. The exact fee is written after a free audit." },
+      { q: "How do I check an agency's depth?", a: "Ask who will work on your account, how many clients they handle, which channel the agency is strongest in, how it coordinates channels and for case studies with verifiable results." },
+    ],
+    ctaHeading: "Not Sure Whether You Need Full-Service or a Specialist?",
+    ctaText: "Request a free growth audit and get a written plan that shows where to start.",
+    ctaButton: "Get My Free Growth Audit",
+    cro: { href: "/digital-marketing-company-ahmedabad#audit", label: "Get a free growth audit", sidebar: "Full-service or specialist? Get a written plan that shows where to start.", bandHeading: "Not sure which agency model fits?", bandText: "Request a free growth audit and get a written plan and quote." },
+  },
+  // <<< NOV-2026-GREEN-BLOGS END
 ];
+
+// Scheduled publishing: a post is visible from its own date (see publishGate.ts). Links inside visible posts that point to a
+// post which is not live yet are turned into plain text, and they become links again on the day that post goes live.
+const futureSlugs = new Set(ALL_POSTS.filter((p) => !isPublished(p.date)).map((p) => p.slug));
+const dropFutureLinks = (html: string) =>
+  futureSlugs.size ? html.replace(/<a href="\/blog\/([^"\/]+)\/?">([\s\S]*?)<\/a>/g, (m, slug: string, text: string) => (futureSlugs.has(slug) ? text : m)) : html;
+
+export const posts: BlogPost[] = ALL_POSTS.filter((p) => isPublished(p.date)).map((p) => (futureSlugs.size ? { ...p, contentHtml: dropFutureLinks(p.contentHtml) } : p));
 
 export const categories = Array.from(new Set(posts.map(p => p.category)));

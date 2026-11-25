@@ -411,14 +411,17 @@ const GUIDES = [
   { t: "Google Ads in 2026: new strategies worth testing", d: "What is new, and what is worth a test budget.", h: "/blog/google-ads-2026-new-strategies/" },
   { t: "Google Ads tactics that stopped working", d: "Old tricks that no longer pay off.", h: "/blog/google-ads-tactics-stopped-working-2026/" },
   { t: "Local business marketing with Google Ads and Maps", d: "How a local business gets calls from Search and Maps.", h: "/blog/local-business-google-ads-maps-2026/" },
+  { t: "Google Ads cost in Ahmedabad", d: "Agency fee, ad spend and GST, with real bid estimates.", h: "/blog/google-ads-cost-in-ahmedabad/", from: "2026-11-25" },
+  { t: "PPC landing pages that lower lead cost", d: "How the page, the ad and tracking work together.", h: "/blog/ppc-landing-pages-and-web-design-ahmedabad/", from: "2026-11-26" },
 ];
 
+const todayIST = () => new Date(Date.now() + 5.5 * 3600 * 1000).toISOString().slice(0, 10);
 export function AdsGuides() {
   return (
     <Section id="ads-guides" className="bg-white">
       <SectionHead eyebrow="Google Ads guides" title="Learn how Google Ads works before you hire anyone" lead="Plain-English guides from our team. Read them to judge any Google Ads proposal, ours included." />
       <div className="pillar-cols-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {GUIDES.map((g) => (
+        {GUIDES.filter((g) => !("from" in g && g.from) || g.from <= todayIST()).map((g) => (
           <a key={g.h} href={g.h} className={`${card} group flex flex-col`}>
             <h3 className="font-display text-[16.5px] font-bold leading-snug text-navy">{g.t}</h3>
             <p className="mt-1.5 flex-1 text-[14px] leading-relaxed text-muted-foreground">{g.d}</p>

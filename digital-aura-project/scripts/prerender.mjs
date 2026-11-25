@@ -155,8 +155,10 @@ function getStaticSeoBlogRoutes() {
   try {
     const filePath = join(ROOT, 'src', 'data', 'seoBlogPosts.ts');
     const src = readFileSync(filePath, 'utf-8');
-    const slugs = [...src.matchAll(/slug:\s*"([^"]+)"/g)].map((m) => m[1]);
-    return slugs.map((slug) => `/blog/${slug}`);
+    // A post is only prerendered (and so only listed in the sitemap) once its own date has come, see src/data/publishGate.ts.
+    const today = process.env.PUBLISH_DATE || new Date(Date.now() + 5.5 * 3600 * 1000).toISOString().slice(0, 10);
+    const posts = [...src.matchAll(/slug:\s*"([^"]+)",[\s\S]*?\bdate:\s*"(\d{4}-\d{2}-\d{2})"/g)].map((m) => ({ slug: m[1], date: m[2] }));
+    return posts.filter((p) => p.date <= today).map((p) => `/blog/${p.slug}`);
   } catch (err) {
     console.log(`  ⚠  Could not read static SEO blog slugs for prerendering: ${err.message}`);
     return [];
@@ -281,6 +283,11 @@ function writeSitemap(succeededRoutes, pageHashes = {}) {
   // is listed below until someone runs `npm run sitemap:lastmod` and commits the file; a page with no record gets
   // no <lastmod> at all.
   const manifest = readManifest();
+  const staticBlogDates = {};
+  try {
+    const src = readFileSync(join(ROOT, 'src', 'data', 'seoBlogPosts.ts'), 'utf-8');
+    for (const m of src.matchAll(/slug:\s*"([^"]+)",[\s\S]*?\bdate:\s*"(\d{4}-\d{2}-\d{2})"/g)) staticBlogDates[`/blog/${m[1]}`] = m[2];
+  } catch { /* no blog file: nothing to add */ }
   const stale = [];
   const unrecorded = [];
   // Those proxied apps 307-redirect "/path/" to "/path", so the no-slash URL
@@ -292,7 +299,8 @@ function writeSitemap(succeededRoutes, pageHashes = {}) {
   const urls = [...new Set([...succeededRoutes, ...EXTRA_LIVE_ROUTES])].filter((route) => !CANONICALISED_ROUTES.has(route)).map((route) => {
     const loc = route === '/' ? `${SITE_URL}/` : noSlash.has(route) ? `${SITE_URL}${route}` : `${SITE_URL}${route}/`;
     const priority = route === '/' ? '1.0' : (route.startsWith('/blog/') || route.startsWith('/careers/')) ? '0.6' : '0.8';
-    const rec = manifest[route];
+    // A scheduled blog post with no manifest record uses its own publish date as <lastmod> (the day it went live).
+    const rec = manifest[route] || (staticBlogDates[route] ? { d: staticBlogDates[route] } : undefined);
     if (!rec) unrecorded.push(route);
     else if (rec.h && pageHashes[route] && rec.h !== pageHashes[route]) stale.push(route);
     const lastmod = rec?.d ? `\n    <lastmod>${rec.d}</lastmod>` : '';

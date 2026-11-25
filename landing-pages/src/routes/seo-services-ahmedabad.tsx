@@ -1998,6 +1998,7 @@ function AreasAndServices() {
 
 /* ---------------- SEO guides (supporting blog posts) ---------------- */
 
+const todayIST = () => new Date(Date.now() + 5.5 * 3600 * 1000).toISOString().slice(0, 10);
 function SEOGuides() {
   const guides = [
     { t: "SEO audit checklist: 25 checks before you hire", d: "Check indexing, speed, on-page, local SEO and tracking yourself first.", href: "/blog/seo-audit-checklist-before-hiring-agency/" },
@@ -2018,6 +2019,12 @@ function SEOGuides() {
     { t: "Shopify SEO tutorial", d: "Product, collection and store-level SEO basics.", href: "/blog/shopify-seo-tutorial-2026/" },
     { t: "AI SEO skills for marketers", d: "What to learn as search and AI assistants overlap.", href: "/blog/ai-seo-skills-for-marketers-2026/" },
     { t: "How to rank in ChatGPT, Perplexity and AI Overviews", d: "Making your pages easy for AI tools to cite.", href: "/blog/how-to-rank-chatgpt-perplexity-ai-overviews/" },
+    { t: "Best SEO company in Ahmedabad: how to compare", d: "A scorecard to shortlist agencies on proof, pricing and reporting.", href: "/blog/best-seo-company-in-ahmedabad-how-to-compare/", from: "2026-11-25" },
+    { t: "Why your website is not showing on Google", d: "12 checks for indexing, noindex, canonicals and thin pages.", href: "/blog/why-website-not-showing-on-google-ahmedabad/", from: "2026-11-26" },
+    { t: "B2B SEO for manufacturers in Gujarat", d: "Product pages, RFQ paths and trust signals that win enquiries.", href: "/blog/b2b-seo-manufacturers-gujarat-guide/", from: "2026-11-27" },
+    { t: "Ecommerce SEO checklist for 2026", d: "40 checks for categories, products, speed and tracking.", href: "/blog/ecommerce-seo-checklist-2026/", from: "2026-11-28" },
+    { t: "How to get your business found on ChatGPT", d: "Eight steps to be easier for AI tools to find and trust.", href: "/blog/how-to-list-your-business-on-chatgpt/", from: "2026-11-28" },
+    { t: "Local SEO citation building", d: "Clean listings with a consistent name, address and phone.", href: "/blog/local-seo-citation-building-ahmedabad/", from: "2026-11-27" },
   ];
   return (
     <section id="seo-guides" className="bg-surface-2">
@@ -2028,7 +2035,7 @@ function SEOGuides() {
           sub="Plain-English guides from our team. Read them to judge any SEO proposal, ours included."
         />
         <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {guides.map((g) => (
+          {guides.filter((g) => !("from" in g && g.from) || g.from <= todayIST()).map((g) => (
             <li key={g.href}>
               <a href={g.href} className="da-card-hover block h-full rounded-2xl border border-brand-navy/12 bg-white p-5">
                 <span className="block text-base font-bold text-brand-navy">{g.t}</span>

@@ -1900,6 +1900,7 @@ function AreasAndServices() {
   );
 }
 
+const todayIST = () => new Date(Date.now() + 5.5 * 3600 * 1000).toISOString().slice(0, 10);
 function MarketingGuides() {
   const guides = [
     { t: "Digital marketing cost in Ahmedabad", d: "Packages, monthly fees and what each plan includes.", href: "/blog/digital-marketing-cost-in-ahmedabad/" },
@@ -1917,6 +1918,15 @@ function MarketingGuides() {
     { t: "How SEO works in 2026", d: "What changed with AI Overviews, and what still matters.", href: "/blog/seo-in-2026-ai-era/" },
     { t: "Local SEO strategies for 2026", d: "Maps, citations and reviews for local businesses.", href: "/blog/local-seo-strategies-2026/" },
     { t: "How to choose an SEO company", d: "12 questions to ask and the red flags to watch for.", href: "/blog/how-to-choose-seo-company-ahmedabad/" },
+    { t: "How to choose a digital marketing agency: 10 red flags", d: "Red flags, contract terms and what the first 90 days should look like.", href: "/blog/how-to-choose-digital-marketing-agency-ahmedabad/", from: "2026-11-25" },
+    { t: "Agency, freelancer or in-house", d: "Compare cost, skills, speed and risk before you hire.", href: "/blog/digital-marketing-agency-vs-freelancer-vs-in-house-ahmedabad/", from: "2026-11-26" },
+    { t: "Full-service or specialist agency", d: "Which delivers better ROI, and the questions that show real depth.", href: "/blog/full-service-vs-specialist-digital-agency-ahmedabad/", from: "2026-11-30" },
+    { t: "Digital marketing for real estate builders", d: "Channels, funnel and follow-up that bring qualified site visits.", href: "/blog/digital-marketing-for-real-estate-builders-ahmedabad/", from: "2026-11-27" },
+    { t: "Digital marketing for manufacturers and exporters", d: "SEO, Google Ads and LinkedIn to win RFQs and export enquiries.", href: "/blog/digital-marketing-for-manufacturers-exporters-ahmedabad/", from: "2026-11-28" },
+    { t: "Digital marketing for ecommerce and textile brands", d: "The growth mix and the numbers to watch for online stores.", href: "/blog/digital-marketing-for-ecommerce-textile-brands-ahmedabad/", from: "2026-11-29" },
+    { t: "Digital marketing for restaurants and cafes", d: "Maps, Instagram, reviews and direct orders.", href: "/blog/digital-marketing-for-restaurants-cafes-ahmedabad/", from: "2026-11-30" },
+    { t: "Digital marketing for retail businesses", d: "Bring footfall to the store and build online sales.", href: "/blog/digital-marketing-for-retail-businesses-ahmedabad/", from: "2026-11-29" },
+    { t: "How to choose a Meta ads agency", d: "Questions, red flags and fees to compare.", href: "/blog/how-to-choose-meta-ads-agency-ahmedabad/", from: "2026-11-25" },
   ];
   return (
     <section id="guides" className="bg-surface-2">
@@ -1927,7 +1937,7 @@ function MarketingGuides() {
           sub="Plain-English guides from our team. Read them to judge any proposal, ours included."
         />
         <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {guides.map((g) => (
+          {guides.filter((g) => !("from" in g && g.from) || g.from <= todayIST()).map((g) => (
             <li key={g.href}>
               <a href={g.href} className="da-card-hover block h-full rounded-2xl border border-brand-navy/12 bg-white p-5">
                 <span className="block text-base font-bold text-brand-navy">{g.t}</span>

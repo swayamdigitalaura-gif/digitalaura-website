@@ -1,0 +1,46 @@
+# DAILY BLOG PUBLISH - copy this file to  .github/workflows/daily-publish.yml  (one time, through the GitHub website:
+# repo -> Add file -> Create new file -> name it ".github/workflows/daily-publish.yml" -> paste -> Commit to main).
+#
+# What it does: every morning (09:05 India time) it checks whether any blog post is scheduled for today in
+# digital-aura-project/src/data/blogSchedule.ts. If yes, it runs the normal "Deploy to Live (Contabo)" workflow for the
+# main site, the SEO / digital marketing pages and the Google Ads page, one after the other. Each build only includes the
+# posts whose date has come (see src/data/publishGate.ts), so each day the new posts go live by themselves.
+# On days with nothing scheduled it does nothing. To change a post's day, edit blogSchedule.ts and the post's `date`.
+name: Daily blog publish
+
+on:
+  schedule:
+    - cron: "35 3 * * *"   # 03:35 UTC = 09:05 IST
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Is a post scheduled for today (India time)?
+        id: due
+        run: |
+          TODAY=$(TZ=Asia/Kolkata date +%F)
+          if grep -q "\"$TODAY\"" digital-aura-project/src/data/blogSchedule.ts; then
+            echo "due=true" >> "$GITHUB_OUTPUT"; echo "Posts are scheduled for $TODAY"
+          else
+            echo "due=false" >> "$GITHUB_OUTPUT"; echo "Nothing scheduled for $TODAY"
+          fi
+      - name: Deploy main site, SEO / digital marketing pages and Google Ads page (one at a time)
+        if: steps.due.outputs.due == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for t in main-site seo-landing google-ads; do
+            gh workflow run deploy.yml --ref main -f target=$t
+            sleep 20
+            id=$(gh run list --workflow=deploy.yml --event=workflow_dispatch --limit 1 --json databaseId -q '.[0].databaseId')
+            gh run watch "$id" --exit-status
+          done

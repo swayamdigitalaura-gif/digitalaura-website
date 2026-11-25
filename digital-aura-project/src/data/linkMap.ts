@@ -4,6 +4,9 @@
  * imported by cluster pages, and importing the whole blog dataset there would make every page heavier.
  */
 
+import { isPublished } from "./publishGate";
+import { BLOG_SCHEDULE } from "./blogSchedule";
+
 export type Topic = "seo" | "gads" | "meta" | "web";
 
 export const PILLARS: Record<Topic, { label: string; short: string; href: string }> = {
@@ -15,7 +18,7 @@ export const PILLARS: Record<Topic, { label: string; short: string; href: string
 
 export type Guide = { slug: string; title: string };
 
-export const GUIDES: Record<Exclude<Topic, "web">, Guide[]> = {
+const GUIDES_ALL: Record<Exclude<Topic, "web">, Guide[]> = {
   seo: [
     { slug: "seo-in-2026-ai-era", title: "SEO in 2026: The Complete Strategy Guide for the AI Search Era" },
     { slug: "on-page-seo-checklist-2026", title: "On-Page SEO Checklist for 2026" },
@@ -29,6 +32,10 @@ export const GUIDES: Record<Exclude<Topic, "web">, Guide[]> = {
     { slug: "how-to-rank-chatgpt-perplexity-ai-overviews", title: "How to Rank in ChatGPT, Perplexity and AI Overviews" },
     { slug: "ai-seo-skills-for-marketers-2026", title: "6 AI SEO Skills Every Marketer Needs in 2026" },
     { slug: "shopify-seo-tutorial-2026", title: "Shopify SEO Tutorial 2026" },
+    { slug: "best-seo-company-in-ahmedabad-how-to-compare", title: "Best SEO Company in Ahmedabad: How to Compare and Shortlist" },
+    { slug: "why-website-not-showing-on-google-ahmedabad", title: "Why Your Website Is Not Showing on Google: 12 Checks" },
+    { slug: "ecommerce-seo-checklist-2026", title: "Ecommerce SEO Checklist for Online Stores (2026)" },
+    { slug: "b2b-seo-manufacturers-gujarat-guide", title: "B2B SEO for Manufacturers in Gujarat: Getting RFQs From Google" },
   ],
   gads: [
     { slug: "google-ads-strategy-checklist-2026", title: "Google Ads Strategy Checklist for 2026" },
@@ -36,6 +43,7 @@ export const GUIDES: Record<Exclude<Topic, "web">, Guide[]> = {
     { slug: "google-ads-2026-new-strategies", title: "Google Ads in 2026: New Strategies Worth Testing" },
     { slug: "google-ads-tactics-stopped-working-2026", title: "Google Ads Tactics That Stopped Working in 2026" },
     { slug: "local-business-google-ads-maps-2026", title: "Local Business Marketing With Google Ads and Maps" },
+    { slug: "google-ads-cost-in-ahmedabad", title: "Google Ads Cost in Ahmedabad (2026): Agency Fee vs Ad Budget" },
   ],
   meta: [
     { slug: "meta-lead-gen-ads-2026", title: "Meta Lead Gen Ads: What Top Advertisers Actually Do" },
@@ -50,7 +58,16 @@ export const GUIDES: Record<Exclude<Topic, "web">, Guide[]> = {
     { slug: "meta-ads-cost-in-ahmedabad", title: "Meta Ads Cost in Ahmedabad: Management Fee, Ad Spend and What Changes the Price" },
     { slug: "meta-ad-creative-testing-lead-generation", title: "Meta Ad Creative Testing for Lead Generation: What to Test and How Often" },
     { slug: "fix-low-quality-leads-facebook-instagram-ads", title: "Low-Quality Leads from Facebook and Instagram Ads? How to Fix Lead Quality" },
+    { slug: "how-to-choose-meta-ads-agency-ahmedabad", title: "How to Choose a Meta Ads Agency in Ahmedabad: Questions, Red Flags, Fees" },
+    { slug: "meta-ads-real-estate-ahmedabad-playbook", title: "Meta Ads for Real Estate in Ahmedabad: Playbook for Builders and Brokers" },
   ],
+};
+
+/** Guides that are scheduled for a later date are left out until that day (see blogSchedule.ts). */
+export const GUIDES: Record<Exclude<Topic, "web">, Guide[]> = {
+  seo: GUIDES_ALL.seo.filter((g) => isPublished(BLOG_SCHEDULE[g.slug])),
+  gads: GUIDES_ALL.gads.filter((g) => isPublished(BLOG_SCHEDULE[g.slug])),
+  meta: GUIDES_ALL.meta.filter((g) => isPublished(BLOG_SCHEDULE[g.slug])),
 };
 
 /** Which pillar a blog post belongs to. Social-media posts feed the Meta pillar. */
@@ -113,4 +130,12 @@ export const SEO_SERVICE_BY_CATEGORY: Record<string, ClusterLink> = {
   "eCommerce SEO": { label: "Ecommerce SEO services", href: "/services/seo-content-marketing/ecommerce-seo/" },
   "SEO Strategy": { label: "SEO audit and strategy", href: "/services/seo-content-marketing/seo-audit-strategy/" },
   "AI Search": { label: "SEO audit and strategy", href: "/services/seo-content-marketing/seo-audit-strategy/" },
+};
+
+/** Extra "keep going" links for blog posts dated 25 Nov 2026 or later, used in place of the doctor / clinic links. */
+export const NEW_POST_EXTRA_LINKS: Record<Topic, ClusterLink[]> = {
+  seo: [{ label: "SEO for manufacturers in Gujarat", href: "/seo/manufacturers-b2b-gujarat/" }],
+  gads: [{ label: "Google Ads management services", href: "/services/google-ads/" }],
+  meta: [{ label: "Meta ads for real estate", href: "/meta-ads-agency-ahmedabad/real-estate/" }],
+  web: [],
 };

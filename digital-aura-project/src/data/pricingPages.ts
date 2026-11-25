@@ -448,7 +448,7 @@ const gads: PricingPageConfig = {
       { title: "Free Google Ads audit", desc: "A read-only review of your account and where budget leaks.", href: "/google-ads-audit-ahmedabad/", icon: "clipboard" },
       { title: "SEO pricing", desc: "SEO Basic, Growth and Advance plans for Ahmedabad.", href: "/seo/pricing-ahmedabad/", icon: "wallet" },
       { title: "Meta ads pricing", desc: "Facebook and Instagram ads fee and ad spend.", href: "/meta-ads-agency-ahmedabad/pricing/", icon: "megaphone" },
-      { title: "Google Ads strategy checklist", desc: "A step-by-step review to run before you spend more.", href: "/blog/google-ads-strategy-checklist-2026/", icon: "filetext" },
+      { title: "Google Ads cost explained", desc: "Cost per click, budget maths and a worked example before you spend.", href: "/blog/google-ads-cost-in-ahmedabad/", icon: "filetext" },
     ],
   },
   faqTitle: "Google Ads Pricing FAQs",

@@ -59,7 +59,7 @@ const GUIDES_ALL: Record<Exclude<Topic, "web">, Guide[]> = {
     { slug: "meta-ad-creative-testing-lead-generation", title: "Meta Ad Creative Testing for Lead Generation: What to Test and How Often" },
     { slug: "fix-low-quality-leads-facebook-instagram-ads", title: "Low-Quality Leads from Facebook and Instagram Ads? How to Fix Lead Quality" },
     { slug: "how-to-choose-meta-ads-agency-ahmedabad", title: "How to Choose a Meta Ads Agency in Ahmedabad: Questions, Red Flags, Fees" },
-    { slug: "meta-ads-real-estate-ahmedabad-playbook", title: "Meta Ads for Real Estate in Ahmedabad: Playbook for Builders and Brokers" },
+    { slug: "meta-ads-real-estate-ahmedabad-playbook", title: "Facebook Ads for Real Estate: A Playbook for Builders and Brokers" },
   ],
 };
 

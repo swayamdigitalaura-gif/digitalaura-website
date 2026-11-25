@@ -8442,8 +8442,8 @@ Allow: /</code></pre>
   },
   {
     slug: "meta-ads-real-estate-ahmedabad-playbook",
-    title: "Meta Ads for Real Estate in Ahmedabad: Playbook for Builders and Brokers",
-    titleHighlight: "Meta Ads for Real Estate",
+    title: "Facebook Ads for Real Estate: A Playbook for Builders and Brokers in Ahmedabad",
+    titleHighlight: "Facebook Ads for Real Estate",
     metaTitle: "Facebook Ads for Real Estate in Ahmedabad: A Builder Playbook",
     metaDescription: "Facebook ads for real estate in Ahmedabad: how builders and brokers get site visits, which offers and creatives work, how to check lead quality and what it costs.",
     category: "Meta Ads",

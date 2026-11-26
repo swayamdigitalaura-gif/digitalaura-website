@@ -7464,7 +7464,7 @@ Allow: /</code></pre>
 <p>Technical fixes can be picked up in weeks; ranking gains usually build over three to six months. Online stores with large catalogues sit in our SEO Advance plan, which includes category and product optimisation and runs from ₹50,000 to ₹1,50,000 a month plus GST. Smaller stores may start lower; see <a href="/seo/pricing-ahmedabad/">SEO pricing</a>. We never promise rankings.</p>
 
 <h2>How Digital Aura can help</h2>
-<p>We review your store for these ten problems, list what we find with the business impact of each and agree a fix order with you. Start with a <a href="/seo/free-audit/">free SEO audit</a>. If your store needs a rebuild, our <a href="/shopify-website-design-ahmedabad/">Shopify</a> and <a href="/woocommerce-website-design-ahmedabad/">WooCommerce</a> teams can help.</p>
+<p>We review your store for these ten problems, list what we find with the business impact of each and agree a fix order with you. Start with a <a href="/seo/free-audit/">free SEO audit</a>. If your store needs a rebuild, our <a href="/shopify-website-design-ahmedabad/">Shopify website design</a> and <a href="/woocommerce-website-design-ahmedabad/">WooCommerce website design</a> teams can help.</p>
 `,
     faqs: [
       { q: "What are the most common ecommerce SEO mistakes?", a: "Thin category pages, duplicate URLs from filters and variants, copied manufacturer descriptions, missing product schema, slow images, weak titles, poor internal links, mishandled out-of-stock pages, no reviews and letting cart or search pages be indexed." },
@@ -8903,7 +8903,7 @@ Allow: /</code></pre>
       { q: "How long should a landing page form be?", a: "As short as possible. Name, phone number and one qualifying question are often enough. Add more fields only if they improve lead quality enough to justify fewer submissions." },
       { q: "How do I track conversions on a landing page?", a: "Fire conversion events for form submissions, click-to-call and WhatsApp clicks, and connect them to Google Ads. Also mark enquiries as qualified in a sheet or CRM to compare lead quality by campaign." },
       { q: "Do landing pages affect Quality Score?", a: "Yes. Landing page experience, including relevance, speed and usability, is part of how Google rates your ads, and a better score can lower your costs." },
-      { q: "Do you design landing page for Google Ads in Ahmedabad?", a: "Yes. We design landing pages together with Google Ads campaigns, set up tracking and test improvements, with the scope and price written in advance." },
+      { q: "Do you design landing pages for Google Ads in Ahmedabad?", a: "Yes. We design landing pages together with Google Ads campaigns, set up tracking and test improvements, with the scope and price written in advance." },
     ],
     ctaHeading: "Paying for Clicks That Do Not Convert?",
     ctaText: "Share your ad and page. We will tell you what to change so more clicks become enquiries.",

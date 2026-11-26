@@ -14,6 +14,10 @@ import AuthorBox from "@/components/AuthorBox";
 import { StickyCtaBar } from "@/components/PageCta";
 import { track, PHONE_DISPLAY, PHONE_TEL, whatsappLink } from "@/lib/track";
 
+// Wide tables scroll sideways on phones instead of being cut off.
+const scrollTables = (html: string) =>
+  html.replace(/<table[\s\S]*?<\/table>/g, (table) => `<div class="blog-table-wrap">${table}</div>`);
+
 const SITE = "https://thedigitalaura.com";
 
 const shortTeaser = (text: string) => {
@@ -170,7 +174,7 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
       {/* Body + sidebar */}
       <section className="py-12 px-4 md:px-8 bg-white">
         <div id="article-body" className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10 lg:items-start scroll-mt-20">
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 min-w-0">
             {/* Full direct-answer paragraph — AEO-critical, kept as the true opening line of the article */}
             <p className="text-lg leading-relaxed mb-7 font-medium" style={{ color: "#374151" }}>{post.directAnswer}</p>
 
@@ -193,7 +197,7 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
               </ul>
             </motion.div>
 
-            <div className="blog-prose" style={{ ["--accent" as string]: theme.color, ["--accent-ink" as string]: theme.ink }} dangerouslySetInnerHTML={{ __html: bodyFirst }} />
+            <div className="blog-prose" style={{ ["--accent" as string]: theme.color, ["--accent-ink" as string]: theme.ink }} dangerouslySetInnerHTML={{ __html: scrollTables(bodyFirst) }} />
             {post.cro && bodySecond && (
               <aside aria-label="Next step" className="my-10 rounded-2xl border p-6 md:p-7" style={{ background: "#FFF4EC", borderColor: "#FFD9C2" }}>
                 <p className="text-xl font-black leading-tight text-[#0A1628]">{post.cro.bandHeading}</p>
@@ -209,7 +213,7 @@ const StaticSeoPostView = ({ post }: { post: BlogPost }) => {
                 </div>
               </aside>
             )}
-            {bodySecond && <div className="blog-prose" style={{ ["--accent" as string]: theme.color, ["--accent-ink" as string]: theme.ink }} dangerouslySetInnerHTML={{ __html: bodySecond }} />}
+            {bodySecond && <div className="blog-prose" style={{ ["--accent" as string]: theme.color, ["--accent-ink" as string]: theme.ink }} dangerouslySetInnerHTML={{ __html: scrollTables(bodySecond) }} />}
 
             {/* FAQ */}
             <div className="mt-12">

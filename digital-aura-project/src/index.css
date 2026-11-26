@@ -802,6 +802,8 @@
   .blog-prose blockquote { border-left: 3px solid var(--accent); background: rgba(0,0,0,0.02); padding: .9rem 1.1rem; border-radius: 0 .75rem .75rem 0; font-style: italic; color: #374151; margin: 1.5rem 0; }
   .blog-prose code { background: #F3F4F6; padding: .15rem .4rem; border-radius: .35rem; font-size: .9em; }
   .blog-prose table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .9rem; border-radius: .75rem; overflow: hidden; border: 1px solid #E5E7EB; }
+  .blog-prose .blog-table-wrap { overflow-x: auto; margin: 1.5rem 0; -webkit-overflow-scrolling: touch; }
+  .blog-prose .blog-table-wrap > table { margin: 0; }
   .blog-prose th, .blog-prose td { border-bottom: 1px solid #E5E7EB; padding: .7rem .9rem; text-align: left; }
   .blog-prose th { background: #0A1628; color: #fff; font-weight: 700; }
   .blog-prose tr:last-child td { border-bottom: none; }

@@ -67,7 +67,7 @@ const META_PILLAR_TEAM = [
   { name: "Satish Prajapati", role: "Meta Ads Specialist", photo: "/team/satish.png", bio: "Satish plans Meta campaigns from objective to budget and creative direction, and leads the reviews that keep spend following the leads that matter to your business." },
   { name: "Bhavesh Bhavsar", role: "Meta Ads Executive", photo: "/team/bhavesh.webp", bio: "Bhavesh sets up lead forms, the pixel and conversion tracking, and checks that every lead reaches you, whether it comes by form, call or WhatsApp." },
   { name: "Krishna Jani", role: "Meta Ads Executive", photo: "/team/krishna.webp", bio: "Krishna works on ad creative briefs, copy variations and tests, helping keep creatives fresh as results change." },
-  { name: "Diya Mahida", role: "Meta Ads Executive", photo: "/team/diya.webp", bio: "Diya handles reporting and optimisation checks across campaigns, summarising what produced leads and what to change next." },
+  { name: "Yashvant Kumar", role: "Meta Ads Executive", photo: "/team/yashvant.webp", bio: "Yashvant handles reporting and optimisation checks across campaigns, summarising what produced leads and what to change next." },
 ];
 
 /** Google Ads pillar team (same people and wording as the /google-ads-agency-ahmedabad page). */
@@ -76,7 +76,7 @@ const GOOGLE_PILLAR_TEAM = [
   { name: "Satish Prajapati", role: "Google Ads Specialist", photo: "/team/satish.png", bio: "Satish plans account structure, budgets and bidding, and keeps campaigns tied to the enquiries you want. Satish also coordinates the team and walks you through each month's results." },
   { name: "Bhavesh Bhavsar", role: "Google Ads Executive", photo: "/team/bhavesh.webp", bio: "Bhavesh manages campaign setup, conversion tracking and daily checks, so calls, forms and WhatsApp clicks are counted correctly and budgets stay on track." },
   { name: "Krishna Jani", role: "Google Ads Executive", photo: "/team/krishna.webp", bio: "Krishna supports campaign optimisation and landing page checks, making sure the page a visitor lands on keeps the promise made in the ad." },
-  { name: "Diya Mahida", role: "Google Ads Executive", photo: "/team/diya.webp", bio: "Diya prepares performance reports and audience and placement reviews, turning account data into clear next steps for the team and for you." },
+  { name: "Yashvant Kumar", role: "Google Ads Executive", photo: "/team/yashvant.webp", bio: "Yashvant prepares performance reports and audience and placement reviews, turning account data into clear next steps for the team and for you." },
 ];
 
 /** Website pillar team (same people and wording as the /website-development-services-ahmedabad page). */
@@ -94,7 +94,7 @@ const SEO_PILLAR_TEAM = [
   { name: "Jinali Lodariya", role: "SEO Executive", photo: "/team/jinali.png", bio: "Jinali handles keyword research, on-page optimisation and content improvements. Titles, headings and page copy are worked through so each service page matches what people in Ahmedabad actually search for." },
   { name: "Bhavesh Bhavsar", role: "SEO Executive", photo: "/team/bhavesh.webp", bio: "Bhavesh looks after website optimisation, content planning and technical checks. The aim is pages that are crawlable, fast and well structured, so Google can find and understand them." },
   { name: "Krishna Jani", role: "SEO Executive", photo: "/team/krishna.webp", bio: "Krishna supports on-page work, Google Business Profile updates and local search tasks, keeping your listings and pages accurate and consistent across the places customers look." },
-  { name: "Diya Mahida", role: "SEO Executive", photo: "/team/diya.webp", bio: "Diya supports keyword tracking, reporting and content research, and helps prepare the monthly updates that show which pages moved and what to work on next." },
+  { name: "Yashvant Kumar", role: "SEO Executive", photo: "/team/yashvant.webp", bio: "Yashvant supports keyword tracking, reporting and content research, and helps prepare the monthly updates that show which pages moved and what to work on next." },
 ];
 const seoTeamSection = (id: string, subtext: string): ExtraSection => ({ kind: "team", id, eyebrow: "Our team", title: "Meet the team behind your SEO", subtext, members: SEO_PILLAR_TEAM });
 

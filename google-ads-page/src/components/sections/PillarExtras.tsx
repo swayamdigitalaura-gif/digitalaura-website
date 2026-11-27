@@ -221,7 +221,7 @@ export const TEAM_MEMBERS = [
   { name: "Satish Prajapati", role: "Google Ads Specialist", photo: "/team/satish.png", bio: "Satish plans account structure, budgets and bidding, and keeps campaigns tied to the enquiries you want. Satish also coordinates the team and walks you through each month's results." },
   { name: "Bhavesh Bhavsar", role: "Google Ads Executive", photo: "/team/bhavesh.webp", bio: "Bhavesh manages campaign setup, conversion tracking and daily checks, so calls, forms and WhatsApp clicks are counted correctly and budgets stay on track." },
   { name: "Krishna Jani", role: "Google Ads Executive", photo: "/team/krishna.webp", bio: "Krishna supports campaign optimisation and landing page checks, making sure the page a visitor lands on keeps the promise made in the ad." },
-  { name: "Diya Mahida", role: "Google Ads Executive", photo: "/team/diya.webp", bio: "Diya prepares performance reports and audience and placement reviews, turning account data into clear next steps for the team and for you." },
+  { name: "Yashvant Kumar", role: "Google Ads Executive", photo: "/team/yashvant.webp", bio: "Yashvant prepares performance reports and audience and placement reviews, turning account data into clear next steps for the team and for you." },
 ];
 
 export const FOUNDER_SAME_AS = ["https://www.linkedin.com/in/sambhav-shah/", "https://www.instagram.com/sambhavshah2/"];

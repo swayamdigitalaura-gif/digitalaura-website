@@ -245,7 +245,7 @@ const TEAM_MEMBERS = [
   { name: "Jinali Lodariya", role: "SEO Executive", photo: "/team/jinali.png", bio: "Jinali handles keyword research, on-page optimisation and content improvements. Titles, headings and page copy are worked through so each service page matches what people in Ahmedabad actually search for." },
   { name: "Bhavesh Bhavsar", role: "Digital Marketing Executive", photo: "/team/bhavesh.webp", bio: "Bhavesh supports campaign set-up, landing page checks, content planning and conversion tracking, so SEO, Google Ads and social media all work from the same data and send visitors to pages that are ready for them." },
   { name: "Krishna Jani", role: "Digital Marketing Executive", photo: "/team/krishna.webp", bio: "Krishna supports Google Business Profile updates, local listings and day-to-day ad account tasks, keeping your business details accurate and consistent across the places customers look and click." },
-  { name: "Diya Mahida", role: "Digital Marketing Executive", photo: "/team/diya.webp", bio: "Diya supports keyword and audience research, content planning and reporting, and helps prepare the monthly update that shows what each channel delivered and what to work on next." },
+  { name: "Yashvant Kumar", role: "Digital Marketing Executive", photo: "/team/yashvant.webp", bio: "Yashvant supports keyword and audience research, content planning and reporting, and helps prepare the monthly update that shows what each channel delivered and what to work on next." },
 ];
 
 const FOUNDER_SAME_AS = ["https://www.linkedin.com/in/sambhav-shah/", "https://www.instagram.com/sambhavshah2/"];
@@ -1994,7 +1994,7 @@ const FAQS = [
   },
   {
     q: "Who will work on my account?",
-    a: "An in-house team at our Hanspura office, led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. Satish Prajapati (Digital Marketing Expert) coordinates the work, Jinali Lodariya (SEO Executive) handles SEO, and Bhavesh Bhavsar, Krishna Jani and Diya Mahida (Digital Marketing Executives) support campaigns, local listings and reporting. You can meet them on this page.",
+    a: "An in-house team at our Hanspura office, led by founder Sambhav Shah, who has 10+ years of experience in digital marketing. Satish Prajapati (Digital Marketing Expert) coordinates the work, Jinali Lodariya (SEO Executive) handles SEO, and Bhavesh Bhavsar, Krishna Jani and Yashvant Kumar (Digital Marketing Executives) support campaigns, local listings and reporting. You can meet them on this page.",
   },
   {
     q: "Do you offer AI workflow automation?",

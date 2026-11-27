@@ -6715,7 +6715,7 @@ Allow: /</code></pre>
 <p>A factory is also a local business. Set up a Google Business Profile with the factory address, product categories, photos and working hours, so searches like "manufacturer near me" or "supplier in Naroda" can find you. For export buyers, state the countries you serve, your certifications and your minimum order terms in plain words. Our <a href="/services/seo-content-marketing/local-seo/">local SEO</a> team handles the profile and citations, and the <a href="/blog/how-to-choose-seo-company-ahmedabad/">guide to choosing an SEO company</a> shows what to ask any agency before you sign.</p>
 
 <h2>Turning visits into RFQs</h2>
-<p>Ranking only helps if the page produces an enquiry. Put an RFQ button high on every product page, keep the form to four or five fields (name, company, product, quantity, contact) and add a click-to-call and WhatsApp option. Then count what happens: how many forms, calls and WhatsApp messages came from which page. Without that, you will not know whether SEO is working.</p>
+<p>Ranking only helps if the page produces an enquiry. Put an RFQ button high on every product page, keep the form short, six or seven fields at most (such as name, company, contact, product, quantity and delivery location) and add a click-to-call and WhatsApp option. Then count what happens: how many forms, calls and WhatsApp messages came from which page. Without that, you will not know whether SEO is working.</p>
 <table>
 <tr><th>What to track</th><th>Why it matters</th></tr>
 <tr><td>RFQ form submissions by page</td><td>Shows which products bring real enquiries</td></tr>
@@ -6799,10 +6799,10 @@ Allow: /</code></pre>
     authorBio: AUTHOR_BIO,
     authorTags: AUTHOR_TAGS,
     authorLink: AUTHOR_LINK,
-    directAnswer: "A citation is any mention of your business name, address and phone number (NAP) on another website. Citation building means creating and cleaning those listings so every one shows identical details. For an Ahmedabad business, start with Google Business Profile, Bing Places, Apple Business Connect and the main India directories, fix duplicates, and keep the details consistent. Quality and accuracy matter more than the number of listings.",
+    directAnswer: "A citation is any mention of your business name, address and phone number (NAP) on another website. Citation building means creating and cleaning those listings so every one shows identical details. For an Ahmedabad business, start with Google Business Profile, Bing Places, Apple Business and the main India directories, fix duplicates, and keep the details consistent. Quality and accuracy matter more than the number of listings.",
     keyTakeaways: [
       "A citation is a mention of your name, address and phone number on another site. Consistency across them builds trust with Google.",
-      "Start with the listings that matter: Google Business Profile, Bing Places, Apple Business Connect and a few relevant Indian directories.",
+      "Start with the listings that matter: Google Business Profile, Bing Places, Apple Business and a few relevant Indian directories.",
       "Wrong or duplicate listings do more harm than missing ones. Audit before you create anything.",
       "Ten accurate, relevant citations beat a hundred copied from a bulk list.",
       "Citations support local rankings but do not replace reviews, a strong profile and a good website.",
@@ -6838,7 +6838,7 @@ Allow: /</code></pre>
 <table>
 <tr><th>Priority</th><th>Where</th><th>Why</th></tr>
 <tr><td>Must have</td><td>Google Business Profile</td><td>Drives the local pack and Maps</td></tr>
-<tr><td>Must have</td><td>Bing Places and Apple Business Connect</td><td>Feed Bing, Apple Maps and several AI tools</td></tr>
+<tr><td>Must have</td><td>Bing Places and Apple Business (earlier Apple Business Connect)</td><td>Feed Bing, Apple Maps and several AI tools</td></tr>
 <tr><td>Should have</td><td>Facebook, Instagram and LinkedIn business pages</td><td>Used to confirm your details and brand</td></tr>
 <tr><td>Should have</td><td>Relevant Indian directories such as JustDial and Sulekha for consumer services</td><td>Widely used and often rank for local searches</td></tr>
 <tr><td>Industry specific</td><td>A directory for your own trade, for example a B2B or manufacturers' directory</td><td>Relevant listings carry more weight than generic ones</td></tr>
@@ -6858,7 +6858,7 @@ Allow: /</code></pre>
 <table>
 <tr><th>Business type</th><th>Prioritise</th><th>Skip</th></tr>
 <tr><td>Manufacturer or B2B supplier</td><td>Google Business Profile, a respected B2B or trade directory, industry association pages, LinkedIn</td><td>Consumer review sites that your buyers never use</td></tr>
-<tr><td>Online store with a physical showroom</td><td>Google Business Profile, Bing Places, Apple Business Connect, Facebook, shopping and retail directories</td><td>Directories for unrelated categories</td></tr>
+<tr><td>Online store with a physical showroom</td><td>Google Business Profile, Bing Places, Apple Business, Facebook, shopping and retail directories</td><td>Directories for unrelated categories</td></tr>
 <tr><td>Service company with several areas</td><td>Google Business Profile for each real location, local directories, area-specific pages on your site</td><td>Profiles for towns where you have no staff or address</td></tr>
 <tr><td>Multi-branch brand</td><td>One profile per branch with its own phone and address, a store locator page, consistent naming</td><td>One shared profile for every branch</td></tr>
 </table>
@@ -6896,7 +6896,7 @@ Allow: /</code></pre>
     faqs: [
       { q: "What is citation building in local SEO?", a: "It is the process of creating, correcting and maintaining mentions of your business name, address and phone number on directories, maps and other websites so the details match everywhere. Consistent details help Google trust your business information." },
       { q: "What does NAP stand for?", a: "NAP stands for Name, Address and Phone number. These three details should be identical on your website, Google Business Profile and every directory listing." },
-      { q: "Which citations matter most for an Ahmedabad business?", a: "Start with Google Business Profile, Bing Places and Apple Business Connect, then your Facebook, Instagram and LinkedIn pages, then a few relevant Indian directories and an industry directory for your trade. Accuracy matters more than quantity." },
+      { q: "Which citations matter most for an Ahmedabad business?", a: "Start with Google Business Profile, Bing Places and Apple Business, then your Facebook, Instagram and LinkedIn pages, then a few relevant Indian directories and an industry directory for your trade. Accuracy matters more than quantity." },
       { q: "How many citations do I need?", a: "There is no magic number. A small set of accurate, relevant listings is better than hundreds of low-quality ones. Focus on the platforms customers actually use and your own industry." },
       { q: "Do citations still affect Google local rankings?", a: "Yes, as one of several signals alongside your Google Business Profile, reviews, website content and proximity. Inconsistent citations can hold a good profile back, but citations alone will not rank a weak one." },
       { q: "Can wrong citations hurt my business?", a: "Yes. An old address or number can send customers to the wrong place and confuse Google about which details are correct. Audit and correct them before creating new listings." },
@@ -7485,7 +7485,7 @@ Allow: /</code></pre>
     slug: "woocommerce-seo-guide-2026",
     title: "WooCommerce SEO Guide 2026 for Ahmedabad Online Stores",
     titleHighlight: "WooCommerce SEO",
-    metaTitle: "WooCommerce SEO Services: 2026 Guide for Ahmedabad Online Stores",
+    metaTitle: "WooCommerce SEO Services: 2026 Guide for Ahmedabad Stores",
     metaDescription: "WooCommerce SEO services explained: settings, categories, product pages, schema, speed and plugins that matter, plus when to hire a WooCommerce SEO agency in India.",
     category: "eCommerce SEO",
     date: "2026-11-27",
@@ -7509,7 +7509,7 @@ Allow: /</code></pre>
 
 <h2>1. Set up the basics correctly</h2>
 <h3>Permalinks</h3>
-<p>In Settings, Permalinks, choose "Post name" and set the product base to something short, such as <em>/product/</em> or none. Avoid dates or long category paths in product URLs. Changing permalinks on a live store needs redirects, so get this right before launch.</p>
+<p>In Settings, Permalinks, choose "Post name" and keep the product base short, such as <em>/product/</em>. Removing it completely needs a plugin or custom code, so do that only with a clear reason. Avoid dates or long category paths in product URLs. Changing permalinks on a live store needs redirects, so get this right before launch.</p>
 <h3>Visibility</h3>
 <p>Under Settings, Reading, make sure "Discourage search engines from indexing this site" is not ticked. This single setting is a frequent reason new stores do not appear.</p>
 <h3>HTTPS and www</h3>
@@ -7581,7 +7581,7 @@ Allow: /</code></pre>
 
 <h2>A WooCommerce SEO checklist</h2>
 <ul>
-<li>Search visibility setting is off, permalinks set, one URL version.</li>
+<li>"Discourage search engines" is unticked, permalinks set, one URL version.</li>
 <li>Category pages have introductions, guidance and links.</li>
 <li>Top 20 products have original descriptions and good photos.</li>
 <li>Canonicals, noindex and sitemap rules are set for filters, tags and cart pages.</li>
@@ -9164,7 +9164,7 @@ Allow: /</code></pre>
     slug: "digital-marketing-for-real-estate-builders-ahmedabad",
     title: "Digital Marketing for Real Estate Builders in Ahmedabad",
     titleHighlight: "Real Estate Builders in Ahmedabad",
-    metaTitle: "Real Estate Digital Marketing Agency Guide for Ahmedabad Builders",
+    metaTitle: "Real Estate Digital Marketing Agency Guide for Builders",
     metaDescription: "Real estate digital marketing for Ahmedabad builders: the channels that bring site visits, a funnel plan, lead follow-up, tracking and what an agency should deliver.",
     category: "Digital Marketing",
     date: "2026-11-27",

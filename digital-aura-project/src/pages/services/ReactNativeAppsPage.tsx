@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { reactNativeFaqs as faqs } from "@/data/serviceFaqs";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { ArrowRight, Code2, Settings, Layers, Database, Zap, Shield, ChevronDown, Target, Rocket, Smartphone } from "lucide-react";
@@ -39,13 +40,6 @@ const whyUs = [
   { icon: Target,    title: "Business Outcome Focus", desc: "We measure success by retention, daily active users, and revenue — not story points or lines of code delivered." },
 ];
 
-const faqs = [
-  { q: "Is React Native still a good choice in 2025?", a: "Yes. The new React Native architecture (JSI + Fabric) has closed most of the performance gap with native. It's trusted in production by Shopify, Microsoft, and Meta. For most business and consumer apps it delivers native-quality performance at significantly lower cost and faster delivery time." },
-  { q: "React Native vs Flutter — which should we choose?", a: "React Native is typically better if your team has existing JavaScript/React expertise, you need rapid OTA updates without App Store review, or you're integrating heavily with JavaScript-based tooling. Flutter is often better for highly visual, animation-heavy apps. We'll advise based on your specific use case." },
-  { q: "How does OTA updating work?", a: "We integrate CodePush (for bare workflow) or Expo Updates so you can push JavaScript bundle updates directly to your users' devices without submitting a new App Store or Play Store release. Critical for bug fixes, content updates, and rapid iteration post-launch." },
-  { q: "Can you access native device features like camera, Bluetooth, biometrics?", a: "Yes. For anything not covered by community libraries, we write custom native modules in Swift (iOS) and Kotlin (Android) that are bridged into React Native. Deep hardware access is never a blocker." },
-  { q: "Who owns the code after the project is done?", a: "You own 100% of the codebase — JavaScript, native modules, and assets — on final delivery. We hand over clean, documented code your team can maintain and extend independently." },
-];
 
 const FAQItem = ({ q, a, i }: { q: string; a: string; i: number }) => {
   // Plain question and answer, always open (same FAQ look on every page).

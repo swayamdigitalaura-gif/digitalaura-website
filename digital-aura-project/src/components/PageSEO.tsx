@@ -9,6 +9,7 @@ import { phase3Pages } from '../data/localPagesPhase3';
 import { phase4Pages, phase4Entries } from '../data/localPagesPhase4';
 import { TEAM } from '../data/pageExtras';
 import { workflowFaqs, predictiveFaqs, llmAppsFaqs } from '../data/aiServiceFaqs';
+import { googleAdsFaqs, reactNativeFaqs } from '../data/serviceFaqs';
 
 const API_BASE  = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
 const SITE_URL  = 'https://thedigitalaura.com';
@@ -600,7 +601,11 @@ const PAGE_SCHEMA: Record<string, object | object[]> = {
     provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL },
     description: 'Full suite: SEO, Google Ads, Meta Ads, Web Development, AI Automation, and more.', url: `${SITE_URL}/services/`, areaServed: 'Worldwide' },
   '/services/seo-content-marketing':    { '@context': 'https://schema.org', '@type': 'Service', name: 'SEO & Content Marketing', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'SEO & Content Marketing', areaServed: 'Worldwide', url: `${SITE_URL}/services/seo-content-marketing/` },
-  '/services/google-ads':               { '@context': 'https://schema.org', '@type': 'Service', name: 'Google Ads Management', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Google Ads Management', areaServed: 'Worldwide', url: `${SITE_URL}/services/google-ads/` },
+  '/services/google-ads': [
+    { ...serviceSchema('/services/google-ads', 'Google Ads Management', 'Google Ads Management', 'Google Ads management across Search, Display, Shopping, YouTube and Performance Max campaigns, with conversion tracking and monthly reporting.', false, undefined, 'Worldwide'), provider: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: 'Digital Aura', url: SITE_URL } },
+    faqPageSchema(googleAdsFaqs),
+    breadcrumbSchema([['Home', '/'], ['Services', '/services/'], ['Google Ads Management', '/services/google-ads/']]),
+  ],
   '/services/meta-ads':                 { '@context': 'https://schema.org', '@type': 'Service', name: 'Meta Ads (Facebook & Instagram)', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Social Media Advertising', areaServed: 'Worldwide', url: `${SITE_URL}/services/meta-ads/` },
   '/services/social-media-marketing':   { '@context': 'https://schema.org', '@type': 'Service', name: 'Social Media Marketing', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Social Media Marketing', areaServed: 'Worldwide', url: `${SITE_URL}/services/social-media-marketing/` },
   '/services/shopify-development':      { '@context': 'https://schema.org', '@type': 'Service', name: 'Shopify Development', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'E-Commerce Development', areaServed: 'Worldwide', url: `${SITE_URL}/services/shopify-development/` },
@@ -612,7 +617,11 @@ const PAGE_SCHEMA: Record<string, object | object[]> = {
   '/services/mobile-app-development':   { '@context': 'https://schema.org', '@type': 'Service', name: 'Mobile App Development', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Mobile App Development', areaServed: 'Worldwide', url: `${SITE_URL}/services/mobile-app-development/` },
   '/services/android-development':      { '@context': 'https://schema.org', '@type': 'Service', name: 'Android App Development', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Mobile App Development', areaServed: 'Worldwide', url: `${SITE_URL}/services/android-development/` },
   '/services/flutter-apps':             { '@context': 'https://schema.org', '@type': 'Service', name: 'Flutter App Development', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Mobile App Development', areaServed: 'Worldwide', url: `${SITE_URL}/services/flutter-apps/` },
-  '/services/react-native-apps':        { '@context': 'https://schema.org', '@type': 'Service', name: 'React Native App Development', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Mobile App Development', areaServed: 'Worldwide', url: `${SITE_URL}/services/react-native-apps/` },
+  '/services/react-native-apps': [
+    { ...serviceSchema('/services/react-native-apps', 'React Native App Development', 'Mobile App Development', 'Cross-platform iOS and Android app development with React Native, including native modules and over-the-air updates.', false, undefined, 'Worldwide'), provider: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: 'Digital Aura', url: SITE_URL } },
+    faqPageSchema(reactNativeFaqs),
+    breadcrumbSchema([['Home', '/'], ['Services', '/services/'], ['React Native App Development', '/services/react-native-apps/']]),
+  ],
   '/services/digital-marketing':        { '@context': 'https://schema.org', '@type': 'Service', name: 'Digital Marketing Services', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Digital Marketing', areaServed: 'Worldwide', url: `${SITE_URL}/services/digital-marketing/` },
   '/services/design-branding':          { '@context': 'https://schema.org', '@type': 'Service', name: 'Design & Branding', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Graphic Design', areaServed: 'Worldwide', url: `${SITE_URL}/services/design-branding/` },
   '/services/email-whatsapp-marketing': { '@context': 'https://schema.org', '@type': 'Service', name: 'Email & WhatsApp Marketing', provider: { '@type': 'Organization', name: 'Digital Aura', url: SITE_URL }, serviceType: 'Email Marketing', areaServed: 'Worldwide', url: `${SITE_URL}/services/email-whatsapp-marketing/` },
@@ -982,6 +991,18 @@ function stripScriptWrapper(code: string): string {
     .trim();
 }
 
+PAGE_SCHEMA['/engagement-models'] = [
+  webPageSchema('/engagement-models', 'Engagement Models', 'Four ways to work with Digital Aura: project-based, retainer, dedicated team and consulting.'),
+  breadcrumbSchema([['Home', '/'], ['Engagement Models', '/engagement-models/']]),
+];
+
+// These pages have fuller schema in code (service, FAQ, breadcrumb) than the basic block saved in the admin panel,
+// so the saved schema_code is not applied to them. Title and description overrides from the panel still work.
+const CODE_SCHEMA_PATHS = new Set([
+  '/services/google-ads', '/services/react-native-apps', '/engagement-models',
+  '/services/ai/llm-powered-apps', '/services/ai/workflow-automation', '/services/ai/predictive-analytics',
+]);
+
 export default function PageSEO() {
   const { pathname } = useLocation();
   const schemaRef   = useRef<HTMLScriptElement | null>(null);
@@ -1063,7 +1084,7 @@ export default function PageSEO() {
           setTag('meta[property="og:url"]', 'content', c);
         }
 
-        if (page.schema_code?.trim()) {
+        if (page.schema_code?.trim() && !CODE_SCHEMA_PATHS.has(normalPath)) {
           // Remove default schema if DB provides one
           if (schemaRef.current) { schemaRef.current.remove(); schemaRef.current = null; }
           const script = document.createElement('script');

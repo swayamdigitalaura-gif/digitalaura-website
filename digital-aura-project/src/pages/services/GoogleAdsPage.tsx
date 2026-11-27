@@ -1,5 +1,6 @@
 ﻿import { motion, AnimatePresence } from "framer-motion";
 import { track } from "@/lib/track";
+import { googleAdsFaqs as faqs } from "@/data/serviceFaqs";
 import { Link } from "react-router-dom";
 import { StickyCtaBar } from "@/components/PageCta";
 import PillarLinks from "@/components/PillarLinks";
@@ -356,36 +357,6 @@ const whyUs = [
   "Strategies tailored to your industry, budget, and competitors",
 ];
 
-const faqs = [
-  {
-    q: "How quickly can I see results from Google Ads?",
-    a: "Google Ads can drive traffic and leads within 24-72 hours of launch. However, meaningful optimisation results (lower CPL, higher ROAS) typically appear within 30-60 days as we gather sufficient data to refine bidding, targeting, and messaging.",
-  },
-  {
-    q: "What budget do I need to get started?",
-    a: "There is no one size-fits-all answer. For most service businesses, a minimum ad spend of ₹30,000, ₹50,000/month is recommended to gather enough data for optimisation. For eCommerce, budgets depend on product margins and competition. We'll help you define the right starting point.",
-  },
-  {
-    q: "What is the difference between Search Ads and Display Ads?",
-    a: "Search Ads appear when someone actively types a related query into Google they capture high purchase intent. Display Ads appear as banner ads across websites and apps they build brand awareness. We typically recommend both in tandem for a full funnel approach.",
-  },
-  {
-    q: "Do you manage Performance Max campaigns?",
-    a: "Yes. We set up and fully manage Performance Max campaigns across all Google channels including Search, Display, YouTube, Gmail, and Google Maps. We configure asset groups, audience signals, and conversion goals correctly from the start to get the best out of Google's AI.",
-  },
-  {
-    q: "How do you measure campaign success?",
-    a: "We track leads, calls, form fills, purchases, and micro-conversions using Google Ads conversion tracking integrated with GA4 and Google Tag Manager. Every campaign has clear KPIs including CPL, ROAS, CTR, and Quality Score, all visible in your monthly report.",
-  },
-  {
-    q: "Can you take over an existing Google Ads account?",
-    a: "Absolutely. We carry out a full account audit before making any changes, identifying wasted spend, structural issues, and quick wins. A phased transition plan ensures there is no drop in performance during handover.",
-  },
-  {
-    q: "Do you handle Google Shopping / eCommerce campaigns?",
-    a: "Yes. We manage Google Shopping campaigns including feed optimisation, smart shopping, and Performance Max for retail. We also work with Shopify, WooCommerce, and Merchant Center setups to ensure your products are listed and performing effectively.",
-  },
-];
 
 /* ─── Form ─── */
 const inputClass = "w-full px-4 py-3 rounded-xl text-sm text-[#0A1628] outline-none focus:ring-2 focus:ring-[#4285F4] transition-all placeholder-[#9CA3AF] border border-[#E5E7EB] bg-[#F8FAFF] focus:bg-white";

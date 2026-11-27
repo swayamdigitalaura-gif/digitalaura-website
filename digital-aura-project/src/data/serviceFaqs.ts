@@ -7,7 +7,7 @@ export const googleAdsFaqs = [
   },
   {
     q: "What budget do I need to get started?",
-    a: "There is no one size-fits-all answer. For most service businesses, a minimum ad spend of ₹30,000, ₹50,000/month is recommended to gather enough data for optimisation. For eCommerce, budgets depend on product margins and competition. We'll help you define the right starting point.",
+    a: "There is no one size-fits-all answer. For most service businesses, a minimum ad spend of ₹30,000 to ₹50,000 a month is recommended to gather enough data for optimisation. For eCommerce, budgets depend on product margins and competition. We'll help you define the right starting point.",
   },
   {
     q: "What is the difference between Search Ads and Display Ads?",
@@ -32,7 +32,7 @@ export const googleAdsFaqs = [
 ];
 
 export const reactNativeFaqs = [
-  { q: "Is React Native still a good choice in 2025?", a: "Yes. The new React Native architecture (JSI + Fabric) has closed most of the performance gap with native. It's trusted in production by Shopify, Microsoft, and Meta. For most business and consumer apps it delivers native-quality performance at significantly lower cost and faster delivery time." },
+  { q: "Is React Native still a good choice in 2026?", a: "Yes. The new React Native architecture (JSI + Fabric) has closed most of the performance gap with native. It's trusted in production by Shopify, Microsoft, and Meta. For most business and consumer apps it delivers native-quality performance at significantly lower cost and faster delivery time." },
   { q: "React Native vs Flutter — which should we choose?", a: "React Native is typically better if your team has existing JavaScript/React expertise, you need rapid OTA updates without App Store review, or you're integrating heavily with JavaScript-based tooling. Flutter is often better for highly visual, animation-heavy apps. We'll advise based on your specific use case." },
   { q: "How does OTA updating work?", a: "We integrate CodePush (for bare workflow) or Expo Updates so you can push JavaScript bundle updates directly to your users' devices without submitting a new App Store or Play Store release. Critical for bug fixes, content updates, and rapid iteration post-launch." },
   { q: "Can you access native device features like camera, Bluetooth, biometrics?", a: "Yes. For anything not covered by community libraries, we write custom native modules in Swift (iOS) and Kotlin (Android) that are bridged into React Native. Deep hardware access is never a blocker." },
